@@ -1,0 +1,2380 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\setcounter{chapter}{10}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Redes Neuronales.
+ 
+\end_layout
+
+\begin_layout Standard
+El paradigma de redes neuronales artificiales es últimamente muy popular
+ dentro de la Inteligencia Artificial.
+ El enfoque que se va a seguir en la introducción de este paradigma es fundament
+almente como una herramienta para resolver problemas de clasificación supervisad
+a.
+\end_layout
+
+\begin_layout Standard
+Previamente estudiaremos los clasificadores lineales que constituyen un
+ paso intermedio en el camino hacia el perceptrón y las redes neuronales.
+\end_layout
+
+\begin_layout Section
+Clasificadores lineales.
+\end_layout
+
+\begin_layout Standard
+Como hemos señalado anteriormente en el ejemplo de clasificación de correos-e,
+ usar solo las palabras contenidas en el mensaje es demasiado poco y conviene
+ añadir nuevas características (identidad del remitente, URLs,...) para discernir
+ si es un correo basura.
+ Aunque el Bayes ingenuo puede hacer esto, es más eficaz en el caso homogéneo
+ en que toma en cuenta solo las ocurrencias de palabras.
+ Existen otros modelos que simplemente incorporan los atributos al modelo
+ y estiman este 
+\emph on
+minimizando los errores
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Los clasificadores lineales básicamente representan reglas para la toma
+ de decisiones.
+ Los clasificadores como el naïve Bayes operan de la forma siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename clasi.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Muchas características del mensaje tienen importancia a la hora de la clasificac
+ión pero otras no son más que ruido que no aporta información pertinente.
+\end_layout
+
+\begin_layout Standard
+Nos concentraremos en la parte del proceso enmarcada en la figura suponiendo
+ que están dados los vectores de características que se usarán en la clasificaci
+ón y nos interesa averiguar qué funciones incorporarán la regla de clasificación.
+\end_layout
+
+\begin_layout Section
+Sistema neuronal artificial.
+\end_layout
+
+\begin_layout Standard
+El sistema nervioso está compuesto por una red de células individuales,
+ las
+\emph on
+ neuronas
+\emph default
+, ampliamente interconectadas entre sí.
+ La información fluye desde las dendritas hacia el axón atravesando el soma.
+\end_layout
+
+\begin_layout Standard
+El cerebro contiene 
+\begin_inset Formula $10^{8}$
+\end_inset
+
+ neuronas 
+\end_layout
+
+\begin_layout Standard
+Del cuerpo celular o
+\emph on
+ soma
+\emph default
+ (de 10 a 80 micras de longitud) surge un denso árbol de ramificaciones
+ (
+\emph on
+árbol dendrítico
+\emph default
+) formado por las 
+\emph on
+dendritas
+\emph default
+ del soma y parte una fibra tubular denominada
+\emph on
+ axón
+\emph default
+ (longitud de 100 micras hasta un metro) que se ramifica en su extremo final
+ para conectar con otras neuronas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename neura.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De manera simplista:
+\end_layout
+
+\begin_layout Enumerate
+las 
+\emph on
+dendritas
+\emph default
+ constituyen el 
+\emph on
+canal de entrada
+\emph default
+ de la información 
+\end_layout
+
+\begin_layout Enumerate
+el 
+\emph on
+soma
+\emph default
+ es el 
+\emph on
+órgano de cómputo
+\emph default
+ 
+\end_layout
+
+\begin_layout Enumerate
+el 
+\emph on
+axón 
+\emph default
+corresponde al 
+\emph on
+canal de salida
+\emph default
+, y a la vez envía información a otras neuronas si se alcanza un 
+\emph on
+valor umbral
+\emph default
+ (a veces llamado 
+\emph on
+sesgo
+\emph default
+)
+\emph on
+.
+
+\emph default
+ 
+\end_layout
+
+\begin_layout Enumerate
+Cada neurona 
+\emph on
+recibe información
+\emph default
+ de aproximadamente 10.000 neuronas y 
+\emph on
+envía impulsos
+\emph default
+ a cientos de ellas 
+\end_layout
+
+\begin_layout Enumerate
+algunas neuronas reciben la información directamente del 
+\emph on
+exterior.
+\end_layout
+
+\begin_layout Subsection
+El perceptrón.
+\end_layout
+
+\begin_layout Standard
+Antes de continuar analicemos en detalle el modelo equivalente a una sola
+ neurona: el 
+\series bold
+\emph on
+perceptrón
+\series default
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Comparando el esquema neuronal con el problema de clasificación podemos
+ asociar las 
+\emph on
+entradas de las dendritas
+\emph default
+ con las 
+\emph on
+características
+\emph default
+ del objeto.
+ cada característica tiene una 
+\emph on
+ponderación
+\emph default
+ (peso) y la 
+\emph on
+salida del axón
+\emph default
+ como la 
+\emph on
+etiqueta asignada al objeto
+\emph default
+, tras 
+\emph on
+procesar su vector de características por el soma
+\emph default
+, siendo la suma la 
+\emph on
+activación
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename percep.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+P.e.
+ para clasificar un correo-e identificado por 
+\begin_inset Formula $x$
+\end_inset
+
+ utilizaremos un vector de características 
+\begin_inset Formula $\mathbf{f}(x)=(\#palabra_{1},...,\#palabra_{n},YOUR\textrm{\_}NAME,...,FROM\textrm{\_}FRIEND)$
+\end_inset
+
+ cuya importancia ha de ser ponderada asignándoles pesos.
+ La palabra 'GRATIS' en un correo-e puede tener un peso elevado, mientras
+ que la presencia de tu nombre (YOUR_NAME 
+\begin_inset Formula $\neq0$
+\end_inset
+
+) puede tenerlo muy bajo y si sumamos las características ponderadas , algunas
+ de las cuales tendrán ponderación positiva y otras negativa, obtenemos
+ la 
+\series bold
+\emph on
+activación del vector de entrada x
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+activación_{w}(\mathbf{x})=h(\mathbf{x},\mathbf{w})={\displaystyle \sum_{j=1}^{n}w_{j}\cdot f_{j}(x)=\mathbf{w}\cdot\mathbf{f}(x)}\label{eq:2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el caso de clasificación binaria que nos ocupa, usaremos una 
+\emph on
+función de activación todo o nada
+\emph default
+.
+ Estableceremos como umbral el valor 0 y clasificaremos el correo del siguiente
+ modo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+spam\textrm{ si activación>0}\Rightarrow{\textstyle s\textrm{alida}=+1}\\
+ham\textrm{ si activación<0}\Rightarrow{\textstyle s\textrm{alida}=-1}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos hacer que la primera característica tenga siempre el valor -1 y
+ su factor de ponderación será el umbral y podemos reescribir la ec.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+
+\end_inset
+
+) como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+activación_{w}(\mathbf{x})={\displaystyle \sum_{j=0}^{n}w_{j}\cdot f_{j}(x)=\mathbf{W}^{T}\cdot\mathbf{f}=-w_{0}+\sum_{j=1}^{n}w_{j}\cdot f_{j}(x)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $\mathbf{w_{0}}$
+\end_inset
+
+es el 
+\series bold
+\emph on
+umbral
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename activacion.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Su aplicación en un caso concreto - 
+\emph on
+conocidas las ponderaciones
+\emph default
+ -se realiza como muestra la figura:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename perapli.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora no existen probabilidades condicionales ni nada por el estilo, solo
+ vectores de características y pesos.
+\end_layout
+
+\begin_layout Standard
+La forma habitual de presentar esto es sobre un espacio bidimensional en
+ el que existe una línea que separa los casos positivos de los negativos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename separa.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Aprendizaje: el perceptrón binario.
+\end_layout
+
+\begin_layout Standard
+Necesitamos estimar los pesos de las características seleccionadas.
+ Para ello,
+\end_layout
+
+\begin_layout Itemize
+comenzamos con 
+\begin_inset Formula $\mathbf{w=}(0,...,0)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+vamos instancia por instancia y cada instancia 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+la clasificamos con los pesos actuales.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=\left\{ \begin{array}{c}
++1\:si\:\mathbf{w}\cdot\mathbf{f}(\mathbf{x})\geq0\:{\displaystyle (h(\mathbf{x)=}\sum_{j=1}^{n}w_{j}f_{j}(\mathbf{x})\geq w_{0}})\\
+-1\:si\:\mathbf{w}\cdot\mathbf{f}(\mathbf{x})<0\;{\displaystyle (h(\mathbf{x)=}\sum_{j=1}^{n}w_{j}f_{j}(\mathbf{x})<w_{0}})
+\end{array}\right.
+\]
+
+\end_inset
+
+(
+\begin_inset Formula $\mathbf{w_{0}}$
+\end_inset
+
+ es el umbral).
+ Al comienzo todos se clasifican equivocadamente.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+si la clasificación es correcta -
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $y=y*$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+-, no se cambia nada;
+\end_layout
+
+\begin_layout Itemize
+si la clasificación es errónea, cambiar el vector de ponderaciones (mover
+ la línea de separación entre clases).
+ Este cambio se realiza mediante adiciones o sustracciones del vector de
+ características del ejemplo equivocado:
+\begin_inset Formula 
+\[
+\mathbf{w=w+}y*\cdot\mathbf{f}\:[y*\in(-1,+1)]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+Mediante esta operación, conseguimos rotar 
+\begin_inset Formula $\mathbf{w}$
+\end_inset
+
+ y la frontera entre clases.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsubsection
+caso separable.
+\end_layout
+
+\begin_layout Standard
+Se dice que el conjunto de aprendizaje 
+\begin_inset Formula ${\displaystyle D}$
+\end_inset
+
+ se dice que es 
+\emph on
+separable linealmente 
+\emph default
+si existe una recta (superficie de decisión) que separa las clases.
+\end_layout
+
+\begin_layout Standard
+Novikoff (1962) probó que el algoritmo converge después de un número finito
+ de iteraciones si los datos son separables linealmente.
+ Sin embargo si los datos no son separables linealmente, no se garantiza
+ que converja.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename algoper.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+El perceptrón con múltiples clases.
+\end_layout
+
+\begin_layout Standard
+En este caso, tendremos 
+\end_layout
+
+\begin_layout Itemize
+un vector de ponderación 
+\emph on
+para cada clase
+\emph default
+ 
+\begin_inset Formula 
+\[
+\mathbf{w}_{y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+en cuyo caso la activación de una clase 
+\begin_inset Formula $y$
+\end_inset
+
+ será:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{w}_{y}\cdot\mathbf{f}(\mathbf{x})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+y la clasificación se hará según la regla: 
+\begin_inset Formula 
+\[
+y=\begin{array}{c}
+arg\:max\\
+y
+\end{array}\mathbf{w}_{y}\cdot\mathbf{f}(\mathbf{x})
+\]
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename percemult.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por lo que respecta al aprendizaje, este es el mismo básicamente para 3
+ clases 
+\begin_inset Formula $(y,y',y*)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+comenzamos con 
+\begin_inset Formula $\mathbf{w_{\mathbf{y}}=}(0,...,0)\:\forall y\in(y,y',y*)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+vamos instancia por instancia y cada instancia 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+la clasificamos con los pesos actuales.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula 
+\[
+y=\begin{array}{c}
+arg\:max\\
+y
+\end{array}\mathbf{w}_{y}\cdot\mathbf{f}(\mathbf{x})\;[y\in(y,y',y*)]
+\]
+
+\end_inset
+
+Al comienzo todos se clasifican equivocadamente.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+si la clasificación es correcta, no se cambia nada;
+\end_layout
+
+\begin_layout Itemize
+si la clasificación es errónea, cambiar el vector de ponderaciones de modo
+ que se reduzca la puntuación (activación) de la respuesta equivocada y
+ aumente la de la correcta 
+\begin_inset Formula 
+\[
+\mathbf{w=w-}\mathbf{f}(\mathbf{x})
+\]
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename predeq.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el caso de la figura queremos que 
+\begin_inset Formula $\mathbf{w}_{y*}$
+\end_inset
+
+ aumente y que 
+\begin_inset Formula $\mathbf{w}_{y}$
+\end_inset
+
+ disminuya dejando en paz a 
+\begin_inset Formula $y'$
+\end_inset
+
+, esto es, rotarlos en las direcciones indicadas en la figura.
+ para ello sumaremos o restaremos copias de los vectores de los ejemplos.
+\end_layout
+
+\begin_layout Itemize
+como 
+\begin_inset Formula $\mathbf{w}_{y}$
+\end_inset
+
+ es demasiado grande proporciona una activación exagerada y lo reduciremos
+ restando:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{w}_{y}\mathbf{=w}_{y}\mathbf{-}\mathbf{f}(\mathbf{x})\label{eq:3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+como 
+\begin_inset Formula $\mathbf{w}_{y*}$
+\end_inset
+
+ es demasiado pequeño lo aumentaremos sumando:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{w}_{y*}\mathbf{=w}_{y*}\mathbf{+}\mathbf{f}(\mathbf{x})\label{eq:4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+Al contrario que en el caso binario, en el multiclase
+\emph on
+ no se garantiza la convergencia del algoritmo
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Caso no separable.
+\end_layout
+
+\begin_layout Standard
+Ahora, el algoritmo no converge y lo que obtendremos será un conjunto de
+ rectas frontera que no separan verdaderamente las clases.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename nosepa.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con frecuencia se adopta como valores a los promedios de los obtenidos en
+ muchas iteraciones, pero no es de ningún modo el mejor método.
+\end_layout
+
+\begin_layout Subsection
+Problemas del perceptrón.
+\end_layout
+
+\begin_layout Enumerate
+Ruido: si los datos
+\emph on
+ no son separables
+\emph default
+, el resultado puede ser basura.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Promediar vectores de ponderación puede ayudar.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Incluso si el algoritmo converge, se obtiene una línea de separación pero
+ puede haber otras mejores.
+ El perceptrón no controla la 'distancia' que nos encontramos de cometer
+ un error.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename erroper.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Se produce 
+\emph on
+sobreentramiento, 
+\emph default
+similar al sobreajuste: la exactitud de entrenamiento sube pero la de validación
+ primero sube y después baja.
+\end_layout
+
+\begin_layout Standard
+Nos guiaremos por la idea de mitigar estos efectos a través de los algoritmos
+ de actualización de vectores de ponderación.
+ Un ejemplo de este tipo es el algoritmo MIRA (Margin Infused Relaxed Algorithm)
+ que elige un tamaño de actualización que arregla el error actual, es decir,
+ en ec.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:4"
+
+\end_inset
+
+) multiplica 
+\begin_inset Formula $\mathbf{f}$
+\end_inset
+
+ por un factor 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\mathbf{w}_{y}\mathbf{=w}_{y}\mathbf{-\tau}\mathbf{f}(\mathbf{x})\\
+\mathbf{w}_{y*}\mathbf{=w}_{y*}\mathbf{+\tau}\mathbf{f}(\mathbf{x})
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y además, minimice el cambio en 
+\begin_inset Formula $\mathbf{w}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Máquinas de vectores de soporte.
+\end_layout
+
+\begin_layout Standard
+Nos preguntamos cuál de estos separadores lineales es óptimo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename suppoprt.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Intuitivamente diríamos que la que está más situada en el 
+\emph on
+centro
+\emph default
+ de todos.
+\end_layout
+
+\begin_layout Standard
+Esta idea es la que desarrolla el 
+\series bold
+\emph on
+conjunto de algoritmos
+\series default
+\emph default
+ denominados 
+\emph on
+máquinas de soporte vectorial
+\emph default
+, máquinas de vectores de soporte o máquinas de vector soporte que, fundamentalm
+ente, eligen entre las hipótesis aquellas que maximizan el 
+\emph on
+margen 
+\emph default
+es decir la distancia del separador al punto más cercano sujeto a la restricción
+ de que todos los punts de datos estén bien clasificados;
+\end_layout
+
+\begin_layout Subsection
+La función de activación sigmoidal (modelo logit).
+ 
+\end_layout
+
+\begin_layout Standard
+Hasta ahora hemos utilizado como regla de clasificación (caso binario) la
+ siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=\left\{ {\displaystyle \begin{array}{c}
++1\;\textrm{si\;{\displaystyle \sum_{j=1}^{n}}w_{i}\cdot f_{i}(x)\geq w_{0}=\theta}\\
+-1\;\textrm{si\;{\displaystyle \sum_{j=1}^{n}}w_{i}\cdot f_{i}(x)<w_{0}=\theta}
+\end{array}}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $h(\mathbf{x})$
+\end_inset
+
+ es una función de activación lineal.
+ Es decir cuando el valor de la función de activación supera un umbral,
+ se etiqueta el dato con +1 o -1.
+\end_layout
+
+\begin_layout Standard
+Si queremos obtener
+\emph on
+ una salida continua
+\emph default
+, es habitual el utilizar la función de activación
+\series bold
+\emph on
+ sigmoidal
+\series default
+\emph default
+ quese basa en la 
+\series bold
+curva logística 
+\series default
+o 
+\series bold
+sigmoide
+\series default
+ cuya expresión es 
+\begin_inset Formula 
+\[
+{\displaystyle \sigma(y)=\frac{1}{1+e^{-y}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+propiedades de la sigmoide:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $0\leq\sigma(y)\leq1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+monótona creciente: 
+\begin_inset Formula $\forall y,y'\:y>y'\Rightarrow\sigma(y)>\sigma(y`)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $1-\sigma(y)={\displaystyle \frac{1}{1+e^{y}}=\sigma(-y)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula ${\displaystyle \frac{d\sigma(y)}{dz}}=\sigma'(y)={\displaystyle \frac{e^{-y}}{(1+e^{-y})^{2}}\geq0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+si hacemos un cambio de ejes 
+\begin_inset Formula $y=b(y-z_{0})$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\textrm{{\displaystyle \sigma(z;z_{0},b)=\frac{1}{1+e^{-b(z-z_{0})}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y tendremos que 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\textrm{lim}\\
+\textrm{b}\rightarrow\textrm{\infty}
+\end{array}\sigma(z;z_{0},b)=\left\{ \begin{array}{c}
+1\:si\:z>z_{0}\\
+0,5\;si\;z=z_{0}\\
+0\:si\:z<z_{0}
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sigma.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Con esta función podemos utilizar el modelo del perceptrón siguiente en
+ el cual denominamos al vector de características 
+\begin_inset Formula $\mathbf{f}$
+\end_inset
+
+ con la letra 
+\series bold
+
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ 
+\series default
+para mantener la nomenclatura habitual.
+ Es decir, a partir de ahora 
+\series bold
+
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ 
+\series default
+será el vector de características de un objeto (p.e.
+ correo-e) tal como:
+\begin_inset Formula 
+\[
+\mathbf{x=}(\#palabra_{1},...,\#palabra_{n},YOUR\textrm{\_}NAME,...,FROM\textrm{\_}FRIEND)
+\]
+
+\end_inset
+
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename factsigma.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pero ahora los valores de 
+\begin_inset Formula $y(\mathbf{x})$
+\end_inset
+
+ no son discretos, sino que pertenecen a toda la recta real.
+ Si esto es así, ¿cómo clasificamos las instancias mediante la función sigmoidal
+?
+\end_layout
+
+\begin_layout Standard
+Por las propiedades de la función expuestas anteriormente, 
+\begin_inset Formula $\sigma(y)$
+\end_inset
+
+ es una F.
+ de D.
+ de la v.
+ a.
+ 
+\begin_inset Formula $y$
+\end_inset
+
+ y si combinamos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left.\begin{array}{c}
+y(\mathbf{x})={\displaystyle \sum_{i=1}^{n}w_{i}x_{i}=\mathbf{W}^{T}\mathbf{X}}\\
+\sigma(y)={\displaystyle \frac{1}{1+e^{-y}}}
+\end{array}\right\} \Rightarrow h(\mathbf{x})={\displaystyle \frac{1}{1+e^{-\mathbf{\mathbf{W}^{T}\mathbf{X}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+siendo 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ el vector de características.
+ Esto puede interpretarse como que la probabilidad de que el vector de caracterí
+sticas 
+\series bold
+
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ 
+\series default
+clasifique
+\series bold
+ 
+\series default
+a la instancia en la clase z=1
+\series bold
+ 
+\series default
+es 
+\begin_inset Formula ${\displaystyle \frac{1}{1+e^{-\mathbf{\mathbf{W}^{T}\mathbf{X}}}}}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textrm{P(z=1|\mathbf{x},\mathbf{w})}={\displaystyle \frac{1}{1+e^{-\mathbf{\mathbf{W}^{T}\mathbf{X}}}}}\rightarrow\textrm{P(z=0|\mathbf{x},\mathbf{w})}={\displaystyle \frac{e^{-\mathbf{\mathbf{W}^{T}\mathbf{X}}}}{1+e^{-\mathbf{\mathbf{W}^{T}\mathbf{X}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y el criterio que seguiremos será:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\left\{ \begin{array}{c}
+\textrm{si h(\textbf{x})\ensuremath{>}0,5}\Rightarrow y=1\\
+\textrm{si h(\textbf{x})\ensuremath{\leq}0,5}\Rightarrow y=0
+\end{array}\right.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Funciones booleanas y neuronas.
+\end_layout
+
+\begin_layout Standard
+El modelo neuronal nos permite implementar ciertas funciones booleanas utilizand
+o entradas binarias y función umbral.
+\end_layout
+
+\begin_layout Subsection
+Función OR.
+\end_layout
+
+\begin_layout Standard
+Supongamos que deseamos saber si una rata es capaz de 
+\emph on
+aprender
+\emph default
+ la manera de conseguir la comida.
+ Para ello, se colocan dos pulsadores, uno al lado del otro y cada pulsador
+ puede estar encendido o apagado.
+ Para conseguir la comida tiene que picar en cualquiera de los pulsadores,
+ salvo cuando los dos están apagados que no debe picar ninguno.
+ ¿Aprenderá la paloma a picar siempre en el pulsador adecuado para conseguir
+ la comida? 
+\emph on
+El Perceptrón simple puede hacerlo
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Para ello vamos a representar el problema mediante un vector (
+\begin_inset Formula $x_{1},x_{2}$
+\end_inset
+
+), donde
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ toma el valor 1 ó 0 según que el pulsador de la izquierda esté encendido
+ o no,respectivamente; 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ toma el valor 1 ó 0 según que el pulsador de la derecha esté encendido
+ o no.
+\end_layout
+
+\begin_layout Standard
+Por lo tanto, el problema se reduce a un problema de clasificación, donde
+ las entradas
+\end_layout
+
+\begin_layout Itemize
+(1 0 ), (0 1) (1 1) conducen a un éxito (y = 1), y 
+\end_layout
+
+\begin_layout Itemize
+(0 0) a un fracaso (y = –1).
+\end_layout
+
+\begin_layout Standard
+El Perceptrón aprenderá esta regla mediante entrenamiento, es decir, introducien
+do varias veces en la red el conjunto de patrones de entrada y modificando
+ los pesos
+\end_layout
+
+\begin_layout Standard
+sinápticos según la regla de aprendizaje.
+ Así, el Perceptrón de la figura conduce siempre a una salida correcta,
+ es decir, ha aprendido dicha regla como se eve en la figura.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename OR.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Función AND.
+\end_layout
+
+\begin_layout Standard
+Del mismo modo se trata ahora de un problema de clasificación, donde la
+ entrada
+\end_layout
+
+\begin_layout Itemize
+(1 1 ) conducen a un éxito (y = 1), y 
+\end_layout
+
+\begin_layout Itemize
+(0 1) (1 0) (0 0) a un fracaso (y = –1).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename and.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Función XOR.
+\end_layout
+
+\begin_layout Standard
+Al contrario que los anteriores que son 
+\emph on
+separables
+\emph default
+, el problema no es ahora separable y no puede resolverse no ya por una
+ neurona sino que se precisa de una 
+\emph on
+red neuronal multicapa 
+\emph default
+que exponemos brevemente.
+\end_layout
+
+\begin_layout Section
+Modelo estándar de una red neuronal.
+\end_layout
+
+\begin_layout Standard
+El cerebro se modela durante el desarrollo de un ser vivo.
+ Algunas cualidades del ser humano no son innatas, sino adquiridas por la
+ influencia de la información que del medio externo se proporciona a sus
+ sensores.
+\end_layout
+
+\begin_layout Standard
+Diferentes maneras de modelar el sistema nervioso:
+\end_layout
+
+\begin_layout Enumerate
+establecimiento de nuevas conexiones
+\end_layout
+
+\begin_layout Enumerate
+ruptura de conexiones
+\end_layout
+
+\begin_layout Enumerate
+modelado de las intensidades sinápticas (uniones entre neuronas)
+\end_layout
+
+\begin_layout Enumerate
+muerte o reproducción neuronal.
+\end_layout
+
+\begin_layout Standard
+Los sistemas artificiales pretenden copiar la estructura de las redes neuronales
+ biológicas con el fin de alcanzar una funcionalidad similar, siendo tres
+ los conceptos clave a emular: 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+procesamiento paralelo
+\emph default
+, derivado de que los miles de millones de neuronas que intervienen, por
+ ejemplo en el proceso de visión, están operando en paralelo sobre la totalidad
+ de la imagen 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+memoria distribuida
+\emph default
+, mientras que en un computador la información está en posiciones de memoria
+ bien definidas, en las redes neuronales biológicas dicha información está
+ distribuida por la sinapsis de la red, existiendo una redundancia en el
+ almacenamiento, para evitar la pérdida de información en caso de que una
+ sinapsis resulte dañada.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+adaptabilidad al entorno
+\emph default
+, por medio de la información de las sinapsis.
+ Por medio de esta adaptabilidad se puede aprender de la experiencia y es
+ posible generalizar conceptos a partir de casos particulares.
+\end_layout
+
+\begin_layout Standard
+Un sistema neuronal biológico está compuesto por millones de 
+\emph on
+neuronas
+\emph default
+ organizadas en 
+\emph on
+capas
+\emph default
+.
+ En la emulación de dicho sistema neuronal biológico, por medio de un sistema
+ neuronal artificial, se puede establecer una estructura jerárquica similar
+ a la existente en el cerebro.
+ El elemento esencial será la 
+\emph on
+neurona artificial
+\emph default
+, la cual se organizará en 
+\emph on
+capas
+\emph default
+.
+ Varias capas constituirán una 
+\emph on
+red neuronal
+\emph default
+.
+ Finalmente una red neuronal junto con los interfaces de entrada y salida
+ constituirán el 
+\emph on
+sistema neuronal 
+\emph default
+de proceso.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename neuronalnet.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se va a introducir el denominado modelo estándar de neurona artificial según
+ los principios descritos en Rumelhart y McClelland (1986).
+ 
+\end_layout
+
+\begin_layout Standard
+Siguiendo dichos principios, la 
+\emph on
+
+\begin_inset Formula $i-$
+\end_inset
+
+ésima neurona artificial estándar 
+\emph default
+consiste en:
+\end_layout
+
+\begin_layout Itemize
+Un conjunto de entradas
+\begin_inset Formula $x_{j}$
+\end_inset
+
+ y unos pesos sinápticos
+\begin_inset Formula $w_{ij}$
+\end_inset
+
+ , con 
+\emph on
+j = 1, .., n
+\end_layout
+
+\begin_layout Itemize
+Una regla de propagación 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+ definida a partir del conjunto de 
+\emph on
+entradas
+\emph default
+ y los 
+\emph on
+pesos sinápticos
+\emph default
+.
+ Es decir:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\textstyle h_{i}(x_{1},...,x_{n};w_{i1},...,wi_{n})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+La 
+\emph on
+regla de propagación
+\emph default
+ más comúnmente utilizada consiste en combinar linealmente las entradas
+ y los pesos sinápticos, obteniéndose:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h_{i}(x_{1},...,x_{n};w_{i1},...,wi_{n})={\displaystyle \sum_{j=1}^{n}w_{ij}x_{j}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suele ser habitual añadir al conjunto de pesos de la neurona un parámetro
+ adicional 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+ que se denomina 
+\emph on
+umbra
+\emph default
+l, el cual se acostumbra a restar al 
+\emph on
+potencial pos-sináptico
+\emph default
+.
+ Es decir:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h_{i}(x_{1},...,x_{n};w_{i1},...,wi_{n})={\displaystyle \sum_{j=1}^{n}w_{ij}x_{j}}-\theta_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si hacemos que los índices i y j comiencen en 0, y denotamos por 
+\begin_inset Formula $w_{i0}=\theta_{i}$
+\end_inset
+
+ y 
+\begin_inset Formula $x_{0}=-1,$
+\end_inset
+
+ podemos expresar la 
+\emph on
+regla de propagación
+\emph default
+ como:
+\begin_inset Formula 
+\[
+\mathbf{h_{i}(x_{1},...,x_{n};w_{i1},...,wi_{n})}=\mathbf{{\displaystyle \sum_{j=0}^{n}w_{ij}x_{j}}}={\displaystyle \sum_{j=1}^{n}w_{ij}x_{j}}-\theta_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Una
+\emph on
+ función de activación
+\emph default
+, la cual representa simultáneamente la salida de la neurona y su estado
+ de activación.
+ Si denotamos por 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ dicha función de activación, se tiene 
+\begin_inset Formula 
+\[
+y_{i}=f_{i}(h_{i})=f_{i}(\sum_{j=0}^{n}w_{ij}x_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+La Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:a"
+
+\end_inset
+
+) muestra el modelo de neurona artificial estándar descrito previamente.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:a"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename nuurartif.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo interesante de estas redes es que, al igual que las neuronas biológicas,
+ pueden interconectarse en capas como en la figura siguiente en la cual,
+ la capa intermedia se denomina 
+\emph on
+capa oculta
+\emph default
+ puesto que en aprendizaje supervisado se utilizan para construir y evaluar
+ modelos las entradas (datos de entrenamiento) y las salidas, pero no los
+ valores intermedios.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename capas.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Desde el punto de vista de su representación matemática llamaremos
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{i}^{(j)}:$
+\end_inset
+
+ activación de la 
+\emph on
+unidad 
+\begin_inset Formula $i$
+\end_inset
+
+
+\emph default
+-ésima en la 
+\emph on
+capa 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W^{(j)}:$
+\end_inset
+
+ matriz de pesos que controla el mapeado de funciones de la capa 
+\begin_inset Formula $j$
+\end_inset
+
+ a la 
+\begin_inset Formula $j+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La red de la figura permite calcular los siguientes parámetros:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+a_{1}^{(2)}=\sigma(w_{10}^{(1)}x_{0}+w_{11}^{(1)}x_{1}+w_{12}^{(1)}x_{2})\\
+a_{2}^{(2)}=\sigma(w_{20}^{(1)}x_{0}+w_{21}^{(1)}x_{1}+w_{22}^{(1)}x_{2})
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h_{W}(\mathbf{x})=a_{1}^{(3)}=\sigma(w_{10}^{(2)}a_{0}^{(2)}+w_{11}^{(2)}a_{1}^{(2)}+w_{12}^{(2)}a_{2}^{(2)})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Volvamos ahora a la función booleana XOR y analicemos el modelo siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename xor.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La función XOR, que el perceptrón simple no podía aprender, puede aprenderse
+ con un modelo bicapa.
+\end_layout
+
+\end_body
+\end_document

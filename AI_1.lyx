@@ -1,0 +1,1281 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\fontsize{16pt}{18pt}\selectfont\mdseries}
+  {\MakeUppercase{\chaptertitlename}\ \thechapter}{18pt}{\MakeUppercase}
+\titleformat{\section}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\itshape}{\thesubsection}{1em}{}
+\titlespacing*{\section} {0pt}{0pt}{2.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{0pt}{1.5ex plus .2ex}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Introducción a la Inteligencia Artificial
+\end_layout
+
+\begin_layout Section
+Definición.
+\end_layout
+
+\begin_layout Standard
+Existen múltiples enfoques de la IA, cada uno de los cuales destaca ciertas
+ características de esta disciplina de nueva creación.
+ Nosotros definiremos la Inteligencia Artificial como 
+\emph on
+la ciencia de hacer máquinas que 
+\series bold
+actúan racionalmente.
+ 
+\series default
+\emph default
+Usamos los términos racional/racionalidad de un modo técnicamente específico:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Racional 
+\emph default
+es todo agente que busca alcanzar unos objetivos predefinidos, cualesquiera
+ que estos sean, de manera tal que maximiza (o minimiza) algún valor de
+ una función (
+\emph on
+utilidad
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La utilidad es un concepto extraído de la teoría microeconómica y mide el
+ grado de satisfacción del agente.
+ Con frecuencia asociaremos la utilidad con los costes, de modo que la utilidad
+ del agente se maximiza si se minimizan los costes.
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La racionalidad 
+\emph default
+solo se refiere 
+\emph on
+a las decisiones 
+\emph default
+que se toman y no a los procesos que se encuentran detrás de estas.
+ Por tanto, se refiere a los algoritmos que se utilizan pero no a los programas
+ o máquinas que los ejecutan.
+\end_layout
+
+\begin_layout Itemize
+Los 
+\emph on
+objetivos
+\emph default
+ se expresan en función de la 
+\emph on
+utilidad
+\emph default
+ de sus resultados.
+\end_layout
+
+\begin_layout Itemize
+Ser racional significa maximizar 
+\emph on
+la utilidad esperada
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Se ha propuesto como nombre alternativo de la disciplina y más ajustado
+ a la realidad el de 
+\emph on
+Racionalidad Computacional
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Una frase que resume el significado de la AI es esta:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename AI_defin.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Conviene resaltar que hablamos de utilidad 
+\emph on
+esperada
+\emph default
+ en el sentido probabilístico del término puesto que cuando se toma una
+ decisión solo se conoce la historia anterior al momento de la decisión
+ y se ignora cuáles serán sus consecuencias reales.
+ La racionalidad maximiza el resultado 
+\emph on
+esperado
+\emph default
+, para maximizar el resultado 
+\emph on
+real 
+\emph default
+es necesaria la omnisciencia.
+\end_layout
+
+\begin_layout Section
+Breve historia de la AI.
+\end_layout
+
+\begin_layout Standard
+El comienzo de la disciplina se remonta a los años 40 del pasado siglo y
+ desde entonces podemos destacar los hechos siguientes:
+\end_layout
+
+\begin_layout Itemize
+1940-50: los inicios.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+1943: McCulloch & Pitts: Modelo de circuito booleano del cerebro
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+http://www.minicomplexity.org/pubs/1943-mcculloch-pitts-bmb.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+1950: Turing: 
+\begin_inset Quotes fld
+\end_inset
+
+Computing Machinery and Intelligence
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+http://www.csee.umbc.edu/courses/471/papers/turing.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo de destacar el artículo de Turing en cuanto presenta por primera
+ vez la llamada 
+\begin_inset Quotes fld
+\end_inset
+
+prueba de Turing
+\begin_inset Quotes frd
+\end_inset
+
+ diseñada para proporcionar una definición operacional y satisfactoria de
+ inteligencia.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+1950-70: el entusiasmo: ¡Mira mamá, sin manos! 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+1950s: primeros programas de IA, incluyendo el del juego de damas de Samuel.
+ Newell & Simon crearon el programa 
+\emph on
+Logic Theorist
+\emph default
+ capaz de demostrar muchos teoremas matemáticos.
+ 
+\end_layout
+
+\begin_layout Itemize
+1957: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Reunión de Dartmouth donde se adoptó el nombre de “Inteligencia Artificial
+ ” .
+\end_layout
+
+\begin_layout Standard
+Robinson creó con Allen Newell el 
+\emph on
+General Problem Solver
+\emph default
+ (GPS) .
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+1970-90: Enfoques basados en el conocimiento que condujeron a la proliferación
+ de 
+\emph on
+sistemas expertos, 
+\emph default
+es decir, de conjuntos de programas que, sobre una base de conocimientos,
+ posee información de uno o más expertos en un área específica.
+ Se puede entender como una rama de la inteligencia artificial, donde el
+ poder de resolución de un problema en un programa de computadora viene
+ del conocimiento de un dominio específico:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Dendral 
+\emph default
+que interpreta la estructura molecular.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Dipmeter Advisor
+\emph default
+ (Asesor) fue un sistema experto temprano desarrollado en 1980 por Schlumberger
+ Doll Research para auxiliar en el análisis de los datos recolectados durante
+ la exploración petrolera.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Caduceus
+\emph default
+ fue un sistema experto médico programado para realizar diagnósticos en
+ medicina interna.
+ Ha sido descrito como el sistema experto "
+\emph on
+de mayor conocimiento intensivo existente
+\emph default
+"
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+1990-: enfoque estadístico y resurgimiento de la probabilidad.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aumento en la profundidad técnica.
+ 
+\end_layout
+
+\begin_layout Itemize
+Agentes y sistemas de aprendizaje.
+ 
+\end_layout
+
+\begin_layout Itemize
+Aplicaciones masivas iniciadas por Internet que se extienden a otros campos.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Aplicaciones de la AI.
+\end_layout
+
+\begin_layout Standard
+Las principales aplicaciones de la AI fuera del mundo informático donde
+ se han aplicado a sistemas de tiempo compartido, GUI, ...
+ han sido y son las siguientes:
+\end_layout
+
+\begin_layout Itemize
+Juegos.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ajedrez.
+\end_layout
+
+\begin_layout Itemize
+Damas.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Finanzas: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Los bancos usan inteligencia artificial para organizar operaciones, invertir
+ en acciones y administrar propiedades.
+ En agosto del 2001, robots vencen a los humanos en una competición simulada
+ de comercio financiero.
+\end_layout
+
+\begin_layout Itemize
+Las instituciones financieras usan sistemas de redes neuronales artificiales
+ para detectar pagos o reclamaciones fuera de lo normal, marcándolos para
+ ser investigado por humanos.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Medicina: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Una clínica puede usar inteligencia artificial para organizar las asignaciones
+ de las camas, crear una rotación del personal, proveer información médica
+ y otras tareas importantes.
+\end_layout
+
+\begin_layout Itemize
+Sistemas de apoyo para decisiones clínicas en el diagnóstico médico, tales
+ como la tecnología de Procesamiento de Conceptos en el software de registros
+ médicos electrónicos.
+\end_layout
+
+\begin_layout Itemize
+Interpretación de radiologías asistidas por computadoras.
+ Estos sistemas ayudan a escanear imágenes digitales para señalar zonas
+ visibles, tales como posibles enfermedades.
+ Una aplicación típica es la detección de un tumor.
+ 
+\end_layout
+
+\begin_layout Itemize
+Análisis del ruido cardíaco.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Industria:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Los 
+\emph on
+robots
+\emph default
+ se han vuelto comunes en muchas industrias.
+ A menudo se le asignan puestos de trabajo que se consideran peligrosos
+ para los humanos.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Servicios de atención al cliente:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Un asistente en línea automatizado proporcionando servicio de atención al
+ cliente en una página web.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Transportes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+aplicaciones de conducción automática en automóviles y aviones.
+\end_layout
+
+\begin_layout Itemize
+controles para cajas de cambios automáticas en vehículos.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Procesamiento del lenguaje:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Traducción.
+\end_layout
+
+\begin_layout Itemize
+Búsqueda en la Web.
+\end_layout
+
+\begin_layout Itemize
+Clasificación de textos.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Lenguaje natural.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reconocimiento de voz.
+\end_layout
+
+\begin_layout Itemize
+Texto-a-Habla
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Reconocimiento de imágenes como la Cloud Vision API de Google.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reconocimiento de formas.
+\end_layout
+
+\begin_layout Itemize
+Reconocimiento de caras.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+World Wide Web: Internet es una red global por la que circula un volumen
+ enorme de datos de todo tipo: de personas, transacciones, sensores,...a través
+ de la cual cada día se realizan más labores de procesamiento y almacenamiento
+ en sustitución de los ordenadores locales.
+ Esto ha motivado el interés de muchas organizaciones públicas y privadas
+ en desplegar herramientas basadas en el Big Data y la AI para explotar
+ esta inmensa fuente de recursos de información.
+\end_layout
+
+\begin_layout Itemize
+Toma de decisiones:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Spam de correos-e.
+\end_layout
+
+\begin_layout Itemize
+Recomendación de productos (Amazon).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Lógica:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Demostración de teoremas.
+\end_layout
+
+\begin_layout Itemize
+Respuesta a preguntas.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Sistemas y agentes inteligentes.
+\end_layout
+
+\begin_layout Standard
+El elemento clave de un sistema inteligente es el 
+\emph on
+agente racional.
+\end_layout
+
+\begin_layout Standard
+Un agente es cualquier cosa capaz de percibir su medio ambiente con la ayuda
+ de sensores y actuar sobre ese medio utilizando actuadores.
+ La figura 1.4.1 muestra el esquema de un agente donde el recuadro con el
+ signo de interrogación es la 
+\series bold
+\emph on
+función del agente
+\series default
+\emph default
+, esto es, en términos matemáticos se puede decir que el comportamiento
+ del agente viene dado por la 
+\emph on
+función del agente
+\emph default
+ que proyecta una percepción dada en una acción.
+\end_layout
+
+\begin_layout Standard
+Un 
+\emph on
+agente humano 
+\emph default
+tiene ojos, oídos y otros sensores además de manos, piernas, boca así como
+ otras partes del cuerpo y herramientas como actuadores.
+ 
+\end_layout
+
+\begin_layout Standard
+Un 
+\emph on
+agente robot
+\emph default
+ recibe pulsaciones del teclado, archivos de información y paquetes vía
+ red a modo de entradas sensoriales y actúa sobre el medio con mensajes
+ en el monitor, escribiendo ficheros y enviando paquetes por la red.
+ 
+\end_layout
+
+\begin_layout Standard
+Se admite la hipótesis general de que 
+\emph on
+cada agente puede percibir sus propias acciones
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+La 
+\emph on
+secuencia de percepciones
+\emph default
+ de un agente refleja el historial completo de lo que el agente ha recibido.
+ En general, un agente tomará una decisión en un momento dado dependiendo
+ de su secuencia completa de percepciones hasta ese instante.
+ Si se puede especificar qué decisión tomará un agente para cada una de
+ las posibles secuencias de percepciones, entonces se habrá explicado más
+ o menos todo lo que se puede decir de un agente.
+ En términos matemáticos se puede decir que el comportamiento del agente
+ viene dado por la 
+\emph on
+función del agente
+\emph default
+ que proyecta una percepción dada en una acción.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+En la figura podemos ver un ejemplo físico y su relación con el modelo de
+ agente.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pegado1.png
+	scale 40
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pac-Man puede utilizarse como un ejemplo de agente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pacman.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El protagonista del videojuego Pac-Man es un círculo amarillo al que le
+ falta un sector.
+ Aparece en laberintos donde debe comer puntos pequeños y puntos mayores.
+ El 
+\emph on
+objetivo
+\emph default
+ del personaje es comer todos los puntos de la pantalla, momento en el que
+ se pasa al siguiente nivel o pantalla.
+ Sin embargo, unos fantasmas o monstruos recorren el laberinto para intentar
+ capturar a Pac-Man.
+\end_layout
+
+\begin_layout Standard
+Hay puntos más grandes de lo normal que proporcionan a Pac-Man la habilidad
+ temporal de comerse a los monstruos (todos ellos se vuelven azules mientras
+ Pac-Man tiene esa habilidad).
+ Después de haber sido tragados, los fantasmas se regeneran en «casa» (una
+ caja situada en el centro del laberinto).
+ El tiempo en que los monstruos permanecen vulnerables varía según la pantalla.
+\end_layout
+
+\begin_layout Standard
+En el juego el agente debe determinar en cada posición cuál debe ser su
+ próxima acción para lo cual debe tomar en cuenta factores adicionales,
+ tales como:
+\end_layout
+
+\begin_layout Itemize
+posiciones de los puntos restantes (pequeños y mayores)
+\end_layout
+
+\begin_layout Itemize
+posiciones de los fantasmas.
+\end_layout
+
+\begin_layout Standard
+Podemos distinguir entre dos tipos fundamentales de agentes:
+\end_layout
+
+\begin_layout Enumerate
+Agentes reactivos.
+\end_layout
+
+\begin_layout Enumerate
+Agentes planificadores.
+\end_layout
+
+\begin_layout Standard
+Como ejemplo consideraremos un taxi automático.
+ 
+\end_layout
+
+\begin_layout Subsection
+Agentes reactivos.
+\end_layout
+
+\begin_layout Standard
+Este tipo de agentes se caracteriza porque 
+\end_layout
+
+\begin_layout Itemize
+Elige sus acciones basándose en las percepciones actuales (y quizá en la
+ memoria)
+\end_layout
+
+\begin_layout Itemize
+Puede tener memoria o un modelo del estado actual del mundo.
+\end_layout
+
+\begin_layout Itemize
+No considera las futuras consecuencias de sus acciones.
+\end_layout
+
+\begin_layout Itemize
+Considera al mundo tal como es.
+\end_layout
+
+\begin_layout Standard
+El tipo de agente más sencillo es el 
+\emph on
+agente reactivo simple
+\emph default
+ que selecciona las acciones sobre la base de las percepciones actuales,
+ ignorando el resto de las percepciones históricas cuyo esquema de funcionamient
+o es el siguiente:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pegado2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/functpng.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+P.e.
+ el taxi automático tiene definida una tabla de 
+\emph on
+condición- regla de actuación, 
+\emph default
+esto es 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size large
+if
+\series default
+\size default
+ 
+\emph on
+condición
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+acción 
+\emph default
+como p.e.
+
+\size large
+ 
+\series bold
+if
+\series default
+ 
+\size default
+\emph on
+semáforo en rojo
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+detenerse.
+\end_layout
+
+\begin_layout Standard
+Existen además los 
+\emph on
+agentes reactivos basados, en modelos
+\emph default
+.
+ Un agente difícilmente puede ver la totalidad del 
+\begin_inset Quotes fld
+\end_inset
+
+mundo
+\begin_inset Quotes frd
+\end_inset
+
+ que lo rodea.
+ La forma más efectiva que tienen los agentes de manejar la visibilidad
+ parcial es almacenar información de las partes del mundo que no pueden
+ ver.
+ O lo que es lo mismo, el agente debe mantener algún tipo de 
+\emph on
+estado interno
+\emph default
+ que dependa de la historia percibida y que de ese modo refleje por lo menos
+ alguno de los aspectos no observables del estado actual.
+\end_layout
+
+\begin_layout Standard
+La actualización de la información del citado estado interno según pasa
+ el tiempo requiere codificar dos tipos de conocimiento en el programa del
+ agente:
+\end_layout
+
+\begin_layout Itemize
+Primero, se necesita alguna información acerca de cómo evoluciona el mundo
+ independientemente del agente.
+ 
+\end_layout
+
+\begin_layout Itemize
+Segundo, se necesita más información sobre cómo afectan al mundo las acciones
+ del agente.
+ 
+\end_layout
+
+\begin_layout Standard
+Este conocimiento acerca de cómo funciona el 
+\begin_inset Quotes fld
+\end_inset
+
+mundo», se denomina modelo del mundo.
+ Esquemáticamente:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename reactivo3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pegado3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como ejemplo, el taxi es capaz de saber que, por lo general, tras 5 minutos
+ en una autopista habrá recorrido 15 km o que la distancia de frenado para
+ no chocar cuando se viaja a 40 km/h es de 16 m.
+\end_layout
+
+\begin_layout Standard
+La parte interesante de este agente es  la correspondiente a la función
+ A
+\size footnotesize
+CTUALIZAR
+\size default
+-E
+\size footnotesize
+STADO
+\size default
+ que es la responsable de 1n creación de la nueva descripción del estado
+ interno.
+ Además de interpretar la nueva percepción a partir del conocimiento existente
+ sobre el estado, utiliza la información relativa a la forma en la que evolucion
+a el 
+\begin_inset Quotes fld
+\end_inset
+
+mundo
+\begin_inset Quotes frd
+\end_inset
+
+ para conoce más sobre aquellas partes del 
+\begin_inset Quotes fld
+\end_inset
+
+mundo
+\begin_inset Quotes frd
+\end_inset
+
+ que no están visibles visibles: para lo cual debe conocer cuál es cl efecto
+ de las acciones de1 agente sobre el estado del mundo.
+\end_layout
+
+\begin_layout Standard
+De un modo natural surge la pregunta: ¿
+\emph on
+Puede un agente reactivo ser racional
+\emph default
+? 
+\end_layout
+
+\begin_layout Standard
+En principio parece que esto es difícil salvo en casos simples y aislados.
+ El conocimiento sobre el estado actual del mundo parece casi nunca suficiente
+ para decidir qué hacer.
+ Por ejemplo.
+ en un cruce de carreteras, un taxi automático puede girar a la izquierda,
+ a la derecha o seguir hacia delante.
+ La decisión correcta depende del destino que quiera alcanzar el taxi.
+ En otras palabras, además de la descripción del estado actual, el agente
+ necesita sita algún tipo de información sobre su meta que describa las
+ situaciones que son deseables, por ejemplo, llegar al destino propuesto
+ por el pasajero.
+\end_layout
+
+\begin_layout Standard
+Pero dejaremos esta discusión para el capítulo siguiente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename reactivo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Agentes planificadores.
+\end_layout
+
+\begin_layout Standard
+Un agente planificador es aquel que anticipa las consecuencias futuras de
+ sus acciones y usa estas consecuencias como guía para decidir sus acciones
+ actuales.
+\end_layout
+
+\begin_layout Standard
+Esta idea de la
+\emph on
+ planificación
+\emph default
+ puede formalizarse como un 
+\series bold
+\emph on
+problema de búsqueda
+\series default
+\emph default
+ que será lo que nos ocupe en el siguiente capítulo.
+\end_layout
+
+\end_body
+\end_document

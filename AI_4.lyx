@@ -1,0 +1,1055 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Búsqueda de coste uniforme (UCS).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Hasta ahora hemos fijado como objetivo minimizar el número de acciones a
+ tomar, y BFS es capaz de hallar esta solución.
+ Esto es equivalente a asignar el mismo coste (1) a todas las acciones.
+ Pero supongamos que cada arco del grafo (acción) tiene un coste diferente
+ (Fig.4.0.2).
+ Los algoritmos anteriores no son válidos en este caso.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename coste.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como ilustración pensemos en el mapa de Rumanía, en que la función a minimizar
+ sería el número de trayectos entre ciudades efectuados, cuando, en realidad,
+ parece mejor criterio el de 
+\emph on
+minimizar la distancia recorrida
+\emph default
+ (coste).
+\end_layout
+
+\begin_layout Section
+Búsqueda de coste uniforme.
+\end_layout
+
+\begin_layout Standard
+Es similar a BFS pero ahora se priorizan las capas de menor coste, de manera
+ que ahora se ejecutan primero las acciones más baratas aun cuando haya
+ múltiples pasos en el árbol.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename costcumul.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Puesto que hemos de expandir el nodo más barato como estrategia, elegiremos
+ el de menor coste acumulado que, en ese primer paso será 
+\emph on
+p 
+\emph default
+(g=1)
+\emph on
+.
+ 
+\emph default
+Puesto que no es el objetivo, iremos después a d (g=3) y como (estado==objetivo)
+=Falso, seguiremos pero ahora no iremos a e (g=9), sino a b cuyo coste acumulado
+ es 7
+\begin_inset Formula $<$
+\end_inset
+
+9.
+ En el siguiente paso expandiremos el nodo p (el más barato) y así sucesivamente
+, hasta llegar a la solución (Fig.4.1.2.) que conduce a
+\series bold
+ G .
+\end_layout
+
+\begin_layout Standard
+Se ve que nos movemos desde el nodo raíz hacia abajo de un modo un tanto
+ destartalado siguiendo los contornos de coste.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename unicost.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Propiedades de la UCS.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Sabemos que expandimos primero los nodos de menor coste, sea este 
+\begin_inset Formula $g=1$
+\end_inset
+
+ y seguimos por los de 
+\begin_inset Formula $g=2,3...$
+\end_inset
+
+.
+ y así hasta el nodo que nos de la solución de menor coste.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fases.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si la solución tiene un coste 
+\begin_inset Formula $g*$
+\end_inset
+
+ y los arcos cuestan como mínimo 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ - es decir, el coste mínimo de cada acción - la profundidad efectiva será
+ 
+\series bold
+
+\begin_inset Formula 
+\[
+\frac{\mathbf{g*}}{{\displaystyle \mathbf{\mathbf{\epsilon}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A partir de aquí, podemos decir que la 
+\series bold
+complejidad temporal
+\series default
+, 
+\emph on
+como en la BFS
+\emph default
+, será exponencial en la profundidad efectiva: 
+\begin_inset Formula 
+\[
+{\displaystyle \mathbf{O(b^{{\displaystyle \frac{g*}{\epsilon}}})}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+complejidad espacial
+\series default
+ será, por las mismas razones, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\displaystyle \mathbf{O(b^{{\displaystyle \frac{g*}{\epsilon}}})}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Completitud
+\series default
+.
+ Suponiendo que la mejor solución tiene un 
+\emph on
+coste finito
+\emph default
+ y los costes de los arcos son positivos, es completo, es decir, garantiza
+ encontrar una solución.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Optimalidad.
+ 
+\series default
+Puede demostrarse que es óptima y se demostrará en próximos capítulos ya
+ que se trata de un 
+\emph on
+caso particular de la búsqueda A* 
+\emph default
+('A estrella').
+ Por tanto, no devuelve la solución más superficial - lo que hacia BFS -,
+ sino la de menor coste.
+\end_layout
+
+\begin_layout Standard
+Podemos resumir las ventajas e inconvenientes de la UCS:
+\end_layout
+
+\begin_layout Enumerate
+Ventajas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Es completa.
+\end_layout
+
+\begin_layout Itemize
+Es óptima.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Desventajas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Busca en cualquier dirección.
+\end_layout
+
+\begin_layout Itemize
+No tiene información sobre la ubicación del objetivo.
+\end_layout
+
+\begin_layout Standard
+Esto significa que, partiendo del estado inicial, examina cualesquiera direccion
+es que sean baratas sin importarle si ayudan a avanzar hacia el objetivo
+ o se aleja de él.
+ pero esto puede corregirse, como veremos.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Ejercicio: 
+\series default
+Hallar la solución del grafo siguiente con el método UCS.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename uni_ejer.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Resumen de algoritmos de búsqueda desinformada.
+\end_layout
+
+\begin_layout Standard
+La tabla siguiente resume las características de cada algoritmo visto hasta
+ ahora:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename resalg.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El siguiente ejemplo servirá de resumen a todo lo visto hasta la fecha y
+ dará alguna orientación acerca del manejo de las colas para gestionar la
+ frontera de los algoritmos.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+De un artículo de Bill Gates: 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://people.eecs.berkeley.edu/~christos/papers/Bounds%20For%20Sorting%20By%20Prefix%20Reversal.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+: Tenemos una pila de cuatro tortitas de diferentes tamaños y deseamos ordenar
+ las de mayor en la base a menor en la cúspide.
+ Para ello solo disponemos de una espátula que introduciremos en cualquier
+ 
+\emph on
+posición
+\emph default
+ de la pila y voltearemos todas las que se sitúen sobre esta.
+\end_layout
+
+\begin_layout Standard
+Se trata de hallar la solución de 
+\emph on
+mínimo coste 
+\emph default
+a este problema de búsqueda.
+\end_layout
+
+\begin_layout Standard
+El 
+\series bold
+estado 
+\series default
+es el orden de las tortitas.
+\end_layout
+
+\begin_layout Standard
+Las 
+\series bold
+acciones
+\series default
+ son las
+\series bold
+\emph on
+ posiciones
+\series default
+\emph default
+ en que puedo insertar la espátula.
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+función sucesor
+\series default
+ da la vuelta en el orden definido por la posición de la espátula (acción)
+ y determina la nueva ordenación.
+\end_layout
+
+\begin_layout Standard
+El 
+\series bold
+coste 
+\series default
+puede definirse de diferentes formas:
+\end_layout
+
+\begin_layout Enumerate
+El número de volteos que debo dar.
+ Esto equivale a dar un coste unitario a cada acción.
+\end_layout
+
+\begin_layout Enumerate
+El número de tortitas volteadas, que nos parece más adecuado.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Veamos el espacio de estados de este problema:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename queques.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Utilizaremos el algoritmo de búsqueda ya conocido: 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename buscarbol.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Cola única.
+\end_layout
+
+\begin_layout Standard
+Como sabemos este algoritmo se repite de manera simple en ciclos: 
+\end_layout
+
+\begin_layout Itemize
+se toma algo de la frontera,
+\end_layout
+
+\begin_layout Itemize
+se generan sus hijos según la 
+\emph on
+función-sucesor 
+\emph default
+y se ponen en la
+\emph on
+ frontera
+\end_layout
+
+\begin_layout Itemize
+las acciones que han generado los hijos tienen costes y estados resultantes
+ que se ponen en la frontera,
+\end_layout
+
+\begin_layout Itemize
+e toma algo de la frontera,
+\end_layout
+
+\begin_layout Itemize
+se generan sus hijos según la 
+\emph on
+función-sucesor 
+\emph default
+y se ponen en la
+\emph on
+ frontera
+\end_layout
+
+\begin_layout Itemize
+las acciones que han generado los hijos tienen costes y estados resultantes
+ que se ponen en la frontera,
+\end_layout
+
+\begin_layout Itemize
+..............................................
+\end_layout
+
+\begin_layout Standard
+La frontera va yendo hacia abajo paulatinamente, más o menos rápido según
+ el algoritmo utilizado y a medida que avanzamos acumulamos los costes.
+ Algunos algoritmos son sensibles a los costes (UCS) y otros no (BFS, DFS)
+ , pero 
+\emph on
+todo plan tiene un coste
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Todos estos algoritmos sin información son básicamente iguales excepto por
+ la estrategia de selección de la frontera.
+ Conceptualmente son
+\emph on
+ colas con diferentes prioridades.
+ 
+\emph default
+Desde el punto de vista de su implementación, podemos pasar la estrategia
+ de búsqueda como un parámetro.
+ Sin embargo, en BFS y DFS no se necesita mantener una cola con prioridad,
+ que añade una carga al programa, sino que basta con gestionar una pila.
+ La gestión de una cola con prioridades introduce una penalización en el
+ tiempo de ejecución de log(n) .
+\end_layout
+
+\begin_layout Chapter*
+Ejercicios.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+1.
+ Cuántos nodos hay en el siguiente árbol de búsqueda completo para el grafo
+ del espacio de estados mostrado en la figura.
+ El estado inicial es S.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 4eje1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Solución: dibujemos el árbol de búsqueda, vemos que son 7 nodos.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename arbusca.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+2.
+ Considerar el grafo para BFS de la figura 4.5.3.
+ Con las mismas indicaciones que el problema anterior, hallar el camino
+ final devuelto por BFS.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename SAG.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+3.
+ Considerar el grafo para BFS de la figura 4.5.4.
+ Con las mismas indicaciones que el problema anterior, hallar el camino
+ final devuelto por BFS.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename BFS.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+4.
+ En el grafo de la figura, con la convención de ordenamiento establecida
+ anteriormente, encontrar los caminos para las siguientes modalidades de
+ búsqueda:
+\end_layout
+
+\begin_layout Enumerate
+DFS
+\end_layout
+
+\begin_layout Enumerate
+BFS
+\end_layout
+
+\begin_layout Enumerate
+UCS
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename tutobusco.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+5.
+ El siguiente mapa es una muestra reducida del metro de Madrid en el que
+ en las estaciones marcadas puede hacerse transbordo de una línea a otra
+ de las que en ella confluyen en el sentido marcado por las flechas.
+ Encontrar una ruta Aeropuerto T4-Pitis con el menor número de transbordos.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename metro.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El árbol será el siguiente y se seleccionará en primer lugar la ruta señalada,
+ aun cuando hay más trayectos con el mismo número de transbordos.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename metrillo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

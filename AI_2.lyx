@@ -1,0 +1,2748 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Resolución de problemas mediante búsqueda
+\end_layout
+
+\begin_layout Section
+Introducción.
+\end_layout
+
+\begin_layout Standard
+La idea tras el concepto de búsqueda es hacernos capaces de construir 
+\emph on
+bueno
+\emph default
+s agentes capaces de tomar 
+\emph on
+buenas
+\emph default
+ decisiones.
+ Para ello el agente ha de ser generalmente un agente planificador capaz
+ de 
+\emph on
+prever
+\emph default
+ el futuro de alguna forma, esto es, capaz de evaluar las consecuencias
+ de sus acciones en diferentes entornos.
+\end_layout
+
+\begin_layout Standard
+Esta idea de la planificación futura se plantea como una 
+\series bold
+\emph on
+búsqueda
+\series default
+ 
+\emph default
+y comenzaremos estudiando la 
+\series bold
+\emph on
+búsqueda no informada 
+\series default
+\emph default
+(o 
+\series bold
+\emph on
+a ciegas
+\series default
+\emph default
+) en tres modalidades:
+\end_layout
+
+\begin_layout Enumerate
+búsqueda primero en anchura;
+\end_layout
+
+\begin_layout Enumerate
+búsqueda primero en profundidad y
+\end_layout
+
+\begin_layout Enumerate
+búsqueda de coste uniforme.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Quotes fld
+\end_inset
+
+Búsqueda a ciegas
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+ significa que en esta no se tiene información adicional acerca de los estados
+ más allá de la que proporciona la definición del problema.
+ Todo lo que esta búsqueda puede hacer es
+\end_layout
+
+\begin_layout Itemize
+generar los sucesores y 
+\end_layout
+
+\begin_layout Itemize
+distinguir entre un estado objetivo de uno que no lo es.
+\end_layout
+
+\begin_layout Standard
+Las consideraremos dentro de un mismo contexto y los compararemos más adelante
+ con otros procedimientos
+\emph on
+ informados 
+\emph default
+guiados por una 
+\emph on
+heurística.
+\end_layout
+
+\begin_layout Standard
+Por el contrario en una 
+\begin_inset Quotes fld
+\end_inset
+
+
+\emph on
+búsqueda informada
+\emph default
+ (o 
+\emph on
+heurística
+\emph default
+)
+\begin_inset Quotes frd
+\end_inset
+
+ cuando la búsqueda es capaz de determinar si un estado es más 
+\emph on
+prometedor
+\emph default
+ que otro.
+ 
+\end_layout
+
+\begin_layout Section
+Agentes que 
+\emph on
+piensan
+\emph default
+ frente a agentes 
+\emph on
+reactivos
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+¿Por qué queremos agentes que piensan?
+\end_layout
+
+\begin_layout Standard
+Fijémonos en el robot que quiere coger una manzana del árbol.
+ Si el código que guía su comportamiento solo le dice
+\series bold
+ 
+\size large
+if 
+\series default
+\size default
+\emph on
+detectas manzana
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+acércate a manzana 
+\emph default
+o a
+\emph on
+ 
+\emph default
+Pac-Man diciéndole simplemente en su tabla:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size large
+if 
+\series default
+\size default
+\emph on
+detectas punto
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+cómete el punto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size large
+if 
+\series default
+\size default
+\emph on
+ves fantasma
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+huye del fantasma
+\end_layout
+
+\begin_layout Standard
+Es fácil ver que estos simples códigos conducen a malas decisiones, como
+ se ven en el caso de que exista un vacío entre el robot y el manzano.
+\end_layout
+
+\begin_layout Standard
+Podríamos escribir un código más complejo, indicando p.e.
+ lo que habría que hacer en caso de existir un abismo entre agente y árbol,
+ p.e.
+ 
+\series bold
+\size large
+if 
+\series default
+\size default
+\emph on
+abismo
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+salta hacia el árbol.
+ 
+\end_layout
+
+\begin_layout Standard
+Mejor sería que el agente supiera que es un mal plan y considerase otras
+ alternativas para alcanzar su objetivo en uno o varios pasos, p.e.
+ con la ayuda de una pinza.
+\end_layout
+
+\begin_layout Standard
+Nuestro objetivo es codificar el comportamiento de estos agentes que 
+\emph on
+planifican por adelantado
+\emph default
+ y son capaces de tomar las acciones 
+\emph on
+contextualmente adecuadas
+\emph default
+ y donde no
+\emph on
+ 
+\emph default
+es necesario escribir las complicada relaciones contexto-acción, sino que
+ estas surgen de nuestro modelo.
+\end_layout
+
+\begin_layout Standard
+Vemos que las acciones del agente reactivo se describen básicamente mediante
+ sentencias 
+\series bold
+\emph on
+if-then
+\series default
+\emph default
+ es decir, sus acciones se toman en base a su percepción actual (ves la
+ manzana, el punto, el fantasma) y en una tabla encuentra la acción pertinente
+ (acercarse al árbol, comer puntos, huir del fantasma).
+ Se trata de un mapeado directo y simple entre entradas (
+\emph on
+percepciones
+\emph default
+) y salidas (
+\emph on
+acciones
+\emph default
+), pero la tabla puede llegar a ser extraordinariamente grande.
+ Además, los agentes reactivos, como vimos, pueden tener memoria y un modelo
+ del estado actual del 
+\begin_inset Quotes fld
+\end_inset
+
+mundo
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Los agentes reactivos 
+\emph on
+no toman en consideración las consecuencias futuras de sus acciones, 
+\emph default
+sino solo
+\emph on
+ el estado actual del 
+\begin_inset Quotes fld
+\end_inset
+
+mundo
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si nos fijamos en Pac-Man con una sola regla: 
+\series bold
+\size large
+if 
+\series default
+\size default
+\emph on
+ves punto
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+come el punto, 
+\emph default
+de los dos casos siguientes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pacman2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El de la izquierda podría ser resuelto de una manera racional, pero no así
+ el derecho dado que en esta circunstancia al comerse el punto que se encuentra
+ en sus fauces, no habría punto a la vista:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename stoppac.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pac-Man se detendría, al no tener prevista la situación en que no haya punto
+ a la vista aunque sí más allá de su cercanía inmediata.
+\end_layout
+
+\begin_layout Standard
+Volviendo a la pregunta acerca de la racionalidad de los agentes reactivos,
+\emph on
+ la racionalidad 
+\emph default
+es una función de las acciones que el agente emprende no de la computación
+ que fue necesaria para ello.
+ Por tanto, un agente reactivo con una tabla buena de percepciones-acciones
+ de tamaño suficiente puede tomar las decisiones adecuadas mientras que
+ puede haber agentes planificadores que fracasen en su intento de ser racionales
+ dependiendo de su funcionamiento.
+\end_layout
+
+\begin_layout Standard
+Sin embargo, un 
+\emph on
+agente planificador
+\emph default
+, al contrario que el reactivo, piensa en las consecuencias de sus acciones:
+ se pregunta 
+\series bold
+\emph on
+what if
+\series default
+\emph default
+?.
+ Una de las formas de considerar estas consecuencias de las propias acciones
+ es ejecutarlas
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Modalidad que se trata en el llamado 
+\emph on
+aprendizaje por refuerzo.
+\end_layout
+
+\end_inset
+
+, aun cuando lo más común es 
+\emph on
+simularlas en un modelo.
+
+\emph default
+ Por tanto, 
+\emph on
+un agente planificador 
+\emph default
+requiere
+\emph on
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+un 
+\series bold
+modelo del mundo
+\series default
+ y
+\end_layout
+
+\begin_layout Enumerate
+un 
+\emph on
+objetivo a alcanzar 
+\emph default
+en dicho modelo o en general un 
+\series bold
+\emph on
+test objetivo
+\series default
+\emph default
+ ya que el robot se conforma con una cualquiera de las manzanas del árbol.
+\end_layout
+
+\begin_layout Standard
+Algunas ideas de importancia a este respecto son:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Planeamiento completo
+\emph default
+ y 
+\emph on
+óptimo
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Planeamiento completo: se refiere a la situación en que el agente encuentra
+ una solución para 
+\emph on
+alcanzar su objetivo
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Planeamiento óptimo: se da cuando no solo encuentra una solución sino que
+ esta es, además, 
+\emph on
+óptima con respecto a una función de coste
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Planeamiento completo y replanificación.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+El agente puede tener un plan completo que ejecuta para carranza su objetivo
+ o
+\end_layout
+
+\begin_layout Itemize
+tener una serie de planes que ejecuta en secuencia uno tras otro, replanificando.
+ Un ejemplo de este sería el caso 2 de Pac-Man si este dispusiera de un
+ plan a realizar cuando no encuentra ningún punto a su vista.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Problema de búsqueda.
+\end_layout
+
+\begin_layout Standard
+¿Qué es un problema de búsqueda?
+\end_layout
+
+\begin_layout Itemize
+Un 
+\emph on
+problema de búsqueda 
+\emph default
+implica tres fases:
+\end_layout
+
+\begin_layout Itemize
+Formulación,
+\end_layout
+
+\begin_layout Itemize
+Búsqueda y
+\end_layout
+
+\begin_layout Itemize
+Ejecución.
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+formulación
+\series default
+ del problema consiste en:
+\end_layout
+
+\begin_layout Enumerate
+Definir un
+\emph on
+ 
+\series bold
+espacio de estados
+\series default
+\emph default
+ que codifica esencialmente el estado del mundo en un cierto momento de
+ la progresión del plan del agente.
+ Es una abstracción del mundo;
+\end_layout
+
+\begin_layout Enumerate
+un 
+\series bold
+\emph on
+estado inicial
+\series default
+\emph default
+ desde el que partimos;
+\end_layout
+
+\begin_layout Enumerate
+Especificar las
+\series bold
+\emph on
+ acciones
+\series default
+\emph default
+ que puede realizar el agente:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Reglas para las acciones permitidas;
+\end_layout
+
+\begin_layout Enumerate
+una 
+\series bold
+\emph on
+función sucesor
+\series default
+ 
+\emph default
+con acciones y coste que modela cómo piensa el planificador que
+\series bold
+\emph on
+ funciona el mundo
+\series default
+\emph default
+.
+ La función sucesor se encuentra en un estado del espacio de estados y desde
+ allí nos dice donde debemos ir inmediatamente, qué acciones realizar a
+ tal fin y, en su caso, cuánto costará.
+ Dato un estado 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, y una acción 
+\begin_inset Formula $\mathbf{a}$
+\end_inset
+
+ 
+\begin_inset Formula $\mathbf{SUCCESSOR-FN(x)}$
+\end_inset
+
+ devuelve un conjunto de pares ordenados 
+\begin_inset Formula $<acción,coste,sucesor>.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mientras el espacio de estados modela cómo es el mundo, la función sucesor
+ modeliza cómo evoluciona en respuesta a nuestras acciones;
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+definir la 
+\emph on
+utilidad 
+\emph default
+como función del coste del camino y
+\end_layout
+
+\begin_layout Enumerate
+un 
+\emph on
+test objetivo 
+\emph default
+que nos dice si hemos alcanzado o no nuestro objetivo
+\emph on
+.
+\end_layout
+
+\begin_layout Standard
+Una 
+\emph on
+solución 
+\emph default
+es una secuencia de acciones
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Un 
+\size normal
+\emph on
+camino 
+\emph default
+en el grafo de estados.
+\end_layout
+
+\end_inset
+
+ (plan) que transforma el estado inicial en el estado objetivo (i.e.
+ que satisface el test objetivo).
+ Una solución es óptima si tiene utilidad máxima.
+\end_layout
+
+\begin_layout Standard
+Un ejemplo tomado de Norvig es el siguiente:
+\end_layout
+
+\begin_layout Standard
+Estamos viajando por Rumanía y nos encontramos en la ciudad de Arad desde
+ donde hemos de ir a Bucarest.
+ Disponemos de un mapa que constituye un buen ejemplo de un modelo (abstracción)
+ de cómo es el mundo.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Romania.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Formulemos el problema de búsqueda correspondiente:
+\end_layout
+
+\begin_layout Enumerate
+Espacio de estados: Como mínimo, ha de incluir las 
+\emph on
+ciudades 
+\emph default
+de modo que podamos aplicar el test objetivo (¿estamos en Bucarest?).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ciudades 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Acciones: tomar carreteras en una dirección.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Función sucesor: lo que podemos hacer es únicamente ir de una ciudad a otra
+ por carretera así que la función sucesor es:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+carretera par ir a una ciudad adyacente con coste=distancia.
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+ Por tanto, devuelve 
+\begin_inset Formula $<{\textstyle acción}={\textstyle {\textstyle carretera}},coste=distancia,sucesor=ciudad'>$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Estado inicial: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ciudad=Arad.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Test objetivo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+¿estado(ciudad) ==Bucarest?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Solución:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+alguna secuencia de carreteras.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+El espacio de estados.
+\end_layout
+
+\begin_layout Standard
+Una importante distinción ha de hacerse entre 
+\emph on
+estado del mundo
+\emph default
+ y 
+\emph on
+estado de la búsqueda
+\emph default
+ o 
+\emph on
+estado del modelo.
+\end_layout
+
+\begin_layout Standard
+Mientras que el estado del mundo incluye hasta el menor detalle del entorno
+ (modelo del coche, tiempo que hace, hora del día ....) el estado de la búsqueda
+ solo conserva los detalles que son necesarios para planificar y es, por
+ tanto una 
+\emph on
+abstracción 
+\emph default
+de la realidad cuyo nivel de detalle dependerá del problema en estudio.
+ En nuestro problema, donde queremos encontrar un camino entre dos ciudades,
+ nos interesan las ciudades en que nos encontramos el estado de la búsqueda
+ puede definirse con las coordenadas
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ de la ubicación en que estamos:
+\end_layout
+
+\begin_layout Itemize
+Estado de la búsqueda: 
+\series bold
+ubicación 
+\begin_inset Formula $(\mathbf{x,y})$
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Acciones: 
+\series bold
+dirección
+\series default
+ a seguir.
+\end_layout
+
+\begin_layout Itemize
+Función sucesor: 
+\series bold
+actualizar ubicación
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Test objetivo: ¿
+\begin_inset Formula $(\mathbf{x},\mathbf{y})$
+\end_inset
+
+==
+\begin_inset Formula $(\mathbf{x}_{Bucarest},\mathbf{y}_{Bucarest})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El motivo por el que no es operativo utilizar el estado del mundo es fácil
+ de ver en el siguiente ejemplo de Pac-Man con dos fantasmas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/PacmAN_real.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por tanto el 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+número de estados de búsqueda 
+\emph default
+es en este caso:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+120\times4\times12^{2}\times2^{30}=7.4217\cdot10^{17}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+número de estados para formar parte de un camino
+\emph default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+120
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+número de 
+\emph on
+estados de los puntos
+\emph default
+ indicando si han sido comidos o no (booleano):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+120\cdot2^{30}=1.28849\cdot10^{11}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una de las maneras de enfrentar el problema sería mediante la 
+\emph on
+búsqueda por fuerza bruta
+\emph default
+, es decir, enumerar sistemáticamente todos los posibles candidatos para
+ la solución de un problema, con el fin de comprobar si dicho candidato
+ satisface el test objetivo.
+ El espacio de estados es tan inmenso que resulta imposible enumerarlos
+ todos y después ordenarlos en sus posibles secuencias.
+ Por tanto lo que haremos será desarrollar 
+\emph on
+algoritmos
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La enumeración exhaustiva es también un algoritmo pero de 
+\series bold
+\emph on
+F
+\series default
+(uerza) 
+\series bold
+B
+\series default
+(ruta) 
+\series bold
+I
+\series default
+(gnorancia)
+\end_layout
+
+\end_inset
+
+
+\emph default
+ que eviten la necesidad de enumerar todos los estados.
+ y que reduzcan las enumeraciones de estado al mínimo posible.
+\end_layout
+
+\begin_layout Section
+Grafos del espacio de estados y árboles de búsqueda.
+\end_layout
+
+\begin_layout Standard
+Implícitamente el estado inicial y la función sucesor definen el espacio
+ de estados del problema (el conjunto de todos los estados alcanzables desde
+ el estado inicial).
+ 
+\emph on
+El espacio de estados forma un
+\series bold
+ grafo
+\series default
+\emph default
+ en el cual 
+\emph on
+los nodos son 
+\series bold
+estados
+\series default
+\emph default
+ y 
+\emph on
+los arcos entre los nodos son 
+\series bold
+acciones
+\series default
+\emph default
+.
+ la función sucesor está codificada en los arcos.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\emph on
+En un grafo de búsqueda
+\series default
+\emph default
+ (
+\emph on
+estados interconectados por acciones)
+\emph default
+ 
+\series bold
+cada estado aparece 
+\emph on
+solo una vez
+\series default
+.
+ 
+\emph default
+P.e.
+ el rodeado por el óvalo puede alcanzarse por multitud de caminos, pero
+ solo aparece una vez en el grafo de búsqueda.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+El mapa de carreteras de Rumanía puede interpretarse como un grafo del espacio
+ de búsqueda si vemos cada carretera como dos direcciones de viaje.
+ Un 
+\series bold
+\emph on
+camino 
+\series default
+es una serie de estados conectados por una secuencia de acciones
+\emph default
+.
+ Lo mismo puede decirse del juego de Pac-Man.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/grafo_arbol.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solo en muy raras ocasiones podemos construir el grafo completo en memoria,
+ pero es una idea útil.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Ejemplo: sea el siguiente grafo del espacio de estados:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/graph_ejemplo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Preguntémonos por lo que es relevante para nosotros en este problema: solo
+ el 
+\emph on
+estado inicial
+\emph default
+ y 
+\emph on
+lo que pueda ocurrir a partir
+\emph default
+ de este estado.
+ Trabajaremos con un objeto denominado 
+\series bold
+\emph on
+árbol de búsqueda
+\series default
+\emph default
+.
+ Para construirlo partimos del 
+\emph on
+estado actual 
+\emph default
+(
+\series bold
+1
+\series default
+) -
+\series bold
+ ahora
+\series default
+ - que será el nodo superior.
+ Seguidamente, en función de las acciones que se ejecuten, nos situaremos
+ en el próximo futuro (
+\series bold
+2
+\series default
+), estados que se pueden alcanzar en solo un paso y así continuaremos hacia
+ abajo (
+\series bold
+3
+\series default
+).
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/arbolote.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Enfoquémonos en 
+\emph on
+búsqueda en un árbol 
+\emph default
+(un sólo camino desde el nodo raíz a un nodo dado) 
+\end_layout
+
+\begin_layout Itemize
+Los 
+\emph on
+nodos
+\emph default
+ de un árbol de búsqueda corresponden a estados de búsqueda.
+ 
+\end_layout
+
+\begin_layout Itemize
+El 
+\emph on
+nodo raíz
+\emph default
+ de un árbol de búsqueda corresponde al estado de búsqueda inicial.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Acciones
+\emph default
+: Expandir el nodo de búsqueda actual: Generar nodos hijo (correspondientes
+ a nuevos estados) aplicando la función sucesor al nodo actual.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Estado objetivo
+\emph default
+: Un nodo correspondiente a un estado que satisface el test de objetivo.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Utilidad:
+\emph default
+ Coste del camino desde el nodo raíz al nodo actual.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Terminología
+\series default
+: 
+\end_layout
+
+\begin_layout Itemize
+Nodo 
+\emph on
+padre
+\emph default
+: Nodo del árbol desde el cual se ha generado el nodo actual aplicando una
+ sola vez la función sucesor.
+ 
+\end_layout
+
+\begin_layout Itemize
+Nodo 
+\emph on
+ancestro
+\emph default
+: Un nodo en el árbol desde el cual el nodo actual ha sido generado aplicando
+ una o varias veces la función sucesor.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Profundidad:
+\emph default
+ Longitud del camino desde la raíz al nodo actual.
+ 
+\end_layout
+
+\begin_layout Itemize
+Nodo 
+\emph on
+hoja
+\emph default
+: Nodo generado que no se ha expandido aún 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Frontera
+\emph default
+: Conjunto formado por los nodos hoja.
+\end_layout
+
+\begin_layout Standard
+Un 
+\series bold
+\emph on
+árbol de búsqueda
+\series default
+\emph default
+ es
+\end_layout
+
+\begin_layout Itemize
+Un árbol
+\series bold
+\emph on
+ 
+\series default
+\emph default
+de 
+\series bold
+\emph on
+what if 
+\series default
+\emph default
+y sus consecuencias.
+\end_layout
+
+\begin_layout Itemize
+El 
+\emph on
+estado inicial
+\emph default
+ es el 
+\emph on
+nodo raíz
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+los
+\emph on
+ hijos 
+\emph default
+corresponden a los 
+\emph on
+sucesores
+\emph default
+;
+\end_layout
+
+\begin_layout Itemize
+Los nodos muestran estados pero se corresponden con 
+\series bold
+\noun on
+planes
+\series default
+\noun default
+ que alcanzan dichos estados.
+ Cualquier plan que sea posible ejecutar se encuentra en algún lugar del
+ árbol.
+ P.e.en el árbol anterior, el nodo resaltado se corresponde al plan de ir
+ en dirección Norte desde el estado inicial y llegar aquí.
+ Hay otros modos de llegar a este estado (p.e.
+ 
+\begin_inset Formula $N\rightarrow S\rightarrow N$
+\end_inset
+
+), pero se hallarán en otros lugares del árbol.
+\end_layout
+
+\begin_layout Itemize
+En la mayoría de los problemas es 
+\emph on
+imposible construir el árbol completo
+\emph default
+.
+ Lo que intentaremos es desarrollar algoritmos que nos garanticen que hemos
+ actuado correctamente aun cuando ignoremos la mayoría del árbol completo.
+\end_layout
+
+\begin_layout Standard
+Hay muchas formas de representar los nodos, pero vamos a suponer que
+\series bold
+\emph on
+ un nodo es una estructura de datos
+\series default
+\emph default
+ con cinco componentes:
+\end_layout
+
+\begin_layout Enumerate
+
+\noun on
+ESTADO
+\noun default
+: el estado, del espacio de estados, que corresponde con el nodo;
+\end_layout
+
+\begin_layout Enumerate
+NODO PADRE: el nodo en el árbol de búsqueda que ha generado este nodo; 
+\end_layout
+
+\begin_layout Enumerate
+ACCIÓN: la acción que se aplicará al padre para generar el nodo; 
+\end_layout
+
+\begin_layout Enumerate
+
+\noun on
+COSTE
+\noun default
+ DEL CAMINO: el costo, tradicionalmente denotado por 
+\begin_inset Formula $g(n)$
+\end_inset
+
+ , de un camino desde el estado inicial al nodo, indicado por los punteros
+ a los padres; y
+\end_layout
+
+\begin_layout Enumerate
+PROFUNDIDAD: número de pasos a lo largo del camino desde el estado inicial.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/nodo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es importante recordar la distinción entre 
+\emph on
+nodos
+\emph default
+ y 
+\emph on
+estados
+\emph default
+.
+ Un nodo es una estructura de datos usada para representar el árbol de búsqueda
+ (Fig.
+ 2.4.4.).
+ Un estado corresponde a una configuración del mundo.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+: El grafo de estados siguiente presenta un bucle entre (a) y (b) y el árbol
+ de búsqueda asociado:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/bucle.png
+	scale 50
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Puede verse que su árbol de búsqueda será de tamaño infinito.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Nota
+\series default
+: puesto que 
+\emph on
+cada nodo representa un plan 
+\emph default
+sería más informativo representar los nodos en el árbol como el plan que
+ nos conduce a ellos p.e.
+ 
+\begin_inset Formula $(\textrm{S,a\textbf{,b}})$
+\end_inset
+
+ en lugar de solo 
+\series bold
+b
+\series default
+.
+\end_layout
+
+\begin_layout Section
+Búsqueda en árbol
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Partamos del problema representado por la figura 2.3.1.
+ Comenzaremos por construir un árbol de búsqueda y analicemos algunas de
+ sus características (Fig.
+ 2.5.1.).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/arad.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Al principio, solo tendremos el 
+\emph on
+nodo inicial
+\emph default
+ o raíz (Arad).
+ En principio, también existen todos los elementos difuminados en el gráfico
+ que han sido definidos matemáticamente pero que no figuran todavía en nuestro
+ código.
+\end_layout
+
+\begin_layout Standard
+Seguidamente buscaremos algún procedimiento para desplazarnos hacia abajo
+ en el árbol.
+ A medida que avancemos iremos manteniendo una colección de planes potenciales
+ y, por tanto, serán nodos en nuestro árbol que denominaremos
+\series bold
+ frontera
+\series default
+.
+ Estos son planes que estamos considerando y que pudieran conducirnos a
+ nuestro objetivo, pero que aún no hemos seleccionado.
+ En nuestro avance, trataremos de 
+\series bold
+\emph on
+expandir 
+\series default
+\emph default
+el menor número de nodos posible.
+ En esta fase inicial, el único plan que tenemos es el vacío: estamos en
+ Arad y no consideramos ninguna acción.
+\end_layout
+
+\begin_layout Standard
+Podemos expandir el árbol incluyendo tres planes (nodos):
+\end_layout
+
+\begin_layout Enumerate
+ir a Sibiu,
+\end_layout
+
+\begin_layout Enumerate
+ir a Timisoara o
+\end_layout
+
+\begin_layout Enumerate
+ir a Zerind.
+\end_layout
+
+\begin_layout Standard
+que constituirán la nueva frontera.
+ La frontera está constituida por un 
+\emph on
+conjunto de
+\emph default
+ 
+\emph on
+nodos hoja
+\emph default
+, es decir, sin sucesores en cl árbol.
+ La estrategia de búsqueda será una función que seleccione de este conjunto
+ el siguiente nodo a expandir ya que no podemos expandir los tres a la vez.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/ARAD2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nosotros asumiremos que 
+\emph on
+esta colección de nodos se implementa como una
+\series bold
+ cola 
+\series default
+\emph default
+en la que son posibles las siguientes operaciones:
+\end_layout
+
+\begin_layout Itemize
+HACER-COLA(elemento1, elemento2,...): crea una cola con los elementos dados.
+\end_layout
+
+\begin_layout Itemize
+VACÍA(cola): devuelve verdadero si no hay ningún elemento en la cola.
+\end_layout
+
+\begin_layout Itemize
+PRIMERO(cola): devuelve el primer elemento de la cola.
+\end_layout
+
+\begin_layout Itemize
+BORRAR(primero de la cola): devuelve el primer elemento y lo borra de la
+ cola.
+\end_layout
+
+\begin_layout Itemize
+INSERTA(elemento, cola): añade elemento a la cola y devuelve la cola resultante.
+ Puede hacerse de varias maneras como veremos (LIFO, FIFO, ...).
+\end_layout
+
+\begin_layout Itemize
+INSERTAR-TODOS(elementos, cola): añade un conjunto de elementos a la cola
+ y devuelve la cola resultante.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Ahora necesitamos elegir uno de estos tres planes y expandirlo ya que no
+ podemos analizar los tres simultáneamente.
+ Sea el de Sibiu el elegido.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/arad3.png
+	scale 50
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora la frontera está constituida por 4 nodos de profundidad 2 y 2 nodos
+ de profundidad 1.
+\end_layout
+
+\begin_layout Standard
+Si en este momento descubrimos que algún 
+\begin_inset Formula $estado==objetivo$
+\end_inset
+
+, hemos encontrado la solución al problema de búsqueda.
+\end_layout
+
+\begin_layout Standard
+Este es el algoritmo que puede escribirse en pseudocódigo como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/ALGOSEARCH.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este algoritmo existen varias ideas importantes a resaltar:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Frontera: 
+\series default
+conjunto de planes que aún pueden funcionar.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Expansión: 
+\series default
+seleccionar nodos externos a la frontera.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Estrategia de exploración
+\end_layout
+
+\begin_layout Standard
+La cuestión más importante es: ¿
+\series bold
+\emph on
+qué nodos de la frontera explorar
+\series default
+\emph default
+? 
+\end_layout
+
+\begin_layout Standard
+Tomemos como ejemplo el grafo en la Fig.
+ 2.4.2.
+ y escribamos por fases la 
+\emph on
+frontera
+\emph default
+ y el 
+\emph on
+árbol 
+\emph default
+de búsqueda.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/tojunto.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La figura 2.5.5.
+ resume todo el proceso y en ella pueden seguirse las distintas etapas para
+ llegar a la solución 
+\series bold
+G 
+\series default
+que, como puede verse, 
+\emph on
+no ha requerido la expansión completa de todo el árbol
+\emph default
+.
+\end_layout
+
+\begin_layout Chapter*
+Algunos ejemplos.
+\end_layout
+
+\begin_layout Enumerate
+Un pastor que viaja con un lobo, una cabra y una coliflor necesita cruzar
+ un río con una barca.
+ La barca sólo puede transportar al pastor y a uno de los tres compañeros
+ de viaje del pastor.
+ El lobo y la cabra no se pueden quedar solos.
+ La cabra y la col tampoco se pueden quedar a solas
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Si están lobo, cabra y col juntas, ninguno puede comerse a nadie, al igual
+ que pasa cuando está el pastor presente.
+ 
+\end_layout
+
+\end_inset
+
+.
+ ¿Cómo puede hacer el pastor para cruzar el río con sus compañeros de viaje
+ sin que nadie resulte dañado?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Encuentra la solución de este pasatiempo utilizando búsqueda.
+ Para ello: 
+\end_layout
+
+\begin_layout Enumerate
+Formalizar el problema
+\noun on
+ 
+\noun default
+definiendo el espacio de estados y la función sucesor.
+
+\noun on
+ 
+\end_layout
+
+\begin_layout Enumerate
+Proporcionar una cota superior para el número de pasos de la solución del
+ problema.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solución
+\series default
+.Denominaremos al Lobo con una L (booleanas) , a la cabra con una C y a la
+ col con una X.
+ Debemos de fijar también un estado inicial que en nuestro problema será
+ el listado de los elementos que tengamos en la margen derecha del río 
+\begin_inset Formula $(0,0,0)$
+\end_inset
+
+.
+ Y el estado final al que queremos llegar que será 
+\begin_inset Formula $(1,1,1)$
+\end_inset
+
+.
+ Supondremos que el coste de cada acción es 1, de modo que el menor coste
+ se obtendrá con el menor número de acciones.
+\end_layout
+
+\begin_layout Standard
+Fijaremos primeramente un 
+\emph on
+operador de transición de estado
+\emph default
+.
+ Representaremos con un tupla los elementos que se transportan en el bote
+ en cada viaje de ida y vuelta 
+\begin_inset Formula $(ida,vuelta).$
+\end_inset
+
+ A través de ella podemos definir la 
+\emph on
+función sucesor
+\emph default
+ que para cada estado (L,C,X) devuelve 
+\begin_inset Formula $sucesor(L,C,X)$
+\end_inset
+
+, el conjunto de estados alcanzable desde (L,C,X) con una 
+\emph on
+acción
+\emph default
+ (viaje).
+\end_layout
+
+\begin_layout Standard
+Dato un estado 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, y una acción 
+\begin_inset Formula $\mathbf{a}$
+\end_inset
+
+ 
+\begin_inset Formula $\mathbf{SUCCESSOR-FN(x)}$
+\end_inset
+
+ devuelve un conjunto de pares ordenados 
+\begin_inset Formula $<accion,coste,sucesor>.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Resumiendo: Operador: (ida, vuelta) elementos que se transportan en el bote
+ Estado inicial: 
+\begin_inset Formula $(L=0,C=0,X=0)$
+\end_inset
+
+ -vacío- Estado final 
+\begin_inset Formula $(L=1,C=1,X=1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+- Grafo de estados
+\series default
+: El número máximo de estados es 
+\begin_inset Formula $2^{3}=8$
+\end_inset
+
+ y estos son los siguientes:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename GRAFESTADO.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+- Función sucesor:
+\series default
+ tendremos en cuenta que las acciones posibles - 16 ida y vuelta del pastor
+ en la barca transportando
+\begin_inset Formula $(ida,vuelta)$
+\end_inset
+
+ - solo tienen sentido si el par transportado es tal que es distinto de
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(\textrm{\_},\textrm{\_})$
+\end_inset
+
+: 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $(ida=a,vuelta=a)$
+\end_inset
+
+: 3.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(ida=\textrm{\_},vuelta\in\left\{ L,C,X\right\} )$
+\end_inset
+
+: 3
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Es decir, solo se consideran 9 de las posibles acciones que se indican a
+ continuación que definen la función sucesor para los estados que tienen
+ un sucesor:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sucesor.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Pero, no todos estos casos son posibles ya que de los estados potenciales
+ solo podrán alcanzarse aquellos que cumplan determinadas 
+\series bold
+reglas 
+\series default
+como p.e.
+\end_layout
+
+\begin_layout Itemize
+Regla 1: “Si el lobo y la col están en el mismo lado del río 
+\begin_inset Formula $(L=0,C=1,X=0)$
+\end_inset
+
+, y la cabra está en el otro lado del río, el pastor puede cruzar el río
+ solo”.
+ 
+\end_layout
+
+\begin_layout Itemize
+Regla 2: “Si el pastor y el lobo están en el mismo lado del río, 
+\begin_inset Formula $(L=0)\cup(L=1)$
+\end_inset
+
+ el pastor puede transportar al lobo a la otra orilla, siempre y cuando
+ la cabra y la col se encuentren en lados opuestos del río 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $(C=1,X=0)\cup(C=1,X=0)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+”.
+ 
+\end_layout
+
+\begin_layout Itemize
+Regla 3: “ Si lobo, cabra y col están en el mismo lado del río, el pastor
+ solo puede transportar la cabra a la otra orilla“ 
+\end_layout
+
+\begin_layout Itemize
+Regla 4: “Si lobo y cabra están en distinta orilla del río, el pastor puede
+ transportar la cabra a la otra orilla y volver con el lobo“ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Por consiguiente, hay una serie de transiciones entre estados imposibles.
+ P.e.
+ no es posible pasar del estado inicial a 
+\begin_inset Formula $(L=1,C=0,X=0)$
+\end_inset
+
+ porque eso representaría dejar a la cabra a solas con la col mientras el
+ pastor transporta al lobo a la otra orilla..
+ Tras eliminar las transiciones no posibles los posibles algunos estados,
+ con lo cual el 
+\emph on
+grafo de estados
+\emph default
+ (y la solución) sería:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename lobo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Lo que deja la función sucesor reducida a :
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename suces_redu.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Se tienen dos jarras, de 4 y 3 litros respectivamente.Ninguna de ellas tiene
+ marcas de medición.
+ Se tiene una bomba que permite llenar las jarras de agua.
+ formular cómo se puede lograr tener exactamente 2 litros de agua en la
+ jarra de 4 litros de capacidad.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Representación de estados: 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ con 
+\begin_inset Formula $x\in\left\{ 0,1,2,3,4\right\} $
+\end_inset
+
+ e 
+\begin_inset Formula $y\in\left\{ 0,1,2,3\right\} \Rightarrow$
+\end_inset
+
+Nº de estados = 20.
+\end_layout
+
+\begin_layout Enumerate
+Estado inicial: 
+\begin_inset Formula $(0,0)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Estados finales: todos los estados de la forma 
+\begin_inset Formula $(2,0)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Acciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Llenar la jarra de 4 litros con la bomba.
+ 
+\end_layout
+
+\begin_layout Itemize
+Llenar la jarra de 3 litros con la bomba.
+\end_layout
+
+\begin_layout Itemize
+Vaciar la jarra de 4 litros en el suelo.
+\end_layout
+
+\begin_layout Itemize
+Vaciar la jarra de 3 litros en el suelo.
+\end_layout
+
+\begin_layout Itemize
+Llenar la jarra de 4 litros con la jarra de 3 litros.
+ 
+\end_layout
+
+\begin_layout Itemize
+Llenar la jarra de 3 litros con la jarra de 4 litros.
+ 
+\end_layout
+
+\begin_layout Itemize
+Vaciar la jarra de 3 litros en la jarra de 4 litros.
+ 
+\end_layout
+
+\begin_layout Itemize
+Vaciar la jarra de 4 litros en la jarra de 3 litros.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Formulación del problema:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Aplicación de acciones a un estado
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Acción “Llenar jarra de 3” 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: y<3 (precondición) 
+\end_layout
+
+\begin_layout Itemize
+Estado resultante:
+\begin_inset Formula $(x,3)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Acción “Llenar jarra de 4 con jarra de 3” 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: x<4, y>0, x+y>4 (precondición) 
+\end_layout
+
+\begin_layout Itemize
+Estado resultante: 
+\begin_inset Formula $(4,x+y-4)$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Acción “Vaciar jarra de 3 en jarra de 4” 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: y>0, x+y≤4 (precondición)
+\end_layout
+
+\begin_layout Itemize
+Estado resultante: 
+\begin_inset Formula $(x+y,0)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Y análogamente las demás acciones.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Solución: Búsqueda de soluciones en espacios de estados 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Objetivo: encontrar una secuencia de acciones que, partiendo del estado
+ inicial, obtenga un estado final 
+\end_layout
+
+\begin_layout Itemize
+Idea básica: exploración del grafo del espacio de estados 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En cada momento se analiza un estado actual (en un principio, el inicial)
+ 
+\end_layout
+
+\begin_layout Itemize
+Si el estado actual es final, acabar (recopilando la sucesión de acciones)
+ 
+\end_layout
+
+\begin_layout Itemize
+En caso contrario, obtener los sucesores del estado actual (expandir) 
+\end_layout
+
+\begin_layout Itemize
+Elegir un nuevo estado actual, dejando los restantes para analizarlos posteriorm
+ente (si fuera necesario) 
+\end_layout
+
+\begin_layout Itemize
+Repetir el proceso mientras haya estados por analizar •
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+La elección del estado actual en cada momento determina una estrategia de
+ búsqueda
+\end_layout
+
+\begin_layout Standard
+Esto nos conduce a operar incrementalmente sobre un árbol de búsqueda como
+ el siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename jarras.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde se pasa del estado inicial en que ambas jarras están vacías al de
+ una de ellas llena.
+ De ahí, mediante las acciones posibles, se puede pasar a llenar la segunda
+ (lo que no es útil) o a trasegar a la segunda tres litros de la primera.
+ Seguidamente, vaciamos la segunda y le traspasamos el contenido de la primera
+ - 1 l.
+ - A continuación volvemos a llenar la primera ...
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_body
+\end_document

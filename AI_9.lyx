@@ -1,0 +1,2834 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\setcounter{chapter}{10}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Aprendizaje Automático.
+\end_layout
+
+\begin_layout Standard
+El aprendizaje automático o aprendizaje máquina ("
+\emph on
+Machine Learning
+\emph default
+") es una rama de la Inteligencia Artificial que persigue conseguir que
+ las computadoras actúen sin haber sido explícitamente programadas.
+ En la última década, el aprendizaje automático nos ha proporcionado vehículos
+ que funcionan sin conductor, reconocimiento práctico de voz, búsqueda efectiva
+ en la web, y un conocimiento infinitamente mejorado del genoma humano.
+ Hoy en día, el uso del aprendizaje automático está tan generalizado que
+ probablemente lo usamos docenas de veces sin darnos cuenta.
+ Muchos investigadores consideran que es la mejor manera de progresar hacia
+ una inteligencia artificial a nivel humano.
+\end_layout
+
+\begin_layout Standard
+Es común distinguir entre dos (o más) tipos de aprendizaje automático:
+\end_layout
+
+\begin_layout Itemize
+Aprendizaje 
+\emph on
+supervisado
+\emph default
+: se genera una función que establece una correspondencia entre las entradas
+ y las salidas deseadas del sistema, donde la base de conocimientos del
+ sistema está formada por ejemplos etiquetados a priori (es decir, ejemplos
+ de los que 
+\emph on
+sabemos su clasificación correcta
+\emph default
+).
+ 
+\end_layout
+
+\begin_layout Itemize
+Aprendizaje 
+\emph on
+no supervisado
+\emph default
+: donde el proceso de modelado se lleva a cabo sobre un conjunto de ejemplos
+ formados únicamente por entradas al sistema, 
+\emph on
+sin conocer su clasificación correcta
+\emph default
+.
+ Por lo que se busca que el sistema sea capaz de reconocer patrones para
+ poder etiquetar las nuevas entradas.
+\end_layout
+
+\begin_layout Standard
+Estas técnicas son probablemente las más utilizadas en el ámbito empresarial
+ por compañías como Google para clasificar búsquedas en la web, Amazon para
+ posicionar y sugerir productos, por Netflix...Pero también se usan extensivamente
+ en robótica y otros campos.
+\end_layout
+
+\begin_layout Section
+Aprendizaje automático.
+\end_layout
+
+\begin_layout Enumerate
+¿
+\series bold
+Qué 
+\series default
+se aprende con esta técnica?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+La respuesta es múltiple:
+\end_layout
+
+\begin_layout Itemize
+Parámetros como las probabilidades de una red de Bayes,
+\end_layout
+
+\begin_layout Itemize
+Estructuras, como los arcos de una red bayesiana,
+\end_layout
+
+\begin_layout Itemize
+Información oculta.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+¿
+\series bold
+De qué 
+\series default
+se aprende?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Cada método de aprendizaje máquina se guía por algún tipo de información
+ objetivo que nos interesa.
+ En aprendizaje supervisado hay etiquetas objetivo específicas, mientras
+ que estas no existen en aprendizaje no supervisado.
+ En aprendizaje con refuerzo, el agente aprende de lo que le retorna el
+ medio ambiente (retroalimentación de las acciones iniciadas por el agente).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+¿
+\series bold
+Para qué 
+\series default
+se usa?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Podemos usarla para hacer predicciones (anticipar el futuro), diagnósticos
+ (explicar datos capturados), resumen de informaciones, ..
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+¿
+\series bold
+Cómo
+\series default
+ se aprende?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Puede aprenderse de un modo pasivo, cuando el agente es un mero observador,
+ o activamente.
+ On line cuando se genera el dato u offline cuando el aprendizaje se realiza
+ después de que el dato haya sido generado.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+¿
+\series bold
+Qué salidas
+\series default
+ proporciona el aprendizaje automático?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Clasificaciones,
+\end_layout
+
+\begin_layout Itemize
+Regresiones
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Por último mencionaremos la existencia de algunos detalles internos como
+ p.e.
+ la existencia de métodos generativos y discriminativos.
+ Los primeros buscan modelar los datos de la forma más general posible,
+ mientras que los segundos buscan distinguir los datos
+\end_layout
+
+\begin_layout Section
+Aprendizaje supervisado.
+\end_layout
+
+\begin_layout Standard
+En aprendizaje supervisado tenemos un vector de características 
+\begin_inset Formula $({\normalcolor X_{1}},...,X_{n})$
+\end_inset
+
+ y una etiqueta objetivo 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ Como ejemplo, una agencia de calificación de créditos las características
+ 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ podrían ser tales como ¿tiene la persona empleo?, ¿cuál es su salario?,
+ ¿ha sido moroso previamente?,...
+ y la etiqueta 
+\begin_inset Formula $Y$
+\end_inset
+
+ es un predictor acerca de si la persona dejará de pagar el crédito o no.
+ 
+\end_layout
+
+\begin_layout Standard
+En este caso, el aprendizaje máquina se basa en datos pasados, tanto acerca
+ de 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ como de 
+\begin_inset Formula $Y$
+\end_inset
+
+ y debe producir una función que nos permita predecir si un nuevo cliente
+ con un nuevo vector de características,será o no moroso.
+\begin_inset Formula 
+\[
+(X_{1},...,X_{n})\begin{array}{c}
+f\\
+\rightarrow
+\end{array}Y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo mismo se aplica a reconocimiento de imágenes donde X pueden ser píxeles
+ de imágenes o características de imágenes e Y es una etiqueta que nos dice
+ si un objeto está contenido en una imagen o no.
+ 
+\end_layout
+
+\begin_layout Standard
+En aprendizaje supervisado, se nos dan muchos de estos ejemplos (datos)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{cccccc}
+X_{11} & X_{12} & . & . & X_{1n} & Y_{1}\\
+X_{21} & X_{22} & . & . & X_{2n} & Y_{2}\\
+. & . & . & . & . & .\\
+X_{m1} & X_{m2} & . & . & X_{mn} & Y_{m}
+\end{array}\right]=[\mathbf{X}_{1},...,\mathbf{X}_{m},Y_{m}]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y tratamos de obtener una función 
+\begin_inset Formula $Y_{m}=f(\mathbf{X}_{m})$
+\end_inset
+
+.
+ Este es el objetivo del aprendizaje máquina supervisado: obtener la función
+ 
+\begin_inset Formula $\mathbf{f(\mathbf{X}_{m})}$
+\end_inset
+
+ que, una vez identificada, se podrá usar en casos futuros para etiquetarlos.
+\end_layout
+
+\begin_layout Standard
+Para estudiar un clasificador diseñado se utiliza el método de validación
+ cruzada (cross-validation).
+ Dicho método consiste en dividir los datos muestrales en dos partes; una
+ parte se utiliza como conjunto de
+\series bold
+\emph on
+ entrenamiento
+\series default
+\emph default
+ para determinar los parámetros del clasificador neuronal y la otra parte,
+ llamada conjunto de
+\series bold
+\emph on
+ validación
+\series default
+\emph default
+, se utiliza para estimar el 
+\emph on
+error de generalización
+\emph default
+, es decir, la tasa de clasificación incorrecta del clasificador con datos
+ diferentes a los utilizados en el proceso de entrenamiento.
+ 
+\end_layout
+
+\begin_layout Standard
+Reducir a cero el error de entrenamiento no es lo mismo que reducir a cero
+ el error de generalización sobre datos desconocidos.
+ Se produce 
+\series bold
+\emph on
+sobreajuste
+\series default
+\emph default
+ cuando el predictor se ajusta tanto a los datos de entrenamiento disponibles
+ que pierde de vista lo que se desea realmente predecir.
+ esto ocurre porque:
+\end_layout
+
+\begin_layout Itemize
+Los datos de entrenamiento pueden incluir “excepciones”, “casos raros” o
+ “ruido”.
+ 
+\end_layout
+
+\begin_layout Itemize
+Ajustamos el modelo para seguir la pista a valores irrelevantes.
+ 
+\end_layout
+
+\begin_layout Itemize
+Cuanto más “flexible” es el modelo, mejor se puede ajustar a los datos .
+ 
+\end_layout
+
+\begin_layout Standard
+Existe por esto el llamado error de 
+\emph on
+sobreajuste.
+ 
+\end_layout
+
+\begin_layout Standard
+La mejor complejidad se obtiene cuando el error de validación es mínimo.
+\end_layout
+
+\begin_layout Standard
+En aprendizaje supervisado puede encontrarse que los métodos más complejos
+ proporcionan errores de entrenamiento menores que otros más simples, pero
+ el de generalización suele ser mayor.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename occam.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto nos lleva a aceptar en aprendizaje máquina el principio denominado
+ 
+\emph on
+navaja de Occam
+\emph default
+: si se trabaja con datos y existen métodos alternativos para ajustarlos,
+ el sobreajuste es uno de los principales problemas en aprendizaje máquina
+ y, por ello, debe tenderse a la simplicidad.
+\end_layout
+
+\begin_layout Section
+Naïve Bayes como aprendizaje supervisado.
+\end_layout
+
+\begin_layout Subsection
+Clasificación de correos-e.
+\end_layout
+
+\begin_layout Standard
+Un clásico ejemplo lo constituye la clasificación de los correos electrónicos
+ en basura ('spam') o válidos ('ham').
+\end_layout
+
+\begin_layout Standard
+El vector de características de un correo-e está formado por las palabras
+ que contiene, por lo cual tendremos como material de entrenamiento una
+ serie de correos con una etiqueta 'spam' o vacía ('ham'):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+spam
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+offer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+is
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+secret
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+True
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+click
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+secret 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+link
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+True
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+secret
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+link
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+True
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+spam
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+play 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+today
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+False
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+went
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+play
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+False
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+secret
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+event
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+False
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+is
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+today
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+	False
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+costs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+money
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+False
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se puede utilizar una representación llamada
+\emph on
+ saco de palabras
+\emph default
+ ('bag of words') en el cual representamos un documento mediante la cuenta
+ del número de veces que aparecen las palabras presentes en un diccionario.
+\end_layout
+
+\begin_layout Standard
+El diccionario es el siguiente (sport=sports) :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename bagofw.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Puede construirse una red de Bayes para estudiar este problema de clasificación
+ supervisado comenzando con la variable binaria 
+\series bold
+spam 
+\series default
+y que tiene tantos hijos como palabras tiene 
+\emph on
+un mensaje
+\emph default
+.
+ Cada palabra tiene su distribución condicional dada la clase spam o no
+ spam.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename redspam.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para especificar la red necesitamos 23 parámetros.
+\end_layout
+
+\begin_layout Itemize
+P(spam)
+\end_layout
+
+\begin_layout Itemize
+P(
+\begin_inset Formula $w_{i}|spam)$
+\end_inset
+
+ 
+\begin_inset Formula $i=1,..12$
+\end_inset
+
+.
+ Como 
+\begin_inset Formula ${\displaystyle {\displaystyle \sum_{i=1}^{12}}p(w_{i}}|spam)=1\Rightarrow11$
+\end_inset
+
+parámetros
+\end_layout
+
+\begin_layout Itemize
+P(
+\begin_inset Formula $w_{i}|ham)$
+\end_inset
+
+ 
+\begin_inset Formula $i=1,..12$
+\end_inset
+
+.
+ Como 
+\begin_inset Formula ${\displaystyle {\displaystyle \sum_{i=1}^{12}}p(w_{i}}|ham)=1\Rightarrow11$
+\end_inset
+
+parámetros
+\end_layout
+
+\begin_layout Standard
+Es claro que por la regla de Bayes podemos obtener las probabilidades inversas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{P(spam|w_{i})}=\frac{\textrm{P(w_{i}|spam)P(spam)}}{\textrm{P(w_{i}|spam)P(spam)+P(w_{i}|\lnot spam)P(\lnot spam)}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+P.e.
+ si 
+\begin_inset Formula $w_{i}=\textrm{link}$
+\end_inset
+
+ tendremos que
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{P(spam|link)}=\frac{\textrm{P('link'|spam)P(spam)}}{\textrm{P('link'|spam)P(spam)+P('link'|\lnot spam)P(\lnot spam)}}=\frac{\frac{2}{9}\frac{3}{8}}{\frac{2}{9}\frac{3}{8}+\frac{1}{12}\frac{5}{8}}=\frac{8}{13}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y ¿si se trata del siguiente mensaje: M='
+\emph on
+secret is secret
+\emph default
+'?.
+\end_layout
+
+\begin_layout Standard
+Sabemos que 
+\begin_inset Formula 
+\[
+P(spam,secret,is,secret)=P(spam)P(M|spam)=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(spam)P^{2}(secret|spam)P(is|spam)=\frac{3}{8}(\frac{1}{3})^{2}\frac{1}{9}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(M)P(spam|M)=P(span,M)\Rightarrow P(spam|M)=\frac{P(span,M)}{P(span,M)+P(\lnot spam,M)}=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\frac{3}{8}(\frac{1}{3})^{2}\frac{1}{9}}{\frac{3}{8}(\frac{1}{3})^{2}\frac{1}{9}+\frac{5}{8}\left(\frac{1}{15}\right)^{3}}=0,9615
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y ¿si cambia el mensaje a M='
+\emph on
+today is secret
+\emph default
+'?
+\begin_inset Formula 
+\[
+\mathbf{P(spam,today,is,secret)}=P(spam)P(M|spam)=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(spam)P('today'|spam)P('is'|spam)P('secret'|spam)=\mathbf{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ya que 
+\begin_inset Formula $P('today'|spam)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Este caso sirve de ejemplo de sobreajuste y aplicaremos lo visto en el capítulo
+ anterior sobre estimadores de Laplace.
+ Recordemos que en el ajuste estimamos - Máxima Verosimilitud - las probabilidad
+es como cociente de las veces que aparece el valor en los datos de entrenamiento
+: 
+\begin_inset Formula $\hat{P}(x)={\displaystyle \frac{\nu(x)}{N}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Calculemos con el estimador de Laplace los siguientes estimadores suponiendo
+ que en Laplace 
+\begin_inset Formula $\hat{P}(x)={\displaystyle \frac{\nu(x)+{\displaystyle \frac{\mu}{k}}}{n_{Total}+\mu}}$
+\end_inset
+
+ con k=1 y sabiendo que hay 12 palabras en el diccionario
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P(spam)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P(ham)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P('today'|spam)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P('today'|ham)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{4}{10}=\frac{3+1}{8+2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{6}{10}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{0+1}{9+12}=\frac{1}{21}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{2+1}{15+12}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El truco está en las probabilidades condicionadas.
+ Si ahora calculamos la probabilidad P(spam|'today is secret') esta será
+ ahora:
+\begin_inset Formula 
+\[
+P(spam|M)=\frac{P(span,M)}{P(span,M)+P(\lnot spam,M)}=\frac{\frac{4}{10}\frac{1}{21}\frac{2}{21}\frac{4}{21}}{\frac{4}{10}\frac{1}{21}\frac{2}{21}\frac{4}{21}+\frac{6}{10}\frac{3}{27}\frac{2}{27}\frac{2}{27}}=0,4858
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo anterior nos muestra que el 
+\emph on
+Naïve Bayes pertenece al grupo de aprendizaje máquina supervisado.
+\end_layout
+
+\begin_layout Standard
+Es claro que pueden desarrollarse clasificadores de correo-e más avanzados
+ basados en naïve Bayes considerando otras variables tales como:
+\end_layout
+
+\begin_layout Itemize
+¿Conocemos la IP de la fuente de correo basura?
+\end_layout
+
+\begin_layout Itemize
+¿Hemos enviado algún correo-e al remitente?
+\end_layout
+
+\begin_layout Itemize
+¿Han recibido el mismo mensaje otras personas?
+\end_layout
+
+\begin_layout Itemize
+¿es consistente la cabecera del correo?
+\end_layout
+
+\begin_layout Itemize
+¿Está todo en mayúsculas?
+\end_layout
+
+\begin_layout Itemize
+¿las URLs apuntan a las webs que el correo dice?
+\end_layout
+
+\begin_layout Itemize
+¿utilizan nuestro nombre correctamente?
+\end_layout
+
+\begin_layout Standard
+Volviendo al tema de los estimadores de Laplace, ¿cómo elegir el valor k?
+ Un posible método es la 
+\emph on
+validación cruzada 
+\emph default
+que consiste en dividir los datos de entrenamiento en tres partes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename tres.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Usaremos la parte de entrenamiento para estimar los parámetros, la parte
+ de validación cruzada para hallar el k óptimo del siguiente modo: entrenamos
+ para diferentes valores de k y observamos cómo se comporta el modelo sobre
+ los datos de validación y maximizamos el rendimiento sobre los valores
+ de k.
+ Obtenido el 
+\begin_inset Formula $k*$
+\end_inset
+
+ aplicamos el modelo sobre el conjunto de prueba y e este el rendimiento
+ que informamos.
+ Es muy importante mantener los datos de prueba separados de los de entrenamient
+o y validación cruzada ya que si no, los datos de prueba formarían parte
+ del conjunto de entrenamiento y los datos de prueba podrían sufrir de sobreajus
+te sin que lo supiéramos.
+\end_layout
+
+\begin_layout Subsection
+Reconocimiento de dígitos.
+\end_layout
+
+\begin_layout Standard
+Se trata de identificar dígitos escritos a mano que figuran en las direcciones
+ de las cartas enviadas por correo ordinario algunos de los cuales se muestran
+ en la figura.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recodigit.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+El vector de características de entrada será el constituido por los valores
+ de cada píxel y supondremos una resolución de 16
+\begin_inset Formula $\times$
+\end_inset
+
+16.
+ Un método de identificación puede ser la comparación entre el brillo de
+ cada pixel en la imagen manuscrita y la del dígito tipo.
+ Sin embargo este método presenta dificultades ya que atribuye grandes diferenci
+as a dos figuras tales como las mostradas seguidamente cuya diferencia es
+ un simple desplazamiento 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename digit.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+para paliar esta dificultad existen varios métodos uno de los cuales podría
+ ser que en lugar de contar un solo pixel se mezclara con la cuenta de los
+ píxeles adyacentes ('alisado de entrada') mediante la técnica llamada convoluci
+ón del vector de píxeles y proporciona mejores resultados que la aplicación
+ de naïve Bayes directamente a los píxeles.
+ De todos modos para este tipo de problema, naïve Bayes non parece adecuado
+ ya que la suposición de independencia condicional entre píxeles dada la
+ clase (dígito) es una hipótesis demasiado fuerte.
+\end_layout
+
+\begin_layout Section
+Vecinos más próximos (kNNs).
+\end_layout
+
+\begin_layout Standard
+Una vez disponemos de un conjunto de entrenamiento y hemos asignado cada
+ dato a una de dos clases (p.e.), un método de clasificar una instancia que
+ se nos viene a la cabeza de inmediato es clasificar la nueva observación
+ en la clase a la que pertenezca su vecino más próximo, esto es, asignarle
+ la 
+\emph on
+misma etiqueta
+\emph default
+ que su vecino más cercano.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 1-nn.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la figura puede verse que la instancia I tiene su 
+\emph on
+vecino más próximo
+\emph default
+ en la clase A y, por tanto, será asignado a dicha clase.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejercicio
+\series default
+: clasificar adecuadamente los puntos de la figura.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ejeclas.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+No obstante, en los conjuntos de entrenamiento y validación puede existir
+ 
+\emph on
+ruido
+\emph default
+, esto es, registros erróneos que, si utilizamos un único vecino como comparació
+n, pueden afectar al rendimiento del método por lo que elegiremos un paradigma
+ clasificatorio conocido como k-NN 
+\emph on
+(kNearest Neighbour
+\emph default
+).
+ La idea básica sobre la que se fundamenta este paradigma es que un nuevo
+ caso se va a clasificar en la clase más frecuente a la que 
+\emph on
+pertenecen sus k vecinos más cercanos
+\emph default
+ ya clasificados.
+ El paradigma se fundamenta por tanto en una idea muy simple e intuitiva,
+ lo que unido a su fácil implementación hace que sea un paradigma clasificatorio
+ muy extendido.
+\end_layout
+
+\begin_layout Standard
+Mencionaremos que se trata de un
+\emph on
+ método no paramétrico.
+ 
+\emph default
+Al contrario que el naïve Bayes, donde si aumentamos el tamaño del conjunto
+ de entrenamiento, el número de probabilidades condicionales permanece constante
+ (
+\emph on
+método paramétrico
+\emph default
+) y, además, aumenta la confianza en los estimadores a medida que crece
+ el tamaño de los datos de entrenamiento.
+ Lo mismo ocurriría para el caso de clasificación de correos-e si el tamaño
+ del diccionario es constante.
+ En los 
+\emph on
+métodos no paramétricos
+\emph default
+, el número de parámetros puede crecer con el tiempo.
+\end_layout
+
+\begin_layout Standard
+La descripción del algoritmo es la siguiente:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Datos de entrada
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Datos de entrenamiento : 
+\begin_inset Formula $D$
+\end_inset
+
+={(
+\begin_inset Formula $\mathbf{x}_{i},c_{i})\};i=1,2,K,...,N\}$
+\end_inset
+
+ donde 
+\begin_inset Formula $\mathbf{x}_{i}=(x_{i1},...,x_{in})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejemplo de prueba : 
+\begin_inset Formula $\mathbf{x}_{test}=(x_{1test},.....,x_{ntest})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nº.
+ de vecinos : 
+\begin_inset Formula $K$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Métrica para calcular distancias :
+\begin_inset Formula $d(\mathbf{x}_{i},\mathbf{x}_{j})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename knn data.png
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Datos de salida
+\series default
+: Clase predicha por k-NN para el ejemplo de test.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Código:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pseuco.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los 
+\emph on
+empates
+\emph default
+ se pueden resolver de diferentes formas.
+ Por ejemplo, 
+\end_layout
+
+\begin_layout Itemize
+elegir la clase mayoritaria entre todos los datos de entrenamiento.
+ 
+\end_layout
+
+\begin_layout Itemize
+Si persiste el empate, asignar una clase al azar, de acuerdo a las frecuencias
+ de las clases en el conjunto de entrenamiento.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Ejemplo:
+\series default
+ clasificar el punto indicado dado el conjunto 
+\emph on
+D
+\emph default
+ de manera que la etiqueta ('clase') se sitúa en forma espiral de radio
+ creciente.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename espira.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El procedimiento K-NN tiene varias dificultades:
+\end_layout
+
+\begin_layout Enumerate
+Grandes conjuntos de datos y
+\end_layout
+
+\begin_layout Enumerate
+Gran número de atributos o características.
+ A medida que el número de estos atributos aumenta, lo hace también K, ya
+ que si K-NN se comporta muy bien para un número pequeño de dimensiones
+ pero mal cuando estas son elevadas.
+\end_layout
+
+\begin_layout Enumerate
+Presencia de atributos irrelevantes.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Selección de la función de distancia, es decir, definir la 
+\emph on
+semejanza
+\emph default
+ entre puntos de datos.
+\end_layout
+
+\begin_layout Enumerate
+Importancia ('
+\emph on
+peso
+\emph default
+') de cada uno de los K vecinos.
+\end_layout
+
+\begin_layout Standard
+Si planteamos el problema de reconocimiento de dígitos desde el enfoque
+ 1-NN lo que haríamos para el ejemplo de la figura sería:
+\end_layout
+
+\begin_layout Enumerate
+capturar una imagen del dígito a identificar,
+\end_layout
+
+\begin_layout Enumerate
+comparar con las imágenes de entrenamiento y
+\end_layout
+
+\begin_layout Enumerate
+asignar etiqueta basada en la imagen más próxima.
+\end_layout
+
+\begin_layout Standard
+¿Cómo representar la imagen?
+\end_layout
+
+\begin_layout Standard
+Un procedimiento consiste en representar las intensidades de cada uno de
+ los 256 píxeles de cada imagen en un vector.
+\begin_inset Formula $\mathbf{x}=(0.2,0.1,..,0)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Cómo medir las semejanzas entre imágenes?
+\end_layout
+
+\begin_layout Standard
+Una forma sería mediante el producto interno de los vectores:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula 
+\begin{equation}
+sim(\mathbf{x},\mathbf{x'})=d(\mathbf{x},\mathbf{x')=(x\cdot x'})={\displaystyle \sum_{i=1}^{n}x_{i}\cdot x_{i}^{'}}\label{eq:1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es claro que si los dos vectores son muy parecidos los vectores 
+\begin_inset Formula $\mathbf{x}\textrm{ y }\mathbf{x'}$
+\end_inset
+
+ serán paralelos y si son diferentes apuntarán en direcciones distintas
+ y, en el caso de ser perpendiculares, 
+\begin_inset Formula $d(\mathbf{x},\mathbf{x')=0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si normalizamos los vectores de modo que su módulo sea 1, tendremos dos
+ casos extremos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+0\leq(\mathbf{\frac{x}{\left\Vert x\right\Vert }}\cdot\frac{\mathbf{x}'}{\left\Vert \mathbf{x'}\right\Vert })\leq1\left\{ \begin{array}{c}
+1\textrm{ si son iguales}\\
+0\textrm{ si son ortogonales}
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+No obstante, no siempre la 
+\emph on
+función de similaridad 
+\emph default
+es la distancia.
+ En muchas ocasiones se definirá como producto interno de funciones de atributos
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+sim(\mathbf{x},\mathbf{x}')=\mathbf{(f(x)\cdot f'(x`))={\displaystyle \sum_{i}}}f_{i}(\mathbf{x})f_{i}'(\mathbf{x}')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si estos atributos son justamente los píxeles obtenemos la ecuación (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Una de las propiedades que podemos desear en una medida de similaridad es
+ que tengan 
+\emph on
+invariancia métrica
+\emph default
+, es decir que la similaridad (distancia) sea invariante ante diferentes
+ transformaciones (traslación, rotación
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En el caso de los dígitos en pequeña escala para no confundir el 6 y el
+ 9.
+\end_layout
+
+\end_inset
+
+, grosor del trazo, ...) ya que si p.e.
+ trasladamos el trazo de una línea vertical dos píxeles a la derecha su
+ producto escalar por la imagen del 1 será cero.El problema es cómo incorporar
+ estas invariancias.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+P.e.
+ veamos un método de incorporar invariancia rotacional al reconocimiento
+ de dígitos en que permitimos cuatro rotaciones de ángulo pequeño (
+\begin_inset Formula $\leq15\text{º}$
+\end_inset
+
+).
+ Para ello mediremos la similaridad con respecto al ejemplo de entrenamiento
+ comparando con las cinco imágenes de la figura, incluyendo las ligeramente
+ giradas y la similaridad será el valor máximo.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rotapng.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Otra posibilidad se encuentra en la deformación de la plantilla del dígito
+ de modo que partiendo de una plantilla fija para el número compuesta de
+ varios píxeles de la matriz y varias de sus deformaciones se comparan con
+ la matriz del dígito manuscrito y el mejor ajuste será el de menor varianza.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename matriz.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Veamos algunas características interesantes de este método.
+\end_layout
+
+\begin_layout Subsection
+K-NN y el teorema de Bayes.
+\end_layout
+
+\begin_layout Standard
+Consideremos en el conjunto 
+\emph on
+D
+\emph default
+ el círculo de menor radio que contiene exactamente K vecinos de 
+\begin_inset Formula $\mathbf{x}_{test}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Llamemos 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R(\mathbf{x}_{test})$
+\end_inset
+
+ al área alrededor de 
+\begin_inset Formula $\mathbf{x}_{test}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N[R(\mathbf{x}_{test})]$
+\end_inset
+
+: ejemplos contenidos en 
+\begin_inset Formula $R(\mathbf{x}_{test})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N_{c}[R(\mathbf{x}_{test})]$
+\end_inset
+
+ ejemplos de la clase 
+\series bold
+
+\begin_inset Formula $\mathbf{c}$
+\end_inset
+
+
+\series default
+ contenidos en 
+\begin_inset Formula $R(\mathbf{x}_{test})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figuk.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces:
+\begin_inset Formula 
+\[
+P(c|\mathbf{x}_{test})\simeq\frac{N_{c}[R(\mathbf{x}_{test})]}{N[R(\mathbf{x}_{test})]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y si recordamos las características del predictor MAP que maximiza la probabilid
+ad a posteriori, tendremos que la clase 
+\begin_inset Formula $c*$
+\end_inset
+
+ a la que asignamos la instancia (la que contiene a más vecinos) será 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\mathbf{c}*(\mathbf{x}_{test})=\begin{array}{c}
+\textrm{arg\:max}\\
+\textrm{c}
+\end{array}P(c|\mathbf{x}_{test})\simeq\begin{array}{c}
+\textrm{arg\:max}\\
+c
+\end{array}\mathbf{N_{c}[R(\mathbf{x}_{test})]}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por tanto: 
+\emph on
+K-NN
+\emph default
+ puede ser visto como un predictor MAP que utiliza 
+\emph on
+estimaciones
+\emph default
+ locales de las densidades de probabilidad relevantes.
+\end_layout
+
+\begin_layout Subsection
+K como parámetro de alisado.
+\end_layout
+
+\begin_layout Standard
+Si comparamos las fronteras entre clases que produce el algoritmo con diferentes
+ valores de K (diagramas de Voronoi
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Los diagramas de Voronoi son unas estructuras de la Geometría Computacional
+ que almacenan toda la información referente a la proximidad entre puntos.
+ 
+\end_layout
+
+\end_inset
+
+) vemos que a medida que K aumenta, la frontera entre clases es menos abrupta
+ 
+\end_layout
+
+\begin_layout Itemize
+K pequeño: muchas regiones y más pequeñas
+\end_layout
+
+\begin_layout Itemize
+K grande: menos regiones y más grandes
+\end_layout
+
+\begin_layout Standard
+pero también aumenta el número de casos mal clasificados.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename kalisa.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los errores para conjuntos infinitos pueden evaluarse por medio de:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+lim\\
+N\rightarrow\infty
+\end{array}error_{1-NN}<2\cdot error_{Bayes}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+lim\\
+N\rightarrow\infty
+\end{array}error_{3-NN}\simeq3\cdot\left(error_{Bayes}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se constata empíricamente que el porcentaje de casos bien clasificados es
+\emph on
+ no monótono
+\emph default
+ con respecto de K, siendo una buena elección valores de K comprendidos
+ entre 3 y 7.
+\end_layout
+
+\begin_layout Standard
+La determinación del mejor valor de K puede hacerse mediante 
+\emph on
+validación cruzada dejando uno fuera 
+\emph default
+('leave-one-out cross validation').
+\end_layout
+
+\begin_layout Section
+Árboles de decisión.
+ 
+\end_layout
+
+\begin_layout Standard
+Una alternativa interesante está constituida por los árboles de decisión
+ o (árboles de clasificación).
+ Son sistemas de decisión multietápicos en los cuales las clases se rechazan
+ secuencialmente hasta que se alcanza una clase final aceptada.
+ Para este fin el espacio de atributos se divide en regiones únicas correspondie
+ntes a las clases de modo secuemcial.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document

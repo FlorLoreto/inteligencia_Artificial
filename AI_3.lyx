@@ -1,0 +1,1000 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Búsqueda primero en profundidad.
+ Búsqueda primero en anchura.
+ Búsqueda con profundidad iterativa.
+\end_layout
+
+\begin_layout Standard
+En el capítulo anterior seleccionamos nuestro desplazamiento por los nodos
+ sin una estrategia clara.
+ Parece conveniente explorar las posibilidades que se nos presentan de realizar
+ nuestra búsqueda con una estrategia definida.
+\end_layout
+
+\begin_layout Section
+Búsqueda primero en profundidad.
+\end_layout
+
+\begin_layout Standard
+Imaginemos la búsqueda en un árbol como un proceso minero en que deben encontrar
+se ciertos minerales que están en el interior de una montaña en posiciones
+ desconocidas.
+ En el peor de los casos para encontrar el mineral deberíamos desmontar
+ toda la montaña.
+\end_layout
+
+\begin_layout Standard
+Resulta obvio desarrollar dos estrategias de excavación (Fig.
+ 3.1.1.) que 
+\emph on
+parten de la cúspide
+\emph default
+ 
+\emph on
+de la montaña
+\emph default
+:
+\end_layout
+
+\begin_layout Enumerate
+una que profundiza verticalmente (
+\emph on
+búsqueda en profundidad
+\emph default
+) y
+\end_layout
+
+\begin_layout Enumerate
+una segunda que va desmontando la montaña por estratos horizontales (
+\emph on
+búsqueda en anchura
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/mineritos.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Centrémonos en el primer tipo de búsqueda: la 
+\emph on
+búsqueda primero en profundidad
+\emph default
+ que ilustraremos con el ejemplo expuesto en el apartado 2.5.
+ La figura 3.1.2.
+ muestra tanto el grafo como el árbol 
+\emph on
+completo
+\emph default
+ de búsqueda.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/LIFO.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comenzando por el nodo inicial, expandiremos en una primera etapa hasta
+ la frontera 
+\begin_inset Formula $(d,e,p)$
+\end_inset
+
+.
+ Hemos de profundizar inicialmente sobre uno solo de ellos, sin embargo
+ los tres nodos son igualmente válidos para seguir profundizando.
+ Supongamos que, como regla general, elegimos el situado más a la izquierda
+ en el árbol - d - y sobre este expandiremos en cualquier profundidad.
+ En la figura se dibujan los diferentes caminos explorados hasta encontrar
+ el objetivo 
+\series bold
+G
+\series default
+.
+ La estrategia es clara: hemos ido directamente hacia abajo por la izquierda
+ del árbol hasta llegar a un nodo sin hijos.
+ El algoritmo procesa todos los nodos a la izquierda de la primera solución.
+ El gráfico siguiente muestra DFS en un árbol binario.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+: En el gráfico de la Fig.
+ 3.1.3.
+ ¿qué solución encontrará una búsqueda primero en profundidad?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/ejr1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Propiedades del algoritmo de búsqueda primero en profundidad (DFS).
+\end_layout
+
+\begin_layout Enumerate
+¿Es
+\series bold
+ completo
+\series default
+?, es decir, si existe una solución, ¿está garantizado que la encuentre?
+ Es complicado, pero habremos de responder a esta pregunta en cada uno de
+ los problemas que enfrentemos.
+\end_layout
+
+\begin_layout Enumerate
+¿Es 
+\series bold
+óptimo
+\series default
+?, es decir, ¿encuentra la solución de menor coste?
+\end_layout
+
+\begin_layout Enumerate
+¿
+\series bold
+Complejidad temporal
+\series default
+? Se refiere al número máximo de nodos que se expanden.
+\end_layout
+
+\begin_layout Enumerate
+¿
+\series bold
+Complejidad espacial
+\series default
+? Se refiere al tamaño máximo de la frontera.
+\end_layout
+
+\begin_layout Standard
+Trataremos de responder a algunas de estas preguntas a través del siguiente
+ esquema:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+b
+\series default
+ es el 
+\series bold
+factor de ramificación
+\series default
+ del árbol, esto es, el 
+\emph on
+número de hijos de cualquier nodo.
+
+\emph default
+ Cuando - como es lo habitual - no es el mismo en todos, se toma un valor
+ promedio, esto es, en dichos casos definimos el 
+\series bold
+\emph on
+factor de ramificación
+\series default
+\emph default
+ 
+\emph on
+a una profundidad determinada 
+\begin_inset Formula $d$
+\end_inset
+
+ se calcula del siguiente modo:
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $T$
+\end_inset
+
+ el número de nodos del árbol no uniforme, como en un árbol uniforme:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T+1=1+b+b^{2}+...+b^{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+haremos lo mismo con el árbol no uniforme para un factor promedio 
+\begin_inset Formula $b^{*}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+T+1=1+b^{*}+(b^{*})^{2}+...+(b^{*})^{d}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+m
+\series default
+ es el número máximo de niveles del árbol y el problema puede tener soluciones
+ a varias profundidades.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/complex.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo esto así, el número de nodos en el árbol será:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+1+b+b^{2}+...+b^{m}=\mathbf{\frac{1-b^{m+1}}{1-b}}=\mathbf{O}\mathbf{(b^{m}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por tanto, es exponencial.
+\end_layout
+
+\begin_layout Standard
+Aplicado al problema de la Fig.
+ 3.1.2.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/calcul.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Complejidad temporal (nodos a expandir).
+\end_layout
+
+\begin_layout Standard
+Como hemos dicho empezaremos por aquellos que tengan un prefijo izquierdo
+ en el árbol.
+ Esto implica que es posible que tengamos que procesar la totalidad del
+ árbol lo que no es nada deseable dado el carácter exponencial del problema
+ lo que implica un tiempo de proceso 
+\begin_inset Formula $O(b^{m})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Complejidad espacial (tamaño de la frontera).
+\end_layout
+
+\begin_layout Standard
+Nos interesa saber el espacio que ocupa la frontera.
+ Recordemos que la frontera contiene 
+\emph on
+todas las cosas que aún no hemos hecho 
+\emph default
+en el nivel en que estamos.
+ 
+\end_layout
+
+\begin_layout Standard
+Puede haber
+\begin_inset Formula $b$
+\end_inset
+
+ sucesores en cada nivel y como mucho 
+\begin_inset Formula $m$
+\end_inset
+
+ niveles y como solo hay hermanos en el camino hacia el nodo raíz, será
+ 
+\begin_inset Formula $O(b\cdot m)$
+\end_inset
+
+.
+ Por tanto, la frontera es pequeña.
+\end_layout
+
+\begin_layout Subsubsection
+Completitud.
+\end_layout
+
+\begin_layout Standard
+La dificultad aquí estriba en el valor de 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ Si 
+\begin_inset Formula $m$
+\end_inset
+
+ es infinito, el algoritmo no es completo, por tanto debemos evitar la existenci
+a de 
+\emph on
+ciclos
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Camino donde no se repite ninguna arista ni vértice y coinciden los vértices
+ inicial y final
+\end_layout
+
+\end_inset
+
+
+\emph default
+ de donde nunca saldríamos.
+ No obstante, existen procedimientos generales para evitar la redundancia
+ y podemos descartar esta situación.
+ En estas circunstancias - hemos eliminado los ciclos- es completo.
+\end_layout
+
+\begin_layout Subsubsection
+Optimalidad.
+\end_layout
+
+\begin_layout Standard
+Supongamos que el coste de cada acción es 1.
+ El 
+\emph on
+coste mínimo
+\emph default
+ equivale al de la 
+\emph on
+solución más superficial
+\emph default
+ (menor profundidad desde el nodo raíz).
+ Tal como lo hemos presentado, 
+\emph on
+no
+\emph default
+ garantiza el coste mínimo, sino que 
+\emph on
+encuentra la solución más a la izquierda 
+\emph default
+con independencia de de su profundidad o coste.
+\end_layout
+
+\begin_layout Section
+Búsqueda primero en anchura.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Ahora avanzaremos a lo ancho del árbol, bien de derecha a izquierda, bien
+ en sentido contrario.
+ En este tipo de búsqueda el gráfico que muestra la estrategia de búsqueda
+ - consistente en 
+\emph on
+expandir el nodo más superficial primero
+\emph default
+ - es el siguiente:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fifo.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En esta ocasión, se procede por capas: primero recorremos el primer nivel
+ completamente y solo entonces comenzaremos con el segundo y así sucesivamente.Lo
+s nodos se recorren por niveles.
+ En este algoritmo la frontera es una cola FIFO (primero en entrar, primero
+ en salir) en la que se insertan los nodos al final sin importar el orden
+ de inserción (pues todos los nodos pertenecen al mismo nivel).
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo.
+
+\series default
+ ¿Qué solución daría el ejemplo de la Fig.
+ 3.1.3.
+ cuando se busca primero en profundidad?
+\end_layout
+
+\begin_layout Standard
+La respuesta es ahora :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/solucion.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Veamos sobre un ejemplo cómo funcionaría el algoritmo 
+\series bold
+\emph on
+BFS
+\series default
+\emph default
+ y su cola asociada:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ewncola.png
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Propiedades del algoritmo de búsqueda primero en anchura (BFS).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Es claro que el algoritmo BFS procesa todos los nodos por encima de la solución
+ menos profunda.
+ De nuevo nos encontramos con un caso exponencial como en DFS con la diferencia
+ de que no tenemos que llegar a la máxima profundidad 
+\begin_inset Formula $m$
+\end_inset
+
+, sino que esto dependerá de la profundidad a la que se encuentre la solución
+ que llamaremos 
+\begin_inset Formula $s$
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/complex2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Complejidad temporal.
+\end_layout
+
+\begin_layout Standard
+Siendo 
+\begin_inset Formula $b$
+\end_inset
+
+ el factor de ramificación:
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Por tanto ahora la complejidad temporal será 
+\begin_inset Formula $\mathbf{O}(\mathbf{b^{s})}$
+\end_inset
+
+ dependiendo de la profundidad -
+\begin_inset Formula $s$
+\end_inset
+
+- a que se encuentre la solución más superficial.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Complejidad espacial.
+\end_layout
+
+\begin_layout Standard
+En este caso puede haber 
+\begin_inset Formula 
+\[
+b+b^{2}+...++b^{s}=\frac{b-b^{s+1}}{1-b}=O(b^{s})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para analizar el tamaño de la frontera, preguntémonos ¿qué había en la frontera
+ cuando alcanzamos la solución?.
+ Es claro que si el nivel en que hallamos la solución es 
+\begin_inset Formula $s$
+\end_inset
+
+, en general, no habremos hecho todas las acciones en dicho nivel y todo
+ lo que hayamos hecho en el nivel 
+\begin_inset Formula $s$
+\end_inset
+
+ tiene hijos en los niveles inferiores.
+ Por tanto la frontera se parece al último nivel que expandimos, quizá un
+ nivel por debajo de este.
+ Será exponencial, aproximadamente como el último nivel : 
+\begin_inset Formula $\mathbf{O}(\mathbf{b^{s})}$
+\end_inset
+
+ como la complejidad temporal.
+\end_layout
+
+\begin_layout Subsubsection
+Completitud.
+\end_layout
+
+\begin_layout Standard
+Es claro que si existe alguna solución, esta se ubica en un nivel 
+\emph on
+finito
+\emph default
+, por tanto es completo.
+ Al contrario de los prefijos más a la izquierda que pueden ser infinitos,
+ los prefijos en altura son finitos.
+\end_layout
+
+\begin_layout Subsubsection
+Optimalidad.
+\end_layout
+
+\begin_layout Standard
+Si los costos son generales, no es óptimo, pero si los costes son todos
+ 1, sí es óptimo.
+\end_layout
+
+\begin_layout Section
+Búsqueda con profundidad iterativa.
+\end_layout
+
+\begin_layout Standard
+Se trata de tener lo mejor de los dos tipos de búsqueda: DFS y BFS.
+ La idea que guía a los algoritmos de profundidad iterativa es conseguir
+ las ventajas espaciales de DFS con las temporales de BFS y las garantías
+ de esta respecto a completitud y optimalidad.
+\end_layout
+
+\begin_layout Standard
+El modo de conseguirlo es fácil:
+\end_layout
+
+\begin_layout Enumerate
+se comienza por una búsqueda en profundidad limitada a una profundidad de
+ 1.
+ Si se encuentra la solución, perfecto, si no
+\end_layout
+
+\begin_layout Enumerate
+se hace una búsqueda en profundidad hasta profundidad 2, si no se encuentra
+ la solución
+\end_layout
+
+\begin_layout Enumerate
+se hace una búsqueda en profundidad hasta profundidad 3 ....
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+y así sucesivamente.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/profunditer.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Justificación.
+\end_layout
+
+\begin_layout Standard
+Generalmente la mayor parte del trabajo se realiza en el último nivel en
+ que se busca, por tanto no es tan malo.
+\end_layout
+
+\end_body
+\end_document

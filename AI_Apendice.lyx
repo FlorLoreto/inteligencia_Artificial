@@ -1,0 +1,2588 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\setcounter{chapter}{10}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Incertidumbre en Inteligencia Artificial.
+ Recordatorio de fundamentos de probabilidad.
+\end_layout
+
+\begin_layout Standard
+Los agentes inteligentes descritos hasta ahora tienen un compromiso ontológico
+ tal que las proposiciones son o verdaderas o falsas o desconocidas.
+ Cuando un agente sabe lo bastante sobre su entorno, el enfoque lógico le
+ permite diseñar planes que funcionen con certeza.
+\end_layout
+
+\begin_layout Standard
+Desafortunadamente, los agentes casi nunca tienen acceso a toda la verdad
+ sobre su entorno.
+ Se mueven, por tanto, en la incertidumbre.
+\end_layout
+
+\begin_layout Standard
+Por ejemplo, un taxi de conducción automática tiene sensores que le informan
+ de las rutas posibles, el llenado del depósito de combustible, las condiciones
+ locales de tráfico..., pero la mayoría de la información sobre el mundo le
+ es desconocida (si una ruta está cortada por obras, un semáforo en avería,
+ huelga de gasolineras, un conductor ebrio,...).
+\end_layout
+
+\begin_layout Standard
+Esta dificultad podría vencerse mediante la 
+\emph on
+planificación condicional
+\emph default
+ en la que el agente desarrolla planes contingentes en función de que ocurran
+ o no ciertos eventos como p.e.
+ que la gasolinera más próxima esté cerrada.
+ No obstante, esto presupone que el agente tiene acceso a la información
+ necesaria y, desde luego, solo parece viable cuando el número de contingencias
+ no es muy elevado.
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+\emph on
+probabilidad
+\series default
+\emph default
+ , entendida como la confianza en la verosimilitud de una proposición, nos
+ proporciona en estas circunstancias una herramienta para extender de manera
+ coherente el razonamiento lógico a situaciones con incertidumbre.
+\end_layout
+
+\begin_layout Section
+Fenómenos aleatorios.
+ 
+\end_layout
+
+\begin_layout Standard
+En condiciones de
+\series bold
+\emph on
+ incertidumbre
+\series default
+\emph default
+, se constata la existencia de 
+\emph on
+fenómenos imprevisibles 
+\emph default
+que requieren la introducción de nuevos métodos para su tratamiento.
+\end_layout
+
+\begin_layout Standard
+Los resultados de un hecho observable (fenómeno) se producen al verificarse
+ un conjunto 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ de condiciones o causas que actúan en la naturaleza.
+ Tales causas pueden describirse como una combinación 
+\begin_inset Formula $\mathcal{C=N\cup R}$
+\end_inset
+
+ donde:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ son condiciones y causas enumerables, especificables y ponderables
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ residuos de condiciones y causas difíciles de especificar y ponderar.
+\end_layout
+
+\begin_layout Standard
+Cada resultado posible de un fenómeno es un 
+\emph on
+resultado elemental
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Dependiendo de la importancia que tenga cada conjunto de causas sobre el
+ resultado (fenómeno) podemos distinguir entre dos tipos extremos de situaciones
+: 
+\end_layout
+
+\begin_layout Enumerate
+Situación 
+\emph on
+determinista
+\emph default
+: se produce cuando el conjunto 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ de condiciones o causas no tiene efecto sobre los resultados.
+ Conocido 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ tenemos la certeza de que un resultado aparece siempre o no aparece nunca.
+ En la práctica siempre hay un conjunto de circunstancias que no son controlable
+s.
+\end_layout
+
+\begin_layout Enumerate
+Situación de 
+\emph on
+incertidumbre
+\emph default
+: cuando el resultado está influido por 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+.
+ Un resultado puede aparecer o no: su aparición es 
+\emph on
+imprevisible
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Dentro de los fenómenos imprevisibles podemos distinguir dos tipos:
+\end_layout
+
+\begin_layout Itemize
+Fenómenos fortuitos o 
+\emph on
+irrepetibles
+\emph default
+ (p.e.
+ Revolución Rusa).
+\end_layout
+
+\begin_layout Itemize
+Fenómenos 
+\emph on
+repetibles
+\emph default
+ indefinidamente aproximadamente bajo las mismas condiciones (lanzar una
+ moneda y observar si sale cara o cruz).
+ 
+\end_layout
+
+\begin_layout Standard
+Cada realización del fenómeno es un experimento y puede ocurrir que:
+\end_layout
+
+\begin_layout Enumerate
+En cada realización del experimento aparece aproximadamente 
+\emph on
+el mismo resultado
+\emph default
+: p.e.
+ al disparar una bala de cañón en condiciones similares de 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+peso del proyectil, 
+\end_layout
+
+\begin_layout Itemize
+carga impulsora, 
+\end_layout
+
+\begin_layout Itemize
+ángulo de elevación del arma,
+\end_layout
+
+\begin_layout Itemize
+densidad y velocidad del viento, etc.
+\end_layout
+
+\begin_layout Standard
+En este caso, los resultados experimentales apoyan que podamos despreciar
+ el efecto de las condiciones 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ - como podrían ser temperatura, altitud, ...- y formular una ley que solo
+ dependa del conjunto de condiciones 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ , esto es la derivada de un modelo determinista (el balístico en nuestro
+ caso).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{cases}
+\begin{array}{c}
+x=v_{x}t\qquad\qquad\\
+y=v_{y}t-\frac{1}{2}gt^{2}\;
+\end{array} & \Rightarrow\:\:y=\frac{v_{y}}{v_{x}}x-\frac{1}{2}g(\frac{x}{v_{x}})^{2}\end{cases}$
+\end_inset
+
+ de donde se deduce el alcance máximo teórico, coincidente en un 99% con
+ el real
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{x_{max}}=\sqrt{2\frac{v_{x}v_{y}}{g}}\label{eq:}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+que, por tanto, a fines prácticos, nos permite prever el resultado (alcance)
+ de cada experimento (disparo) antes de efectuarlo si conocemos los parámetros
+ de 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+En cada realización del experimento aparecen 
+\emph on
+distintos resultados
+\emph default
+ imposibles de predecir diferenciados entre sí pertenecientes a un 
+\emph on
+conjunto de resultados posibles a priori - 
+\series bold
+
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\series default
+ -
+\emph default
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+En muchos experimentos de este tipo se constata empíricamente la 
+\emph on
+ley del azar
+\emph default
+ o de la estabilidad de las 
+\emph on
+frecuencias relativas
+\emph default
+ 
+\begin_inset Formula $fr(S_{i})=\frac{{\displaystyle n_{i}}}{{\displaystyle n}}$
+\end_inset
+
+ .
+ en que 
+\begin_inset Formula $n_{i}$
+\end_inset
+
+ es el número de veces en que aparece el resultado (suceso) 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ - 
+\emph on
+frecuencia absoluta
+\emph default
+ - y 
+\begin_inset Formula $\mbox{\mbox{\ensuremath{n}}}$
+\end_inset
+
+es el número de repeticiones del experimento.
+ Dichas frecuencias relativas tienden a un valor constante al crecer n.
+\end_layout
+
+\begin_layout Standard
+Por ejemplo, el gráfico siguiente (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1.1"
+
+\end_inset
+
+) muestra la evolución de la frecuencia relativa de aparición de cara al
+ lanzar una moneda 100 veces en función del número de realizaciones del
+ experimento.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1.1"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename estfrec.PNG
+	width 8cm
+	BoundingBox 0bp 400bp 461bp 664bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Estos fenómenos constituyen los 
+\series bold
+\emph on
+fenómenos aleatorios
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+La constatación de la 
+\emph on
+ley del azar 
+\emph default
+permite utilizar la experimentación repetida, sea esta real o virtual (
+\emph on
+simulación
+\emph default
+), para el 
+\emph on
+cálculo aproximado de probabilidades
+\emph default
+ definidas como frecuencias relativas para un gran número de pruebas.
+
+\emph on
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+De lo anterior, concluimos que los 
+\emph on
+fenómenos aleatorios
+\emph default
+ se caracterizan por:
+\end_layout
+
+\begin_layout Enumerate
+sus resultados son 
+\emph on
+imprevisibles
+\emph default
+ antes de realizar el experimento;
+\end_layout
+
+\begin_layout Enumerate
+el experimento se puede 
+\emph on
+repetir
+\emph default
+ indefinidamente en condiciones análogas;
+\end_layout
+
+\begin_layout Enumerate
+en cada realización del experimento se produce un resultado perteneciente
+ a 
+\emph on
+un conjunto
+\emph default
+ 
+\emph on
+
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\emph default
+ 
+\emph on
+de resultados
+\emph default
+ admisibles a priori;
+\end_layout
+
+\begin_layout Enumerate
+los resultados siguen 
+\emph on
+la ley del azar
+\emph default
+ a lo largo de una serie de realizaciones del experimento.
+\end_layout
+
+\begin_layout Standard
+Esto nos lleva a interesarnos en la 
+\emph on
+medida numérica de la posibilidad de que ocurra un suceso
+\emph default
+ 
+\begin_inset Formula $S$
+\end_inset
+
+ cuando se realiza el experimento aleatorio.
+ A esta medida teórica la llamaremos 
+\emph on
+probabilidad del suceso S
+\emph default
+ y la representaremos por 
+\begin_inset Formula $P(S)$
+\end_inset
+
+ y el concepto deriva de la 
+\emph on
+frecuencia relativa 
+\emph default
+que se mide en la práctica y que utilizaremos en la 
+\emph on
+Estadística Descriptiva
+\emph default
+ y que ,como la probabilidad, es una medida sobre la escala 0 a 1.
+\end_layout
+
+\begin_layout Standard
+Hemos, pues, caracterizado a los fenómenos aleatorios, entre otras cosas,
+ por la 
+\emph on
+ley del azar
+\emph default
+ que se verifica para toda muestra extraída de la población a medida que
+ su tamaño aumenta lo que apunta en la dirección de aceptar el hecho de
+ la estabilización de las frecuencias en el seno de la población y desarrollar
+ a partir de ello un modelo matemático.
+\end_layout
+
+\begin_layout Section
+Concepto de probabilidad.
+\end_layout
+
+\begin_layout Standard
+Lo anterior nos lleva a interesarnos en la
+\emph on
+ medida numérica de la posibilidad de que ocurra un suceso 
+\begin_inset Formula $S$
+\end_inset
+
+ cuando se realiza el experimento aleatorio en una población
+\emph default
+.
+ A esta medida la llamaremos 
+\series bold
+\emph on
+probabilidad del suceso S
+\series default
+\emph default
+ y la representaremos por 
+\begin_inset Formula $P(S)$
+\end_inset
+
+.
+ Por similitud con las frecuencias relativas, la probabilidad es una medida
+ sobre la escala 0 a 1 de tal forma que:
+\end_layout
+
+\begin_layout Itemize
+Al suceso imposible le corresponde el valor 0
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+No obstante, como se comprobará al estudiar las v.a.
+ continuas, 
+\series bold
+\emph on
+un suceso con probabilidad nula
+\series default
+ puede ocurrir
+\emph default
+ y, por tanto,
+\series bold
+\emph on
+ no es imposible
+\series default
+\emph default
+.
+ La diferencia es que el suceso 
+\series bold
+imposible
+\series default
+ 
+\emph on
+no forma parte del espacio muestral
+\emph default
+, mientras que un suceso 
+\series bold
+posible
+\series default
+ 
+\emph on
+aunque forma parte del espacio muestral
+\emph default
+ tiene probabilidad nula.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Al suceso seguro le corresponde el valor 1 
+\end_layout
+
+\begin_layout Itemize
+El resto de sucesos tendrán una probabilidad comprendida entre 0 y 1.
+\end_layout
+
+\begin_layout Itemize
+La frecuencia de un conjunto de sucesos mutuamente excluyentes es la suma
+ de cada uno de ellos.
+\end_layout
+
+\begin_layout Standard
+El concepto de probabilidad no es único, pues se puede considerar desde
+ distintos puntos de vista: 
+\end_layout
+
+\begin_layout Itemize
+Definición 
+\emph on
+clásica
+\emph default
+ de Laplace o a priori, proviene de los juegos de azar que se emplea cuando
+ los 
+\emph on
+espacios muestrales
+\emph default
+ son 
+\emph on
+finitos
+\emph default
+ y tienen 
+\emph on
+resultados igualmente probables
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Definición 
+\emph on
+frecuentista
+\emph default
+ o a posteriori (empírica) que se basa en la frecuencia relativa de ocurrencia
+ de un evento con respecto a un gran número de ensayos repetidos.
+ 
+\end_layout
+
+\begin_layout Itemize
+El punto de vista 
+\emph on
+subjetivo
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+La definición 
+\emph on
+axiomática
+\emph default
+ de Kolmogorov.
+\end_layout
+
+\begin_layout Subsection
+Definición clásica.
+\end_layout
+
+\begin_layout Standard
+Esta definición clásica de probabilidad fue una de las primeras que se dieron
+ (1.812) y se atribuye a Laplace; también se conoce con el nombre de probabilidad
+ 
+\emph on
+a priori 
+\emph default
+pues, para calcularla, es necesario conocer, antes de realizar el experimento
+ aleatorio, el conjunto de resultados posibles o sucesos elementales que
+ pueden ser resultados del experimento.
+ Esta definición es de uso limitado puesto que descansa sobre la base de
+ las siguientes dos condiciones: 
+\end_layout
+
+\begin_layout Enumerate
+El 
+\emph on
+espacio muestral
+\emph default
+ de todos los resultados posibles 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ es finito.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Los re
+\emph on
+sultados posibles
+\emph default
+ deben ser igualmente probables.
+ 
+\end_layout
+
+\begin_layout Standard
+Bajo estas condiciones y si
+\emph on
+ S
+\emph default
+ es el suceso que se produce 
+\begin_inset Formula $n(A)$
+\end_inset
+
+ veces y número total de resultados posibles es 
+\begin_inset Formula $n(\Omega)$
+\end_inset
+
+, entonces
+\begin_inset Formula 
+\[
+P(S)=\frac{n(S)}{n(\Omega)}
+\]
+
+\end_inset
+
+La aplicación de la definición clásica de probabilidad presenta dificultades
+ de aplicación cuando el espacio muestral es infinito o cuando los posibles
+ resultados de un experimento no son equiprobables.
+ P.e.
+ si se pregunta por la probabilidad de que una determinada máquina produzca
+ artículos defectuosos, entonces no hay forma de introducir resultados igualment
+e probables.
+ Por ello se necesita un concepto más general de probabilidad.
+ Para resolver estos casos, se hace una extensión de la definición de probabilid
+ad, de manera que se pueda aplicar con menos restricciones, llegando así
+ a la definición frecuentista de probabilidad.
+ 
+\end_layout
+
+\begin_layout Subsection
+Definición frecuentista.
+\end_layout
+
+\begin_layout Standard
+Su principal representante ha sido Richard Von Mises.
+ Su punto de partida es la 
+\emph on
+ley del azar
+\emph default
+.
+ Puesto que la mayoría de experimentos aleatorios de importancia práctica
+ tienen estabilidad, podemos sospechar que prácticamente será cierto que
+ la frecuencia relativa de un suceso 
+\emph on
+S
+\emph default
+ en un gran número de ensayos es aproximadamente igual a un determinado
+ número
+\begin_inset Formula 
+\begin{equation}
+P(S)=\begin{array}{c}
+lim\\
+n\rightarrow\infty
+\end{array}\frac{n(S)}{n}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es decir.
+ cuando el número n de repeticiones se hace muy grande la frecuencia relativa
+ converge hacia un valor que llamaremos probabilidad del suceso 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Esta definición presenta dificultades importantes, la primera de las cuales
+ se deriva de la diferencia entre el límite de una sucesión numérica y el
+ de una sucesión de experimentos aleatorios.
+ En el primer caso, si 
+\begin_inset Formula $L=\begin{array}{c}
+lim\\
+n\rightarrow\infty
+\end{array}S_{n}$
+\end_inset
+
+, esto implica que 
+\begin_inset Formula $\forall\epsilon>0$
+\end_inset
+
+, por muy pequeño que sea, 
+\begin_inset Formula $\exists n_{0}$
+\end_inset
+
+ tal que 
+\begin_inset Formula $\forall n>n_{0}$
+\end_inset
+
+ se verifica que 
+\begin_inset Formula $|S_{n}-L|<\epsilon$
+\end_inset
+
+ es decir
+\begin_inset Formula 
+\[
+|S_{n}-L|<\epsilon,\:|S_{n+1}-L|<\epsilon,....\:n>n_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sin embargo, por su propio carácter imprevisible, no podemos asegurar que
+ esto se verifique en un fenómeno aleatorio, es decir no se puede afirmar
+ que a partir de 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+ se cumpla
+\begin_inset Formula 
+\begin{equation}
+|\frac{n(S)}{n}-P(S)|<\epsilon,\:|\frac{n'(S)}{n+1}-P(S)|<\epsilon,....\:
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ya que, p.e.
+ en el lanzamiento de moneda, podemos tener 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+n'(cara)=n(cara)\quad\;\\
+n'(cara)=n(cara)+1
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+con igual probabilidad.
+\end_layout
+
+\begin_layout Standard
+Además, es imposible alcanzar este límite, ya que no podemos repetir el
+ experimento un número infinito de veces, aunque sí podemos repetirlo muchas
+ veces y observar como las frecuencias relativas tienden a estabilizarse
+ Esta definición frecuentista de la probabilidad se llama también probabilidad
+ 
+\emph on
+a posteriori
+\emph default
+ ya que sólo podemos dar la probabilidad de un suceso después de repetir
+ y observar un gran número de veces el experimento aleatorio correspondiente.
+ 
+\end_layout
+
+\begin_layout Standard
+Estas y otras dificultades han llevado al abandono de esta definición en
+ beneficio de la axiomática de Kolmogorov.
+\end_layout
+
+\begin_layout Subsection
+Definición subjetiva de la probabilidad.
+\end_layout
+
+\begin_layout Standard
+Tanto la definición clásica como la frecuentista se basan en las repeticiones
+ del experimento aleatorio; pero existen muchos experimentos que 
+\emph on
+no se pueden repetir
+\emph default
+ bajo las mismas condiciones y por tanto no puede aplicarse la interpretación
+ objetiva de la probabilidad En esos casos es necesario acudir a un punto
+ de vista alternativo, que no dependa de las repeticiones, sino que considere
+ la probabilidad como un concepto subjetivo que exprese el grado de 
+\emph on
+creencia o confianza
+\emph default
+ individual sobre la posibilidad de que el suceso ocurra Se trata por tanto
+ de un juicio personal o individual y es posible por tanto que, diferentes
+ observadores tengan distintos grados de creencia sobre los posibles resultados,
+ igualmente válidos.
+ 
+\end_layout
+
+\begin_layout Itemize
+La probabilidad representa el 
+\emph on
+grado de creencia
+\emph default
+ de que se observe un suceso o que el sistema presente un cierto estado.
+\end_layout
+
+\begin_layout Itemize
+Es un enfoque natural para la representación y el 
+\emph on
+análisis de juicios con imprecisión.
+
+\emph default
+ 
+\end_layout
+
+\begin_layout Itemize
+Enfoque personal, 
+\emph on
+las probabilidades se asocian al observador
+\emph default
+ no al sistema objeto.
+ 
+\end_layout
+
+\begin_layout Itemize
+La probabilidad está definida por el grado de 
+\emph on
+creencia personal
+\emph default
+ y el grado de 
+\emph on
+información disponible
+\emph default
+, que puede cambiar y actualizar la probabilidad 
+\end_layout
+
+\begin_layout Itemize
+La cuantificación del grado de creencia es un probabilidad 
+\emph on
+verifica 
+\emph default
+la 
+\emph on
+axiomática
+\emph default
+ de Kolmogorov u otra axiomatización que garantice la coherencia.
+\end_layout
+
+\begin_layout Standard
+Aun cuando ninguna de las tres anteriores ideas sobre la probabilidad permiten
+ construir una teoría consistente, puede verse que todos proporcionan alguna
+ información - objetiva o subjetiva - sobre los sucesos.
+\end_layout
+
+\begin_layout Standard
+Las aplicaciones de la probabilidad a la inteligencia artificial son particularm
+ente importantes en los campos de diagnóstico médico, reconocimiento de
+ voz, seguimiento de objetos, visión artificial, robótica, genética, corrección
+ de errores entre muchos otros.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Un ejemplo
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Sea un tablero 4x6 en el que se encuentra un fantasma.
+ Su posición es desconocida para el agente.
+ Para encontrarlo disponemos de lecturas de sensores que nos orientan sobre
+ la posición del fantasma, de manera que iremos desplazando el sensor de
+ algún modo por el tablero hasta encontrar al fantasma utilizando para cada
+ movimiento la información disponible.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ghost.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es claro que no es una situación determinista, ya que existe una probabilidad
+ de error en las lecturas del sensor.
+ Queremos resolver el problema de encontrar al fantasma.
+\end_layout
+
+\begin_layout Standard
+Tras algunos movimientos del sensor por el tablero obtenemos el siguiente
+ resultado en el cual, aun no estando seguros, podemos decir que la ubicación
+ más probable del fantasma es el cuadrado enmarcado en rojo, es decir que
+ la probabilidad de que el fantasma esté en el cuadro rojo es máxima condicionad
+a a los resultados de los cuadros indicados en la figura.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ghostpos.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En esta situación nos encontramos con:
+\end_layout
+
+\begin_layout Itemize
+variables 
+\series bold
+observadas
+\series default
+: lecturas de sensores.
+\end_layout
+
+\begin_layout Itemize
+variables
+\series bold
+ no observadas
+\series default
+: posición del fantasma.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+modelo
+\series default
+: relación entre variables observables y no observables (
+\begin_inset Formula $P(color|distancia)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+El razonamiento probabilístico nos permite gestionar nuestras creencias
+ - no observadas - y conocimientos - observados.
+\end_layout
+
+\begin_layout Section
+Conceptos en probabilidad.
+\end_layout
+
+\begin_layout Subsection
+Variable aleatoria.
+\end_layout
+
+\begin_layout Standard
+Una v.a.
+ es algún aspecto de la realidad sobre el cual tenemos incertidumbre (¿dónde
+ está el fantasma?).
+ Intuitivamente: 
+\emph on
+una 
+\series bold
+v.a
+\series default
+.
+ es una cantidad variable cuyos valores dependen del azar y para la cual
+ existe una función de probabilidad.
+\end_layout
+
+\begin_layout Standard
+Estamos habituados a observar fenómenos aleatorios cuyos resultados se expresan
+ mediante números; por ejemplo el voltaje de salida en una fuente de alimentació
+n, el número de personas en la cola del cine, la velocidad de conexión a
+ la red, etc.
+ Incluso en problemas de naturaleza puramente cualitativa es muy frecuente
+ recurrir a la codificación numérica; en situaciones tales como: el diagnóstico
+ de un paciente “
+\emph on
+sano
+\emph default
+” o “
+\emph on
+enfermo
+\emph default
+”, preguntas del tipo ¿estudias o trabajas?, etc., las respuestas son usualmente
+ codificadas con 0 y 1, aunque en realidad podría emplearse cualquier pareja
+ de símbolos con igual precisión.
+\end_layout
+
+\begin_layout Standard
+Este proceso de cuantificación nos lleva de manera natural a considerar
+ la siguiente definición:
+\end_layout
+
+\begin_layout Standard
+Dado un espacio de probabilidad 
+\begin_inset Formula $(\Omega,\mathcal{B},P)$
+\end_inset
+
+, una 
+\series bold
+\emph on
+variable aleatoria 
+\series default
+\emph default
+(v.a.) es cualquier función, 
+\begin_inset Formula $\xi$
+\end_inset
+
+, que asocia a cada cada suceso elemental 
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+ un número real 
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{c}
+\xi:\;\Omega\rightarrow R\\
+\omega\rightarrow\xi(\omega)
+\end{array}
+\end{equation}
+
+\end_inset
+
+y se verifica que:
+\begin_inset Formula 
+\begin{equation}
+P_{x}(A)=P(\xi\in A)=P(\omega\in\Omega|\xi(\omega)\in A)\;\textrm{\forall}{\textstyle \textrm{A}\subset\textrm{R}}
+\end{equation}
+
+\end_inset
+
+Por ejemplo, si estamos interesados en la opinión de 50 personas sobre una
+ cuestión podemos asignar el valor 
+\begin_inset Formula $1$
+\end_inset
+
+ si está de acuerdo y 
+\begin_inset Formula $0$
+\end_inset
+
+ si no lo está.
+ El espacio muestral 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ se compone de 
+\begin_inset Formula $2^{50}$
+\end_inset
+
+ elementos, pero en realidad solo estamos interesados en el número de personas
+ que están de acuerdo con el tema, es decir, con el número de respuestas
+ 1 - v.a.
+ 
+\begin_inset Formula $\xi$
+\end_inset
+
+ - que solo puede tomar valores entre 0 y 50: 
+\begin_inset Formula $\xi\in\{0,...,50\}.$
+\end_inset
+
+ A cada suceso se le asigna la probabilidad del subconjunto de 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ del que deriva.
+\end_layout
+
+\begin_layout Standard
+En el experimento de tirar dos veces una moneda y asignamos 1 a cara y 0
+ a cruz, tenemos el espacio muestral:
+\begin_inset Formula 
+\[
+\Omega=\left\{ (0,0);(0,1);(1,0);(1,1)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y a cada suceso le asignamos a la v.a.
+ 
+\begin_inset Formula $\xi$
+\end_inset
+
+ el número de 1 (cara) su dominio será {0,1,2} tendremos que
+\begin_inset Formula 
+\[
+\xi^{-1}(0)=\{0,0\},\xi^{-1}(1)=\{1,0\}\cup\{0,1\},\xi^{-1}(2)=\{1,1\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Según el tipo de dominio de la v.a.
+ estas pueden ser continuas o discretas.
+\end_layout
+
+\begin_layout Subsection
+Distribución de probabilidad.
+\end_layout
+
+\begin_layout Standard
+En la definición de v.a.
+ podemos fijarnos en el suceso 
+\begin_inset Formula $\left\{ \xi\in(-\infty,x]\right\} $
+\end_inset
+
+ a cuya probabilidad 
+\begin_inset Formula $P(\xi\in(-\infty,x])=F(x)$
+\end_inset
+
+ llamaremos 
+\series bold
+\emph on
+función de distribución
+\series default
+\emph default
+ (
+\series bold
+f.
+ de D
+\series default
+.) de la v.a.
+ que por simplificar escribiremos
+\begin_inset Formula 
+\[
+P(\xi\leq x)=F_{\xi}(x)
+\]
+
+\end_inset
+
+Obsérvese que la v.a.
+ es 
+\begin_inset Formula $\xi$
+\end_inset
+
+ y 
+\begin_inset Formula $x$
+\end_inset
+
+ 
+\emph on
+es un valor 
+\emph default
+que alcanza esta para el que se calcula la f.
+ de D.
+\end_layout
+
+\begin_layout Standard
+Por tanto, la f.
+ de D.
+ asocia valores de probabilidad a valores de la variable.
+\end_layout
+
+\begin_layout Subsection
+Distribuciones discretas y continuas.
+ Función de densidad de probabilidad.
+\end_layout
+
+\begin_layout Standard
+Una v.a.
+ 
+\begin_inset Formula $\xi$
+\end_inset
+
+ es 
+\series bold
+\emph on
+discreta
+\series default
+\emph default
+ cuando su campo de variación se compone de un número finito o numerable
+ de puntos - 
+\emph on
+puntos de salto 
+\emph default
+- existiendo en ellos masa discreta de probabilidad.
+\end_layout
+
+\begin_layout Standard
+Es decir si existe un conjunto 
+\begin_inset Formula $S\subset R$
+\end_inset
+
+ conjunto 
+\emph on
+contable
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+Finito o infinito numerable.
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+tal que
+\emph on
+ 
+\begin_inset Formula $P(\xi\in S)=1$
+\end_inset
+
+.
+ 
+\emph default
+El conjunto S se llama 
+\emph on
+soporte de la distribución de 
+\begin_inset Formula $\xi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Entonces 
+\begin_inset Formula 
+\[
+P(\xi\in B)={\displaystyle \sum_{x_{i}\in S\cap B}P(\xi=x_{i})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Denominaremos
+\series bold
+ 
+\emph on
+función de cuantía 
+\series default
+\emph default
+o
+\emph on
+ 
+\series bold
+función de masa de probabilidad
+\series default
+\emph default
+ 
+\emph on
+-
+\series bold
+ f.m.p.
+ 
+\series default
+-
+\emph default
+ a
+\begin_inset Formula 
+\[
+P(\xi=x_{i})=p_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula 
+\[
+{\displaystyle \sum_{i=1}^{\infty}}P(\xi=x_{i})={\displaystyle \sum_{i=1}^{\infty}}p_{i}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename pegado10.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por lo tanto la
+\series bold
+ f.
+ de D
+\series default
+.
+ será
+\begin_inset Formula 
+\[
+F(x_{i})=P(\xi\leq x_{i})={\displaystyle \sum_{\{\mathbf{j}|x_{j}\leq x_{i}\}}}P(\xi=x_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename pegado11.png
+	scale 140
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una v.a.
+ es 
+\series bold
+\emph on
+continua 
+\series default
+\emph default
+cuando 
+\end_layout
+
+\begin_layout Itemize
+su f.de D.
+ es 
+\emph on
+continua
+\emph default
+, 
+\end_layout
+
+\begin_layout Itemize
+existe su 
+\emph on
+primera derivada
+\emph default
+ y 
+\end_layout
+
+\begin_layout Itemize
+esta es 
+\emph on
+continua
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+En v.a.
+ continuas puede definirse la 
+\series bold
+\emph on
+función de densidad
+\emph default
+ 
+\emph on
+de probabilidad
+\series default
+\emph default
+ (f.
+ de d.).
+ Para ello partiremos de dividir el aumento de la probabilidad al incrementar
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ por la magnitud de aumento de la v.a.: 
+\begin_inset Formula 
+\[
+\frac{P(x<\xi\leq x+\Delta x)}{\Delta x}=\frac{F(x+\Delta x)-F(x)}{\Delta x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si hacemos que 
+\begin_inset Formula $\Delta x\rightarrow0$
+\end_inset
+
+, obtenemos la 
+\emph on
+función de densidad
+\emph default
+ 
+\begin_inset Formula 
+\[
+\mathbf{f(x)}=\begin{array}{c}
+lim\\
+\Delta x\rightarrow0
+\end{array}\frac{F(x+\Delta x)-F(x)}{\Delta x}=\mathbf{F^{'}(x)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por el teorema del valor medio 
+\begin_inset Formula $F(x+\Delta x)-F(x)=F(\tilde{x})\Delta x$
+\end_inset
+
+ (donde 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $x<\tilde{x}\leq x+\Delta x$
+\end_inset
+
+) por lo que cuando 
+\begin_inset Formula $\Delta x\rightarrow0$
+\end_inset
+
+ 
+\begin_inset Formula $F(x)=P(\xi=x)=0$
+\end_inset
+
+: 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+en una v.a.
+ continua, la probabilidad de que tome un valor exacto es nula
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+.3
+\end_layout
+
+\begin_layout Standard
+Las propiedades de la f.
+ de d.
+ se deducen de su definición:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(x)\geq0$
+\end_inset
+
+ ya que 
+\begin_inset Formula $F(x+\Delta x)-F(x)\geq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula ${\displaystyle \intop_{-\infty}^{\infty}f(x)}dx=P(\Omega)$
+\end_inset
+
+=1
+\end_layout
+
+\begin_layout Standard
+La f.
+ de D.
+ puede expresarse como
+\begin_inset Formula 
+\[
+\mathbf{F(x)={\displaystyle \intop_{-\infty}^{x}f(x)}dx}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Normalmente se utiliza más la f.
+ de d.
+ que la f.
+ de D.
+ por su facilidad de manejo.
+\end_layout
+
+\begin_layout Subsection
+Distribuciones conjuntas.
+\end_layout
+
+\begin_layout Standard
+En muchas ocasiones, para describir las propiedades de interés de los resultados
+ de un experimento es preciso considerar varias características.
+ Por ejemplo, en un experimento, se consideran las variables “
+\emph on
+altura
+\emph default
+” y “
+\emph on
+peso
+\emph default
+” de cada individuo seleccionado.
+ Si se extraen cinco bolas de una urna con bolas blancas, negras y rojas,
+ podemos estar interesados en el número de bolas de cada color.
+\end_layout
+
+\begin_layout Standard
+Es evidente que al considerar diversas características para describir los
+ resultados de un experimento aleatorio (cada una de ellas una variable
+ aleatoria), estas estarán a menudo relacionadas, por lo que será conveniente
+ realizar un 
+\emph on
+estudio conjunto
+\emph default
+ de ellas que refleje dichas relaciones, en lugar de analizarlas individualmente.
+ De esta forma aparece el concepto de variable aleatoria multidimensional
+ o 
+\emph on
+vector aleatorio
+\emph default
+ que, en términos generales, puede definirse como una función que asigna
+ a cada elemento del espacio muestral un conjunto finito de números reales
+ que describen el valor da cada una de las características bajo estudio
+ en dicho elemento.
+\end_layout
+
+\begin_layout Standard
+En Inteligencia Artificial, utilizaremos este tipo de v.a.
+ multidimensionales puesto que existen v.a.
+ observables y no observables que relacionaremos mediante un modelo probabilísti
+co.
+\end_layout
+
+\begin_layout Standard
+Al igual que en el caso unidimensional, el 
+\series bold
+\emph on
+vector aleatorio de dimensión n
+\series default
+\emph default
+ 
+\begin_inset Formula $\vec{x}=\text{\{{\displaystyle x_{1},...,x_{n}}\}}$
+\end_inset
+
+tendrá una f.de d.
+ o de cuantía y una f.
+ de D.
+\end_layout
+
+\begin_layout Standard
+En lo que sigue, nos centraremos en el caso 
+\emph on
+bidimensional 
+\emph default
+(n=2) 
+\begin_inset Formula $\vec{\xi}=(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Se define la 
+\series bold
+\emph on
+Función de Distribución Conjunta
+\series default
+ 
+\emph default
+de la v.a.
+ 
+\begin_inset Formula $\vec{X}=(\xi,\,\eta)\in D$
+\end_inset
+
+ a la función
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+D\rightarrow[0,1]:\;F_{\xi\eta}(x,y)=P(\xi\leq x,\eta\leq y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+es decir, la función que asigna a cada par de valores (x,y) de las componentes
+ del vector el valor de la probabilidad de que ocurra el suceso definido
+ por 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(\xi,\eta)\in[-\infty,x]\times[-\infty,y]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Vectores aleatorios discretos.
+\end_layout
+
+\begin_layout Standard
+Al igual que en el caso unidimensional, en un vector aleatorio discreto
+ cada una de sus componentes toma valores en un conjunto numerable de valores
+ 
+\begin_inset Formula $\mathbf{X}=\{x_{1},...,x_{p}\}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{Y}=\{y_{1},...,y_{q}\}$
+\end_inset
+
+.
+ En este caso, la f.
+ de D.
+ puede expresarse como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F_{\xi\eta}(x,y)=P(\xi\leq x,\eta\leq y)={\displaystyle \sum_{x_{i}\leq x}\sum_{y_{j}\leq y}\mathbf{p_{ij}}(x_{i},y_{j})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $\mathbf{p_{ij}(x_{i},y_{j})}$
+\end_inset
+
+ es la 
+\emph on
+función de cuantía bidimensional
+\emph default
+ que asigna a cada par de valores - (
+\begin_inset Formula $x_{i},y_{j}$
+\end_inset
+
+) 
+\begin_inset Formula $i=1,...,p$
+\end_inset
+
+, 
+\begin_inset Formula $j=1,...,q$
+\end_inset
+
+ - una probabilidad 
+\begin_inset Formula $p_{ij}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Vectores aleatorios continuos.
+\end_layout
+
+\begin_layout Standard
+En este caso, podemos definir la 
+\emph on
+función de densidad de probabilidad bidimensional 
+\emph default
+mediante:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f_{\xi\eta}(x,y)=\frac{\partial^{2}F_{\xi\eta}(x,y)}{\partial x\partial y}=\begin{array}{c}
+\textrm{lim}\\
+\begin{array}{c}
+\Delta x\rightarrow0^{+}\\
+\Delta y\rightarrow0^{+}
+\end{array}
+\end{array}\frac{F_{\xi\eta}(x<\xi\leq x+\Delta x,y<\eta\leq y+\Delta y)}{\Delta x\Delta y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Modelo probabilístico.
+\end_layout
+
+\begin_layout Standard
+Un modelo probabilístico es una distribución conjunta en un grupo de v.a.
+ 
+\end_layout
+
+\begin_layout Subsection
+Sucesos.
+\end_layout
+
+\begin_layout Standard
+Un 
+\emph on
+suceso
+\emph default
+ - 
+\series bold
+S
+\series default
+ - es un 
+\emph on
+conjunto de valores de la v.a
+\emph default
+.
+ multidimensional.
+ En v.a.
+ discretas podemos calcular su probabilidad como:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $P(S)={\displaystyle \sum_{(x_{1},...,x_{n})\in S}P(x_{1},...,x_{n})}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+En v.a.
+ n-dimensionales como la de la tabla siguiente:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename table.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos calcular probabilidades de cualquier suceso con uniones, intersecciones
+ y otras operaciones.
+ P.e.
+ probabilidad de que haga calor y llueva, (0.1), probabilidad de que llueva
+ (0.1+0.3=0.4), probabilidad de que haga frío y no llueva (0.2) , probabilidad
+ de que haga frío o sol (0.2+0.3+0.4=0.9)....
+\end_layout
+
+\begin_layout Subsection
+Distribuciones marginales.
+\end_layout
+
+\begin_layout Standard
+Centrando nuestra atención en el caso continuo, podemos ver que al considerar
+ un vector aleatorio como conjunto de 
+\emph on
+variables aleatorias unidimensionales
+\emph default
+ la distribución del vector se denomina distribución conjunta y a la distribució
+n de cada componente se le denomina distribución marginal de dicha componente.
+ Veamos cómo pueden obtenerse las distribuciones marginales de cada componente
+ a partir de la conjunta:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\mathbf{f_{\xi}(x})={\displaystyle \intop_{-\infty}^{\infty}f_{\xi\eta}(x,y)dy}\\
+\mathbf{f_{\eta}(y})={\displaystyle \intop_{-\infty}^{\infty}f_{\xi\eta}(x,y)dx}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+que nos proporcionan las 
+\emph on
+distribuciones marginales
+\emph default
+ de cada variable por separado.
+ 
+\end_layout
+
+\begin_layout Standard
+En el caso de v.a.
+ discreta, en vez de integrar sobre la f.
+ de d., se procede a sumar sobre la función de cuantía, obteniendo las funciones
+ marginales de cuantía:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p_{i}=p(x_{i})={\displaystyle \sum_{y_{j}\in Y}p_{ij}(x_{i},y_{j})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Este concepto se deriva de la tabla de contingencia y representa la distribución
+ de una variable, cuando se agregan todos los valores de la otra.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pegado19.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Probabilidades condicionadas.
+\end_layout
+
+\begin_layout Standard
+Como hemos comentado , la probabilidad de un suceso descansa sobre un cierto
+ conjunto de condiciones o causas 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+.
+ Si no se imponen más restricciones que las 
+\begin_inset Formula $C$
+\end_inset
+
+ para el cálculo de 
+\begin_inset Formula $P(S)$
+\end_inset
+
+ , la probabilidad se llama 
+\emph on
+incondicional
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Si, por el contrario, existen restricciones suplementarias como el hecho
+ de que haya ocurrido un suceso 
+\begin_inset Formula $A$
+\end_inset
+
+, nos encontramos ante una probabilidad condicional: la de que ocurra 
+\begin_inset Formula $S=B$
+\end_inset
+
+ habiéndose producido el suceso 
+\begin_inset Formula $A$
+\end_inset
+
+ que se escribe 
+\begin_inset Formula 
+\[
+P(B/A)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Estrictamente hablando, 
+\begin_inset Formula $P(B)$
+\end_inset
+
+ es también una probabilidad condicional ya que suponemos desde el principio
+ que se producen las circunstancias 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Planteemos el problema en términos 
+\emph on
+frecuenciales
+\emph default
+:
+\end_layout
+
+\begin_layout Standard
+Queremos calcular 
+\begin_inset Formula $fr(B/A)$
+\end_inset
+
+, esto es, la 
+\emph on
+frecuencia relativa
+\emph default
+ 
+\emph on
+con la que se presenta B siempre que se haya producido A.
+
+\emph default
+ En la definición clásica, esto implica:
+\end_layout
+
+\begin_layout Itemize
+Realizaciones del experimento: 
+\series bold
+n
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Casos posibles: 
+\series bold
+
+\begin_inset Formula $\mathbf{n}_{\mathbf{A}}$
+\end_inset
+
+
+\series default
+: nº de veces que ocurre 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Casos favorables: 
+\begin_inset Formula $\mathbf{n_{AB}}$
+\end_inset
+
+: nº de veces que se producen simultáneamente 
+\begin_inset Formula $A$
+\end_inset
+
+ y 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por lo tanto
+\begin_inset Formula 
+\begin{equation}
+fr(B|A)=\frac{\textrm{casos favorables}}{\textrm{casos posibles}}={\displaystyle \frac{n_{AB}}{n_{A}}}\label{eq:2.2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como 
+\begin_inset Formula 
+\[
+fr(A)={\displaystyle \frac{n_{A}}{n},\:}fr(B)={\displaystyle \frac{n_{B}}{n},\:}y\:fr(A\cap B)=\frac{n_{AB}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos expresar (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2.2"
+
+\end_inset
+
+) del siguiente modo:
+\begin_inset Formula 
+\begin{equation}
+fr(B|A)={\displaystyle \frac{n_{BA}}{n_{A}}=\frac{fr(A\cap B)}{fr(A)}=\frac{{\displaystyle \frac{n_{AB}}{n}}}{{\displaystyle \frac{n_{A}}{n}}}}\rightarrow fr(A\cap B)=fr(B|A)fr(A)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Trasladando lo anterior al concepto de probabilidad, tendremos que 
+\emph on
+la probabilidad de B condicionada a A
+\emph default
+ se expresa como::
+\begin_inset Formula 
+\begin{equation}
+\mathbf{P(B|A){\displaystyle =\frac{P(A\cap B)}{P(A)}}}\label{eq:2.3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora el espacio muestral ha cambiado y es 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename pegado5.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+P.e.
+ en la tabla anterior, ¿cuál sería P(W=sol|T=calor)?
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $P(W=sol|T=calor)={\displaystyle \frac{P(W=sol,T=calor)}{P(T=calor)}}={\displaystyle \frac{0.4}{0.5}=0.8}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Distribuciones condicionadas.
+\end_layout
+
+\begin_layout Standard
+Por tanto,es posible definir las 
+\emph on
+probabilidades condicionadas por un suceso M 
+\emph default
+como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(x,y|M)=F_{\xi\eta}(x,y|M)=\frac{P(\{\xi\leq x,\eta\leq y\}\cap M)}{P(M)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Normalmente M suele ser el valor de una o varias componentes del vector
+ aleatorio y podemos definir las
+\emph on
+ funciones de densidad condicionales.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+F(x|\eta=y)={\displaystyle \intop_{-\infty}^{\infty}\frac{f_{\xi\eta}(x,y)}{f_{\eta}(y)}dy\rightarrow f(x|\eta=y)=\frac{f_{\xi\eta}(x,y)}{f_{\eta}(y)}}\\
+F_{\eta}(y|\xi=x)={\displaystyle \intop_{-\infty}^{\infty}\frac{f_{\xi\eta}(x,y}{f_{\xi}(x)})dx\rightarrow f(y|\xi=x)=\frac{f_{\xi\eta}(x,y)}{f_{\xi}(x)}}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo 
+\begin_inset Formula $f_{\eta}(y)=\intop_{-\infty}^{\infty}f_{\xi\eta}(x,y)dx$
+\end_inset
+
+ y 
+\begin_inset Formula $f_{\xi}(x)=\intop_{-\infty}^{\infty}f_{\xi\eta}(x,y)dy$
+\end_inset
+
+ las marginales.
+\end_layout
+
+\begin_layout Standard
+En el 
+\emph on
+caso discreto
+\emph default
+ es inmediato plantear estas probabilidades condicionadas por ejemplo para
+ el valor 
+\begin_inset Formula $\eta=y_{j}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p_{i}(x_{i}|y_{j})=\frac{p_{ij}(x_{i},y_{j})}{p_{j}(y_{j})}\rightarrow\mathbf{p_{ij}(x_{i},y_{j})=p_{i}(x_{i}|y_{j})p_{j}(y_{j})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+observemos que la expresión anterior puede expresarse como 
+\begin_inset Formula 
+\begin{equation}
+\mathbf{p_{i}(x_{i}|y_{j})}=\frac{p_{ij}(x_{i},y_{j})}{p_{j}(y_{j})}=\frac{\mathbf{p_{ij}(x_{i},y_{j})}}{\mathbf{{\displaystyle \sum_{x_{i}}}p_{ij}(x_{i},y_{j})}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Regla de la cadena.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $P(x_{1},x_{2},x_{3})=P(x_{1},x_{2})P(x_{3,}|x_{1},x_{2})=P(x_{1})P(x_{2}|x_{1})P(x_{3}|x_{1}x_{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\mathbf{P(x_{1},x_{2},...,x_{n})}={\displaystyle \prod_{i=1}^{n}}\mathbf{P(x_{i}|x_{1},..,x_{i-1})}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Inferencia Probabilística.
+\end_layout
+
+\begin_layout Standard
+Se trata de calcular la probabilidad deseada a partir de otras probabilidades
+ conocidas (p.e.
+ la condicionada a partir de la conjunta).
+\end_layout
+
+\begin_layout Standard
+Normalmente calcularemos probabilidades condicionadas que representan las
+ 
+\emph on
+creencias del agente dada la evidencia existente
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $P(Llegar\;a\;tiempo|No\;accidentes)=0.90$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pero estas creencias se actualizan con la aparición de 
+\emph on
+nuevas evidencias
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+P.e.
+ 
+\begin_inset Formula $P(Llegar\;a\;tiempo|No\;accidentes,\textrm{2:00P.M.})=0.95$
+\end_inset
+
+, 
+\begin_inset Formula $P(Llegar\;at\;iempo|No\;accidentes,2:00P.M.,\textrm{lluvia})=0.82$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

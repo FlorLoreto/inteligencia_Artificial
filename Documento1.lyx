@@ -1,0 +1,544 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Representación.
+ Lógica proposicional.
+ 
+\end_layout
+
+\begin_layout Standard
+Un aspecto importante del la IA es la 
+\emph on
+representación del mundo
+\emph default
+ (modelo) del agente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Uno de los métodos posibles de representación es el basado en 
+\emph on
+vectores de características, 
+\emph default
+cuyo funcionamiento se comprende fácilmente si suponemos que disponemos
+ de un robot capaz de desplazarse sobre una rejilla entre celdas contiguas
+ libres.
+ En dicha rejilla algunas celdas están ocupadas por bloques y otras vacías.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sensa.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El vector de atributos para cada posición del robot - 
+\color red
+R
+\color inherit
+ - tendrá los valores 
+\begin_inset Formula $\vec{s}=(s_{1},s_{2},....,s_{8})$
+\end_inset
+
+ - estado de las celdas adyacentes - que serán 0 si la celda está vacía
+ y 1 si está ocupada.
+ El robot utilizará esta información detectada por sus sensores para desplazarse
+ a una celda libre, donde, de nuevo, computará a través de sus sensores
+ el vector 
+\begin_inset Formula $\vec{s}_{t+1}$
+\end_inset
+
+.
+ Siendo los valores de 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ binarios, el vector 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ es una descripción del entorno (mundo) del agente.
+\end_layout
+
+\begin_layout Standard
+Sin embargo, pueden existir restricciones a los valores de las características
+ que aportan un conocimiento importante sobre el 
+\emph on
+mundo 
+\emph default
+y que pueden usarse para inferir valores de características no sensables
+ directamente por el agente.
+\end_layout
+
+\begin_layout Standard
+Como ejemplo, sea que el robot es capaz de levantar bloques que se encuentren
+ en una celda adyacente siempre que el robot tenga batería con carga suficiente
+ (
+\begin_inset Formula $s_{1}=$
+\end_inset
+
+BAT_OK) y los bloques sean de un peso reducido (
+\begin_inset Formula $s_{2}=$
+\end_inset
+
+ELEVABLE), en cuyo caso el brazo robótico que coge el bloque se mueve (
+\begin_inset Formula $s_{3}=$
+\end_inset
+
+MUEVE).
+ Los atributos 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ pueden detectarse con los sensores del robot, pero no así 
+\begin_inset Formula $s_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sin embargo sabemos que si BAT_OK y MUEVE, esto implica ELEVABLE y si NO
+ MUEVE, esto es debido bien a que NO BAT_OK o bien a que NO ELEVABLE.
+\end_layout
+
+\begin_layout Standard
+Podemos decir que el robot ha llegado a dichas conclusiones mediante 
+\emph on
+inferencia 
+\emph default
+(razonamiento)
+\emph on
+ 
+\emph default
+para cuya implementación necesitaremos un
+\emph on
+ lenguaje
+\emph default
+ para expresar los valores de las características y sus restricciones y
+ mecanismos de 
+\emph on
+inferencia
+\emph default
+ que permitan razonar.
+ La Lógica Proposicional (LP) nos proporciona estas herramientas y, usándola,
+ podemos escribir los razonamientos anteriores como:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+BAT\textrm{\_}OK\land ELEVABLE\Rightarrow MUEVE\\
+\lnot MUEVE\Rightarrow\lnot BAT\textrm{\_}OK\lor\lnot ELEVABLE
+\end{array}
+\]
+
+\end_inset
+
+La
+\emph on
+ representación del conocimiento
+\emph default
+ y 
+\emph on
+el proceso de razonamiento
+\emph default
+ que da vida al conocimiento, tratados en este capítulo, son cruciales en
+ el ámbito de la Inteligencia Artificial.
+\end_layout
+
+\begin_layout Standard
+Los humanos parecen 
+\emph on
+conocer
+\emph default
+ cosas y 
+\emph on
+razonar 
+\emph default
+y estas características parecen deseables para un agente artificial.
+\end_layout
+
+\begin_layout Standard
+El conocimiento y el razonamiento juegan también un papel importante en
+ entornos 
+\emph on
+parcialmente observables
+\emph default
+ situación en la que un agente basado en conocimiento puede combinar sus
+ conocimientos actuales con sus percepciones para inferir aspectos ocultos
+ del estado del mundo antes de seleccionar acciones.
+ P.e.
+ un médico debe diagnosticar - es decir, inferir una enfermedad que no es
+ directamente observable - la enfermedad de un paciente antes de aplicar
+ un tratamiento.
+ Para ello aplica reglas aprendidas en libros de texto y profesores y otras
+ basadas en patrones de asociación que no pueden describirse fácilmente.
+\end_layout
+
+\begin_layout Standard
+Lo mismo ocurre con la comprensión del lenguaje natural donde también hay
+ que inferir aspectos ocultos.
+ Si oímos, '
+\emph on
+Juan vio el coche a través de la ventana y 
+\series bold
+le
+\series default
+ gustó
+\emph default
+'.
+ Del contexto, inferimos que '
+\emph on
+le
+\emph default
+' se refiere al coche y no a la ventana.
+ Mientras que en '
+\emph on
+Juan tiró un ladrillo por la ventana a la acera y 
+\series bold
+la
+\series default
+ rompió
+\emph default
+' lo roto fue la ventana y no la acera.
+\end_layout
+
+\begin_layout Standard
+A este respecto, la 
+\series bold
+\emph on
+Lógica
+\series default
+\emph default
+ es el vehículo primario para representar el conocimiento, aun cuando tiene
+ limitaciones principalmente a causa de la existencia de incertidumbre en
+ la mayoría de los entornos.
+\end_layout
+
+\begin_layout Section
+Agentes basados en el conocimiento.
+\end_layout
+
+\begin_layout Standard
+El componente central de los Agentes Basados en el Conocimiento es su Base
+ de Conocimiento (
+\series bold
+K
+\series default
+nowldge 
+\series bold
+B
+\series default
+ase).
+ Informalmente una 
+\emph on
+KB 
+\emph default
+se compone de un conjunto de 
+\emph on
+sentencias
+\emph default
+ en sentido técnico, cada una del las cuales se expresa en un 
+\emph on
+lenguaje 
+\emph default
+denominado 
+\emph on
+lenguaje de representación del conocimiento
+\emph default
+ y que constituye alguna afirmación acerca del mundo.
+\end_layout
+
+\begin_layout Standard
+Debe existir algún modo de añadir nuevas sentencias a la 
+\emph on
+KB 
+\emph default
+y, también, procedimientos para consultar lo que se sabe.
+ Ambas tareas pueden implicar 
+\series bold
+inferencia
+\series default
+, esto es, derivar nuevas sentencias de las ya existentes.
+ La inferencia es un proceso utilizado en multitud de actividades diarias.
+ P.e.
+ cuando leemos 
+\emph on
+entre líneas
+\emph default
+ un texto estamos haciendo inferencia, esto es, extrayendo conclusiones
+ que no están explícitas y este tipo de tareas se requieren en los exámenes
+ de certificación de niveles de idiomas come el TOEFL.
+ 
+\end_layout
+
+\begin_layout Section
+El mundo del wumpus
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Tomado de 
+\emph on
+Russell y Norvig: Inteligencia Artificial.
+ 2º Ed.
+
+\emph default
+ 
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Todas estas capacidades (representación, razonamiento y aprendizaje) se
+ apoyan en la teoría y tecnología de la lógica, desarrolladas a lo largo
+ de los siglos.
+ Antes de explicar dichas teoría y tecnología, crearemos un mundo sencillo
+ que nos permitirá ilustrar estos mecanismos.
+\end_layout
+
+\begin_layout Standard
+El mundo de wumpus es una cueva que está compuesta por habitaciones conectadas
+ mediante pasillos.
+ Escondido en algún lugar de la cueva está el wumpus, una bestia que devora
+ a cualquiera que entre en su habitación.
+ El wumpus puede ser derribado por la flecha de un agente, y este sólo dispone
+ de una.
+ Algunas habitaciones contienen pozos sin fondo que atrapan a aquel que
+ deambula por dichas habitaciones (menos al wumpus que es demasiado grande
+ para caer en ellos).
+ El único premio de vivir en este entorno es la posibilidad de encontrar
+ un montón de oro.
+\end_layout
+
+\begin_layout Standard
+En la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:2"
+
+\end_inset
+
+) se muestra un ejemplo del mundo inmundo del wumpus.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:2"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename wumpus.png
+
+\end_inset
