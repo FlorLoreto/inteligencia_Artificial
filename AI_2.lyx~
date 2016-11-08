@@ -505,7 +505,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../pacman2.png
-	scale 60
+	scale 66
 
 \end_inset
 
@@ -542,7 +542,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../stoppac.png
-	scale 40
+	scale 60
 
 \end_inset
 
@@ -696,7 +696,662 @@ tener una serie de planes que ejecuta en secuencia uno tras otro, replanificando
 
 \end_deeper
 \begin_layout Section
+Grafos de espacio de estados.
+\end_layout
+
+\begin_layout Standard
+Sea un mundo en el que existen tres bloques de juguete: A,B,C y un robot
+ que puede mover aquellos que tengan su cara superior libre (sobre el suelo
+ o en la cima de una pila).
+ Esas 
+\emph on
+acciones 
+\emph default
+las modelamos mediante el 
+\emph on
+esquema 
+\begin_inset Formula $move(x,y)$
+\end_inset
+
+ -x
+\begin_inset Formula $\rightarrow y$
+\end_inset
+
+ - 
+\emph default
+donde
+\emph on
+ 
+\begin_inset Formula $x\in\{A,B,C\}$
+\end_inset
+
+ 
+\emph default
+e
+\emph on
+ 
+\begin_inset Formula $y\in\{A,B,C,Floor\}$
+\end_inset
+
+.
+ 
+\emph default
+Las instancias del esquema como 
+\begin_inset Formula $move(A,Floor)$
+\end_inset
+
+ se llaman 
+\series bold
+\emph on
+operadores
+\series default
+\emph default
+, es decir, son
+\emph on
+ modelos de acciones
+\emph default
+.
+ Sabemos que algunos operadores son inviables
+\emph on
+ (move(A,A)).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Los operadores posibles se representan gráficamente en la figura siguiente:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename reverte.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A partir del estado del mundo producido por cada operador, podemos seguir
+ un paso más allá p.e.
+ de 
+\begin_inset Formula $((AB)(C))\rightarrow((A)(B)(C)),((ABC)),((A(BC))$
+\end_inset
+
+.
+ Una estructura útil para este propósito, es decir, para seguir las consecuencia
+s de secuencias alternativas de acciones es un 
+\series bold
+\emph on
+grafo dirigido 
+\series default
+\emph default
+(digrafo), donde
+\end_layout
+
+\begin_layout Itemize
+sus 
+\emph on
+nodos
+\emph default
+ son representaciones del 
+\emph on
+estado del mundo
+\emph default
+ del agente y 
+\end_layout
+
+\begin_layout Itemize
+sus 
+\emph on
+arcos
+\emph default
+ son 
+\emph on
+operadores
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+P.e.
+ en el ejemplo de los bloques es posible hacer explícita la totalidad del
+ árbol que, además por su reducida dimensión, puede ser guardada en la memoria
+ de un ordenador, como se ve en la figura:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename blocks.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El agente que desea alcanzar un 
+\emph on
+objetivo
+\emph default
+ como 
+\begin_inset Formula $((ABC))$
+\end_inset
+
+ necesita simplemente encontrar un camino desde el nodo de comienzo hasta
+ el nodo objetivo.
+ Los operadores necesarios para ello - que constituyen un
+\emph on
+ plan
+\emph default
+ - están etiquetadas en los arcos del grafo.
+\end_layout
+
+\begin_layout Standard
+Buscar tal secuencia se denomina 
+\emph on
+planificación
+\emph default
+ y predecir una serie de estados del mundo resultante de una secuencia de
+ acciones se llama 
+\emph on
+predicción
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+En casos como este en que los grafos son explícitos, los métodos de búsqueda
+ implican la propagación de 
+\begin_inset Quotes fld
+\end_inset
+
+marcadores
+\begin_inset Quotes frd
+\end_inset
+
+ sobre los nodos del grafo.
+ Comenzamos etiquetando el nodo de comienzo con un 0 y propagamos en oleadas
+ sucesivas enteros mayores a lo largo de los arcos hasta alcanzar el nodo
+ objetivo.
+ Luego retrocedemos dese el objetivo hasta el comienzo según enteros decreciente
+s y las acciones para conseguir el objetivo - plan - serán los arcos.
+ P.e.
+ para el problema de los bloques las etapas de propagación de marcadores
+ serían las siguientes
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Como veremos luego, se trata de una búsqueda primero en anchura.
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sequen.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Terminología de grafos.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Grafo:
+\series default
+ conjunto de 
+\emph on
+nodos 
+\emph default
+- o vértices -(no necesariamente finito).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Arco
+\series default
+: par 
+\emph on
+ordenado 
+\emph default
+de vértices.
+ Se representa mediante una línea terminada en flecha que va del primero
+ al segundo.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Un grafo con arcos dirigidos se llama 
+\series bold
+\emph on
+grafo dirigido
+\series default
+\emph default
+ o digrafo.
+\end_layout
+
+\begin_layout Standard
+Para nuestros propósitos los nodos representan estados del mundo y los arcos
+ se etiquetan con nombres de acciones.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+En un arco 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+ 
+\begin_inset Formula $a$
+\end_inset
+
+ se denomina 
+\emph on
+padre
+\emph default
+ de 
+\begin_inset Formula $b$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+ es un 
+\emph on
+sucesor
+\emph default
+ (o hijo) de 
+\emph on
+a
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+Un par de nodos pueden ser ambos sucesores uno del otro, en cuyo caso el
+ par de arcos se reemplaza por una 
+\series bold
+\emph on
+arista
+\series default
+\emph default
+ sin flechas.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename arco.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Los grafos que solo contienen aristas se llaman 
+\series bold
+\emph on
+grafos no dirigidos
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Un 
+\series bold
+árbol
+\series default
+ 
+\series bold
+dirigido
+\series default
+ es un caso especial de 
+\emph on
+grafo dirigido 
+\emph default
+en el que 
+\emph on
+cada nodo 
+\emph default
+(excepto el raíz) 
+\emph on
+tiene exactamente un padre.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+El nodo sin padre se llama 
+\series bold
+\emph on
+raíz
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Los nodos sin hijos se llaman 
+\series bold
+\emph on
+hojas
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Si no hay arcos sino aristas, tenemos un 
+\series bold
+árbol no dirigido.
+\end_layout
+
+\begin_layout Itemize
+La 
+\series bold
+profundidad
+\series default
+ de un nodo es es la de su padre +1, siendo 0 la del nodo raíz.
+\end_layout
+
+\begin_layout Itemize
+Ciertos árboles son tales que todos los nodos excepto los hojas tienen el
+ mismo número de sucesores 
+\begin_inset Formula $\mathbf{b}$
+\end_inset
+
+ que se denomina 
+\series bold
+factor de ramificación
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Una secuencia de nodos 
+\emph on
+
+\begin_inset Formula $(n_{1},...,n_{i},...n_{l})$
+\end_inset
+
+ 
+\emph default
+en que cada
+\emph on
+ 
+\begin_inset Formula $n_{i}$
+\end_inset
+
+ 
+\emph default
+es sucesor de
+\emph on
+ 
+\begin_inset Formula $n_{i-1}$
+\end_inset
+
+ 
+\emph default
+se llama
+\emph on
+ 
+\series bold
+camino
+\series default
+ 
+\emph default
+de longitud l desde el nodo
+\emph on
+ 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ 
+\emph default
+al 
+\emph on
+
+\begin_inset Formula $n_{l}.$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Dos nodos (
+\begin_inset Formula $n_{j},n_{j+m})$
+\end_inset
+
+ situados en un mismo camino son tales que el primero es un 
+\emph on
+ancestro
+\emph default
+ del segundo que, a su vez es un 
+\emph on
+descendiente
+\emph default
+ del primero.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Coste(-) 
+\series default
+- o utilidad(+) - : con frecuencia cada acción - arco 
+\begin_inset Formula $(a,b)-$
+\end_inset
+
+tiene un coste (o utilidad): 
+\begin_inset Formula $c(a,b)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+
+\series bold
+Camino óptimo
+\series default
+ entre dos nodos: el que tiene menor coste (o mayor utilidad).
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename notacion.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Problema de búsqueda.
+\end_layout
+
+\begin_layout Standard
+Muchos problemas prácticos tienen espacios de búsqueda tan grandes que es
+ imposible representarlos mediante grafos explícitos, de modo que hemos
+ de encontrar alguna forma de representar grafos de gran tamaño implícitamente.
+\end_layout
+
+\begin_layout Standard
+Los componentes básicos de un grafo con espacio de estados implícito implica:
+\end_layout
+
+\begin_layout Enumerate
+Una descripción del estado en el nodo de comienzo, plasmada en una estructura
+ de datos.
+\end_layout
+
+\begin_layout Enumerate
+Funciones que transforman la descripción de un estado en otra que describe
+ el estado alcanzado tras una acción.
+ Estas funciones son llamadas 
+\emph on
+operadores 
+\emph default
+y modelizan los efectos de las acciones.
+ Cuando aplicamos un operador a un nodo generamos uno de sus nodos sucesores.
+\end_layout
+
+\begin_layout Enumerate
+Una condición de 
+\emph on
+objetivo 
+\emph default
+que puede ser una función booleana de descripciones de estado o una lista
+ de instancias de descripciones de estado que corresponden a estados objetivo.
 \end_layout
 
 \begin_layout Standard
@@ -766,11 +1421,16 @@ Especificar las
 
 \begin_deeper
 \begin_layout Enumerate
-Reglas para las acciones permitidas;
+Reglas para las acciones permitidas que son descritas por 
+\emph on
+operadores
+\emph default
+.
 \end_layout
 
 \begin_layout Enumerate
-una 
+Dado que desde un nodo pueden alcanzarse en general varios nodos hijos y
+ las acciones tienen un coste, puede definirse una 
 \series bold
 \emph on
 función sucesor
@@ -785,9 +1445,26 @@ con acciones y coste que modela cómo piensa el planificador que
 \emph default
 .
  La función sucesor se encuentra en un estado del espacio de estados y desde
- allí nos dice donde debemos ir inmediatamente, qué acciones realizar a
- tal fin y, en su caso, cuánto costará.
- Dato un estado 
+ allí nos dice
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+donde debemos ir inmediatamente, 
+\end_layout
+
+\begin_layout Enumerate
+qué acciones realizar a tal fin y, en su caso, 
+\end_layout
+
+\begin_layout Enumerate
+cuáles son sus costes.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Por tanto, dato un estado 
 \begin_inset Formula $\mathbf{x}$
 \end_inset
 
@@ -799,8 +1476,12 @@ con acciones y coste que modela cómo piensa el planificador que
 \begin_inset Formula $\mathbf{SUCCESSOR-FN(x)}$
 \end_inset
 
- devuelve un conjunto de pares ordenados 
-\begin_inset Formula $<acción,coste,sucesor>.$
+ devuelve un 
+\emph on
+conjunto de ternas
+\emph default
+ 
+\begin_inset Formula $<\textrm{acción,coste,sucesor}>.$
 \end_inset
 
 
@@ -817,7 +1498,11 @@ definir la
 \emph on
 utilidad 
 \emph default
-como función del coste del camino y
+o el
+\emph on
+ coste 
+\emph default
+como función del camino y
 \end_layout
 
 \begin_layout Enumerate

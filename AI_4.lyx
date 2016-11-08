@@ -164,14 +164,18 @@ Búsqueda de coste uniforme (UCS).
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 Hasta ahora hemos fijado como objetivo minimizar el número de acciones a
  tomar, y BFS es capaz de hallar esta solución.
  Esto es equivalente a asignar el mismo coste (1) a todas las acciones.
  Pero supongamos que cada arco del grafo (acción) tiene un coste diferente
  (Fig.4.0.2).
  Los algoritmos anteriores no son válidos en este caso.
- 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -182,7 +186,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../coste.png
+	filename coste.png
 	scale 60
 
 \end_inset
@@ -223,7 +227,7 @@ Es similar a BFS pero ahora se priorizan las capas de menor coste, de manera
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -290,7 +294,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../unicost.png
+	filename unicost.png
 	scale 50
 
 \end_inset
@@ -340,7 +344,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../fases.png
+	filename fases.png
 	scale 50
 
 \end_inset
@@ -399,7 +403,7 @@ La
 \series bold
 complejidad espacial
 \series default
- será, por las mismas razones, 
+ será, por las mismas razones,
 \begin_inset Formula 
 \[
 {\displaystyle \mathbf{O(b^{{\displaystyle \frac{g*}{\epsilon}}})}}
@@ -498,7 +502,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../uni_ejer.png
+	filename uni_ejer.png
 	scale 50
 
 \end_inset
@@ -538,7 +542,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../resalg.png
+	filename resalg.png
 	scale 50
 
 \end_inset
@@ -572,7 +576,10 @@ Ejemplo
 status collapsed
 
 \begin_layout Plain Layout
-De un artículo de Bill Gates: 
+De un artículo de Bill Gates:
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
 target "https://people.eecs.berkeley.edu/~christos/papers/Bounds%20For%20Sorting%20By%20Prefix%20Reversal.pdf"
@@ -669,7 +676,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../queques.png
+	filename queques.png
 	scale 50
 
 \end_inset
@@ -706,7 +713,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../buscarbol.png
+	filename buscarbol.png
 	scale 50
 
 \end_inset
@@ -827,7 +834,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../4eje1.png
+	filename 4eje1.png
 	scale 50
 
 \end_inset
@@ -866,7 +873,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../arbusca.png
+	filename arbusca.png
 	scale 40
 
 \end_inset
@@ -910,7 +917,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../SAG.png
+	filename SAG.png
 	scale 50
 
 \end_inset
@@ -950,7 +957,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../BFS.png
+	filename BFS.png
 	scale 50
 
 \end_inset
@@ -998,7 +1005,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../tutobusco.png
+	filename tutobusco.png
 	scale 50
 
 \end_inset
@@ -1039,7 +1046,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../metro.png
+	filename metro.png
 	scale 50
 
 \end_inset
@@ -1066,7 +1073,7 @@ El árbol será el siguiente y se seleccionará en primer lugar la ruta señalad
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../metrillo.png
+	filename metrillo.png
 	scale 50
 
 \end_inset

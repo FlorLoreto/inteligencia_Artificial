@@ -165,14 +165,36 @@ Búsqueda primero en profundidad.
 \end_layout
 
 \begin_layout Standard
-En el capítulo anterior seleccionamos nuestro desplazamiento por los nodos
- sin una estrategia clara.
+En el capítulo anterior hemos planteado una búsqueda sin más información
+ sobre el problema que la relativa a las acciones que pueden llevarse a
+ cabo (
+\emph on
+legales
+\emph default
+).
+ este tipo de búsqueda se llama 
+\emph on
+no
+\emph default
+ 
+\emph on
+informada.
+ 
+\emph default
+Además, hemos elegido nuestro desplazamiento por los nodos sin una estrategia
+ clara.
  Parece conveniente explorar las posibilidades que se nos presentan de realizar
  nuestra búsqueda con una estrategia definida.
 \end_layout
 
 \begin_layout Section
-Búsqueda primero en profundidad.
+Búsqueda primero en profundidad (DFS).
+\end_layout
+
+\begin_layout Standard
+Este tipo de búsqueda genera los sucesores de un nodo uno por uno aplicando
+ operadores individuales y se deja una marca en el nodo indicando que es
+ posible que puedan aplicarse otros operadores al mismo nodo.
 \end_layout
 
 \begin_layout Standard
@@ -225,7 +247,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/mineritos.png
+	filename mineritos.png
 	scale 35
 
 \end_inset
@@ -270,7 +292,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/LIFO.png
+	filename LIFO.png
 	scale 50
 
 \end_inset
@@ -334,7 +356,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/ejr1.png
+	filename ejr1.png
 	scale 50
 
 \end_inset
@@ -431,9 +453,6 @@ Sea
 \end_inset
 
  el número de nodos del árbol no uniforme, como en un árbol uniforme:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 T+1=1+b+b^{2}+...+b^{d}
@@ -441,18 +460,11 @@ T+1=1+b+b^{2}+...+b^{d}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 haremos lo mismo con el árbol no uniforme para un factor promedio 
 \begin_inset Formula $b^{*}$
 \end_inset
 
 :
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 T+1=1+b^{*}+(b^{*})^{2}+...+(b^{*})^{d}
@@ -460,10 +472,6 @@ T+1=1+b^{*}+(b^{*})^{2}+...+(b^{*})^{d}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \series bold
 m
@@ -486,7 +494,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/complex.png
+	filename complex.png
 	scale 50
 
 \end_inset
@@ -506,20 +514,13 @@ status open
 
 \begin_layout Standard
 Siendo esto así, el número de nodos en el árbol será:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
-1+b+b^{2}+...+b^{m}=\mathbf{\frac{1-b^{m+1}}{1-b}}=\mathbf{O}\mathbf{(b^{m}})
+1+b+b^{2}+...+b^{m}=\mathbf{\frac{b^{m+1}-1}{b-1}}=\mathbf{O}\mathbf{(b^{m}})
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Por tanto, es exponencial.
 \end_layout
 
@@ -541,7 +542,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/calcul.png
+	filename calcul.png
 	scale 50
 
 \end_inset
@@ -674,6 +675,24 @@ Búsqueda primero en anchura.
 \end_layout
 
 \begin_layout Standard
+En el capítulo anterior hemos realizado una estrategia de búsqueda que generaba
+ un grafo de estados explícito aplicando todos los operadores posibles al
+ nodo raíz después a los nodos sucesores de este y así sucesivamente.
+ La búsqueda avanza uniformemente desde el nodo de comienzo.
+ Este tipo de búsqueda se denomina 
+\emph on
+Búsqueda Primero en Profundidad
+\emph default
+ (BFS).
+\end_layout
+
+\begin_layout Standard
+Cuando se aplica la función sucesor a un nodo, se generan el conjunto completo
+ de nodos que puede producir la aplicación de todos los operadores posibles
+ a dicho nodo de partida.
+\end_layout
+
+\begin_layout Standard
 \noindent
 \align left
 Ahora avanzaremos a lo ancho del árbol, bien de derecha a izquierda, bien
@@ -699,7 +718,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../fifo.png
+	filename fifo.png
 	scale 60
 
 \end_inset
@@ -744,7 +763,7 @@ La respuesta es ahora :
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/solucion.png
+	filename solucion.png
 
 \end_inset
 
@@ -776,7 +795,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../ewncola.png
+	filename ewncola.png
 	scale 55
 
 \end_inset
@@ -829,7 +848,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/complex2.png
+	filename complex2.png
 	scale 50
 
 \end_inset
@@ -887,7 +906,7 @@ Complejidad espacial.
 En este caso puede haber
 \begin_inset Formula 
 \[
-b+b^{2}+...++b^{s}=\frac{b-b^{s+1}}{1-b}=O(b^{s})
+1+b+b^{2}+...++b^{s}=\mathbf{\frac{b^{s+1}-1}{b-1}}=O(b^{s})
 \]
 
 \end_inset
@@ -937,7 +956,7 @@ Si los costos son generales, no es óptimo, pero si los costes son todos
 \end_layout
 
 \begin_layout Section
-Búsqueda con profundidad iterativa.
+Búsqueda en profundidad iterativa.
 \end_layout
 
 \begin_layout Standard
@@ -985,8 +1004,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/profunditer.png
-	scale 50
+	filename profunditer.png
 
 \end_inset
 
@@ -1005,6 +1023,88 @@ status open
 
 \begin_layout Subsection
 Justificación.
+\end_layout
+
+\begin_layout Standard
+Como hemos visto, el número de nodos expandidos en BFS es:
+\begin_inset Formula 
+\[
+N_{BF}=1+b+b^{2}+...++b^{s}=\mathbf{\frac{b^{s+1}-1}{b-1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para el cálculo de los nodos expandidos en búsqueda en profundidad iterativa,
+ notemos que los nodos expandidos por una búsqueda DFS completa hasta el
+ nivel 
+\begin_inset Formula $j$
+\end_inset
+
+ será:
+\begin_inset Formula 
+\[
+N_{DFj}=\mathbf{\frac{b^{j+1}-1}{b-1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el peor de los casos, la búsqueda en profundidad iterativa cuando hay
+ un objetivo a la profundidad 
+\begin_inset Formula $d$
+\end_inset
+
+ debe ejecutar búsquedas DFS completas para profundidades hasta 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ La suma de los nodos expandidos para todas estas búsquedas es:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+{\displaystyle N_{ID}={\displaystyle \sum_{j=0}^{d}}\frac{b^{j+1}-1}{b-1}=\frac{1}{b-1}{\displaystyle \sum_{j=1}^{d}}(b^{j+1}-1)=}\\
+{\displaystyle \frac{1}{b-1}[b\left(\frac{b^{j+1}-1}{b-1}\right)-(d+1)]}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y para 
+\begin_inset Formula $d$
+\end_inset
+
+ grande tendremos que 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+lim\\
+d\rightarrow\infty
+\end{array}N_{ID}/N_{BF}=\frac{b}{b-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+que para 
+\begin_inset Formula $b=10$
+\end_inset
+
+, significa que expandimos un 11% más nodos que en BFS.
 \end_layout
 
 \begin_layout Standard

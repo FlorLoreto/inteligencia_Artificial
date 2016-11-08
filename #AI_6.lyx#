@@ -271,6 +271,121 @@ alcanza su objetivo
 \end_layout
 
 \begin_layout Section
+Juegos con dos agentes.
+\end_layout
+
+\begin_layout Standard
+Supongamos que sobre un tablero cuadriculado existen dos robots 
+\begin_inset Formula $Black$
+\end_inset
+
+ y 
+\begin_inset Formula $White$
+\end_inset
+
+ que pueden moverse a las casillas adyacentes a su posición actual.
+ Los agentes se mueven alternativamente con 
+\begin_inset Formula $White$
+\end_inset
+
+ el primero.
+ El objetivo de 
+\emph on
+White
+\emph default
+ es situarse en la misma casilla que
+\emph on
+ Black 
+\emph default
+y el de 
+\emph on
+Black 
+\emph default
+es evitarlo
+\emph on
+.
+ White
+\emph default
+ 
+\end_layout
+
+\begin_layout Enumerate
+hace un movimiento,
+\end_layout
+
+\begin_layout Enumerate
+observa el movique hace
+\emph on
+ Black
+\end_layout
+
+\begin_layout Standard
+White planea sus acciones construyendo un árbol de movimientos posibles
+ como el de la figura (parcial):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename B&W.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para elegir su primer movimiento, 
+\emph on
+White
+\emph default
+ analiza el árbol teniendo en cuenta que 
+\emph on
+Black 
+\emph default
+actuará para evitar que 
+\emph on
+White
+\emph default
+ alcance su objetivo.
+\end_layout
+
+\begin_layout Standard
+En algunas situaciones como esta es posible que el agente encuentre un movimient
+o que le permita alcanzar su on¡bjetivo con independencia de lo que el otro
+ haga en cualquiera de sus movimientos.
+ Lo más común, sin embargo, es que ningún agente sea capaz de alcanzar su
+ objetivo.
+\end_layout
+
+\begin_layout Section
 Tipos de juegos.
 \end_layout
 
@@ -333,7 +448,7 @@ ión (ej.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -344,7 +459,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../sumacero.png
+	filename sumacero.png
 	scale 65
 
 \end_inset
@@ -850,8 +965,10 @@ El
 
 \begin_deeper
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Graphics
-	filename ../juego.png
+	filename juego.png
 	scale 50
 
 \end_inset
@@ -891,7 +1008,7 @@ de la búsqueda, en lugar de reducir los costes.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -902,7 +1019,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../noujoc.png
+	filename noujoc.png
 	scale 50
 
 \end_inset
@@ -1005,7 +1122,7 @@ quieren que pase
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1016,7 +1133,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../contro.png
+	filename contro.png
 	scale 70
 
 \end_inset
@@ -1444,7 +1561,7 @@ A este tipo de juegos es aplicable el método Minimax.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1455,7 +1572,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../tic-tac.png
+	filename tic-tac.png
 	scale 60
 
 \end_inset
@@ -1584,7 +1701,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../minimax.png
+	filename minimax.png
 	scale 70
 
 \end_inset
@@ -1627,7 +1744,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../algomax.png
+	filename algomax.png
 	scale 70
 
 \end_inset
@@ -1665,7 +1782,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../minimejem.png
+	filename minimejem.png
 	scale 50
 
 \end_inset
@@ -2227,7 +2344,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../maximin.png
+	filename maximin.png
 	scale 50
 
 \end_inset
@@ -2354,7 +2471,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../maxejemplo.png
+	filename maxejemplo.png
 	scale 50
 
 \end_inset
@@ -3560,7 +3677,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../pruntot.png
+	filename pruntot.png
 	scale 50
 
 \end_inset
@@ -3615,7 +3732,7 @@ os con anterioridad.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -3626,7 +3743,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../paso.png
+	filename paso.png
 	scale 50
 
 \end_inset

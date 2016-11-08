@@ -271,6 +271,129 @@ alcanza su objetivo
 \end_layout
 
 \begin_layout Section
+Juegos con dos agentes.
+\end_layout
+
+\begin_layout Standard
+Supongamos que sobre un tablero cuadriculado existen dos robots 
+\begin_inset Formula $Black$
+\end_inset
+
+ y 
+\begin_inset Formula $White$
+\end_inset
+
+ que pueden moverse a las casillas adyacentes a su posición actual.
+ Los agentes se mueven alternativamente con 
+\begin_inset Formula $White$
+\end_inset
+
+ el primero.
+ El objetivo de 
+\emph on
+White
+\emph default
+ es situarse en la misma casilla que
+\emph on
+ Black 
+\emph default
+y el de 
+\emph on
+Black 
+\emph default
+es evitarlo
+\emph on
+.
+ White
+\emph default
+ 
+\end_layout
+
+\begin_layout Enumerate
+hace un movimiento,
+\end_layout
+
+\begin_layout Enumerate
+observa el movimiento que hace
+\emph on
+ Black y
+\end_layout
+
+\begin_layout Enumerate
+repite el proceso de planeación
+\end_layout
+
+\begin_layout Standard
+En un ciclo observa/planea/actúa.
+\end_layout
+
+\begin_layout Standard
+White planea sus acciones construyendo un árbol de movimientos posibles
+ como el de la figura (parcial):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename B&W.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para elegir su primer movimiento, 
+\emph on
+White
+\emph default
+ analiza el árbol teniendo en cuenta que 
+\emph on
+Black 
+\emph default
+actuará para evitar que 
+\emph on
+White
+\emph default
+ alcance su objetivo.
+\end_layout
+
+\begin_layout Standard
+En algunas situaciones como esta es posible que el agente encuentre un movimient
+o que le permita alcanzar su objetivo con independencia de lo que el otro
+ haga en cualquiera de sus movimientos.
+ Lo más común, sin embargo, es que ningún agente sea capaz de alcanzar su
+ objetivo.
+\end_layout
+
+\begin_layout Section
 Tipos de juegos.
 \end_layout
 
@@ -405,6 +528,22 @@ Tiempo ilimitado / limitado (ej.
 Movimientos ilimitados / limitados (ej.
  ajedrez con máximo de 40 movimientos).
  
+\end_layout
+
+\begin_layout Standard
+El juego de los dos robots en el tablero es un juego con 
+\emph on
+dos agentes
+\emph default
+, 
+\emph on
+información perfecta
+\emph default
+ y 
+\emph on
+suma cero
+\emph default
+.
 \end_layout
 
 \begin_layout Section
@@ -2882,7 +3021,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename podalfa.png
-	scale 70
+	scale 60
 
 \end_inset
 

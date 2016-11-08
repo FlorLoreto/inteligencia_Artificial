@@ -271,6 +271,129 @@ alcanza su objetivo
 \end_layout
 
 \begin_layout Section
+Juegos con dos agentes.
+\end_layout
+
+\begin_layout Standard
+Supongamos que sobre un tablero cuadriculado existen dos robots 
+\begin_inset Formula $Black$
+\end_inset
+
+ y 
+\begin_inset Formula $White$
+\end_inset
+
+ que pueden moverse a las casillas adyacentes a su posición actual.
+ Los agentes se mueven alternativamente con 
+\begin_inset Formula $White$
+\end_inset
+
+ el primero.
+ El objetivo de 
+\emph on
+White
+\emph default
+ es situarse en la misma casilla que
+\emph on
+ Black 
+\emph default
+y el de 
+\emph on
+Black 
+\emph default
+es evitarlo
+\emph on
+.
+ White
+\emph default
+ 
+\end_layout
+
+\begin_layout Enumerate
+hace un movimiento,
+\end_layout
+
+\begin_layout Enumerate
+observa el movimiento que hace
+\emph on
+ Black y
+\end_layout
+
+\begin_layout Enumerate
+repite el proceso de planeación
+\end_layout
+
+\begin_layout Standard
+En un ciclo observa/planea/actúa.
+\end_layout
+
+\begin_layout Standard
+White planea sus acciones construyendo un árbol de movimientos posibles
+ como el de la figura (parcial):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename B&W.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para elegir su primer movimiento, 
+\emph on
+White
+\emph default
+ analiza el árbol teniendo en cuenta que 
+\emph on
+Black 
+\emph default
+actuará para evitar que 
+\emph on
+White
+\emph default
+ alcance su objetivo.
+\end_layout
+
+\begin_layout Standard
+En algunas situaciones como esta es posible que el agente encuentre un movimient
+o que le permita alcanzar su objetivo con independencia de lo que el otro
+ haga en cualquiera de sus movimientos.
+ Lo más común, sin embargo, es que ningún agente sea capaz de alcanzar su
+ objetivo.
+\end_layout
+
+\begin_layout Section
 Tipos de juegos.
 \end_layout
 
@@ -333,7 +456,7 @@ ión (ej.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -344,7 +467,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../sumacero.png
+	filename sumacero.png
 	scale 65
 
 \end_inset
@@ -405,6 +528,22 @@ Tiempo ilimitado / limitado (ej.
 Movimientos ilimitados / limitados (ej.
  ajedrez con máximo de 40 movimientos).
  
+\end_layout
+
+\begin_layout Standard
+El juego de los dos robots en el tablero es un juego con 
+\emph on
+dos agentes
+\emph default
+, 
+\emph on
+información perfecta
+\emph default
+ y 
+\emph on
+suma cero
+\emph default
+.
 \end_layout
 
 \begin_layout Section
@@ -850,8 +989,10 @@ El
 
 \begin_deeper
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Graphics
-	filename ../juego.png
+	filename juego.png
 	scale 50
 
 \end_inset
@@ -891,7 +1032,7 @@ de la búsqueda, en lugar de reducir los costes.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -902,7 +1043,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../noujoc.png
+	filename noujoc.png
 	scale 50
 
 \end_inset
@@ -1005,7 +1146,7 @@ quieren que pase
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1016,7 +1157,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../contro.png
+	filename contro.png
 	scale 70
 
 \end_inset
@@ -1444,7 +1585,7 @@ A este tipo de juegos es aplicable el método Minimax.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1455,7 +1596,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../tic-tac.png
+	filename tic-tac.png
 	scale 60
 
 \end_inset
@@ -1569,12 +1710,11 @@ La idea básica es elegir el movimiento con el máximo valor del minimax:
  la mayor ganancia posible frente al mejor juego adversario.
  Se eligen movimientos que conduzcan a la victoria aunque MIN trate de bloquearl
 os.
-\begin_inset Graphics
-	filename ../minimax.png
+\end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1585,7 +1725,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../minimax.png
+	filename minimax.png
 	scale 70
 
 \end_inset
@@ -1605,7 +1745,7 @@ status open
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 El algoritmo minimax es recursivo, corre de abajo arriba y propaga el árbol
  hacia el nodo raíz y calcularemos el mínimo de los hijos en un nodo min
  y su máximo en los nodos max.
@@ -1628,7 +1768,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../algomax.png
+	filename algomax.png
 	scale 70
 
 \end_inset
@@ -1651,6 +1791,11 @@ status open
 \noindent
 \align left
 Apliquemos el algoritmo al problema expuesto en la sección 3:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1661,7 +1806,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../minimejem.png
+	filename minimejem.png
 	scale 50
 
 \end_inset
@@ -2211,6 +2356,8 @@ y si MIN comenzara el juego, optaría por la estrategia A.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2221,7 +2368,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../maximin.png
+	filename maximin.png
 	scale 50
 
 \end_inset
@@ -2331,7 +2478,13 @@ En el caso siguiente:
 \noindent
 \align left
 2.
- ¿Qué acción tomará MAX según la estrategia minimax? Respuesta: Izquierda.
+ ¿Qué acción tomará MAX según la estrategia minimax? Respuesta: Izquierda
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+.
 \begin_inset Float figure
 wide false
 sideways false
@@ -2342,7 +2495,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../maxejemplo.png
+	filename maxejemplo.png
 	scale 50
 
 \end_inset
@@ -2540,12 +2693,7 @@ Eval(n)=w_{1}f_{1}(n)+w_{2}f_{2}(n)+...+w_{n}f_{n}(n)
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 donde p.e.
- 
 \begin_inset Formula 
 \[
 \begin{array}{c}
@@ -2556,11 +2704,7 @@ f_{2}(n)=\textrm{(nº de caballos blancos-nº de caballos negros)}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-En general pueden combinarse como 
+En general pueden combinarse como
 \begin_inset Formula 
 \begin{equation}
 Eval(n)=F[f_{1}(n),...,f_{n}(n)]
@@ -2568,10 +2712,6 @@ Eval(n)=F[f_{1}(n),...,f_{n}(n)]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Aquellas características consideradas más importantes, reciben un peso mayor
  medido por 
 \begin_inset Formula $w_{i}$
@@ -2582,12 +2722,11 @@ Aquellas características consideradas más importantes, reciben un peso mayor
 
 \end_deeper
 \begin_layout Standard
+\noindent
+\align left
 Si nos fijamos en tres en raya, una característica que favorece al jugador
  es la diferencia entre el número de filas, columnas y diagonales disponibles
  para cada jugador, es decir:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 Eval(n)=P_{MAX}(n)-P_{Min}(n)
@@ -2595,12 +2734,6 @@ Eval(n)=P_{MAX}(n)-P_{Min}(n)
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
 En la Fig.
  1.5.1.
  podemos ver algunos valores de esta función de evaluación para algunos
@@ -2615,7 +2748,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../eval3.png
+	filename eval3.png
 	scale 50
 
 \end_inset
@@ -2657,8 +2790,10 @@ Ejercicio
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Graphics
-	filename ../eval_ej.png
+	filename eval_ej.png
 	scale 50
 
 \end_inset
@@ -2741,6 +2876,11 @@ En la Fig.
 todos
 \emph default
  los nodos en el orden señalado.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2751,7 +2891,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../poda.png
+	filename poda.png
 	scale 50
 
 \end_inset
@@ -2826,7 +2966,7 @@ podarse
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2837,7 +2977,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../poda2.png
+	filename poda2.png
 	scale 50
 
 \end_inset
@@ -2869,7 +3009,7 @@ La Fig.1.6.3.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2880,7 +3020,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../podalfa.png
+	filename podalfa.png
 	scale 70
 
 \end_inset
@@ -3128,7 +3268,7 @@ podamos
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../desigua.png
+	filename desigua.png
 	scale 50
 
 \end_inset
@@ -3150,7 +3290,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../algopoda.png
+	filename algopoda.png
 	scale 50
 
 \end_inset
@@ -3216,6 +3356,8 @@ cualquier valor de
 
 \begin_deeper
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -3226,7 +3368,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../SIESTRA.png
+	filename SIESTRA.png
 	scale 50
 
 \end_inset
@@ -3306,7 +3448,7 @@ La figura siguiente muestra paso a paso la aplicación de la poda alfa-beta.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 Puesto que partimos sin haber explorado nada y la raíz es MAX(imizador),
  inicializamos 
 \series bold
@@ -3421,11 +3563,6 @@ B
  .
  Antes de seguir , el nodo MIN(imizer) decide si explora más sucesores.
  Para ello comprueba la siguiente condición:
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
 \begin_inset Formula 
 \[
 \textrm{¿Es}(V(B)=10<\alpha=-\infty)?\Rightarrow\begin{array}{c}
@@ -3482,9 +3619,6 @@ y
  la búsqueda.
  Para ello MAX compara su valor actual con la mejor opción disponible a
  lo largo del árbol desde la raíz, esto es:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 \textrm{¿Es}(V(A)=8>\beta=\infty)?\Rightarrow\begin{array}{c}
@@ -3495,12 +3629,6 @@ No\Rightarrow Continuar
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
 Por tanto, continuamos hasta 
 \series bold
 \emph on
@@ -3563,11 +3691,6 @@ C
 \end_inset
 
  
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -3578,7 +3701,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../pruntot.png
+	filename pruntot.png
 	scale 50
 
 \end_inset
@@ -3633,7 +3756,7 @@ os con anterioridad.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -3644,7 +3767,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../paso.png
+	filename paso.png
 	scale 50
 
 \end_inset
