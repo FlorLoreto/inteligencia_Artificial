@@ -492,6 +492,8 @@ de los dos casos siguientes:
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -503,7 +505,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../pacman2.png
-	scale 50
+	scale 66
 
 \end_inset
 
@@ -527,6 +529,8 @@ El de la izquierda podría ser resuelto de una manera racional, pero no así
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -538,7 +542,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../stoppac.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -876,7 +880,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../Romania.png
-	scale 50
+	scale 55
 
 \end_inset
 
@@ -1057,6 +1061,8 @@ El motivo por el que no es operativo utilizar el estado del mundo es fácil
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1067,7 +1073,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/PacmAN_real.png
+	filename PacmAN_real.png
 	scale 50
 
 \end_inset
@@ -1095,9 +1101,6 @@ Por tanto el
 número de estados de búsqueda 
 \emph default
 es en este caso:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 120\times4\times12^{2}\times2^{30}=7.4217\cdot10^{17}
@@ -1106,17 +1109,10 @@ es en este caso:
 \end_inset
 
 
-\end_layout
-
-\begin_layout Itemize
-
 \emph on
 número de estados para formar parte de un camino
 \emph default
 :
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 120
@@ -1124,18 +1120,11 @@ número de estados para formar parte de un camino
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
 número de 
 \emph on
 estados de los puntos
 \emph default
  indicando si han sido comidos o no (booleano):
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 120\cdot2^{30}=1.28849\cdot10^{11}
@@ -1143,10 +1132,6 @@ estados de los puntos
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Una de las maneras de enfrentar el problema sería mediante la 
 \emph on
 búsqueda por fuerza bruta
@@ -1247,7 +1232,7 @@ P.e.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 El mapa de carreteras de Rumanía puede interpretarse como un grafo del espacio
  de búsqueda si vemos cada carretera como dos direcciones de viaje.
  Un 
@@ -1269,7 +1254,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/grafo_arbol.png
+	filename grafo_arbol.png
 	scale 50
 
 \end_inset
@@ -1295,7 +1280,13 @@ Solo en muy raras ocasiones podemos construir el grafo completo en memoria,
 \begin_layout Standard
 \noindent
 \align left
-Ejemplo: sea el siguiente grafo del espacio de estados:
+Ejemplo: sea el siguiente grafo del espacio de estados
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+:
 \begin_inset Float figure
 wide false
 sideways false
@@ -1306,7 +1297,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/graph_ejemplo.png
+	filename graph_ejemplo.png
 	scale 50
 
 \end_inset
@@ -1368,6 +1359,11 @@ estado actual
 3
 \series default
 ).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1378,7 +1374,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/arbolote.png
+	filename arbolote.png
 	scale 50
 
 \end_inset
@@ -1626,6 +1622,8 @@ PROFUNDIDAD: número de pasos a lo largo del camino desde el estado inicial.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1636,7 +1634,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/nodo.png
+	filename nodo.png
 	scale 50
 
 \end_inset
@@ -1680,6 +1678,8 @@ Ejemplo
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1690,7 +1690,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/bucle.png
+	filename bucle.png
 	scale 50
 	rotateOrigin leftTop
 
@@ -1750,7 +1750,7 @@ Partamos del problema representado por la figura 2.3.1.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1761,7 +1761,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/arad.png
+	filename ARad.png
 	scale 50
 
 \end_inset
@@ -1852,6 +1852,8 @@ nodos hoja
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1862,7 +1864,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/ARAD2.png
+	filename ARAD2.png
 	scale 50
 
 \end_inset
@@ -1927,6 +1929,8 @@ Ahora necesitamos elegir uno de estos tres planes y expandirlo ya que no
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1937,7 +1941,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/arad3.png
+	filename arad3.png
 	scale 50
 	rotateOrigin leftTop
 
@@ -1974,6 +1978,8 @@ Este es el algoritmo que puede escribirse en pseudocódigo como:
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1984,7 +1990,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/ALGOSEARCH.png
+	filename ALGOSEARCH.png
 	scale 50
 
 \end_inset

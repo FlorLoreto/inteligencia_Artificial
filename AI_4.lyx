@@ -164,7 +164,7 @@ Búsqueda de coste uniforme (UCS).
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 Hasta ahora hemos fijado como objetivo minimizar el número de acciones a
  tomar, y BFS es capaz de hallar esta solución.
  Esto es equivalente a asignar el mismo coste (1) a todas las acciones.
@@ -183,7 +183,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../coste.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -215,6 +215,8 @@ Búsqueda de coste uniforme.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 Es similar a BFS pero ahora se priorizan las capas de menor coste, de manera
  que ahora se ejecutan primero las acciones más baratas aun cuando haya
  múltiples pasos en el árbol.
@@ -276,6 +278,8 @@ Se ve que nos movemos desde el nodo raíz hacia abajo de un modo un tanto
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -321,6 +325,11 @@ Sabemos que expandimos primero los nodos de menor coste, sea este
 
 .
  y así hasta el nodo que nos de la solución de menor coste.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -359,7 +368,6 @@ Si la solución tiene un coste
 \end_inset
 
  - es decir, el coste mínimo de cada acción - la profundidad efectiva será
- 
 \series bold
 
 \begin_inset Formula 
@@ -370,9 +378,7 @@ Si la solución tiene un coste
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
+\series default
 A partir de aquí, podemos decir que la 
 \series bold
 complejidad temporal
@@ -381,7 +387,7 @@ complejidad temporal
 \emph on
 como en la BFS
 \emph default
-, será exponencial en la profundidad efectiva: 
+, será exponencial en la profundidad efectiva:
 \begin_inset Formula 
 \[
 {\displaystyle \mathbf{O(b^{{\displaystyle \frac{g*}{\epsilon}}})}}
@@ -389,18 +395,11 @@ como en la BFS
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 La 
 \series bold
 complejidad espacial
 \series default
  será, por las mismas razones, 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 {\displaystyle \mathbf{O(b^{{\displaystyle \frac{g*}{\epsilon}}})}}
@@ -408,10 +407,6 @@ complejidad espacial
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \series bold
 Completitud
@@ -488,6 +483,11 @@ es que sean baratas sin importarle si ayudan a avanzar hacia el objetivo
 Ejercicio: 
 \series default
 Hallar la solución del grafo siguiente con el método UCS.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -526,6 +526,8 @@ La tabla siguiente resume las características de cada algoritmo visto hasta
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -652,6 +654,11 @@ El número de tortitas volteadas, que nos parece más adecuado.
 \noindent
 \align left
 Veamos el espacio de estados de este problema:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -683,7 +690,12 @@ status open
 \begin_layout Standard
 \noindent
 \align left
-Utilizaremos el algoritmo de búsqueda ya conocido: 
+Utilizaremos el algoritmo de búsqueda ya conocido:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -804,7 +816,7 @@ Ejercicios.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -841,6 +853,7 @@ Solución: dibujemos el árbol de búsqueda, vemos que son 7 nodos.
 
 \begin_layout Standard
 \noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -886,7 +899,7 @@ status open
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -922,6 +935,11 @@ status open
  Considerar el grafo para BFS de la figura 4.5.4.
  Con las mismas indicaciones que el problema anterior, hallar el camino
  final devuelto por BFS.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1006,6 +1024,11 @@ status open
  en las estaciones marcadas puede hacerse transbordo de una línea a otra
  de las que en ella confluyen en el sentido marcado por las flechas.
  Encontrar una ruta Aeropuerto T4-Pitis con el menor número de transbordos.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false

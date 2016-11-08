@@ -818,6 +818,8 @@ Pac-Man puede utilizarse como un ejemplo de agente.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -962,6 +964,8 @@ status open
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -972,7 +976,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/functpng.png
+	filename functpng.png
 	scale 50
 
 \end_inset
@@ -1128,6 +1132,8 @@ status open
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false

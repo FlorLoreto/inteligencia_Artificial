@@ -213,6 +213,8 @@ búsqueda en anchura
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -256,6 +258,8 @@ completo
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -318,6 +322,8 @@ Ejemplo
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -425,9 +431,6 @@ Sea
 \end_inset
 
  el número de nodos del árbol no uniforme, como en un árbol uniforme:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 T+1=1+b+b^{2}+...+b^{d}
@@ -435,18 +438,11 @@ T+1=1+b+b^{2}+...+b^{d}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 haremos lo mismo con el árbol no uniforme para un factor promedio 
 \begin_inset Formula $b^{*}$
 \end_inset
 
 :
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 T+1=1+b^{*}+(b^{*})^{2}+...+(b^{*})^{d}
@@ -454,10 +450,6 @@ T+1=1+b^{*}+(b^{*})^{2}+...+(b^{*})^{d}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \series bold
 m
@@ -468,6 +460,8 @@ m
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -498,9 +492,6 @@ status open
 
 \begin_layout Standard
 Siendo esto así, el número de nodos en el árbol será:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 1+b+b^{2}+...+b^{m}=\mathbf{\frac{1-b^{m+1}}{1-b}}=\mathbf{O}\mathbf{(b^{m}})
@@ -508,10 +499,6 @@ Siendo esto así, el número de nodos en el árbol será:
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Por tanto, es exponencial.
 \end_layout
 
@@ -521,6 +508,8 @@ Aplicado al problema de la Fig.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -804,6 +793,11 @@ Es claro que el algoritmo BFS procesa todos los nodos por encima de la solución
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -869,7 +863,7 @@ Complejidad espacial.
 \end_layout
 
 \begin_layout Standard
-En este caso puede haber 
+En este caso puede haber
 \begin_inset Formula 
 \[
 b+b^{2}+...++b^{s}=\frac{b-b^{s+1}}{1-b}=O(b^{s})
@@ -877,10 +871,6 @@ b+b^{2}+...++b^{s}=\frac{b-b^{s+1}}{1-b}=O(b^{s})
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Para analizar el tamaño de la frontera, preguntémonos ¿qué había en la frontera
  cuando alcanzamos la solución?.
  Es claro que si el nivel en que hallamos la solución es 
@@ -959,6 +949,11 @@ se hace una búsqueda en profundidad hasta profundidad 3 ....
 \noindent
 \align left
 y así sucesivamente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false

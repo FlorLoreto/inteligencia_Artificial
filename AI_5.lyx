@@ -286,6 +286,8 @@ distancia de Manhattan.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -330,6 +332,11 @@ Volviendo a nuestro problema de Rumanía, podemos utilizar como heurística
  lo esperable de una heurística: el valor numérico es nulo en el objetivo.
  Asimismo puede verse que cuanto más cerca estamos del objetivo, menor es
  la distancia en línea recta.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -452,6 +459,11 @@ Al contrario que en UCS, aquí
 las heurísticas no se suman
 \emph default
  y siempre nos encaminamos al estado que parece estar más próximo al objetivo.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -753,7 +765,7 @@ Fijémonos en el caso expuesto en la Fig.5.3.1.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -828,6 +840,8 @@ en la figura siguiente:
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -907,6 +921,11 @@ y
  
 \emph default
 Complete los valores indicados en la figura.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -974,6 +993,8 @@ Si nos fijamos en la figura 5.4.1.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1140,6 +1161,8 @@ Demostraremos que cualquier subcamino
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1271,10 +1294,6 @@ admisible
 \end_inset
 
  
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 f(n)=g(n)+h(n)\leq g*(n)+h*(n)=C*\Rightarrow f(n)\leq C*
@@ -1286,12 +1305,8 @@ f(n)=g(n)+h(n)\leq g*(n)+h*(n)=C*\Rightarrow f(n)\leq C*
 \end_layout
 
 \end_deeper
-\end_deeper
 \begin_layout Standard
 Sumando (5.4.1) + (5.4.2): tenemos:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 f(n)\leq C*<f(G2)
@@ -1299,10 +1314,6 @@ f(n)\leq C*<f(G2)
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 y se explora n antes que 
 \begin_inset Formula $G_{2}$
 \end_inset
@@ -1326,6 +1337,11 @@ Si lo comparamos con UCS encontraremos algunas similitudes.
 Por su parte A* profundizará más cerca de los objetivos y buscará más superficia
 lmente lejos de estos.
  Pero siendo la heurística imperfecta en la cúspide buscará extensivamente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1388,6 +1404,8 @@ Ejercicio
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1490,6 +1508,11 @@ Aun cuando los 9 cuadrados pueden colocarse en 9! posiciones diferentes,
 
  donde se trata de llegar desde la posición inicial - vacío en el centro
  - a la final - vacío en la esquina NE.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1574,6 +1597,11 @@ problema relajado
  que puede resolverse en 8 pasos.
  Concretamente el problema relajado consiste en partir de un marco vacío
  y 8 cuadrados y situarlos en la posición del estado objetivo.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1726,7 +1754,7 @@ b*
  = factor de ramificación de un árbol uniforme de profundidad d, donde N
  = # nodos que se necesitan expandir para llegar a la solución óptima.
  Por la ec.
- (3.1.1.) tendremos que 
+ (3.1.1.) tendremos que
 \begin_inset Formula 
 \[
 b*+b*^{2}+..+b*^{d}=b*\frac{(b*)^{d}-1}{b*-1}={\textstyle N}
@@ -1734,10 +1762,6 @@ b*+b*^{2}+..+b*^{d}=b*\frac{(b*)^{d}-1}{b*-1}={\textstyle N}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Ejemplo: d=5, N=52 .
  
 \begin_inset Formula $\rightarrow b*=$
@@ -1774,12 +1798,6 @@ s.
 \end_inset
 
  cuando
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Formula 
 \begin{equation}
 \forall n,\:h_{a}(n)\geq h_{b}(n)
@@ -1790,7 +1808,6 @@ s.
 
 \end_layout
 
-\end_deeper
 \begin_layout Enumerate
 Si usamos búsqueda
 \begin_inset Formula $A*$
@@ -1877,6 +1894,11 @@ Hasta este punto hemos ignorado una de las complicaciones más importantes
 \align left
 Para algunos problemas la repetición es inevitable como en el siguiente
  ejemplo:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1942,7 +1964,7 @@ Para la búsqueda
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2129,7 +2151,7 @@ El gráfico muestra un caso en que la búsqueda en grafos no funciona a pesar
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2232,7 +2254,7 @@ coste(A,C)=\mathbf{h(A)-h(C)}\mathbf{\leq c(A,C)}
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2258,6 +2280,12 @@ status open
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 Podemos ver que en la Fig.5.9.1.
  la heurística es inconsistente ya que 
 \begin_inset Formula $h(A)=4$
@@ -2492,7 +2520,7 @@ El carácter monótono de
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2550,7 +2578,7 @@ En heurísticas mejores estas curvas forman bandas que se extienden hacia
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2658,6 +2686,8 @@ Ejercicios.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false

@@ -333,7 +333,7 @@ ión (ej.
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -344,7 +344,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename sumacero.png
+	filename ../sumacero.png
 	scale 65
 
 \end_inset
@@ -850,10 +850,8 @@ El
 
 \begin_deeper
 \begin_layout Standard
-\noindent
-\align center
 \begin_inset Graphics
-	filename juego.png
+	filename ../juego.png
 	scale 50
 
 \end_inset
@@ -893,7 +891,7 @@ de la búsqueda, en lugar de reducir los costes.
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -904,7 +902,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename noujoc.png
+	filename ../noujoc.png
 	scale 50
 
 \end_inset
@@ -1007,7 +1005,7 @@ quieren que pase
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -1018,7 +1016,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename contro.png
+	filename ../contro.png
 	scale 70
 
 \end_inset
@@ -1446,7 +1444,7 @@ A este tipo de juegos es aplicable el método Minimax.
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -1457,7 +1455,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename tic-tac.png
+	filename ../tic-tac.png
 	scale 60
 
 \end_inset
@@ -1586,7 +1584,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename minimax.png
+	filename ../minimax.png
 	scale 70
 
 \end_inset
@@ -1629,7 +1627,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename algomax.png
+	filename ../algomax.png
 	scale 70
 
 \end_inset
@@ -1667,7 +1665,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename minimejem.png
+	filename ../minimejem.png
 	scale 50
 
 \end_inset
@@ -2229,7 +2227,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename maximin.png
+	filename ../maximin.png
 	scale 50
 
 \end_inset
@@ -2356,7 +2354,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename maxejemplo.png
+	filename ../maxejemplo.png
 	scale 50
 
 \end_inset
@@ -3562,7 +3560,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename pruntot.png
+	filename ../pruntot.png
 	scale 50
 
 \end_inset
@@ -3617,7 +3615,7 @@ os con anterioridad.
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -3628,7 +3626,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename paso.png
+	filename ../paso.png
 	scale 50
 
 \end_inset

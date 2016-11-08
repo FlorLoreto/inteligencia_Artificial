@@ -1,9 +1,7 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -76,16 +74,16 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100 100
-\font_tt_scale 100 100
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -166,7 +164,7 @@ Búsqueda de coste uniforme (UCS).
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 Hasta ahora hemos fijado como objetivo minimizar el número de acciones a
  tomar, y BFS es capaz de hallar esta solución.
  Esto es equivalente a asignar el mismo coste (1) a todas las acciones.
@@ -184,7 +182,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename coste.png
+	filename ../coste.png
 	scale 50
 
 \end_inset
@@ -217,6 +215,8 @@ Búsqueda de coste uniforme.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 Es similar a BFS pero ahora se priorizan las capas de menor coste, de manera
  que ahora se ejecutan primero las acciones más baratas aun cuando haya
  múltiples pasos en el árbol.
@@ -230,7 +230,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename costcumul.png
+	filename ../costcumul.png
 	scale 50
 
 \end_inset
@@ -278,6 +278,8 @@ Se ve que nos movemos desde el nodo raíz hacia abajo de un modo un tanto
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -288,7 +290,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename unicost.png
+	filename ../unicost.png
 	scale 50
 
 \end_inset
@@ -323,6 +325,11 @@ Sabemos que expandimos primero los nodos de menor coste, sea este
 
 .
  y así hasta el nodo que nos de la solución de menor coste.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -333,7 +340,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename fases.png
+	filename ../fases.png
 	scale 50
 
 \end_inset
@@ -361,7 +368,6 @@ Si la solución tiene un coste
 \end_inset
 
  - es decir, el coste mínimo de cada acción - la profundidad efectiva será
- 
 \series bold
 
 \begin_inset Formula 
@@ -381,7 +387,7 @@ complejidad temporal
 \emph on
 como en la BFS
 \emph default
-, será exponencial en la profundidad efectiva: 
+, será exponencial en la profundidad efectiva:
 \begin_inset Formula 
 \[
 {\displaystyle \mathbf{O(b^{{\displaystyle \frac{g*}{\epsilon}}})}}
@@ -466,10 +472,6 @@ Esto significa que, partiendo del estado inicial, examina cualesquiera direccion
 es que sean baratas sin importarle si ayudan a avanzar hacia el objetivo
  o se aleja de él.
  pero esto puede corregirse, como veremos.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -481,6 +483,11 @@ es que sean baratas sin importarle si ayudan a avanzar hacia el objetivo
 Ejercicio: 
 \series default
 Hallar la solución del grafo siguiente con el método UCS.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -491,7 +498,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename uni_ejer.png
+	filename ../uni_ejer.png
 	scale 50
 
 \end_inset
@@ -516,6 +523,11 @@ Resumen de algoritmos de búsqueda desinformada.
 \begin_layout Standard
 La tabla siguiente resume las características de cada algoritmo visto hasta
  ahora:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -526,7 +538,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename resalg.png
+	filename ../resalg.png
 	scale 50
 
 \end_inset
@@ -557,7 +569,7 @@ Ejemplo
 \series default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 De un artículo de Bill Gates: 
@@ -642,6 +654,11 @@ El número de tortitas volteadas, que nos parece más adecuado.
 \noindent
 \align left
 Veamos el espacio de estados de este problema:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -652,7 +669,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename queques.png
+	filename ../queques.png
 	scale 50
 
 \end_inset
@@ -673,7 +690,12 @@ status open
 \begin_layout Standard
 \noindent
 \align left
-Utilizaremos el algoritmo de búsqueda ya conocido: 
+Utilizaremos el algoritmo de búsqueda ya conocido:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -684,7 +706,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename buscarbol.png
+	filename ../buscarbol.png
 	scale 50
 
 \end_inset
@@ -794,7 +816,7 @@ Ejercicios.
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -805,7 +827,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename 4eje1.png
+	filename ../4eje1.png
 	scale 50
 
 \end_inset
@@ -831,6 +853,7 @@ Solución: dibujemos el árbol de búsqueda, vemos que son 7 nodos.
 
 \begin_layout Standard
 \noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -843,7 +866,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename arbusca.png
+	filename ../arbusca.png
 	scale 40
 
 \end_inset
@@ -871,15 +894,12 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
 
 \end_layout
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -890,7 +910,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename SAG.png
+	filename ../SAG.png
 	scale 50
 
 \end_inset
@@ -915,6 +935,11 @@ status open
  Considerar el grafo para BFS de la figura 4.5.4.
  Con las mismas indicaciones que el problema anterior, hallar el camino
  final devuelto por BFS.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -925,7 +950,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename BFS.png
+	filename ../BFS.png
 	scale 50
 
 \end_inset
@@ -973,7 +998,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename tutobusco.png
+	filename ../tutobusco.png
 	scale 50
 
 \end_inset
@@ -989,10 +1014,6 @@ status open
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1003,6 +1024,11 @@ status open
  en las estaciones marcadas puede hacerse transbordo de una línea a otra
  de las que en ella confluyen en el sentido marcado por las flechas.
  Encontrar una ruta Aeropuerto T4-Pitis con el menor número de transbordos.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1013,7 +1039,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename metro.png
+	filename ../metro.png
 	scale 50
 
 \end_inset
@@ -1034,17 +1060,13 @@ status open
 \begin_layout Standard
 El árbol será el siguiente y se seleccionará en primer lugar la ruta señalada,
  aun cuando hay más trayectos con el mismo número de transbordos.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
 \begin_inset Graphics
-	filename metrillo.png
+	filename ../metrillo.png
 	scale 50
 
 \end_inset
