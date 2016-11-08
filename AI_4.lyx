@@ -1,9 +1,7 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -76,16 +74,16 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100 100
-\font_tt_scale 100 100
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -184,7 +182,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename coste.png
+	filename ../coste.png
 	scale 50
 
 \end_inset
@@ -230,7 +228,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename costcumul.png
+	filename ../costcumul.png
 	scale 50
 
 \end_inset
@@ -288,7 +286,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename unicost.png
+	filename ../unicost.png
 	scale 50
 
 \end_inset
@@ -333,7 +331,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename fases.png
+	filename ../fases.png
 	scale 50
 
 \end_inset
@@ -372,7 +370,9 @@ Si la solución tiene un coste
 \end_inset
 
 
-\series default
+\end_layout
+
+\begin_layout Standard
 A partir de aquí, podemos decir que la 
 \series bold
 complejidad temporal
@@ -389,11 +389,18 @@ como en la BFS
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 La 
 \series bold
 complejidad espacial
 \series default
  será, por las mismas razones, 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
 {\displaystyle \mathbf{O(b^{{\displaystyle \frac{g*}{\epsilon}}})}}
@@ -401,6 +408,10 @@ complejidad espacial
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 Completitud
@@ -466,10 +477,6 @@ Esto significa que, partiendo del estado inicial, examina cualesquiera direccion
 es que sean baratas sin importarle si ayudan a avanzar hacia el objetivo
  o se aleja de él.
  pero esto puede corregirse, como veremos.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -491,7 +498,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename uni_ejer.png
+	filename ../uni_ejer.png
 	scale 50
 
 \end_inset
@@ -516,6 +523,9 @@ Resumen de algoritmos de búsqueda desinformada.
 \begin_layout Standard
 La tabla siguiente resume las características de cada algoritmo visto hasta
  ahora:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -526,7 +536,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename resalg.png
+	filename ../resalg.png
 	scale 50
 
 \end_inset
@@ -557,7 +567,7 @@ Ejemplo
 \series default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 De un artículo de Bill Gates: 
@@ -652,7 +662,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename queques.png
+	filename ../queques.png
 	scale 50
 
 \end_inset
@@ -684,7 +694,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename buscarbol.png
+	filename ../buscarbol.png
 	scale 50
 
 \end_inset
@@ -805,7 +815,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename 4eje1.png
+	filename ../4eje1.png
 	scale 50
 
 \end_inset
@@ -843,7 +853,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename arbusca.png
+	filename ../arbusca.png
 	scale 40
 
 \end_inset
@@ -871,9 +881,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
 
 \end_layout
 
@@ -890,7 +897,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename SAG.png
+	filename ../SAG.png
 	scale 50
 
 \end_inset
@@ -925,7 +932,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename BFS.png
+	filename ../BFS.png
 	scale 50
 
 \end_inset
@@ -973,7 +980,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename tutobusco.png
+	filename ../tutobusco.png
 	scale 50
 
 \end_inset
@@ -986,10 +993,6 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1013,7 +1016,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename metro.png
+	filename ../metro.png
 	scale 50
 
 \end_inset
@@ -1034,17 +1037,13 @@ status open
 \begin_layout Standard
 El árbol será el siguiente y se seleccionará en primer lugar la ruta señalada,
  aun cuando hay más trayectos con el mismo número de transbordos.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
 \begin_inset Graphics
-	filename metrillo.png
+	filename ../metrillo.png
 	scale 50
 
 \end_inset

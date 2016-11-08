@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -74,22 +76,22 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement h
+\float_placement H
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -223,7 +225,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/mineritos.png
+	filename mineritos.png
 	scale 35
 
 \end_inset
@@ -266,7 +268,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/LIFO.png
+	filename LIFO.png
 	scale 50
 
 \end_inset
@@ -328,7 +330,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/ejr1.png
+	filename ejr1.png
 	scale 50
 
 \end_inset
@@ -478,7 +480,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/complex.png
+	filename complex.png
 	scale 50
 
 \end_inset
@@ -531,7 +533,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/calcul.png
+	filename calcul.png
 	scale 50
 
 \end_inset
@@ -678,7 +680,7 @@ expandir el nodo más superficial primero
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -690,7 +692,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename fifo.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -739,6 +741,10 @@ La respuesta es ahora :
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -767,7 +773,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ewncola.png
-	scale 60
+	scale 55
 
 \end_inset
 
@@ -814,7 +820,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/complex2.png
+	filename complex2.png
 	scale 50
 
 \end_inset
@@ -969,7 +975,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/profunditer.png
+	filename profunditer.png
 	scale 50
 
 \end_inset

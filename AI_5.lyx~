@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -74,22 +76,22 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement h
+\float_placement H
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -246,6 +248,10 @@ h\\
 \end_inset
 
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -283,9 +289,6 @@ distancia de Manhattan.
  es pequeña estará cerca del punto (Fig.
  5.1.1).
  No es perfecto, pero sí útil.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -311,10 +314,6 @@ status open
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Podríamos haber utilizado también la distancia euclídea, pero esta distancia
  no toma en cuenta que la existencia de muros impide caminar en diagonal.
 \end_layout
@@ -413,6 +412,10 @@ Para la búsqueda avariciosa procederemos así:
 
 \begin_layout Itemize
 expandir el nodo que parece más próximo 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -513,7 +516,7 @@ mínima distancia e cada nodo al nodo G
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -749,11 +752,6 @@ proximidad al objetivo
 Fijémonos en el caso expuesto en la Fig.5.3.1.
  resaltando en la parte resaltada de la figura inferior que es el un camino
  al objetivo.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -779,10 +777,6 @@ status open
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 ¿Qué hace 
 \begin_inset Formula $A^{*}$
 \end_inset
@@ -825,9 +819,6 @@ Veamos sobre un ejemplo sencillo cómo funciona
  
 \series default
 en la figura siguiente:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -871,6 +862,10 @@ Hemos ido priorizando en la frontera aquellos nodos con menor coste estimado.
 \end_inset
 
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -971,9 +966,6 @@ Si nos fijamos en la figura 5.4.1.
 
  de la heurística en el nodo A sobreestimó el coste de alcanzar G e hicimos
  caso a la heurística.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -1042,9 +1034,8 @@ una heurística es
  admisible 
 \series default
 si el coste estimado no supera el coste real al objetivo más próximo:
-\end_layout
+\emph default
 
-\begin_layout Standard
 \begin_inset Formula 
 \[
 \mathbf{h(n)\leq h^{*}(n)}
@@ -1052,10 +1043,6 @@ si el coste estimado no supera el coste real al objetivo más próximo:
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Ejemplos de heurísticas admisibles
 \end_layout
 
@@ -1137,9 +1124,6 @@ Demostraremos que cualquier subcamino
 \end_inset
 
  como parte de la solución.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -1250,6 +1234,10 @@ Considérese el nodo
 
  del conjunto frontera del árbol de búsqueda que está en un camino solución
  óptimo.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1271,10 +1259,6 @@ admisible
 \end_inset
 
  
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 f(n)=g(n)+h(n)\leq g*(n)+h*(n)=C*\Rightarrow f(n)\leq C*
@@ -1282,16 +1266,7 @@ f(n)=g(n)+h(n)\leq g*(n)+h*(n)=C*\Rightarrow f(n)\leq C*
 
 \end_inset
 
-
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
 Sumando (5.4.1) + (5.4.2): tenemos:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 f(n)\leq C*<f(G2)
@@ -1299,10 +1274,6 @@ f(n)\leq C*<f(G2)
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 y se explora n antes que 
 \begin_inset Formula $G_{2}$
 \end_inset
@@ -1310,6 +1281,7 @@ y se explora n antes que
  c.q.d.
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Propiedades de A*.
 \end_layout
@@ -1538,6 +1510,10 @@ Número de cuadrados mal colocados
  para el estado inicial
 \emph default
 :
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1628,6 +1604,10 @@ Podemos imaginar una versión menos relajada en la que cada cuadrado pueda
 \end_inset
 
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1706,6 +1686,10 @@ Factor de ramificación efectivo
 \end_inset
 
 ): 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1734,10 +1718,6 @@ b*+b*^{2}+..+b*^{d}=b*\frac{(b*)^{d}-1}{b*-1}={\textstyle N}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Ejemplo: d=5, N=52 .
  
 \begin_inset Formula $\rightarrow b*=$
@@ -1774,12 +1754,6 @@ s.
 \end_inset
 
  cuando
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Formula 
 \begin{equation}
 \forall n,\:h_{a}(n)\geq h_{b}(n)
@@ -1787,11 +1761,6 @@ s.
 
 \end_inset
 
-
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
 Si usamos búsqueda
 \begin_inset Formula $A*$
 \end_inset
@@ -1804,7 +1773,7 @@ domina a
 \begin_inset Formula $h_{b}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_deeper
@@ -1870,6 +1839,10 @@ Hasta este punto hemos ignorado una de las complicaciones más importantes
  que ya han sido visitados y expandidos.
  Para algunos problemas, esta posibilidad o aparece; el espacio de estados
  es un árbol y hay sólo un camino a cada estado.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1938,11 +1911,6 @@ Para la búsqueda
  el nodo actual.
  La comparación de estos nodos permite al algoritmo descubrir los caminos
  que forman ciclos y que pueden eliminarse inmediatamente.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -1968,10 +1936,6 @@ status open
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Esto, sin embargo, solo sirve para evitar que los ciclos formen árboles
  de búsqueda infinitos, pero esto no evita problemas como el de la figura
  4.4.1.
@@ -2085,9 +2049,6 @@ también en grafos
 
 \begin_layout Standard
 En la figura se muestra el algoritmo general de búsqueda en grafos:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -2125,11 +2086,6 @@ Consistencia.
 \align left
 El gráfico muestra un caso en que la búsqueda en grafos no funciona a pesar
  de ser la heurística admisible.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -2155,10 +2111,6 @@ status open
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Esto nos indica que para grafos precisamos algo más que la admisibilidad:
  la 
 \series bold
@@ -2182,6 +2134,10 @@ La consistencia,
 para cada arco
 \emph default
 , no para el camino hasta el objetivo.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2196,7 +2152,7 @@ coste heurístico
 \begin_inset Formula $A,C$
 \end_inset
 
- como la diferencia 
+ como la diferencia
 \begin_inset Formula 
 \begin{equation}
 coste(A,C)=h(A)-h(C)
@@ -2204,12 +2160,6 @@ coste(A,C)=h(A)-h(C)
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
 mientras que 
 \begin_inset Formula $c(A,C)$
 \end_inset
@@ -2228,11 +2178,6 @@ coste(A,C)=\mathbf{h(A)-h(C)}\mathbf{\leq c(A,C)}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -2298,6 +2243,10 @@ no decrece nunca
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2319,6 +2268,10 @@ g(n)\geq g(n_{i})
 \end_deeper
 \begin_layout Itemize
 Si una heurística es consistente, es admisible.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2370,6 +2323,10 @@ La
  garantiza la optimalidad de A*
 \emph default
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2482,17 +2439,14 @@ contradictorio con el carácter óptimo de la solución
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align left
 El carácter monótono de 
 \begin_inset Formula $f(n)$
 \end_inset
 
  significa que el primer nodo objetivo expandido debe ser el correspondiente
- a la solución óptima.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
+ a la solución  óptima.
 \begin_inset Float figure
 wide false
 sideways false
@@ -2529,6 +2483,10 @@ Si h es una heurística monótona, la exploración se realiza en curvas de
 \end_inset
 
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2539,6 +2497,10 @@ En una búsqueda de coste uniforme [
 
 ], las curvas de nivel son “concéntricas” alrededor del estado de partida.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

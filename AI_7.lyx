@@ -410,7 +410,7 @@ name "fig:2"
 
 
 \begin_inset Graphics
-	filename wumpus.png
+	filename ../wumpus.png
 	scale 75
 
 \end_inset
@@ -669,7 +669,7 @@ name "fig:3"
 
 
 \begin_inset Graphics
-	filename inicial.png
+	filename ../inicial.png
 
 \end_inset
 
@@ -812,7 +812,7 @@ name "fig:4"
 
 
 \begin_inset Graphics
-	filename finalwumpus.png
+	filename ../finalwumpus.png
 	scale 50
 
 \end_inset
@@ -1248,7 +1248,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename logicap.png
+	filename ../logicap.png
 	scale 60
 
 \end_inset
@@ -1556,7 +1556,7 @@ Las tablas de verdad para los operadores mencionados son las siguientes:
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename truth.png
+	filename ../truth.png
 
 \end_inset
 
@@ -3346,7 +3346,7 @@ Tabla de verdad:
 \noindent
 \align center
 \begin_inset Graphics
-	filename satisfac.png
+	filename ../satisfac.png
 	scale 50
 
 \end_inset
@@ -3467,7 +3467,7 @@ donde cada rama determina el valor de verdad de una proposición única y
 \noindent
 \align center
 \begin_inset Graphics
-	filename tree.png
+	filename ../tree.png
 	scale 50
 
 \end_inset
@@ -3509,7 +3509,7 @@ De este modo se realiza una poda del árbol que, para el ejemplo que nos
 \noindent
 \align center
 \begin_inset Graphics
-	filename poda_log.png
+	filename ../poda_log.png
 	scale 50
 
 \end_inset
@@ -4308,7 +4308,7 @@ name "fig:5"
 
 
 \begin_inset Graphics
-	filename bc.png
+	filename ../bc.png
 	scale 50
 
 \end_inset
@@ -5294,7 +5294,7 @@ name "fig:6"
 
 
 \begin_inset Graphics
-	filename repe_mundo.png
+	filename ../repe_mundo.png
 	scale 50
 
 \end_inset

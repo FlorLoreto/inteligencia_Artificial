@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,6 +39,16 @@
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX}}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\fontsize{16pt}{18pt}\selectfont\mdseries}
+  {\MakeUppercase{\chaptertitlename}\ \thechapter}{18pt}{\MakeUppercase}
+\titleformat{\section}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\itshape}{\thesubsection}{1em}{}
+\titlespacing*{\section} {0pt}{0pt}{2.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{0pt}{1.5ex plus .2ex}
 
 % used for multi-column text
 \usepackage{multicol}
@@ -74,16 +86,16 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -253,6 +265,10 @@ Racionalidad Computacional
 
 \begin_layout Standard
 Una frase que resume el significado de la AI es esta:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -316,6 +332,10 @@ El comienzo de la disciplina se remonta a los años 40 del pasado siglo y
 
 \begin_layout Itemize
 1940-50: los inicios.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -391,6 +411,10 @@ prueba de Turing
 \end_deeper
 \begin_layout Itemize
 1950-70: el entusiasmo: ¡Mira mamá, sin manos! 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -406,6 +430,10 @@ Logic Theorist
 
 \begin_layout Itemize
 1957: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -436,6 +464,10 @@ es decir, de conjuntos de programas que, sobre una base de conocimientos,
  Se puede entender como una rama de la inteligencia artificial, donde el
  poder de resolución de un problema en un programa de computadora viene
  del conocimiento de un dominio específico:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -475,6 +507,10 @@ de mayor conocimiento intensivo existente
 \begin_layout Itemize
 1990-: enfoque estadístico y resurgimiento de la probabilidad.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -505,6 +541,10 @@ Las principales aplicaciones de la AI fuera del mundo informático donde
 
 \begin_layout Itemize
 Juegos.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -519,6 +559,10 @@ Damas.
 \end_deeper
 \begin_layout Itemize
 Finanzas: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -538,6 +582,10 @@ Las instituciones financieras usan sistemas de redes neuronales artificiales
 \end_deeper
 \begin_layout Itemize
 Medicina: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -568,6 +616,10 @@ Análisis del ruido cardíaco.
 \end_deeper
 \begin_layout Itemize
 Industria:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -584,6 +636,10 @@ robots
 \end_deeper
 \begin_layout Itemize
 Servicios de atención al cliente:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -596,6 +652,10 @@ Un asistente en línea automatizado proporcionando servicio de atención al
 \end_deeper
 \begin_layout Itemize
 Transportes:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -611,6 +671,10 @@ controles para cajas de cambios automáticas en vehículos.
 \end_deeper
 \begin_layout Itemize
 Procesamiento del lenguaje:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -629,6 +693,10 @@ Clasificación de textos.
 \end_deeper
 \begin_layout Itemize
 Lenguaje natural.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -643,6 +711,10 @@ Texto-a-Habla
 \end_deeper
 \begin_layout Itemize
 Reconocimiento de imágenes como la Cloud Vision API de Google.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -667,6 +739,10 @@ World Wide Web: Internet es una red global por la que circula un volumen
 
 \begin_layout Itemize
 Toma de decisiones:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -681,6 +757,10 @@ Recomendación de productos (Amazon).
 \end_deeper
 \begin_layout Itemize
 Lógica:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -767,6 +847,10 @@ secuencia de percepciones
 función del agente
 \emph default
  que proyecta una percepción dada en una acción.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -962,7 +1046,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/functpng.png
+	filename functpng.png
 	scale 50
 
 \end_inset
@@ -1084,6 +1168,10 @@ Este conocimiento acerca de cómo funciona el
 
 mundo», se denomina modelo del mundo.
  Esquemáticamente:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1210,6 +1298,10 @@ En principio parece que esto es difícil salvo en casos simples y aislados.
 
 \begin_layout Standard
 Pero dejaremos esta discusión para el capítulo siguiente.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

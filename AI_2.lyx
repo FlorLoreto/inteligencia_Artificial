@@ -1,9 +1,7 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -76,16 +74,16 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100 100
-\font_tt_scale 100 100
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -504,7 +502,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename pacman2.png
+	filename ../pacman2.png
 	scale 50
 
 \end_inset
@@ -539,7 +537,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename stoppac.png
+	filename ../stoppac.png
 	scale 50
 
 \end_inset
@@ -653,10 +651,6 @@ Planeamiento completo
 óptimo
 \emph default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -682,10 +676,6 @@ Planeamiento óptimo: se da cuando no solo encuentra una solución sino que
 \end_deeper
 \begin_layout Itemize
 Planeamiento completo y replanificación.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -768,10 +758,6 @@ Especificar las
 \series default
 \emph default
  que puede realizar el agente:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -874,10 +860,6 @@ Estamos viajando por Rumanía y nos encontramos en la ciudad de Arad desde
  donde hemos de ir a Bucarest.
  Disponemos de un mapa que constituye un buen ejemplo de un modelo (abstracción)
  de cómo es el mundo.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -893,7 +875,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Romania.png
+	filename ../Romania.png
 	scale 50
 
 \end_inset
@@ -921,10 +903,6 @@ Espacio de estados: Como mínimo, ha de incluir las
 ciudades 
 \emph default
 de modo que podamos aplicar el test objetivo (¿estamos en Bucarest?).
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -941,10 +919,6 @@ Acciones: tomar carreteras en una dirección.
 \begin_layout Enumerate
 Función sucesor: lo que podemos hacer es únicamente ir de una ciudad a otra
  por carretera así que la función sucesor es:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -973,10 +947,6 @@ carretera par ir a una ciudad adyacente con coste=distancia.
 \end_deeper
 \begin_layout Enumerate
 Estado inicial: 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -987,10 +957,6 @@ ciudad=Arad.
 \end_deeper
 \begin_layout Enumerate
 Test objetivo:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1001,10 +967,6 @@ Test objetivo:
 \end_deeper
 \begin_layout Enumerate
 Solución:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1105,7 +1067,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename PacmAN_real.png
+	filename K:/PacmAN_real.png
 	scale 50
 
 \end_inset
@@ -1307,7 +1269,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename grafo_arbol.png
+	filename K:/grafo_arbol.png
 	scale 50
 
 \end_inset
@@ -1328,10 +1290,6 @@ status open
 \begin_layout Standard
 Solo en muy raras ocasiones podemos construir el grafo completo en memoria,
  pero es una idea útil.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1348,7 +1306,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename graph_ejemplo.png
+	filename K:/graph_ejemplo.png
 	scale 50
 
 \end_inset
@@ -1420,7 +1378,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename arbolote.png
+	filename K:/arbolote.png
 	scale 50
 
 \end_inset
@@ -1678,7 +1636,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename nodo.png
+	filename K:/nodo.png
 	scale 50
 
 \end_inset
@@ -1732,7 +1690,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename bucle.png
+	filename K:/bucle.png
 	scale 50
 	rotateOrigin leftTop
 
@@ -1803,7 +1761,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ARad.png
+	filename K:/arad.png
 	scale 50
 
 \end_inset
@@ -1904,7 +1862,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ARAD2.png
+	filename K:/ARAD2.png
 	scale 50
 
 \end_inset
@@ -1979,7 +1937,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename arad3.png
+	filename K:/arad3.png
 	scale 50
 	rotateOrigin leftTop
 
@@ -2026,7 +1984,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ALGOSEARCH.png
+	filename K:/ALGOSEARCH.png
 	scale 50
 
 \end_inset
@@ -2105,7 +2063,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename tojunto.png
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/tojunto.png
 	scale 40
 
 \end_inset
@@ -2162,10 +2120,6 @@ Si están lobo, cabra y col juntas, ninguno puede comerse a nadie, al igual
 .
  ¿Cómo puede hacer el pastor para cruzar el río con sus compañeros de viaje
  sin que nadie resulte dañado?
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2257,10 +2211,6 @@ Dato un estado
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2305,7 +2255,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename GRAFESTADO.png
+	filename ../GRAFESTADO.png
 	scale 50
 
 \end_inset
@@ -2345,10 +2295,6 @@ status open
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2382,7 +2328,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename sucesor.png
+	filename ../sucesor.png
 	scale 50
 
 \end_inset
@@ -2502,7 +2448,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename lobo.png
+	filename ../lobo.png
 	scale 50
 
 \end_inset
@@ -2534,7 +2480,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename suces_redu.png
+	filename ../suces_redu.png
 	scale 50
 
 \end_inset
@@ -2559,10 +2505,6 @@ Se tienen dos jarras, de 4 y 3 litros respectivamente.Ninguna de ellas tiene
  Se tiene una bomba que permite llenar las jarras de agua.
  formular cómo se puede lograr tener exactamente 2 litros de agua en la
  jarra de 4 litros de capacidad.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2600,10 +2542,6 @@ Estados finales: todos los estados de la forma
 
 \begin_layout Enumerate
 Acciones:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2646,10 +2584,6 @@ Vaciar la jarra de 4 litros en la jarra de 3 litros.
 \end_deeper
 \begin_layout Enumerate
 Formulación del problema:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2663,10 +2597,6 @@ Aplicación de acciones a un estado
 
 \begin_layout Itemize
 Acción “Llenar jarra de 3” 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2685,10 +2615,6 @@ Estado resultante:
 \end_deeper
 \begin_layout Itemize
 Acción “Llenar jarra de 4 con jarra de 3” 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2707,10 +2633,6 @@ Estado resultante:
 \end_deeper
 \begin_layout Itemize
 Acción “Vaciar jarra de 3 en jarra de 4” 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2734,10 +2656,6 @@ Y análogamente las demás acciones.
 \end_deeper
 \begin_layout Enumerate
 Solución: Búsqueda de soluciones en espacios de estados 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2748,10 +2666,6 @@ Objetivo: encontrar una secuencia de acciones que, partiendo del estado
 
 \begin_layout Itemize
 Idea básica: exploración del grafo del espacio de estados 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2800,7 +2714,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename jarras.png
+	filename ../jarras.png
 	scale 50
 
 \end_inset

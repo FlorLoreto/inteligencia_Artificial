@@ -245,20 +245,6 @@ filename "AI_7_2.lyx"
 
 \begin_inset CommandInset include
 LatexCommand input
-filename "AI_7-3.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand input
-filename "AI_Apendice.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand input
 filename "AI_8.lyx"
 
 \end_inset
@@ -274,6 +260,13 @@ filename "AI_9.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "AI_10.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+filename "AI_Apendice.lyx"
 
 \end_inset
 
