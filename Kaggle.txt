@@ -1,0 +1,6 @@
+https://www.kaggle.com/c/word2vec-nlp-tutorial/data
+Kaggle: datos de películas.
+http://crscardellino.me/SBWCE/: corpus español
+https://radimrehurek.com/gensim/: paquete en python
+http://snowball.tartarus.org/algorithms/spanish/stemmer.html: Porter stemming
+http://www.clef-initiative.eu/. CLEF

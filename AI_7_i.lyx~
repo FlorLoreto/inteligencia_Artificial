@@ -1,0 +1,6942 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Representación.
+ Lógica proposicional.
+\end_layout
+
+\begin_layout Standard
+Un aspecto importante del la IA es la representación del mundo (modelo)
+ del agente.
+ Uno de los métodos posibles de representación es el basado en 
+\emph on
+vectores de características
+\emph default
+, cuyo funcionamiento se comprende fácilmente si suponemos que disponemos
+ de un robot capaz de desplazarse sobre una rejilla entre celdas contiguas
+ libres.
+ En dicha rejilla algunas celdas están ocupadas por bloques y otras vacías.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sensa.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El vector de atributos para cada posición del robot - 
+\color red
+R
+\color inherit
+- tendrá los valores 
+\begin_inset Formula $\vec{s}=(s_{1},s_{2},....,s_{8})$
+\end_inset
+
+ - estado de las celdas adyacentes - que serán 0 si la celda está vacía
+ y 1 si está ocupada.
+\end_layout
+
+\begin_layout Standard
+El robot utilizará esta información detectada por sus sensores para desplazarse
+ a una celda libre, donde, de nuevo, computará a través de sus sensoresel
+ vector 
+\begin_inset Formula $\vec{s}_{t+1}$
+\end_inset
+
+ correspondiente a la posición siguiente.
+\end_layout
+
+\begin_layout Standard
+Siendo los valores de 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ binarios, el vector 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ es una descripción del entorno (
+\emph on
+mundo
+\emph default
+) del agente.
+\end_layout
+
+\begin_layout Standard
+Sin embargo, pueden existir restricciones a los valores de las características
+ que aportan un conocimiento importante sobre este mundo y que pueden usarse
+ para inferir valores de características no 
+\emph on
+sensables 
+\emph default
+directamente por el agente.
+\end_layout
+
+\begin_layout Standard
+omo ejemplo, sea que el robot es capaz de levantar bloques que se encuentren
+ en una celda adyacente siempre que el robot tenga batería con carga suficiente
+ 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+=BAT_OK y y los bloques sean de un peso reducido (
+\begin_inset Formula $s_{2}=$
+\end_inset
+
+ELEVABLE), en cuyo caso el brazo robótico que coge el bloque se mueve (
+\begin_inset Formula $s_{3}$
+\end_inset
+
+=MUEVE).
+\end_layout
+
+\begin_layout Standard
+Los atributos 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ pueden detectarse con los sensores del robot, pero no así 
+\begin_inset Formula $s_{3}.$
+\end_inset
+
+ Sin embargo sabemos que si BAT_OK y MUEVE, esto implica ELEVABLE y si NO
+ MUEVE, esto es debido bien a que NO BAT_OK o bien a que NO ELEVABLE.
+ Podemos decir que el robot ha llegado a dichas conclusiones mediante 
+\series bold
+\emph on
+inferencia
+\series default
+\emph default
+ (razonamiento) para cuya implementación necesitaremos un lenguaje para
+ expresar los valores de las características y sus restricciones y mecanismos
+ de inferencia que permitan razonar.
+\end_layout
+
+\begin_layout Standard
+La Lógica Proposicional (LP) nos proporciona estas herramientas y, usándola,
+ podemos escribir los razonamientos anteriores como:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+BAT\_OK\land ELEVABLE\Rightarrow MUEVE\\
+\lnot MUEVE\Rightarrow\lnot BAT\_OK\lor ELEVABLE
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde 
+\begin_inset Formula $\lnot$
+\end_inset
+
+ es el símbolo de negación.
+\end_layout
+
+\begin_layout Standard
+La 
+\emph on
+representación del conocimiento 
+\emph default
+y el proceso de 
+\emph on
+razonamiento
+\emph default
+ que da vida al conocimiento, tratados en este capítulo, son cruciales en
+ el ámbito de la Inteligencia Artificial.
+\end_layout
+
+\begin_layout Standard
+Los humanos parecen 
+\emph on
+conocer
+\emph default
+ cosas y 
+\emph on
+razonar 
+\emph default
+y estas características parecen deseables para un agente artificial.
+\end_layout
+
+\begin_layout Standard
+El conocimiento y el razonamiento juegan también un papel importante en
+ entornos 
+\emph on
+parcialmente observables
+\emph default
+ situación en la que un agente basado en conocimiento puede combinar sus
+ conocimientos actuales con sus percepciones para inferir aspectos ocultos
+ del estado del mundo antes de seleccionar acciones.P.e.
+ un médico debe diagnosticar - es decir, inferir una enfermedad que no es
+ directamente observable - la enfermedad de un paciente antes de aplicar
+ un tratamiento.
+\end_layout
+
+\begin_layout Standard
+Para ello aplica reglas aprendidas en libros de texto y profesores y otras
+ basadas en patrones de asociación que no pueden describirse fácilmente.
+\end_layout
+
+\begin_layout Standard
+La búsqueda, examinada hasta aquí, es capaz de proporcionar secuencias de
+ acciones que constituyen planes.
+ Más adelante veremos que las probabilidades permiten representar y razonar
+ en condiciones de incertidumbre y que el aprendizaje máquina puede usarse
+ para aprender y mejorar.
+\end_layout
+
+\begin_layout Standard
+Lo mismo ocurre con la comprensión del lenguaje natural donde también hay
+ que inferir aspectos ocultos.
+\end_layout
+
+\begin_layout Standard
+Si oímos, '
+\emph on
+Juan vio el coche a través de la ventana y le gustó
+\emph default
+ '.
+ Del contexto, inferimos que '
+\emph on
+le
+\emph default
+' se refiere al coche y no a la ventana.
+ Mientras que en '
+\emph on
+Juan tiró un ladrillo por la ventana a la acera y la rompió
+\emph default
+' lo roto - 
+\emph on
+'la'
+\emph default
+ - fue la ventana y no la acera.
+\end_layout
+
+\begin_layout Standard
+En el campo de la IA nos enfrentamos a la complejidad a lo largo de tres
+ dimensiones:
+\end_layout
+
+\begin_layout Enumerate
+En términos de diseño de 
+\series bold
+agentes
+\series default
+, comenzando con el sencillo agente reactivo y evolucionado hacia agentes
+ que piensan cómo alcanzar sus objetivos;
+\end_layout
+
+\begin_layout Enumerate
+En segundo lugar considerando el 
+\series bold
+entorno
+\series default
+ que puede ser total o parcialmente observable, con agentes múltiples, etc;
+\end_layout
+
+\begin_layout Enumerate
+y, finalmente, en términos de
+\series bold
+ representación.
+ 
+\series default
+El modelo del mundo del agente se torna cada vez más complejo y es en este
+ aspecto de la representación mostrando cómo las herramientas de la lógica
+ pueden usarse para modelar el mundo.
+\end_layout
+
+\begin_layout Standard
+La
+\emph on
+ representación del conocimiento
+\emph default
+ y 
+\emph on
+el proceso de razonamiento
+\emph default
+ que da vida al conocimiento, tratados en este capítulo, son cruciales en
+ el ámbito de la Inteligencia Artificial.
+\end_layout
+
+\begin_layout Standard
+Los humanos parecen 
+\emph on
+conocer
+\emph default
+ cosas y 
+\emph on
+razonar 
+\emph default
+y estas características parecen deseables para un agente artificial.
+\end_layout
+
+\begin_layout Standard
+El conocimiento y el razonamiento juegan también un papel importante en
+ entornos 
+\emph on
+parcialmente observables
+\emph default
+ situación en la que un agente basado en conocimiento puede combinar sus
+ conocimientos actuales con sus percepciones para inferir aspectos ocultos
+ del estado del mundo antes de seleccionar acciones.
+ P.e.
+ un médico debe diagnosticar - es decir, inferir una enfermedad que no es
+ directamente observable - la enfermedad de un paciente antes de aplicar
+ un tratamiento.
+ Para ello aplica reglas aprendidas en libros de texto y profesores y otras
+ basadas en patrones de asociación que no pueden describirse fácilmente.
+\end_layout
+
+\begin_layout Standard
+Lo mismo ocurre con la comprensión del lenguaje natural donde también hay
+ que inferir aspectos ocultos.
+ Si oímos, '
+\emph on
+Juan vio el coche a través de la ventana y 
+\series bold
+le
+\series default
+ gustó
+\emph default
+'.
+ Del contexto, inferimos que '
+\emph on
+le
+\emph default
+' se refiere al coche y no a la ventana.
+ Mientras que en '
+\emph on
+Juan tiró un ladrillo por la ventana a la acera y 
+\series bold
+la
+\series default
+ rompió
+\emph default
+' lo roto fue la ventana y no la acera.
+\end_layout
+
+\begin_layout Standard
+A este respecto, la 
+\series bold
+\emph on
+Lógica
+\series default
+\emph default
+ es el vehículo primario para representar el conocimiento, aun cuando tiene
+ limitaciones principalmente a causa de la existencia de incertidumbre en
+ la mayoría de los entornos.
+\end_layout
+
+\begin_layout Section
+Agentes basados en el conocimiento.
+\end_layout
+
+\begin_layout Standard
+El componente central de los Agentes Basados en el Conocimiento es su Base
+ de Conocimiento (
+\series bold
+K
+\series default
+nowldge 
+\series bold
+B
+\series default
+ase).
+ Informalmente una 
+\emph on
+KB 
+\emph default
+se compone de un conjunto de 
+\emph on
+sentencias
+\emph default
+ en sentido técnico, cada una del las cuales se expresa en un 
+\emph on
+lenguaje 
+\emph default
+denominado 
+\emph on
+lenguaje de representación del conocimiento
+\emph default
+ y que constituye alguna afirmación acerca del mundo.
+\end_layout
+
+\begin_layout Standard
+Debe existir algún modo de añadir nuevas sentencias a la 
+\emph on
+KB 
+\emph default
+y, también, procedimientos para consultar lo que se sabe.
+ Ambas tareas pueden implicar 
+\series bold
+inferencia
+\series default
+, esto es, derivar nuevas sentencias de las ya existentes.
+\end_layout
+
+\begin_layout Section
+El mundo del wumpus
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Tomado de 
+\emph on
+Russell y Norvig: Inteligencia Artificial.
+ 2º Ed.
+
+\emph default
+ 
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Todas estas capacidades (representación, razonamiento y aprendizaje) se
+ apoyan en la teoría y tecnología de la lógica, desarrolladas a lo largo
+ de los siglos.
+ Antes de explicar dichas teoría y tecnología, crearemos un mundo sencillo
+ que nos permitirá ilustrar estos mecanismos.
+\end_layout
+
+\begin_layout Standard
+El mundo de wumpus es una cueva que está compuesta por habitaciones conectadas
+ mediante pasillos.
+ Escondido en algún lugar de la cueva está el wumpus, una bestia que devora
+ a cualquiera que entre en su habitación.
+ El wumpus puede ser derribado por la flecha de un agente, y este sólo dispone
+ de una.
+ Algunas habitaciones contienen pozos sin fondo que atrapan a aquel que
+ deambula por dichas habitaciones (menos al wumpus que es demasiado grande
+ para caer en ellos).
+ El único premio de vivir en este entorno es la posibilidad de encontrar
+ un montón de oro.
+\end_layout
+
+\begin_layout Standard
+En la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:2"
+
+\end_inset
+
+) se muestra un ejemplo del mundo inmundo del wumpus.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:2"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename wumpus.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La definición precisa del mundo del wumpus requiere especificar las necesidades
+ de 
+\series bold
+R
+\series default
+endimiento, el 
+\series bold
+E
+\series default
+ntorno, y los 
+\series bold
+A
+\series default
+ctuadores y 
+\series bold
+S
+\series default
+ensores del agente para cuya denominación se utiliza el acrónimo 
+\series bold
+REAS
+\series default
+ (Rendimiento, Entorno.
+ Actuadores, Sensores).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Rendimiento
+\series default
+: + 1.000 por recoger el oro, - 1.000 por caer en un pozo o ser comido por
+ el wumpus, - 1 por cada acción que se realice y -10 por lanzar la flecha.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Entorno
+\series default
+: una matriz de 4 x 4 habitaciones.
+ El agente siempre comienza en la casilla etiquetada por [l, l], y orientado
+ a la derecha.
+ Las posiciones del oro y del wumpus se escogen de forma aleatoria, mediante
+ una distribución uniforme, a partir de todas las casillas menos la de salida
+ del agente.
+ Además, con probabilidad 0,2, cada casilla puede tener un pozo.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Actuadores
+\series default
+: el agente se puede mover hacia delante, girar a la izquierda 90º, o a
+ la derecha 90º.
+ El agente puede fallecer de muerte miserable si entra en una casilla en
+ la que hay un pozo o en la que está el wumpus vivo.
+ (No sucede nada malo, aunque huele bastante mal, si el agente entra en
+ una casilla con un wumpus muerto.) Si hay un muro enfrente y el agente intenta
+ avanzar, no sucede nada.
+ La acción 
+\emph on
+Agarrar
+\emph default
+ se puede utilizar para tomar un objeto de la misma casilla en donde se
+ encuentre el agente.
+ La acción 
+\emph on
+Disparar
+\emph default
+ se puede utilizar para lanzar un dardo línea recta, en la misma dirección
+ y sentido en que se encuentra situado el agente.
+ La flecha avanza hasta que se choca contra un muro o alcanza al wumpus
+ (y entonces lo mata).
+ El agente sólo dispone de una flecha, así que, solo tiene efecto cl primer
+ 
+\emph on
+Disparo
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sensores
+\series default
+: el agente dispone de cinco sensores.
+ y cada uno le da una pequeña información acerca del entorno.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+El agente percibirá un 
+\emph on
+hedor
+\emph default
+ si se encuentra en la misma casilla que el wumpus pus o en las directamente
+ adyacentes a él (no en diagonal).
+\end_layout
+
+\begin_layout Itemize
+El agente percibirá una ligera 
+\emph on
+brisa
+\emph default
+ en las casillas directamente adyacentes donde hay un pozo.
+\end_layout
+
+\begin_layout Itemize
+El agente verá un 
+\emph on
+resplandor
+\emph default
+ en las casillas donde está el oro.
+\end_layout
+
+\begin_layout Itemize
+Si el agente intenta atravesar un muro sentirá un g
+\emph on
+olpe
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Cuando el wumpus es aniquilado emite un desgarrador 
+\emph on
+grito
+\emph default
+ que se puede oír en toda la cueva.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Las 
+\emph on
+percepciones
+\emph default
+ que recibirá el agente se representan mediante una lista de cinco símbolos:
+ por ejemplo, si el agente percibe un hedor o una pequeña brisa, pero no
+ ve un resplandor, no siente un golpe, ni oye un grito, el agente recibe
+ la lista 
+\begin_inset Formula 
+\[
+\left[olor,aire,resplandor,golpe,grito\right]=\left[Hedor,Brisa,Nada,Nada,Nada\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Vamos a ver un agente basado en conocimiento en el mundo de wumpus, explorando
+ el entorno que se muestra en la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:2"
+
+\end_inset
+
+).
+ La 
+\emph on
+base de conocimiento
+\emph default
+ (
+\emph on
+KB
+\emph default
+) inicial del agente contiene las reglas del entorno, tal como hemos listado
+ anteriormente; en concreto, el agente sabe que se encuentra en la casilla
+ [l, 1] y que esta es una casilla segura.
+ Su conocimiento evoluciona a medida que recibe nuevas percepciones y las
+ acciones se van ejecutando.
+\end_layout
+
+\begin_layout Standard
+La primera percepción es 
+\begin_inset Formula $[Nada,Nada,Nada,Nada,Nada]$
+\end_inset
+
+: de la cual, el agente puede concluir que las casillas vecinas son seguras.
+ La Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3"
+
+\end_inset
+
+ (a)) muestra el conocimiento del estado del agente en ese momento.
+\end_layout
+
+\begin_layout Standard
+En esta figura mostramos (algunas de) las sentencias de la 
+\emph on
+base de conocimiento
+\emph default
+ utilizando letras como la B (de brisa) y OK (de casilla segura, no hay
+ hoyo ni está el wumpus) situadas en las casillas adecuadas.
+ En cambio,la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:2"
+
+\end_inset
+
+) muestra el mundo tal como es.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename inicial.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+De los hechos, que no hay hedor ni brisa en la casilla [1,1], el agente
+ infiere que las casillas [l, 2] y [2, 1] están libres de peligro.
+ Entonces las marca con OK para indicar esta conclusión.
+ Un agente que sea cauto sólo se moverá hacia una casilla en la que él sabe
+ que está OK.
+ Supongamos que el agente decide moverse hacia delante a la casilla [2,1],
+ alcanzando la situación de la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3"
+
+\end_inset
+
+(b)).
+\end_layout
+
+\begin_layout Standard
+El agente detecta una brisa en la casilla [2, 1], por lo tanto, debe haber
+ un pozo en alguna casilla vecina.
+ El pozo no puede estar en la casilla [1, 1].
+ teniendo en cuenta las reglas del juego, así que debe haber uno en la casilla
+ [2,2] o en la [3, 1], o en ambas.
+ La etiqueta 
+\begin_inset Formula $¿\textrm{P}$
+\end_inset
+
+.
+ de la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3"
+
+\end_inset
+
+(b)), nos indica que puede haber un posible pozo en estas casillas.
+ En este momento, solo se conoce una casilla que está OK y que no ha sido
+ visitada aún.
+ Así que el agente prudente girará para volver a la casilla [1, l] y entones
+ se moverá a la [l, 2].
+\end_layout
+
+\begin_layout Section
+El lenguaje de la Lógica Proposicional.
+\end_layout
+
+\begin_layout Standard
+La
+\series bold
+\emph on
+ Lógica
+\series default
+\emph default
+ puede definirse como el estudio de la información codificada en forma de
+ 
+\emph on
+sentencias lógicas
+\emph default
+.
+ Cada sentencia lógica divide el conjunto del mundo posible en dos subconjuntos
+ - el conjunto de mundos en que la sentencia es cierta y el subconjunto
+ en que es falsa.
+\end_layout
+
+\begin_layout Standard
+Un conjunto de 
+\emph on
+premisas tiene una consecuencia lógica
+\emph default
+ si y solo si la consecuencia es cierta en todos los mundos en que las premisas
+ con ciertas.
+\end_layout
+
+\begin_layout Standard
+La 
+\emph on
+deducción
+\emph default
+ es una forma de razonamiento simbólico que produce conclusiones que son
+ consecuencias lógicas de las premisas.
+ Una 
+\emph on
+demostración
+\emph default
+ o prueba es una secuencia de pasos deductivos que no son totalmente obvios
+ de las premisas y que justifican una conclusión.
+\end_layout
+
+\begin_layout Standard
+Volviendo al wumpus, que se desplaza a [1,2], la nueva percepción en la
+ casilla [1, 2] es 
+\begin_inset Formula $[Hedor,Nada,Nada,Nada,Nada]$
+\end_inset
+
+, obteniendo el estado de conocimiento que se muestra en la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4"
+
+\end_inset
+
+(a)).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:4"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename finalwumpus.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El hedor en la [l, 2] significa que debe haber un wumpus muy cerca.
+ Pero el wumpus no puede estar en la [1, 1], teniendo en cuenta las reglas
+ del juego.
+ y tampoco puede estar en [2, 2] (o el agente habría detectado un olor hediondo
+ cuando estaba en la [2, 1]).
+ Entonces el agente puede inferir que el hediondo wumpus se encuentra en
+ la casilla [l, 3], que se indica coi1 la etiqueta ¡W! Más aún, la ausencia
+ de brisa en la casilla [1, 2] implica que no hay un hoyo en la [2, 2].
+ Como ya habíamos inferido que debía haber un hoyo en la casilla [2.
+ 2] o en la [3, 1], éste debe estar en la [3, 1].
+ Todo esto es un proceso de inferencia costoso, ya que debe combinar cl
+ conocimiento adquirido en diferentes instantes de tiempo y en distintas
+ situaciones, para resolver la falta de percepciones y poder realizar cualquier
+ paso crucial.
+ La inferencia está entre las habilidades de muchos animales, pero es típica
+ del tipo de razonamiento que un agente lógico realiza.
+\end_layout
+
+\begin_layout Standard
+El agente ha demostrado en este momento que no hay ni un pozo ni un wumpus
+ en la casilla [2, 2], así que está OK para desplazarse a ella.
+ No mostraremos el estado de conocimiento del agente en [2, 21; asumimos
+ que el agente gira y se desplaza a [2, 3] tal corno se muestra en la Figura
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4"
+
+\end_inset
+
+(b)).
+ En la casilla [2,3] el agente detecta un resplandor, entonces el agente
+ cogería el oro y acabaría el juego.
+\end_layout
+
+\begin_layout Standard
+En cada caso en que el agente saca una conclusión a partir de la información
+ que tiene disponible, se garantiza que dicha conclusión es correcta si
+ 1a información disponible también lo es.
+ Esta es una propiedad fundamental del razonamiento lógico.
+ En lo que sigue vamos a describir cómo construir agentes lógicos que pueden
+ representar la información necesaria para sacar conclusiones similares
+ a las que hemos descrito en los párrafos anteriores
+\end_layout
+
+\begin_layout Section
+Sintaxis.
+\end_layout
+
+\begin_layout Standard
+La lógica proposicional (o lógica de orden cero) se refiere a las 
+\emph on
+proposiciones 
+\emph default
+(o 
+\emph on
+sentencias
+\emph default
+) y sus
+\emph on
+ interrelaciones
+\emph default
+.
+ Hablando en términos genéricos una 
+\series bold
+\emph on
+proposición
+\series default
+\emph default
+ es una 
+\emph on
+condición posible del mundo que puede ser verdadera
+\emph default
+ (
+\series bold
+\emph on
+V
+\series default
+\emph default
+ o 
+\series bold
+\emph on
+1
+\series default
+\emph default
+ ) 
+\emph on
+o falsa
+\emph default
+ (
+\series bold
+\emph on
+F
+\series default
+\emph default
+ o 
+\series bold
+\emph on
+0
+\series default
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+En Lógica las 
+\emph on
+proposiciones simples 
+\emph default
+o 
+\emph on
+atómicas
+\emph default
+ (también llamadas
+\emph on
+ constantes lógicas o constantes proposicionales
+\emph default
+) expresan hechos simples del mundo (p.e.
+\begin_inset Formula $p=está\textrm{\_}lloviendo$
+\end_inset
+
+ sería una constante lógica), mientras que las 
+\emph on
+proposiciones compuestas
+\emph default
+ o
+\emph on
+ moleculares
+\emph default
+ se forman a partir de las sentencias simples y expresan las relaciones
+ existentes entre las sentencias constituyentes.
+\end_layout
+
+\begin_layout Standard
+Los elementos del lenguaje, que explicaremos en lo que sigue, son:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+átomos
+\series default
+ o 
+\series bold
+elementos atómicos
+\series default
+: son variables preposicionales.
+ toman valores V (verdadero) y F (falso) que representaremos por el conjunto
+ numerable infinito de cadenas de caracteres que empiezan por una letra
+ del abecedario.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+conectivas:
+\series default
+ 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\textrm{Negación (No) }\mathbf{\lnot}\\
+\textrm{Conjunción lógica (y) }\mathbf{\land}\\
+\textrm{Disyunción lógica (o) }\mathbf{\lor}\\
+\textrm{Condicional material (si...entoces)}\mathbf{\Rightarrow(\rightarrow\;o\;\supset)}\\
+\textrm{Bicondicional }\mathbf{\Leftrightarrow(\leftrightarrow,\equiv)}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Existen, por tanto, cinco tipo de sentencias compuestas:
+\end_layout
+
+\begin_layout Enumerate
+Negación 
+\begin_inset Formula $(\lnot p)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Conjunción: 
+\begin_inset Formula $(p\land q)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Disyunción 
+\begin_inset Formula $(p\lor q)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Implicación 
+\begin_inset Formula $(p\Rightarrow q)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Equivalencia o Bicondicional 
+\begin_inset Formula $(p\Leftrightarrow q)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+símbolos auxiliares
+\series default
+ como (,),[,].
+\end_layout
+
+\begin_layout Standard
+Adicionalmente, definimos los siguientes elementos:
+\end_layout
+
+\begin_layout Itemize
+Un 
+\series bold
+literal
+\series default
+ es un átomo (
+\begin_inset Formula $p$
+\end_inset
+
+) o la negación de un átomo (
+\begin_inset Formula $\lnot p$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Una 
+\series bold
+cláusula
+\series default
+ es un conjunto finito de literales.
+\end_layout
+
+\begin_layout Itemize
+La 
+\series bold
+cláusula vacía
+\series default
+ es el conjunto vacío de literales.
+ La cláusula vacía se representa por 
+\begin_inset Formula $\oblong$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Es importante la utilización correcta de los paréntesis teniendo en cuenta
+ las siguientes reglas de precedencia que de mayor a menor son:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\mathbf{\lnot}\\
+\mathbf{\land}\\
+\mathbf{\lor}\\
+\mathbf{\Rightarrow,\:\Leftrightarrow}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Así tendríamos p.e.
+ las expresiones equivalentes.
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\mathbf{\lnot p\land q}\equiv\mathbf{((\lnot p)\land q)}\\
+\begin{array}{c}
+\mathbf{p\land q\lor r}\equiv\mathbf{((p\land q)\lor r)}\\
+\mathbf{p\Rightarrow q\Leftrightarrow r}\equiv\mathbf{(p\Rightarrow(q\Leftrightarrow r)})
+\end{array}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la lógica proposicional existen 
+\emph on
+reglas sintácticas
+\emph default
+ que definen las expresiones legales de un modo similar a la gramática de
+ un idioma.
+ Asimismo existe una 
+\series bold
+\emph on
+semántica
+\series default
+\emph default
+ cuyas reglas nos indican cómo el significado de sus partes y su modo de
+ combinación determinan el significado de una proposición compuesta.
+ Del mismo modo que en Álgebra, no nos preocupa el significado real de las
+ variables, lo que nos interesa son las relaciones entre los valores de
+ las variables expresadas en las ecuaciones que escribimos.
+\end_layout
+
+\begin_layout Standard
+Esto es, la Lógica no se preocupa del significado en el mundo real de las
+ constantes proposicionales, lo que interesa es la relación entre los valores
+ de verdad de sentencias simples y los valores de verdad de las sentencias
+ complejas en que las anteriores se incluyen.
+\end_layout
+
+\begin_layout Standard
+Por último, definimos:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Vocabulario proposicional
+\emph default
+ como un conjunto de constantes proposicionales.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Lenguaje proposicional 
+\emph default
+como conjunto de sentencias proposicionales que se pueden formar con un
+ vocabulario proposicional.
+\end_layout
+
+\begin_layout Standard
+La mayoría de los lenguajes son 
+\emph on
+recursivos
+\emph default
+: empleando un número finito de elementos es posible construir un número
+ infinito de sentencias.
+\end_layout
+
+\begin_layout Standard
+En lógica queremos construir fórmulas que excluyan toda ambigüedad y para
+ ello solo tenemos un recurso: construir las sentencias - fórmulas - con
+ reglas muy precisas.
+ Para ello una 
+\series bold
+sentencia 
+\series default
+o 
+\series bold
+fórmula bien formada
+\series default
+ - 
+\series bold
+\emph on
+fbf
+\emph default
+-
+\series default
+ deberá seguir las siguientes reglas:
+\end_layout
+
+\begin_layout Enumerate
+Toda constante proposicional sola es una fórmula (atómica)
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es fórmula, entonces 
+\begin_inset Formula $\lnot\alpha$
+\end_inset
+
+ es fórmula
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\beta$
+\end_inset
+
+ son fórmulas, (
+\emph on
+
+\begin_inset Formula $\alpha\lor\beta$
+\end_inset
+
+
+\emph default
+), (
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\alpha\land\beta$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+), (
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\alpha\Rightarrow\beta$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+), (
+\begin_inset Formula $\alpha\Leftrightarrow\beta$
+\end_inset
+
+) son fórmulas
+\end_layout
+
+\begin_layout Enumerate
+Sólo son fórmulas las secuencias que satisfacen (1), (2) o (3)
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Sea que tenemos una alarma A que puede dispararse por un intento de robo
+ (B) o un terremoto (E) y puede notificar a dos personas Juan (J) y María
+ (M).
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename logicap.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tenemos en primer lugar 
+\emph on
+símbolos
+\emph default
+ de
+\series bold
+ proposiciones
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Una proposición expresa un contenido semántico a la que bajo cierto procedimient
+o acordado o prescrito es posible asignarle un valor de verdad (V o F)
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+B: ocurre un robo en mi casa;
+\end_layout
+
+\begin_layout Standard
+E: ocurre un terremoto;
+\end_layout
+
+\begin_layout Standard
+A: la alarma se dispara;
+\end_layout
+
+\begin_layout Standard
+J: Juan , vecino mío, me llama por teléfono;
+\end_layout
+
+\begin_layout Standard
+M: María, otra vecina, me llama también.
+\end_layout
+
+\begin_layout Standard
+Según su estructura o complejidad interna las proposiciones pueden clasificarse
+ en:
+\end_layout
+
+\begin_layout Standard
+- Proposiciones
+\noun on
+ atómicas
+\noun default
+ o simples, cuando hacen referencia a un único contenido de verdad o falsedad;
+ vendría a ser equivalente a la oración enunciativa simple en la lengua.
+\end_layout
+
+\begin_layout Standard
+- Proposiciones 
+\noun on
+moleculares 
+\noun default
+cuando están constituida por varias proposiciones atómicas unidas por ciertas
+ partículas llamadas "nexos o conectivas", que establecen relaciones sintácticas
+ como función de coordinación y subordinación determinadas entre las proposicion
+es que la integran; tal ocurre en la función de las conjunciones en las
+ oraciones compuestas de la lengua.
+\end_layout
+
+\begin_layout Standard
+Estas proposiciones combinadas con 
+\series bold
+operadores lógicos
+\series default
+ pueden tomar los valores constantes (
+\series bold
+\emph on
+constantes lógicas
+\series default
+\emph default
+)
+\series bold
+ verdad
+\series default
+ o 
+\series bold
+falso 
+\series default
+o bien son desconocidas.
+\end_layout
+
+\begin_layout Standard
+Por ejemplo podemos escribir que la alarma se dispara (
+\begin_inset Formula $A=Verdad$
+\end_inset
+
+) si hay un robo o un terremoto mediante esta sentencia
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En USA se usa a veces 
+\begin_inset Formula $\supset$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+(E\vee B)\Rightarrow A
+\]
+
+\end_inset
+
+Es decir 
+\series bold
+E
+\series default
+ 
+\series bold
+\emph on
+o
+\emph default
+ B
+\series default
+ 
+\series bold
+\emph on
+implica
+\series default
+\emph default
+ 
+\series bold
+A
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Del mismo modo podemos representar que Juan y María llaman cuando se dispara
+ la alarma:
+\begin_inset Formula 
+\[
+A\Rightarrow(J\wedge M)
+\]
+
+\end_inset
+
+Es decir 
+\series bold
+A
+\series default
+ 
+\series bold
+\emph on
+implica
+\series default
+\emph default
+ 
+\series bold
+J 
+\emph on
+y
+\emph default
+ A
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Dos operadores adicionales son:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Leftrightarrow:\textrm{equivalencia o bicondicional }$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\lnot:$
+\end_inset
+
+ negación.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplos
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+Juan avisa solo si lo hace María (uno es falso o verdadero si el otro lo
+ es):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J\Leftrightarrow M\quad\textrm{Juan es equivalente a María}
+\]
+
+\end_inset
+
+Juan llama si no lo hace María y viceversa:
+\begin_inset Formula 
+\[
+J\Leftrightarrow\lnot M
+\]
+
+\end_inset
+
+Una sentencia lógica es o 
+\emph on
+verdadera
+\emph default
+ o 
+\emph on
+falsa 
+\emph default
+con respecto a un 
+\series bold
+modelo del mundo 
+\series default
+y un 
+\series bold
+modelo es un conjunto de valores verdad/falso para todos los operadores
+ lógicos 
+\series default
+(símbolos proposicionales).
+ Así un modelo del mundo sería 
+\begin_inset Formula $\left\{ B:verdad,E:Falso,....\right\} $
+\end_inset
+
+ y 
+\emph on
+la verdad de una sentencia se puede definir en función de la veracidad o
+ falsedad de estos símbolos
+\emph default
+ respecto al modelo usando 
+\series bold
+tablas de verdad
+\series default
+.
+\end_layout
+
+\begin_layout Section
+Tablas de verdad.
+\end_layout
+
+\begin_layout Standard
+Las tablas de verdad asignan valores de verdad a cualquier sentencia.
+ Para los operadores antes mencionados son las siguientes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename truth.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se ve lista todas las posibilidades de los símbolos proposicionales
+ (V=verdad, F=falso) y para cada una de ellas lista los valores de las sentencia
+s compuestas.
+ Normalmente el significado es similar al del idioma hablado (o es un o
+ inclusivo) salvo la implicación, 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ su significado viene dado por la tabla de verdad anterior y nada más.
+\end_layout
+
+\begin_layout Standard
+La 
+\emph on
+implicación
+\emph default
+ es falsa (
+\emph on
+F
+\emph default
+) si y solo si su antecedente es verdadero y su consecuencia falsa.
+ Si no es así, su valor es verdadero (
+\emph on
+V
+\emph default
+).
+ Esto se llama 
+\emph on
+implicación material
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+La tabla de verdad de la implicación se comprende mejor con el ejemplo siguiente
+:
+\end_layout
+
+\begin_layout Standard
+p: aciertas 100% de las preguntas en un examen
+\end_layout
+
+\begin_layout Standard
+q: sacas un 10.
+\end_layout
+
+\begin_layout Standard
+Entonces es claro que 
+\emph on
+si aciertas 100% y sacas un 10=
+\series bold
+\emph default
+V
+\series default
+\emph on
+; si aciertas 100% y no sacas un 10=
+\series bold
+\emph default
+F
+\series default
+\emph on
+; si no aciertas 100% y sacas un 10=
+\series bold
+\emph default
+V
+\series default
+\emph on
+ 
+\emph default
+y
+\emph on
+ si no aciertas 100% y no sacas un 10=
+\series bold
+\emph default
+V
+\series default
+\emph on
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejercicio
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+Comprobar que las siguientes proposiciones tienen las mismas tablas de verdad
+ (son 
+\emph on
+equivalentes
+\emph default
+):
+\begin_inset Formula 
+\[
+\begin{array}{c}
+P\Rightarrow Q\equiv\lnot P\vee Q\\
+P\Leftrightarrow Q\equiv(P\Rightarrow Q)\land(Q\Rightarrow P)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $P\Rightarrow Q$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot P\vee Q$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P\Leftrightarrow Q$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(P\Rightarrow Q)\land(Q\Rightarrow P)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo la primera equivalencia probada por la tabla de verdad, la segunda
+ equivale a 
+\begin_inset Formula 
+\[
+P\Leftrightarrow Q\equiv(\lnot P\lor Q)\land(\lnot Q\lor P)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $\lnot P\vee Q$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Q\vee P$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(\lnot P\lor Q)\land(\lnot Q\lor P)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+Sea un modelo del mundo definido por las siguientes expresiones:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+(E\vee B)\Rightarrow A\\
+A\Rightarrow(J\wedge M)\\
+B
+\end{array}
+\]
+
+\end_inset
+
+Se trata de rellenar a la tabla :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+?
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+E
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+J
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1) 
+\series bold
+B 
+\series default
+es cierto
+\series bold
+ 
+\end_layout
+
+\begin_layout Standard
+2) como B es cierto 
+\begin_inset Formula $E\vee B$
+\end_inset
+
+ lo es y, por tanto, A=V.
+\end_layout
+
+\begin_layout Standard
+3) Si A=V 
+\begin_inset Formula $J=V\wedge M=V$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Usando las tablas de verdad se pueden obtener las siguientes 
+\series bold
+propiedades
+\series default
+:
+\end_layout
+
+\begin_layout Itemize
+Absorción: 
+\begin_inset Formula $(p_{1}\land V$
+\end_inset
+
+) 
+\begin_inset Formula $\equiv p_{1}$
+\end_inset
+
+ ;
+\begin_inset Formula $(p_{1}\lor V$
+\end_inset
+
+) 
+\begin_inset Formula $\equiv p_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Ley del medio excluido: 
+\begin_inset Formula $(p_{1}\lor\lnot p_{1}$
+\end_inset
+
+) 
+\begin_inset Formula $\equiv V$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+de no contradicción:
+\begin_inset Formula $(p_{1}\land\lnot p_{1}$
+\end_inset
+
+) 
+\begin_inset Formula $\equiv F$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+dominación: 
+\begin_inset Formula $(p_{1}\land F$
+\end_inset
+
+) 
+\begin_inset Formula $\equiv F$
+\end_inset
+
+; 
+\begin_inset Formula $(p_{1}\lor V$
+\end_inset
+
+) 
+\begin_inset Formula $\equiv V$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Idempotencia: 
+\begin_inset Formula $(p_{1}\land p_{1}$
+\end_inset
+
+) 
+\begin_inset Formula $\equiv p_{1}$
+\end_inset
+
+; 
+\begin_inset Formula $(p_{1}\lor p_{1}$
+\end_inset
+
+) 
+\begin_inset Formula $\equiv p_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+la doble negación: 
+\begin_inset Formula $\lnot\lnot p_{1}\equiv p_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Leyes de De Morgan: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\lnot(p_{1}\lor p_{2})\equiv\lnot p_{1}\land\lnot p_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lnot(p_{1}\land p_{2})\equiv\lnot p_{1}\lor\lnot p_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Contraposición: 
+\begin_inset Formula $p_{1}\Rightarrow p_{2}\equiv\lnot p_{2}\Rightarrow\lnot p_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conmutatividad: 
+\begin_inset Formula $p_{1}\lor p_{2}=p_{2}\lor p_{1}$
+\end_inset
+
+ ; 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $p_{1}\land p_{2}=p_{2}\land p_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Asociatividad: 
+\begin_inset Formula $(p_{1}\lor p_{2})\lor p_{3}=p_{1}\lor(p_{2}\lor p_{3})$
+\end_inset
+
+ ; 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $(p_{1}\land p_{2})\land p_{3}=p_{1}\land(p_{2}\land p_{3})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+ 
+\end_layout
+
+\begin_layout Itemize
+Leyes distributivas: 
+\begin_inset Formula $p_{1}\lor(p_{2}\land p_{3})=(p_{1}\lor p_{2})\land(p_{1}\lor p_{3})$
+\end_inset
+
+ ; 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $p_{1}\land(p_{2}\lor p_{3})=(p_{1}\land p_{2})\lor(p_{1}\land p_{3})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Semántica.
+ 
+\end_layout
+
+\begin_layout Standard
+En lógica.la 
+\series bold
+semántica
+\series default
+ del lenguaje define 
+\emph on
+el valor de verdad de cada sentencia
+\emph default
+ respecto a cada mundo posible (o 
+\emph on
+modelo
+\emph default
+).
+ El 
+\series bold
+significado 
+\series default
+o semántica de una sentencia determina su interpretación.
+\end_layout
+
+\begin_layout Enumerate
+Una
+\series bold
+ interpretación
+\series default
+ semántica es la asignación de 
+\emph on
+ significados
+\emph default
+ a las variables que constituyen las fórmulas bien formadas de un lenguaje
+ formal.Como los lenguajes formales pueden definirse en términos puramente
+ sintácticos, sus fórmulas bien formadas pueden no ser más que cadenas de
+ símbolos sin ningún significado.
+ Una interpretación otorga significado a esas fórmulas.
+\end_layout
+
+\begin_layout Enumerate
+El valor de un literal positivo p en una interpretación I es 
+\begin_inset Formula $I(p)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+El valor de un literal negativo 
+\begin_inset Formula $\lnot I$
+\end_inset
+
+ en una interpretación 
+\emph on
+I
+\emph default
+ es 
+\begin_inset Formula 
+\[
+I(\lnot p)=\left\{ \begin{array}{c}
+1\textrm{ si }I(p)=0\\
+0\textrm{ si }I(p)=1
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+El valor de una cláusula 
+\emph on
+C
+\emph default
+ en una interpretación
+\emph on
+ I
+\emph default
+ es
+\begin_inset Formula 
+\[
+I(C)=\left\{ \begin{array}{c}
+\textrm{1, si existe un L \ensuremath{\in} C tal que I(L) = 1}\\
+\textrm{0, en caso contrario.}\qquad\qquad\qquad
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+El valor de un conjunto de cláusulas S en una interpretación I es
+\begin_inset Formula 
+\[
+I(S)=\left\{ \begin{array}{c}
+\textrm{1, si para toda  C \ensuremath{\in} S, I(C) = 1}\\
+\textrm{0, en caso contrario.}\qquad\qquad\qquad
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Prop.: En cualquier interpretación I, 
+\begin_inset Formula $I(\oblong)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Equivalencia, validez y satisfacibilidad (SAT).
+\end_layout
+
+\begin_layout Standard
+Un entorno (mundo de un agente) descrito por un vector binario de n componentes
+ admite 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+ valores distintos cada uno de los cuales representa un estado distinto
+ del mundo.
+ Cada una de las asignaciones de valores de verdad posibles representa una
+ 
+\emph on
+interpretación.
+\end_layout
+
+\begin_layout Itemize
+Dos sentencias 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta$
+\end_inset
+
+ son 
+\series bold
+equivalentes
+\series default
+ lógicamente si tienen los mismos valores de verdad en todas las interpretacione
+s.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Lo representaremos como:
+\begin_inset Formula 
+\[
+\alpha\Leftrightarrow\beta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+o alternativamente,
+\begin_inset Formula 
+\[
+\alpha\equiv\beta\textrm{ si y solo si }\alpha\models\beta\textrm{ y \beta\models\alpha}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Una 
+\series bold
+sentencia válida
+\series default
+ es una que es 
+\emph on
+cierta en cualquier interpretación
+\emph default
+.
+ Una sentencia válida es una 
+\series bold
+tautología
+\series default
+ (no aporta información sobre el mundo puesto que se verifica en todos).
+\end_layout
+
+\begin_layout Itemize
+Por el contrario, una sentencia es una 
+\series bold
+contradicción 
+\series default
+(inconsistente) cuando es falsa en cualquier circunstancia ('está lloviendo
+ y no lloviendo').
+\end_layout
+
+\begin_layout Itemize
+Una 
+\series bold
+sentencia
+\series default
+ es
+\series bold
+ contingente
+\series default
+\emph on
+ 
+\emph default
+cuando es verdad para algunas asignaciones de verdad y falsa en otros.
+ 
+\end_layout
+
+\begin_layout Itemize
+Una sentencia es 
+\series bold
+insatisfacible
+\series default
+ si y solo si no es satisfecha por ninguna asignación de valores de verdad
+ a las constantes.
+\end_layout
+
+\begin_layout Standard
+En el ejemplo del robot, nuestro modelo exige que 
+\begin_inset Formula 
+\[
+(BAT\textrm{\_}OK\land ELEVABLE\Rightarrow MUEVE)=VERDAD
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y desecharemos las interpretaciones en las que siendo 
+\begin_inset Formula $BAT\textrm{\_}OK$
+\end_inset
+
+ y 
+\begin_inset Formula $ELEVABLE$
+\end_inset
+
+ verdaderas 
+\begin_inset Formula $MUEVE$
+\end_inset
+
+ sea falso.
+\end_layout
+
+\begin_layout Standard
+Con frecuencia se clasifican las sentencias en dos grupos:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+satisfacibles
+\series default
+ si y solo si son válidas o contingentes y
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+falsables
+\series default
+ si y solo si son insatisfacibles o contingentes
+\end_layout
+
+\begin_layout Standard
+De algún modo las sentencias 
+\emph on
+insatisfacibles
+\emph default
+ y las 
+\emph on
+válidas
+\emph default
+ son
+\emph on
+ inútiles
+\emph default
+.
+ Las válidas no descartan ninguna asignación de valores de verdad y las
+ insatisfacibles los descartan todos y, por tanto, no nos dicen nada sobre
+ el mundo.
+ Sin embargo, son muy útiles por cuanto nos permiten realizar transformaciones
+ legales sobre otras sentencias.
+\end_layout
+
+\begin_layout Standard
+El problema de la 
+\emph on
+satisfacibilidad proposicional
+\emph default
+ consiste en determinar si un conjunto de sentencias proposicionales 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ es satisfacible.
+ En la práctica, muchos problemas de razonamiento automático en Lógica Proposici
+onal se reducen previamente a problemas de satisfacibilidad y se aplica
+ un resolvedor de problemas de satisfacibilidad.
+\end_layout
+
+\begin_layout Standard
+La satisfacción es lo opuesto a evaluación.
+ Comenzamos con una o más sentencias compuestas y tratamos de averiguar
+ qué asignaciones de verdad satisfacen dichas sentencias.
+\end_layout
+
+\begin_layout Standard
+En 
+\emph on
+evaluación
+\emph default
+, consideremos la proposición 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+(p\lor q)\land(\lnot q\lor r)\label{eq:1-1}
+\end{equation}
+
+\end_inset
+
+Con la asignación de verdad 
+\begin_inset Formula $i$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+p^{i}=1\\
+q^{i}=0\\
+r^{i}=1
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La proposición (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1-1"
+
+\end_inset
+
+) es verdadera: 
+\begin_inset Formula 
+\[
+(1\lor0)\land(1\lor1)=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sin embargo con la asignación de verdad 
+\begin_inset Formula $j$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+p^{j}=1\\
+q^{j}=1\\
+r^{j}=0
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+es falsa:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(1\lor1)\land(0\lor0)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En 
+\emph on
+satisfacción
+\emph default
+ la siguiente tabla muestra todas las posibles asignaciones de verdad con
+ tres constantes porposicionales (
+\begin_inset Formula $p,q,r)$
+\end_inset
+
+ cuyo número es 
+\begin_inset Formula $2^{3}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+p
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+r
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Valor de verdad de la sentencia
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+asignación i
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+asignación j
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Existen varios métodos de resolver problemas de satisfacibilidad.
+\end_layout
+
+\begin_layout Subsection
+Satisfacibilidad mediante tablas de verdad.
+\end_layout
+
+\begin_layout Standard
+Si queremos encontrar las asignaciones de verdad que satisfacen la proposición
+ haremos una tabla que contenga todas las posibles combinaciones de valores
+ de las constantes proposicionales y añadiremos una o más columnas con los
+ valores de verdad de la(s) proposicion(es) y aquellas filas cuyo valor
+ de verdad sea 
+\emph on
+V
+\emph default
+ (
+\emph on
+1
+\emph default
+) satisfarán la(s) sentencia(s).
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\triangle=\{p\lor q,p\lor\lnot q,\lnot p\lor q,\lnot p\lor\lnot q\lor\lnot r,\lnot p\lor r\}$
+\end_inset
+
+.
+ ¿Es 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ satisfacible?.
+\end_layout
+
+\begin_layout Standard
+Tabla de verdad:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename satisfac.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hay una fila para cada asignación de valores de verdad.
+ Para cada fila se evalúan todas las sentencias de 
+\begin_inset Formula $\triangle$
+\end_inset
+
+.
+ Si alguna sentencia se evalúa a 
+\emph on
+F
+\emph default
+ (0), 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ no es verdadera en su conjunto.
+\end_layout
+
+\begin_layout Standard
+Como en este caso parta cada fila hay un valor falso, 
+\series bold
+\emph on
+
+\begin_inset Formula $\triangle$
+\end_inset
+
+ no es satisfacible.
+\end_layout
+
+\begin_layout Subsection
+Satisfacibilidad mediante vuelta atrás (
+\emph on
+backtracking
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+Si observamos el ejemplo precedente, vemos que con frecuencia solo se requiere
+ una asignación parcial de verdad para determinar si 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ se satisface.
+ P.e.
+ consideremos la asignación parcial 
+\begin_inset Formula $\{p=1,q=0\}$
+\end_inset
+
+.
+ Sin necesidad de tomar en cuenta 
+\begin_inset Formula $r$
+\end_inset
+
+ ya vemos que 
+\begin_inset Formula $\lnot p\lor q=0$
+\end_inset
+
+ y, por tanto, no se satisface 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ y esta conclusión puede ampliarse a cualquier sentencia que incluya dicha
+ asignación.
+ 
+\end_layout
+
+\begin_layout Standard
+Así pues, determinando si 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ se satisface por una asignación parcial, podemos ahorrarnos el trabajo
+ de comprobar las asignaciones completas.
+ En este caso, nos ahorramos comprobar 
+\begin_inset Formula $\{p=1,q=0,r=0\}$
+\end_inset
+
+ y 
+\begin_inset Formula $\{p=1,q=0,r=1\}$
+\end_inset
+
+.
+ El ahorro en este caso es pequeño, pero cuando crece el número de proposiciones
+ aquel puede ser considerable.
+\end_layout
+
+\begin_layout Standard
+Lo mismo puede decirse para 
+\begin_inset Formula $\{p=0,q=1\}$
+\end_inset
+
+ donde 
+\begin_inset Formula $p\lor\lnot q=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El proceso puede visualizarse como un 
+\emph on
+árbol de búsqueda 
+\emph default
+donde cada rama determina el valor de verdad de una proposición única y
+ cada nodo hoja es una asignación de verdad completa.
+ El árbol siguiente representa el caso anteriormente expuesto.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename tree.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la búsqueda por vuelta atrás arrancamos en el nodo raíz y descendemos
+ por una rama comprobando en cada nodo si se satisface 
+\begin_inset Formula $\triangle$
+\end_inset
+
+.
+ Si esto es así, bajamos por la rama eligiendo un valor de verdad para una
+ proposición aun sin asignar.
+ Si, por el contrario, 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ es falsado, como todas las asignaciones descendentes por la rama también
+ falsan 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ 
+\emph on
+volvemos hacia atrás 
+\emph default
+hasta el punto de decisión más reciente y descendemos por otra rama diferente.
+\end_layout
+
+\begin_layout Standard
+De este modo se realiza una poda del árbol que, para el ejemplo que nos
+ ocupa, se muestra en la figura siguiente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename poda_log.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Existen otros métodos que optimizan la búsqueda por vuelta atrás tales como
+ el de 
+\emph on
+simplificación
+\emph default
+ y 
+\emph on
+propagación unitaria
+\emph default
+ que requieren que las sentencias se hayan transformado en 
+\emph on
+disyunciones 
+\emph default
+lógicamente equivalentes y no debe olvidarse el método 
+\emph on
+Divas-Putnam-Logemann-Loveland 
+\emph default
+(DPLL).
+\end_layout
+
+\begin_layout Subsection
+Satisfacibilidad con búsquedas incompletas.
+\end_layout
+
+\begin_layout Standard
+Algunos problemas, por su tamaño, no pueden resolverse mediante una búsqueda
+ exhaustiva y, a veces, se usan métodos de búsqueda incompleta que no siempre
+ responden correctamente.
+ La idea básica es explorar un subconjunto de asignaciones de verdad.
+ Si se encuentra una asignación satisfaciente, concluimos que 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ es satisfacible.
+ Si no, es imposible declarar la insatisfacibilidad del problema.
+\end_layout
+
+\begin_layout Section
+Consecuencia lógica.
+\end_layout
+
+\begin_layout Standard
+Se define la 
+\series bold
+consecuencia lógica
+\series default
+ del modo siguiente : Si una sentencia
+\begin_inset Formula $w$
+\end_inset
+
+ tiene valor 
+\emph on
+V
+\emph default
+ bajo todas las interpretaciones en las que todas las sentencias de un conjunto
+ 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ tienen valor 
+\series bold
+\emph on
+V
+\series default
+\emph default
+, entonces
+\end_layout
+
+\begin_layout Standard
+decimos que 
+\series bold
+
+\begin_inset Formula $w$
+\end_inset
+
+ es consecuencia lógica de 
+\begin_inset Formula $\triangle$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\triangle\models w
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+o también “
+\emph on
+
+\begin_inset Formula $w$
+\end_inset
+
+ se sigue de 
+\begin_inset Formula $\triangle$
+\end_inset
+
+
+\emph default
+”.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Válida
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Satisfacible
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No satisfacible
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+p
+\begin_inset Formula $\vee\lnot p$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+p
+\begin_inset Formula $\wedge\lnot p$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+p
+\begin_inset Formula $\vee q\vee(p\Leftrightarrow q)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(p\Leftrightarrow q)\vee(q\Leftrightarrow p)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los 
+\series bold
+elementos de la lógica
+\series default
+ son los siguientes:
+\end_layout
+
+\begin_layout Itemize
+Un 
+\series bold
+lenguaje formal
+\series default
+: Símbolos + reglas sintácticas (
+\series bold
+sintaxis
+\series default
+) para combinar símbolos en sentencias gramaticales.
+ La Sintaxis se centra en la estructura formal de las sentencias.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Reglas de inferencia
+\series default
+: Reglas
+\emph on
+ tipográficas
+\emph default
+ para construir nuevas sentencias partiendo de un grupo dado de sentencias.
+ (Tipográficas: no usan semántica, es decir, no se meten en el significado
+ de las sentencias).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Semántica
+\series default
+: Reglas de interpretación que asocian sentencias en el lenguaje con afirmacione
+s en el dominio de discurso.
+ Centrada en las condiciones de verdad de las sentencias.
+\end_layout
+
+\begin_layout Section
+El wumpus y la Lógica Proposicional.
+\end_layout
+
+\begin_layout Standard
+Todo lo anterior es aplicable al mundo del wumpus que hemos descrito al
+ comienzo.
+ Si tomamos la situación de la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3"
+
+\end_inset
+
+(b)): el agcnte no ha detectado nada en la casilla [l, 1] y ha detectado
+ una brisa en la [2, 1].
+ Estas percepciones, combinadas con el conocimiento del agente sobre las
+ reglas quc definen el funcionamiento del mundo del wurnpus, constituyen
+ su KB.
+ 
+\end_layout
+
+\begin_layout Standard
+El agcnte está interesado (entre otras cosas) en si las casillas adyacentcs
+ [ l , 2], [2.2] y [3.
+ 1] tienen pozos sin fondo.
+ Cada una de las tres casillas pueden o no tcner un pozo, por lo tanito
+ (al menos en este ejemplo) hay 
+\begin_inset Formula $2^{3}$
+\end_inset
+
+ = 8 modelos posibles.
+ Tal corno se muestran en la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:5"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:5"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename bc.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+La KB es falsa en los modelos que contradicen lo que el agente sabe (por
+ ejemplo, la KB es falsa en cualquier modclo en el que la casilla [l, 2]
+ tenga un hoyo, porque no ha detectado ninguna brisa en la casilla [l, 1].
+ De hecho, hay tres modelos en los que la KB ecs verdadera, los que se muestran
+ como subconjunto de los modelos de la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:5"
+
+\end_inset
+
+)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En la Figura los modelos se muestran como mundos parciales, porque en realidad
+ tan solo son asignaciones de 
+\emph on
+verdadero
+\emph default
+ y 
+\emph on
+falso
+\emph default
+ a sentencias como 
+\begin_inset Quotes fld
+\end_inset
+
+hay un hoyo en la casilla [ l ,2]», ctc.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ahora consideremos las dos conclusiones:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+= «No hay un pozo en la casilla [1, 2]».
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+= «No hay un pozoen la casilla [2, 2]».
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Si observamos, podemos ver lo siguiente:
+\end_layout
+
+\begin_layout Itemize
+en 
+\emph on
+cada
+\emph default
+ modelo en el que la KB es verdadera,
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ tanibién lo cs.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+De aquí que 
+\begin_inset Formula $KB\models\alpha_{1}$
+\end_inset
+
+:el agente 
+\emph on
+puede concluir
+\emph default
+ que no hay un pozo en la casilla [1, 2].
+ También podernos ver que
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+en algunos modelos en los que la KB es verdadera, 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ es falsa.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+De aquí que 
+\begin_inset Formula $KB\nvDash\alpha_{2}$
+\end_inset
+
+,: el agente 
+\emph on
+no puede concluir
+\emph default
+ que no haya un pozo en la casilla [2,1], (Ni tampoco puede concluir que
+ lo haya.)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+El ejemplo anterior no sólo nos muestra el concepto de implicación, sino
+ tanbién cómo el concepto de implicación se puede aplicar para derivar conclusio
+nes.
+ es decir llevar a cabo la inferencia lógica.
+\end_layout
+
+\begin_layout Section
+Demostraciones (pruebas) proposicionales.
+ 
+\end_layout
+
+\begin_layout Standard
+Comprobar las consecuencias lógicas a partir de tablas de verdad es conceptualme
+nte simple, pero el número de asignaciones de verdad crece exponencialmente
+ con el número de constantes lógicas.
+ Los métodos de demostración constituyen un medio alternativo de comprobar
+ las consecuencias lógicas.
+ En muchos casos es posible crear una demostración de una conclusión de
+ un conjunto de premisas que es mucho menor que la tabla de verdad.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Prueba
+\series default
+: La secuencia de fbfs {
+\begin_inset Formula $w_{1},w_{2},...,w_{n-1},w_{n}$
+\end_inset
+
+} es una prueba (o deducción, o derivación) de
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ a partir de un conjunto de fbfs 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ con el conjunto de reglas de inferencia R si (si y sólo si) cada 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+,i=1,2,...,n está o bien en 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ o puede ser deducido de 
+\begin_inset Formula ${w_{1},w_{2},...,w_{i-1}}$
+\end_inset
+
+ por la aplicación de alguna regla de inferencia de R.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Teorema
+\series default
+: Si existe una prueba de 
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ a partir de 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ con las reglas de inferencia 
+\emph on
+R
+\emph default
+ , entonces 
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ es un teorema de 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ con reglas de inferencia 
+\begin_inset Formula $R$
+\end_inset
+
+: 
+\begin_inset Formula $\triangle\vdash_{R}w_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La esencia del razonamiento lógico es la manipulación de símbolos:
+\end_layout
+
+\begin_layout Itemize
+comenzamos con premisas
+\end_layout
+
+\begin_layout Itemize
+aplicamos reglas de inferencia para obtener conclusiones
+\end_layout
+
+\begin_layout Itemize
+unimos tales conclusiones para formar pruebas lógicas.
+\end_layout
+
+\begin_layout Standard
+Un ejemplo de aplicación sería el proceso de obtención de información a
+ partir de una 
+\emph on
+base de conocimiento
+\emph default
+ - KB -
+\begin_inset Formula $\varDelta$
+\end_inset
+
+por medio de una consulta (
+\begin_inset Formula $w_{n}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Una Base de conocimiento (KB) para el mundo del wumpus.
+\end_layout
+
+\begin_layout Standard
+En el mundo de la computación una 
+\emph on
+base de conocimiento
+\emph default
+ consiste en una base de datos de temas relacionados con un sistema informático
+ concreto, hardware o software, en la cual se encuentran los problemas más
+ comunes y sus soluciones, metodologías para trabajar con el sistema y obtener
+ respuestas a consultas.
+\end_layout
+
+\begin_layout Standard
+En nuestro caso una base de conocimiento (KB) de un agente dotado de sensores
+ que detectan el valor V o F de varias proposiciones sobre el mundo es la
+ representación de dichos valores en sentencias de lógica proposicional.
+\end_layout
+
+\begin_layout Standard
+Ahora que ya hemos definido la semántica de la lógica proposicional, podemos
+ construir una base de conocimiento para el mundo del wumpus que utilizaremos
+\end_layout
+
+\begin_layout Standard
+para ilustrar los métodos de inferencia.
+ Para simplificar, sólo trataremos con hechos y reglas acerca de pozos.
+\end_layout
+
+\begin_layout Standard
+Lo primero, es escoger nuestro vocabulario de 
+\emph on
+símbolos proposicionales
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Para cada posición de la habitación i, j: 
+\begin_inset Formula $[i,j]$
+\end_inset
+
+ hacemos que 
+\begin_inset Formula 
+\[
+H_{ij}\left\{ \begin{array}{c}
+\textrm{\textbf{V} si hay un pozo}\\
+\textrm{\textbf{F} en caso contrario}
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+B_{ij}\left\{ \begin{array}{c}
+\textrm{\textbf{V} si hay una corriente de aire}\\
+\textrm{\textbf{F} en caso contrario}\quad\quad\:
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La base de conocimiento KB contiene las siguientes sentencias cada una etiquetad
+a con un identificador:
+\end_layout
+
+\begin_layout Itemize
+No hay ningún hoyo en la casilla [1, 1].
+\begin_inset Formula 
+\[
+R_{1}:\;H_{11}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+En una casilla se siente una brisa si y solo si hay un hoyo en una casilla
+ vecina.
+ Esta regla se ha de especificar para cada casilla, pero por ahora, tan
+ solo incluimos las casillas que son relevantes:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+R_{2}:\;;B_{11}\Leftrightarrow(H_{12}\lor H_{2,1})\\
+R_{3}:\;;B_{21}\Leftrightarrow(H_{11}\lor H_{32}\lor H_{21})
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las sentencias anteriores son verdaderas en todos los mundos de wumpus.
+\end_layout
+
+\begin_layout Standard
+Ahora incluimos las de brisa para las dos primeras casillas visitadas en
+ el mundo concreto donde se encuentra el agente, llegando a la situación
+ que se muestra en
+\end_layout
+
+\begin_layout Standard
+la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+R_{4}:~\lnot B_{11}\\
+R_{5}:~\lnot B_{21}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces, la base de conocimiento está compuesta por la sentencias 
+\begin_inset Formula $R_{1},..,R_{5}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La KB también se puede representar mediante una única sentencia (la conjunción
+ 
+\begin_inset Formula $\land_{i=1}^{5}R_{i}$
+\end_inset
+
+ dado que dicha sentencia aserta que todas las sentencias 
+\begin_inset Formula $R_{1},..,R_{5}$
+\end_inset
+
+ son verdaderas.
+\end_layout
+
+\begin_layout Section
+Esquemas y reglas de inferencia.
+\end_layout
+
+\begin_layout Standard
+Para enfrentar el problema de la demostración, precisamos conocer las 
+\emph on
+reglas de inferencia
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Un 
+\emph on
+esquema
+\emph default
+ es una expresión que satisface la sintaxis del lenguaje excepto por la
+ aparición de 
+\emph on
+metavariables
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Una 
+\emph on
+metavariable
+\emph default
+, como 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, representa cualquier fórmula.
+ Usaremos letras griegas para designar metavariables.
+
+\emph on
+ 
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+en varias subpartes de la expresión.
+\end_layout
+
+\begin_layout Standard
+P.e.
+ la siguiente expresión es un 
+\emph on
+esquema
+\emph default
+ con metavariables 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ y 
+\begin_inset Formula $\psi$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{\varphi\Rightarrow\psi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una 
+\emph on
+regla de inferencia
+\emph default
+ es un patrón de razonamiento consistente en algunos 
+\emph on
+esquemas
+\emph default
+ denominados 
+\series bold
+\emph on
+premisas 
+\series default
+\emph default
+y uno o más esquemas adicionales llamados 
+\series bold
+\emph on
+conclusiones.
+\end_layout
+
+\begin_layout Standard
+Las reglas de inferencia se escriben con frecuencia de la siguiente manera
+ 
+\emph on
+(modus ponens
+\emph default
+ o
+\emph on
+ 
+\emph default
+eliminación de la implicación)
+\emph on
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{{\displaystyle \mathbf{\varphi\Rightarrow\psi,\;\varphi}}}{{\displaystyle \mathbf{\psi}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde los esquemas 
+\emph on
+por encima de la línea
+\emph default
+ son las 
+\series bold
+\emph on
+premisas 
+\series default
+\emph default
+y los que están 
+\emph on
+por debajo
+\emph default
+, las 
+\series bold
+\emph on
+conclusiones
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Una 
+\emph on
+instancia 
+\emph default
+de una regla de inferencia se obtiene sustituyendo las metavariables de
+ la regla por sentencias, como p.e.
+ (eliminación de la implicación) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{{\displaystyle \mathbf{p\Rightarrow q,\;p}}}{{\displaystyle \mathbf{q}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tales sustituciones pueden ser arbitrariamente largas.
+\end_layout
+
+\begin_layout Standard
+Es perfectamente válido tener 
+\emph on
+reglas de inferencia sin premisas
+\emph default
+ que, con frecuencia, se denominan 
+\emph on
+esquemas de axiomas
+\emph default
+ que suelen representarse sin la línea horizontal.
+\end_layout
+
+\begin_layout Standard
+Algunos ejemplos de 
+\emph on
+reglas de inferencia
+\emph default
+ que se pueden aplicar para derivar cadenas de conclusiones que nos llevan
+ al objetivo deseado son los siguientes:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modus ponens
+\series default
+ (o eliminación de la implicación): 
+\begin_inset Formula $\frac{{\displaystyle \alpha\Rightarrow\beta,\;\alpha}}{{\displaystyle \beta}}$
+\end_inset
+
+: cada vez que encontramos dos sentencias en la forma 
+\begin_inset Formula $\alpha\Rightarrow\beta$
+\end_inset
+
+ y 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\beta$
+\end_inset
+
+ puede inferirse.
+ P.e.
+ si en un problema de caza tenemos 
+\begin_inset Formula $(OsoEnfrente\land OsoVivo)\Rightarrow Disparar$
+\end_inset
+
+ y 
+\begin_inset Formula $(OsoEnfrente\land OsoVivo)$
+\end_inset
+
+ puede inferirse 
+\begin_inset Formula $Disparar$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modus tollens
+\series default
+: 
+\begin_inset Formula ${\displaystyle \frac{\lnot\alpha,\;\alpha\Rightarrow\beta}{\lnot\beta}}$
+\end_inset
+
+.
+ De 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\lnot(OsoEnfrente\land OsoVivo)\equiv\lnot OsoEnfrente\lor\lnot OsoVivo$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+ puede inferirse 
+\begin_inset Formula $\lnot Disparar$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Eliminación
+\series default
+
+\begin_inset Formula $\mathbf{\land}$
+\end_inset
+
+: 
+\begin_inset Formula $\frac{{\displaystyle \alpha\land\beta\Rightarrow\beta}}{{\displaystyle \alpha}}$
+\end_inset
+
+ de una conjunción, se puede inferir cualquiera de sus conjuntores.
+ De 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $(OsoEnfrente\land OsoVivo)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+ puede inferirse 
+\begin_inset Formula $OsoEnfrente$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Eliminación 
+\begin_inset Formula $\lnot\lnot$
+\end_inset
+
+: 
+\begin_inset Formula ${\displaystyle \frac{\lnot\lnot\alpha}{\alpha}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Introducción
+\begin_inset Formula $\land$
+\end_inset
+
+: 
+\begin_inset Formula ${\displaystyle \frac{\alpha,\beta}{\alpha\land\beta}}$
+\end_inset
+
+.
+ 
+\series default
+De 
+\begin_inset Formula $OsoEnfrente$
+\end_inset
+
+ , 
+\begin_inset Formula $OsoVivo$
+\end_inset
+
+ se infiere que
+\series bold
+ 
+\begin_inset Formula $(OsoEnfrente\land OsoVivo)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Introducción
+\series default
+ 
+\begin_inset Formula $\lor$
+\end_inset
+
+: 
+\begin_inset Formula ${\displaystyle \frac{\alpha}{\alpha\lor\beta}}$
+\end_inset
+
+, 
+\begin_inset Formula ${\displaystyle \frac{\beta}{\alpha\lor\beta}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si tomamos en cuenta la equivalencia de la eliininaci6n de la hicondicional
+ nos lleva a las dos reglas de inferencia:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\displaystyle \frac{\alpha\Leftrightarrow\beta}{(\alpha\Rightarrow\beta)\land(\beta\Rightarrow\alpha)},{\displaystyle \frac{(\alpha\Rightarrow\beta)\land\beta\Rightarrow\alpha)}{(\alpha\Leftrightarrow\beta)}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pero
+\emph on
+ no todas las reglas de inferencia
+\emph default
+ se pueden usar, como esta en ambas direcciones.
+ Las reglas de inferencia citadas pueden también escribirse con el símbolo
+ 
+\emph on
+consecuencia lógica
+\emph default
+ -
+\begin_inset Formula $\models$
+\end_inset
+
+- como p.e.
+ el modus ponens 
+\begin_inset Formula $(\alpha\Rightarrow\beta,\;\alpha)\models{\displaystyle \beta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Una 
+\emph on
+prueba lineal 
+\emph default
+de una conclusión derivada de un conjunto de premisas es una 
+\emph on
+secuencia de sentencias
+\emph default
+ que termina en una
+\emph on
+ conclusión 
+\emph default
+en la cual cada elemento es
+\end_layout
+
+\begin_layout Enumerate
+una 
+\emph on
+premisa
+\end_layout
+
+\begin_layout Enumerate
+una 
+\emph on
+instancia de un esquema axiomático
+\emph default
+ o
+\end_layout
+
+\begin_layout Enumerate
+el resultado de 
+\emph on
+aplicar una regla de inferencia a elementos 
+\emph default
+secuencialmente 
+\emph on
+anteriores
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+Sean nuestras premisas:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p\Rightarrow q$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(p\Rightarrow q)\Rightarrow(q\Rightarrow r)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y queremos probar que se verifica la 
+\emph on
+conclusión 
+\series bold
+
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Para probarlo 
+\end_layout
+
+\begin_layout Itemize
+de 1 y 2 por 
+\emph on
+modus ponens
+\emph default
+ inferimos que 
+\begin_inset Formula 
+\[
+\frac{{\displaystyle p\Rightarrow q,\;p}}{{\displaystyle q}}\sim\mathbf{q}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+de  3 por 
+\emph on
+modus ponens
+\emph default
+ inferimos que
+\begin_inset Formula 
+\[
+\frac{{\displaystyle q\Rightarrow(q\Rightarrow r),\;q}}{{\displaystyle (q\Rightarrow r)}}\sim\mathbf{q}\Rightarrow\mathbf{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+por último
+\begin_inset Formula 
+\[
+\frac{{\displaystyle q\Rightarrow r,\;q}}{{\displaystyle r}}\sim\mathbf{r}\:\textrm{c.q.d.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Estas reglas de inferencia pueden usarse en el mundo del wumpus del modo
+ siguiente:
+\end_layout
+
+\begin_layout Itemize
+Partimos de las base de conocimientos 
+\begin_inset Formula $\{R_{2},...,R_{5}\}$
+\end_inset
+
+ y y mostremos p.e.
+ cómo probar que 
+\begin_inset Formula $\lnot H_{1,2}$
+\end_inset
+
+(no hay un pozo en [1,2]).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Equivalencia de eliminación de la bicondicional a 
+\begin_inset Formula $R_{2}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+R_{6}:\;(B_{11}\Rightarrow(H_{13}\lor H_{21}))\land((H_{12}\lor H_{21})\Rightarrow B_{11})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Eliminación 
+\begin_inset Formula $\land$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+R_{7}:\;;((H_{12}\lor H_{21})\Leftrightarrow B_{11}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Equivalencia lógica de contraposición:
+\begin_inset Formula 
+\[
+R_{8}:\;(\lnot B_{11}\Rightarrow\lnot(H_{12}\lor H_{21}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ley de De Morgan:
+\begin_inset Formula 
+\[
+R_{9}:\;(\lnot B_{11}\Rightarrow(\lnot H_{12}\land\lnot H_{21}))\rightarrow\textrm{No hay pozo en [1,2] ni en [2,1]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Eliminación 
+\begin_inset Formula $\land$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+R_{10}:\;(\lnot H_{12}\land\lnot H_{21})\Rightarrow\lnot H_{12}\textrm{ c.q.d.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+: Sean nuestras premisas:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p\Rightarrow q$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(p\Rightarrow q)\Rightarrow(q\Rightarrow r$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+y queremos probar que se verifica la conclusión 
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Prueba:
+\end_layout
+
+\begin_layout Enumerate
+de 1 y 2 por 
+\emph on
+modus ponens
+\emph default
+ inferimos que: 
+\begin_inset Formula 
+\[
+{\displaystyle p\Rightarrow q,\;}\sim\mathbf{q}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+de 3 por 
+\emph on
+modus ponens
+\emph default
+ inferimos que
+\end_layout
+
+\begin_layout Section
+Completitud y corrección del conjunto de reglas de inferencia.
+\end_layout
+
+\begin_layout Standard
+En Lógica tenemos dos conceptos interrelacionados: 
+\emph on
+consecuencia lógica
+\emph default
+ y 
+\emph on
+demostrabilidad
+\emph default
+ que son, sin embargo, muy diferentes: un conjunto de premisas tiene una
+ consecuencia lógica si y solo si toda asignación de valores de verdad que
+ satisfaga las premisas, satisface también la conclusión.
+ Una sentencia es demostrable a partir de un conjunto de premisas si y solo
+ si existe una demostración finita de la conclusión a partir de las premisas.
+\end_layout
+
+\begin_layout Standard
+El primer concepto se basa en tablas de verdad y el segundo en manipulación
+ simbólica de expresiones.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Corrección
+\series default
+: Si para todo conjunto de fbfs 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ y toda fbf 
+\begin_inset Formula $w$
+\end_inset
+
+ 
+\begin_inset Formula $\triangle\vdash_{R}w$
+\end_inset
+
+ implica 
+\begin_inset Formula $\triangle\models$
+\end_inset
+
+
+\begin_inset Formula $w$
+\end_inset
+
+ se dice entonces que el conjunto de reglas R es 
+\emph on
+correcto
+\emph default
+.
+ Es decir, si y solo si 
+\emph on
+toda conclusión demostrable es consecuencia lógica 
+\emph default
+(
+\emph on
+su conclusión es verdad cuando lo son las premisas).
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Completitud
+\series default
+: Si para todo conjunto de fbfs 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ y toda fbf 
+\begin_inset Formula $w$
+\end_inset
+
+ 
+\begin_inset Formula $\triangle\models w$
+\end_inset
+
+ implica 
+\begin_inset Formula $\triangle\vdash_{R}w$
+\end_inset
+
+ se dice entonces que el conjunto de reglas R es 
+\emph on
+completo
+\emph default
+.
+ Esto es, si y solo si 
+\emph on
+toda consecuencia lógica es demostrable
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Nota
+\bar default
+: el operador 
+\begin_inset Formula $\models$
+\end_inset
+
+ se denomina 
+\emph on
+operador de demostrabilidad
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+Resolución en lógica proposicional.
+\end_layout
+
+\begin_layout Standard
+Planteemos la siguiente pregunta:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Si a María le gusta el pato 
+\emph default
+(p)
+\emph on
+ , entonces a María le gusta el conejo 
+\emph default
+(c)
+\emph on
+.
+ Si es lunes 
+\emph default
+(l)
+\emph on
+ y está nevando 
+\emph default
+(n)
+\emph on
+, entonces a María le gusta el pato o el conejo.
+ Si es lunes y está nevando, ¿le gusta a María el pollo?
+\end_layout
+
+\begin_layout Standard
+La primera sentencia (
+\emph on
+Si a María le gusta el pato 
+\emph default
+(p)
+\emph on
+ , entonces a María le gusta el conejo 
+\emph default
+(c)) se expresa como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p\Rightarrow c
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La segunda (
+\emph on
+Si es lunes 
+\emph default
+(l)
+\emph on
+ y está nevando 
+\emph default
+(n)
+\emph on
+, entonces a María le gusta el pato o el conejo
+\emph default
+) :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+((l\land n)\Rightarrow(p\lor c))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y es evidente que si se verifican:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+p_{1}\land...\land p_{k}\Rightarrow q_{1}\lor...\lor q_{l}\\
+r_{1}\land...\land r_{m}\Rightarrow s_{1}\lor...\lor s_{n}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+también lo hace:
+\begin_inset Formula 
+\[
+\mathbf{p_{1}\land...\land p_{k}\land r_{1}\land...\land r_{m}\Rightarrow q_{1}\lor...\lor q_{l}\lor s_{1}\lor...\lor}\mathbf{s_{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y por lo tanto, en nuestro ejemplo:
+\begin_inset Formula 
+\[
+p\land l\land n\Rightarrow c\lor p\lor c
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Expresión en la que se pueden hacer dos manipulaciones:
+\end_layout
+
+\begin_layout Enumerate
+si una misma proposición se repite a la izquierda de una sentencia y a la
+ derecha de otra pueden eliminarse los dos símbolos en ambos una sola vez.
+\end_layout
+
+\begin_layout Enumerate
+si una constante se repite al mismo lado de la sentencia pueden eliminarse
+ todas las ocurrencias de la misma menos una.
+\end_layout
+
+\begin_layout Standard
+Entonces, tendremos:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\begin{array}{c}
+\begin{array}{c}
+p\Rightarrow c\textrm{ }\\
+l\land n\Rightarrow p\lor c
+\end{array}\\
+\mathbf{l\land n\Rightarrow c\lor c}\textrm{ por 1 }
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y por 2 
+\begin_inset Formula $\mathbf{l\land n\Rightarrow c}$
+\end_inset
+
+ y la respuesta es cierta.
+\end_layout
+
+\begin_layout Standard
+Este ejemplo introduce uno de los más interesantes problemas de la lógica:
+ la 
+\series bold
+\emph on
+Resolución
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+En lógica la 
+\series bold
+Resolución
+\series default
+ es una regla de inferencia utilizada sobre cierto tipo de proposiciones
+ lógicas y es especialmente utilizada para los demostradores automatizados
+ de teoremas.
+ Utilizando resolución se puede construir un demostrador que sea
+\emph on
+ 
+\series bold
+completo
+\series default
+ 
+\emph default
+y 
+\series bold
+\emph on
+correcto
+\series default
+\emph default
+ para la lógica proposicional y de primer orden supuesto que un conjunto
+ de proposiciones son insatisfacibles.
+ Por otro lado si el conjunto de proposiciones de hecho es satisfacible,
+ puede o no terminar en una cantidad finita de pasos una demostración por
+ resolución, generalmente lo que sucede es que se asigna un tiempo límite
+ para hallar si un conjunto es insatisfacible o no.
+\end_layout
+
+\begin_layout Standard
+La resolución solamente funciona cuando se escriben las proposiciones en
+ términos que constan solamente de disyunciones de literales.
+ Puesto que toda proposición lógica se puede escribir en términos de disyuncione
+s, conjunciones y negaciones lo anterior no supone una limitación del método
+ más allá de transformar proposiciones lógicas.
+ Las proposiciones escritas en esta forma se les denomina 
+\emph on
+cláusulas
+\emph default
+, esto es una
+\series bold
+ cláusula
+\series default
+ es un 
+\series bold
+\emph on
+literal 
+\series default
+\emph default
+o una 
+\series bold
+\emph on
+disyunción 
+\series default
+\emph default
+de literales (
+\begin_inset Formula $\vee_{i=1}^{m}l_{i}$
+\end_inset
+
+) y puede ser representada como un conjunto de literales con disyunciones
+ implícitas entre todos los literales del conjunto.
+\end_layout
+
+\begin_layout Standard
+Una 
+\series bold
+\emph on
+cláusula
+\series default
+\emph default
+ es un conjunto de literales en una sentencia clausal.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+cláusula
+\series default
+: 
+\begin_inset Formula $\mathbf{\lnot p\lor q}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+conjunto de literales
+\series default
+: 
+\begin_inset Formula $(\lnot p,q)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La resolución 
+\emph on
+se basa en la tautología
+\emph default
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+((p\lor q)\land(\lnot p\lor r))\Rightarrow(q\lor r)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde la disyunción final 
+\begin_inset Formula $(q\lor r)$
+\end_inset
+
+ se llama el 
+\series bold
+resolvente
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Si hacemos 
+\begin_inset Formula $q=r$
+\end_inset
+
+ obtenemos
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+((p\lor q)\land(\lnot p\lor q))\Rightarrow(q)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y si 
+\begin_inset Formula $r=\mathbf{F}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+((p\lor q)\land(\lnot p))\Rightarrow(q)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La existencia de un lenguaje formal para representar información y la existencia
+ de un conjunto de reglas de manipulación mecánicas tiene una consecuencia
+ importante: la posibilidad del razonamiento automático usando ordenadores
+ digitales.
+\end_layout
+
+\begin_layout Standard
+La idea es simple: usamos nuestra representación formal para representar
+ las premisas del problema como una estructura de datos y programamos la
+ máquina para que aplique de un modo sistemático las reglas mecánicas hasta
+ que se alcance la conclusión deseada o se determine que esta es inalcanzable
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+O, a veces el proceso no se detendrá nunca.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Aun cuando el razonamiento automático solo se ha alcanzado en la práctica
+ en el siglo XX, su origen se remonta a Leibniz en el S XVII y en su desarrollo
+ han sido importantísimos las aportaciones de Boole (S XIX), Russell, Whitehead,
+ Gödel y Robinson (S XX).
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+Usar la resolución para demostrar que las hipótesis 'Pedro está esquiando
+ o no está nevando' implica que 'está nevando o Paco está jugando al balompié'.
+\end_layout
+
+\begin_layout Standard
+Sea p la proposición “está nevando,” q la proposición “Pedro está esquiando,”
+ y r “Paco está jugando al balompié” Las hipótesis se pueden representar
+ como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pedro está esquiando (q)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Está nevando (p)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+o no está nevando (
+\begin_inset Formula $\lnot p)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+o Paco está jugando al balompié (r)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(\lnot p)\lor q$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $p\lor r$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La resolución nos dice que esto implica 
+\begin_inset Formula $q\lor r$
+\end_inset
+
+ es decir, Pedro está esquiando (p) o está nevando (r).
+\end_layout
+
+\begin_layout Standard
+La resolución tiene un papel importante en Prolog y puede usarse para programar
+ sistemas de demostración automática de teoremas.
+\end_layout
+
+\begin_layout Standard
+En general esta reglade resolución se escribe de la siguiente forma:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\frac{{\displaystyle p_{1}\lor...\mathbf{\lor p_{i}}\lor...\lor p_{n},\;q_{1}\lor...\lor q_{j}\lor..\lor q_{m}}}{{\displaystyle p_{1}\lor...\lor\mathbf{p_{i-1}\lor p_{i+1}}\lor...\lor p_{n}\lor q_{1}\lor...\lor\mathbf{q_{j-1}\lor q_{j+1}}\lor..\lor q_{m}}}\;\textrm{donde }\mathbf{q_{j}=\lnot p_{i}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+o, teniendo en cuenta la propiedad conmutativa de la disyunción:
+\begin_inset Formula 
+\[
+\frac{{\displaystyle p_{1}\lor...\lor p_{n}\lor\mathbf{R},\;q_{1}\lor...\lor q_{m}\lor\mathbf{\lnot R}}}{{\displaystyle p_{1}\lor..\lor p_{n}\lor q_{1}\lor...\lor q_{m}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La regla de 
+\series bold
+resolución unitaria 
+\series default
+es la siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{{\displaystyle p_{1}\lor...\lor p_{n}\lor\mathbf{R},}\:\mathbf{\lnot R}}{p_{1}\lor...\lor p_{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si solo tratamos con cláusulas de longitud 2 escribiremos: 
+\begin_inset Formula 
+\[
+\frac{\mathbf{p_{1}}\lor\mathbf{R}\:{\displaystyle \mathbf{q_{1}\lor\lnot R}}}{{\displaystyle \mathbf{p_{1}}\lor\textrm{\textrm{\mathbf{q}_{\mathbf{1}}}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La regla es bastante sencilla y un ejemplo muestra el razonamiento detrás
+ de ella, de las siguientes dos oraciones: 'Juan va a al cine - 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+ - o Julia va a patinar - 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+ - ' y 'Juan no va el cine - 
+\begin_inset Formula $q_{1}=\lnot p_{1}$
+\end_inset
+
+ - o Jorge juega fútbol - 
+\begin_inset Formula $p_{3}$
+\end_inset
+
+ - ' podemos deducir la siguiente oración 'Julia va a patinar o Jorge juega
+ fútbol: 
+\begin_inset Formula ${\displaystyle p_{1}\lor p_{3}}$
+\end_inset
+
+'.
+ La razón es que puesto que Juan no puede al mismo tiempo ir y no ir al
+ cine, para que las disyunciones anteriores sean ciertas se debe de cumplir
+ alguna de las dos proposiciones: 'Julia va a patinar' o 'Jorge juega fútbol'
+ o ambas.
+\end_layout
+
+\begin_layout Section
+Forma normal conjuntiva (FNC).
+\end_layout
+
+\begin_layout Standard
+En lógica matemática, un 
+\series bold
+literal
+\series default
+ es una fórmula atómica
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La representación de un estado es un estado individual, sin ningún componente
+ o parte en su interior
+\end_layout
+
+\end_inset
+
+ o su negación (precedido por
+\begin_inset Formula $\lnot$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Una 
+\series bold
+cláusula
+\series default
+ 
+\emph on
+K
+\emph default
+ es una disyunción de literales
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+K=\lor_{j=1}^{m}\lambda_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $\lambda_{j}$
+\end_inset
+
+ son literales 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cláusula unitaria
+\series default
+: Cláusula que contiene un sólo literal, 
+\begin_inset Formula $K=\lambda$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cláusula vacía
+\series default
+ (que se denota con 
+\begin_inset Formula $\oblong$
+\end_inset
+
+): No contiene ningún literal.
+ La cláusula vacía es insatisfacible: 
+\begin_inset Formula $\oblong\equiv F$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En lógica booleana, una fórmula está en 
+\emph on
+forma normal conjuntiva
+\emph default
+ 
+\series bold
+(FNC
+\series default
+) si corresponde a una 
+\series bold
+\emph on
+conjunción de cláusulas
+\series default
+\emph default
+, donde una cláusula es una disyunción de literales, donde un literal y
+ su complemento no pueden aparecer en la misma cláusula.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{\alpha}=\land_{i=1}^{n}K_{i}=\land_{i=1}^{n}(\lor_{j=1}^{m}\lambda_{j}^{i})=\left\{ K_{i}\right\} _{i=1}^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+FNC vacío (que se denota por 
+\begin_inset Formula $\left\{ \right\} $
+\end_inset
+
+) no contiene ninguna cláusula y es una tautología: 
+\begin_inset Formula $\left\{ \right\} \equiv F$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Todas las conjunciones de literales y todas las disyunciones de literales
+ están en FNC, pues ellas pueden ser vistas, respectivamente, como conjunciones
+ de cláusulas de un literal, y como conjunciones de una única cláusula.Los
+ únicos conectivos lógicos que pueden aparecer en una fórmula en FNC son
+ la conjunción, disyunción y negación.
+ El operador negación solo puede aplicarse a un literal, y no a una cláusula
+ completa, lo que significa que este sólo puede preceder a una variable
+ proposicional o un símbolo de predicado.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metateorema
+\series default
+: 
+\emph on
+Hay un algoritmo que transforma cualquier fbf de cálculo proposicional en
+ una FNC equivalente
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+En Lógica proposicional esto se consigue mediante
+\end_layout
+
+\begin_layout Standard
+1.
+ Eliminación de las conectivas de implicación usando 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\begin{array}{c}
+\alpha\Rightarrow\beta\equiv\lnot\alpha\lor\beta\\
+\alpha\Leftarrow\beta\equiv\alpha\lor\lnot\beta
+\end{array}\\
+\alpha\Leftrightarrow\beta\equiv(\lnot\alpha\Rightarrow\beta)\land(\alpha\Rightarrow\lnot\beta)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2.
+ Reducir el ámbito de 
+\begin_inset Formula $la\lnot$
+\end_inset
+
+negación: 
+\end_layout
+
+\begin_layout Itemize
+Usando las leyes de De Morgan 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\lnot(\alpha\lor\beta)\equiv\lnot\alpha\land\lnot\beta\\
+\lnot(\alpha\land\beta)\equiv\lnot\alpha\lor\lnot\beta
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eliminando símbolos 
+\begin_inset Formula $\lnot$
+\end_inset
+
+ repetidos.
+ Aplicar esta regla repetidamente hasta que todos los símbolos 
+\begin_inset Formula $\lnot$
+\end_inset
+
+ aparezcan sólo inmediatamente antes de un átomo (
+\emph on
+variable proposicional
+\emph default
+)
+\begin_inset Formula 
+\[
+\lnot\lnot\alpha\equiv\alpha
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+3.
+ Convertir a FNC usando leyes asociativas/distributivas.
+ 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+(\alpha_{1}\lor...\lor\alpha_{n})\lor\beta=\alpha_{1}\lor...\lor\alpha_{n}\lor\beta\\
+(\alpha_{1}\land...\land\alpha_{n})\land\beta=\alpha_{1}\land...\land\alpha_{n}\lor\beta\\
+(\alpha_{1}\land\alpha_{2})\lor\beta=(\alpha_{1}\lor\beta)\land(\alpha_{2}\lor\beta)\\
+(\alpha_{1}\lor\alpha_{2})\land\beta=(\alpha_{1}\land\beta)\lor(\alpha_{2}\land\beta)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+4.
+ Simplificar la expresión usando reglas de equivalencia.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+s: 
+\end_layout
+
+\begin_layout Enumerate
+Considera la proposición (A 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+B) 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+C .
+ Expresarla como FNC.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Transformaciones:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lnot A\lor B\Rightarrow C
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lnot(\lnot A\lor B)\lor C
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+(A\land\lnot B)\lor C
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(A\lor C)\land(\lnot B\lor C)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Expresar (
+\begin_inset Formula $\lnot$
+\end_inset
+
+P
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ (P 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Q)) como FNC: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Transformaciones:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $\lnot P\Rightarrow(\lnot P\lor Q)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Formula $P\lor(\lnot P\lor Q)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $\mathbf{P\lor\lnot P\lor Q}\rightarrow\mathbf{Verdad}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

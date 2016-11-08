@@ -1,0 +1,6607 @@
+Un aspecto importante del la IA es la 	U	0
+		
+representación del mundo	r	0
+		
+ (modelo) del agente.	 	0
+		
+		1
+		
+		
+		
+Uno de los métodos posibles de representación es el basado en 	U	0
+		
+vectores de características, 	v	0
+		
+cuyo funcionamiento se comprende fácilmente si suponemos que disponemos	c	0
+ de un robot capaz de desplazarse sobre una rejilla entre celdas contiguas	 	0
+ libres.	 	0
+ En dicha rejilla algunas celdas están ocupadas por bloques y otras vacías.	 	0
+ 	 	0
+		
+wide false	w	0
+sideways false	s	0
+status open	s	0
+		1
+		
+		1
+		
+		1
+		
+		
+		1
+		
+		
+"	filename sensa.png"	"	"	0
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+El vector de atributos para cada posición del robot - 	E	0
+		
+R	R	0
+		
+ - tendrá los valores 	 	0
+		
+		
+		1
+ - estado de las celdas adyacentes - que serán 0 si la celda está vacía	 	0
+ y 1 si está ocupada.	 	0
+ El robot utilizará esta información detectada por sus sensores para desplazarse	 	0
+ a una celda libre, donde, de nuevo, computará a través de sus sensores	 	0
+ el vector 	 	0
+		
+		
+		1
+.	.	0
+ Siendo los valores de 	 	0
+		
+		
+		1
+ binarios, el vector 	 	0
+		
+		
+		1
+ es una descripción del entorno (mundo) del agente.	 	0
+		
+		1
+		
+Sin embargo, pueden existir restricciones a los valores de las características	S	0
+ que aportan un conocimiento importante sobre el 	 	0
+		
+mundo 	m	0
+		
+y que pueden usarse para inferir valores de características no sensables	y	0
+ directamente por el agente.	 	0
+		
+		1
+		
+Como ejemplo, sea que el robot es capaz de levantar bloques que se encuentren	C	0
+ en una celda adyacente siempre que el robot tenga batería con carga suficiente	 	0
+ (	 	0
+		
+		
+		1
+BAT_OK) y los bloques sean de un peso reducido (	B	0
+		
+		
+		1
+ELEVABLE), en cuyo caso el brazo robótico que coge el bloque se mueve (	E	0
+		
+		
+		1
+MUEVE).	M	0
+ Los atributos 	 	0
+		
+		
+		1
+ y 	 	0
+		
+		
+		1
+ pueden detectarse con los sensores del robot, pero no así 	 	0
+		
+		
+		1
+.	.	0
+		
+		1
+		
+Sin embargo sabemos que si BAT_OK y MUEVE, esto implica ELEVABLE y si NO	S	0
+ MUEVE, esto es debido bien a que NO BAT_OK o bien a que NO ELEVABLE.	 	0
+		
+		1
+		
+Podemos decir que el robot ha llegado a dichas conclusiones mediante 	P	0
+		
+inferencia 	i	0
+		
+(razonamiento)	(	0
+		
+ 	 	0
+		
+para cuya implementación necesitaremos un	p	0
+		
+ lenguaje	 	0
+		
+ para expresar los valores de las características y sus restricciones y	 	0
+ mecanismos de 	 	0
+		
+inferencia	i	0
+		
+ que permitan razonar.	 	0
+ La Lógica Proposicional (LP) nos proporciona estas herramientas y, usándola,	 	0
+ podemos escribir los razonamientos anteriores como:	 	0
+		
+		
+		
+BAT\textrm{\_}OK\land ELEVABLE\Rightarrow MUEVE\\	B	0
+		
+		
+		
+		1
+		
+		1
+La	L	0
+		
+ representación del conocimiento	 	0
+		
+ y 	 	0
+		
+el proceso de razonamiento	e	0
+		
+ que da vida al conocimiento, tratados en este capítulo, son cruciales en	 	0
+ el ámbito de la Inteligencia Artificial.	 	0
+		
+		1
+		
+Los humanos parecen 	L	0
+		
+conocer	c	0
+		
+ cosas y 	 	0
+		
+razonar 	r	0
+		
+y estas características parecen deseables para un agente artificial.	y	0
+		
+		1
+		
+El conocimiento y el razonamiento juegan también un papel importante en	E	0
+ entornos 	 	0
+		
+parcialmente observables	p	0
+		
+ situación en la que un agente basado en conocimiento puede combinar sus	 	0
+ conocimientos actuales con sus percepciones para inferir aspectos ocultos	 	0
+ del estado del mundo antes de seleccionar acciones.	 	0
+ P.e.	 	0
+ un médico debe diagnosticar - es decir, inferir una enfermedad que no es	 	0
+ directamente observable - la enfermedad de un paciente antes de aplicar	 	0
+ un tratamiento.	 	0
+ Para ello aplica reglas aprendidas en libros de texto y profesores y otras	 	0
+ basadas en patrones de asociación que no pueden describirse fácilmente.	 	0
+		
+		1
+		
+Lo mismo ocurre con la comprensión del lenguaje natural donde también hay	L	0
+ que inferir aspectos ocultos.	 	0
+ Si oímos, '	 	0
+		
+Juan vio el coche a través de la ventana y 	J	0
+		
+le	l	0
+		
+ gustó	 	0
+		
+'.	'	0
+ Del contexto, inferimos que '	 	0
+		
+le	l	0
+		
+' se refiere al coche y no a la ventana.	'	0
+ Mientras que en '	 	0
+		
+Juan tiró un ladrillo por la ventana a la acera y 	J	0
+		
+la	l	0
+		
+ rompió	 	0
+		
+' lo roto fue la ventana y no la acera.	'	0
+		
+		1
+		
+A este respecto, la 	A	0
+		
+		
+Lógica	L	0
+		
+		
+ es el vehículo primario para representar el conocimiento, aun cuando tiene	 	0
+ limitaciones principalmente a causa de la existencia de incertidumbre en	 	0
+ la mayoría de los entornos.	 	0
+		
+		1
+		
+Agentes basados en el conocimiento.	A	0
+		
+		1
+		
+El componente central de los Agentes Basados en el Conocimiento es su Base	E	0
+ de Conocimiento (	 	0
+		
+K	K	0
+		
+nowldge 	n	0
+		
+B	B	0
+		
+ase).	a	0
+ Informalmente una 	 	0
+		
+KB 	K	0
+		
+se compone de un conjunto de 	s	0
+		
+sentencias	s	0
+		
+ en sentido técnico, cada una del las cuales se expresa en un 	 	0
+		
+lenguaje 	l	0
+		
+denominado 	d	0
+		
+lenguaje de representación del conocimiento	l	0
+		
+ y que constituye alguna afirmación acerca del mundo.	 	0
+		
+		1
+		
+Debe existir algún modo de añadir nuevas sentencias a la 	D	0
+		
+KB 	K	0
+		
+y, también, procedimientos para consultar lo que se sabe.	y	0
+ Ambas tareas pueden implicar 	 	0
+		
+inferencia	i	0
+		
+, esto es, derivar nuevas sentencias de las ya existentes.	,	0
+ La inferencia es un proceso utilizado en multitud de actividades diarias.	 	0
+ P.e.	 	0
+ cuando leemos 	 	0
+		
+entre líneas	e	0
+		
+ un texto estamos haciendo inferencia, esto es, extrayendo conclusiones	 	0
+ que no están explícitas y este tipo de tareas se requieren en los exámenes	 	0
+ de certificación de niveles de idiomas come el TOEFL.	 	0
+ 	 	0
+		
+		1
+		
+El mundo del wumpus	E	0
+		
+status collapsed	s	0
+		1
+		
+Tomado de 	T	0
+		
+Russell y Norvig: Inteligencia Artificial.	R	0
+ 2º Ed.	 	0
+		1
+		
+ 	 	0
+		
+		1
+		
+		1
+.	.	0
+		
+		1
+		
+Todas estas capacidades (representación, razonamiento y aprendizaje) se	T	0
+ apoyan en la teoría y tecnología de la lógica, desarrolladas a lo largo	 	0
+ de los siglos.	 	0
+ Antes de explicar dichas teoría y tecnología, crearemos un mundo sencillo	 	0
+ que nos permitirá ilustrar estos mecanismos.	 	0
+		
+		1
+		
+El mundo de wumpus es una cueva que está compuesta por habitaciones conectadas	E	0
+ mediante pasillos.	 	0
+ Escondido en algún lugar de la cueva está el wumpus, una bestia que devora	 	0
+ a cualquiera que entre en su habitación.	 	0
+ El wumpus puede ser derribado por la flecha de un agente, y este sólo dispone	 	0
+ de una.	 	0
+ Algunas habitaciones contienen pozos sin fondo que atrapan a aquel que	 	0
+ deambula por dichas habitaciones (menos al wumpus que es demasiado grande	 	0
+ para caer en ellos).	 	0
+ El único premio de vivir en este entorno es la posibilidad de encontrar	 	0
+ un montón de oro.	 	0
+		
+		1
+		
+En la Figura (	E	0
+		
+LatexCommand ref	L	0
+"reference ""fig:2"""	r	0
+		1
+		
+		1
+) se muestra un ejemplo del mundo inmundo del wumpus.	)	0
+ 	 	0
+		
+		1
+		
+		
+wide false	w	0
+sideways false	s	0
+status open	s	0
+		1
+		
+		1
+		
+		1
+		
+		
+		1
+		
+		
+LatexCommand label	L	0
+"name ""fig:2"""	n	0
+		1
+		
+		1
+		1
+		
+"	filename wumpus.png"	"	"	0
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+La definición precisa del mundo del wumpus requiere especificar las necesidades	L	0
+ de 	 	0
+		
+R	R	0
+		
+endimiento, el 	e	0
+		
+E	E	0
+		
+ntorno, y los 	n	0
+		
+A	A	0
+		
+ctuadores y 	c	0
+		
+S	S	0
+		
+ensores del agente para cuya denominación se utiliza el acrónimo 	e	0
+		
+REAS	R	0
+		
+ (Rendimiento, Entorno.	 	0
+ Actuadores, Sensores).	 	0
+		
+		1
+		
+		1
+		
+Rendimiento	R	0
+		
+: + 1.000 por recoger el oro, - 1.000 por caer en un pozo o ser comido por	:	0
+ el wumpus, - 1 por cada acción que se realice y -10 por lanzar la flecha.	 	0
+		
+		1
+		
+		1
+		
+Entorno	E	0
+		
+: una matriz de 4 x 4 habitaciones.	:	0
+ El agente siempre comienza en la casilla etiquetada por [l, l], y orientado	 	0
+ a la derecha.	 	0
+ Las posiciones del oro y del wumpus se escogen de forma aleatoria, mediante	 	0
+ una distribución uniforme, a partir de todas las casillas menos la de salida	 	0
+ del agente.	 	0
+ Además, con probabilidad 0,2, cada casilla puede tener un pozo.	 	0
+		
+		1
+		
+		1
+		
+Actuadores	A	0
+		
+: el agente se puede mover hacia delante, girar a la izquierda 90º, o a	:	0
+ la derecha 90º.	 	0
+ El agente puede fallecer de muerte miserable si entra en una casilla en	 	0
+ la que hay un pozo o en la que está el wumpus vivo.	 	0
+ (No sucede nada malo, aunque huele bastante mal, si el agente entra en	 	0
+ una casilla con un wumpus muerto.) Si hay un muro enfrente y el agente intenta	 	0
+ avanzar, no sucede nada.	 	0
+ La acción 	 	0
+		
+Agarrar	A	0
+		
+ se puede utilizar para tomar un objeto de la misma casilla en donde se	 	0
+ encuentre el agente.	 	0
+ La acción 	 	0
+		
+Disparar	D	0
+		
+ se puede utilizar para lanzar un dardo línea recta, en la misma dirección	 	0
+ y sentido en que se encuentra situado el agente.	 	0
+ La flecha avanza hasta que se choca contra un muro o alcanza al wumpus	 	0
+ (y entonces lo mata).	 	0
+ El agente sólo dispone de una flecha, así que, solo tiene efecto cl primer	 	0
+ 	 	0
+		
+Disparo	D	0
+		
+.	.	0
+		
+		1
+		
+		1
+		
+Sensores	S	0
+		
+: el agente dispone de cinco sensores.	:	0
+ y cada uno le da una pequeña información acerca del entorno.	 	0
+		
+		1
+		
+		
+El agente percibirá un 	E	0
+		
+hedor	h	0
+		
+ si se encuentra en la misma casilla que el wumpus pus o en las directamente	 	0
+ adyacentes a él (no en diagonal).	 	0
+		
+		1
+		
+El agente percibirá una ligera 	E	0
+		
+brisa	b	0
+		
+ en las casillas directamente adyacentes donde hay un pozo.	 	0
+		
+		1
+		
+El agente verá un 	E	0
+		
+resplandor	r	0
+		
+ en las casillas donde está el oro.	 	0
+		
+		1
+		
+Si el agente intenta atravesar un muro sentirá un g	S	0
+		
+olpe	o	0
+		
+.	.	0
+ 	 	0
+		
+		1
+		
+Cuando el wumpus es aniquilado emite un desgarrador 	C	0
+		
+grito	g	0
+		
+ que se puede oír en toda la cueva.	 	0
+		
+		1
+		
+		
+		
+Las 	L	0
+		
+percepciones	p	0
+		
+ que recibirá el agente se representan mediante una lista de cinco símbolos:	 	0
+ por ejemplo, si el agente percibe un hedor o una pequeña brisa, pero no	 	0
+ ve un resplandor, no siente un golpe, ni oye un grito, el agente recibe	 	0
+ la lista 	 	0
+		
+		
+		
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+		
+Vamos a ver un agente basado en conocimiento en el mundo de wumpus, explorando	V	0
+ el entorno que se muestra en la Figura (	 	0
+		
+LatexCommand ref	L	0
+"reference ""fig:2"""	r	0
+		1
+		
+		1
+).	)	0
+ La 	 	0
+		
+base de conocimiento	b	0
+		
+ (	 	0
+		
+KB	K	0
+		
+) inicial del agente contiene las reglas del entorno, tal como hemos listado	)	0
+" anteriormente; en concreto, el agente sabe que se encuentra en la casilla"	 	0
+ [l, 1] y que esta es una casilla segura.	 	0
+ Su conocimiento evoluciona a medida que recibe nuevas percepciones y las	 	0
+ acciones se van ejecutando.	 	0
+		
+		1
+		
+La primera percepción es 	L	0
+		
+		
+		1
+: de la cual, el agente puede concluir que las casillas vecinas son seguras.	:	0
+ La Figura (	 	0
+		
+LatexCommand ref	L	0
+"reference ""fig:3"""	r	0
+		1
+		
+		1
+ (a)) muestra el conocimiento del estado del agente en ese momento.	 	0
+		
+		1
+		
+En esta figura mostramos (algunas de) las sentencias de la 	E	0
+		
+base de conocimiento	b	0
+		
+ utilizando letras como la B (de brisa) y OK (de casilla segura, no hay	 	0
+ hoyo ni está el wumpus) situadas en las casillas adecuadas.	 	0
+ En cambio,la Figura (	 	0
+		
+LatexCommand ref	L	0
+"reference ""fig:2"""	r	0
+		1
+		
+		1
+) muestra el mundo tal como es.	)	0
+		
+		1
+		
+		
+wide false	w	0
+sideways false	s	0
+status open	s	0
+		1
+		
+		1
+		
+		1
+		
+		
+		1
+		
+		
+LatexCommand label	L	0
+"name ""fig:3"""	n	0
+		1
+		
+		1
+		1
+		
+"	filename inicial.png"	"	"	0
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		
+		1
+		
+		1
+De los hechos, que no hay hedor ni brisa en la casilla [1,1], el agente	D	0
+ infiere que las casillas [l, 2] y [2, 1] están libres de peligro.	 	0
+ Entonces las marca con OK para indicar esta conclusión.	 	0
+ Un agente que sea cauto sólo se moverá hacia una casilla en la que él sabe	 	0
+ que está OK.	 	0
+ Supongamos que el agente decide moverse hacia delante a la casilla [2,1],	 	0
+ alcanzando la situación de la Figura (	 	0
+		
+LatexCommand ref	L	0
+"reference ""fig:3"""	r	0
+		1
+		
+		1
+(b)).	(	0
+		
+		1
+		
+El agente detecta una brisa en la casilla [2, 1], por lo tanto, debe haber	E	0
+ un pozo en alguna casilla vecina.	 	0
+ El pozo no puede estar en la casilla [1, 1].	 	0
+ teniendo en cuenta las reglas del juego, así que debe haber uno en la casilla	 	0
+ [2,2] o en la [3, 1], o en ambas.	 	0
+ La etiqueta 	 	0
+		
+		
+		1
+.	.	0
+ de la Figura (	 	0
+		
+LatexCommand ref	L	0
+"reference ""fig:3"""	r	0
+		1
+		
+		1
+(b)), nos indica que puede haber un posible pozo en estas casillas.	(	0
+ En este momento, solo se conoce una casilla que está OK y que no ha sido	 	0
+ visitada aún.	 	0
+ Así que el agente prudente girará para volver a la casilla [1, l] y entones	 	0
+ se moverá a la [l, 2].	 	0
+		
+		1
+		
+El lenguaje de la Lógica Proposicional.	E	0
+		
+		1
+		
+La	L	0
+		
+		
+ Lógica	 	0
+		
+		
+ puede definirse como el estudio de la información codificada en forma de	 	0
+ 	 	0
+		
+sentencias lógicas	s	0
+		
+.	.	0
+ Cada sentencia lógica divide el conjunto del mundo posible en dos subconjuntos	 	0
+ - el conjunto de mundos en que la sentencia es cierta y el subconjunto	 	0
+ en que es falsa.	 	0
+		
+		1
+		
+Un conjunto de 	U	0
+		
+premisas tiene una consecuencia lógica	p	0
+		
+ si y solo si la consecuencia es cierta en todos los mundos en que las premisas	 	0
+ con ciertas.	 	0
+		
+		1
+		
+La 	L	0
+		
+deducción	d	0
+		
+ es una forma de razonamiento simbólico que produce conclusiones que son	 	0
+ consecuencias lógicas de las premisas.	 	0
+ Una 	 	0
+		
+demostración	d	0
+		
+ o prueba es una secuencia de pasos deductivos que no son totalmente obvios	 	0
+ de las premisas y que justifican una conclusión.	 	0
+		
+		1
+		
+Volviendo al wumpus, que se desplaza a [1,2], la nueva percepción en la	V	0
+ casilla [1, 2] es 	 	0
+		
+		
+		1
+, obteniendo el estado de conocimiento que se muestra en la Figura (	,	0
+		
+LatexCommand ref	L	0
+"reference ""fig:4"""	r	0
+		1
+		
+		1
+(a)).	(	0
+ 	 	0
+		
+		1
+		
+		
+wide false	w	0
+sideways false	s	0
+status open	s	0
+		1
+		
+		1
+		
+		1
+		
+		
+		1
+		
+		
+LatexCommand label	L	0
+"name ""fig:4"""	n	0
+		1
+		
+		1
+		1
+		
+"	filename finalwumpus.png"	"	"	0
+"	scale 50"	"	"	0
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+El hedor en la [l, 2] significa que debe haber un wumpus muy cerca.	E	0
+ Pero el wumpus no puede estar en la [1, 1], teniendo en cuenta las reglas	 	0
+ del juego.	 	0
+ y tampoco puede estar en [2, 2] (o el agente habría detectado un olor hediondo	 	0
+ cuando estaba en la [2, 1]).	 	0
+ Entonces el agente puede inferir que el hediondo wumpus se encuentra en	 	0
+ la casilla [l, 3], que se indica coi1 la etiqueta ¡W! Más aún, la ausencia	 	0
+ de brisa en la casilla [1, 2] implica que no hay un hoyo en la [2, 2].	 	0
+ Como ya habíamos inferido que debía haber un hoyo en la casilla [2.	 	0
+ 2] o en la [3, 1], éste debe estar en la [3, 1].	 	0
+ Todo esto es un proceso de inferencia costoso, ya que debe combinar cl	 	0
+ conocimiento adquirido en diferentes instantes de tiempo y en distintas	 	0
+ situaciones, para resolver la falta de percepciones y poder realizar cualquier	 	0
+ paso crucial.	 	0
+ La inferencia está entre las habilidades de muchos animales, pero es típica	 	0
+ del tipo de razonamiento que un agente lógico realiza.	 	0
+		
+		1
+		
+El agente ha demostrado en este momento que no hay ni un pozo ni un wumpus	E	0
+ en la casilla [2, 2], así que está OK para desplazarse a ella.	 	0
+" No mostraremos el estado de conocimiento del agente en [2, 21; asumimos"	 	0
+ que el agente gira y se desplaza a [2, 3] tal corno se muestra en la Figura	 	0
+ (	 	0
+		
+LatexCommand ref	L	0
+"reference ""fig:4"""	r	0
+		1
+		
+		1
+(b)).	(	0
+ En la casilla [2,3] el agente detecta un resplandor, entonces el agente	 	0
+ cogería el oro y acabaría el juego.	 	0
+		
+		1
+		
+En cada caso en que el agente saca una conclusión a partir de la información	E	0
+ que tiene disponible, se garantiza que dicha conclusión es correcta si	 	0
+ 1a información disponible también lo es.	 	0
+ Esta es una propiedad fundamental del razonamiento lógico.	 	0
+ En lo que sigue vamos a describir cómo construir agentes lógicos que pueden	 	0
+ representar la información necesaria para sacar conclusiones similares	 	0
+ a las que hemos descrito en los párrafos anteriores.	 	0
+		
+		1
+		
+Elementos del lenguaje.	E	0
+		
+		1
+		
+Los elementos del lenguaje, que explicaremos en lo que sigue, son:	L	0
+		
+		1
+		
+		1
+		
+átomos	�	0
+		
+ o elementos atómicos: V (verdadero) y F (falso) y el conjunto numerable	 	0
+ infinito de cadenas de caracteres que empiezan por una letra del abecedario.	 	0
+		
+		1
+		
+		1
+		
+conectivas	c	0
+		
+:	:	0
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		
+sintaxis	s	0
+		
+ de fórmulas bien formadas o sentencias.	 	0
+		
+		1
+		
+Se denomina 	S	0
+		
+literal	l	0
+		
+ a un átomo - 	 	0
+		
+		
+		1
+ - o a su negación	 	0
+		
+		
+		1
+.	.	0
+		
+		1
+		
+Adicionalmente, existen las 	A	0
+		
+reglas de inferencia	r	0
+		
+ y la 	 	0
+		
+semántica	s	0
+		
+ que asocia elementos de un lenguaje con elementos de un dominio discursivo.	 	0
+		
+		1
+		
+Sintaxis.	S	0
+		
+		1
+		
+La lógica proposicional (o lógica de orden cero) se refiere a las 	L	0
+		
+proposiciones 	p	0
+		
+(o 	(	0
+		
+sentencias	s	0
+		
+) y sus	)	0
+		
+ interrelaciones	 	0
+		
+.	.	0
+ Hablando en términos genéricos una 	 	0
+		
+		
+proposición	p	0
+		
+		
+ es una 	 	0
+		
+condición posible del mundo que puede ser verdadera	c	0
+		
+ (	 	0
+		
+		
+V	V	0
+		
+		
+ o 	 	0
+		
+		
+1	1	0
+		
+		
+ ) 	 	0
+		
+o falsa	o	0
+		
+ (	 	0
+		
+		
+F	F	0
+		
+		
+ o 	 	0
+		
+		
+0	0	0
+		
+		
+).	)	0
+		
+		1
+		
+En Lógica las 	E	0
+		
+proposiciones simples 	p	0
+		
+o 	o	0
+		
+atómicas	a	0
+		
+ (también llamadas	 	0
+		
+ constantes lógicas o constantes proposicionales	 	0
+		
+) expresan hechos simples del mundo (p.e.	)	0
+		
+		
+		1
+ sería una constante lógica), mientras que las 	 	0
+		
+proposiciones compuestas	p	0
+		
+ o	 	0
+		
+ moleculares	 	0
+		
+ se forman a partir de las sentencias simples y expresan las relaciones	 	0
+ existentes entre las sentencias constituyentes.	 	0
+		
+		1
+		
+El lenguaje de la lógica proposicional necesita tres tipos distintos de	E	0
+ símbolos:	 	0
+		
+		1
+		
+constantes proposicionales 	c	0
+		
+		1
+		
+conectivas lógicas 	c	0
+		
+		1
+		
+símbolos auxiliares 	s	0
+		
+		1
+		
+Existen cinco tipo de sentencias compuestas que utilizan las conectivas	E	0
+ lógicas:	 	0
+		
+		1
+		
+Negación 	N	0
+		
+		
+		1
+		1
+		
+		1
+		
+Conjunción: 	C	0
+		
+		
+		1
+		1
+		
+		1
+		
+Disyunción 	D	0
+		
+		
+		1
+		1
+		
+		1
+		
+Implicación 	I	0
+		
+		
+		1
+		1
+		
+		1
+		
+Equivalencia o Bicondicional 	E	0
+		
+		
+		1
+		1
+		
+		1
+		
+Es importante la utilización correcta de los paréntesis teniendo en cuenta	E	0
+ las siguientes reglas de precedencia que de mayor a menor son:	 	0
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+Así tendríamos p.e.	A	0
+ las expresiones equivalentes.	 	0
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+En la lógica proposicional existen 	E	0
+		
+reglas sintácticas	r	0
+		
+ que definen las expresiones legales de un modo similar a la gramática de	 	0
+ un idioma.	 	0
+ Asimismo existe una 	 	0
+		
+		
+semántica	s	0
+		
+		
+ cuyas reglas nos indican cómo el significado de sus partes y su modo de	 	0
+ combinación determinan el significado de una proposición compuesta.	 	0
+ Del mismo modo que en Álgebra, no nos preocupa el significado real de las	 	0
+ variables, lo que nos interesa son las relaciones entre los valores de	 	0
+ las variables expresadas en las ecuaciones que escribimos.	 	0
+		
+		1
+		
+Esto es, la Lógica no se preocupa del significado en el mundo real de las	E	0
+ constantes proposicionales, lo que interesa es la relación entre los valores	 	0
+ de verdad de sentencias simples y los valores de verdad de las sentencias	 	0
+ complejas en que las anteriores se incluyen.	 	0
+		
+		1
+		
+Por último, definimos:	P	0
+		
+		1
+		
+		1
+		
+Vocabulario proposicional	V	0
+		
+ como un conjunto de constantes proposicionales.	 	0
+		
+		1
+		
+		1
+		
+Lenguaje proposicional 	L	0
+		
+como conjunto de sentencias proposicionales que se pueden formar con un	c	0
+ vocabulario proposicional.	 	0
+		
+		1
+		
+La mayoría de los lenguajes son 	L	0
+		
+recursivos	r	0
+		
+: empleando un número finito de elementos es posible construir un número	:	0
+ infinito de sentencias.	 	0
+		
+		1
+		
+las	l	0
+		
+ sentencias 	 	0
+		
+(o 	(	0
+		
+		
+fórmulas bien formadas	f	0
+		
+ fbf	 	0
+		
+s) se definen así:	s	0
+		
+		1
+		
+"Un símbolo es una sentencia;"	U	0
+		
+		1
+		
+Si 	S	0
+		
+		
+		1
+ es una sentencia 	 	0
+		
+		
+		1
+" también lo es;"	 	0
+		
+		1
+		
+Si 	S	0
+		
+		
+		1
+ es una sentencia 	 	0
+		
+		
+		1
+" también lo es;"	 	0
+		
+		1
+		
+Si 	S	0
+		
+		
+		1
+ y 	 	0
+		
+		
+		1
+ es una sentencia 	 	0
+		
+		
+		1
+, 	,	0
+		
+		
+		1
+, 	,	0
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+(	(	0
+		
+		
+		1
+)	)	0
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+ y 	 	0
+		
+		
+		1
+" también lo son;"	 	0
+		
+		1
+		
+Una sentencia puede formarse por un número finito de aplicaciones de las	U	0
+ reglas anteriores.	 	0
+		
+		1
+		
+Semántica.	S	0
+ Tablas de verdad.	 	0
+		
+		1
+		
+En lógica.la 	E	0
+		
+semántica	s	0
+		
+ del lenguaje define 	 	0
+		
+el valor de verdad de cada sentencia	e	0
+		
+ respecto a cada mundo posible (o 	 	0
+		
+modelo	m	0
+		
+).	)	0
+ El 	 	0
+		
+significado 	s	0
+		
+o semántica de una sentencia determina su interpretación.	o	0
+		
+		1
+		
+Una sentencia lógica es o 	U	0
+		
+verdadera	v	0
+		
+ o 	 	0
+		
+falsa 	f	0
+		
+con respecto a un 	c	0
+		
+modelo del mundo 	m	0
+		
+y un 	y	0
+		
+modelo es un conjunto de valores verdad/falso para todos los operadores	m	0
+ lógicos 	 	0
+		
+(símbolos proposicionales).	(	0
+ Así un modelo del mundo sería 	 	0
+		
+		
+		1
+ y 	 	0
+		
+la verdad de una sentencia se puede definir en función de la veracidad o	l	0
+ falsedad de estos símbolos	 	0
+		
+ respecto al modelo usando 	 	0
+		
+tablas de verdad	t	0
+		
+.	.	0
+		
+		1
+		
+Una 	U	0
+		
+proposición	p	0
+		
+ expresa un contenido semántico a la que bajo cierto procedimiento acordado	 	0
+ o prescrito es posible asignarle un valor de verdad (V o F).	 	0
+		
+		1
+		
+Las tablas de verdad para los operadores mencionados son las siguientes:	L	0
+		
+		1
+		
+		
+"	filename truth.png"	"	"	0
+		1
+		
+		1
+		1
+		
+		1
+		
+Como se ve lista todas las posibilidades de los símbolos proposicionales	C	0
+ (V=verdad, F=falso) y para cada una de ellas lista los valores de las sentencia	 	0
+s compuestas.	s	0
+ Normalmente el significado es similar al del idioma hablado (o es un o	 	0
+ inclusivo) salvo la implicación, 	 	0
+		
+		
+		1
+ su significado viene dado por la tabla de verdad anterior y nada más.	 	0
+		
+		1
+		
+La 	L	0
+		
+implicación	i	0
+		
+ es falsa (	 	0
+		
+F	F	0
+		
+) si y solo si su antecedente es verdadero y su consecuencia falsa.	)	0
+ Si no es así, su valor es verdadero (	 	0
+		
+V	V	0
+		
+).	)	0
+ Esto se llama 	 	0
+		
+implicación material	i	0
+		
+.	.	0
+		
+		1
+		
+La tabla de verdad de la implicación se comprende mejor con el ejemplo siguiente	L	0
+:	:	0
+		
+		1
+		
+p: aciertas 100% de las preguntas en un examen	p	0
+		
+		1
+		
+q: sacas un 10.	q	0
+		
+		1
+		
+Entonces es claro que 	E	0
+		
+si aciertas 100% y sacas un 10=	s	0
+		
+		
+V	V	0
+		
+		
+"; si aciertas 100% y no sacas un 10="	";"	0
+		
+		
+F	F	0
+		
+		
+"; si no aciertas 100% y sacas un 10="	";"	0
+		
+		
+V	V	0
+		
+		
+ 	 	0
+		
+y	y	0
+		
+ si no aciertas 100% y no sacas un 10=	 	0
+		
+		
+V	V	0
+		
+		
+.	.	0
+		
+		1
+		
+		
+		
+Sea que tenemos una alarma A que puede dispararse por un intento de robo	S	0
+ (B) o un terremoto (E) y puede notificar a dos personas Juan (J) y María	 	0
+ (M).	 	0
+		
+wide false	w	0
+sideways false	s	0
+status open	s	0
+		1
+		
+		
+		1
+		
+		
+"	filename logicap.png"	"	"	0
+"	scale 40"	"	"	0
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+Tenemos en primer lugar 	T	0
+		
+símbolos	s	0
+		
+ de	 	0
+		
+ proposiciones	 	0
+		
+:	:	0
+		
+		1
+		
+"B: ocurre un robo en mi casa;"	B	0
+		
+		1
+		
+"E: ocurre un terremoto;"	E	0
+		
+		1
+		
+"A: la alarma se dispara;"	A	0
+		
+		1
+		
+"J: Juan , vecino mío, me llama por teléfono;"	J	0
+		
+		1
+		
+M: María, otra vecina, me llama también.	M	0
+		
+		1
+		
+Según su estructura o complejidad interna las proposiciones pueden clasificarse	S	0
+ en:	 	0
+		
+		1
+		
+#�NOMBRE?	#�NOMBRE?	#�NOMBRE?
+		
+ atómicas	 	0
+		
+" o simples, cuando hacen referencia a un único contenido de verdad o falsedad;"	 	0
+ vendría a ser equivalente a la oración enunciativa simple en la lengua.	 	0
+		
+		1
+		
+#�NOMBRE?	#�NOMBRE?	#�NOMBRE?
+		
+moleculares 	m	0
+		
+cuando están constituida por varias proposiciones atómicas unidas por ciertas	c	0
+" partículas llamadas ""nexos o conectivas"", que establecen relaciones sintácticas"	 	0
+ como función de coordinación y subordinación determinadas entre las proposicion	 	0
+"es que la integran; tal ocurre en la función de las conjunciones en las"	e	0
+ oraciones compuestas de la lengua.	 	0
+		
+		1
+		
+Estas proposiciones combinadas con 	E	0
+		
+operadores lógicos	o	0
+		
+ pueden tomar los valores constantes (	 	0
+		
+		
+constantes lógicas	c	0
+		
+		
+)	)	0
+		
+ verdad	 	0
+		
+ o 	 	0
+		
+falso 	f	0
+		
+o bien son desconocidas.	o	0
+		
+		1
+		
+Por ejemplo podemos escribir que la alarma se dispara (	P	0
+		
+		
+		1
+) si hay un robo o un terremoto mediante esta sentencia	)	0
+		
+status collapsed	s	0
+		1
+		
+En USA se usa a veces 	E	0
+		
+		
+		1
+		1
+		
+		1
+		
+		1
+:	:	0
+		
+		
+(E\vee B)\Rightarrow A	(	0
+		
+		1
+		
+		1
+Es decir 	E	0
+		
+E	E	0
+		
+ 	 	0
+		
+		
+o	o	0
+		
+ B	 	0
+		
+ 	 	0
+		
+		
+implica	i	0
+		
+		
+ 	 	0
+		
+A	A	0
+		
+.	.	0
+		
+		1
+		
+Del mismo modo podemos representar que Juan y María llaman cuando se dispara	D	0
+ la alarma:	 	0
+		
+		
+A\Rightarrow(J\wedge M)	A	0
+		
+		1
+		
+		1
+Es decir 	E	0
+		
+A	A	0
+		
+ 	 	0
+		
+		
+implica	i	0
+		
+		
+ 	 	0
+		
+J 	J	0
+		
+y	y	0
+		
+ A	 	0
+		
+.	.	0
+		
+		1
+		
+Dos operadores adicionales son:	D	0
+		
+		1
+		
+		
+		
+		1
+		1
+		
+		1
+		
+		
+		
+		1
+ negación.	 	0
+		
+		1
+		
+		1
+		
+Ejemplos	E	0
+		
+:	:	0
+		
+		1
+		
+Juan avisa solo si lo hace María (uno es falso o verdadero si el otro lo	J	0
+ es):	 	0
+		
+		
+J\Leftrightarrow M\quad\textrm{Juan es equivalente a María}	J	0
+		
+		1
+		
+		1
+Juan llama si no lo hace María y viceversa:	J	0
+		
+		
+J\Leftrightarrow\lnot M	J	0
+		
+		1
+		
+		1
+		1
+		
+Ejercicio	E	0
+		
+:	:	0
+		
+		1
+		
+Comprobar que las siguientes proposiciones tienen las mismas tablas de verdad	C	0
+ (son 	 	0
+		
+equivalentes	e	0
+		
+):	)	0
+		
+		
+		
+P\Rightarrow Q\equiv\lnot P\vee Q\\	P	0
+P\Leftrightarrow Q\equiv(P\Rightarrow Q)\land(Q\Rightarrow P)	P	0
+		
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+		
+"<lyxtabular version=""3"" rows=""5"" columns=""6"">"	<	0
+"<features rotate=""0"" tabularvalignment=""middle"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+P	P	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+Q	Q	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		1
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		1
+		1
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		
+		
+		1
+		1
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		
+		
+		1
+		1
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		
+		
+		1
+		1
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+</lyxtabular>	<	0
+		1
+		
+		1
+		1
+		
+		1
+		
+Siendo la primera equivalencia probada por la tabla de verdad, la segunda	S	0
+ equivale a 	 	0
+		
+		
+P\Leftrightarrow Q\equiv(\lnot P\lor Q)\land(\lnot Q\lor P)	P	0
+		
+		1
+		
+		1
+		1
+		
+		1
+		
+		
+"<lyxtabular version=""3"" rows=""5"" columns=""5"">"	<	0
+"<features rotate=""0"" tabularvalignment=""middle"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+P	P	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+Q	Q	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		1
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		1
+		1
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		
+		
+		1
+		1
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		
+		
+		1
+		1
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+</lyxtabular>	<	0
+		1
+		
+		1
+		1
+		
+		1
+		
+		1
+		
+Ejemplo	E	0
+		
+:	:	0
+		
+		1
+		
+Sea un modelo del mundo definido por las siguientes expresiones:	S	0
+		
+		
+		
+(E\vee B)\Rightarrow A\\	(	0
+A\Rightarrow(J\wedge M)\\	A	0
+B	B	0
+		
+		
+		1
+		
+		1
+Se trata de rellenar a la tabla :	S	0
+		
+		1
+		
+		
+"<lyxtabular version=""3"" rows=""6"" columns=""4"">"	<	0
+"<features rotate=""0"" tabularvalignment=""middle"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+"<column alignment=""center"" valignment=""top"">"	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		1
+		
+V	V	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		1
+		
+F	F	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		1
+		
+?	?	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" usebox=""none"">"	<	0
+		
+		1
+		
+		1
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		1
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		1
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+X	X	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+E	E	0
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+X	X	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		1
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		1
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+B	B	0
+		
+		1
+		
+</cell>	<	0
+</row>	<	0
+<row>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+X	X	0
+		
+		1
+		
+</cell>	<	0
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	0
+		
+		1
+		
+		1
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+A	A	
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+X	X	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+J	J	
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+X	X	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+M	M	
+		
+		
+		
+</cell>	<	
+</row>	<	
+</lyxtabular>	<	
+		
+		
+		
+		
+		
+		
+		
+1) 	1	
+		
+B 	B	
+		
+es cierto	e	
+		
+ 	 	
+		
+		
+		
+2) como B es cierto 	2	
+		
+		
+		
+ lo es y, por tanto, A=V.	 	
+		
+		
+		
+3) Si A=V 	3	
+		
+		
+		
+		
+		
+		
+		
+Consecuencia lógica.	C	
+		
+		
+		
+Se define la 	S	
+		
+consecuencia lógica	c	
+		
+ del modo siguiente : Si una sentencia	 	
+		
+		
+		
+ tiene valor 	 	
+		
+V	V	
+		
+ bajo todas las interpretaciones en las que todas las sentencias de un conjunto	 	
+ 	 	
+		
+		
+		
+ tienen valor 	 	
+		
+		
+V	V	
+		
+		
+, entonces	,	
+		
+		
+		
+decimos que 	d	
+		
+		
+		
+		
+		
+ es consecuencia lógica de 	 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+o también “	o	
+		
+		
+		
+		
+		
+ se sigue de 	 	
+		
+		
+		
+		
+		
+”.	�	
+ 	 	
+		
+		
+		
+		
+wide false	w	
+sideways false	s	
+status open	s	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+"	filename entail.png"	"	"	
+"	scale 50"	"	"	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Ejemplo	E	
+		
+		
+		
+		
+"<lyxtabular version=""3"" rows=""5"" columns=""4"">"	<	
+"<features rotate=""0"" tabularvalignment=""middle"">"	<	
+"<column alignment=""center"" valignment=""top"">"	<	
+"<column alignment=""center"" valignment=""top"">"	<	
+"<column alignment=""center"" valignment=""top"">"	<	
+"<column alignment=""center"" valignment=""top"">"	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+Válida	V	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+Satisfacible	S	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+No satisfacible	N	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+X	X	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+p	p	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+X	X	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+p	p	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+X	X	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+p	p	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+V	V	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+</row>	<	
+</lyxtabular>	<	
+		
+		
+		
+		
+		
+		
+		
+Equivalencia, validez y satisfacibilidad.	E	
+		
+		
+		
+Un entorno (mundo de un agente) descrito por un vector binario de n componentes	U	
+ admite 	 	
+		
+		
+		
+ valores distintos cada uno de los cuales representa un estado distinto	 	
+ del mundo.	 	
+ cada una de esas asignaciones de valores de verdad atómicas representa	 	
+ una 	 	
+		
+		
+interpretación	i	
+		
+		
+ .	 	
+		
+		
+		
+Dos sentencias 	D	
+		
+		
+		
+ y 	 	
+		
+		
+		
+ son 	 	
+		
+equivalentes lógicamente	e	
+		
+ si tienen los mismos valores de verdad en 	 	
+		
+		
+todas las interpretaciones	t	
+		
+		
+.	.	
+ Lo representaremos como:	 	
+		
+		
+		
+		
+		
+		
+		
+o alternativamente,	o	
+		
+		
+		
+		
+		
+		
+		
+Una 	U	
+		
+sentencia válida	s	
+		
+ es una que es 	 	
+		
+cierta en cualquier modelo	c	
+		
+ posible.	 	
+ Una sentencia válida es una 	 	
+		
+tautología	t	
+		
+ (no aporta información sobre el mundo puesto que se verifica en todos).	 	
+		
+		
+		
+Por el contrario, una sentencia es una 	P	
+		
+contradicción 	c	
+		
+(inconsistente) cuando es falsa en cualquier circunstancia ('está lloviendo	(	
+ y no lloviendo').	 	
+		
+		
+		
+Una 	U	
+		
+sentencia	s	
+		
+ es	 	
+		
+ contingente	 	
+		
+		
+ 	 	
+		
+cuando es verdad para algunas asignaciones de verdad y falsa en otros.	c	
+ 	 	
+		
+		
+		
+Una sentencia es 	U	
+		
+satisfacible	s	
+		
+ si tiene valor Verdadero para alguna interpretación.	 	
+ Se dice entonces que esa interpretación es un modelo.	 	
+		
+		
+		
+Una sentencia es 	U	
+		
+insatisfacible	i	
+		
+ si y solo si no es satisfecha por ninguna asignación de valores de verdad	 	
+ (interpretación) a las constantes.	 	
+		
+		
+		
+En el ejemplo del robot, nuestro modelo exige que	E	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+BAT\textrm{\_}OK\land ELEVABLE\Rightarrow MUEVE	B	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+sea V y desecharemos las interpretaciones en las que siendo 	s	
+		
+		
+		
+ verdaderas, 	 	
+		
+		
+		
+ sea F.	 	
+		
+		
+		
+Con frecuencia se clasifican las sentencias en dos grupos:	C	
+		
+		
+		
+		
+		
+satisfacibles	s	
+		
+ si y solo si son válidas o contingentes y	 	
+		
+		
+		
+		
+		
+falsables	f	
+		
+ si y solo si son insatisfacibles o contingentes	 	
+		
+		
+		
+De algún modo las sentencias 	D	
+		
+insatisfacibles	i	
+		
+ y las 	 	
+		
+válidas	v	
+		
+ son	 	
+		
+ inútiles	 	
+		
+.	.	
+ Las válidas no descartan ninguna asignación de valores de verdad y las	 	
+ insatisfacibles los descartan todos y, por tanto, no nos dicen nada sobre	 	
+ el mundo.	 	
+ Sin embargo, son muy útiles por cuanto nos permiten realizar transformaciones	 	
+ legales sobre otras sentencias.	 	
+		
+		
+		
+La tabla siguiente muestra equivalencias lógicas en LP:	L	
+		
+		
+		
+		
+wide false	w	
+sideways false	s	
+status open	s	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+"	filename LOgeq.png"	"	"	
+"	scale 50"	"	"	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Satisfacibilidad (SAT).	S	
+		
+		
+		
+El problema general de la satisfacibilidad proposicional consiste en determinar	E	
+ si 	 	
+		
+un conjunto de sentencias proposicionales 	u	
+		
+		
+		
+ es satisfacible	 	
+		
+.	.	
+ Esto es, si 	 	
+		
+existe al menos una interpretación bajo la cual todas las fbfs del conjunto	e	
+ 	 	
+		
+		
+		
+ tienen valor V	 	
+		
+.	.	
+		
+		
+		
+En la práctica, muchos problemas de razonamiento automático en Lógica Proposicio	E	
+nal se reducen previamente a problemas de satisfacibilidad y se aplica un	n	
+ resolvedor de problemas de satisfacibilidad.	 	
+		
+		
+		
+La 	L	
+		
+validez	v	
+		
+ y la 	 	
+		
+satisfacibilidad 	s	
+		
+están íntimamente relacionadas: 	e	
+		
+		
+		
+ es 	 	
+		
+válida	v	
+		
+ si y sólo si 	 	
+		
+		
+		
+ es 	 	
+		
+insatisfacible	i	
+		
+"; en contraposición "	";"	
+		
+		
+		
+ es 	 	
+		
+satisfacible	s	
+		
+ si y sólo si 	 	
+		
+		
+		
+ 	 	
+		
+no	n	
+		
+ es 	 	
+		
+válida.	v	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+La demostración de 	L	
+		
+		
+		
+ a partir de 	 	
+		
+		
+		
+ mostrando que 	 	
+		
+		
+		
+ es insatisfacible se corresponde con la 	 	
+		
+reducción al absurdo	r	
+		
+ en Matemáticas (o refutación o contradicción): suponemos que 	 	
+		
+		
+		
+ es falsa y observamos si esta hipótesis es contradictoria con las premisas	 	
+ de 	 	
+		
+		
+		
+ (	 	
+		
+		
+		
+		
+		
+		
+ es insatisfacible	 	
+		
+		
+).	)	
+		
+		
+		
+La satisfacción es lo opuesto a evaluación.	L	
+ Comenzamos con una o más sentencias compuestas y tratamos de averiguar	 	
+ qué asignaciones de verdad satisfacen dichas sentencias.	 	
+		
+		
+		
+En 	E	
+		
+evaluación	e	
+		
+, consideremos la proposición	,	
+		
+		
+(p\lor q)\land(\lnot q\lor r)\label{eq:1-1}	(	
+		
+		
+		
+		
+Con la asignación de verdad 	C	
+		
+		
+		
+:	:	
+		
+		
+		
+p^{i}=1\\	p	
+q^{i}=0\\	q	
+r^{i}=1	r	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+La proposición (	L	
+		
+LatexCommand ref	L	
+"reference ""eq:1-1"""	r	
+		
+		
+		
+) es verdadera: 	)	
+		
+		
+(1\lor0)\land(1\lor1)=1	(	
+		
+		
+		
+		
+		
+		
+		
+		
+Sin embargo con la asignación de verdad 	S	
+		
+		
+		
+ 	 	
+		
+		
+		
+p^{j}=1\\	p	
+q^{j}=1\\	q	
+r^{j}=0	r	
+		
+		
+		
+		
+		
+es falsa:	e	
+		
+		
+(1\lor1)\land(0\lor0)=0	(	
+		
+		
+		
+		
+En 	E	
+		
+satisfacción	s	
+		
+ la siguiente tabla muestra todas las posibles asignaciones de verdad con	 	
+ tres constantes porposicionales (	 	
+		
+		
+		
+ cuyo número es 	 	
+		
+		
+		
+:	:	
+		
+		
+		
+		
+"<lyxtabular version=""3"" rows=""9"" columns=""5"">"	<	
+"<features rotate=""0"" tabularvalignment=""middle"">"	<	
+"<column alignment=""center"" valignment=""top"">"	<	
+"<column alignment=""center"" valignment=""top"">"	<	
+"<column alignment=""center"" valignment=""top"">"	<	
+"<column alignment=""center"" valignment=""top"">"	<	
+"<column alignment=""center"" valignment=""top"">"	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+p	p	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+q	q	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+r	r	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+Valor de verdad de la sentencia	V	
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+asignación i	a	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+asignación j	a	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+0	0	
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" leftline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+		
+1	1	
+		
+		
+		
+</cell>	<	
+</row>	<	
+</lyxtabular>	<	
+		
+		
+		
+		
+		
+		
+		
+Existen varios métodos de resolver problemas de satisfacibilidad.	E	
+		
+		
+		
+Satisfacibilidad mediante tablas de verdad.	S	
+		
+		
+		
+Si queremos encontrar las asignaciones de verdad que satisfacen la proposición	S	
+ haremos una tabla que contenga todas las posibles combinaciones de valores	 	
+ de las constantes proposicionales y añadiremos una o más columnas con los	 	
+ valores de verdad de la(s) proposicion(es) y aquellas filas cuyo valor	 	
+ de verdad sea 	 	
+		
+V	V	
+		
+ (	 	
+		
+1	1	
+		
+) satisfarán la(s) sentencia(s).	)	
+		
+		
+		
+		
+		
+Ejemplo	E	
+		
+:	:	
+		
+		
+		
+		
+		
+		
+.	.	
+ ¿Es 	 	
+		
+		
+		
+ satisfacible?.	 	
+		
+		
+		
+Tabla de verdad:	T	
+		
+		
+		
+		
+		
+		
+"	filename satisfac.png"	"	"	
+"	scale 50"	"	"	
+		
+		
+		
+		
+		
+		
+		
+Hay una fila para cada asignación de valores de verdad.	H	
+ Para cada fila se evalúan todas las sentencias de 	 	
+		
+		
+		
+.	.	
+ Si alguna sentencia se evalúa a 	 	
+		
+F	F	
+		
+ (0), 	 	
+		
+		
+		
+ no es verdadera en su conjunto.	 	
+		
+		
+		
+Como en este caso parta cada fila hay un valor falso, 	C	
+		
+		
+		
+		
+		
+		
+ no es satisfacible.	 	
+		
+		
+		
+Satisfacibilidad mediante vuelta atrás (	S	
+		
+backtracking	b	
+		
+).	)	
+		
+		
+		
+Si observamos el ejemplo precedente, vemos que con frecuencia solo se requiere	S	
+ una asignación parcial de verdad para determinar si 	 	
+		
+		
+		
+ se satisface.	 	
+ P.e.	 	
+ consideremos la asignación parcial 	 	
+		
+		
+		
+.	.	
+ Sin necesidad de tomar en cuenta 	 	
+		
+		
+		
+ ya vemos que 	 	
+		
+		
+		
+ y, por tanto, no se satisface 	 	
+		
+		
+		
+ y esta conclusión puede ampliarse a cualquier sentencia que incluya dicha	 	
+ asignación.	 	
+ 	 	
+		
+		
+		
+Así pues, determinando si 	A	
+		
+		
+		
+ se satisface por una asignación parcial, podemos ahorrarnos el trabajo	 	
+ de comprobar las asignaciones completas.	 	
+ En este caso, nos ahorramos comprobar 	 	
+		
+		
+		
+ y 	 	
+		
+		
+		
+.	.	
+ El ahorro en este caso es pequeño, pero cuando crece el número de proposiciones	 	
+ aquel puede ser considerable.	 	
+		
+		
+		
+Lo mismo puede decirse para 	L	
+		
+		
+		
+ donde 	 	
+		
+		
+		
+.	.	
+		
+		
+		
+El proceso puede visualizarse como un 	E	
+		
+árbol de búsqueda 	�	
+		
+donde cada rama determina el valor de verdad de una proposición única y	d	
+ cada nodo hoja es una asignación de verdad completa.	 	
+ El árbol siguiente representa el caso anteriormente expuesto.	 	
+		
+		
+		
+		
+		
+		
+"	filename tree.png"	"	"	
+"	scale 50"	"	"	
+		
+		
+		
+		
+		
+		
+		
+En la búsqueda por vuelta atrás arrancamos en el nodo raíz y descendemos	E	
+ por una rama comprobando en cada nodo si se satisface 	 	
+		
+		
+		
+.	.	
+ Si esto es así, bajamos por la rama eligiendo un valor de verdad para una	 	
+ proposición aun sin asignar.	 	
+ Si, por el contrario, 	 	
+		
+		
+		
+ es falsado, como todas las asignaciones descendentes por la rama también	 	
+ falsan 	 	
+		
+		
+		
+ 	 	
+		
+volvemos hacia atrás 	v	
+		
+hasta el punto de decisión más reciente y descendemos por otra rama diferente.	h	
+		
+		
+		
+De este modo se realiza una poda del árbol que, para el ejemplo que nos	D	
+ ocupa, se muestra en la figura siguiente.	 	
+		
+		
+		
+		
+		
+		
+"	filename poda_log.png"	"	"	
+"	scale 50"	"	"	
+		
+		
+		
+		
+		
+		
+		
+Existen otros métodos que optimizan la búsqueda por vuelta atrás tales como	E	
+ el de 	 	
+		
+simplificación	s	
+		
+ y 	 	
+		
+propagación unitaria	p	
+		
+ que requieren que las sentencias se hayan transformado en 	 	
+		
+disyunciones 	d	
+		
+lógicamente equivalentes y no debe olvidarse el método 	l	
+		
+Divas-Putnam-Logemann-Loveland 	D	
+		
+(DPLL).	(	
+		
+		
+		
+Satisfacibilidad con búsquedas incompletas.	S	
+		
+		
+		
+Algunos problemas, por su tamaño, no pueden resolverse mediante una búsqueda	A	
+ exhaustiva y, a veces, se usan métodos de búsqueda incompleta que no siempre	 	
+ responden correctamente.	 	
+ La idea básica es explorar un subconjunto de asignaciones de verdad.	 	
+ Si se encuentra una asignación satisfaciente, concluimos que 	 	
+		
+		
+		
+ es satisfacible.	 	
+ Si no, es imposible declarar la insatisfacibilidad del problema.	 	
+		
+		
+		
+Resumen de la LP.	R	
+		
+		
+		
+Los 	L	
+		
+elementos de la lógica	e	
+		
+ son los siguientes:	 	
+		
+		
+		
+Un 	U	
+		
+lenguaje formal	l	
+		
+: Símbolos + reglas sintácticas (	:	
+		
+sintaxis	s	
+		
+) para combinar símbolos en sentencias gramaticales.	)	
+ La Sintaxis se centra en la estructura formal de las sentencias.	 	
+ 	 	
+		
+		
+		
+		
+		
+Reglas de inferencia	R	
+		
+: Reglas	:	
+		
+ tipográficas	 	
+		
+ para construir nuevas sentencias partiendo de un grupo dado de sentencias.	 	
+ (Tipográficas: no usan semántica, es decir, no se meten en el significado	 	
+ de las sentencias).	 	
+		
+		
+		
+		
+		
+Semántica	S	
+		
+: Reglas de interpretación que asocian sentencias en el lenguaje con afirmacione	:	
+s en el dominio de discurso.	s	
+ Centrada en las condiciones de verdad de las sentencias.	 	
+		
+		
+		
+En lógica queremos construir fórmulas que excluyan toda ambigüedad y para	E	
+ ello solo tenemos un recurso: construir las sentencias - fórmulas - con	 	
+ reglas muy precisas.	 	
+ Para ello una 	 	
+		
+fórmula bien formada	f	
+		
+ - 	 	
+		
+		
+fbf	f	
+		
+-	-	
+		
+ deberá seguir las siguientes reglas:	 	
+		
+		
+		
+Toda constante proposicional sola es una fórmula (atómica)	T	
+		
+		
+		
+Si 	S	
+		
+		
+		
+ es fórmula, entonces 	 	
+		
+		
+		
+ es fórmula	 	
+		
+		
+		
+Si 	S	
+		
+		
+		
+, 	,	
+		
+		
+		
+ son fórmulas, (	 	
+		
+		
+		
+		
+		
+		
+		
+), (	)	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+), (	)	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+), (	)	
+		
+		
+		
+) son fórmulas	)	
+		
+		
+		
+Sólo son fórmulas las secuencias que satisfacen (1), (2) o (3)	S	
+		
+		
+		
+Se dice que dos	S	
+		
+ fbf	 	
+		
+s son lógicamente equivalentes (	s	
+		
+		
+		
+) si y sólo si tienen los mismos valores de verdad bajo todas las interpretacion	)	
+es posibles.	e	
+ Usando las tablas de verdad se pueden obtener las siguientes 	 	
+		
+equivalencias	e	
+		
+:	:	
+		
+		
+		
+Absorción: 	A	
+		
+		
+		
+) 	)	
+		
+		
+		
+" ;"	 	
+		
+		
+		
+) 	)	
+		
+		
+		
+.	.	
+		
+		
+		
+Ley del medio excluido: 	L	
+		
+		
+		
+) 	)	
+		
+		
+		
+		
+		
+		
+		
+de no contradicción:	d	
+		
+		
+		
+) 	)	
+		
+		
+		
+		
+		
+		
+		
+dominación: 	d	
+		
+		
+		
+) 	)	
+		
+		
+		
+"; "	";"	
+		
+		
+		
+) 	)	
+		
+		
+		
+ 	 	
+		
+		
+		
+Idempotencia: 	I	
+		
+		
+		
+) 	)	
+		
+		
+		
+"; "	";"	
+		
+		
+		
+) 	)	
+		
+		
+		
+.	.	
+		
+		
+		
+la doble negación: 	l	
+		
+		
+		
+.	.	
+		
+		
+		
+Leyes de De Morgan: 	L	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Contraposición: 	C	
+		
+		
+		
+		
+		
+		
+		
+Conmutatividad: 	C	
+		
+		
+		
+" ; "	 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Asociatividad: 	A	
+		
+		
+		
+" ; "	 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+ 	 	
+		
+		
+		
+Leyes distributivas: 	L	
+		
+		
+		
+" ; "	 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Todo lo anterior es aplicable al mundo del wumpus que hemos descrito al	T	
+ comienzo.	 	
+ Si tomamos la situación de la Figura (	 	
+		
+LatexCommand ref	L	
+"reference ""fig:3"""	r	
+		
+		
+		
+(b)): el agente no ha detectado nada en la casilla [l, 1] y ha detectado	(	
+ una brisa en la [2, 1].	 	
+ Estas percepciones, combinadas con el conocimiento del agente sobre las	 	
+ reglas que definen el funcionamiento del mundo del wurnpus, constituyen	 	
+ su KB.	 	
+ 	 	
+		
+		
+		
+El agente está interesado (entre otras cosas) en si las casillas adyacentes	E	
+ [ l , 2], [2.2] y [3.	 	
+ 1] tienen pozos sin fondo.	 	
+ Cada una de las tres casillas pueden o no tener un pozo, por lo tanto (al	 	
+ menos en este ejemplo) hay 	 	
+		
+		
+		
+ = 8 modelos posibles.	 	
+ Tal corno se muestran en la Figura (	 	
+		
+LatexCommand ref	L	
+"reference ""fig:5"""	r	
+		
+		
+		
+).	)	
+		
+		
+		
+		
+wide false	w	
+sideways false	s	
+status open	s	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+LatexCommand label	L	
+"name ""fig:5"""	n	
+		
+		
+		
+		
+		
+"	filename bc.png"	"	"	
+"	scale 50"	"	"	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+La KB es falsa en los modelos que contradicen lo que el agente sabe (por	L	
+ ejemplo, la KB es falsa en cualquier modelo en el que la casilla [l, 2]	 	
+ tenga un hoyo, porque no ha detectado ninguna brisa en la casilla [l, 1].	 	
+ De hecho, hay tres modelos en los que la KB es verdadera, los que se muestran	 	
+ como subconjunto de los modelos de la Figura (	 	
+		
+LatexCommand ref	L	
+"reference ""fig:5"""	r	
+		
+		
+		
+)	)	
+		
+status collapsed	s	
+		
+		
+En la Figura los modelos se muestran como mundos parciales, porque en realidad	E	
+ tan solo son asignaciones de 	 	
+		
+VERDADERO	V	
+		
+ y 	 	
+		
+FALSO	F	
+		
+ a sentencias como 	 	
+		
+		
+		
+hay un hoyo en la casilla [ l ,2]», etc.	h	
+		
+		
+		
+		
+.	.	
+		
+		
+		
+Ahora consideremos las dos conclusiones:	A	
+		
+		
+		
+		
+		
+		
+= «No hay un pozo en la casilla [1, 2]».	=	
+		
+		
+		
+		
+		
+		
+= «No hay un pozo en la casilla [2, 2]».	=	
+		
+		
+		
+		
+		
+Si observamos, podemos ver lo siguiente:	S	
+		
+		
+		
+en 	e	
+		
+cada	c	
+		
+ modelo en el que la KB es verdadera,	 	
+		
+		
+		
+ también lo es.	 	
+		
+		
+		
+		
+De aquí que 	D	
+		
+		
+		
+:el agente 	:	
+		
+puede concluir	p	
+		
+ que no hay un pozo en la casilla [1, 2].	 	
+ También podernos ver que	 	
+		
+		
+		
+		
+en algunos modelos en los que la KB es verdadera, 	e	
+		
+		
+		
+ es falsa.	 	
+		
+		
+		
+		
+De aquí que 	D	
+		
+		
+		
+,: el agente 	,	
+		
+no puede concluir	n	
+		
+ que no haya un pozo en la casilla [2,1], (Ni tampoco puede concluir que	 	
+ lo haya.)	 	
+		
+		
+		
+		
+El ejemplo anterior no sólo nos muestra el concepto de implicación, sino	E	
+ también cómo el concepto de implicación se puede aplicar para derivar conclusio	 	
+nes.	n	
+ es decir llevar a cabo la inferencia lógica.	 	
+		
+		
+		
+Demostraciones (pruebas) proposicionales.	D	
+ 	 	
+		
+		
+		
+Comprobar las consecuencias lógicas a partir de tablas de verdad es conceptualme	C	
+nte simple, pero el número de asignaciones de verdad crece exponencialmente	n	
+ con el número de constantes lógicas.	 	
+ Los métodos de demostración constituyen un medio alternativo de comprobar	 	
+ las consecuencias lógicas.	 	
+ En muchos casos es posible crear una demostración de una conclusión de	 	
+ un conjunto de premisas que es mucho menor que la tabla de verdad.	 	
+		
+		
+		
+		
+		
+Prueba	P	
+		
+: La secuencia de fbfs {	:	
+		
+		
+		
+} es una prueba (o deducción, o derivación) de	}	
+		
+		
+		
+ a partir de un conjunto de fbfs 	 	
+		
+		
+		
+ con el conjunto de reglas de inferencia R si (si y sólo si) cada 	 	
+		
+		
+		
+,i=1,2,...,n está o bien en 	,	
+		
+		
+		
+ o puede ser deducido de 	 	
+		
+		
+		
+ por la aplicación de alguna regla de inferencia de R.	 	
+		
+		
+		
+		
+		
+Teorema	T	
+		
+: Si existe una prueba de 	:	
+		
+		
+		
+ a partir de 	 	
+		
+		
+		
+ con las reglas de inferencia 	 	
+		
+R	R	
+		
+ , entonces 	 	
+		
+		
+		
+ es un teorema de 	 	
+		
+		
+		
+ con reglas de inferencia 	 	
+		
+		
+		
+: 	:	
+		
+		
+		
+.	.	
+		
+		
+		
+La esencia del razonamiento lógico es la manipulación de símbolos:	L	
+		
+		
+		
+comenzamos con premisas	c	
+		
+		
+		
+aplicamos reglas de inferencia para obtener conclusiones	a	
+		
+		
+		
+unimos tales conclusiones para formar pruebas lógicas.	u	
+		
+		
+		
+Un ejemplo de aplicación sería el proceso de obtención de información a	U	
+ partir de una base de conocimiento (	 	
+		
+		
+		
+) por medio de una consulta (	)	
+		
+		
+		
+).	)	
+		
+		
+		
+Una Base de conocimiento (KB) para el mundo del wumpus.	U	
+		
+		
+		
+Una 	U	
+		
+base de conocimiento	b	
+		
+ (KB) de un agente dotado de sensores que detectan el valor V o F de varias	 	
+ proposiciones sobre el mundo es la representación de dichos valores en	 	
+ sentencias de lógica proposicional.	 	
+		
+		
+		
+Ahora que ya hemos definido la semántica de la lógica proposicional, podemos	A	
+ construir una base de conocimiento para el mundo del wumpus que utilizaremos	 	
+ para ilustrar los métodos de inferencia.	 	
+ Para simplificar, sólo trataremos con hechos y reglas acerca de pozos.	 	
+		
+		
+		
+Lo primero, es escoger nuestro 	L	
+		
+vocabulario	v	
+		
+ de 	 	
+		
+símbolos proposicionales	s	
+		
+.	.	
+ Para cada posición de la habitación i, j:	 	
+		
+		
+		
+Hacemos que 	H	
+		
+		
+		
+ sea verdadero si hay un hoyo (o pozo) en la casilla [i, j]	 	
+		
+		
+		
+Hacemos que 	H	
+		
+		
+		
+ sea verdadero si hay una corriente de aire (una brisa) en la casilla [i,	 	
+ j].	 	
+		
+		
+		
+La base de conocimiento	L	
+		
+ KB	 	
+		
+ contiene las siguientes 	 	
+		
+		
+sentencias	s	
+		
+		
+ cada una etiquetada con un	 	
+		
+ identificador	 	
+		
+:	:	
+		
+		
+		
+No hay ningún hoyo en la casilla [1, 1].	N	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+En una casilla se siente una brisa si y solo si hay un hoyo en una casilla	E	
+ vecina.	 	
+ Esta regla se ha de especificar para	 	
+		
+ cada casilla	 	
+		
+"; por ahora, tan solo incluimos las casillas que son relevantes:"	";"	
+		
+		
+		
+"R_{2}:\;B_{11}\Leftrightarrow(H_{1,2}\lor H_{2,1})\\"	R	
+"R_{3}:\;B_{21}\Leftrightarrow(H_{1,1}\lor H_{2,2}\lor H_{3,1})"	R	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Las sentencias anteriores son verdaderas en todos los mundos de wumpus.	L	
+ 	 	
+		
+		
+		
+Ahora 	A	
+		
+incluimos	i	
+		
+ las 	 	
+		
+		
+percepciones	p	
+		
+		
+ de brisa para las dos primeras casillas visitadas en el mundo concreto	 	
+ donde se encuentra el agente, llegando a la situación que se muestra en	 	
+ la Figura (	 	
+		
+LatexCommand ref	L	
+"reference ""fig:4"""	r	
+		
+		
+		
+(b)).	(	
+		
+		
+		
+		
+		
+		
+R_{4}:~\lnot B_{11}\\	R	
+R_{5}:~\lnot B_{21}	R	
+		
+		
+		
+		
+		
+		
+		
+Entonces.	E	
+ la base de conocimiento está compuesta por la sentencias 	 	
+		
+		
+		
+, hasta 	,	
+		
+		
+		
+.	.	
+ La 	 	
+		
+KB	K	
+		
+ también se puede representar mediante una única sentencia (la conjunción	 	
+ 	 	
+		
+		
+		
+ porque dicha sentencia aserta que todas las sentencias 	 	
+		
+		
+		
+ (i=1,..,5) son verdaderas.	 	
+		
+		
+		
+Esquemas y reglas de inferencia.	E	
+		
+		
+		
+Para enfrentar el problema de la demostración, precisamos conocer las	P	
+		
+ reglas de inferencia	 	
+		
+.	.	
+		
+		
+		
+Un 	U	
+		
+esquema	e	
+		
+ es una expresión que satisface la sintaxis del lenguaje excepto por la	 	
+ aparición de 	 	
+		
+metavariables	m	
+		
+status collapsed	s	
+		
+		
+Una 	U	
+		
+metavariable	m	
+		
+, como 	,	
+		
+		
+		
+, representa cualquier fórmula.	,	
+ Usaremos letras griegas para designar metavariables.	 	
+		
+		
+ 	 	
+		
+		
+		
+		
+ 	 	
+		
+en varias subpartes de la expresión.	e	
+		
+		
+		
+P.e.	P	
+ la siguiente expresión es un 	 	
+		
+esquema	e	
+		
+ con metavariables 	 	
+		
+		
+		
+ y 	 	
+		
+		
+		
+:	:	
+		
+		
+		
+		
+		
+		
+		
+Una 	U	
+		
+regla de inferencia	r	
+		
+ es un patrón de razonamiento consistente en algunos 	 	
+		
+esquemas	e	
+		
+ denominados 	 	
+		
+		
+premisas 	p	
+		
+		
+y uno o más esquemas adicionales llamados 	y	
+		
+		
+conclusiones	c	
+		
+ derivados de los anteriores	 	
+		
+.	.	
+		
+		
+		
+Las reglas de inferencia se escriben con frecuencia de la siguiente manera	L	
+ 	 	
+		
+(modus ponens	(	
+		
+ o	 	
+		
+ 	 	
+		
+eliminación de la implicación)	e	
+		
+:	:	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+donde los esquemas 	d	
+		
+por encima de la línea	p	
+		
+ son las 	 	
+		
+		
+premisas 	p	
+		
+		
+y los que están 	y	
+		
+por debajo	p	
+		
+, las 	,	
+		
+		
+conclusiones	c	
+		
+		
+.	.	
+		
+		
+		
+Una 	U	
+		
+instancia 	i	
+		
+de una regla de inferencia se obtiene sustituyendo las metavariables de	d	
+ la regla por sentencias, como p.e.	 	
+ (eliminación de la implicación) 	 	
+		
+		
+		
+		
+		
+		
+		
+Tales sustituciones pueden ser arbitrariamente largas.	T	
+		
+		
+		
+Es perfectamente válido tener 	E	
+		
+reglas de inferencia sin premisas	r	
+		
+ que, con frecuencia, se denominan 	 	
+		
+esquemas de axiomas	e	
+		
+ que suelen representarse sin la línea horizontal.	 	
+		
+		
+		
+Algunos ejemplos de 	A	
+		
+reglas de inferencia	r	
+		
+ que se pueden aplicar para derivar cadenas de conclusiones que nos llevan	 	
+ al objetivo deseado son los siguientes:	 	
+		
+		
+		
+		
+		
+Modus ponens	M	
+		
+ (o eliminación de la implicación): 	 	
+		
+		
+		
+: cada vez que encontramos dos sentencias en la forma 	:	
+		
+		
+		
+ y 	 	
+		
+		
+		
+ entonces 	 	
+		
+		
+		
+ puede inferirse.	 	
+ P.e.	 	
+ si en un problema de caza tenemos 	 	
+		
+		
+		
+ y 	 	
+		
+		
+		
+ puede inferirse 	 	
+		
+		
+		
+.	.	
+		
+		
+		
+		
+		
+Modus tollens	M	
+		
+: 	:	
+		
+		
+		
+.	.	
+ De 	 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+ puede inferirse 	 	
+		
+		
+		
+.	.	
+		
+		
+		
+		
+		
+Eliminación	E	
+		
+_	_	
+		
+		
+		
+: 	:	
+		
+		
+		
+, 	,	
+		
+		
+		
+,de una conjunción, se puede inferir cualquiera de sus conjuntores.	,	
+ De 	 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+ puede inferirse 	 	
+		
+		
+		
+.	.	
+		
+		
+		
+		
+		
+Eliminación 	E	
+		
+		
+		
+: 	:	
+		
+		
+		
+.	.	
+		
+		
+		
+		
+		
+Introducción_	I	
+		
+		
+		
+: 	:	
+		
+		
+		
+.	.	
+ 	 	
+		
+De 	D	
+		
+		
+		
+ ,	 	
+		
+		
+		
+ se infiere que	 	
+		
+ 	 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Introducción_	I	
+		
+ 	 	
+		
+		
+		
+: 	:	
+		
+		
+		
+		
+		
+		
+		
+Si tomamos en cuenta la equivalencia de la eliminación de la bicondicional	S	
+ nos lleva a las dos reglas de inferencia:	 	
+		
+		
+		
+		
+		
+{\displaystyle \begin{array}{c}	{	
+{\displaystyle \frac{\alpha\Leftrightarrow\beta}{(\alpha\Rightarrow\beta)\land(\beta\Rightarrow\alpha)}}\\	{	
+{\displaystyle \frac{(\alpha\Rightarrow\beta)\land\beta\Rightarrow\alpha)}{(\alpha\Leftrightarrow\beta)}}	{	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Pero	P	
+		
+ no todas las reglas de inferencia	 	
+		
+ se pueden usar, como esta, en ambas direcciones.	 	
+ 	 	
+		
+		
+		
+Las reglas de inferencia citadas pueden también escribirse con el símbolo	L	
+ 	 	
+		
+consecuencia lógica	c	
+		
+ -	 	
+		
+		
+		
+#�NOMBRE?	#�NOMBRE?	
+ el modus ponens 	 	
+		
+		
+		
+.	.	
+		
+		
+		
+Una 	U	
+		
+prueba lineal 	p	
+		
+de una conclusión derivada de un conjunto de premisas es una 	d	
+		
+secuencia de sentencias	s	
+		
+ que termina en una	 	
+		
+ conclusión 	 	
+		
+en la cual cada elemento es	e	
+		
+		
+		
+una 	u	
+		
+premisa	p	
+		
+		
+		
+una 	u	
+		
+instancia de un esquema axiomático	i	
+		
+ o	 	
+		
+		
+		
+el resultado de 	e	
+		
+aplicar una regla de inferencia a elementos 	a	
+		
+secuencialmente 	s	
+		
+anteriores	a	
+		
+.	.	
+		
+		
+		
+		
+		
+Ejemplo	E	
+		
+s:	s	
+		
+		
+		
+Estas reglas de inferencia pueden usarse en el mundo del wumpus del modo	E	
+ siguiente:	 	
+		
+		
+		
+		
+Partimos de las base de conocimientos 	P	
+		
+		
+		
+ y mostremos p.e.	 	
+ cómo 	 	
+		
+probar	p	
+		
+ que 	 	
+		
+		
+		
+(no hay un pozo en [1,2]):	(	
+		
+		
+		
+Equivalencia de eliminación de la bicondiciona a 	E	
+		
+		
+		
+: 	:	
+		
+		
+"R_{6}:\;(B_{11}\Rightarrow(H_{13}\lor H_{21}))\land((H_{12}\lor H_{21})\Rightarrow B_{11})"	R	
+		
+		
+		
+		
+		
+		
+		
+		
+Eliminación 	E	
+		
+		
+		
+:	:	
+		
+		
+"R_{7}:\;((H_{12}\lor H_{21})\Rightarrow B_{11})"	R	
+		
+		
+		
+		
+		
+		
+		
+		
+Equivalencia lógica de contraposición:	E	
+		
+		
+"R_{8}:\;(\lnot B_{11}\Rightarrow\lnot(H_{12}\lor H_{21}))"	R	
+		
+		
+		
+		
+		
+		
+		
+		
+Ley de De Morgan:	L	
+		
+		
+"R_{9}:\;(\lnot B_{11}\Rightarrow(\lnot H_{12}\land\lnot H_{21}))\rightarrow\textrm{No hay pozo en [1,2] ni en [2,1]}"	R	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Sean nuestras premisas:	S	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+y queremos probar que se verifica la 	y	
+		
+conclusión 	c	
+		
+		
+		
+		
+		
+		
+		
+.	.	
+		
+		
+		
+Para probarlo 	P	
+		
+		
+		
+de 1 y 2 por 	d	
+		
+modus ponens	m	
+		
+ inferimos que 	 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+de  3 por 	d	
+		
+modus ponens	m	
+		
+ inferimos que	 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+por último	p	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Completitud y corrección del conjunto de reglas de inferencia.	C	
+		
+		
+		
+En Lógica tenemos dos conceptos interrelacionados: 	E	
+		
+consecuencia lógica	c	
+		
+ y 	 	
+		
+demostrabilidad	d	
+		
+ que son, sin embargo, muy diferentes: un conjunto de premisas tiene una	 	
+ consecuencia lógica si y solo si toda asignación de valores de verdad que	 	
+ satisfaga las premisas, satisface también la conclusión.	 	
+ Una sentencia es demostrable a partir de un conjunto de premisas si y solo	 	
+ si existe una demostración finita de la conclusión a partir de las premisas.	 	
+		
+		
+		
+El primer concepto se basa en tablas de verdad y el segundo en manipulación	E	
+ simbólica de expresiones.	 	
+		
+		
+		
+		
+		
+Corrección	C	
+		
+: Si para todo conjunto de fbfs 	:	
+		
+		
+		
+ y toda fbf 	 	
+		
+		
+		
+ 	 	
+		
+		
+		
+ implica 	 	
+		
+		
+		
+		
+		
+		
+		
+ se dice entonces que el conjunto de reglas R es 	 	
+		
+correcto	c	
+		
+.	.	
+ Es decir, si y solo si 	 	
+		
+toda conclusión demostrable es consecuencia lógica 	t	
+		
+(	(	
+		
+su conclusión es verdad cuando lo son las premisas).	s	
+		
+		
+		
+		
+		
+Completitud	C	
+		
+: Si para todo conjunto de fbfs 	:	
+		
+		
+		
+ y toda fbf 	 	
+		
+		
+		
+ 	 	
+		
+		
+		
+ implica 	 	
+		
+		
+		
+ se dice entonces que el conjunto de reglas R es 	 	
+		
+completo	c	
+		
+.	.	
+ Esto es, si y solo si 	 	
+		
+toda consecuencia lógica es demostrable	t	
+		
+.	.	
+		
+		
+		
+		
+		
+Nota	N	
+		
+: el operador 	:	
+		
+		
+		
+ se denomina 	 	
+		
+operador de demostrabilidad	o	
+		
+.	.	
+		
+		
+		
+Un algoritmo de inferencia que 	U	
+		
+deriva sólo sentencias implicadas	d	
+		
+ es correcto o mantiene la verdad.	 	
+		
+		
+		
+Un algoritmo de inferencia es completo si	U	
+		
+ puede derivar cualquier sentencia que está implicada	 	
+		
+.	.	
+		
+		
+		
+Hemos descrito un proceso de razonamiento en el que se 	H	
+		
+garantiza que las conclusiones sean verdaderas en cualquier mundo en el	g	
+ que las premisas lo sean	 	
+		
+"; en concreto, si una KB es verdadera en el mundo real, entonces cualquier"	";"	
+ sentencia 	 	
+		
+		
+		
+ que se derive de dicha KB mediante un procedimiento de inferencia correcto	 	
+ también será verdadera en el mundo real.	 	
+ Así, mientras que un proceso de inferencia opera con la «	 	
+		
+sintaxis	s	
+		
+» - las configuraciones físicas internas, tales corno los bits en los registros	�	
+ o los patrones de impulsos eléctricos en el cerebro - el proceso se corresponde	 	
+ con la relación del mundo real según la cual algún aspecto del mundo real	 	
+ es cierto en virtud de que otros aspectos del mundo real lo son.	 	
+ En la Figura (	 	
+		
+LatexCommand ref	L	
+"reference ""fig:6"""	r	
+		
+		
+		
+) se ilustra esta correspondencia entre mundo y representación.	)	
+		
+		
+		
+		
+wide false	w	
+sideways false	s	
+status open	s	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+LatexCommand label	L	
+"name ""fig:6"""	n	
+		
+		
+		
+		
+		
+"	filename repe_mundo.png"	"	"	
+"	scale 50"	"	"	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Forma normal conjuntiva (FNC).	F	
+		
+		
+		
+En lógica matemática, un 	E	
+		
+literal	l	
+		
+ es una fórmula atómica	 	
+		
+status collapsed	s	
+		
+		
+La representación de un estado es un estado individual, sin ningún componente	L	
+ o parte en su interior	 	
+		
+		
+		
+		
+ o su negación (precedido por	 	
+		
+		
+		
+).	)	
+		
+		
+		
+Una 	U	
+		
+cláusula	c	
+		
+ 	 	
+		
+K	K	
+		
+ es una disyunción de literales	 	
+		
+		
+K=\lor_{j=1}^{m}\lambda_{j}	K	
+		
+		
+		
+		
+donde 	d	
+		
+		
+		
+ son literales 	 	
+		
+		
+		
+		
+		
+Cláusula unitaria	C	
+		
+: Cláusula que contiene un sólo literal, 	:	
+		
+		
+		
+ 	 	
+		
+		
+		
+		
+		
+Cláusula vacía	C	
+		
+ (que se denota con 	 	
+		
+		
+		
+): No contiene ningún literal.	)	
+ La cláusula vacía es insatisfacible: 	 	
+		
+		
+		
+		
+		
+		
+		
+En lógica booleana, una fórmula está en 	E	
+		
+forma normal conjuntiva	f	
+		
+ 	 	
+		
+(FNC	(	
+		
+) si corresponde a una 	)	
+		
+		
+conjunción de cláusulas	c	
+		
+		
+, donde una cláusula es una disyunción de literales, donde un literal y	,	
+ su complemento no pueden aparecer en la misma cláusula.	 	
+ 	 	
+		
+		
+		
+		
+		
+		
+		
+FNC vacío (que se denota por 	F	
+		
+		
+		
+) no contiene ninguna cláusula y es una tautología: 	)	
+		
+		
+		
+.	.	
+		
+		
+		
+Todas las conjunciones de literales y todas las disyunciones de literales	T	
+ están en FNC, pues ellas pueden ser vistas, respectivamente, como conjunciones	 	
+ de cláusulas de un literal, y como conjunciones de una única cláusula.Los	 	
+ únicos conectivos lógicos que pueden aparecer en una fórmula en FNC son	 	
+ la conjunción, disyunción y negación.	 	
+ El operador negación solo puede aplicarse a un literal, y no a una cláusula	 	
+ completa, lo que significa que este sólo puede preceder a una variable	 	
+ proposicional o un símbolo de predicado.	 	
+		
+		
+		
+La FNC puede expresarse como un conjunto de 	L	
+		
+n	n	
+		
+ cláusulas (con la conjunción implícita): 	 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Metateorema	M	
+		
+: 	:	
+		
+Hay un algoritmo que transforma cualquier fbf de cálculo proposicional en	H	
+ una FNC equivalente	 	
+		
+.	.	
+		
+		
+		
+En Lógica proposicional esto se consigue mediante	E	
+		
+		
+		
+1.	1	
+ Eliminación de las conectivas de implicación usando	 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+2.	2	
+ Reducir el ámbito de 	 	
+		
+		
+		
+negación: 	n	
+		
+		
+		
+Usando las leyes de De Morgan	U	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Eliminando símbolos 	E	
+		
+		
+		
+ repetidos.	 	
+ Aplicar esta regla repetidamente hasta que todos los símbolos 	 	
+		
+		
+		
+ aparezcan sólo inmediatamente antes de un átomo (	 	
+		
+variable proposicional	v	
+		
+)	)	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+3.	3	
+ Convertir a FNC usando leyes asociativas/distributivas.	 	
+		
+		
+		
+(\alpha_{1}\lor...\lor\alpha_{n})\lor\beta=\alpha_{1}\lor...\lor\alpha_{n}\lor\beta\\	(	
+(\alpha_{1}\land...\land\alpha_{n})\land\beta=\alpha_{1}\land...\land\alpha_{n}\lor\beta\\	(	
+(\alpha_{1}\land\alpha_{2})\lor\beta=(\alpha_{1}\lor\beta)\land(\alpha_{2}\lor\beta)\\	(	
+(\alpha_{1}\lor\alpha_{2})\land\beta=(\alpha_{1}\land\beta)\lor(\alpha_{2}\land\beta)	(	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+4.	4	
+ Simplificar la expresión usando reglas de equivalencia.	 	
+		
+		
+		
+		
+		
+Ejemplo	E	
+		
+s: 	s	
+		
+		
+		
+Expresar 	E	
+		
+		
+		
+ en FNC.	 	
+		
+		
+		
+		
+		
+		
+		
+ por eliminación de bicondicional	 	
+		
+		
+		
+		
+		
+		
+ por eliminación de implicación	 	
+		
+		
+		
+		
+		
+		
+ mover negaciones	 	
+		
+		
+		
+		
+		
+		
+ distributiva de 	 	
+		
+		
+		
+ respecto a 	 	
+		
+		
+		
+.	.	
+		
+		
+		
+		
+Considera la proposición (A 	C	
+		
+		
+		
+B) 	B	
+		
+		
+		
+C .	C	
+ Expresarla como FNC.	 	
+		
+		
+		
+		
+Transformaciones:	T	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+(A\land\lnot B)\lor C	(	
+		
+		
+		
+		
+		
+		
+		
+(A\lor C)\land(\lnot B\lor C)	(	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Expresar (	E	
+		
+		
+		
+P	P	
+		
+		
+		
+ (P 	 	
+		
+		
+		
+ Q)) como FNC: 	 	
+		
+		
+		
+		
+Transformaciones:	T	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Resolución en lógica proposicional.	R	
+		
+		
+		
+Muchas de las reglas de inferencia mencionadas hasta ahora pueden combinarse	M	
+ en una regla llamada 	 	
+		
+resolución	r	
+		
+.	.	
+ La versión de resolución que expondremos se aplica a un formato especial	 	
+ de fbfs denominado 	 	
+		
+cláusula	c	
+		
+.	.	
+		
+		
+		
+Planteemos la siguiente pregunta:	P	
+		
+		
+		
+		
+		
+Si a María le gusta el pato 	S	
+		
+(p)	(	
+		
+ , entonces a María le gusta el conejo 	 	
+		
+(c)	(	
+		
+.	.	
+ Si es lunes 	 	
+		
+(l)	(	
+		
+ y está nevando 	 	
+		
+(n)	(	
+		
+, entonces a María le gusta el pato o el conejo.	,	
+ Si es lunes y está nevando, ¿le gusta a María el pollo?	 	
+		
+		
+		
+La primera sentencia (	L	
+		
+Si a María le gusta el pato 	S	
+		
+(p)	(	
+		
+ , entonces a María le gusta el conejo 	 	
+		
+(c)) se expresa como:	(	
+		
+		
+p\Rightarrow c	p	
+		
+		
+		
+		
+La segunda (	L	
+		
+Si es lunes 	S	
+		
+(l)	(	
+		
+ y está nevando 	 	
+		
+(n)	(	
+		
+, entonces a María le gusta el pato o el conejo	,	
+		
+) :	)	
+		
+		
+((l\land n)\Rightarrow(p\lor c))	(	
+		
+		
+		
+		
+Y es evidente que si se verifican:	Y	
+		
+		
+		
+p_{1}\land...\land p_{k}\Rightarrow q_{1}\lor...\lor q_{l}\\	p	
+r_{1}\land...\land r_{m}\Rightarrow s_{1}\lor...\lor s_{n}	r	
+		
+		
+		
+		
+		
+también lo hace:	t	
+		
+		
+		
+		
+		
+		
+		
+y por lo tanto, en nuestro ejemplo:	y	
+		
+		
+p\land l\land n\Rightarrow c\lor p\lor c	p	
+		
+		
+		
+		
+Expresión en la que se pueden hacer dos manipulaciones:	E	
+		
+		
+		
+si una misma proposición se repite a la izquierda de una sentencia y a la	s	
+ derecha de otra pueden eliminarse los dos símbolos en ambos una sola vez.	 	
+		
+		
+		
+si una constante se repite al mismo lado de la sentencia pueden eliminarse	s	
+ todas las ocurrencias de la misma menos una.	 	
+		
+		
+		
+Entonces, tendremos:	E	
+		
+		
+		
+		
+		
+		
+		
+p\Rightarrow c\textrm{ }\\	p	
+l\land n\Rightarrow p\lor c	l	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+y por 2 	y	
+		
+		
+		
+ y la respuesta es cierta.	 	
+		
+		
+		
+Este ejemplo introduce uno de los más interesantes problemas de la lógica:	E	
+ la 	 	
+		
+		
+Resolución	R	
+		
+		
+.	.	
+		
+		
+		
+En lógica la 	E	
+		
+resolución	r	
+		
+ es una regla de inferencia utilizada sobre cierto tipo de proposiciones	 	
+ lógicas y es especialmente utilizada para los demostradores automatizados	 	
+ de teoremas.	 	
+ Utilizando resolución se puede construir un demostrador que sea	 	
+		
+ 	 	
+		
+completo	c	
+		
+ 	 	
+		
+y 	y	
+		
+		
+correcto	c	
+		
+		
+ para la lógica proposicional y de primer orden supuesto que un conjunto	 	
+ de proposiciones son insatisfacibles.	 	
+ Por otro lado si el conjunto de proposiciones de hecho es satisfacible,	 	
+ puede o no terminar en una cantidad finita de pasos una demostración por	 	
+ resolución, generalmente lo que sucede es que se asigna un tiempo límite	 	
+ para hallar si un conjunto es insatisfacible o no.	 	
+		
+		
+		
+La resolución solamente funciona cuando se escriben las proposiciones en	L	
+ términos que constan solamente de disyunciones de literales.	 	
+ Puesto que toda proposición lógica se puede escribir en términos de disyuncione	 	
+s, conjunciones y negaciones lo anterior no supone una limitación del método	s	
+ más allá de transformar proposiciones lógicas.	 	
+ Las proposiciones escritas en esta forma se les denomina 	 	
+		
+cláusulas	c	
+		
+, esto es una	,	
+		
+ cláusula	 	
+		
+ es un 	 	
+		
+		
+literal 	l	
+		
+		
+o una 	o	
+		
+		
+disyunción 	d	
+		
+		
+de literales (	d	
+		
+		
+		
+) y puede ser representada como un conjunto de literales con disyunciones	)	
+ implícitas entre todos los literales del conjunto.	 	
+		
+		
+		
+Una 	U	
+		
+		
+cláusula	c	
+		
+		
+ se interpreta también como un conjunto de literales 	 	
+		
+		
+		
+.	.	
+		
+		
+		
+		
+"<lyxtabular version=""3"" rows=""2"" columns=""1"">"	<	
+"<features rotate=""0"" tabularvalignment=""middle"">"	<	
+"<column alignment=""center"" valignment=""top"">"	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+cláusula	c	
+		
+: 	:	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+</row>	<	
+<row>	<	
+"<cell alignment=""center"" valignment=""top"" topline=""true"" bottomline=""true"" leftline=""true"" rightline=""true"" usebox=""none"">"	<	
+		
+		
+		
+		
+		
+conjunto de literales	c	
+		
+: 	:	
+		
+		
+		
+		
+		
+		
+		
+</cell>	<	
+</row>	<	
+</lyxtabular>	<	
+		
+		
+		
+		
+		
+		
+		
+Un modo de resolución para ciertos problemas 	U	

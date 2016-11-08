@@ -1,0 +1,8605 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\setcounter{chapter}{10}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\fontsize{16pt}{18pt}\selectfont\mdseries}
+  {\MakeUppercase{\chaptertitlename}\ \thechapter}{18pt}{\MakeUppercase}
+\titleformat{\section}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\itshape}{\thesubsection}{1em}{}
+\titlespacing*{\section} {0pt}{0pt}{2.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{0pt}{1.5ex plus .2ex}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Probabilidades en Inteligencia Artificial.
+ Métodos bayesianos.
+ Redes bayesianas.
+\end_layout
+
+\begin_layout Section
+Probabilidad en Inteligencia Artificial.
+\end_layout
+
+\begin_layout Standard
+El razonamiento bayesiano es un enfoque probabilístico de la inferencia.
+ Se basa en 
+\end_layout
+
+\begin_layout Enumerate
+la suposición de que las variables de interés están gobernadas por distribucione
+s de probabilidad y 
+\end_layout
+
+\begin_layout Enumerate
+las decisiones óptimas pueden hacerse razonando sobre estas probabilidades
+ junto con los datos observados.
+\end_layout
+
+\begin_layout Standard
+Proporcionan un enfoque cuantitativo para ponderar la evidencia que apoya
+ hipótesis alternativas.
+\end_layout
+
+\begin_layout Standard
+Un ejemplo de método sencillo y de gran rendimiento es el llamado de clasificaci
+ón naïve Bayes que, a pesar de su simplicidad, da muy buenos resultados
+ en ciertos problemas como p.e.
+ la clasificación de textos.
+\end_layout
+
+\begin_layout Section
+La regla de Bayes.
+\end_layout
+
+\begin_layout Standard
+La fórmula de Bayes es de extraordinaria importancia en inferencia probabilístic
+a, por lo que es imprescindible familiarizarse con ella.
+\end_layout
+
+\begin_layout Subsection
+Probabilidad condicionada y regla de Bayes.
+\end_layout
+
+\begin_layout Standard
+La probabilidad condicional, que hemos examinado en al capítulo anterior,
+ se extiende a más de dos sucesos, p.e.
+ para tres se tendrían, además de 
+\begin_inset Formula $S_{1}|S_{2},\:$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $S_{1}|S_{3}$
+\end_inset
+
+, etc.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ los siguientes casos:
+\begin_inset Formula 
+\[
+S_{1}|S_{2}\cap S_{3},\:S_{2}|S_{1}\cap S_{3},\:S_{3}|S_{1}\cap S_{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+S_{1}\cap S_{2}|S_{3},,\:S_{2}\cap S_{1}|S_{3},\:S_{3}\cap S_{1}|S_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y aplicando las definiciones tendremos
+\begin_inset Formula 
+\[
+P[S_{1}|S_{2}\cap S_{3}]=\frac{P[S_{1}\cap S_{2}\cap S_{3}]}{P[S_{2}\cap S_{3}]}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P[S_{1}\cap S_{2}|S_{3}]=\frac{P[S_{1}\cap S_{2}\cap S_{3}]}{P(S_{3})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La probabilidad condicionada nos permite enunciar tres importantísimos teoremas
+ del cálculo de probabilidades:
+\end_layout
+
+\begin_layout Enumerate
+teorema de la 
+\series bold
+\emph on
+multiplicación
+\series default
+\emph default
+;
+\end_layout
+
+\begin_layout Enumerate
+teorema de la 
+\series bold
+\emph on
+probabilidad total 
+\series default
+\emph default
+y, especialmente, 
+\end_layout
+
+\begin_layout Enumerate
+teorema de 
+\series bold
+\emph on
+Bayes
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Teorema de la multiplicación.
+\end_layout
+
+\begin_layout Standard
+De (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2.3"
+
+\end_inset
+
+) deducimos que
+\begin_inset Formula 
+\begin{equation}
+\textrm{P(A\cap B)}=\textrm{P(A)P(B|A)}=\textrm{P(B)P(A|B)}
+\end{equation}
+
+\end_inset
+
+que constituye la expresión del 
+\series bold
+\emph on
+teorema de la multiplicación
+\series default
+\emph default
+ para dos sucesos.
+ Para 
+\emph on
+n
+\emph default
+ demostremos que su expresión es:
+\begin_inset Formula 
+\begin{equation}
+P[(\cap_{i=1}^{n}S_{i})=P(S_{1})P(S_{2}|S_{1})P(S_{3}|S_{1}\cap S_{2})....P(S_{n-1}|S_{1}\cap S_{2}\cap...\cap S_{n-1})
+\end{equation}
+
+\end_inset
+
+
+\size small
+Por inducción
+\emph on
+
+\begin_inset Formula 
+\begin{equation}
+\textrm{n=3}\:\;P[S_{1}\cap S_{2}\cap S_{3}]=P(S_{1}\cap S_{2})P(S_{3}|S_{1}\cap S_{2})=P(S_{1})P(S_{2}|S_{1})P(S_{3}|S_{1}\cap S_{2})
+\end{equation}
+
+\end_inset
+
+
+\emph default
+Si se cumple para n-1 sucesos
+\emph on
+
+\begin_inset Formula 
+\begin{equation}
+P[(\cap_{i=1}^{n-1}S_{i})=P(S_{1})P(S_{2}|S_{1})P(S_{3}|S_{1}\cap S_{2})....P(S_{n-1}|\cap_{i=1}^{n-2}S_{i})\label{eq:2.1}
+\end{equation}
+
+\end_inset
+
+
+\emph default
+para n será
+\emph on
+
+\begin_inset Formula 
+\begin{equation}
+P[(\cap_{i=1}^{n}S_{i})=P[(\cap_{i=1}^{n-1}S_{i})\cap S_{n}]=P(S_{n}|\cap_{i=1}^{n-1}S_{i})P[(\cap_{i=1}^{n-1}S_{i}]
+\end{equation}
+
+\end_inset
+
+
+\emph default
+y sustituyendo 
+\emph on
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2.1"
+
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{equation}
+\mathbf{P[(\cap_{i=1}^{n}S_{i})=P(S_{1})P(S_{2}|S_{1})P(S_{3}/S_{1}\cap S_{2})....P(S_{n}|\cap_{i=1}^{n-1}S_{i})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Teorema de la probabilidad total.
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $\{S_{1},...,S_{n}\}$
+\end_inset
+
+ una 
+\emph on
+partición
+\emph default
+ sobre el espacio muestral y sea 
+\begin_inset Formula $B$
+\end_inset
+
+ un suceso cualquiera del que se conocen las probabilidades condicionales
+ 
+\begin_inset Formula $P(B|S_{i})$
+\end_inset
+
+, entonces la probabilidad del suceso 
+\begin_inset Formula $B$
+\end_inset
+
+ viene dada por la expresión:
+\begin_inset Formula 
+\begin{equation}
+\mathbf{P(B)=\sum_{i=1}^{n}P(S_{i})P(B|S_{i})}\label{eq:2.4}
+\end{equation}
+
+\end_inset
+
+El teorema requiere dos condiciones::
+\end_layout
+
+\begin_layout Enumerate
+un suceso o evento estadístico 
+\begin_inset Formula $B$
+\end_inset
+
+ no vacío, que es un subconjunto de un espacio muestral 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, y 
+\end_layout
+
+\begin_layout Enumerate
+una 
+\emph on
+partición
+\emph default
+ 
+\begin_inset Formula $\{S_{1},...,S_{n}\}$
+\end_inset
+
+ de 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ , lo que significa que
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula $\cup_{i=1}^{n}S_{i}=\Omega$
+\end_inset
+
+ y
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula $S_{i}\cap S_{j}\ensuremath{=\textrm{Ø}\:\forall i\neq j}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\align center
+Para su demostración, partiremos de que 
+\begin_inset Formula $B=B\cap\Omega=B\cap(\cup_{i=1}^{n}S_{i})=\cup_{i=1}^{n}(B\cap S_{i})$
+\end_inset
+
+ y 
+\begin_inset Formula $P(B)={\displaystyle \sum_{i=1}^{n}}P(B\cap S_{i})$
+\end_inset
+
+ que por el teorema de la multiplicación puede expresarse como
+\begin_inset Formula 
+\[
+\mathbf{P(B)}={\displaystyle \sum_{i=1}^{n}}P(B\cap S_{i})=\mathbf{{\displaystyle \sum_{i=1}^{n}}P(S_{i})P(B|S_{i})}\textrm{ c.q.d.}
+\]
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ProbTotal.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejercicio: 
+\emph on
+Tenemos dos cajas una con 1 bola blanca y 2 negras y la segunda con 2 bolas
+ blanca y 3 negras.
+ Elegimos con igual probabilidad una de las cajas y, seguidamente, extraemos
+ una bola.
+ ¿Cuál es la probabilidad de sacar una bola blanca? 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename bola.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los sucesos que forman el espacio muestral son 
+\begin_inset Formula $\left\{ (A,b),(A,n),(B,b),(B,n)\right\} =\Omega$
+\end_inset
+
+ donde
+\begin_inset Formula $(A,b)$
+\end_inset
+
+ significa que se elige la 
+\series bold
+\emph on
+caja A
+\series default
+\emph default
+ y, en ella, la 
+\series bold
+\emph on
+bola b
+\series default
+(lanca
+\emph default
+).
+ Como se ve en la figura, el espacio muestral se divide en una partición
+ 
+\begin_inset Formula $\textrm{A\cup B}$
+\end_inset
+
+ - unión de las dos cajas - y, dentro de cada una de ellas, en bola blanca
+ - 
+\emph on
+b
+\emph default
+ - y negra - 
+\emph on
+n
+\emph default
+ -, cuyas probabilidades dependen de la caja de procedencia 
+\begin_inset Formula $\left.\begin{array}{c}
+\textrm{P(a|A)}\\
+\textrm{P(b|A)}
+\end{array}\right\} $
+\end_inset
+
+ y 
+\begin_inset Formula $\left.\begin{array}{c}
+\textrm{P(a|B)}\\
+\textrm{P(b|B)}
+\end{array}\right\} $
+\end_inset
+
+.
+ En este caso, 
+\begin_inset Formula $P(B)=P(b)$
+\end_inset
+
+ es la probabilidad de que salga blanca, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $P(S_{1})$
+\end_inset
+
+ y 
+\begin_inset Formula $P(S_{2})$
+\end_inset
+
+ son las probabilidades de elegir la caja A -
+\begin_inset Formula $P(A)$
+\end_inset
+
+- o la B - 
+\begin_inset Formula $P(B)$
+\end_inset
+
+ - (0,5 en ambos casos) y 
+\begin_inset Formula $P(b|A)$
+\end_inset
+
+ y 
+\begin_inset Formula $P(b|B)$
+\end_inset
+
+ son las probabilidades de obtener una bola blanca en la caja A 
+\begin_inset Formula $\textrm{P}(\textrm{b|A}$
+\end_inset
+
+)=1/3 y en la B 
+\begin_inset Formula $\textrm{P}(\textrm{b|B}$
+\end_inset
+
+)=2/5.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Graphics
+	filename tornis.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+Aplicando el 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+teorema de la probabilidad total
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+:
+\begin_inset Formula 
+\[
+\mathbf{P(B)}=\mathbf{P(b)}=\frac{1}{2}\frac{1}{3}+\frac{1}{2}\frac{2}{5}=\mathbf{\frac{11}{30}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Teorema de Bayes.
+\end_layout
+
+\begin_layout Standard
+Puede tener interés, y de hecho así ocurre en muchas ocasiones, derivar
+ la probabilidad asociada a cada elemento de la partición condicionado a
+ que ha ocurrido B, es decir, 
+\begin_inset Formula $\mathbf{P(S_{i}|B)}$
+\end_inset
+
+ a partir de las probabilidades 
+\series bold
+conocidas
+\series default
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $P(B|S_{i})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+.
+ Esto constituye un recurso de inferencia probabilística.
+\end_layout
+
+\begin_layout Standard
+Para ello, partiendo de la fórmula de la 
+\emph on
+probabilidad total
+\emph default
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2.4"
+
+\end_inset
+
+), en su mismo contexto y teniendo en cuenta que
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $P(S_{i})P(B|S_{i})=P(B)P(S_{i}|B)\rightarrow P(S_{i}|B)=\frac{{\displaystyle {\displaystyle P(S_{i})P(B|S_{i})}}}{{\displaystyle P(B)}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+podemos despejar, 
+\begin_inset Formula 
+\begin{equation}
+\mathbf{P(S_{i}|B)}=\frac{{\displaystyle {\displaystyle P(S_{i})P(B|S_{i})}}}{{\displaystyle P(B)}}=\frac{{\displaystyle {\displaystyle \mathbf{P(S_{i})P(B|S_{i})}}}}{{\displaystyle \mathbf{{\displaystyle \sum_{i=1}^{n}}P(S_{i})P(B|S_{i})}}}\label{eq:2.5}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El teorema de Bayes corresponde a una situación en que 
+\end_layout
+
+\begin_layout Enumerate
+un experimento se realiza en dos etapas: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+En la primera pueden darse 
+\emph on
+n
+\emph default
+ sucesos 
+\emph on
+mutuamente excluyentes
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La caja elegida en el ejemplo anterior.
+\end_layout
+
+\end_inset
+
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\{\mathbf{S_{1},...,S_{n}}\}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+, con probabilidades conocidas 
+\begin_inset Formula $P(S_{i})$
+\end_inset
+
+ que constituyen una 
+\emph on
+partición
+\emph default
+ del espacio muestral (Vamos a llamarlos
+\series bold
+ 
+\emph on
+causas
+\series default
+\emph default
+).
+ 
+\end_layout
+
+\begin_layout Enumerate
+En la segunda se identifica el
+\emph on
+ 
+\emph default
+resultado 
+\begin_inset Formula $\mathbf{B}$
+\end_inset
+
+,que denominaremos 
+\series bold
+\emph on
+efecto
+\series default
+\emph default
+, que se manifiesta a través de un conjunto de datos
+\series bold
+,
+\series default
+ cuya ocurrencia depende de los resultados obtenidos en la primera etapa,
+ y se conocen 
+\begin_inset Formula $\mathbf{P(B/S_{i})}$
+\end_inset
+
+ (es decir, la probabilidad de que se presente el efecto 
+\begin_inset Formula $B$
+\end_inset
+
+ cuando se ha dado la causa 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+); 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+entonces, al realizar el experimento se ha observado que el resultado final
+ ha sido el 
+\emph on
+efecto
+\emph default
+ 
+\begin_inset Formula $D$
+\end_inset
+
+ y se plantea cuál es la probabilidad de la
+\series bold
+\emph on
+ hipótesis
+\series default
+\emph default
+ 
+\series bold
+H
+\series default
+: que “
+\emph on
+el causante
+\emph default
+” haya sido la 
+\emph on
+causa
+\emph default
+ 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ (es decir, ¿cuál es la probabilidad de 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ condicionada a que se haya producido 
+\begin_inset Formula $D$
+\end_inset
+
+ 
+\begin_inset Formula $\mathbf{P(S_{i}|B)=P(H|B)}$
+\end_inset
+
+?).
+\end_layout
+
+\begin_layout Standard
+Es decir 
+\begin_inset Formula 
+\begin{equation}
+\mathbf{P(H|B)}=\frac{{\displaystyle {\displaystyle \mathbf{P(H)P(B|H)}}}}{\mathbf{{\displaystyle P(B)}}}=\frac{{\displaystyle {\displaystyle \mathbf{P(H)P(B|H)}}}}{{\displaystyle \mathbf{{\displaystyle \sum_{H}}P(H)P(B|H})}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+que es la 
+\series bold
+regla de Bayes.
+\end_layout
+
+\begin_layout Standard
+Como ilustración expondremos el ejemplo siguiente
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La investigación criminal utiliza hoy en día inteligencia artificial como
+ soporte a la actividad policial preventiva y correctiva.
+ P.e.
+ Fujitsu ha desarrollado un sistema basado en la teoría de juegos para predecir
+ las probables vías de escape usadas por los delincuentes tras perpetrar
+ un delito.
+\end_layout
+
+\end_inset
+
+: En Bloemwall, ciudad de Sudáfrica, hay un 25% de blancos y un 75% de negros.
+ La tasa de criminalidad en blancos de 2 por 100.000 habitantes, mientras
+ que entre los negros esta es de 31 por 100.000 habitantes.
+ Si se produce un crimen, ¿Cuál es la probabilidad de que haya sido cometido
+ por un blanco?
+\end_layout
+
+\begin_layout Standard
+Conocemos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P(C|B)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P(C|N)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P(B)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P(N)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(C)={\displaystyle \sum_{R\in[B,N]}}P(R)P(C|R)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset Formula $2\cdot10^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $3.1\cdot10^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2,375\cdot10^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por tanto, para conocer la probabilidad de la hipótesis de que el crimen
+ haya sido cometido por un blanco aplicamos la regla de Bayes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{P(B|C)}={\displaystyle \frac{P(B)P(C|B)}{{\displaystyle P(C)}}=\frac{0,25\cdot2\cdot10^{-5}}{2,375\cdot10^{-4}}}=\mathbf{0,021}
+\]
+
+\end_inset
+
+es decir del 2% mientras la de que haya sido un negro es el 98%: 
+\begin_inset Formula 
+\[
+\mathbf{P(N|C)}={\displaystyle \frac{P(N)P(C|N)}{{\displaystyle P(C)}}=\frac{0,75\cdot3,1\cdot10^{-4}}{2,375\cdot10^{-4}}}=\mathbf{0,979=1-0,021}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si aplicamos esto mismo a Estados Unidos en su conjunto, tenemos los siguientes
+ datos de criminalidad y población (2012):
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename USA.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De donde se deducen por Bayes las probabilidades en dirección inversa 
+\begin_inset Formula $Raza\rightarrow delito$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename inversas.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde se aprecia que los negros - 14% de la población - cometen el 28% de
+ los delitos, mientras que los asiáticos - 5,4% de la población - solo cometen
+ el 1,2% de los delitos, lo que implica que la criminalidad es nueve veces
+ superior entre los negros.
+\end_layout
+
+\begin_layout Standard
+Resumiendo, de la igualdad:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\mathbf{\textrm{p(x,y)={\displaystyle p(x|y)p(y)=p(y|x)p(x)}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+puede deducirse fácilmente la 
+\series bold
+regla de Bayes
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\mathbf{P(H|E)}={\displaystyle \frac{\mathbf{\mathbf{P(E|H)}\mathbf{p(H)}}}{\mathbf{P(E)}}=\frac{\mathbf{P(E|H)}\mathbf{P(H)}}{\mathbf{{\displaystyle \sum_{H}P(H)}P(E|H)}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde ahora hemos cambiado los nombres de las variables:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+E
+\series default
+: es la evidencia disponible (datos) y
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+H:
+\series default
+ las hipótesis que se ven afectadas por la evidencia y que constituyen una
+ partición.
+ Si estas hipótesis son complementarias (
+\begin_inset Formula $H_{2}=\lnot H_{1}\Rightarrow\begin{cases}
+\begin{array}{c}
+H_{1}\cap H_{2}=\oslash\\
+H_{1}\cup H_{2}=\varOmega
+\end{array}\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+P(H): 
+\series default
+probabilidad
+\emph on
+ a priori,
+\emph default
+ es decir, la de 
+\emph on
+H
+\emph default
+ antes de observarse 
+\emph on
+E
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+P(H|E) 
+\series default
+: probabilidad 
+\emph on
+a posteriori
+\emph default
+ (después de observarse E).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+P(E|H)
+\series default
+: es la verosimilitud o probabilidad de observar E dada la hipótesis H.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+P(E)
+\series default
+: se le llama a veces verosimilitud condicional o 'evidencia del modelo'
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Bayesgeo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La utilidad de esta regla se deriva del hecho de que muchas veces es más
+ fácil construir un modelo que funciona en una dirección (p.e.
+ para x dado y) que a la inversa y
+\end_layout
+
+\begin_layout Itemize
+permite construir una condicional de su inversa;
+\end_layout
+
+\begin_layout Itemize
+es el fundamento de muchos sistemas entre ellos los reconocimiento del habla
+ y traducción automática donde es más fácil escribir una palabra que pronunciarl
+a y el modelo se construye en el sentido escritura
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+pronunciación.
+\end_layout
+
+\begin_layout Standard
+Como hemos visto en el ejemplo, un típico ejemplo de aplicación es el 
+\emph on
+diagnóstico
+\emph default
+ - evaluación de una 
+\series bold
+hipótesis
+\series default
+- a partir de las probabilidades causales, esto es
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(Causa|Efecto)={\displaystyle \frac{P(Causa,Efecto)}{P(Efecto)}}={\displaystyle \frac{P(Efecto|Causa)P(Causa)}{P(Efecto)}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo 
+\begin_inset Formula 
+\[
+\textrm{P(Efecto)}=\textrm{\sum_{causas}P(Efecto|Causa)P(Causa)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es decir calcularemos 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\textrm{P(Causa|Efecto)}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+- P(B|C) - para encontrar
+\emph on
+ la causa más probable de un efecto
+\emph default
+ ya que es muy difícil construir un modelo que cada vez que se observe un
+ efecto nos proporcione directamente esta probabilidad condicional, pero
+ no es tan complicado al revés 
+\begin_inset Formula $\textrm{P(Efecto|Causa)}$
+\end_inset
+
+ - P(C|B) - es decir, 
+\emph on
+dada una causa, obtener su efecto
+\emph default
+ que puede obtenerse por observación o experimentación.
+ En el caso del ejemplo se obtiene de las estadísticas de criminalidad.
+\end_layout
+
+\begin_layout Standard
+A las probabilidades 
+\begin_inset Formula $\textrm{\textbf{P}(Efecto)}$
+\end_inset
+
+- probabilidad incondicional - las denominaremos probabilidades 
+\emph on
+a priori 
+\emph default
+y
+\emph on
+ 
+\series bold
+\emph default
+P
+\series default
+(
+\emph on
+Causa|Efecto
+\emph default
+) o 
+\series bold
+P
+\series default
+(
+\emph on
+Efecto|Causa
+\emph default
+) - probabilidad condicional - 
+\emph on
+a posteriori.
+\end_layout
+
+\begin_layout Standard
+Ejemplo: 
+\emph on
+El 60% de los tornillos producidos por una fábrica proceden de la máquina
+ 
+\emph default
+I
+\emph on
+ y el 40% de la máquina 
+\emph default
+II
+\emph on
+.
+ La proporción de defectuosos en 
+\emph default
+I
+\emph on
+ es 0,1 y en 
+\emph default
+II
+\emph on
+ es 0,5.
+ 1.¿Cuál es la probabilidad de que un tornillo de dicha fábrica sea defectuoso?
+ 2.¿Cuál es la probabilidad de que, sabiendo que un tornillo es defectuoso,
+ proceda de la máquina 
+\emph default
+I
+\emph on
+ y de la II?
+\end_layout
+
+\begin_layout Standard
+Solución: 
+\end_layout
+
+\begin_layout Standard
+1.
+ Probabilidad total: 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\begin_inset Formula $E$
+\end_inset
+
+
+\emph default
+: porcentajes de tornillos defectuosos.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $H_{i}$
+\end_inset
+
+ 
+\begin_inset Formula $(i=1,2)$
+\end_inset
+
+: probabilidades 
+\emph on
+a priori
+\emph default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+- i=1 procede de máquina 
+\begin_inset Formula $I$
+\end_inset
+
+.
+ 
+\begin_inset Formula $P(H_{1})=0,4$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+- i=2 procede de máquina 
+\begin_inset Formula $II$
+\end_inset
+
+.
+\begin_inset Formula $\begin{array}{c}
+P(H_{2})=0,6\end{array}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+con porcentajes de fallos de 
+\begin_inset Formula $\left\{ \begin{array}{c}
+P(E|H_{1})=0,1\\
+P(E|H_{2})=0,5
+\end{array}\right.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathbf{P(E)}=P(E|H_{1})P(H_{1})+P(E|H_{2})P(H_{2})=0,1\cdot0,4+0,5\cdot0,6=0,04+0,3=\mathbf{0,34}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+2.
+ Fórmula de Bayes:
+\begin_inset Formula 
+\[
+\mathbf{P(H_{1}|E)}=\frac{P(H_{1})P(E|H_{1})}{P(D|S_{1})P(S_{1})+P(D|S_{2})P(S_{2})}=\frac{0,04}{0,34}=\mathbf{0,117}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\mathbf{P(H_{2}|E)}={\displaystyle \frac{P(H_{2})P(E|H_{2})}{P(E|H_{1})P(H_{1})+P(E|H_{2})P(H_{2})}=\frac{0,30}{0,34}=}\mathbf{0,883}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es tentador (pero 
+\series bold
+erróneo
+\series default
+) considerar que 
+\begin_inset Formula $P(H_{2}|E)=88\%$
+\end_inset
+
+ puede interpretarse como 'cuando aparece un tornillo defectuoso, podemos
+ concluir que la probabilidad de que haya sido producido por la máquina
+ 2 - P(S
+\begin_inset Formula $_{2})$
+\end_inset
+
+- es del 88%'.
+ Esto es falso porque P(H
+\begin_inset Formula $_{2})$
+\end_inset
+
+ es una probabilidad 
+\emph on
+a priori
+\emph default
+ y no la probabilidad 
+\emph on
+a posteriori
+\emph default
+ - cuando existe alguna evidencia.
+ Además, 
+\begin_inset Formula $P(H_{2}|E)=88\%$
+\end_inset
+
+ es inmediatamente relevante solo cuando 
+\emph on
+E 
+\emph default
+es la única evidencia.
+ Si aparece nueva evidencia 
+\emph on
+F, el grado de creencia 
+\emph default
+en H
+\begin_inset Formula $_{2}$
+\end_inset
+
+ es 
+\begin_inset Formula $P(H_{2}|E\land F)$
+\end_inset
+
+ varía.
+\end_layout
+
+\begin_layout Section
+Probabilidades y causalidad.
+\end_layout
+
+\begin_layout Standard
+Las probabilidades representan 
+\series bold
+\emph on
+conexiones lógicas
+\series default
+\emph default
+, no conexiones causales.
+\end_layout
+
+\begin_layout Standard
+A 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ B no debe ser entendido como “A es la causa física de B”.
+ Por equivalencia 
+\begin_inset Formula $\lnot B\Rightarrow\lnot A$
+\end_inset
+
+ y “
+\begin_inset Formula $\lnot B$
+\end_inset
+
+ es la causa física de 
+\begin_inset Formula $\lnot A$
+\end_inset
+
+” (?).
+\end_layout
+
+\begin_layout Standard
+Ej.
+\begin_inset Formula $\lnot$
+\end_inset
+
+BATERÍA_OK 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\lnot$
+\end_inset
+
+FUNCIONA (causal?).
+ “El dispositivo no funciona porque la batería no está OK”
+\end_layout
+
+\begin_layout Standard
+FUNCIONA 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ BATERÍA_OK (NO CAUSAL).
+ El funcionamiento del aparato no es la causa física de que la batería esté
+ OK.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ej.
+ 
+\series default
+Las nubes son la causa física de la lluvia.
+ Sin embargo, Nubes 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Lluvia es incorrecto.
+ La aserción correcta es Lluvia 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Nubes, que 
+\emph on
+no puede ser entendido como “la lluvia es la causa física de las nubes”
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+Inferencia a partir de los datos.
+\end_layout
+
+\begin_layout Subsection
+Máxima verosimilitud (ML).
+\end_layout
+
+\begin_layout Standard
+Selecciona la hipótesis que maximiza la
+\series bold
+\emph on
+ verosimilitud de la hipótesis dados los datos
+\emph default
+ 
+\series default
+es decir
+\series bold
+ 
+\series default
+la que hace que los datos obtenidos - la evidencia - tengan una mayor probabilid
+ad 
+\end_layout
+
+\begin_layout Standard
+Este método de inferir - sacar conclusiones con alguna validez - de un conjunto
+ de datos - una muestra 
+\begin_inset Formula $(x_{1},...,x_{n})$
+\end_inset
+
+ - consiste en 
+\series bold
+\emph on
+asignar a 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ el valor que haga máxima 
+\begin_inset Formula $\mathbf{P(E|H)}$
+\end_inset
+
+
+\series default
+\emph default
+: 
+\begin_inset Formula 
+\[
+\mathbf{H_{ML}=\begin{array}{c}
+arg\;max\\
+H
+\end{array}P(E|H)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recordemos cómo funcionaba este método de estimación sobre el ejemplo de
+ lanzar una moneda n veces y obtenemos 48 caras y 52 cruces 
+\emph on
+en un orden determinado
+\emph default
+ y queremos inferir la probabilidad de que salga cara en una tirada, podemos
+ escribir que la probabilidad de que obtengamos la muestra (C,+,C,C,C, ....,+)
+ será:
+\begin_inset Formula 
+\[
+P(C,+,C,C,C,....,+)=p\cdot q\cdot p\cdot p\cdot p...q=p^{48}(1-p)^{52}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y el valor que maximiza 
+\begin_inset Formula $P(muestra)$
+\end_inset
+
+ se obtiene de 
+\begin_inset Formula 
+\[
+\frac{\partial LnP(p)}{\partial p}=\frac{48}{p}-\frac{52}{1-p}=0\Rightarrow\hat{p}=\frac{48}{100}
+\]
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+y 
+\begin_inset Formula 
+\[
+\left.\frac{\partial^{2}LnP(p)}{\partial p^{2}}\right]_{P=0,48}=-\frac{48}{p^{2}}-\frac{52}{(1-p)^{2}}<0\Rightarrow\textrm{máximo}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+e inferiríamos que 0,48 es un buen valor para la probabilidad de que salga
+ cara.
+\end_layout
+
+\begin_layout Standard
+En el caso de los tornillos y las máquinas, es claro que 
+\emph on
+la hipótesis que hace máxima 
+\begin_inset Formula $P(E|H_{i})\:i=1,2$
+\end_inset
+
+
+\emph default
+ es 
+\begin_inset Formula $\mathbf{H_{2}}$
+\end_inset
+
+ ya que 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $P(E|H_{2})=0,5>P(E|H_{1})=0,1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Máxima probabilidad a posteriori (MAP).
+\end_layout
+
+\begin_layout Standard
+En este caso se maximiza la probabilidad 
+\emph on
+a posteriori:
+\emph default
+
+\begin_inset Formula 
+\[
+\mathbf{H_{MAP}=\begin{array}{c}
+arg\;max\\
+H
+\end{array}P(H|E)=\begin{array}{c}
+arg\;max\\
+H
+\end{array}\frac{P(E|H)P(H)}{P(E)}}=\mathbf{\begin{array}{c}
+arg\;max\\
+H
+\end{array}P(E|H)P(H)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hemos eliminado en el último término de la igualdad 
+\begin_inset Formula $P(E)$
+\end_inset
+
+ porque este es 
+\emph on
+constante e independiente
+\emph default
+ de H.
+\end_layout
+
+\begin_layout Standard
+Si suponemos que las probabilidades a priori son iguales 
+\begin_inset Formula $P(H_{i})=P(H_{j})\;\forall i\neq j$
+\end_inset
+
+ tenemos que 
+\begin_inset Formula 
+\[
+\mathbf{H_{MAP}}=\mathbf{\begin{array}{c}
+arg\;max\\
+H
+\end{array}P(E|H)}=\mathbf{H_{ML}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los estimadores de máxima verosimilitud y máxima probabilidad a posteriori
+ coinciden.
+\end_layout
+
+\begin_layout Standard
+En nuestro caso, también seleccionaríamos 
+\begin_inset Formula $\mathbf{H_{2}}$
+\end_inset
+
+ ya que 
+\begin_inset Formula 
+\[
+P(H_{2}|E)=0,88>P(H_{1}|E)=0,12
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\size small
+\emph on
+Inferencia bayesiana.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+La regla de Bayes ha servido como base para el desarrollo de los métodos
+ de estimación
+\emph default
+ bayesianos
+\emph on
+ de parámetros de distribuciones probabilísticas.
+ En la estimación bayesiana se considera que 
+\series bold
+\emph default
+los parámetros de las distribuciones son v.a
+\series default
+\emph on
+.
+ (lo que no ocurre en otros métodos) y sus distribuciones (la de los parámetros)
+ son
+\emph default
+ distribuciones de probabilidad subjetivas
+\emph on
+ en el sentido de que representan informaciones individuales del experimentador
+ y creencias acerca de los valores que es probable que tome el parámetro.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+Supongamos un ensayo clínico en que a tres grupos de pacientes que ya habían
+ padecido la enfermedad de Silymane se les administraron tres combinaciones
+ de drogas distintas y a un grupo de control un placebo.
+ El objetivo es comprobar la eficacia de cada droga para evitar la recidiva.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+Sobre 150 pacientes obtenemos los siguientes resultados:
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\emph on
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Silyma.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+Para los pacientes tratados con Motopramina, llamemos 
+\begin_inset Formula $X_{i}=\left\{ \begin{array}{c}
+1\:no\:recae\\
+0\:sí\:recae
+\end{array}\right.$
+\end_inset
+
+y sea 
+\begin_inset Formula $P=\frac{{\displaystyle \sum_{i=1}^{N}X_{i}}}{{\displaystyle N}}$
+\end_inset
+
+ la proporción del grupo de mayor tamaño (N) que evitan la recaída.
+ Si no tuviésemos datos del experimento, modelaríamos las v.a.
+ 
+\begin_inset Formula $\{X_{i}\}$
+\end_inset
+
+ como 
+\begin_inset Formula $B(N,p|P=p)$
+\end_inset
+
+, es decir una binomial de parámetro 
+\series bold
+p
+\series default
+ condicionada a que 
+\series bold
+P
+\series default
+ -v.a.
+ - sea igual al parámetro de la binomial.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+Podemos pensar que el valor de P en la población total es 
+\begin_inset Formula $P=\begin{array}{c}
+Lim\\
+N\rightarrow\infty
+\end{array}\frac{{\displaystyle \sum_{i=1}^{N}X_{i}}}{{\displaystyle N}}$
+\end_inset
+
+ y, siendo una combinación de v.a., es una v.a.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Los métodos bayesianos se basan en:
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\emph on
+Distribución a priori de un parámetro 
+\begin_inset Formula $p(\theta)$
+\end_inset
+
+ es la que se considera antes de disponer de ningún dato (evidencia);
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\emph on
+A posteriori, es la distribución del parámetro tras la obtención de datos
+ (evidencia) 
+\begin_inset Formula $p(\theta|\vec{x})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\emph on
+Verosimilitud es la condicional de la muestra dado el parámetro: 
+\begin_inset Formula $p(\vec{x}|\theta)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+Es claro que la distribución a posteriori será:
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+\begin_inset Formula 
+\[
+p(\theta|\vec{x})p(\vec{x})=p(\vec{x}|\theta)p(\theta)\Rightarrow\mathbf{p(\theta|\vec{x})=\frac{p(\vec{x}|\theta)p(\theta)}{p(\vec{x})}=\frac{p(\vec{x}|\theta)p(\theta)}{{\displaystyle \sum_{\theta}}p(\vec{x}|\theta)p(\theta)}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+que puede escribirse como proporcionalidad de la distribución a posteriori
+ y la a priori.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\size small
+\emph on
+\begin_inset Formula $\mathbf{p(\theta|\vec{x})\propto p(\vec{x}|\theta)p(\theta)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+El factor de proporcionalidad puede calcularse si tenemos en cuenta que
+ 
+\begin_inset Formula ${\displaystyle \sum_{\theta}}p(\theta|\vec{x})=1$
+\end_inset
+
+ por ser una f.d.d.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+Para la estimación bayesiana seleccionaremos una función de pérdida 
+\begin_inset Formula $L(\theta,a)$
+\end_inset
+
+ donde 
+\begin_inset Formula $a\in R$
+\end_inset
+
+ que representa el coste de asignar al parámetro cuyo valor es 
+\begin_inset Formula $\theta$
+\end_inset
+
+ el valor 
+\begin_inset Formula $a\neq\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+Por tanto la esperanza de la pérdida será:
+\begin_inset Formula 
+\[
+E[L(\theta,a)]={\displaystyle \sum_{\theta}}L(\theta,a)p(\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+para cada muestra, la esperanza de pérdida será:
+\begin_inset Formula 
+\[
+E[L(\theta,a)|\vec{x}]={\displaystyle \sum_{\theta}}L(\theta,a)p(\theta|\vec{x})={\displaystyle \sum_{\theta}}L(\theta,a)p(\theta|\vec{x})={\displaystyle \sum_{\theta}}L(\theta,a)\frac{p(\vec{x}|\theta)p(\theta)}{{\displaystyle \sum_{\theta}}p(\vec{x}|\theta)p(\theta)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+y seleccionaremos el estimador bayesiano de 
+\begin_inset Formula $\theta$
+\end_inset
+
+ como: 
+\begin_inset Formula 
+\[
+\hat{\theta}_{B}=\begin{array}{c}
+arg\:min\\
+\theta
+\end{array}E[L(\theta,a)|\vec{x}]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+ 1: La predicción del tiempo para hoy es 20% de probabilidad de lluvia.
+ Estoy en una habitación sin ventanas y no puedo determinar si realmente
+ llueve fuera.
+ Sin embargo, veo a alguien que entra en la habitación y lleva un paraguas.
+ 
+\end_layout
+
+\begin_layout Standard
+Sabiendo que la probabilidad de que alguien lleve paraguas es 70% si está
+ lloviendo, y 10% si no está lloviendo, ¿cuál es la probabilidad de que
+ realmente esté lloviendo?
+\end_layout
+
+\begin_layout Standard
+- Probabilidades a priori: H=lluvia: P(H)=0,2, p(
+\begin_inset Formula $\lnot$
+\end_inset
+
+H)=0.8 
+\end_layout
+
+\begin_layout Standard
+- E: paraguas.
+\end_layout
+
+\begin_layout Standard
+- P(E|H)=0,70
+\end_layout
+
+\begin_layout Standard
+- P(E|
+\begin_inset Formula $\lnot H$
+\end_inset
+
+)=0,10
+\end_layout
+
+\begin_layout Standard
+Queremos calcular 
+\begin_inset Formula $P(H|E)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1.
+ 
+\series bold
+Verosimilitud
+\series default
+: ML.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mathbf{P(E|H)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(E|\lnot H)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+0,70
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2.
+ 
+\series bold
+Máxima probabilidad a posteriori:
+\series default
+ MAP
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathbf{P(H|E)}={\displaystyle \frac{P(E|H)P(H)}{P(E)}=\frac{P(E|H)P(H)}{P(E|H)P(H)+P(E|\lnot H)P(\lnot H)}=\frac{0,7\cdot0,2}{0,7\cdot0,2+0,10\cdot0,8}}=\mathbf{0,64}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo 2: 
+\series default
+Ha habido un accidente de coche relacionado con un taxi y el taxista ha
+ huido.
+ Hay dos compañías de taxi en la ciudad: verdes (85%) y azules (15%) .
+ ¿Cuál es la probabilidad de que el taxi del accidente sea de la compañía
+ azul?
+\end_layout
+
+\begin_layout Standard
+Solo sabemos que:
+\end_layout
+
+\begin_layout Standard
+- Probabilidades a priori: H=verde : P(H)=0,85, p(
+\begin_inset Formula $\lnot$
+\end_inset
+
+H)=0.15 y lo único que podemos responder es que la probabilidad de que haya
+ habido un accidente será de un 85% para la compañía verde y un 15% para
+ la azul: 
+\begin_inset Formula $P(E|H)=P(H)=15\%$
+\end_inset
+
+ y 
+\begin_inset Formula $P(E|\lnot H)=P(\lnot H)=85\%$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ahora sabemos que hay un testigo (80% de que diga la verdad) que dice que
+ el taxi responsable del accidente era de la compañía azul.
+\end_layout
+
+\begin_layout Standard
+Ahora 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Hipótesis
+\series default
+=accidente causado por azul
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Evidencia
+\series default
+: testigo dice taxi=azul
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Información adicional
+\series default
+: 85% taxis azules+80% verdad.
+\end_layout
+
+\begin_layout Standard
+Tenemos:
+\end_layout
+
+\begin_layout Itemize
+como antes :
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+P(azul)=P(H)=0,15
+\end_layout
+
+\begin_layout Standard
+P(verde)=P(
+\begin_inset Formula $\lnot H)=$
+\end_inset
+
+0,85
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $P(E|H)=0,8.$
+\end_inset
+
+ Testigo dice la verdad
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $P(E|\lnot H)=0,2.$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+ Testigo miente
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\emph on
+Verosimilitud:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+P(E|H)=0,8 :
+\series default
+ probabilidad de que diga que fue accidente azul y sea verdad
+\end_layout
+
+\begin_layout Standard
+P(E|
+\begin_inset Formula $\lnot$
+\end_inset
+
+H)=0,2
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+MAP
+\series default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Probabilidad de que el accidente fuera provocado por un taxi azul (H) condiciona
+do a que el testigo haya dicho la verdad (E): 
+\begin_inset Formula 
+\[
+\mathbf{P(H|E)}=\frac{P(E|H)P(H)}{P(E)}=\frac{0,8\cdot0,15}{P(E)}=\frac{0,12}{P(E)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Probabilidad de que el accidente fuera provocado por un taxi verde (
+\begin_inset Formula $\lnot$
+\end_inset
+
+H) condicionado a que el testigo 
+\series bold
+no
+\series default
+ haya dicho la verdad (
+\begin_inset Formula $\lnot\textrm{E}$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\mathbf{P(\lnot H|E)}={\displaystyle \frac{P(E|\lnot H)P(\lnot H)}{P(E)}=\frac{0,2\cdot0,85}{P(E)}=\frac{0,17}{P(E)}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pero como 
+\begin_inset Formula 
+\[
+P(H|E)+P(\lnot H|E)=1\Rightarrow\frac{0,12}{P(E)}+\frac{0,17}{P(E)}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Despejando 
+\begin_inset Formula 
+\[
+\mathbf{P(E)}=0,12+0.17=0,29
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y por tanto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(H|E)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mathbf{P(\lnot H|E)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,41
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+0,59
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con este criterio,
+\series bold
+ tiene más credibilidad la hipótesis de 
+\emph on
+taxi verde
+\series default
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Ejercicios.
+\end_layout
+
+\begin_layout Enumerate
+Hay 11 máquinas que fabrican circuitos electrónicos.
+ 10 fabrican en promedio 1 circuito defectuoso de cada 6.
+ La otra máquina es vieja y fabrica 1 defectuoso por cada 3.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Los circuitos fabricados por las máquinas se almacenan en 11 cajas, una
+ por máquina.
+ Habiendo seleccionado una caja aleatoriamente, el primer circuito que examinamo
+s es defectuoso.
+ ¿Cuál es la probabilidad de que la caja corresponda a la máquina vieja?
+\end_layout
+
+\begin_layout Enumerate
+Asumamos ahora que se encuentran 2 circuitos defectuosos en extracciones
+ consecutivas de una caja con un gran número de circuitos.
+ ¿Cuál es la probabilidad de que corresponda a la máquina vieja?
+\end_layout
+
+\begin_layout Standard
+Sean 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $H$
+\end_inset
+
+: circuitos proceden de máquina vieja y 
+\begin_inset Formula $\lnot H$
+\end_inset
+
+: circuitos proceden de 10 máquinas nuevas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E\text{ :}$
+\end_inset
+
+ circuito defectuoso
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(E|H)={\displaystyle \frac{1}{3}}$
+\end_inset
+
+ y 
+\begin_inset Formula $P(E|\lnot H)={\displaystyle \frac{1}{6}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula ${\displaystyle P(H)=\frac{1}{11}}$
+\end_inset
+
+ , 
+\begin_inset Formula ${\displaystyle P(\lnot H)=\frac{10}{11}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ahora tendremos que la probabilidad de seleccionar la caja procedente de
+ la defectuosa es 
+\begin_inset Formula $P(D|H)={\displaystyle \frac{1}{11}}$
+\end_inset
+
+ y la probabilidad de obtener una primera pieza defectuosa de una caja es:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $P(H|D)={\displaystyle \frac{1}{3}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $P(H|\lnot D)={\displaystyle \frac{1}{6}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Verosimilitud:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(D|H)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mathbf{P(D|\lnot H})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle \frac{1}{11}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\mathbf{{\displaystyle 10}}}{\mathbf{{\displaystyle 11}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+MAP
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+Nos interesa 
+\begin_inset Formula $P(D|H)=\frac{{\displaystyle P(H|D)P(D)}}{{\displaystyle P(H)}}=\frac{{\displaystyle \frac{1}{11}}{\displaystyle \frac{1}{3}}}{{\displaystyle P(H)}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $P(\lnot D|H)=\frac{{\displaystyle P(H|\lnot D)P(\lnot D)}}{{\displaystyle P(H)}}=\frac{{\displaystyle \frac{1}{6}\frac{10}{11}}}{{\displaystyle P(H)}}=\frac{{\displaystyle \frac{10}{66}}}{{\displaystyle P(H)}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y, siendo 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $P(D|H)+P(\lnot D|H)=1\Rightarrow P(H)={\displaystyle \frac{12}{66}}\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula $\begin{cases}
+\begin{array}{c}
+P(D|H)=\frac{{\displaystyle \frac{2}{66}}}{{\displaystyle \frac{12}{66}}}={\displaystyle \frac{1}{6}=0,166}\\
+\mathbf{P(D|\lnot H)}=\frac{{\displaystyle \frac{10}{66}}}{{\displaystyle \frac{12}{66}}}=\mathbf{{\displaystyle \frac{5}{6}=0,833}}
+\end{array}\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+En este caso, la probabilidad de sacar dos piezas defectuosas consecutivas,
+ 
+\emph on
+siendo n grande
+\emph default
+ será:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(H|D)={\displaystyle \frac{1}{3^{2}}=\frac{1}{9}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $P(H|\lnot D)={\displaystyle \frac{1}{6^{2}}=\frac{1}{36}}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+ de modo que 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{array}{c}
+P(D|H)=\frac{{\displaystyle P(H|D)P(D)}}{{\displaystyle P(H)}}=\frac{{\displaystyle \frac{1}{11}}{\displaystyle \frac{1}{9}}}{{\displaystyle P(H)}}\\
+P(\lnot D|H)=\frac{{\displaystyle P(H|\lnot D)P(\lnot D)}}{{\displaystyle P(H)}}=\frac{{\displaystyle \frac{10}{11}}{\displaystyle \frac{1}{36}}}{{\displaystyle P(H)}}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y, siendo 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $P(D|H)+P(\lnot D|H)=1\Rightarrow P(H)=0,035\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula $\begin{cases}
+\begin{array}{c}
+P(D|H)=\frac{{\displaystyle \frac{1}{99}}}{{\displaystyle 0,035}}={\displaystyle 0,285}\\
+\mathbf{P(D|\lnot H)}=\frac{{\displaystyle \frac{10}{11\cdot36}}}{\mathrm{{\displaystyle 0,035}}}=\mathbf{{\displaystyle 0,714}}
+\end{array}\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+En una caja tenemos monedas trucadas (75% probabilidad de salir cara) y
+ monedas normales (50% probabilidad de salir cara).
+ Tomamos una al azar, la lanzamos y sale cara.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+¿Cuál debe ser la proporción de monedas en la caja para que este resultado
+ no nos ayude a decidir si la moneda está trucada o no?
+\end_layout
+
+\begin_layout Standard
+Como siempre, identificaremos los siguientes elementos:
+\end_layout
+
+\begin_layout Itemize
+Proporción de trucadas en la caja: 
+\begin_inset Formula $P(H)\rightarrow$
+\end_inset
+
+Proporción de normales 
+\begin_inset Formula $P(\lnot H)=1-P(H)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probabilidades de salir cara:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $P(cara|H)=0,75$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P(cara|\lnot H)=0,5$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Hipótesis: cara producida por trucada (
+\begin_inset Formula $H$
+\end_inset
+
+): 
+\begin_inset Formula $P(H|cara)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Queremos determinar 
+\begin_inset Formula $P(H)$
+\end_inset
+
+ de la caja de modo que 
+\emph on
+
+\begin_inset Formula $P(trucada|cara)=0,5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sabemos que 
+\begin_inset Formula 
+\[
+P(cara|H)P(H)+P(cara|\lnot H)P(\lnot H)=P(cara)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+P(trucada|cara)=\frac{{\displaystyle P(cara|H)P(H)}}{{\displaystyle P(cara)}}=\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\frac{0,75\cdot P(H)}{{\displaystyle 0,75\cdot P(H)+0,5\cdot(1-P(H))}}=0,5
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+de donde obtenemos 
+\begin_inset Formula $\mathbf{P(H)=0,4}$
+\end_inset
+
+.
+ Por tanto, Con una caja conteniendo 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% Monedas trucadas
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% Monedas normales
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+No es posible determinar si la moneda está trucada o no ya que
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $P(H|cara)=\frac{{\displaystyle P(cara|H)P(H)}}{{\displaystyle P(cara)}}=\frac{{\displaystyle 0,75\cdot0,4}}{{\displaystyle 0,6}}=0,5={\displaystyle P(\lnot H|cara)=\frac{{\displaystyle P(cara|\lnot H)P(\lnot H)}}{{\displaystyle P(cara)}}=\frac{0,5\cdot0,6}{0,6}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Un estudio estadístico muestra que el 70% de los ciclistas en una ciudad
+ son hombres.De ellos, el 60% llevan casco.El porcentaje de mujeres que llevan
+ casco cuando van en bici es un 40%.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+¿Cuál es la probabilidad de que un ciclista seleccionado al azar lleve casco?
+\end_layout
+
+\begin_layout Enumerate
+Si un/a ciclista seleccionad@ al azar lleva casco, ¿cuál es la probabilidad
+ de que sea hombre?
+\end_layout
+
+\begin_layout Standard
+En primer lugar, tabulemos los datos proporcionados:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename tablabay.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Se nos pregunta por 
+\series bold
+
+\begin_inset Formula $\mathbf{P(E1)}=P(E1|H1)P(H1)+P(E1|H2)P(H2)=0,6\cdot0,7+0,4\cdot0,3=\mathbf{0,54}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ahora interesa la probabilidad
+\emph on
+ a posteriori 
+\emph default
+
+\begin_inset Formula $\mathbf{P(H1|E1)}={\displaystyle \frac{P(E1|H1)P(H1)}{P(E1)}=\frac{0,6\cdot0,7}{0,54}=\mathbf{0,77}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Clasificación bayesiana.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo: 
+\series default
+Tenemos
+\series bold
+ 
+\series default
+una tabla de datos referida a los pacientes de un oculista que contiene
+ los campos: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Edad (e)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prescripción (p)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+astigmatismo (a)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+lagrimeo (l)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+clase (c)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(lentillas aconsejadas)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+joven
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+miope
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+reducido
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+no (n)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+présbita
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hipermétrope
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+no
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+normal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+blandas (b)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+preprésbita
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+duras (d)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+con los siguientes datos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename astigma.png
+	scale 67
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y deseamos encontrar un método que nos permita asignar cada nuevo paciente
+ a una clase ('c') cuando solo se nos facilita el contenido de las demás
+ columnas ('e','p','a' y 'l') pero donde los datos sobre la conveniencia
+ de usar lentillas falta.
+\end_layout
+
+\begin_layout Standard
+Este método de clasificación partiremos de que 
+\end_layout
+
+\begin_layout Itemize
+Cada instancia (
+\emph on
+caso
+\emph default
+) 
+\begin_inset Formula $x$
+\end_inset
+
+ se describe por un 
+\emph on
+conjunto de valores
+\emph default
+ de atributos 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\left\langle a_{1},a_{2},...,a_{n}\right\rangle =\left\langle \textrm{edad, prescripción, astigmatismo, lagrimeo}\right\rangle $
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+y su probabilidad se expresará en función de los parámetros: 
+\begin_inset Formula $P(x)=P(a_{1},a_{2},...,a_{n})$
+\end_inset
+
+.
+ Así p.e.
+ 
+\begin_inset Formula $P(joven,miope,no,reducido)=1$
+\end_inset
+
+ y 
+\begin_inset Formula $P(joven,miope,no,reducido|no)=1$
+\end_inset
+
+ y 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $P(joven,miope,no,reducido|no)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Existe una 
+\emph on
+función objetivo
+\emph default
+ 
+\begin_inset Formula $c=f(x)$
+\end_inset
+
+ puede tomar valores sobre un conjunto
+\emph on
+ finito
+\emph default
+ 
+\begin_inset Formula $C$
+\end_inset
+
+={
+\begin_inset Formula $\textrm{no},$
+\end_inset
+
+blandas, duras} (las clases a que puede asignarse)
+\end_layout
+
+\begin_layout Standard
+Entonces dado el conjunto de instancias descritas cada una de ellas por
+ una tupla de atributos 
+\begin_inset Formula $\left\langle a_{1},a_{2},...,a_{n}\right\rangle $
+\end_inset
+
+ ha de predecirse el valor de la función objetivo 
+\begin_inset Formula $c=f(x)$
+\end_inset
+
+ - clase - para una nueva instancia 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Instancia 1
+\series default
+: observamos la instancia con atributos 
+\begin_inset Formula $\left\langle prescripción=‘miope’,lagrimeo=‘normal’\right\rangle $
+\end_inset
+
+ y queremos clasificarla en una de las clases 
+\begin_inset Formula $\left\{ no,blandas,duras\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se persigue hallar la clase que
+\emph on
+ maximiza la probabilidad de pertenencia
+\emph default
+ a una clase, pero las probabilidades utilizadas pueden variar.
+ 
+\end_layout
+
+\begin_layout Standard
+Utilizaremos los métodos conocidos ML y MAP.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Formula $P(e,p,a,l|c_{j})$
+\end_inset
+
+ es la probabilidad condicionada a 
+\begin_inset Formula $c_{j}\in\{no,blandas,duras\}$
+\end_inset
+
+ de una instancia -paciente - cuyos atributos están definidos por la tupla
+ 
+\begin_inset Formula $\left\langle edad,prescripción,astigmatismo,lagrimeo\right\rangle $
+\end_inset
+
+.
+ Dado que la instancia solo tiene dos parámetros (prescripción, lagrimeo)
+ hemos de utilizar la distribución marginal
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Recordemos que la la 
+\emph on
+distribución marginal
+\emph default
+ es la distribución de probabilidad de un subconjunto de variables aleatorias
+ de un conjunto de variables aleatorias.
+ La distribución marginal proporciona la probabilidad de un subconjunto
+ de valores del conjunto sin necesidad de conocer los valores de la otras
+ variables 
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $P(p,l)={\displaystyle \sum_{e\in\{j,p,pp\}}\sum_{a\in\{sí,no\}}P(e,p,a,l)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+ML
+\series default
+: Seleccionaremos la clase que haga máxima la verosimilitud para la instancia
+ 
+\begin_inset Formula 
+\[
+c_{j}=\begin{array}{c}
+arg\;max\\
+c_{j}\in\{no,blandas,duras\}
+\end{array}P(p='miope',l='normal'|c_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P(no)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(prescripción=\text{‘}miope\text{’},lagrimeo=\text{‘}normal\text{’|c\_j})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{15}{24}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{15}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P(blandas)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{5}{24}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{2}{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P(duras)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{4}{24}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathbf{\frac{3}{4}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto es, el caso 
+\begin_inset Formula $\mathbf{c=duras}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+MAP: 
+\series default
+En este caso se maximizan las probabilidades a posteriori:
+\begin_inset Formula 
+\[
+c_{j}=\begin{array}{c}
+arg\;max\\
+c_{j}\in\{no,blandas,duras\}
+\end{array}P(c_{j}|(p='miope',l='normal')=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+arg\;max\\
+c_{j}\in\{no,blandas,duras\}
+\end{array}\frac{P(p='miope',l='normal'|c_{j})P(c_{j})}{P(p='miope',l='normal')}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+P(no)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $P(p=\text{‘}miope\text{’},l=\text{‘}normal\text{’|c\_j})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\lang english
+\begin_inset Formula $P(c_{j}|p='miope',l='normal'|c_{j})/P(p='miope',l='normal')$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{15}{24}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{15}:$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{15}\cdot\frac{15}{24}/\frac{6}{24}=\frac{1}{6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+P(blandas)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{5}{24}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{2}{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{2}{5}\cdot\frac{5}{24}/\frac{6}{24}=\frac{1}{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+P(duras)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{4}{24}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathbf{\frac{3}{4}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\frac{3}{4}\cdot\frac{4}{24}/\frac{6}{24}=\mathbf{\frac{1}{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo que nos da el mismo resultado 
+\begin_inset Formula $\mathbf{c=duras}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Clasificador bayesiano óptimo.
+\end_layout
+
+\begin_layout Standard
+Lo anterior responde a la pregunta ¿Cuál es la 
+\emph on
+hipótesis
+\emph default
+ más probable dada la evidencia mostrada en los datos? Con frecuencia, la
+ pregunta es esta otra:
+\end_layout
+
+\begin_layout Standard
+¿Cuál es la 
+\emph on
+clasificación
+\emph default
+ de una nueva instancia, dada la evidencia de los datos?
+\end_layout
+
+\begin_layout Standard
+Aun cuando pudiera parecer que a este fin basta aplicar ML o MAP - como
+ hemos hecho antes - a la nueva instancia, en realidad es posible hacerlo
+ mejor ya que no solo se puede llegar a resultados distintos aplicando ML
+ y MAP, sino que existen métodos mejores.
+\end_layout
+
+\begin_layout Standard
+Consideremos tres hipótesis cuyas probabilidades
+\emph on
+ a posteriori
+\emph default
+ deducidas de los datos son:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(h_{1}|D)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(h_{2}|D)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(h_{3}|D)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+de manera que la solución MAP sería 
+\begin_inset Formula $h_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sea que la nueva instancia 
+\begin_inset Formula $x$
+\end_inset
+
+ se clasifica positiva por 
+\begin_inset Formula $h_{1}$
+\end_inset
+
+ pero negativa por 
+\begin_inset Formula $h_{2}$
+\end_inset
+
+ y 
+\begin_inset Formula $h_{3}$
+\end_inset
+
+.
+ Entonces, la probabilidad de ser positiva - la que proporciona el MAP -
+ es 0,4 pero la de que sea negativa - suma de 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+y 
+\begin_inset Formula $H_{2}$
+\end_inset
+
+ - es 
+\begin_inset Formula $0,6>0,4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En general la clasificación de una instancia se obtiene combinando las prevision
+es de todas las hipótesis ponderadas por sus probabilidades a posteriori.
+ Así la probabilidad de que un valor se clasifique correctamente como 
+\begin_inset Formula $c_{j}$
+\end_inset
+
+ es:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $P(c_{j}|D)={\displaystyle {\displaystyle \sum_{h_{i}\in H}P(c_{j}|h_{i})P(h_{i}|D)}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y elegiremos aquel que maximice esta probabilidad: (
+\series bold
+clasificador bayesiano óptimo
+\series default
+)
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula 
+\begin{equation}
+\mathbf{c_{j}}=\begin{array}{c}
+\mathbf{arg\:max}\\
+\mathbf{c_{j}\in V}
+\end{array}{\displaystyle {\displaystyle \sum_{h_{i}\in H}P(c_{j}|h_{i})P(h_{i}|D)}}\label{eq:1.6.1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aplicado esto al ejemplo anterior:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename bayesito.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El 
+\emph on
+clasificador bayesiano óptimo
+\emph default
+ presentado maximiza la probabilidad de que la nueva instancia se clasifique
+ correctamente dados los datos disponibles, el espacio de hipótesis y las
+ probabilidades a priori sobre las hipótesis.
+\end_layout
+
+\begin_layout Standard
+Una curiosa propiedad de este clasificador es que las predicciones que puede
+ hacer pueden corresponder a hipótesis no contenidas en 
+\begin_inset Formula $H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Algunas características de v.a.
+ n-dimensionales.
+\end_layout
+
+\begin_layout Standard
+En lo que sigue utilizaremos algunas propiedades de las v.a.
+ multidimensionales.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Distribuciones marginales
+\series default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+La distribución marginal es la distribución de probabilidad de un subconjunto
+ de variables aleatorias de un conjunto de variables aleatorias.
+ La distribución marginal proporciona la probabilidad de un subconjunto
+ de valores del conjunto sin necesidad de conocer los valores de la otras
+ variables.
+\end_layout
+
+\begin_layout Standard
+Las posibles distribuciones marginales de 
+\begin_inset Formula $p(x,y,z)$
+\end_inset
+
+serán:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\emph on
+\begin_inset Formula $p_{1}(x)$
+\end_inset
+
+ , 
+\begin_inset Formula $p_{2}(y)$
+\end_inset
+
+, 
+\begin_inset Formula $p_{3}(z)$
+\end_inset
+
+, 
+\begin_inset Formula $p_{12}(x,y)$
+\end_inset
+
+, 
+\begin_inset Formula $p_{13}(x,z),\:p_{23}(y,z)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Distribuciones condicionales
+\series default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+En el análisis conjunto de variables aleatorias surge una importante cuestión,
+ como es el estudio del comportamiento de un subconjunto de ellas, cuando
+ el resto está sujeto a alguna condición y, en particular, cuando se conoce
+ su valor.
+ Aparece así, el concepto de distribución condicionada.
+ 
+\end_layout
+
+\begin_layout Standard
+Algunas posibles distribuciones condicionadas de 
+\begin_inset Formula $p(x,y,z)$
+\end_inset
+
+son:
+\begin_inset Formula 
+\[
+{\displaystyle \begin{array}{c}
+p(x,y|z)={\displaystyle \frac{p(x,y,z)}{p_{3}(z)}}\\
+p(x|yz)={\displaystyle \frac{p(x,y,z)}{p_{23}(y,z)}}
+\end{array}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Independencia.
+ 
+\series default
+Dos variables son independientes si 
+\begin_inset Formula $\forall x,y\:p(x,y)=p(x)p(y)\rightarrow\left\{ \begin{array}{c}
+p(x|y)=p(x)\\
+p(y|x)=p(y)
+\end{array}\right.$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Puede escribirse 
+\begin_inset Formula $x\perp y$
+\end_inset
+
+ : x ortogonal a y.
+\end_layout
+
+\begin_layout Standard
+La independencia es normalmente una hipótesis simplificadora del modelo.
+ P.e.
+ las variables (
+\emph on
+tráfico, tiempo, caries, dolor de muelas
+\emph default
+) podemos considerar que (
+\emph on
+tráfico, tiempo)
+\begin_inset Formula $\perp$
+\end_inset
+
+ (caries, dolor de muelas
+\emph default
+), pero difícilmente que 
+\emph on
+tráfico 
+\begin_inset Formula $\perp$
+\end_inset
+
+ tiempo.
+\end_layout
+
+\begin_layout Standard
+En general
+\begin_inset Formula 
+\[
+p(x_{1},...,x_{n})=\prod p(x_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Independencia condicional.
+ 
+\series default
+Es de mayor aplicación a problemas reales.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+En probabilidad, 
+\emph on
+dos acontecimientos A y B son condicionalmente independientes dado un tercer
+ evento Z
+\emph default
+, si la ocurrencia o no ocurrencia de A junto con la de B se da en forma
+ independiente dada Y.
+ En otras palabras, A y B son condicionalmente independientes dado Z, si
+ y sólo 
+\emph on
+si el conocimiento que se tiene de Z
+\emph default
+ hace que 
+\end_layout
+
+\begin_layout Itemize
+el conocimiento sobre el estado de A no genere cambios sobre la probabilidad
+ de que ocurra B, y de igual manera 
+\end_layout
+
+\begin_layout Itemize
+el conocimiento de si se produce B no proporciona información sobre la probabili
+dad de que ocurra A.
+\end_layout
+
+\begin_layout Standard
+En la notación estándar de la teoría de probabilidades, A y B serán condicionalm
+ente independientes dado Z si y sólo si
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula ${\displaystyle \textrm{P(A\cap B\mid Z)=P(A\mid Z)\cdot P(B\mid Z)},\,}$
+\end_inset
+
+o equivalentemente, 
+\begin_inset Formula ${\displaystyle \textrm{P(A\mid B\cap Z)=P(A\mid Z)}.}$
+\end_inset
+
+Es decir, el suceso 
+\begin_inset Formula $Z$
+\end_inset
+
+ hace que 
+\begin_inset Formula $\mathbf{B}$
+\end_inset
+
+ sea irrelevante para la distribución condicional de A.
+\end_layout
+
+\begin_layout Standard
+Esta independencia se denota por 
+\begin_inset Formula $\mathbf{A\perp B|Z}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+En el caso de tres variables, puede escribirse como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{P(x|y,z)=P(x|z)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y diremos que
+\begin_inset Formula $x$
+\end_inset
+
+ es 
+\emph on
+condicionalmente independiente de 
+\begin_inset Formula $y$
+\end_inset
+
+ dada
+\emph default
+ 
+\begin_inset Formula $z$
+\end_inset
+
+ y se denota por 
+\begin_inset Formula $X\perp Y|Z$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+También, puede decirse que x es condicionalmente independiente de y dada
+ z si y solo si
+\begin_inset Formula 
+\[
+\forall x,y,z:\;\mathbf{P(x,y|z)}=\mathbf{P(x|z)}\mathbf{P(y|z)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename umbrella.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se puede utilizar la independencia condicional con la regla de la cadena
+ del modo siguiente:
+\begin_inset Formula 
+\[
+P(x,y,z)=P(z)P(y|z)P(x|y,z)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y siendo 
+\begin_inset Formula $P(x|y,z)=P(x|z)$
+\end_inset
+
+ tendremos que 
+\begin_inset Formula 
+\[
+\mathbf{P(x,y,z)=P(z)P(y|z)P(x|z)}\:\textrm{x\perp y|z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo que representa un ahorro considerable se esfuerzo sobre el caso general
+ ya que no hemos de considerar más que casos de dos variables.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Clasificador naïve Bayes.
+\end_layout
+
+\begin_layout Standard
+El clasificador óptimo presenta el problema de una elevada complejidad que
+ hacen su cálculo costoso.
+ En muchas ocasiones resulta más práctico y no mucho menos acertado el llamado
+ 
+\emph on
+clasificador Bayes ingenuo (naïve).
+\end_layout
+
+\begin_layout Standard
+Este clasificador se aplica cuando:
+\end_layout
+
+\begin_layout Itemize
+cada instancia 
+\begin_inset Formula $x$
+\end_inset
+
+ se describe por un 
+\emph on
+conjunto de valores
+\emph default
+ de atributos y donde
+\end_layout
+
+\begin_layout Itemize
+la función objetivo 
+\begin_inset Formula $c=f(x)$
+\end_inset
+
+ puede tomar valores sobre un conjunto
+\emph on
+ finito
+\emph default
+ 
+\begin_inset Formula $C$
+\end_inset
+
+ (las clases a que puede asignarse)
+\end_layout
+
+\begin_layout Standard
+Entonces cada instancia se describe por una tupla de atributos 
+\begin_inset Formula $\left\langle a_{1},a_{2},...,a_{n}\right\rangle $
+\end_inset
+
+ y ha de predecirse el valor objetivo, o clasificación, para esta instancia.
+\end_layout
+
+\begin_layout Standard
+El enfoque bayesiano para clasificar la instancia consiste en asignar el
+ valor objetivo más probable 
+\begin_inset Formula $c_{MAP}$
+\end_inset
+
+ - clase -dado el vector de atributos de la instancia 
+\begin_inset Formula $\left\langle a_{1},a_{2},...,a_{n}\right\rangle :$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbf{c_{MAP}}=\begin{array}{c}
+arg\;max\\
+c_{j}\in C
+\end{array}P(c_{j}|a_{1},..,a_{n})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+que utilizando la regla de Bayes pude escribirse:
+\begin_inset Formula 
+\begin{equation}
+\mathbf{c_{MAP}}=\begin{array}{c}
+arg\;max\\
+c_{j}\in C
+\end{array}\frac{P(a_{1},..,a_{n}|c_{j})P(c_{j})}{P(a_{1},..,a_{n})}=\mathbf{\begin{array}{c}
+arg\;max\\
+c_{j}\in C
+\end{array}P(a_{1},..,a_{n}|c_{j})P(c_{j})}\label{eq:5}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De la ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5"
+
+\end_inset
+
+ podemos estimar 
+\begin_inset Formula $P(c_{j})$
+\end_inset
+
+ contando la frecuencia con que aparece en los datos - 
+\begin_inset Formula $f(c_{j})$
+\end_inset
+
+ - pero la estimación de 
+\begin_inset Formula $P(a_{1},..,a_{n}|c_{j})$
+\end_inset
+
+ no puede hacerse de este modo a menos que tengamos un conjunto de datos
+ de gran tamaño.
+ El problema es que el número de estos términos es igual al nº de
+\emph on
+ instancias
+\emph default
+ posibles
+\begin_inset Formula $\times$
+\end_inset
+
+ nº de valores y, por tanto, necesitamos que cada instancia aparezca muchas
+ veces en el espacio de instancias para obtener estimaciones fiables.
+\end_layout
+
+\begin_layout Standard
+El clasificador Bayes ingenuo supera este problema suponiendo que 
+\emph on
+los valores de los atributos son condicionalmente independientes 
+\emph default
+dado el valor objetivo.
+ En otras palabras, la probabilidad conjunta de que aparezcan n atributos
+ será:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $P(a_{1},...,a_{n}|c_{j})={\displaystyle \prod_{i=1}^{n}P(a_{i}|c_{j})}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+con lo cual, (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:5"
+
+\end_inset
+
+) será:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{c_{NB}}=\mathbf{\begin{array}{c}
+arg\;max\\
+c_{j}\in C
+\end{array}P(c_{j})\prod_{i=1}^{n}P(a_{i}|c_{j})}\label{eq:6}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora el número de 
+\begin_inset Formula $P(a_{i}|c_{j})$
+\end_inset
+
+ a estimar es el nº de
+\emph on
+ atributos
+\emph default
+
+\begin_inset Formula $\times$
+\end_inset
+
+nº de valores y resulta más fácil de estimar que anteriormente ya que el
+ número de atributos será menor que el de instancias.
+\end_layout
+
+\begin_layout Standard
+En conclusión, el clasificador Bayes ingenuo requiere estimar 
+\begin_inset Formula $P(c_{j})$
+\end_inset
+
+ y 
+\begin_inset Formula $P(a_{i}|c_{j})$
+\end_inset
+
+ a partir de sus frecuencias en los datos y cada instancia se clasifica
+ aplicando (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:6"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Si volvemos al ejemplo de las lentillas y aplicamos el 
+\emph on
+Bayes ingenuo
+\emph default
+ para clasificar la instancia 
+\begin_inset Formula $\left\langle prescripción=\text{‘}miope\text{’},lagrimeo=\text{‘}normal\text{’}\right\rangle $
+\end_inset
+
+ ahora el problema se resuelve maximizando:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+c_{NB}=\begin{array}{c}
+arg\;max\\
+c_{j}\in\{no,blandas,duras\}
+\end{array}P(c_{j})P(prescripción=\text{‘}miope\text{’}|c_{j})P(lagrimeo=\text{‘}normal\text{’}|c_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+P(no)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $P(p=\text{‘}miope\text{’}\text{|c\_j})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\lang english
+\begin_inset Formula $P(l='normal'|c_{j})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $P(c_{j})P(p=\text{‘}miope\text{’}|c_{j})P(l=\text{‘}normal\text{’}|c_{j})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{15}{24}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{7}{15}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{3}{15}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathbf{\frac{21}{24\cdot15}=\frac{7}{120}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+P(blandas)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{5}{24}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{2}{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{5}{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{2}{24}=\frac{1}{12}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+P(duras)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{4}{24}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{3}{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{4}{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{3}{24}=\frac{1}{18}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\textrm{{\displaystyle \sum_{c_{j}\in C}}P(c_{j})P(p|c_{j})P(l|c_{j})}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\textrm{\frac{4}{15}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tendremos que la solución es 
+\begin_inset Formula $\mathbf{c=no}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Recordemos que si queremos conocer las probabilidades habremos de dividir
+ (normalizar) la tercera columna por 
+\begin_inset Formula 
+\[
+P(p=\text{‘}miope,=\text{‘}normal\text{’})={\displaystyle \sum_{c_{j}\in C}}P(c_{j})P(prescripción=\text{‘}miope\text{’}|c_{j})P(lagrimeo=\text{‘}normal\text{’}|c_{j})=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{7}{120}+\frac{1}{12}+\frac{1}{8}=\frac{4}{15}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Problema:
+\series default
+ Tenemos la siguiente tabla que relaciona el tiempo - definido por una 
+\emph on
+serie de 
+\series bold
+atributos
+\series default
+ 
+\emph default
+- en una serie de sábados por la mañana con el 
+\emph on
+atributo 
+\series bold
+objetivo
+\series default
+\emph default
+ jugar o o al tenis.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename tenis.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se trata de clasificar la siguiente instancia: 
+\begin_inset Formula $\left\langle previsión=soleado,temperatura=frío,humedad=alta,viento=fuerte\right\rangle $
+\end_inset
+
+ como día de jugar al tenis o no.
+\end_layout
+
+\begin_layout Standard
+Aplicando (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:6"
+
+\end_inset
+
+) esto vendrá dado por 
+\begin_inset Formula 
+\[
+c_{NB}=\begin{array}{c}
+arg\;max\\
+c_{j}\in\{sí,no\}
+\end{array}P(c_{j})P(previsión=soleado|c_{j})P(temperatura=frío|c_{j})
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(humedad=alta|c_{j})P(viento=fuerte|c_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para el cálculo necesitamos estas diez probabilidades que se obtienen de
+ la tabla de datos anterior:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $P(sí)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $P(previsión=soleado|c_{j})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\lang english
+\begin_inset Formula $P(temperatura=frío|c_{j})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $P(humedad=alta|c_{j})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $P(viento=fuerte|c_{j})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+0,64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+0,22
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+0,33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+0,33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+0,33
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $P(no)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+0,36
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+0,6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+0,2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+0,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+0,6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Obtenemos los valores 
+\begin_inset Formula 
+\[
+P(a_{1},...,a_{n}|c_{j})=\left\{ \begin{array}{c}
+0,053\:c_{j}=sí\\
+0,206\:c_{j}=no
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De manera que el Bayes ingenuo asigna el valor objetivo 
+\begin_inset Formula $Jugar\;Tenis=\mathbf{no}$
+\end_inset
+
+.
+ La probabilidad de esta asignación puede calcularse normalizando, esto
+ es dividiendo por 
+\begin_inset Formula 
+\[
+{\displaystyle {\displaystyle \sum_{c_{j}\in\{s\acute{\imath},no\}}}\prod_{i=1}^{n}P(a_{i}|c_{j})}=0,259
+\]
+
+\end_inset
+
+ y
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(Jugar\;Tenis=\mathbf{no})=\frac{0,206}{0,259}=0,79
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Estimador de Laplace.
+\end_layout
+
+\begin_layout Standard
+Anteriormente hemos hablado de estimar las probabilidades a través de las
+ frecuencias observadas, es decir,
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\hat{P}_{i}=fr(a_{i})={\displaystyle \frac{n_{i}}{n_{Total}}}\quad i=1,...,K$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+como p.e.
+ hicimos en el ejemplo anterior donde se estimó la 
+\begin_inset Formula $P(viento=fuerte|Juega\:a\:tenis=no)={\displaystyle \frac{3}{5}}$
+\end_inset
+
+ es decir, solo disponemos de 5 observaciones, lo que nos puede llevar a
+ realizar estimaciones sesgadas.
+ Esto puede ser muy grave puesto que puede darse el caso de que estimemos
+ probabilidades nulas o unitarias lo que sería contrario a la llamada
+\emph on
+ 
+\series bold
+regla de Cromwell
+\series default
+ 
+\emph default
+que establece que se debe evitar utilizar probabilidades previas con valores
+ 0 o 1, excepto cuando se aplica a proposiciones que desde un punto de vista
+ lógico son verdaderas o falsas.
+ 
+\end_layout
+
+\begin_layout Standard
+La razón es clara, si asignamos la probabilidad a priori el valor 0 (o 1),
+ resulta entonces que al aplicar el teorema de Bayes, se concluye que la
+ probabilidad a posteriori (probabilidad de la variable, dada la evidencia
+ existente) debe ser forzosamente 0 (o 1).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $P(H_{1}|D)=\frac{{\displaystyle P(D|H_{1})P(H_{1})}}{{\displaystyle {\displaystyle P(D|H_{1})P(H_{1})+P(D|H_{2})P(H_{2})}}}=\left\{ \begin{array}{c}
+0\;\textrm{si P(H\_1)=0}\\
+1\:\textrm{si P(H\_1)=1}
+\end{array}\right.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Parece una mala idea estimar la probabilidad de un suceso como nula simplemente
+ porque no aparece ninguna vez 
+\emph on
+en un conjunto finito de observaciones
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Para evitar esto se utiliza el 
+\emph on
+estimador de Laplace
+\emph default
+ que se expresa como:
+\begin_inset Formula 
+\begin{equation}
+{\displaystyle \hat{p}_{i}=\frac{n_{i}+{\displaystyle \frac{\mu}{K}}}{n_{Total}+\mu}},\;i=1,2,...K\label{eq:7}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El estimador de Laplace considera que si nuestro conjunto de datos es extraordin
+ariamente grande, si añadimos una observación más, la frecuencia relativa
+ de un suceso no variará apenas pero se puede evitar que la probabilidad
+ estimada sea cero.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mu$
+\end_inset
+
+ es una constante llamada 
+\emph on
+tamaño de muestra equivalente
+\emph default
+ que determina la ponderación de cada dato observado.
+ La razón para ello es que la fórmula (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:7"
+
+\end_inset
+
+) puede interpretarse como que se aumenta el número de observaciones efectuadas
+ con 
+\begin_inset Formula $\mu$
+\end_inset
+
+ observaciones virtuales distribuidas entre los valores del atributo con
+ igual probabilidad 
+\begin_inset Formula $\frac{1}{K}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Consideremos un modelo 
+\emph on
+multinomial 
+\emph default
+que se puede ver como una generalización del Binomial en el que,suponemos
+ que el resultado de un determinado experimento puede dar 
+\emph on
+K resultados distintos
+\emph default
+: 
+\emph on
+
+\begin_inset Formula $A_{1},A_{2},...,A_{r}$
+\end_inset
+
+
+\emph default
+ cada uno de ellos con probabilidad 
+\begin_inset Formula $p_{1},p_{2},...,p_{K}$
+\end_inset
+
+, respectivamente en lugar de solo dos.
+\begin_inset Formula 
+\[
+p(A_{i})=p_{i}\;i=1,...,r\qquad{\displaystyle \sum_{i=1}^{K}p_{i}=1}
+\]
+
+\end_inset
+
+Si repetimos la experiencia 
+\emph on
+n
+\emph default
+ veces en condiciones independientes, podemos preguntarnos la probabilidad
+ de que el suceso 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ aparezca 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ veces, el suceso 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $n_{2}$
+\end_inset
+
+ veces y así sucesivamente sin que importe el orden de aparición de los
+ sucesos.
+\end_layout
+
+\begin_layout Standard
+Los 
+\begin_inset Formula $n$
+\end_inset
+
+ (
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{r}n_{i}=n}$
+\end_inset
+
+) resultados pueden presentarse en 
+\begin_inset Formula $n!$
+\end_inset
+
+ ordenaciones posibles, teniendo cada posible ordenación una probabilidad
+ de ocurrencia:
+\begin_inset Formula 
+\[
+p_{1}^{n_{1}}p_{2}^{n_{2}}...p_{K}^{n_{K}}
+\]
+
+\end_inset
+
+pero al haber 
+\begin_inset Formula $n_{j}!$
+\end_inset
+
+ permutaciones que podrían hacerse con los resultados 
+\begin_inset Formula $A_{j}$
+\end_inset
+
+ que son iguales, tendremos que solo habrá 
+\begin_inset Formula ${\displaystyle \frac{n!}{n_{1}!..n_{K}!}}$
+\end_inset
+
+ resultados diferentes y
+\begin_inset Formula 
+\[
+\mathbf{P(x_{1}=n_{1},..,x_{K}=n_{K})=\frac{n!}{n_{1}!..n_{K}!}p_{1}^{n_{1}}}..\mathbf{.p_{K}^{n_{K}}}
+\]
+
+\end_inset
+
+Puesto que
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{K}}p_{i}=1$
+\end_inset
+
+ las variables 
+\begin_inset Formula $x_{1},$
+\end_inset
+
+...,
+\begin_inset Formula $x_{K}$
+\end_inset
+
+ son 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+dependientes.
+ 
+\end_layout
+
+\begin_layout Standard
+Es fácil percatarse de que 
+\begin_inset Formula 
+\[
+{\displaystyle {\displaystyle \sum_{i=1}^{\mu}}\hat{p}_{i}={\displaystyle {\displaystyle \sum_{I=1}^{\mu}}}\frac{n_{i}+{\displaystyle \frac{\mu}{K}}}{n_{Total}+\mu}=1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es fácil percatarse de que 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+lim\\
+\mu\rightarrow\infty
+\end{array}\hat{p}_{i}=\begin{array}{c}
+lim\\
+\mu\rightarrow\infty
+\end{array}\frac{n_{i}+{\displaystyle \frac{\mu}{K}}}{n_{Total}+\mu}=\frac{1}{K}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+de modo que si elegimos un valor de 
+\begin_inset Formula $\mu$
+\end_inset
+
+ muy elevado todas las clases tendrán una probabilidad muy parecida.
+\end_layout
+
+\begin_layout Standard
+El alisado es un tema crucial en problemas reales y podemos pensar que tras
+ la 
+\emph on
+construcción
+\emph default
+ de un modelo a partir de los datos de entrenamiento, el alisado - junto
+ con otras técnicas - correspondería a la fase de 
+\emph on
+ajuste
+\emph default
+ del modelo que debe realizarse con datos diferentes de los de entrenamiento
+\end_layout
+
+\begin_layout Standard
+También y de forma más simple el estimador de Laplace supone que cada atributo
+ que no ha aparecido todavía realmente se ha producido una vez y si tenemos
+ 
+\begin_inset Formula $n_{i}=fr(a_{i})$
+\end_inset
+
+ y 
+\begin_inset Formula $\mu=K$
+\end_inset
+
+ atributos, el estimador de 
+\emph on
+Laplace-Bayes
+\emph default
+ se expresa como: 
+\begin_inset Formula 
+\[
+{\displaystyle \hat{p}_{i}=\frac{n_{i}+{\displaystyle 1}}{n_{Total}+K}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para ello, si tenemos 
+\begin_inset Formula $K$
+\end_inset
+
+ categorías de valores posibles para el atributo 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ y añadimos una observación más a cada categoría del mismo , hemos de añadir
+ 
+\begin_inset Formula $K$
+\end_inset
+
+ observaciones más al denominador.
+\end_layout
+
+\begin_layout Standard
+Ejemplo, si tengo para la clase
+\begin_inset Formula $Juega\:a\:tenis=no$
+\end_inset
+
+ los siguientes datos para valores del atributo previsión:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $p=soleado$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $p=nublado$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $p=lluvia$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sum$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n_{Total}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+780
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+220
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1000
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $fr$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{780}{1000}=,78$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{220}{1000}=,22$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{781}{1003}=,78$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{221}{1003}=,22$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{1003}=,001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si tomo 
+\begin_inset Formula $\mu=3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Redes bayesianas.
+\end_layout
+
+\begin_layout Standard
+Los modelos son siempre simplificaciones que no pueden contener todas las
+ variables y, en palabras de G.E.P.
+ Box '
+\emph on
+siempre son erróneos, pero algunos son útiles
+\emph default
+'.
+\end_layout
+
+\begin_layout Standard
+¿Qué hacemos con los
+\emph on
+ modelos probabilísticos
+\emph default
+ en concreto? El agente racional necesita razonar sobre variables desconocidas
+ dada la evidencia existente y se pueden citar varios tipos de razonamiento:
+\end_layout
+
+\begin_layout Itemize
+razonamiento 
+\emph on
+diagnóstico 
+\emph default
+en que medido un efecto queremos encontrar su causa (explicación);
+\end_layout
+
+\begin_layout Itemize
+razonamiento 
+\emph on
+causal 
+\emph default
+(predicción)
+\end_layout
+
+\begin_layout Itemize
+valor de la información.
+ ¿Es necesario hacer otro experimento?
+\end_layout
+
+\begin_layout Standard
+Las 
+\series bold
+\emph on
+redes bayesianas
+\series default
+\emph default
+ son 
+\series bold
+\emph on
+modelos gráficos
+\series default
+\emph default
+ que nos ayudan a representar la dependencia entre v.a.
+ especialmente las suposiciones de independencia condicional que hemos analizado
+ anteriormente y que se manifiestan en la 
+\emph on
+regla de la cadena
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Veamos un simple ejemplo.
+ Existen solo dos cajones en los que el fantasma puede ocultarse y tenemos
+ dos sensores T y B que se ponen o no rojos dependiendo de la posición del
+ fantasma.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fantas.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A priori, tendremos que la probabilidad de que el fantasma esté en el cajón
+ de arriba o el de abajo es la misma:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $P(+g)=P(-g)=0,5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pero existe ruido de tal modo que los sensores pueden dar medidas erróneas,
+ lo que se refleja en la tabla:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(T+,g+)=0,8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+prob.
+ de 
+\begin_inset Formula $T=rojo$
+\end_inset
+
+
+\begin_inset Formula $\land G$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $P(T+,g-)=0,4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+prob.
+ de 
+\begin_inset Formula $T=rojo$
+\end_inset
+
+
+\begin_inset Formula $\land\lnot G$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(B+,g+)=0,4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+prob.
+ de 
+\begin_inset Formula $B=rojo$
+\end_inset
+
+
+\begin_inset Formula $\land\lnot G$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $P(B-,g-)=0,8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+prob.
+ de 
+\begin_inset Formula $B=rojo$
+\end_inset
+
+
+\begin_inset Formula $\land G$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\lnot G$
+\end_inset
+
+ significa que el fantasma no están en el cajón inferior, sino en el de
+ arriba.
+\end_layout
+
+\begin_layout Standard
+Esta tabla nos permite deducir las distribuciones de P(T) y P(B) a través
+ de 
+\begin_inset Formula $P(T|G)$
+\end_inset
+
+ y 
+\begin_inset Formula $P(B|G)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Si aplicásemos la regla de la cadena ingenuamente, tendríamos que
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(G,T,B)=P(G)P(T|G)P(B|T,G)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+pero como T y B son independientes dada la localización del fantasma:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(G,T,B)=P(G)P(T|G)P(B|G)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cuya tabla es:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $P(G,T,B$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{{\displaystyle 1}\cdot}{{\displaystyle 2}}0,8\cdot0,4=0,16$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{{\displaystyle 1}\cdot}{{\displaystyle 2}}0,4\cdot0,8=0,16$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{{\displaystyle 1}\cdot}{{\displaystyle 2}}0,8\cdot(1-0,4)=0,24$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{{\displaystyle 1}\cdot}{{\displaystyle 2}}0,4\cdot(1-0,8)=0,04$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{{\displaystyle 1}\cdot}{{\displaystyle 2}}(1-0,8)\cdot0,4=0,04$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{{\displaystyle 1}\cdot}{{\displaystyle 2}}(1-0,4)\cdot0,8=0,24$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{{\displaystyle 1}\cdot}{{\displaystyle 2}}(1-0,4)\cdot0,2=0,06$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{{\displaystyle 1}\cdot}{{\displaystyle 2}}0,2\cdot(1-0,4)=0,06$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Formalización.
+\end_layout
+
+\begin_layout Standard
+Recordemos el problema que queremos resolver: manejar los casos en que existen
+ muchas variables lo que hace difícil su representación conjunta y la estimación
+ de parámetros.
+\end_layout
+
+\begin_layout Standard
+Para ello usaremos las redes bayesianas como técnica para representar distribuci
+ones conjuntas mediante distribuciones condicionadas más simples.
+ Usaremos un modelo gráfico que indica cómo interactúan unas variables sobre
+ otras.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Antes de comenzar veamos un conjunto de relaciones entre variables que se
+ toman en cuenta para modelizar fallos potenciales de un coche:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename insura.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos ver que existen múltiples variables que interactúan unas con otras
+ a través de un número reducido de v.a.
+ intermedias.
+\end_layout
+
+\begin_layout Standard
+Para su construcción adoptaremos las siguientes reglas:
+\end_layout
+
+\begin_layout Enumerate
+Cada variable será un 
+\series bold
+nodo
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+Los 
+\series bold
+arcos
+\series default
+ en el grafo serán 
+\series bold
+interacciones 
+\series default
+e indican relaciones directas entre variables y, formalmente, codifican
+ la
+\emph on
+ independencia condicional,
+\emph default
+ como veremos más tarde.
+\end_layout
+
+\begin_layout Enumerate
+Por ahora, supondremos que las flechas indican 
+\emph on
+causación directa,
+\emph default
+ lo que solo será válido en algunos casos, pero no en general.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo 1
+\series default
+: Lanzamiento de N monedas independientes.
+ Es claro que existe 
+\emph on
+independencia total 
+\emph default
+entre las N v.a.
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+No hay arcos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename bayeinde.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo 2
+\series default
+: Lluvia y tráfico.
+ Puede modelarse como v.a.
+ independientes, o más realistamente con dependencia entre ambas dirigida
+ en el sentido lluvia 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+tráfico.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Causat.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Un agente racional preferirá el modelo 2 puesto que el modelo 1 no permitirá
+ hacer influencias sobre el tráfico conocido el tiempo o viceversa.
+ Una variable observada no nos dirá absolutamente nada sobre la otra (independen
+cia).
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo 3.
+ 
+\series default
+consideremos las siguiente variables:
+\end_layout
+
+\begin_layout Standard
+-L: lluvia,
+\end_layout
+
+\begin_layout Standard
+- T: Tráfico,
+\end_layout
+
+\begin_layout Standard
+- P: Presión atmosférica.
+\end_layout
+
+\begin_layout Standard
+- F: Partido de fútbol.
+\end_layout
+
+\begin_layout Standard
+- C: Caries.
+ 
+\end_layout
+
+\begin_layout Standard
+Podríamos dibujar el esquema siguiente donde la línea punteada indica una
+ posible dependencia entre el tiempo y el partido de fútbol:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename luvi.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo 4.
+ 
+\series default
+Bayes ingenuo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename naifbayes.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recapitulemos sobre la semántica de las redes bayesianas:
+\end_layout
+
+\begin_layout Enumerate
+Un conjunto de 
+\series bold
+nodos
+\series default
+, uno por cada v.a.
+\end_layout
+
+\begin_layout Enumerate
+Un 
+\series bold
+grafo acíclico dirigido
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+Una 
+\series bold
+distribución condicional por cada nodo
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Una colección de distribuciones de x para cada combinación de valores padres
+ 
+\begin_inset Formula 
+\[
+P(x|a_{1},...,a_{n})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Describe un proceso causal con 
+\emph on
+ruido
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sema.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Veamos cómo podemos 
+\series bold
+obtener probabilidades 
+\series default
+de estas redes.
+\end_layout
+
+\begin_layout Standard
+Es claro que, implícitamente, las redes bayesianas determinan las distribuciones
+ conjuntas:
+\end_layout
+
+\begin_layout Itemize
+como producto de distribuciones condicionales locales;
+\end_layout
+
+\begin_layout Itemize
+mediante la fórmula:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(x_{1},x_{2},...,x_{n})={\displaystyle \prod_{i=1}^{n}P(x_{i}|\varPi(X_{i}))}\label{eq:1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $\varPi(X_{i})=Padres(X_{i})$
+\end_inset
+
+.
+ Evidentemente, si 
+\begin_inset Formula $\varPi(X_{i})=\varoslash\Rightarrow P(x_{i}|\varPi(X_{i}))=P(X_{i})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename ejebaye.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+No obstante, con frecuencia nos encontraremos con este otro tipo de dependencias
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename raro.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este caso, estas dependencias suelen ser 
+\emph on
+temporales
+\emph default
+ y pueden introducirse múltiples varaible para diferentes instantes de tiempo
+ p.e.
+ 
+\begin_inset Formula $x_{1t_{0},}x_{1t_{1}},....$
+\end_inset
+
+ y las dependencias van de intervalo temporal a intervalo temporal.
+\end_layout
+
+\begin_layout Standard
+¿Qué nos garantiza que la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1"
+
+\end_inset
+
+ es realmente una distribución conjunta?
+\end_layout
+
+\begin_layout Enumerate
+El punto de partida es la regla de la cadena:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(x_{1},...,x_{n})={\displaystyle \prod_{i=1}^{n}P(x_{i}|x_{1},...,x_{i-1})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Suponemos 
+\series bold
+independencia condicional :
+\begin_inset Formula 
+\begin{equation}
+\mathbf{P(x_{i}|x_{1},...,x_{i-1})=P(x_{1}|\textrm{\varPi}(x_{i}))}\label{eq:2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y, como consecuencia, 
+\begin_inset Formula 
+\[
+P(x_{1},x_{2},...,x_{n})={\displaystyle \prod_{i=1}^{n}P(x_{i}|\varPi(X_{i}))}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es clave la 
+\series bold
+suposición
+\series default
+ hecha en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+
+\end_inset
+
+ de 
+\emph on
+independencia condicional de 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ respecto a todas las variables precedentes
+\emph default
+ dados sus padres.
+\end_layout
+
+\begin_layout Standard
+Conviene decir que 
+\series bold
+\emph on
+las redes bayesianas no permiten representar todo tipo de dependencias
+\series default
+\emph default
+ ya que la topología obliga a cierto tipo de independencias.
+ (
+\begin_inset Formula $x_{i}\perp(x_{2},...,x_{i-1})\setminus Padres(x_{i})|Padres(x_{i})$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Veamos como ejemplo el caso de las alarmas que se disparan por intento de
+ robo o terremoto, dado por los siguientes datos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename alarbay.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+que se podría simplificar si dibujásemos un diag
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo: 
+\series default
+podemos complicar un poco el problema del oftalmólogo si suponemos que existe
+ una relación entre 
+\begin_inset Formula $edad$
+\end_inset
+
+ y 
+\begin_inset Formula $astigmatismo$
+\end_inset
+
+, es decir de modo que ahora la instancia a clasificar es 
+\begin_inset Formula $\left\langle e=joven,a=sí,l=normal\right\rangle $
+\end_inset
+
+ y 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Formula 
+\[
+P(e,a,l)=P(c_{j})P(e|c_{j})P(a|e,c_{j})P(l|c_{j})
+\]
+
+\end_inset
+
+lo que se representaría en un diagrama de cadena bayesiana de la siguiente
+ forma:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rede.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y lo resolveremos por MAP 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{c_{j}}=\begin{array}{c}
+arg\:max\\
+c_{j}\in C
+\end{array}{\displaystyle {\displaystyle P(c_{j}|e=joven,a=sí,l=normal)}=}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{c}
+arg\:max\\
+c_{j}\in C
+\end{array}{\displaystyle {\displaystyle P(c_{j})P(e=joven,a=sí,l=normal|c_{j})}=}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{c}
+arg\:max\\
+c_{j}\in C
+\end{array}{\displaystyle {\displaystyle P(c_{j})P(e|c_{j})P(l|c_{j})P(a|e,c_{j})}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde para:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c_{1}=no$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+P(no)=15/24.
+\end_layout
+
+\begin_layout Itemize
+P(normal|no)=3/15
+\end_layout
+
+\begin_layout Itemize
+P(joven|no)=4/15
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $c_{2}=blandas:$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+P(blandas)=5/24.
+\end_layout
+
+\begin_layout Itemize
+P(normal|blandas)=5/5
+\end_layout
+
+\begin_layout Itemize
+P(joven|blandas)=2/5
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $c_{3}=duras:$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+P(duras)=4/24.
+\end_layout
+
+\begin_layout Itemize
+P(normal|duras)=4/4
+\end_layout
+
+\begin_layout Itemize
+P(joven|duras)=2/4
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $e,c_{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="10">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+j,no
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+j,b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+j,d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+p,no
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+p,b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+p,d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pp,no
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pp,b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pp,d
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Total
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+a=sí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(a|e,c_{j})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3/6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3/5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+De donde obtenemos los siguientes valores: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(no|joven,sí,normal)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(blandas|joven,sí,normal)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(\mathbf{duras}|e=joven,a=sí,l=normal)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{15}{24}\frac{4}{15}\frac{3}{15}\frac{1}{2}=\frac{1}{60}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{5}{24}\frac{2}{5}\frac{5}{5}0=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathbf{\frac{4}{24}\frac{2}{4}\frac{4}{4}\frac{2}{2}=\frac{1}{12}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cuyo valor máximo es para 
+\series bold
+c=duras
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+El factor de normalización sería: 
+\begin_inset Formula ${\displaystyle \textrm{P(e=joven,a=sí,l=normal)}}$
+\end_inset
+
+=
+\begin_inset Formula $\textrm{\sum_{j}P(c_{j})P(e|c_{j})P(l|c_{j})P(a|e,c_{j})}=\frac{1}{60}+0+\frac{1}{12}={\displaystyle \mathbf{\frac{1}{10}}}$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

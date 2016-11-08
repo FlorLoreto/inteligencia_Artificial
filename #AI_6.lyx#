@@ -2547,6 +2547,9 @@ características
 -.
  Una forma típica de combinarlas es mediante una combinación lineal de las
  mismas:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 Eval(n)=w_{1}f_{1}(n)+w_{2}f_{2}(n)+...+w_{n}f_{n}(n)
@@ -2554,6 +2557,10 @@ Eval(n)=w_{1}f_{1}(n)+w_{2}f_{2}(n)+...+w_{n}f_{n}(n)
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 donde p.e.
  
 \begin_inset Formula 
@@ -2566,7 +2573,7 @@ f_{2}(n)=\textrm{(nº de caballos blancos-nº de caballos negros)}
 
 \end_inset
 
-En general pueden combinarse como
+En general pueden combinarse como 
 \begin_inset Formula 
 \begin{equation}
 Eval(n)=F[f_{1}(n),...,f_{n}(n)]
@@ -2574,6 +2581,10 @@ Eval(n)=F[f_{1}(n),...,f_{n}(n)]
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Aquellas características consideradas más importantes, reciben un peso mayor
  medido por 
 \begin_inset Formula $w_{i}$
@@ -2587,6 +2598,9 @@ Aquellas características consideradas más importantes, reciben un peso mayor
 Si nos fijamos en tres en raya, una característica que favorece al jugador
  es la diferencia entre el número de filas, columnas y diagonales disponibles
  para cada jugador, es decir:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 Eval(n)=P_{MAX}(n)-P_{Min}(n)
@@ -2594,6 +2608,16 @@ Eval(n)=P_{MAX}(n)-P_{Min}(n)
 
 \end_inset
 
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 En la Fig.
  1.5.1.
  podemos ver algunos valores de esta función de evaluación para algunos
@@ -2819,6 +2843,11 @@ podarse
 \end_inset
 
  podría ser 0 o 1 e influiría en el valor del estado inicial.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -2844,6 +2873,10 @@ status open
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Por tanto, hemos visto que la posibilidad de poda depende de los valores
  de los estados y su posición en el árbol.
  Hemos podido podar porque el nodo 11 es un candidato para MAX peor que
@@ -2853,6 +2886,10 @@ Por tanto, hemos visto que la posibilidad de poda depende de los valores
 \begin_layout Standard
 La Fig.1.6.3.
  muestra el desarrollo del algoritmo:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3571,6 +3608,11 @@ C
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -3596,6 +3638,10 @@ status open
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Fig.
  1.6.7: Siguiendo el desarrollo, se expandirán el resto de sucesores del padre.
  En este caso se expande el camino que conduce a los nodos hoja 7 y, buscando
@@ -3628,6 +3674,15 @@ Fig.
 \begin_layout Standard
 El resto del desarrollo del árbol se seguiría utilizando los criterios mencionad
 os con anterioridad.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset Float figure
 wide false
 sideways false

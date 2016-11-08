@@ -1,9 +1,7 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -76,22 +74,22 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100 100
-\font_tt_scale 100 100
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement H
+\float_placement h
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -285,7 +283,7 @@ Los juegos pueden clasificarse con diferentes
 \end_layout
 
 \begin_layout Itemize
-Número de jugadores:
+Número de jugadores
 \end_layout
 
 \begin_deeper
@@ -303,7 +301,7 @@ Multijugador donde pueden darse estrategias mixtas (competitivas / cooperativas,
 
 \end_deeper
 \begin_layout Itemize
-Propiedades de la función de utilidad:
+Propiedades de la función de utilidad 
 \end_layout
 
 \begin_deeper
@@ -320,10 +318,6 @@ Propiedades de la función de utilidad:
 - Suma constante: La suma de utilidades de los agentes es constante, independien
 temente del resultado del juego (equivalente a juegos de suma cero: normalizació
 n de la utilidad) 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -335,7 +329,11 @@ n de la utilidad)
 ión (ej.
  monopoly, backgammon), como indiferencia o competencia, según la fase del
  juego.
- 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -367,10 +365,6 @@ status open
 \end_deeper
 \begin_layout Itemize
 Información de la que disponen los jugadores 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -387,10 +381,6 @@ Información parcial (ej.
 \end_deeper
 \begin_layout Itemize
 Elementos de azar
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -649,7 +639,7 @@ Es decir, si MAX juega A y MIN responde con B, MAX gana 3 que debe pagar
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -856,10 +846,6 @@ C
 El 
 \emph on
 árbol del juego:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -882,10 +868,6 @@ A cada uno de los estados asociamos un valor del estado o máxima utilidad
 \begin_layout Standard
 Sea el caso de Pac-man que quiere llegar a comerse un punto moviéndose a
  derecha o a izquierda.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -905,6 +887,11 @@ de la búsqueda, en lugar de reducir los costes.
  En este caso, las ramas de la figura siguiente terminan cuando se alcance
  el fin del juego (Pac-man se come el punto) o no terminan nunca.
  Asociaremos valores a cada uno de los estados terminales.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -981,6 +968,10 @@ s\in\textrm{sucesores(s')}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Pasemos al caso en que existen 
 \series bold
 \emph on
@@ -1010,6 +1001,11 @@ quieren que pase
 .
  Es imposible que uno de los agentes elija y alcance el valor terminal 8
  porque su adversario puede oponerse.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -1051,10 +1047,6 @@ pero ahora incorporamos la idea de
 razonamiento del adversario
 \emph default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1122,6 +1114,10 @@ V_{5}=-5
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Para los que están bajo control propio - 
 \emph on
 1
@@ -1140,6 +1136,10 @@ V_{3}=-10
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Esto implica que las únicas acciones que llevamos a cabo para encontrar
  el valor de un estado consiste en calcular los valores máximos y mínimos
  de otros estados que se encuentran por debajo, de manera que el valor del
@@ -1194,10 +1194,6 @@ X & O & X\\
 
 \begin_layout Itemize
 Estado inicial: Tablero 3x3 vacío:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1247,17 +1243,13 @@ Test terminal: 3 fichas del mismo jugador están alineadas.
 
 \begin_layout Itemize
 Utilidades terminales:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1448,6 +1440,11 @@ suma-cero
 
 \begin_layout Standard
 A este tipo de juegos es aplicable el método Minimax.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -1495,10 +1492,6 @@ Como MAX mueve primero, MAX y MIN alternan sus movimientos.
 Descripción formal del juego
 \series default
 : 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1538,10 +1531,6 @@ Estrategia óptima para MAX
 Estrategia minimax
 \series default
 :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1580,11 +1569,6 @@ La idea básica es elegir el movimiento con el máximo valor del minimax:
  la mayor ganancia posible frente al mejor juego adversario.
  Se eligen movimientos que conduzcan a la victoria aunque MIN trate de bloquearl
 os.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
 \begin_inset Graphics
 	filename minimax.png
 
@@ -1702,7 +1686,7 @@ Estos mismos cálculos pueden plantearse en la matriz de balance final:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1978,7 +1962,7 @@ Si lo miramos desde la perspectiva de MIN, la matriz de balance sería:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2224,6 +2208,9 @@ Mínimos
 
 \begin_layout Standard
 y si MIN comenzara el juego, optaría por la estrategia A.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -2338,10 +2325,6 @@ En el caso siguiente:
 \begin_layout Standard
 1.
  ¿Cuál es el valor minimax del árbol? Respuesta: 8
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2547,6 +2530,9 @@ características
 -.
  Una forma típica de combinarlas es mediante una combinación lineal de las
  mismas:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 Eval(n)=w_{1}f_{1}(n)+w_{2}f_{2}(n)+...+w_{n}f_{n}(n)
@@ -2554,6 +2540,10 @@ Eval(n)=w_{1}f_{1}(n)+w_{2}f_{2}(n)+...+w_{n}f_{n}(n)
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 donde p.e.
  
 \begin_inset Formula 
@@ -2566,7 +2556,11 @@ f_{2}(n)=\textrm{(nº de caballos blancos-nº de caballos negros)}
 
 \end_inset
 
-En general pueden combinarse como
+
+\end_layout
+
+\begin_layout Standard
+En general pueden combinarse como 
 \begin_inset Formula 
 \begin{equation}
 Eval(n)=F[f_{1}(n),...,f_{n}(n)]
@@ -2574,6 +2568,10 @@ Eval(n)=F[f_{1}(n),...,f_{n}(n)]
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Aquellas características consideradas más importantes, reciben un peso mayor
  medido por 
 \begin_inset Formula $w_{i}$
@@ -2587,6 +2585,9 @@ Aquellas características consideradas más importantes, reciben un peso mayor
 Si nos fijamos en tres en raya, una característica que favorece al jugador
  es la diferencia entre el número de filas, columnas y diagonales disponibles
  para cada jugador, es decir:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 Eval(n)=P_{MAX}(n)-P_{Min}(n)
@@ -2594,6 +2595,12 @@ Eval(n)=P_{MAX}(n)-P_{Min}(n)
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 En la Fig.
  1.5.1.
  podemos ver algunos valores de esta función de evaluación para algunos
@@ -2722,10 +2729,6 @@ podar
 \end_inset
 
  el árbol de aquellas ramas que no precisan ser analizadas.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2819,6 +2822,11 @@ podarse
 \end_inset
 
  podría ser 0 o 1 e influiría en el valor del estado inicial.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -2844,6 +2852,10 @@ status open
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Por tanto, hemos visto que la posibilidad de poda depende de los valores
  de los estados y su posición en el árbol.
  Hemos podido podar porque el nodo 11 es un candidato para MAX peor que
@@ -3110,10 +3122,6 @@ y, por tanto,
 podamos
 \emph default
  la rama.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3204,10 +3212,6 @@ cualquier valor de
 \end_inset
 
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3245,10 +3249,6 @@ status open
 La eficacia de la poda depende del orden en la búsqueda: Es buena si los
  movimientos buenos se exploran primero.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3302,10 +3302,6 @@ La poda
 
 \begin_layout Standard
 La figura siguiente muestra paso a paso la aplicación de la poda alfa-beta.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3500,10 +3496,6 @@ No\Rightarrow Continuar
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3571,6 +3563,11 @@ C
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -3596,6 +3593,10 @@ status open
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Fig.
  1.6.7: Siguiendo el desarrollo, se expandirán el resto de sucesores del padre.
  En este caso se expande el camino que conduce a los nodos hoja 7 y, buscando
@@ -3628,6 +3629,11 @@ Fig.
 \begin_layout Standard
 El resto del desarrollo del árbol se seguiría utilizando los criterios mencionad
 os con anterioridad.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset Float figure
 wide false
 sideways false

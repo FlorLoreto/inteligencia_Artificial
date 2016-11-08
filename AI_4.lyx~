@@ -1,9 +1,7 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -76,22 +74,22 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100 100
-\font_tt_scale 100 100
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement H
+\float_placement h
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -372,7 +370,9 @@ Si la solución tiene un coste
 \end_inset
 
 
-\series default
+\end_layout
+
+\begin_layout Standard
 A partir de aquí, podemos decir que la 
 \series bold
 complejidad temporal
@@ -389,11 +389,18 @@ como en la BFS
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 La 
 \series bold
 complejidad espacial
 \series default
  será, por las mismas razones, 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
 {\displaystyle \mathbf{O(b^{{\displaystyle \frac{g*}{\epsilon}}})}}
@@ -401,6 +408,10 @@ complejidad espacial
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 Completitud
@@ -466,10 +477,6 @@ Esto significa que, partiendo del estado inicial, examina cualesquiera direccion
 es que sean baratas sin importarle si ayudan a avanzar hacia el objetivo
  o se aleja de él.
  pero esto puede corregirse, como veremos.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -516,6 +523,9 @@ Resumen de algoritmos de búsqueda desinformada.
 \begin_layout Standard
 La tabla siguiente resume las características de cada algoritmo visto hasta
  ahora:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -557,7 +567,7 @@ Ejemplo
 \series default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 De un artículo de Bill Gates: 
@@ -871,9 +881,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
 
 \end_layout
 
@@ -989,10 +996,6 @@ status open
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1034,10 +1037,6 @@ status open
 \begin_layout Standard
 El árbol será el siguiente y se seleccionará en primer lugar la ruta señalada,
  aun cuando hay más trayectos con el mismo número de transbordos.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

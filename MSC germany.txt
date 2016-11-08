@@ -1,0 +1,16 @@
+RWTH Aachen
+TU Berlin
+TU Darmstadt
+TU Dresden
+TU Munich
+Specializations offered at these universities include:
+
+Software Engineering
+Databases and Information Systems
+Artificial Intelligence and Robotics
+Computer Graphics and Image Processing
+Computer Architecture
+Distributed Systems and Computer Networks
+Formal Methods and their Applications
+Algorithms and Scientific Computing
+Business Analytics and Data Science

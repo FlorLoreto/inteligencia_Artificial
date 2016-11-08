@@ -1,0 +1,8577 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\setcounter{chapter}{0}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Introducción a la Inteligencia Artificial para Ingenieros Informáticos
+\end_layout
+
+\begin_layout Date
+Agosto, 2016
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introducción a la Inteligencia Artificial
+\end_layout
+
+\begin_layout Section
+Definición.
+\end_layout
+
+\begin_layout Standard
+Existen múltiples enfoques de la IA, cada uno de los cuales destaca ciertas
+ características de esta disciplina de nueva creación.
+ Nosotros definiremos la Inteligencia Artificial como 
+\emph on
+la ciencia de hacer máquinas que 
+\series bold
+actúan racionalmente.
+ 
+\series default
+\emph default
+Usamos los términos racional/racionalidad de un modo técnicamente específico:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Racional 
+\emph default
+es todo agente que busca alcanzar unos objetivos predefinidos, cualesquiera
+ que estos sean, de manera tal que maximiza (o minimiza) algún valor de
+ una función (
+\emph on
+utilidad
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La utilidad es un concepto extraído de la teoría microeconómica y mide el
+ grado de satisfacción del agente.
+ Con frecuencia asociaremos la utilidad con los costes, de modo que la utilidad
+ del agente se maximiza si se minimizan los costes.
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La racionalidad 
+\emph default
+solo se refiere 
+\emph on
+a las decisiones 
+\emph default
+que se toman y no a los procesos que se encuentran detrás de estas.
+ Por tanto, se refiere a los algoritmos que se utilizan pero no a los programas
+ o máquinas que los ejecutan.
+\end_layout
+
+\begin_layout Itemize
+Los 
+\emph on
+objetivos
+\emph default
+ se expresan en función de la 
+\emph on
+utilidad
+\emph default
+ de sus resultados.
+\end_layout
+
+\begin_layout Itemize
+Ser racional significa maximizar 
+\emph on
+la utilidad esperada
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Se ha propuesto como nombre alternativo de la disciplina y más ajustado
+ a la realidad el de 
+\emph on
+Racionalidad Computacional
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Una frase que resume el significado de la AI es esta:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename AI_defin.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Conviene resaltar que hablamos de utilidad 
+\emph on
+esperada
+\emph default
+ en el sentido probabilístico del término puesto que cuando se toma una
+ decisión solo se conoce la historia anterior al momento de la decisión
+ y se ignora cuáles serán sus consecuencias reales.
+ La racionalidad maximiza el resultado 
+\emph on
+esperado
+\emph default
+, para maximizar el resultado 
+\emph on
+real 
+\emph default
+es necesaria la omnisciencia.
+\end_layout
+
+\begin_layout Section
+Breve historia de la AI.
+\end_layout
+
+\begin_layout Standard
+El comienzo de la disciplina se remonta a los años 40 del pasado siglo y
+ desde entonces podemos destacar los hechos siguientes:
+\end_layout
+
+\begin_layout Itemize
+1940-50: los inicios.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+1943: McCulloch & Pitts: Modelo de circuito booleano del cerebro
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+http://www.minicomplexity.org/pubs/1943-mcculloch-pitts-bmb.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+1950: Turing: 
+\begin_inset Quotes fld
+\end_inset
+
+Computing Machinery and Intelligence
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+http://www.csee.umbc.edu/courses/471/papers/turing.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo de destacar el artículo de Turing en cuanto presenta por primera
+ vez la llamada 
+\begin_inset Quotes fld
+\end_inset
+
+prueba de Turing
+\begin_inset Quotes frd
+\end_inset
+
+ diseñada para proporcionar una definición operacional y satisfactoria de
+ inteligencia.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+1950-70: el entusiasmo: ¡Mira mamá, sin manos! 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+1950s: primeros programas de IA, incluyendo el del juego de damas de Samuel.
+ Newell & Simon crearon el programa 
+\emph on
+Logic Theorist
+\emph default
+ capaz de demostrar muchos teoremas matemáticos.
+ 
+\end_layout
+
+\begin_layout Itemize
+1957: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Reunión de Dartmouth donde se adoptó el nombre de “Inteligencia Artificial
+ ” .
+\end_layout
+
+\begin_layout Standard
+Robinson creó con Allen Newell el 
+\emph on
+General Problem Solver
+\emph default
+ (GPS) .
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+1970-90: Enfoques basados en el conocimiento que condujeron a la proliferación
+ de 
+\emph on
+sistemas expertos, 
+\emph default
+es decir, de conjuntos de programas que, sobre una base de conocimientos,
+ posee información de uno o más expertos en un área específica.
+ Se puede entender como una rama de la inteligencia artificial, donde el
+ poder de resolución de un problema en un programa de computadora viene
+ del conocimiento de un dominio específico:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Dendral 
+\emph default
+que interpreta la estructura molecular.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Dipmeter Advisor
+\emph default
+ (Asesor) fue un sistema experto temprano desarrollado en 1980 por Schlumberger
+ Doll Research para auxiliar en el análisis de los datos recolectados durante
+ la exploración petrolera.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Caduceus
+\emph default
+ fue un sistema experto médico programado para realizar diagnósticos en
+ medicina interna.
+ Ha sido descrito como el sistema experto "
+\emph on
+de mayor conocimiento intensivo existente
+\emph default
+"
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+1990-: enfoque estadístico y resurgimiento de la probabilidad.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aumento en la profundidad técnica.
+ 
+\end_layout
+
+\begin_layout Itemize
+Agentes y sistemas de aprendizaje.
+ 
+\end_layout
+
+\begin_layout Itemize
+Aplicaciones masivas iniciadas por Internet que se extienden a otros campos.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Aplicaciones de la AI.
+\end_layout
+
+\begin_layout Standard
+Las principales aplicaciones de la AI fuera del mundo informático donde
+ se han aplicado a sistemas de tiempo compartido, GUI, ...
+ han sido y son las siguientes:
+\end_layout
+
+\begin_layout Itemize
+Juegos.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ajedrez.
+\end_layout
+
+\begin_layout Itemize
+Damas.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Finanzas: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Los bancos usan inteligencia artificial para organizar operaciones, invertir
+ en acciones y administrar propiedades.
+ En agosto del 2001, robots vencen a los humanos en una competición simulada
+ de comercio financiero.
+\end_layout
+
+\begin_layout Itemize
+Las instituciones financieras usan sistemas de redes neuronales artificiales
+ para detectar pagos o reclamaciones fuera de lo normal, marcándolos para
+ ser investigado por humanos.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Medicina: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Una clínica puede usar inteligencia artificial para organizar las asignaciones
+ de las camas, crear una rotación del personal, proveer información médica
+ y otras tareas importantes.
+\end_layout
+
+\begin_layout Itemize
+Sistemas de apoyo para decisiones clínicas en el diagnóstico médico, tales
+ como la tecnología de Procesamiento de Conceptos en el software de registros
+ médicos electrónicos.
+\end_layout
+
+\begin_layout Itemize
+Interpretación de radiologías asistidas por computadoras.
+ Estos sistemas ayudan a escanear imágenes digitales para señalar zonas
+ visibles, tales como posibles enfermedades.
+ Una aplicación típica es la detección de un tumor.
+ 
+\end_layout
+
+\begin_layout Itemize
+Análisis del ruido cardíaco.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Industria:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Los 
+\emph on
+robots
+\emph default
+ se han vuelto comunes en muchas industrias.
+ A menudo se le asignan puestos de trabajo que se consideran peligrosos
+ para los humanos.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Servicios de atención al cliente:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Un asistente en línea automatizado proporcionando servicio de atención al
+ cliente en una página web.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Transportes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+aplicaciones de conducción automática en automóviles y aviones.
+\end_layout
+
+\begin_layout Itemize
+controles para cajas de cambios automáticas en vehículos.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Procesamiento del lenguaje:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Traducción.
+\end_layout
+
+\begin_layout Itemize
+Búsqueda en la Web.
+\end_layout
+
+\begin_layout Itemize
+Clasificación de textos.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Lenguaje natural.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reconocimiento de voz.
+\end_layout
+
+\begin_layout Itemize
+Texto-a-Habla
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Reconocimiento de imágenes como la Cloud Vision API de Google.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reconocimiento de formas.
+\end_layout
+
+\begin_layout Itemize
+Reconocimiento de caras.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+World Wide Web: Internet es una red global por la que circula un volumen
+ enorme de datos de todo tipo: de personas, transacciones, sensores,...a través
+ de la cual cada día se realizan más labores de procesamiento y almacenamiento
+ en sustitución de los ordenadores locales.
+ Esto ha motivado el interés de muchas organizaciones públicas y privadas
+ en desplegar herramientas basadas en el Big Data y la AI para explotar
+ esta inmensa fuente de recursos de información.
+\end_layout
+
+\begin_layout Itemize
+Toma de decisiones:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Spam de correos-e.
+\end_layout
+
+\begin_layout Itemize
+Recomendación de productos (Amazon).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Lógica:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Demostración de teoremas.
+\end_layout
+
+\begin_layout Itemize
+Respuesta a preguntas.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Sistemas y agentes inteligentes.
+\end_layout
+
+\begin_layout Standard
+El elemento clave de un sistema inteligente es el 
+\emph on
+agente racional.
+\end_layout
+
+\begin_layout Standard
+Un agente es cualquier cosa capaz de percibir su medio ambiente con la ayuda
+ de sensores y actuar sobre ese medio utilizando actuadores.
+ La figura 1.4.1 muestra el esquema de un agente donde el recuadro con el
+ signo de interrogación es la 
+\series bold
+\emph on
+función del agente
+\series default
+\emph default
+, esto es, en términos matemáticos se puede decir que el comportamiento
+ del agente viene dado por la 
+\emph on
+función del agente
+\emph default
+ que proyecta una percepción dada en una acción.
+\end_layout
+
+\begin_layout Standard
+Un 
+\emph on
+agente humano 
+\emph default
+tiene ojos, oídos y otros sensores además de manos, piernas, boca así como
+ otras partes del cuerpo y herramientas como actuadores.
+ 
+\end_layout
+
+\begin_layout Standard
+Un 
+\emph on
+agente robot
+\emph default
+ recibe pulsaciones del teclado, archivos de información y paquetes vía
+ red a modo de entradas sensoriales y actúa sobre el medio con mensajes
+ en el monitor, escribiendo ficheros y enviando paquetes por la red.
+ 
+\end_layout
+
+\begin_layout Standard
+Se admite la hipótesis general de que 
+\emph on
+cada agente puede percibir sus propias acciones
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+La 
+\emph on
+secuencia de percepciones
+\emph default
+ de un agente refleja el historial completo de lo que el agente ha recibido.
+ En general, un agente tomará una decisión en un momento dado dependiendo
+ de su secuencia completa de percepciones hasta ese instante.
+ Si se puede especificar qué decisión tomará un agente para cada una de
+ las posibles secuencias de percepciones, entonces se habrá explicado más
+ o menos todo lo que se puede decir de un agente.
+ En términos matemáticos se puede decir que el comportamiento del agente
+ viene dado por la 
+\emph on
+función del agente
+\emph default
+ que proyecta una percepción dada en una acción.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+En la figura podemos ver un ejemplo físico y su relación con el modelo de
+ agente.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pegado1.png
+	scale 40
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pac-Man puede utilizarse como un ejemplo de agente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pacman.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El protagonista del videojuego Pac-Man es un círculo amarillo al que le
+ falta un sector.
+ Aparece en laberintos donde debe comer puntos pequeños y puntos mayores.
+ El 
+\emph on
+objetivo
+\emph default
+ del personaje es comer todos los puntos de la pantalla, momento en el que
+ se pasa al siguiente nivel o pantalla.
+ Sin embargo, unos fantasmas o monstruos recorren el laberinto para intentar
+ capturar a Pac-Man.
+\end_layout
+
+\begin_layout Standard
+Hay puntos más grandes de lo normal que proporcionan a Pac-Man la habilidad
+ temporal de comerse a los monstruos (todos ellos se vuelven azules mientras
+ Pac-Man tiene esa habilidad).
+ Después de haber sido tragados, los fantasmas se regeneran en «casa» (una
+ caja situada en el centro del laberinto).
+ El tiempo en que los monstruos permanecen vulnerables varía según la pantalla.
+\end_layout
+
+\begin_layout Standard
+En el juego el agente debe determinar en cada posición cuál debe ser su
+ próxima acción para lo cual debe tomar en cuenta factores adicionales,
+ tales como:
+\end_layout
+
+\begin_layout Itemize
+posiciones de los puntos restantes (pequeños y mayores)
+\end_layout
+
+\begin_layout Itemize
+posiciones de los fantasmas.
+\end_layout
+
+\begin_layout Standard
+Podemos distinguir entre dos tipos fundamentales de agentes:
+\end_layout
+
+\begin_layout Enumerate
+Agentes reactivos.
+\end_layout
+
+\begin_layout Enumerate
+Agentes planificadores.
+\end_layout
+
+\begin_layout Standard
+Como ejemplo consideraremos un taxi automático.
+ 
+\end_layout
+
+\begin_layout Subsection
+Agentes reactivos.
+\end_layout
+
+\begin_layout Standard
+Este tipo de agentes se caracteriza porque 
+\end_layout
+
+\begin_layout Itemize
+Elige sus acciones basándose en las percepciones actuales (y quizá en la
+ memoria)
+\end_layout
+
+\begin_layout Itemize
+Puede tener memoria o un modelo del estado actual del mundo.
+\end_layout
+
+\begin_layout Itemize
+No considera las futuras consecuencias de sus acciones.
+\end_layout
+
+\begin_layout Itemize
+Considera al mundo tal como es.
+\end_layout
+
+\begin_layout Standard
+El tipo de agente más sencillo es el 
+\emph on
+agente reactivo simple
+\emph default
+ que selecciona las acciones sobre la base de las percepciones actuales,
+ ignorando el resto de las percepciones históricas cuyo esquema de funcionamient
+o es el siguiente:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pegado2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/functpng.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+P.e.
+ el taxi automático tiene definida una tabla de 
+\emph on
+condición- regla de actuación, 
+\emph default
+esto es 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size large
+if
+\series default
+\size default
+ 
+\emph on
+condición
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+acción 
+\emph default
+como p.e.
+
+\size large
+ 
+\series bold
+if
+\series default
+ 
+\size default
+\emph on
+semáforo en rojo
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+detenerse.
+\end_layout
+
+\begin_layout Standard
+Existen además los 
+\emph on
+agentes reactivos basados, en modelos
+\emph default
+.
+ Un agente difícilmente puede ver la totalidad del 
+\begin_inset Quotes fld
+\end_inset
+
+mundo
+\begin_inset Quotes frd
+\end_inset
+
+ que lo rodea.
+ La forma más efectiva que tienen los agentes de manejar la visibilidad
+ parcial es almacenar información de las partes del mundo que no pueden
+ ver.
+ O lo que es lo mismo, el agente debe mantener algún tipo de 
+\emph on
+estado interno
+\emph default
+ que dependa de la historia percibida y que de ese modo refleje por lo menos
+ alguno de los aspectos no observables del estado actual.
+\end_layout
+
+\begin_layout Standard
+La actualización de la información del citado estado interno según pasa
+ el tiempo requiere codificar dos tipos de conocimiento en el programa del
+ agente:
+\end_layout
+
+\begin_layout Itemize
+Primero, se necesita alguna información acerca de cómo evoluciona el mundo
+ independientemente del agente.
+ 
+\end_layout
+
+\begin_layout Itemize
+Segundo, se necesita más información sobre cómo afectan al mundo las acciones
+ del agente.
+ 
+\end_layout
+
+\begin_layout Standard
+Este conocimiento acerca de cómo funciona el 
+\begin_inset Quotes fld
+\end_inset
+
+mundo», se denomina modelo del mundo.
+ Esquemáticamente:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename reactivo3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pegado3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como ejemplo, el taxi es capaz de saber que, por lo general, tras 5 minutos
+ en una autopista habrá recorrido 15 km o que la distancia de frenado para
+ no chocar cuando se viaja a 40 km/h es de 16 m.
+\end_layout
+
+\begin_layout Standard
+La parte interesante de este agente es  la correspondiente a la función
+ A
+\size footnotesize
+CTUALIZAR
+\size default
+-E
+\size footnotesize
+STADO
+\size default
+ que es la responsable de 1n creación de la nueva descripción del estado
+ interno.
+ Además de interpretar la nueva percepción a partir del conocimiento existente
+ sobre el estado, utiliza la información relativa a la forma en la que evolucion
+a el 
+\begin_inset Quotes fld
+\end_inset
+
+mundo
+\begin_inset Quotes frd
+\end_inset
+
+ para conoce más sobre aquellas partes del 
+\begin_inset Quotes fld
+\end_inset
+
+mundo
+\begin_inset Quotes frd
+\end_inset
+
+ que no están visibles visibles: para lo cual debe conocer cuál es cl efecto
+ de las acciones de1 agente sobre el estado del mundo.
+\end_layout
+
+\begin_layout Standard
+De un modo natural surge la pregunta: ¿
+\emph on
+Puede un agente reactivo ser racional
+\emph default
+? 
+\end_layout
+
+\begin_layout Standard
+En principio parece que esto es difícil salvo en casos simples y aislados.
+ El conocimiento sobre el estado actual del mundo parece casi nunca suficiente
+ para decidir qué hacer.
+ Por ejemplo.
+ en un cruce de carreteras, un taxi automático puede girar a la izquierda,
+ a la derecha o seguir hacia delante.
+ La decisión correcta depende del destino que quiera alcanzar el taxi.
+ En otras palabras, además de la descripción del estado actual, el agente
+ necesita sita algún tipo de información sobre su meta que describa las
+ situaciones que son deseables, por ejemplo, llegar al destino propuesto
+ por el pasajero.
+\end_layout
+
+\begin_layout Standard
+Pero dejaremos esta discusión para el capítulo siguiente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename reactivo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Agentes planificadores.
+\end_layout
+
+\begin_layout Standard
+Un agente planificador es aquel que anticipa las consecuencias futuras de
+ sus acciones y usa estas consecuencias como guía para decidir sus acciones
+ actuales.
+\end_layout
+
+\begin_layout Standard
+Esta idea de la
+\emph on
+ planificación
+\emph default
+ puede formalizarse como un 
+\series bold
+\emph on
+problema de búsqueda
+\series default
+\emph default
+ que será lo que nos ocupe en el siguiente capítulo.
+\end_layout
+
+\begin_layout Chapter
+Resolución de problemas mediante búsqueda
+\end_layout
+
+\begin_layout Section
+Introducción.
+\end_layout
+
+\begin_layout Standard
+La idea tras el concepto de búsqueda es hacernos capaces de construir 
+\emph on
+bueno
+\emph default
+s agentes capaces de tomar 
+\emph on
+buenas
+\emph default
+ decisiones.
+ Para ello el agente ha de ser generalmente un agente planificador capaz
+ de 
+\emph on
+prever
+\emph default
+ el futuro de alguna forma, esto es, capaz de evaluar las consecuencias
+ de sus acciones en diferentes entornos.
+\end_layout
+
+\begin_layout Standard
+Esta idea de la planificación futura se plantea como una 
+\series bold
+\emph on
+búsqueda
+\series default
+ 
+\emph default
+y comenzaremos estudiando la 
+\series bold
+\emph on
+búsqueda no informada 
+\series default
+\emph default
+(o 
+\series bold
+\emph on
+a ciegas
+\series default
+\emph default
+) en tres modalidades:
+\end_layout
+
+\begin_layout Enumerate
+búsqueda primero en anchura;
+\end_layout
+
+\begin_layout Enumerate
+búsqueda primero en profundidad y
+\end_layout
+
+\begin_layout Enumerate
+búsqueda de coste uniforme.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Quotes fld
+\end_inset
+
+Búsqueda a ciegas
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+ significa que en esta no se tiene información adicional acerca de los estados
+ más allá de la que proporciona la definición del problema.
+ Todo lo que esta búsqueda puede hacer es
+\end_layout
+
+\begin_layout Itemize
+generar los sucesores y 
+\end_layout
+
+\begin_layout Itemize
+distinguir entre un estado objetivo de uno que no lo es.
+\end_layout
+
+\begin_layout Standard
+Las consideraremos dentro de un mismo contexto y los compararemos más adelante
+ con otros procedimientos
+\emph on
+ informados 
+\emph default
+guiados por una 
+\emph on
+heurística.
+\end_layout
+
+\begin_layout Standard
+Por el contrario en una 
+\begin_inset Quotes fld
+\end_inset
+
+
+\emph on
+búsqueda informada
+\emph default
+ (o 
+\emph on
+heurística
+\emph default
+)
+\begin_inset Quotes frd
+\end_inset
+
+ cuando la búsqueda es capaz de determinar si un estado es más 
+\emph on
+prometedor
+\emph default
+ que otro.
+ 
+\end_layout
+
+\begin_layout Section
+Agentes que 
+\emph on
+piensan
+\emph default
+ frente a agentes 
+\emph on
+reactivos
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+¿Por qué queremos agentes que piensan?
+\end_layout
+
+\begin_layout Standard
+Fijémonos en el robot que quiere coger una manzana del árbol.
+ Si el código que guía su comportamiento solo le dice
+\series bold
+ 
+\size large
+if 
+\series default
+\size default
+\emph on
+detectas manzana
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+acércate a manzana 
+\emph default
+o a
+\emph on
+ 
+\emph default
+Pac-Man diciéndole simplemente en su tabla:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size large
+if 
+\series default
+\size default
+\emph on
+detectas punto
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+cómete el punto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size large
+if 
+\series default
+\size default
+\emph on
+ves fantasma
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+huye del fantasma
+\end_layout
+
+\begin_layout Standard
+Es fácil ver que estos simples códigos conducen a malas decisiones, como
+ se ven en el caso de que exista un vacío entre el robot y el manzano.
+\end_layout
+
+\begin_layout Standard
+Podríamos escribir un código más complejo, indicando p.e.
+ lo que habría que hacer en caso de existir un abismo entre agente y árbol,
+ p.e.
+ 
+\series bold
+\size large
+if 
+\series default
+\size default
+\emph on
+abismo
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+salta hacia el árbol.
+ 
+\end_layout
+
+\begin_layout Standard
+Mejor sería que el agente supiera que es un mal plan y considerase otras
+ alternativas para alcanzar su objetivo en uno o varios pasos, p.e.
+ con la ayuda de una pinza.
+\end_layout
+
+\begin_layout Standard
+Nuestro objetivo es codificar el comportamiento de estos agentes que 
+\emph on
+planifican por adelantado
+\emph default
+ y son capaces de tomar las acciones 
+\emph on
+contextualmente adecuadas
+\emph default
+ y donde no
+\emph on
+ 
+\emph default
+es necesario escribir las complicada relaciones contexto-acción, sino que
+ estas surgen de nuestro modelo.
+\end_layout
+
+\begin_layout Standard
+Vemos que las acciones del agente reactivo se describen básicamente mediante
+ sentencias 
+\series bold
+\emph on
+if-then
+\series default
+\emph default
+ es decir, sus acciones se toman en base a su percepción actual (ves la
+ manzana, el punto, el fantasma) y en una tabla encuentra la acción pertinente
+ (acercarse al árbol, comer puntos, huir del fantasma).
+ Se trata de un mapeado directo y simple entre entradas (
+\emph on
+percepciones
+\emph default
+) y salidas (
+\emph on
+acciones
+\emph default
+), pero la tabla puede llegar a ser extraordinariamente grande.
+ Además, los agentes reactivos, como vimos, pueden tener memoria y un modelo
+ del estado actual del 
+\begin_inset Quotes fld
+\end_inset
+
+mundo
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Los agentes reactivos 
+\emph on
+no toman en consideración las consecuencias futuras de sus acciones, 
+\emph default
+sino solo
+\emph on
+ el estado actual del 
+\begin_inset Quotes fld
+\end_inset
+
+mundo
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si nos fijamos en Pac-Man con una sola regla: 
+\series bold
+\size large
+if 
+\series default
+\size default
+\emph on
+ves punto
+\emph default
+ 
+\series bold
+\size large
+then
+\series default
+\size default
+ 
+\emph on
+come el punto, 
+\emph default
+de los dos casos siguientes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pacman2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El de la izquierda podría ser resuelto de una manera racional, pero no así
+ el derecho dado que en esta circunstancia al comerse el punto que se encuentra
+ en sus fauces, no habría punto a la vista:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename stoppac.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pac-Man se detendría, al no tener prevista la situación en que no haya punto
+ a la vista aunque sí más allá de su cercanía inmediata.
+\end_layout
+
+\begin_layout Standard
+Volviendo a la pregunta acerca de la racionalidad de los agentes reactivos,
+\emph on
+ la racionalidad 
+\emph default
+es una función de las acciones que el agente emprende no de la computación
+ que fue necesaria para ello.
+ Por tanto, un agente reactivo con una tabla buena de percepciones-acciones
+ de tamaño suficiente puede tomar las decisiones adecuadas mientras que
+ puede haber agentes planificadores que fracasen en su intento de ser racionales
+ dependiendo de su funcionamiento.
+\end_layout
+
+\begin_layout Standard
+Sin embargo, un 
+\emph on
+agente planificador
+\emph default
+, al contrario que el reactivo, piensa en las consecuencias de sus acciones:
+ se pregunta 
+\series bold
+\emph on
+what if
+\series default
+\emph default
+?.
+ Una de las formas de considerar estas consecuencias de las propias acciones
+ es ejecutarlas
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Modalidad que se trata en el llamado 
+\emph on
+aprendizaje por refuerzo.
+\end_layout
+
+\end_inset
+
+, aun cuando lo más común es 
+\emph on
+simularlas en un modelo.
+
+\emph default
+ Por tanto, 
+\emph on
+un agente planificador 
+\emph default
+requiere
+\emph on
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+un 
+\series bold
+modelo del mundo
+\series default
+ y
+\end_layout
+
+\begin_layout Enumerate
+un 
+\emph on
+objetivo a alcanzar 
+\emph default
+en dicho modelo o en general un 
+\series bold
+\emph on
+test objetivo
+\series default
+\emph default
+ ya que el robot se conforma con una cualquiera de las manzanas del árbol.
+\end_layout
+
+\begin_layout Standard
+Algunas ideas de importancia a este respecto son:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Planeamiento completo
+\emph default
+ y 
+\emph on
+óptimo
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Planeamiento completo: se refiere a la situación en que el agente encuentra
+ una solución para 
+\emph on
+alcanzar su objetivo
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Planeamiento óptimo: se da cuando no solo encuentra una solución sino que
+ esta es, además, 
+\emph on
+óptima con respecto a una función de coste
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Planeamiento completo y replanificación.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+El agente puede tener un plan completo que ejecuta para carranza su objetivo
+ o
+\end_layout
+
+\begin_layout Itemize
+tener una serie de planes que ejecuta en secuencia uno tras otro, replanificando.
+ Un ejemplo de este sería el caso 2 de Pac-Man si este dispusiera de un
+ plan a realizar cuando no encuentra ningún punto a su vista.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Problema de búsqueda.
+\end_layout
+
+\begin_layout Standard
+¿Qué es un problema de búsqueda?
+\end_layout
+
+\begin_layout Itemize
+Un 
+\emph on
+problema de búsqueda 
+\emph default
+implica tres fases:
+\end_layout
+
+\begin_layout Itemize
+Formulación,
+\end_layout
+
+\begin_layout Itemize
+Búsqueda y
+\end_layout
+
+\begin_layout Itemize
+Ejecución.
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+formulación
+\series default
+ del problema consiste en:
+\end_layout
+
+\begin_layout Enumerate
+Definir un
+\emph on
+ 
+\series bold
+espacio de estados
+\series default
+\emph default
+ que codifica esencialmente el estado del mundo en un cierto momento de
+ la progresión del plan del agente.
+ Es una abstracción del mundo;
+\end_layout
+
+\begin_layout Enumerate
+un 
+\series bold
+\emph on
+estado inicial
+\series default
+\emph default
+ desde el que partimos;
+\end_layout
+
+\begin_layout Enumerate
+Especificar las
+\series bold
+\emph on
+ acciones
+\series default
+\emph default
+ que puede realizar el agente:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Reglas para las acciones permitidas;
+\end_layout
+
+\begin_layout Enumerate
+una 
+\series bold
+\emph on
+función sucesor
+\series default
+ 
+\emph default
+con acciones y coste que modela cómo piensa el planificador que
+\series bold
+\emph on
+ funciona el mundo
+\series default
+\emph default
+.
+ La función sucesor se encuentra en un estado del espacio de estados y desde
+ allí nos dice donde debemos ir inmediatamente, qué acciones realizar a
+ tal fin y, en su caso, cuánto costará.
+ Dato un estado 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, y una acción 
+\begin_inset Formula $\mathbf{a}$
+\end_inset
+
+ 
+\begin_inset Formula $\mathbf{SUCCESSOR-FN(x)}$
+\end_inset
+
+ devuelve un conjunto de pares ordenados 
+\begin_inset Formula $<acción,coste,sucesor>.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mientras el espacio de estados modela cómo es el mundo, la función sucesor
+ modeliza cómo evoluciona en respuesta a nuestras acciones;
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+definir la 
+\emph on
+utilidad 
+\emph default
+como función del coste del camino y
+\end_layout
+
+\begin_layout Enumerate
+un 
+\emph on
+test objetivo 
+\emph default
+que nos dice si hemos alcanzado o no nuestro objetivo
+\emph on
+.
+\end_layout
+
+\begin_layout Standard
+Una 
+\emph on
+solución 
+\emph default
+es una secuencia de acciones
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Un 
+\size normal
+\emph on
+camino 
+\emph default
+en el grafo de estados.
+\end_layout
+
+\end_inset
+
+ (plan) que transforma el estado inicial en el estado objetivo (i.e.
+ que satisface el test objetivo).
+ Una solución es óptima si tiene utilidad máxima.
+\end_layout
+
+\begin_layout Standard
+Un ejemplo tomado de Norvig es el siguiente:
+\end_layout
+
+\begin_layout Standard
+Estamos viajando por Rumanía y nos encontramos en la ciudad de Arad desde
+ donde hemos de ir a Bucarest.
+ Disponemos de un mapa que constituye un buen ejemplo de un modelo (abstracción)
+ de cómo es el mundo.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Romania.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Formulemos el problema de búsqueda correspondiente:
+\end_layout
+
+\begin_layout Enumerate
+Espacio de estados: Como mínimo, ha de incluir las 
+\emph on
+ciudades 
+\emph default
+de modo que podamos aplicar el test objetivo (¿estamos en Bucarest?).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ciudades 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Acciones: tomar carreteras en una dirección.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Función sucesor: lo que podemos hacer es únicamente ir de una ciudad a otra
+ por carretera así que la función sucesor es:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+carretera par ir a una ciudad adyacente con coste=distancia.
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+ Por tanto, devuelve 
+\begin_inset Formula $<{\textstyle acción}={\textstyle {\textstyle carretera}},coste=distancia,sucesor=ciudad'>$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Estado inicial: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ciudad=Arad.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Test objetivo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+¿estado(ciudad) ==Bucarest?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Solución:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+alguna secuencia de carreteras.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+El espacio de estados.
+\end_layout
+
+\begin_layout Standard
+Una importante distinción ha de hacerse entre 
+\emph on
+estado del mundo
+\emph default
+ y 
+\emph on
+estado de la búsqueda
+\emph default
+ o 
+\emph on
+estado del modelo.
+\end_layout
+
+\begin_layout Standard
+Mientras que el estado del mundo incluye hasta el menor detalle del entorno
+ (modelo del coche, tiempo que hace, hora del día ....) el estado de la búsqueda
+ solo conserva los detalles que son necesarios para planificar y es, por
+ tanto una 
+\emph on
+abstracción 
+\emph default
+de la realidad cuyo nivel de detalle dependerá del problema en estudio.
+ En nuestro problema, donde queremos encontrar un camino entre dos ciudades,
+ nos interesan las ciudades en que nos encontramos el estado de la búsqueda
+ puede definirse con las coordenadas
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ de la ubicación en que estamos:
+\end_layout
+
+\begin_layout Itemize
+Estado de la búsqueda: 
+\series bold
+ubicación 
+\begin_inset Formula $(\mathbf{x,y})$
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Acciones: 
+\series bold
+dirección
+\series default
+ a seguir.
+\end_layout
+
+\begin_layout Itemize
+Función sucesor: 
+\series bold
+actualizar ubicación
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Test objetivo: ¿
+\begin_inset Formula $(\mathbf{x},\mathbf{y})$
+\end_inset
+
+==
+\begin_inset Formula $(\mathbf{x}_{Bucarest},\mathbf{y}_{Bucarest})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El motivo por el que no es operativo utilizar el estado del mundo es fácil
+ de ver en el siguiente ejemplo de Pac-Man con dos fantasmas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/PacmAN_real.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por tanto el 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+número de estados de búsqueda 
+\emph default
+es en este caso:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+120\times4\times12^{2}\times2^{30}=7.4217\cdot10^{17}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+número de estados para formar parte de un camino
+\emph default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+120
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+número de 
+\emph on
+estados de los puntos
+\emph default
+ indicando si han sido comidos o no (booleano):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+120\cdot2^{30}=1.28849\cdot10^{11}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una de las maneras de enfrentar el problema sería mediante la 
+\emph on
+búsqueda por fuerza bruta
+\emph default
+, es decir, enumerar sistemáticamente todos los posibles candidatos para
+ la solución de un problema, con el fin de comprobar si dicho candidato
+ satisface el test objetivo.
+ El espacio de estados es tan inmenso que resulta imposible enumerarlos
+ todos y después ordenarlos en sus posibles secuencias.
+ Por tanto lo que haremos será desarrollar 
+\emph on
+algoritmos
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La enumeración exhaustiva es también un algoritmo pero de 
+\series bold
+\emph on
+F
+\series default
+(uerza) 
+\series bold
+B
+\series default
+(ruta) 
+\series bold
+I
+\series default
+(gnorancia)
+\end_layout
+
+\end_inset
+
+
+\emph default
+ que eviten la necesidad de enumerar todos los estados.
+ y que reduzcan las enumeraciones de estado al mínimo posible.
+\end_layout
+
+\begin_layout Section
+Grafos del espacio de estados y árboles de búsqueda.
+\end_layout
+
+\begin_layout Standard
+Implícitamente el estado inicial y la función sucesor definen el espacio
+ de estados del problema (el conjunto de todos los estados alcanzables desde
+ el estado inicial).
+ 
+\emph on
+El espacio de estados forma un
+\series bold
+ grafo
+\series default
+\emph default
+ en el cual 
+\emph on
+los nodos son 
+\series bold
+estados
+\series default
+\emph default
+ y 
+\emph on
+los arcos entre los nodos son 
+\series bold
+acciones
+\series default
+\emph default
+.
+ la función sucesor está codificada en los arcos.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\emph on
+En un grafo de búsqueda
+\series default
+\emph default
+ (
+\emph on
+estados interconectados por acciones)
+\emph default
+ 
+\series bold
+cada estado aparece 
+\emph on
+solo una vez
+\series default
+.
+ 
+\emph default
+P.e.
+ el rodeado por el óvalo puede alcanzarse por multitud de caminos, pero
+ solo aparece una vez en el grafo de búsqueda.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+El mapa de carreteras de Rumanía puede interpretarse como un grafo del espacio
+ de búsqueda si vemos cada carretera como dos direcciones de viaje.
+ Un 
+\series bold
+\emph on
+camino 
+\series default
+es una serie de estados conectados por una secuencia de acciones
+\emph default
+.
+ Lo mismo puede decirse del juego de Pac-Man.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/grafo_arbol.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solo en muy raras ocasiones podemos construir el grafo completo en memoria,
+ pero es una idea útil.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Ejemplo: sea el siguiente grafo del espacio de estados:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/graph_ejemplo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Preguntémonos por lo que es relevante para nosotros en este problema: solo
+ el 
+\emph on
+estado inicial
+\emph default
+ y 
+\emph on
+lo que pueda ocurrir a partir
+\emph default
+ de este estado.
+ Trabajaremos con un objeto denominado 
+\series bold
+\emph on
+árbol de búsqueda
+\series default
+\emph default
+.
+ Para construirlo partimos del 
+\emph on
+estado actual 
+\emph default
+(
+\series bold
+1
+\series default
+) -
+\series bold
+ ahora
+\series default
+ - que será el nodo superior.
+ Seguidamente, en función de las acciones que se ejecuten, nos situaremos
+ en el próximo futuro (
+\series bold
+2
+\series default
+), estados que se pueden alcanzar en solo un paso y así continuaremos hacia
+ abajo (
+\series bold
+3
+\series default
+).
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/arbolote.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Enfoquémonos en 
+\emph on
+búsqueda en un árbol 
+\emph default
+(un sólo camino desde el nodo raíz a un nodo dado) 
+\end_layout
+
+\begin_layout Itemize
+Los 
+\emph on
+nodos
+\emph default
+ de un árbol de búsqueda corresponden a estados de búsqueda.
+ 
+\end_layout
+
+\begin_layout Itemize
+El 
+\emph on
+nodo raíz
+\emph default
+ de un árbol de búsqueda corresponde al estado de búsqueda inicial.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Acciones
+\emph default
+: Expandir el nodo de búsqueda actual: Generar nodos hijo (correspondientes
+ a nuevos estados) aplicando la función sucesor al nodo actual.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Estado objetivo
+\emph default
+: Un nodo correspondiente a un estado que satisface el test de objetivo.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Utilidad:
+\emph default
+ Coste del camino desde el nodo raíz al nodo actual.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Terminología
+\series default
+: 
+\end_layout
+
+\begin_layout Itemize
+Nodo 
+\emph on
+padre
+\emph default
+: Nodo del árbol desde el cual se ha generado el nodo actual aplicando una
+ sola vez la función sucesor.
+ 
+\end_layout
+
+\begin_layout Itemize
+Nodo 
+\emph on
+ancestro
+\emph default
+: Un nodo en el árbol desde el cual el nodo actual ha sido generado aplicando
+ una o varias veces la función sucesor.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Profundidad:
+\emph default
+ Longitud del camino desde la raíz al nodo actual.
+ 
+\end_layout
+
+\begin_layout Itemize
+Nodo 
+\emph on
+hoja
+\emph default
+: Nodo generado que no se ha expandido aún 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Frontera
+\emph default
+: Conjunto formado por los nodos hoja.
+\end_layout
+
+\begin_layout Standard
+Un 
+\series bold
+\emph on
+árbol de búsqueda
+\series default
+\emph default
+ es
+\end_layout
+
+\begin_layout Itemize
+Un árbol
+\series bold
+\emph on
+ 
+\series default
+\emph default
+de 
+\series bold
+\emph on
+what if 
+\series default
+\emph default
+y sus consecuencias.
+\end_layout
+
+\begin_layout Itemize
+El 
+\emph on
+estado inicial
+\emph default
+ es el 
+\emph on
+nodo raíz
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+los
+\emph on
+ hijos 
+\emph default
+corresponden a los 
+\emph on
+sucesores
+\emph default
+;
+\end_layout
+
+\begin_layout Itemize
+Los nodos muestran estados pero se corresponden con 
+\series bold
+\noun on
+planes
+\series default
+\noun default
+ que alcanzan dichos estados.
+ Cualquier plan que sea posible ejecutar se encuentra en algún lugar del
+ árbol.
+ P.e.en el árbol anterior, el nodo resaltado se corresponde al plan de ir
+ en dirección Norte desde el estado inicial y llegar aquí.
+ Hay otros modos de llegar a este estado (p.e.
+ 
+\begin_inset Formula $N\rightarrow S\rightarrow N$
+\end_inset
+
+), pero se hallarán en otros lugares del árbol.
+\end_layout
+
+\begin_layout Itemize
+En la mayoría de los problemas es 
+\emph on
+imposible construir el árbol completo
+\emph default
+.
+ Lo que intentaremos es desarrollar algoritmos que nos garanticen que hemos
+ actuado correctamente aun cuando ignoremos la mayoría del árbol completo.
+\end_layout
+
+\begin_layout Standard
+Hay muchas formas de representar los nodos, pero vamos a suponer que
+\series bold
+\emph on
+ un nodo es una estructura de datos
+\series default
+\emph default
+ con cinco componentes:
+\end_layout
+
+\begin_layout Enumerate
+
+\noun on
+ESTADO
+\noun default
+: el estado, del espacio de estados, que corresponde con el nodo;
+\end_layout
+
+\begin_layout Enumerate
+NODO PADRE: el nodo en el árbol de búsqueda que ha generado este nodo; 
+\end_layout
+
+\begin_layout Enumerate
+ACCIÓN: la acción que se aplicará al padre para generar el nodo; 
+\end_layout
+
+\begin_layout Enumerate
+
+\noun on
+COSTE
+\noun default
+ DEL CAMINO: el costo, tradicionalmente denotado por 
+\begin_inset Formula $g(n)$
+\end_inset
+
+ , de un camino desde el estado inicial al nodo, indicado por los punteros
+ a los padres; y
+\end_layout
+
+\begin_layout Enumerate
+PROFUNDIDAD: número de pasos a lo largo del camino desde el estado inicial.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/nodo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es importante recordar la distinción entre 
+\emph on
+nodos
+\emph default
+ y 
+\emph on
+estados
+\emph default
+.
+ Un nodo es una estructura de datos usada para representar el árbol de búsqueda
+ (Fig.
+ 2.4.4.).
+ Un estado corresponde a una configuración del mundo.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+: El grafo de estados siguiente presenta un bucle entre (a) y (b) y el árbol
+ de búsqueda asociado:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/bucle.png
+	scale 50
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Puede verse que su árbol de búsqueda será de tamaño infinito.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Nota
+\series default
+: puesto que 
+\emph on
+cada nodo representa un plan 
+\emph default
+sería más informativo representar los nodos en el árbol como el plan que
+ nos conduce a ellos p.e.
+ 
+\begin_inset Formula $(\textrm{S,a\textbf{,b}})$
+\end_inset
+
+ en lugar de solo 
+\series bold
+b
+\series default
+.
+\end_layout
+
+\begin_layout Section
+Búsqueda en árbol
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Partamos del problema representado por la figura 2.3.1.
+ Comenzaremos por construir un árbol de búsqueda y analicemos algunas de
+ sus características (Fig.
+ 2.5.1.).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/arad.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Al principio, solo tendremos el 
+\emph on
+nodo inicial
+\emph default
+ o raíz (Arad).
+ En principio, también existen todos los elementos difuminados en el gráfico
+ que han sido definidos matemáticamente pero que no figuran todavía en nuestro
+ código.
+\end_layout
+
+\begin_layout Standard
+Seguidamente buscaremos algún procedimiento para desplazarnos hacia abajo
+ en el árbol.
+ A medida que avancemos iremos manteniendo una colección de planes potenciales
+ y, por tanto, serán nodos en nuestro árbol que denominaremos
+\series bold
+ frontera
+\series default
+.
+ Estos son planes que estamos considerando y que pudieran conducirnos a
+ nuestro objetivo, pero que aún no hemos seleccionado.
+ En nuestro avance, trataremos de 
+\series bold
+\emph on
+expandir 
+\series default
+\emph default
+el menor número de nodos posible.
+ En esta fase inicial, el único plan que tenemos es el vacío: estamos en
+ Arad y no consideramos ninguna acción.
+\end_layout
+
+\begin_layout Standard
+Podemos expandir el árbol incluyendo tres planes (nodos):
+\end_layout
+
+\begin_layout Enumerate
+ir a Sibiu,
+\end_layout
+
+\begin_layout Enumerate
+ir a Timisoara o
+\end_layout
+
+\begin_layout Enumerate
+ir a Zerind.
+\end_layout
+
+\begin_layout Standard
+que constituirán la nueva frontera.
+ La frontera está constituida por un 
+\emph on
+conjunto de
+\emph default
+ 
+\emph on
+nodos hoja
+\emph default
+, es decir, sin sucesores en cl árbol.
+ La estrategia de búsqueda será una función que seleccione de este conjunto
+ el siguiente nodo a expandir ya que no podemos expandir los tres a la vez.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/ARAD2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nosotros asumiremos que 
+\emph on
+esta colección de nodos se implementa como una
+\series bold
+ cola 
+\series default
+\emph default
+en la que son posibles las siguientes operaciones:
+\end_layout
+
+\begin_layout Itemize
+HACER-COLA(elemento1, elemento2,...): crea una cola con los elementos dados.
+\end_layout
+
+\begin_layout Itemize
+VACÍA(cola): devuelve verdadero si no hay ningún elemento en la cola.
+\end_layout
+
+\begin_layout Itemize
+PRIMERO(cola): devuelve el primer elemento de la cola.
+\end_layout
+
+\begin_layout Itemize
+BORRAR(primero de la cola): devuelve el primer elemento y lo borra de la
+ cola.
+\end_layout
+
+\begin_layout Itemize
+INSERTA(elemento, cola): añade elemento a la cola y devuelve la cola resultante.
+ Puede hacerse de varias maneras como veremos (LIFO, FIFO, ...).
+\end_layout
+
+\begin_layout Itemize
+INSERTAR-TODOS(elementos, cola): añade un conjunto de elementos a la cola
+ y devuelve la cola resultante.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Ahora necesitamos elegir uno de estos tres planes y expandirlo ya que no
+ podemos analizar los tres simultáneamente.
+ Sea el de Sibiu el elegido.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/arad3.png
+	scale 50
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora la frontera está constituida por 4 nodos de profundidad 2 y 2 nodos
+ de profundidad 1.
+\end_layout
+
+\begin_layout Standard
+Si en este momento descubrimos que algún 
+\begin_inset Formula $estado==objetivo$
+\end_inset
+
+, hemos encontrado la solución al problema de búsqueda.
+\end_layout
+
+\begin_layout Standard
+Este es el algoritmo que puede escribirse en pseudocódigo como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K:/ALGOSEARCH.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este algoritmo existen varias ideas importantes a resaltar:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Frontera: 
+\series default
+conjunto de planes que aún pueden funcionar.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Expansión: 
+\series default
+seleccionar nodos externos a la frontera.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Estrategia de exploración
+\end_layout
+
+\begin_layout Standard
+La cuestión más importante es: ¿
+\series bold
+\emph on
+qué nodos de la frontera explorar
+\series default
+\emph default
+? 
+\end_layout
+
+\begin_layout Standard
+Tomemos como ejemplo el grafo en la Fig.
+ 2.4.2.
+ y escribamos por fases la 
+\emph on
+frontera
+\emph default
+ y el 
+\emph on
+árbol 
+\emph default
+de búsqueda.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/tojunto.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+La figura 2.5.5.
+ resume todo el proceso y en ella pueden seguirse las distintas etapas para
+ llegar a la solución 
+\series bold
+G 
+\series default
+que, como puede verse, 
+\emph on
+no ha requerido la expansión completa de todo el árbol
+\emph default
+.
+\end_layout
+
+\begin_layout Chapter*
+Algunos ejemplos.
+\end_layout
+
+\begin_layout Enumerate
+Un pastor que viaja con un lobo, una cabra y una coliflor necesita cruzar
+ un río con una barca.
+ La barca sólo puede transportar al pastor y a uno de los tres compañeros
+ de viaje del pastor.
+ El lobo y la cabra no se pueden quedar solos.
+ La cabra y la col tampoco se pueden quedar a solas
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Si están lobo, cabra y col juntas, ninguno puede comerse a nadie, al igual
+ que pasa cuando está el pastor presente.
+ 
+\end_layout
+
+\end_inset
+
+.
+ ¿Cómo puede hacer el pastor para cruzar el río con sus compañeros de viaje
+ sin que nadie resulte dañado?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Encuentra la solución de este pasatiempo utilizando búsqueda.
+ Para ello: 
+\end_layout
+
+\begin_layout Enumerate
+Formalizar el problema
+\noun on
+ 
+\noun default
+definiendo el espacio de estados y la función sucesor.
+
+\noun on
+ 
+\end_layout
+
+\begin_layout Enumerate
+Proporcionar una cota superior para el número de pasos de la solución del
+ problema.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solución
+\series default
+.Denominaremos al Lobo con una L (booleanas) , a la cabra con una C y a la
+ col con una X.
+ Debemos de fijar también un estado inicial que en nuestro problema será
+ el listado de los elementos que tengamos en la margen derecha del río 
+\begin_inset Formula $(0,0,0)$
+\end_inset
+
+.
+ Y el estado final al que queremos llegar que será 
+\begin_inset Formula $(1,1,1)$
+\end_inset
+
+.
+ Supondremos que el coste de cada acción es 1, de modo que el menor coste
+ se obtendrá con el menor número de acciones.
+\end_layout
+
+\begin_layout Standard
+Fijaremos primeramente un 
+\emph on
+operador de transición de estado
+\emph default
+.
+ Representaremos con un tupla los elementos que se transportan en el bote
+ en cada viaje de ida y vuelta 
+\begin_inset Formula $(ida,vuelta).$
+\end_inset
+
+ A través de ella podemos definir la 
+\emph on
+función sucesor
+\emph default
+ que para cada estado (L,C,X) devuelve 
+\begin_inset Formula $sucesor(L,C,X)$
+\end_inset
+
+, el conjunto de estados alcanzable desde (L,C,X) con una 
+\emph on
+acción
+\emph default
+ (viaje).
+\end_layout
+
+\begin_layout Standard
+Dato un estado 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, y una acción 
+\begin_inset Formula $\mathbf{a}$
+\end_inset
+
+ 
+\begin_inset Formula $\mathbf{SUCCESSOR-FN(x)}$
+\end_inset
+
+ devuelve un conjunto de pares ordenados 
+\begin_inset Formula $<accion,coste,sucesor>.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Resumiendo: Operador: (ida, vuelta) elementos que se transportan en el bote
+ Estado inicial: 
+\begin_inset Formula $(L=0,C=0,X=0)$
+\end_inset
+
+ -vacío- Estado final 
+\begin_inset Formula $(L=1,C=1,X=1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+\align left
+
+\series bold
+Grafo de estados
+\series default
+: El número máximo de estados es 
+\begin_inset Formula $2^{3}=8$
+\end_inset
+
+ y estos son los siguientes:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename GRAFESTADO.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Función sucesor:
+\series default
+ tendremos en cuenta que las acciones posibles - 16 ida y vuelta del pastor
+ en la barca transportando
+\begin_inset Formula $(ida,vuelta)$
+\end_inset
+
+ - solo tienen sentido si el par transportado es tal que es distinto de
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $(\textrm{\_},\textrm{\_})$
+\end_inset
+
+: 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(ida=a,vuelta=a)$
+\end_inset
+
+: 3.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(ida=\textrm{\_},vuelta\in\left\{ L,C,X\right\} )$
+\end_inset
+
+: 3
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Es decir, solo se consideran 9 de las posibles acciones que se indican a
+ continuación que definen la función sucesor para los estados que tienen
+ un sucesor:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sucesor.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Pero, no todos estos casos son posibles ya que de los estados potenciales
+ solo podrán alcanzarse aquellos que cumplan determinadas 
+\series bold
+reglas 
+\series default
+como p.e.
+\end_layout
+
+\begin_layout Itemize
+Regla 1: “Si el lobo y la col están en el mismo lado del río 
+\begin_inset Formula $(L=0,C=1,X=0)$
+\end_inset
+
+, y la cabra está en el otro lado del río, el pastor puede cruzar el río
+ solo”.
+ 
+\end_layout
+
+\begin_layout Itemize
+Regla 2: “Si el pastor y el lobo están en el mismo lado del río, 
+\begin_inset Formula $(L=0)\cup(L=1)$
+\end_inset
+
+ el pastor puede transportar al lobo a la otra orilla, siempre y cuando
+ la cabra y la col se encuentren en lados opuestos del río 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $(C=1,X=0)\cup(C=1,X=0)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+”.
+ 
+\end_layout
+
+\begin_layout Itemize
+Regla 3: “ Si lobo, cabra y col están en el mismo lado del río, el pastor
+ solo puede transportar la cabra a la otra orilla“ 
+\end_layout
+
+\begin_layout Itemize
+Regla 4: “Si lobo y cabra están en distinta orilla del río, el pastor puede
+ transportar la cabra a la otra orilla y volver con el lobo“ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Por consiguiente, hay una serie de transiciones entre estados imposibles.
+ P.e.
+ no es posible pasar del estado inicial a 
+\begin_inset Formula $(L=1,C=0,X=0)$
+\end_inset
+
+ porque eso representaría dejar a la cabra a solas con la col mientras el
+ pastor transporta al lobo a la otra orilla..
+ Tras eliminar las transiciones no posibles los posibles algunos estados,
+ con lo cual el 
+\emph on
+grafo de estados
+\emph default
+ (y la solución) sería:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename lobo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Lo que deja la función sucesor reducida a :
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename suces_redu.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Se tienen dos jarras, de 4 y 3 litros respectivamente.Ninguna de ellas tiene
+ marcas de medición.
+ Se tiene una bomba que permite llenar las jarras de agua.
+ formular cómo se puede lograr tener exactamente 2 litros de agua en la
+ jarra de 4 litros de capacidad.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Representación de estados: 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ con 
+\begin_inset Formula $x\in\left\{ 0,1,2,3,4\right\} $
+\end_inset
+
+ e 
+\begin_inset Formula $y\in\left\{ 0,1,2,3\right\} \Rightarrow$
+\end_inset
+
+Nº de estados = 20.
+\end_layout
+
+\begin_layout Enumerate
+Estado inicial: 
+\begin_inset Formula $(0,0)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Estados finales: todos los estados de la forma 
+\begin_inset Formula $(2,0)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Acciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Llenar la jarra de 4 litros con la bomba.
+ 
+\end_layout
+
+\begin_layout Itemize
+Llenar la jarra de 3 litros con la bomba.
+\end_layout
+
+\begin_layout Itemize
+Vaciar la jarra de 4 litros en el suelo.
+\end_layout
+
+\begin_layout Itemize
+Vaciar la jarra de 3 litros en el suelo.
+\end_layout
+
+\begin_layout Itemize
+Llenar la jarra de 4 litros con la jarra de 3 litros.
+ 
+\end_layout
+
+\begin_layout Itemize
+Llenar la jarra de 3 litros con la jarra de 4 litros.
+ 
+\end_layout
+
+\begin_layout Itemize
+Vaciar la jarra de 3 litros en la jarra de 4 litros.
+ 
+\end_layout
+
+\begin_layout Itemize
+Vaciar la jarra de 4 litros en la jarra de 3 litros.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Formulación del problema:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Aplicación de acciones a un estado
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Acción “Llenar jarra de 3” 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: y<3 (precondición) 
+\end_layout
+
+\begin_layout Itemize
+Estado resultante:
+\begin_inset Formula $(x,3)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Acción “Llenar jarra de 4 con jarra de 3” 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: x<4, y>0, x+y>4 (precondición) 
+\end_layout
+
+\begin_layout Itemize
+Estado resultante: 
+\begin_inset Formula $(4,x+y-4)$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Acción “Vaciar jarra de 3 en jarra de 4” 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: y>0, x+y≤4 (precondición)
+\end_layout
+
+\begin_layout Itemize
+Estado resultante: 
+\begin_inset Formula $(x+y,0)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Y análogamente las demás acciones.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Solución: Búsqueda de soluciones en espacios de estados 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Objetivo: encontrar una secuencia de acciones que, partiendo del estado
+ inicial, obtenga un estado final 
+\end_layout
+
+\begin_layout Itemize
+Idea básica: exploración del grafo del espacio de estados 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En cada momento se analiza un estado actual (en un principio, el inicial)
+ 
+\end_layout
+
+\begin_layout Itemize
+Si el estado actual es final, acabar (recopilando la sucesión de acciones)
+ 
+\end_layout
+
+\begin_layout Itemize
+En caso contrario, obtener los sucesores del estado actual (expandir) 
+\end_layout
+
+\begin_layout Itemize
+Elegir un nuevo estado actual, dejando los restantes para analizarlos posteriorm
+ente (si fuera necesario) 
+\end_layout
+
+\begin_layout Itemize
+Repetir el proceso mientras haya estados por analizar •
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+La elección del estado actual en cada momento determina una estrategia de
+ búsqueda
+\end_layout
+
+\begin_layout Standard
+Esto nos conduce a operar incrementalmente sobre un árbol de búsqueda como
+ el siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename jarras.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde se pasa del estado inicial en que ambas jarras están vacías al de
+ una de ellas llena.
+ De ahí, mediante las acciones posibles, se puede pasar a llenar la segunda
+ (lo que no es útil) o a trasegar a la segunda tres litros de la primera.
+ Seguidamente, vaciamos la segunda y le traspasamos el contenido de la primera
+ - 1 l.
+ - A continuación volvemos a llenar la primera ...
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Chapter
+Búsqueda primero en profundidad.
+ Búsqueda primero en anchura.
+ Búsqueda con profundidad iterativa.
+\end_layout
+
+\begin_layout Standard
+En el capítulo anterior seleccionamos nuestro desplazamiento por los nodos
+ sin una estrategia clara.
+ Parece conveniente explorar las posibilidades que se nos presentan de realizar
+ nuestra búsqueda con una estrategia definida.
+\end_layout
+
+\begin_layout Section
+Búsqueda primero en profundidad.
+\end_layout
+
+\begin_layout Standard
+Imaginemos la búsqueda en un árbol como un proceso minero en que deben encontrar
+se ciertos minerales que están en el interior de una montaña en posiciones
+ desconocidas.
+ En el peor de los casos para encontrar el mineral deberíamos desmontar
+ toda la montaña.
+\end_layout
+
+\begin_layout Standard
+Resulta obvio desarrollar dos estrategias de excavación (Fig.
+ 3.1.1.) que 
+\emph on
+parten de la cúspide
+\emph default
+ 
+\emph on
+de la montaña
+\emph default
+:
+\end_layout
+
+\begin_layout Enumerate
+una que profundiza verticalmente (
+\emph on
+búsqueda en profundidad
+\emph default
+) y
+\end_layout
+
+\begin_layout Enumerate
+una segunda que va desmontando la montaña por estratos horizontales (
+\emph on
+búsqueda en anchura
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/mineritos.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Centrémonos en el primer tipo de búsqueda: la 
+\emph on
+búsqueda primero en profundidad
+\emph default
+ que ilustraremos con el ejemplo expuesto en el apartado 2.5.
+ La figura 3.1.2.
+ muestra tanto el grafo como el árbol 
+\emph on
+completo
+\emph default
+ de búsqueda.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/LIFO.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comenzando por el nodo inicial, expandiremos en una primera etapa hasta
+ la frontera 
+\begin_inset Formula $(d,e,p)$
+\end_inset
+
+.
+ Hemos de profundizar inicialmente sobre uno solo de ellos, sin embargo
+ los tres nodos son igualmente válidos para seguir profundizando.
+ Supongamos que, como regla general, elegimos el situado más a la izquierda
+ en el árbol - d - y sobre este expandiremos en cualquier profundidad.
+ En la figura se dibujan los diferentes caminos explorados hasta encontrar
+ el objetivo 
+\series bold
+G
+\series default
+.
+ La estrategia es clara: hemos ido directamente hacia abajo por la izquierda
+ del árbol hasta llegar a un nodo sin hijos.
+ El algoritmo procesa todos los nodos a la izquierda de la primera solución.
+ El gráfico siguiente muestra DFS en un árbol binario.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+: En el gráfico de la Fig.
+ 3.1.3.
+ ¿qué solución encontrará una búsqueda primero en profundidad?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/ejr1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Propiedades del algoritmo de búsqueda primero en profundidad (DFS).
+\end_layout
+
+\begin_layout Enumerate
+¿Es
+\series bold
+ completo
+\series default
+?, es decir, si existe una solución, ¿está garantizado que la encuentre?
+ Es complicado, pero habremos de responder a esta pregunta en cada uno de
+ los problemas que enfrentemos.
+\end_layout
+
+\begin_layout Enumerate
+¿Es 
+\series bold
+óptimo
+\series default
+?, es decir, ¿encuentra la solución de menor coste?
+\end_layout
+
+\begin_layout Enumerate
+¿
+\series bold
+Complejidad temporal
+\series default
+? Se refiere al número máximo de nodos que se expanden.
+\end_layout
+
+\begin_layout Enumerate
+¿
+\series bold
+Complejidad espacial
+\series default
+? Se refiere al tamaño máximo de la frontera.
+\end_layout
+
+\begin_layout Standard
+Trataremos de responder a algunas de estas preguntas a través del siguiente
+ esquema:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+b
+\series default
+ es el 
+\series bold
+factor de ramificación
+\series default
+ del árbol, esto es, el 
+\emph on
+número de hijos de cualquier nodo.
+
+\emph default
+ Cuando - como es lo habitual - no es el mismo en todos, se toma un valor
+ promedio, esto es, en dichos casos definimos el 
+\series bold
+\emph on
+factor de ramificación
+\series default
+\emph default
+ 
+\emph on
+a una profundidad determinada 
+\begin_inset Formula $d$
+\end_inset
+
+ se calcula del siguiente modo:
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $T$
+\end_inset
+
+ el número de nodos del árbol no uniforme, como en un árbol uniforme:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T+1=1+b+b^{2}+...+b^{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+haremos lo mismo con el árbol no uniforme para un factor promedio 
+\begin_inset Formula $b^{*}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+T+1=1+b^{*}+(b^{*})^{2}+...+(b^{*})^{d}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+m
+\series default
+ es el número máximo de niveles del árbol y el problema puede tener soluciones
+ a varias profundidades.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/complex.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo esto así, el número de nodos en el árbol será:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+1+b+b^{2}+...+b^{m}=\mathbf{\frac{1-b^{m+1}}{1-b}}=\mathbf{O}\mathbf{(b^{m}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por tanto, es exponencial.
+\end_layout
+
+\begin_layout Standard
+Aplicado al problema de la Fig.
+ 3.1.2.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/calcul.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Complejidad temporal (nodos a expandir).
+\end_layout
+
+\begin_layout Standard
+Como hemos dicho empezaremos por aquellos que tengan un prefijo izquierdo
+ en el árbol.
+ Esto implica que es posible que tengamos que procesar la totalidad del
+ árbol lo que no es nada deseable dado el carácter exponencial del problema
+ lo que implica un tiempo de proceso 
+\begin_inset Formula $O(b^{m})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Complejidad espacial (tamaño de la frontera).
+\end_layout
+
+\begin_layout Standard
+Nos interesa saber el espacio que ocupa la frontera.
+ Recordemos que la frontera contiene 
+\emph on
+todas las cosas que aún no hemos hecho 
+\emph default
+en el nivel en que estamos.
+ 
+\end_layout
+
+\begin_layout Standard
+Puede haber
+\begin_inset Formula $b$
+\end_inset
+
+ sucesores en cada nivel y como mucho 
+\begin_inset Formula $m$
+\end_inset
+
+ niveles y como solo hay hermanos en el camino hacia el nodo raíz, será
+ 
+\begin_inset Formula $O(b\cdot m)$
+\end_inset
+
+.
+ Por tanto, la frontera es pequeña.
+\end_layout
+
+\begin_layout Subsubsection
+Completitud.
+\end_layout
+
+\begin_layout Standard
+La dificultad aquí estriba en el valor de 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ Si 
+\begin_inset Formula $m$
+\end_inset
+
+ es infinito, el algoritmo no es completo, por tanto debemos evitar la existenci
+a de 
+\emph on
+ciclos
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Camino donde no se repite ninguna arista ni vértice y coinciden los vértices
+ inicial y final
+\end_layout
+
+\end_inset
+
+
+\emph default
+ de donde nunca saldríamos.
+ No obstante, existen procedimientos generales para evitar la redundancia
+ y podemos descartar esta situación.
+ En estas circunstancias - hemos eliminado los ciclos- es completo.
+\end_layout
+
+\begin_layout Subsubsection
+Optimalidad.
+\end_layout
+
+\begin_layout Standard
+Supongamos que el coste de cada acción es 1.
+ El 
+\emph on
+coste mínimo
+\emph default
+ equivale al de la 
+\emph on
+solución más superficial
+\emph default
+ (menor profundidad desde el nodo raíz).
+ Tal como lo hemos presentado, 
+\emph on
+no
+\emph default
+ garantiza el coste mínimo, sino que 
+\emph on
+encuentra la solución más a la izquierda 
+\emph default
+con independencia de de su profundidad o coste.
+\end_layout
+
+\begin_layout Section
+Búsqueda primero en anchura.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Ahora avanzaremos a lo ancho del árbol, bien de derecha a izquierda, bien
+ en sentido contrario.
+ En este tipo de búsqueda el gráfico que muestra la estrategia de búsqueda
+ - consistente en 
+\emph on
+expandir el nodo más superficial primero
+\emph default
+ - es el siguiente:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fifo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En esta ocasión, se procede por capas: primero recorremos el primer nivel
+ completamente y solo entonces comenzaremos con el segundo y así sucesivamente.Lo
+s nodos se recorren por niveles.
+ En este algoritmo la frontera es una cola FIFO (primero en entrar, primero
+ en salir) en la que se insertan los nodos al final sin importar el orden
+ de inserción (pues todos los nodos pertenecen al mismo nivel).
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo.
+
+\series default
+ ¿Qué solución daría el ejemplo de la Fig.
+ 3.1.3.
+ cuando se busca primero en profundidad?
+\end_layout
+
+\begin_layout Standard
+La respuesta es ahora :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/solucion.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Veamos sobre un ejemplo cómo funcionaría el algoritmo 
+\series bold
+\emph on
+BFS
+\series default
+\emph default
+ y su cola asociada:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ewncola.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Propiedades del algoritmo de búsqueda primero en anchura (BFS).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Es claro que el algoritmo BFS procesa todos los nodos por encima de la solución
+ menos profunda.
+ De nuevo nos encontramos con un caso exponencial como en DFS con la diferencia
+ de que no tenemos que llegar a la máxima profundidad 
+\begin_inset Formula $m$
+\end_inset
+
+, sino que esto dependerá de la profundidad a la que se encuentre la solución
+ que llamaremos 
+\begin_inset Formula $s$
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/complex2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Complejidad temporal.
+\end_layout
+
+\begin_layout Standard
+Siendo 
+\begin_inset Formula $b$
+\end_inset
+
+ el factor de ramificación:
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Por tanto ahora la complejidad temporal será 
+\begin_inset Formula $\mathbf{O}(\mathbf{b^{s})}$
+\end_inset
+
+ dependiendo de la profundidad -
+\begin_inset Formula $s$
+\end_inset
+
+- a que se encuentre la solución más superficial.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Complejidad espacial.
+\end_layout
+
+\begin_layout Standard
+En este caso puede haber 
+\begin_inset Formula 
+\[
+b+b^{2}+...++b^{s}=\frac{b-b^{s+1}}{1-b}=O(b^{s})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para analizar el tamaño de la frontera, preguntémonos ¿qué había en la frontera
+ cuando alcanzamos la solución?.
+ Es claro que si el nivel en que hallamos la solución es 
+\begin_inset Formula $s$
+\end_inset
+
+, en general, no habremos hecho todas las acciones en dicho nivel y todo
+ lo que hayamos hecho en el nivel 
+\begin_inset Formula $s$
+\end_inset
+
+ tiene hijos en los niveles inferiores.
+ Por tanto la frontera se parece al último nivel que expandimos, quizá un
+ nivel por debajo de este.
+ Será exponencial, aproximadamente como el último nivel : 
+\begin_inset Formula $\mathbf{O}(\mathbf{b^{s})}$
+\end_inset
+
+ como la complejidad temporal.
+\end_layout
+
+\begin_layout Subsubsection
+Completitud.
+\end_layout
+
+\begin_layout Standard
+Es claro que si existe alguna solución, esta se ubica en un nivel 
+\emph on
+finito
+\emph default
+, por tanto es completo.
+ Al contrario de los prefijos más a la izquierda que pueden ser infinitos,
+ los prefijos en altura son finitos.
+\end_layout
+
+\begin_layout Subsubsection
+Optimalidad.
+\end_layout
+
+\begin_layout Standard
+Si los costos son generales, no es óptimo, pero si los costes son todos
+ 1, sí es óptimo.
+\end_layout
+
+\begin_layout Section
+Búsqueda con profundidad iterativa.
+\end_layout
+
+\begin_layout Standard
+Se trata de tener lo mejor de los dos tipos de búsqueda: DFS y BFS.
+ La idea que guía a los algoritmos de profundidad iterativa es conseguir
+ las ventajas espaciales de DFS con las temporales de BFS y las garantías
+ de esta respecto a completitud y optimalidad.
+\end_layout
+
+\begin_layout Standard
+El modo de conseguirlo es fácil:
+\end_layout
+
+\begin_layout Enumerate
+se comienza por una búsqueda en profundidad limitada a una profundidad de
+ 1.
+ Si se encuentra la solución, perfecto, si no
+\end_layout
+
+\begin_layout Enumerate
+se hace una búsqueda en profundidad hasta profundidad 2, si no se encuentra
+ la solución
+\end_layout
+
+\begin_layout Enumerate
+se hace una búsqueda en profundidad hasta profundidad 3 ....
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+y así sucesivamente.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/profunditer.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Justificación.
+\end_layout
+
+\begin_layout Standard
+Generalmente la mayor parte del trabajo se realiza en el último nivel en
+ que se busca, por tanto no es tan malo.
+\end_layout
+
+\begin_layout Chapter
+Búsqueda de coste uniforme (UCS).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Hasta ahora hemos fijado como objetivo minimizar el número de acciones a
+ tomar, y BFS es capaz de hallar esta solución.
+ Esto es equivalente a asignar el mismo coste (1) a todas las acciones.
+ Pero supongamos que cada arco del grafo (acción) tiene un coste diferente
+ (Fig.4.0.2).
+ Los algoritmos anteriores no son válidos en este caso.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename coste.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como ilustración pensemos en el mapa de Rumanía, en que la función a minimizar
+ sería el número de trayectos entre ciudades efectuados, cuando, en realidad,
+ parece mejor criterio el de 
+\emph on
+minimizar la distancia recorrida
+\emph default
+ (coste).
+\end_layout
+
+\begin_layout Section
+Búsqueda de coste uniforme.
+\end_layout
+
+\begin_layout Standard
+Es similar a BFS pero ahora se priorizan las capas de menor coste, de manera
+ que ahora se ejecutan primero las acciones más baratas aun cuando haya
+ múltiples pasos en el árbol.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename costcumul.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Puesto que hemos de expandir el nodo más barato como estrategia, elegiremos
+ el de menor coste acumulado que, en ese primer paso será 
+\emph on
+p 
+\emph default
+(g=1)
+\emph on
+.
+ 
+\emph default
+Puesto que no es el objetivo, iremos después a d (g=3) y como (estado==objetivo)
+=Falso, seguiremos pero ahora no iremos a e (g=9), sino a b cuyo coste acumulado
+ es 7
+\begin_inset Formula $<$
+\end_inset
+
+9.
+ En el siguiente paso expandiremos el nodo p (el más barato) y así sucesivamente
+, hasta llegar a la solución (Fig.4.1.2.) que conduce a
+\series bold
+ G .
+\end_layout
+
+\begin_layout Standard
+Se ve que nos movemos desde el nodo raíz hacia abajo de un modo un tanto
+ destartalado siguiendo los contornos de coste.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename unicost.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Propiedades de la UCS.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Sabemos que expandimos primero los nodos de menor coste, sea este 
+\begin_inset Formula $g=1$
+\end_inset
+
+ y seguimos por los de 
+\begin_inset Formula $g=2,3...$
+\end_inset
+
+.
+ y así hasta el nodo que nos de la solución de menor coste.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fases.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si la solución tiene un coste 
+\begin_inset Formula $g*$
+\end_inset
+
+ y los arcos cuestan como mínimo 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ - es decir, el coste mínimo de cada acción - la profundidad efectiva será
+ 
+\series bold
+
+\begin_inset Formula 
+\[
+\frac{\mathbf{g*}}{{\displaystyle \mathbf{\mathbf{\epsilon}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A partir de aquí, podemos decir que la 
+\series bold
+complejidad temporal
+\series default
+, 
+\emph on
+como en la BFS
+\emph default
+, será exponencial en la profundidad efectiva: 
+\begin_inset Formula 
+\[
+{\displaystyle \mathbf{O(b^{{\displaystyle \frac{g*}{\epsilon}}})}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+complejidad espacial
+\series default
+ será, por las mismas razones, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\displaystyle \mathbf{O(b^{{\displaystyle \frac{g*}{\epsilon}}})}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Completitud
+\series default
+.
+ Suponiendo que la mejor solución tiene un 
+\emph on
+coste finito
+\emph default
+ y los costes de los arcos son positivos, es completo, es decir, garantiza
+ encontrar una solución.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Optimalidad.
+ 
+\series default
+Puede demostrarse que es óptima y se demostrará en próximos capítulos ya
+ que se trata de un 
+\emph on
+caso particular de la búsqueda A* 
+\emph default
+('A estrella').
+ Por tanto, no devuelve la solución más superficial - lo que hacia BFS -,
+ sino la de menor coste.
+\end_layout
+
+\begin_layout Standard
+Podemos resumir las ventajas e inconvenientes de la UCS:
+\end_layout
+
+\begin_layout Enumerate
+Ventajas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Es completa.
+\end_layout
+
+\begin_layout Itemize
+Es óptima.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Desventajas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Busca en cualquier dirección.
+\end_layout
+
+\begin_layout Itemize
+No tiene información sobre la ubicación del objetivo.
+\end_layout
+
+\begin_layout Standard
+Esto significa que, partiendo del estado inicial, examina cualesquiera direccion
+es que sean baratas sin importarle si ayudan a avanzar hacia el objetivo
+ o se aleja de él.
+ pero esto puede corregirse, como veremos.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Ejercicio: 
+\series default
+Hallar la solución del grafo siguiente con el método UCS.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename uni_ejer.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Resumen de algoritmos de búsqueda desinformada.
+\end_layout
+
+\begin_layout Standard
+La tabla siguiente resume las características de cada algoritmo visto hasta
+ ahora:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename resalg.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El siguiente ejemplo servirá de resumen a todo lo visto hasta la fecha y
+ dará alguna orientación acerca del manejo de las colas para gestionar la
+ frontera de los algoritmos.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+De un artículo de Bill Gates: 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://people.eecs.berkeley.edu/~christos/papers/Bounds%20For%20Sorting%20By%20Prefix%20Reversal.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+: Tenemos una pila de cuatro tortitas de diferentes tamaños y deseamos ordenar
+ las de mayor en la base a menor en la cúspide.
+ Para ello solo disponemos de una espátula que introduciremos en cualquier
+ 
+\emph on
+posición
+\emph default
+ de la pila y voltearemos todas las que se sitúen sobre esta.
+\end_layout
+
+\begin_layout Standard
+Se trata de hallar la solución de 
+\emph on
+mínimo coste 
+\emph default
+a este problema de búsqueda.
+\end_layout
+
+\begin_layout Standard
+El 
+\series bold
+estado 
+\series default
+es el orden de las tortitas.
+\end_layout
+
+\begin_layout Standard
+Las 
+\series bold
+acciones
+\series default
+ son las
+\series bold
+\emph on
+ posiciones
+\series default
+\emph default
+ en que puedo insertar la espátula.
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+función sucesor
+\series default
+ da la vuelta en el orden definido por la posición de la espátula (acción)
+ y determina la nueva ordenación.
+\end_layout
+
+\begin_layout Standard
+El 
+\series bold
+coste 
+\series default
+puede definirse de diferentes formas:
+\end_layout
+
+\begin_layout Enumerate
+El número de volteos que debo dar.
+ Esto equivale a dar un coste unitario a cada acción.
+\end_layout
+
+\begin_layout Enumerate
+El número de tortitas volteadas, que nos parece más adecuado.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Veamos el espacio de estados de este problema:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename queques.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Utilizaremos el algoritmo de búsqueda ya conocido: 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename buscarbol.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Cola única.
+\end_layout
+
+\begin_layout Standard
+Como sabemos este algoritmo se repite de manera simple en ciclos: 
+\end_layout
+
+\begin_layout Itemize
+se toma algo de la frontera,
+\end_layout
+
+\begin_layout Itemize
+se generan sus hijos según la 
+\emph on
+función-sucesor 
+\emph default
+y se ponen en la
+\emph on
+ frontera
+\end_layout
+
+\begin_layout Itemize
+las acciones que han generado los hijos tienen costes y estados resultantes
+ que se ponen en la frontera,
+\end_layout
+
+\begin_layout Itemize
+e toma algo de la frontera,
+\end_layout
+
+\begin_layout Itemize
+se generan sus hijos según la 
+\emph on
+función-sucesor 
+\emph default
+y se ponen en la
+\emph on
+ frontera
+\end_layout
+
+\begin_layout Itemize
+las acciones que han generado los hijos tienen costes y estados resultantes
+ que se ponen en la frontera,
+\end_layout
+
+\begin_layout Itemize
+..............................................
+\end_layout
+
+\begin_layout Standard
+La frontera va yendo hacia abajo paulatinamente, más o menos rápido según
+ el algoritmo utilizado y a medida que avanzamos acumulamos los costes.
+ Algunos algoritmos son sensibles a los costes (UCS) y otros no (BFS, DFS)
+ , pero 
+\emph on
+todo plan tiene un coste
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Todos estos algoritmos sin información son básicamente iguales excepto por
+ la estrategia de selección de la frontera.
+ Conceptualmente son
+\emph on
+ colas con diferentes prioridades.
+ 
+\emph default
+Desde el punto de vista de su implementación, podemos pasar la estrategia
+ de búsqueda como un parámetro.
+ Sin embargo, en BFS y DFS no se necesita mantener una cola con prioridad,
+ que añade una carga al programa, sino que basta con gestionar una pila.
+ La gestión de una cola con prioridades introduce una penalización en el
+ tiempo de ejecución de log(n) .
+\end_layout
+
+\begin_layout Chapter*
+Ejercicios.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+1.
+ Cuántos nodos hay en el siguiente árbol de búsqueda completo para el grafo
+ del espacio de estados mostrado en la figura.
+ El estado inicial es S.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 4eje1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Solución: dibujemos el árbol de búsqueda, vemos que son 7 nodos.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename arbusca.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+2.
+ Considerar el grafo para BFS de la figura 4.5.3.
+ Con las mismas indicaciones que el problema anterior, hallar el camino
+ final devuelto por BFS.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename SAG.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+3.
+ Considerar el grafo para BFS de la figura 4.5.4.
+ Con las mismas indicaciones que el problema anterior, hallar el camino
+ final devuelto por BFS.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename BFS.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+4.
+ En el grafo de la figura, con la convención de ordenamiento establecida
+ anteriormente, encontrar los caminos para las siguientes modalidades de
+ búsqueda:
+\end_layout
+
+\begin_layout Enumerate
+DFS
+\end_layout
+
+\begin_layout Enumerate
+BFS
+\end_layout
+
+\begin_layout Enumerate
+UCS
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename tutobusco.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+5.
+ El siguiente mapa es una muestra reducida del metro de Madrid en el que
+ en las estaciones marcadas puede hacerse transbordo de una línea a otra
+ de las que en ella confluyen en el sentido marcado por las flechas.
+ Encontrar una ruta Aeropuerto T4-Pitis con el menor número de transbordos.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename metro.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El árbol será el siguiente y se seleccionará en primer lugar la ruta señalada,
+ aun cuando hay más trayectos con el mismo número de transbordos.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename metrillo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Búsqueda informada.
+\end_layout
+
+\begin_layout Standard
+Los problemas de 
+\emph on
+búsqueda informada 
+\emph default
+se construyen a partir de los tipos de problemas que hemos visto antes e
+ inyectándoles información acerca de la localización de las soluciones de
+ modo que se reduzcan las exploraciones necesarias en el árbol de búsqueda.
+\end_layout
+
+\begin_layout Standard
+La idea básica de la búsqueda informada es la 
+\series bold
+\emph on
+heurística 
+\series default
+\emph default
+.
+ Expondremos este tipo de búsqueda del siguiente modo:
+\end_layout
+
+\begin_layout Enumerate
+Heurística.
+\end_layout
+
+\begin_layout Enumerate
+Búsqueda avariciosa o voraz.
+\end_layout
+
+\begin_layout Enumerate
+Búsqueda 
+\begin_inset Formula ${\textstyle {\textstyle A*}}$
+\end_inset
+
+('A estrella').
+\end_layout
+
+\begin_layout Section
+Heurística de búsqueda.
+\end_layout
+
+\begin_layout Standard
+Como hemos dicho, se trata de añadir algo adicional a los algoritmos de
+ búsqueda anteriores: una función que nos permite examinar un estado y decir
+ hasta qué punto nos estamos acercando al objetivo.
+ Esta es la idea fundamental de la búsqueda informada: algo que no solo
+ nos dice si 
+\emph on
+estado==objetivo
+\emph default
+, sino si estamos cerca de este.
+ El objeto clave es una 
+\emph on
+heurística de búsqueda
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Una 
+\series bold
+heurística de búsqueda
+\series default
+ es
+\end_layout
+
+\begin_layout Itemize
+una función que
+\series bold
+\emph on
+ estima 
+\series default
+\emph default
+cuan próximos estamos al objetivo.
+ Toma como argumento uno de los estados del mundo y nos devuelve un número:
+ 
+\begin_inset Formula $W:\begin{array}{c}
+h\\
+\rightarrow
+\end{array}\mathbb{R}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+La heurística toma un estado del mundo y nos devuelve un número 
+\begin_inset Formula $h=h(e)$
+\end_inset
+
+ que si es grande indica que estamos lejos del objetivo buscado.
+ Es claro que, con esta herramienta, podemos priorizar en la frontera aquellas
+ áreas que la heurística nos señala como más próximos al objetivo.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+y está diseñada 
+\series bold
+\emph on
+para un problema concreto
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Veamos un ejemplo: Pac-man tiene el problema de llegar al punto.
+ Puede emprender una búsqueda de las que hemos visto pero sería de ayuda
+ saber lo lejos que se encuentra del punto en cada posición.
+ Para ello podría utilizar algo como la 
+\emph on
+distancia de Manhattan.
+
+\emph default
+ Es claro que, aunque los muros le pueden hacer ir más lejos, si esta distancia
+ es pequeña estará cerca del punto (Fig.
+ 5.1.1).
+ No es perfecto, pero sí útil.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename heurismia.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podríamos haber utilizado también la distancia euclídea, pero esta distancia
+ no toma en cuenta que la existencia de muros impide caminar en diagonal.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Volviendo a nuestro problema de Rumanía, podemos utilizar como heurística
+ la distancia en línea recta desde nuestra ubicación -ciudad - a Bucarest.
+ (Fig.
+ 5.1.2.).
+ Como puede observarse esta distancia es 0 para Bucarest-Bucarest que es
+ lo esperable de una heurística: el valor numérico es nulo en el objetivo.
+ Asimismo puede verse que cuanto más cerca estamos del objetivo, menor es
+ la distancia en línea recta.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename buca.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Qué heurística podríamos utilizar en el caso de las tortitas? Es claro
+ que ni la distancia euclídea ni la de Manhattan nos sirven.
+ La respuesta es: 
+\emph on
+el número de la tortita más grande que aún está fuera de su posición.
+
+\emph default
+ La idea tras esta heurística es que si la tortita más grande está fuera
+ de orden, la única manera de llevarla a su posición es situarla en la cúspide
+ y voltear toda la pila.
+\end_layout
+
+\begin_layout Paragraph*
+Nota: Distancia de Manhattan (o taxicab).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename taxicab.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Búsqueda avariciosa o voraz.
+\end_layout
+
+\begin_layout Standard
+Es un tipo de búsqueda que utiliza la heurística pero es algo imperfecta.
+ Ilustremos el caso con la Fig.
+ 5.1.2.
+ partiendo de Arad.
+ Utilizaremos la heurística allí expuesta para priorizar los elementos que
+ salen de la frontera.
+\end_layout
+
+\begin_layout Standard
+En la figura hemos representado el camino más corto entre Arad y Bucarest
+ en azul (el inferior), aunque la búsqueda DFS nos daría como solución el
+ camino superior- pasa por Fagaras - que tiene menos tramos (3 frente a
+ 4).
+\end_layout
+
+\begin_layout Standard
+Para la búsqueda avariciosa procederemos así:
+\end_layout
+
+\begin_layout Itemize
+expandir el nodo que parece más próximo 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+inicialmente es Sibiu.
+\end_layout
+
+\begin_layout Itemize
+seguidamente será Fagaras (que sabemos no está en el camino óptimo)
+\end_layout
+
+\begin_layout Itemize
+por último llegamos a Bucarest pero por un camino más largo que la ruta
+ azul.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\align left
+¿Qué ha fallado en esta búsqueda? por lo pronto 
+\emph on
+hemos alcanzado el objetivo
+\emph default
+ pero 
+\emph on
+no hemos minimizado las distancias
+\emph default
+ (costes).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Al contrario que en UCS, aquí 
+\emph on
+las heurísticas no se suman
+\emph default
+ y siempre nos encaminamos al estado que parece estar más próximo al objetivo.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename avaro.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se ve en la figura es similar a una DFS centrada en el estado más próximo
+ al objetivo.
+ Pero la búsqueda avariciosa es tan buena como la heurística que la guía
+ y, en general, las heurísticas no son perfectas.
+ Es incluso imaginable un caso como el (2) de la Fig.
+ 5.1.3.
+ en que se comporta como una DFS pésimamente dirigida.
+ Cuando funciona, lo hace bien, pero en otras ocasiones falla estrepitosamente
+ .
+ Este tipo de búsqueda no selecciona los casos en que es preciso volver
+ hacia atrás.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo: 
+\series default
+¿Qué solución proporciona la búsqueda avariciosa al caso de la Fig 4.4.8?
+\end_layout
+
+\begin_layout Standard
+Si usamos como heurística la 
+\emph on
+mínima distancia e cada nodo al nodo G
+\emph default
+ tendremos que esta viene dada por la tabla siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nodo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Distancia mínima a G
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+E
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La solución será 
+\begin_inset Formula $S\rightarrow D\rightarrow E\rightarrow G$
+\end_inset
+
+ que tiene una distancia real de 9, mientras que la solución UCS es 
+\begin_inset Formula $S\rightarrow D\rightarrow B\rightarrow E\rightarrow G$
+\end_inset
+
+ con distancia 7 (<9).
+\end_layout
+
+\begin_layout Section
+Búsqueda 
+\begin_inset Formula $\mathbf{A^{*}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Todo lo anterior nos servirá para desarrollar el algoritmo fundamental de
+ búsqueda en inteligencia artificial el 
+\begin_inset Formula ${\textstyle \mathbf{A^{*}}}$
+\end_inset
+
+(A estrella).
+\end_layout
+
+\begin_layout Standard
+Hasta ahora hemos estudiado, entre otros, dos casos extremos:
+\end_layout
+
+\begin_layout Enumerate
+UCS que es un proceso parsimonioso y constante que conduce inexorablemente
+ al objetivo y
+\end_layout
+
+\begin_layout Enumerate
+la búsqueda avariciosa que avanza rápido pero a veces acierta y otras no.
+\end_layout
+
+\begin_layout Standard
+Nos proponemos construir un algoritmo que combine la seguridad de UCS con
+ la rapidez de la búsqueda avariciosa.
+\end_layout
+
+\begin_layout Standard
+¿Cómo pueden combinarse ambas búsquedas?
+\end_layout
+
+\begin_layout Standard
+Comparemos el modo de actuar de cada algoritmo:
+\end_layout
+
+\begin_layout Enumerate
+UCS elige los caminos con 
+\emph on
+menor coste acumulado
+\emph default
+ primero medida por 
+\begin_inset Formula $g(n)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+búsqueda avariciosa ordena por 
+\emph on
+proximidad al objetivo
+\emph default
+ medida por 
+\begin_inset Formula $h(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Fijémonos en el caso expuesto en la Fig.5.3.1.
+ resaltando en la parte resaltada de la figura inferior que es el un camino
+ al objetivo.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename aSTAR.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Qué hace 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+?: ordena por la suma 
+\begin_inset Formula $g(n)+h(n)$
+\end_inset
+
+ es decir, el coste acumulado hasta el nodo (coste pasado) , más la heurística
+ (coste estimado futuro), esto es, el 
+\emph on
+coste estimado más barato del camino que pasa por n
+\emph default
+.
+ Por tanto 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ no irá hacia c muy pronto puesto que 
+\begin_inset Formula $h(c)+g(c)=7+3=10$
+\end_inset
+
+ la heurística - coste futuro -es grande y tampoco se precipitará a la rama
+ 
+\begin_inset Formula $a-e$
+\end_inset
+
+ (1) porque su coste es elevado.
+ tenderá a ir por el centro (2).
+ 
+\end_layout
+
+\begin_layout Standard
+Veamos sobre un ejemplo sencillo cómo funciona 
+\series bold
+
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ 
+\series default
+en la figura siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename dequeue.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hemos ido priorizando en la frontera aquellos nodos con menor coste estimado.
+ Sin embargo aun cuando hemos llegado primero a la solución 
+\begin_inset Formula $S\rightarrow B\rightarrow G$
+\end_inset
+
+ esta no es la que tiene un mínimo de 
+\begin_inset Formula $f(n)$
+\end_inset
+
+ sino la 
+\begin_inset Formula $\mathbf{S\rightarrow A\rightarrow G}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Ejercicio.
+ 
+\series default
+En el árbol de búsqueda
+\series bold
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ 
+\series default
+siguiente, tras expandir S hay dos nodos en la frontera: 
+\emph on
+S
+\begin_inset Formula $\rightarrow D$
+\end_inset
+
+ 
+\emph default
+y
+\emph on
+ 
+\begin_inset Formula $S\rightarrow A$
+\end_inset
+
+.
+ 
+\emph default
+Complete los valores indicados en la figura.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename proble.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Heurísticas admisibles.
+ Optimalidad de A
+\begin_inset Formula $^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nos preguntamos si el algoritmo A estrella es óptimo.
+\end_layout
+
+\begin_layout Standard
+Si nos fijamos en la figura 5.4.1.
+ vemos que 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ da como solución 
+\begin_inset Formula $S\rightarrow G$
+\end_inset
+
+ con coste 5 mientras que 
+\begin_inset Formula $\mathbf{S\rightarrow A\rightarrow G}$
+\end_inset
+
+ tiene un coste de 4.
+ El error se origina en que el coste real del camino malo - 5 - es menor
+ que el coste estimado del camino bueno - 7.
+ En particular el valor 
+\begin_inset Formula $h=6$
+\end_inset
+
+ de la heurística en el nodo A sobreestimó el coste de alcanzar G e hicimos
+ caso a la heurística.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename caminomalo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se necesita que nuestras estimaciones no superen los costes reales.
+ Si el valor 
+\begin_inset Formula $h(A)<3$
+\end_inset
+
+ la solución es la correcta.
+\end_layout
+
+\begin_layout Standard
+Esto nos lleva a la idea de 
+\series bold
+\emph on
+admisibilidad
+\series default
+\emph default
+: 
+\end_layout
+
+\begin_layout Itemize
+una heurística pesimista que sobreestima costes es inadmisible porque es
+ subóptima y deja atrapados a los buenos planes en la frontera.
+ Esta heurística siempre nos dice que estamos más lejos del objetivo de
+ lo verdadero.
+\end_layout
+
+\begin_layout Itemize
+una heurística optimista es admisible porque retarda los planes malos en
+ la frontera pero no sobreestima los costes reales y finalmente, el camino
+ de coste mínimo es el ganador.
+\end_layout
+
+\begin_layout Standard
+Por tanto 
+\emph on
+una heurística es
+\series bold
+ admisible 
+\series default
+si el coste estimado no supera el coste real al objetivo más próximo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{h(n)\leq h^{*}(n)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejemplos de heurísticas admisibles
+\end_layout
+
+\begin_layout Enumerate
+La distancia Manhattan en el problema de la Fig.
+ 5.1.1.
+ 
+\begin_inset Formula $h=\triangle x+\triangle y$
+\end_inset
+
+ es admisible porque moviéndose Pac-man en direcciones perpendiculares,
+ al haber muros, siempre recorrerá más que la distancia Manhattan.
+\end_layout
+
+\begin_layout Enumerate
+En el problema del mapa de carreteras, la distancia en línea recta es una
+ función heurística admisible.
+\end_layout
+
+\begin_layout Standard
+Demostremos que 
+\emph on
+si la heurística es admisible
+\emph default
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ 
+\emph on
+es óptimo
+\emph default
+, esto es que:
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+ es el camino óptimo con coste 
+\begin_inset Formula $C^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $p´$
+\end_inset
+
+ es un camino subóptimo con coste 
+\begin_inset Formula $c(p')>C^{*}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Demostraremos que cualquier subcamino 
+\begin_inset Formula $p''$
+\end_inset
+
+ de 
+\begin_inset Formula $p*$
+\end_inset
+
+ en la frontera será expandido antes que 
+\begin_inset Formula $p'$
+\end_inset
+
+ y por tanto 
+\begin_inset Formula $A*$
+\end_inset
+
+ no tomará 
+\begin_inset Formula $p'$
+\end_inset
+
+ como parte de la solución.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename demos.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Si se usa búsqueda en árbol
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En la búsqueda en grafo, no se verifica.
+ Para este caso se requiere la consistencia o monotonía de 
+\begin_inset Formula $h(n).$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, y h es admisible 
+\begin_inset Formula $A*$
+\end_inset
+
+ es completa y óptima 
+\end_layout
+
+\begin_layout Theorem
+
+\emph on
+Demostración:
+\end_layout
+
+\begin_layout Theorem
+
+\emph on
+Sea 
+\begin_inset Formula $C*$
+\end_inset
+
+ : coste de la solución óptima.
+ 
+\begin_inset Formula $g(n)$
+\end_inset
+
+: coste hasta el nodo n.
+ 
+\begin_inset Formula $h(n)$
+\end_inset
+
+: heurística en nodo n.
+\end_layout
+
+\begin_layout Itemize
+Considérese 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ un nodo objetivo que está en un camino subóptimo (i.e.
+ 
+\begin_inset Formula $g(G_{2})>C*$
+\end_inset
+
+, 
+\begin_inset Formula $h(G_{2})=0$
+\end_inset
+
+ - se cumple para todo nodo objetivo) que está en la frontera del árbol
+ de búsqueda:
+\begin_inset Formula 
+\begin{equation}
+f(G_{2})=g(G_{2})+h(G_{2})=g(G_{2})>C^{*}\Rightarrow f(G_{2})>C*
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Considérese el nodo 
+\begin_inset Formula $n$
+\end_inset
+
+ del conjunto frontera del árbol de búsqueda que está en un camino solución
+ óptimo.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dado que n está en el camino solución óptimo, 
+\begin_inset Formula $g(n)=g*(n)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dado que h es 
+\emph on
+admisible
+\emph default
+: 
+\begin_inset Formula $h(n)\leq h*(n)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f(n)=g(n)+h(n)\leq g*(n)+h*(n)=C*\Rightarrow f(n)\leq C*
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+Sumando (5.4.1) + (5.4.2): tenemos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f(n)\leq C*<f(G2)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y se explora n antes que 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ c.q.d.
+\end_layout
+
+\begin_layout Section
+Propiedades de A*.
+\end_layout
+
+\begin_layout Standard
+Si lo comparamos con UCS encontraremos algunas similitudes.
+ UCS comenzará en el nodo raíz y descenderá de un modo un tanto zigzagueante
+ hacia abajo buscando el camino de menor coste.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Por su parte A* profundizará más cerca de los objetivos y buscará más superficia
+lmente lejos de estos.
+ Pero siendo la heurística imperfecta en la cúspide buscará extensivamente.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename A-UCS.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejercicio
+\series default
+: En el grafo adjunto responder a las preguntas:
+\end_layout
+
+\begin_layout Enumerate
+¿Es la heurística admisible?.
+ Respuesta: sí porque 
+\begin_inset Formula $h\leq h*$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+¿Cuál es la solución A*? Respuesta: 
+\begin_inset Formula $S\rightarrow D\rightarrow B\rightarrow E\rightarrow G$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+¿Qué nodos se expandirán en la búsqueda? Respuesta: 
+\begin_inset Formula $S\rightarrow D\rightarrow B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename eheastar.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Aplicaciones de A*.
+\end_layout
+
+\begin_layout Enumerate
+Problemas de encaminamiento/ruteo.
+\end_layout
+
+\begin_layout Enumerate
+Video juegos.
+\end_layout
+
+\begin_layout Enumerate
+Planificación de recursos.
+\end_layout
+
+\begin_layout Enumerate
+Análisis del lenguaje.
+\end_layout
+
+\begin_layout Enumerate
+Traducción-máquina.
+\end_layout
+
+\begin_layout Enumerate
+Reconocimiento de voz....
+\end_layout
+
+\begin_layout Section
+Problemas relajados.
+ Construcción de heurísticas admisibles.
+\end_layout
+
+\begin_layout Standard
+Lo más difícil de algoritmo A* es encontrar las heurísticas admisibles.
+ Con frecuencia estas son soluciones de los llamados 
+\emph on
+problemas relajados
+\emph default
+ en los que son posibles nuevas acciones.
+ A los problemas como el analizado con menos restricciones, se les llama
+ 
+\series bold
+problemas relajados
+\series default
+ y con frecuencia el coste de una solución óptima del problema relajado
+ sirve como heurística para el problema real.
+ La idea es que aumentando las posibilidades de actuar, reducimos la cota
+ inferior de los costes del problema más complejo.
+\end_layout
+
+\begin_layout Standard
+P.e.
+ el ejemplo de Pac-man, usar la distancia Manhattan es equivalente a resolver
+ el problema relajado en que no existen paredes.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Ilustremos este problema usando el conocido 8-puzzle
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Aun cuando los 9 cuadrados pueden colocarse en 9! posiciones diferentes,
+ puede demostrarse desde una ordenación dada solo pueden alcanzarse 9!/2
+ posiciones.
+\end_layout
+
+\end_inset
+
+ donde se trata de llegar desde la posición inicial - vacío en el centro
+ - a la final - vacío en la esquina NE.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 8-puzle.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nuestro problema consiste en encontrar la solución que precise el mínimo
+ número de movimientos (coste = 1).
+\end_layout
+
+\begin_layout Standard
+Necesitamos una heurística, para lo cual se nos ocurren algunas ideas:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Número de cuadrados mal colocados
+\emph default
+.
+ Veamos si cumple las condiciones requeridas para ser una heurística
+\emph on
+ para el estado inicial
+\emph default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+¿Proporciona un número? Sí, un número 
+\begin_inset Formula $\leq8$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+¿Es admisible? Para ello h de ser menor que el número que el número de pasos
+ requerido para llevar el número a su posición.
+ Con un solo movimiento puedo llevar un cuadrado y solo uno a suposición
+ o no hacerlo.
+ Por tanto estando los 8 fuera de sitio en el estado inicial, 8 es menor
+ que los movimientos necesarios.
+\end_layout
+
+\begin_layout Standard
+Por tanto 
+\begin_inset Formula $h(inicio)=8$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se trata de un ejemplo de 
+\emph on
+problema relajado
+\emph default
+ que puede resolverse en 8 pasos.
+ Concretamente el problema relajado consiste en partir de un marco vacío
+ y 8 cuadrados y situarlos en la posición del estado objetivo.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename relax.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sin embargo, es una heurística exageradamente relajada.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Podemos imaginar una versión menos relajada en la que cada cuadrado pueda
+ moverse en cualquier dirección ignorando la existencia del resto de los
+ cuadrados P.e.
+ podríamos llevar el cuadrado 1 a la posición final como si el 2, que la
+ ocupa, no existiera.
+ Preciso un paso a la izquierda - 
+\begin_inset Formula $1\leftarrow$
+\end_inset
+
+- y dos arriba -
+\begin_inset Formula $2\uparrow$
+\end_inset
+
+.
+ Podríamos posiblemente, sumar todas las distancias Manhattan de los cuadros.
+ 
+\begin_inset Formula $h(inicio)=3+1+2+...+2=18$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Pero, ¿cómo estar seguro de que es admisible? Hay dos maneras:
+\end_layout
+
+\begin_layout Itemize
+mostrando el caso de relajación, como se ha hecho o
+\end_layout
+
+\begin_layout Itemize
+por demostración directa.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Si comparamos el resultado de ambas heurísticas observamos el cumplimiento
+ de un principio general:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Quotes fld
+\end_inset
+
+cuanto menos relajado sea el problema que sirve de heurística - más cercano
+ está al coste real -, menos trabajo se necesita para llegar a la solución
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+¿Podemos usar el coste real de llegar al objetivo como heurística? Desde
+ luego que sí y, obviamente, será admisible.
+ Como contrapartida, aun cuando se expandan pocos nodos, en cada uno de
+ ellos será preciso lanzar un trabajo para calcular el coste de alcanzar
+ el objetivo.
+ Esto nos lleva a señalar que en A* existe un compromiso entre 
+\end_layout
+
+\begin_layout Itemize
+la calidad de la estimación;
+\end_layout
+
+\begin_layout Itemize
+la rigidez - o su opuesta, la relajación - de la heurística y
+\end_layout
+
+\begin_layout Itemize
+el trabajo por nodo.
+\end_layout
+
+\begin_layout Standard
+A medida que la heurística se aproxima al coste real 
+\end_layout
+
+\begin_layout Enumerate
+se expanden menos nodos pero
+\end_layout
+
+\begin_layout Enumerate
+cada nodo exige más trabajo para calcular su heurística.
+\end_layout
+
+\begin_layout Section
+Comparación de heurísticas.
+\end_layout
+
+\begin_layout Enumerate
+Factor de ramificación efectivo 
+\begin_inset Formula $(b*$
+\end_inset
+
+): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+N = Número de nodos expandidos por A*.
+ 
+\end_layout
+
+\begin_layout Itemize
+d = Profundidad de la solución
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+b*
+\emph default
+ = factor de ramificación de un árbol uniforme de profundidad d, donde N
+ = # nodos que se necesitan expandir para llegar a la solución óptima.
+ Por la ec.
+ (3.1.1.) tendremos que 
+\begin_inset Formula 
+\[
+b*+b*^{2}+..+b*^{d}=b*\frac{(b*)^{d}-1}{b*-1}={\textstyle N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejemplo: d=5, N=52 .
+ 
+\begin_inset Formula $\rightarrow b*=$
+\end_inset
+
+1.92.
+ Promediar
+\emph on
+ b*
+\emph default
+ para diferentes ejemplos del mismo problema.
+ De manera ideal:
+\begin_inset Formula $b*$
+\end_inset
+
+ 
+\emph on
+lo más cercano posible a 1
+\emph default
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Con frecuencia es posible establecer una relación de dominancia entre heurística
+s.
+ Decimos que la heurística 
+\begin_inset Formula $a$
+\end_inset
+
+ domina a 
+\begin_inset Formula $b$
+\end_inset
+
+ cuando
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula 
+\begin{equation}
+\forall n,\:h_{a}(n)\geq h_{b}(n)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Si usamos búsqueda
+\begin_inset Formula $A*$
+\end_inset
+
+ y 
+\begin_inset Formula $h_{a}$
+\end_inset
+
+domina a 
+\begin_inset Formula $h_{b}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $h_{a}$
+\end_inset
+
+ nunca expande más nodos que
+\begin_inset Formula $h_{b}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Generalmente,
+\begin_inset Formula $b_{a}*\leq$
+\end_inset
+
+ 
+\begin_inset Formula $b_{b}*$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Usar
+\begin_inset Formula $h_{a}$
+\end_inset
+
+ si 
+\begin_inset Formula $h_{a}$
+\end_inset
+
+ domina a 
+\begin_inset Formula $h_{b}$
+\end_inset
+
+ y los costes computacionales de computar ambas heurísticas son comparables.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Hay casos en que (5.8.1) solo se verifica en algunos nodos del árbol pero
+ podemos construir una heurística válida tomando la que tiene mayor valor
+ en cada nodo.Si hay disponibles varias funciones heurísticas admisibles,
+ entonces 
+\begin_inset Formula $max\left\{ h_{1}(n),h_{2}(n),...h_{k}(n)\right\} $
+\end_inset
+
+es admisible.
+\end_layout
+
+\begin_layout Section
+Estados repetidos: búsqueda en grafos.
+\end_layout
+
+\begin_layout Standard
+Hasta este punto hemos ignorado una de las complicaciones más importantes
+ del proceso de búsqueda: la posibilidad de perder tiempo expandiendo estados
+ que ya han sido visitados y expandidos.
+ Para algunos problemas, esta posibilidad o aparece; el espacio de estados
+ es un árbol y hay sólo un camino a cada estado.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Para algunos problemas la repetición es inevitable como en el siguiente
+ ejemplo:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename repite.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es claro que eliminando estados repetidos reduciríamos el árbol de 
+\begin_inset Formula $2^{d}$
+\end_inset
+
+ a 
+\begin_inset Formula $d+1$
+\end_inset
+
+ hojas.
+ La detección de estados repetidos por lo general significa la comparación
+ del nodo a expandir con aquellos que han sido ya expandidos; si se encuentra
+ un emparejamiento, entonces el algoritmo ha descubierto dos caminos al
+ mismo estado y puede desechar uno de ellos.
+\end_layout
+
+\begin_layout Standard
+Si nos fijamos en la Fig.
+ 4.1.1.
+ vemos que los dos subárboles que arrancan en e se repiten aun cuando el
+ nodo e está a diferente profundidad.
+ El árbol más profundo no nos dirá nada que ya no sepamos.
+\end_layout
+
+\begin_layout Standard
+Para la búsqueda
+\emph on
+ DFS
+\emph default
+ , los únicos nodos en memoria son aquellos del camino desde la raíz hasta
+ el nodo actual.
+ La comparación de estos nodos permite al algoritmo descubrir los caminos
+ que forman ciclos y que pueden eliminarse inmediatamente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ciclos.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto, sin embargo, solo sirve para evitar que los ciclos formen árboles
+ de búsqueda infinitos, pero esto no evita problemas como el de la figura
+ 4.4.1.
+ en que se generan caminos exponencialmente.
+ Para evitar estos casos es guardar más nodos en la memoria: 
+\emph on
+los algoritmos que olvidan su historia, están condenados a repetirla.
+ 
+\emph default
+Podemos crear una
+\emph on
+ 
+\series bold
+lista-cerrada
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+A veces se denomina a la frontera:
+\emph on
+ lista-abierta.
+
+\emph default
+ No obstante, es preferible llamarlo 
+\emph on
+conjunto cerrado
+\emph default
+ ya que si se trata como una lista los resultados son peores.
+\end_layout
+
+\end_inset
+
+
+\emph default
+ que contenga los nodos ya expandidos.
+ Si el nodo actual se encuentra en 
+\emph on
+lista-cerrada
+\emph default
+ se elimina en lugar de expandirlo.
+ Así tendremos un nuevo algoritmo denominado 
+\series bold
+B
+\size small
+\emph on
+\noun on
+ÚSQUEDA
+\size default
+\noun default
+-G
+\size small
+RAFOS
+\series default
+\emph default
+ que es mucho más eficaz que 
+\size default
+B
+\size small
+\noun on
+ÚSQUEDA
+\size default
+\noun default
+-ÁRBOLES.
+\end_layout
+
+\begin_layout Standard
+La idea del algoritmo es fácil: 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+no expandir nunca dos veces el mismo estado
+\begin_inset Quotes frd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+¿Es este algoritmo completo? ¿Es posible que perdamos la solución por no
+ expandir ciertos nodos en el árbol? Esto no puede suceder porque no expandimos
+ lo que ya se expandió en otro nodo.
+\end_layout
+
+\begin_layout Standard
+Si examinamos la optimalidad de este algoritmo, es difícil de dilucidar.
+ Cuando el algoritmo desecha un camino, siempre desecha el recién descubierto
+ que puede ser el de menor coste.
+ Sin embargo, puede demostrarse que esto no puede suceder cuando se utiliza
+ 
+\emph on
+la UCS o la BFS con costes constantes
+\emph default
+ que no solo 
+\emph on
+son estrategias óptimas en árboles,
+\emph default
+ sino 
+\emph on
+también en grafos
+\emph default
+.
+ La búsqueda con profundidad iterativa, por otra parte, utiliza la expansión
+ primero en profundidad y fácilmente puede seguir un camino subóptimo, lo
+ que exige comprobaciones adicionales.
+\end_layout
+
+\begin_layout Standard
+En la figura se muestra el algoritmo general de búsqueda en grafos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename busgraph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Consistencia.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+El gráfico muestra un caso en que la búsqueda en grafos no funciona a pesar
+ de ser la heurística admisible.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename inopor.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto nos indica que para grafos precisamos algo más que la admisibilidad:
+ la 
+\series bold
+consistencia
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Recordemos que la admisibilidad consistía en que 
+\emph on
+el coste estimado no superase el coste real al objetivo más próximo.
+ 
+\series bold
+La consistencia,
+\series default
+\emph default
+ por su parte, requiere que la heurística sea menor o igual que el coste
+ real pero 
+\emph on
+para cada arco
+\emph default
+, no para el camino hasta el objetivo.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Pero la heurística, hasta aquí, no costea arcos, sino caminos.
+ Tomaremos el 
+\emph on
+coste heurístico
+\emph default
+ del arco 
+\begin_inset Formula $A,C$
+\end_inset
+
+ como la diferencia 
+\begin_inset Formula 
+\begin{equation}
+coste(A,C)=h(A)-h(C)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+mientras que 
+\begin_inset Formula $c(A,C)$
+\end_inset
+
+ es el coste real.
+ La condición de 
+\emph on
+consistencia
+\emph default
+ es, por tanto
+\begin_inset Formula 
+\begin{equation}
+coste(A,C)=\mathbf{h(A)-h(C)}\mathbf{\leq c(A,C)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename consis.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Podemos ver que en la Fig.5.9.1.
+ la heurística es inconsistente ya que 
+\begin_inset Formula $h(A)=4$
+\end_inset
+
+ , 
+\begin_inset Formula $h(C)=1\Rightarrow\mathbf{h(A)-h(C)}=3\mathbf{>c(A,C)}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Consecuencias de la consistencia.
+\end_layout
+
+\begin_layout Itemize
+El valor de 
+\begin_inset Formula $f(n)=g(n)+h(n)$
+\end_inset
+
+ a lo largo de un camino 
+\emph on
+no decrece nunca 
+\emph default
+(
+\begin_inset Formula $f(n)$
+\end_inset
+
+ es monótona no decreciente).
+ En efecto de 5.9.2.
+ para un nodo 
+\begin_inset Formula $n$
+\end_inset
+
+ y cualquier sucesor del mismo 
+\begin_inset Formula $n_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+se verifica:
+\begin_inset Formula 
+\begin{equation}
+\left.\begin{array}{c}
+h(n)\leq h(n_{i})+c(n,n_{i})\\
+g(n)\geq g(n_{i})
+\end{array}\right\} \Rightarrow\mathbf{f(n)\geq f(n_{i})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Si una heurística es consistente, es admisible.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Sea 
+\begin_inset Formula $h*(n)$
+\end_inset
+
+ el coste del camino más barato hasta el objetivo.
+ Demostremos por inducción que 
+\begin_inset Formula $h(n)\leq h*(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Caso base: si hay 0 pasos desde n, n es el objetivo y 
+\begin_inset Formula $h(n)=0\leq h*(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sea que 
+\begin_inset Formula $n$
+\end_inset
+
+ está a
+\begin_inset Formula $m+1$
+\end_inset
+
+ pasos del objetivo, por tanto 
+\begin_inset Formula $h(n_{m+1})\leq h(n_{m})+c(n_{m+1},m_{m})\leq h*(n_{m})+c(n_{m+1},m_{m})\leq h*(n_{m+1})$
+\end_inset
+
+ c.q.d.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+La
+\emph on
+ monotonicidad de
+\begin_inset Formula $f(n)$
+\end_inset
+
+ garantiza la optimalidad de A*
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+Esbozaremos su demostración seguidamente.
+\end_layout
+
+\begin_layout Itemize
+Sea que 
+\begin_inset Formula $O$
+\end_inset
+
+ es una solución óptima cuyo coste del camino es 
+\begin_inset Formula $f*(O)=g(O)$
+\end_inset
+
+ y 
+\begin_inset Formula $h(O)=0.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sea 
+\begin_inset Formula $SO$
+\end_inset
+
+ un estado objetivo subóptimo, esto es tal que 
+\begin_inset Formula $g(SO)>f*(O)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A* termina su búsqueda con 
+\begin_inset Formula $SO$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $n$
+\end_inset
+
+ un nodo hoja en el camino óptimo a 
+\begin_inset Formula $O$
+\end_inset
+
+, entonces se verifica que 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f*\geq f(n)$
+\end_inset
+
+ por la admisibilidad de 
+\begin_inset Formula $h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f(n)\geq f(SO)$
+\end_inset
+
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ no fue elegido para expansión.
+\end_layout
+
+\begin_layout Itemize
+Por tanto 
+\begin_inset Formula $f*\geq f(n)\geq f(SO)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Pero 
+\begin_inset Formula $f(SO)=g(SO)$
+\end_inset
+
+ para ser óptimo 
+\begin_inset Formula $h(SO)=0$
+\end_inset
+
+ y se cumpliría 
+\begin_inset Formula $f*\geq g(SO)$
+\end_inset
+
+ lo que es 
+\emph on
+contradictorio con el carácter óptimo de la solución 
+\emph default
+
+\begin_inset Formula $O$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El carácter monótono de 
+\begin_inset Formula $f(n)$
+\end_inset
+
+ significa que el primer nodo objetivo expandido debe ser el correspondiente
+ a la solución óptima.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename newdem.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Si h es una heurística monótona, la exploración se realiza en curvas de
+ nivel con valores crecientes de f
+\begin_inset Formula $(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+En una búsqueda de coste uniforme [
+\begin_inset Formula $h(n)=0$
+\end_inset
+
+], las curvas de nivel son “concéntricas” alrededor del estado de partida.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+En heurísticas mejores estas curvas forman bandas que se extienden hacia
+ el estado objetivo
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename conce.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Resumen de la búsqueda A*.
+\end_layout
+
+\begin_layout Paragraph
+Optimalidad.
+\end_layout
+
+\begin_layout Enumerate
+La
+\emph on
+ busqueda en árbol es óptima 
+\emph default
+si la heurística es 
+\emph on
+admisible 
+\emph default
+(UCS es caso particular con 
+\emph on
+h=0
+\emph default
+).
+\end_layout
+
+\begin_layout Enumerate
+La 
+\emph on
+búsqueda en grafo es óptima
+\emph default
+ si la heurística es 
+\emph on
+consistente 
+\emph default
+(UCS es caso particular con 
+\emph on
+h=0
+\emph default
+).
+\end_layout
+
+\begin_layout Enumerate
+La consistencia 
+\emph on
+implica
+\emph default
+ admisibilidad.
+\end_layout
+
+\begin_layout Enumerate
+En general las heurísticas 
+\begin_inset Quotes fld
+\end_inset
+
+naturales
+\begin_inset Quotes frd
+\end_inset
+
+ admisible procedentes de la relajación de problemas tienden a ser consistentes.
+\end_layout
+
+\begin_layout Section*
+Ejercicios.
+\end_layout
+
+\begin_layout Standard
+1.
+ En el grafo siguiente responder a las preguntas:
+\end_layout
+
+\begin_layout Itemize
+¿Es la heurística consistente?
+\end_layout
+
+\begin_layout Itemize
+¿Qué solución devuelve A*?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ejecon.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

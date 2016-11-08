@@ -1,0 +1,8253 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\setcounter{chapter}{0}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\fontsize{16pt}{18pt}\selectfont\mdseries}
+  {\MakeUppercase{\chaptertitlename}\ \thechapter}{18pt}{\MakeUppercase}
+\titleformat{\section}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\itshape}{\thesubsection}{1em}{}
+\titlespacing*{\section} {0pt}{0pt}{2.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{0pt}{1.5ex plus .2ex}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Representación.
+ Lógica de primer orden.
+\end_layout
+
+\begin_layout Section
+Lógica de primer orden.
+\end_layout
+
+\begin_layout Standard
+La lógica proposicional tiene limitaciones tales como:
+\end_layout
+
+\begin_layout Enumerate
+no puede hacer frente a la incertidumbre;
+\end_layout
+
+\begin_layout Enumerate
+solo podemos hablar de sucesos que son verdad o falsos en el mundo, pero
+ no podemos hablar de objetos dotados de propiedades (tamaño, peso, color..)
+ ni de las relaciones entre ellos;
+\end_layout
+
+\begin_layout Enumerate
+no hay atajos para hablar sucintamente de muchas cosas que suceden.
+ P.e.
+ si estamos en un mudo con mil ubicaciones y queremos expresar que las mil
+ ubicaciones están libres de suciedad necesitaríamos una conjunción (
+\begin_inset Formula $\land$
+\end_inset
+
+) de mil proposiciones.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+En lógica proposicional podemos decir en la figura que B_SOBRE_C y D_SOBRE_C
+ pero estas proposiciones 
+\emph on
+no tienen nada en común
+\emph default
+ y podría haberlas llamado 
+\begin_inset Formula $P$
+\end_inset
+
+ y 
+\begin_inset Formula $Q$
+\end_inset
+
+ respectivamente.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:2"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename LP_LPO.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sin embargo si tuviésemos un lenguaje para referirnos a 
+\series bold
+\emph on
+objetos
+\emph default
+ 
+\series default
+en el mundo (bloques, A-E, suelo) y a proposiciones 
+\emph on
+sobre el mundo, 
+\emph default
+esto es, un lenguaje que tenga 
+\series bold
+\emph on
+nombres 
+\series default
+\emph default
+tanto para los objetos como para las proposiciones sobre ellos, podríamos
+ tener que proposiciones
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Los símbolos 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ y 
+\begin_inset Formula $\supset$
+\end_inset
+
+ representan ambos a la 
+\series bold
+\emph on
+implicación
+\series default
+\emph default
+.
+\end_layout
+
+\end_inset
+
+ tales como:
+\begin_inset Formula 
+\[
+B\textrm{\_SOBRE\_}C\supset\lnot\textrm{LIBRE\_}C\textrm{ que significa que el bloque C no tiene nada encima.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pero en LP, se requerirían varias proposiciones para otros bloques como
+ 
+\begin_inset Formula $D\textrm{\_SOBRE\_}E\supset\lnot\textrm{LIBRE\_}E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pero podrían expresarse de un modo más simple si dijéramos que 
+\begin_inset Formula 
+\[
+\mathbf{Sobre}(\mathbf{x},\mathbf{y})\Rightarrow\mathbf{\lnot Libre}(\mathbf{y})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ e 
+\begin_inset Formula $\mathbf{y}$
+\end_inset
+
+ son 
+\emph on
+variables
+\emph default
+ que pueden sustituirse con el símbolo de 
+\emph on
+cualquier bloque, 
+\emph default
+cosa que en LP no puede hacerse.
+\end_layout
+
+\begin_layout Standard
+A modo de ejemplo, supongamos que son ciertos los enunciados: “
+\emph on
+Todo perro es mortal
+\emph default
+” y “
+\emph on
+Rin-Tin-Tin es un perro
+\emph default
+”.
+ De estas dos suposiciones, se deduce que “
+\emph on
+Rin-Tin-Tin es mortal
+\emph default
+”.
+ Ahora bien, no podemos deducir la mortalidad de 
+\emph on
+Rin-Tin-Tin
+\emph default
+ usando tan solo lo expuesto en Lógica Proposicional, ya que con ello es
+ como si llevásemos unas gafas con una graduación que no nos permite desmenuzar
+ los enunciados de forma que podamos aplicar otro tipo de reglas de deducción.
+ Según lo visto hasta el momento, “
+\emph on
+Todo perro es mortal
+\emph default
+” es una proposición atómica, que podemos denotar por 
+\begin_inset Formula $\mathbf{p}$
+\end_inset
+
+; “
+\emph on
+Rin-Tin-Tin es un perro
+\emph default
+” es otra proposicion atómica que podemos denotar por 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+; y por ultimo “
+\emph on
+Rin-Tin-Tin es mortal
+\emph default
+” es otra proposición atómica que vamos a denotar por 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ Está claro que según lo visto hasta ahora, 
+\emph on
+
+\begin_inset Formula $r$
+\end_inset
+
+ no es consecuencia lógica de 
+\begin_inset Formula $p$
+\end_inset
+
+, 
+\begin_inset Formula $q$
+\end_inset
+
+
+\emph default
+, es decir 
+\begin_inset Formula $p\land q\nvDash r$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+El enunciado “Todo perro es mortal”, lo podemos reescribir de la forma “
+\emph on
+Para toda cosa, si esa cosa es perro entonces es mortal
+\emph default
+”.
+ De este modo se parece algo más a los enunciados matemáticos y deja entrever
+ que necesitamos un lenguaje en el que debe de haber cuantificadores (el
+ “
+\emph on
+para todo
+\emph default
+” del ejemplo), variables (la “cosa” del ejemplo), constantes (“Rin-Tin-Tin”
+ en el ejemplo), predicados (como el de “ser perro” en el ejemplo), y las
+ conectivas de la lógica proposicional.
+ Además, aunque en este ejemplo no aparezcan, también necesitaremos síımbolos
+ de función, que nos permiten designar objetos de forma indirecta en nuestros
+ enunciados, por ejemplo “
+\emph on
+el padre de Manolo es geólogo
+\emph default
+”.
+\end_layout
+
+\begin_layout Standard
+Para vencer estas limitaciones de la lógica de predicados, surge la 
+\series bold
+lógica de primer orden
+\series default
+ (
+\emph on
+LPO
+\emph default
+) que añade 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+relaciones
+\emph default
+, 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+variables
+\emph default
+ y 
+\end_layout
+
+\begin_layout Itemize
+c
+\emph on
+uantificadores
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+La LOP extiende la lógica proposicional para permitir el razonamiento sobre
+ sobre los miembros (números p.e.) de un universo no vacío.
+ La LOP tiene variables que toman valores sobre los 
+\emph on
+individuos
+\emph default
+ pero no sobre funciones o predicados como hacen lógicas de orden superior.
+\end_layout
+
+\begin_layout Standard
+La LOP que expondremos se construye alrededor de 
+\emph on
+objetos
+\emph default
+ y 
+\emph on
+relaciones 
+\emph default
+y nos permite superar las ambigüedades de los lenguajes naturales
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+P.e.
+ la palabra '
+\emph on
+bote
+\emph default
+' puede designar una barca, un salto o un recipiente.
+ Para dilucidar su significado precisaríamos conocer el 
+\emph on
+contexto
+\emph default
+ en que se está usando.
+\end_layout
+
+\end_inset
+
+ (inglés, español,..) utilizando esta semántica declarativa y composicional
+ que, al contrario que el lenguaje natural, es
+\emph on
+ independiente del contexto
+\emph default
+ y 
+\emph on
+no ambigua
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Ejemplos:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Todos los elefantes son grises: 
+\begin_inset Formula $\forall x\;(elephant(x)\Rightarrow gris(x))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Hay un lagarto blanco: 
+\begin_inset Formula $\exists y\:(lagarto(y)\land blanco(y))$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Cómo representaremos las siguientes sentencias de modo que la tercera se
+ derive de las dos primeras?:
+\end_layout
+
+\begin_layout Itemize
+Todos los perros son mortales.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Rin-Tin-Tin
+\emph default
+es un perro.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Rin-Tin-Tin
+\emph default
+ es mortal.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="1">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\forall x\;(perrro(x)\Rightarrow mortal(x))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $perrro(Rin-Tin-Tin)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $perro(Rin-Tin-Tin)\Rightarrow mortal(Rin-Tin-Tin)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Este tipo de lógica también denominada 
+\series bold
+\emph on
+Cálculo de Predicados
+\series default
+\emph default
+ pude ponerse en relación con la lógica proposicional y con la teoría de
+ la probabilidad.
+\end_layout
+
+\begin_layout Standard
+Hablaremos respecto a lo que ellas dicen sobre el 
+\series bold
+mundo
+\series default
+ (compromiso 
+\emph on
+ontológico
+\emph default
+) y los tipos de 
+\series bold
+creencias
+\series default
+ que se pueden tener sobre el mundo (compromiso 
+\emph on
+epistemológico
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mundo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Creencias
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lógica de primer orden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Relaciones, objetos y funciones
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V/F/?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lógica proposicional
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hechos
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V/F/?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Teoría de la probabilidad
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hechos
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[0,1]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La LP supone que en el mundo solo hay hechos que se verifican (V) o no (F).
+ La LPO, por su parte, amplía su consideración del mundo: el mundo consiste
+ de 
+\emph on
+objetos 
+\emph default
+con ciertas
+\emph on
+ relaciones
+\emph default
+ entre ellos que se verifican o no.
+ Hay otras 
+\emph on
+lógicas especiales
+\emph default
+ que hacen otras suposiciones como la 
+\emph on
+lógica temporal
+\emph default
+ que supone que los hechos se verifican en ciertos tiempos (instantes o
+ intervalos) están ordenados.
+ 
+\end_layout
+
+\begin_layout Standard
+La lógica de primer orden incluye relaciones objetos y funciones y es una
+ extensión de la lógica proposicional.
+ Por su parte la probabilidad contempla los hechos y proporciona números
+ entre 0 y 1.
+\end_layout
+
+\begin_layout Standard
+Otra manera de considerar la representación es descomponer el mundo en represent
+aciones que son 
+\series bold
+\emph on
+atómicas
+\series default
+\emph default
+ esto es que la representación de un estado es un estado individual, sin
+ ningún componente o parte en su interior.
+ Esto es lo que hemos usado en los problemas de búsqueda: tenemos un estado
+ 
+\series bold
+\emph on
+A
+\series default
+\emph default
+ del que pasamos a otro 
+\series bold
+\emph on
+B
+\series default
+\emph default
+ y lo único que podemos decir sobre ellos es:
+\end_layout
+
+\begin_layout Enumerate
+si son idénticos o
+\end_layout
+
+\begin_layout Enumerate
+son un estado objetivo.
+\end_layout
+
+\begin_layout Standard
+pero no hay ninguna estructura interna en estos estados.
+\end_layout
+
+\begin_layout Standard
+Sin embargo, en lógica proposicional y en probabilidad, descomponemos el
+ mundo en una serie de hechos que son ciertos o falsos y a esto lo llamaremos
+ una 
+\emph on
+representación factorizada.
+ 
+\emph default
+Es decir, un estado individual del mundo está 
+\series bold
+\emph on
+factorizado
+\series default
+\emph default
+ entre varias variables (E , B, A, M y J p.e.) y estas pueden ser 
+\emph on
+variables booleanas 
+\emph default
+o, en otras representaciones distintas de la lógica proposicional, otro
+ tipo de variables.
+\end_layout
+
+\begin_layout Standard
+Otro tipo de representación más complejo es el 
+\series bold
+\emph on
+estructurado
+\series default
+.
+ 
+\emph default
+En la 
+\emph on
+representación estructurada
+\emph default
+ un estado del mundo no es solo un conjunto de valores para unas variables,
+ sino que incluye también relaciones entre objetos, una estructura ramificada
+ y complejas relaciones y representaciones entre un objeto y otro y esto
+ es lo que vemos en los 
+\emph on
+lenguajes de programación
+\emph default
+ tradicionales, es lo que vemos en las 
+\emph on
+bases de datos
+\emph default
+ estructuradas y en los lenguajes estructurados sobre dichas bases de datos.
+ Esta representación es más potente y es la que tenemos en la 
+\emph on
+lógica de primer orden
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Ahora tenemos 
+\emph on
+nombres para los objetos
+\emph default
+ en el mundo sobre los que queremos hacer afirmaciones y 
+\emph on
+nombres para las proposiciones
+\emph default
+ que queremos hacer sobre el mundo.
+\end_layout
+
+\begin_layout Subsection
+Componentes y sintaxis de la Lógica de Primer Orden.
+\end_layout
+
+\begin_layout Standard
+La Lógica de Primer Orden modela el mundo mediante los siguientes componentes
+ representados por
+\series bold
+ símbolos
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La LPO emplea en su Sintaxis
+\emph on
+ constantes 
+\emph default
+de objetos, funciones y relaciones.
+ En su aplicación a un 
+\emph on
+modelo 
+\emph default
+las constantes representan entidades concretas de ese modelo.
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Objetos
+\series default
+ cosas con identidad propia (estudiantes, coches,...) con 
+\series bold
+propiedades
+\series default
+ que diferencian a unos de otros (hombre, mujer, blanco, negro...).
+ Ej: 
+\emph on
+Juan
+\emph default
+, 
+\emph on
+BancoDeEspaña...
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Relaciones
+\series default
+ (predicados) que existen entre grupos de objetos
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+El superíndice indica la aridad.
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Formula $MayorQue^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $TieneColor^{2}$
+\end_inset
+
+,...).
+ En Prolog son
+\series bold
+\emph on
+ functores
+\series default
+\emph default
+.
+ Su valor es 
+\emph on
+V
+\emph default
+ o 
+\emph on
+F
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Funciones 
+\series default
+subconjunto de relaciones que dan un solo valor para una sola entrada (
+\begin_inset Formula $padreDe^{1}$
+\end_inset
+
+, 
+\begin_inset Formula $distanciaEntre^{2}$
+\end_inset
+
+,...).
+ Mapean una n-tupla de constantes de objetos en constantes de objetos.
+ Podemos considerar que las constantes de objeto son 
+\emph on
+funciones nularias
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Conectores
+\series default
+: los mismos que en LP 
+\begin_inset Formula $\land,\vee,\lnot,\Rightarrow,\Longleftrightarrow,().$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+igualdad
+\series default
+:
+\begin_inset Formula $=$
+\end_inset
+
+.
+ P.e 
+\emph on
+
+\begin_inset Formula $padreDe^{1}(Pepe)=Juan$
+\end_inset
+
+.
+
+\emph default
+ Representa la relación de igualdad cuando los dos términos se refieren
+ al mismo objeto.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Cuantificadores
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Universal 
+\begin_inset Formula $\forall$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Existencial 
+\begin_inset Formula $\exists$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Cada 
+\emph on
+función
+\emph default
+ o 
+\emph on
+relación
+\emph default
+ de la LPO tiene una 
+\emph on
+aridad 
+\emph default
+o número de argumentos que puede combinar, Si es un solo argumenta se denomina
+ 
+\emph on
+unaridad
+\emph default
+.
+ Con frecuencia se indica la aridad de un predicado con un subíndice.
+ P.e.
+ la relación 
+\emph on
+
+\begin_inset Formula $hijoDe^{2}$
+\end_inset
+
+ 
+\emph default
+es
+\emph on
+ binaria.
+\end_layout
+
+\begin_layout Standard
+Como en la lógica proposicional tenemos 
+\series bold
+sentencias 
+\series default
+que describen hechos en el mundo que son verdad o falsos.
+ Las sentencias pueden usar cuantificadores existenciales y los operadores
+ de la lógica proposicional 
+\begin_inset Formula $\land,\vee,\lnot,\Rightarrow,\Leftrightarrow,()$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Término, átomo, literal, fbf.
+\end_layout
+
+\begin_layout Itemize
+Un 
+\series bold
+término 
+\series default
+es 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+una constante de 
+\series bold
+objeto:
+\series default
+ 
+\begin_inset Formula $Juan$
+\end_inset
+
+, 
+\begin_inset Formula $T$
+\end_inset
+
+,...
+\end_layout
+
+\begin_layout Itemize
+una constante de 
+\series bold
+función
+\series default
+ seguida de n términos separados por comas entre paréntesis.
+ 
+\begin_inset Formula $padreDe(Lucas)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Un término 
+\series bold
+base
+\series default
+ es el que no contiene variables.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Un 
+\series bold
+átomo
+\series default
+ -toma valores de verdad -es
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+una 
+\series bold
+fórmula atómica: 
+\series default
+constante de 
+\series bold
+relación
+\series default
+ de aridad n - con n términos- : 
+\begin_inset Formula $MayorQue(Juan,Pedro).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+una 
+\series bold
+constante de relación 
+\series default
+de aridad 0
+\series bold
+ 
+\series default
+(
+\emph on
+nularia
+\emph default
+).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Un 
+\series bold
+literal 
+\series default
+es
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+literal 
+\series bold
+positivo
+\series default
+: un átomo.
+\end_layout
+
+\begin_layout Itemize
+literal 
+\series bold
+negativo
+\series default
+: la negación de un átomo.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Semántica.
+\end_layout
+
+\begin_layout Subsubsection
+Mundos.
+\end_layout
+
+\begin_layout Standard
+Hemos definido un lenguaje que puede usarse para referirse tanto a 
+\emph on
+objetos
+\emph default
+ del mundo como a 
+\emph on
+proposiciones
+\emph default
+.
+ Ahora podemos hablar de:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Objetos o individuos
+\emph default
+ presentes en el mundo.
+ Puede tratarse de individuos concretos (Yo, la Gran Vía, Velázquez,...) o
+ entidades abstractas (
+\begin_inset Formula $\pi$
+\end_inset
+
+) o inventadas (
+\emph on
+Papá Noel
+\emph default
+).
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Funciones sobre los individuos.
+
+\emph default
+ Pueden ser de todas las aridades y mapean una n-tupla de individuos en
+ individuos.
+ Como la siguiente función que mapea a una persona sobre su padre: 
+\emph on
+
+\begin_inset Formula $término_{2}=$
+\end_inset
+
+
+\emph default
+
+\begin_inset Formula $padreDE$
+\end_inset
+
+
+\series bold
+(
+\series default
+
+\begin_inset Formula $término_{1}\mathbf{)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Relaciones entre individuos 
+\emph default
+de cualquier aridad.
+ Un individuo puede participar en cualquier número de relaciones.
+ 
+\emph on
+:
+\begin_inset Formula $másAlto(Juan,Lucas)$
+\end_inset
+
+
+\emph default
+.
+ Cuando la aridad es 1, se llama 
+\emph on
+propiedad 
+\emph default
+o característica
+\emph on
+ 
+\emph default
+como p.e.
+ ser de color blanco (
+\begin_inset Formula $EsBlanco^{1}(Taza)\left\{ \begin{array}{c}
+1\:\textrm{si es blanco}\;\:\;\\
+0\:\textrm{en caso contrario}
+\end{array}\right.$
+\end_inset
+
+ que también podría expresarse como 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $TieneColor^{2}(Taza,Blanco)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+)..
+\end_layout
+
+\begin_layout Subsubsection
+Interpretaciones.
+\end_layout
+
+\begin_layout Standard
+En cálculo de predicados, una 
+\emph on
+interpretación
+\emph default
+ es una asignación que mapea 
+\series bold
+\emph on
+símbolos
+\series default
+\emph default
+ 
+\emph on
+de objetos
+\emph default
+ sobre 
+\emph on
+objetos
+\emph default
+ 
+\emph on
+del mundo,
+\emph default
+ real 
+\emph on
+símbolos
+\emph default
+ 
+\emph on
+de funciones
+\emph default
+ n-arias sobre
+\emph on
+ funciones
+\emph default
+ n-arias y 
+\emph on
+símbolos
+\emph default
+ de 
+\emph on
+relaciones 
+\emph default
+n-arias sobre
+\emph on
+ relaciones
+\emph default
+ n-arias.
+ Estas asignaciones se denominan 
+\series bold
+\emph on
+denotaciones
+\series default
+\emph default
+ de las expresiones correspondientes en LPO.El conjunto de objetos al que
+ se mapean los símbolos se denomina 
+\series bold
+\emph on
+dominio
+\series default
+\emph default
+ 
+\emph on
+de la interpretación
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Dada una interpretación un 
+\series bold
+término
+\series default
+ será 
+\emph on
+V
+\emph default
+ o 
+\emph on
+F
+\emph default
+ según sea o no cierta la relación que este denota.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Si p.e.
+ consideramos el caso de la figura en que existen las entidades 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $B$
+\end_inset
+
+, 
+\begin_inset Formula $C$
+\end_inset
+
+ (bloques) y 
+\begin_inset Formula $Suelo$
+\end_inset
+
+ crearemos una asignación que mapea elementos del cálculo de predicados
+ sobre estos objetos del mundo.
+ Lo primero será considerar que los objetos reales de este mundo son entes
+ matemáticos, ya que un bloque real no puede ser argumento de una función.
+ También imaginamos relaciones entre objetos tales como 
+\begin_inset Formula $Sobre$
+\end_inset
+
+ y 
+\begin_inset Formula $Libre$
+\end_inset
+
+ que pueden definirse por las n-tuplas de objetos que intervienen en ellas.
+ P.e la relación 
+\emph on
+sobre 
+\emph default
+se da sobre los pares 
+\begin_inset Formula $<A,B>,<B,C>$
+\end_inset
+
+ y 
+\begin_inset Formula $<C,Suelo>$
+\end_inset
+
+, mientras que
+\begin_inset Formula $Libre(A)$
+\end_inset
+
+ es unaria.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename bloques.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para describir este mundo en el cálculo de predicados uso los símbolos de
+ constantes 
+\begin_inset Formula $A,B,C$
+\end_inset
+
+ y 
+\begin_inset Formula $Fl,$
+\end_inset
+
+ el símbolo 
+\begin_inset Formula $Sobre$
+\end_inset
+
+ de relación binaria y el símbolo de relación unaria 
+\begin_inset Formula $Libre$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cálculo de Predicados
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mundo
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+B
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+C
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Suelo
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+On
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Sobre={<A,B>,<B,C>,<C.Suelo>}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Libre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Libre={<A>}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Utilizando estas asignaciones podemos determinar el valor de algunas
+\emph on
+ fbfs
+\emph default
+ del cálculo de predicados:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+Sobre(A,B)=V\\
+\begin{array}{c}
+Sobre(C,B)=F\\
+\lnot Sobre(C,B)\land Sobre(A,B)=V
+\end{array}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Modelos y nociones relacionadas.
+\end_layout
+
+\begin_layout Standard
+La LPO tiene muchos puntos en común con la LP p.e.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Satisfacibilidad
+\series default
+: una interpretación 
+\emph on
+satisface
+\emph default
+ una
+\emph on
+ fbf 
+\emph default
+si esta toma el valor Verdadero bajo tal interpretación.
+\end_layout
+
+\begin_layout Itemize
+Una interpretación que satisface una fbf es un 
+\series bold
+modelo 
+\series default
+de tal 
+\emph on
+fbf
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Validez
+\series default
+: toda 
+\emph on
+fbf 
+\emph default
+que es Verdadera para todas las interpretaciones es
+\emph on
+ válida
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Toda
+\emph on
+ fbf
+\emph default
+ que no tiene un modelo es 
+\series bold
+inconsistente
+\series default
+ o
+\emph on
+ insatisfacible
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Si una 
+\emph on
+fbf 
+\emph default
+
+\begin_inset Formula $\omega$
+\end_inset
+
+ toma el valor verdadero para todas las interpretaciones que hacen que todas
+ las 
+\emph on
+fbfs
+\emph default
+ de 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ tomen valor 
+\emph on
+Verdadero
+\emph default
+, entonces 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es 
+\series bold
+consecuencia lógica
+\series default
+ de 
+\begin_inset Formula $\triangle$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\triangle\models\omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dos
+\emph on
+ fbfs
+\emph default
+ son 
+\series bold
+equivalentes 
+\series default
+si y solo si sus valores de verdad son iguales bajo todas las interpretaciones
+ (si y solo si cada una de las 
+\emph on
+fbfs
+\emph default
+ es consecuencia lógica la una de la otra).
+\end_layout
+
+\begin_layout Standard
+Los conceptos de
+\series bold
+ validez
+\series default
+, 
+\series bold
+satisfacibilidad
+\series default
+ , 
+\series bold
+equivalencia
+\series default
+ y 
+\series bold
+consecuencia lógica 
+\series default
+son los mismos que en LP.
+\end_layout
+
+\begin_layout Subsubsection
+Conocimiento.
+\end_layout
+
+\begin_layout Standard
+También aquí puede usarse las fórmulas de la LPO para representar el conocimient
+o que un agente tiene del mundo.
+ Un conjunto 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ con tales fórmulas se llama 
+\emph on
+base de conocimiento
+\emph default
+ del agente.
+ Si la fórmula 
+\begin_inset Formula $\omega$
+\end_inset
+
+ está incluida en 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ , diremos que el agente - mejor dicho 
+\emph on
+cree
+\emph default
+- conoce 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Por ejemplo, una KB de un mundo de bloques podría constar de las siguientes
+ fórmulas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+(1)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+(2)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+(3)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Sobre(C,Fl)$
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow Libre(B)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+NO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Libre(B)\land Libre(C)\Rightarrow Sobre(A,Fl)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+c)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Libre(B)\lor Libre(A)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+d)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Libre(B)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+NO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+e)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Libre(C)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SI
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si comparamos con las situaciones de la figura, es claro que solo los mundos
+ (2) y (3) son acordes con la KB ya que (1) no satisface las fórmulas a)
+ ni d) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:5"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename mundos.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Funcionamiento de la lógica de primer orden.
+\end_layout
+
+\begin_layout Standard
+¿Cómo funciona la lógica de primer orden?
+\end_layout
+
+\begin_layout Standard
+Al igual que en la proposicional, comenzamos con un modelo.
+ En proposicional, un modelo era un valor para cada símbolo proposicional:
+ 
+\begin_inset Formula $\left\{ \mathbf{p}:\;V,\;\mathbf{q}:\;F\right\} $
+\end_inset
+
+ y esto constituiría un modelo de lo que ocurre en un mundo posible.
+\end_layout
+
+\begin_layout Standard
+En lógica de primer orden, los modelos son más complejos.
+\end_layout
+
+\begin_layout Standard
+Como en la lógica proposicional tenemos conectores y variables, pero además
+ aparecen otros elementos.
+\end_layout
+
+\begin_layout Standard
+Comenzamos con un 
+\emph on
+conjunto de 
+\series bold
+objetos
+\series default
+\emph default
+ y un 
+\emph on
+conjunto de 
+\series bold
+constantes
+\series default
+\emph default
+ que se refieren dichos objetos pero puede haber dos constantes que se refieran
+ al mismo objeto como p.e.
+ 
+\emph on
+C y Ce
+\emph default
+ y puede haber objetos sin ningún nombre.
+\end_layout
+
+\begin_layout Standard
+Además, tenemos un 
+\emph on
+conjunto de 
+\series bold
+funciones
+\series default
+ 
+\emph default
+que mapean unos objetos a otros.
+ P.e.
+ puedo definir la función 
+\begin_inset Formula $NumberOf$
+\end_inset
+
+ que mapea un cuadrado en el número que este contiene, es decir 
+\begin_inset Formula 
+\[
+NumberOf:\:\{A\rightarrow1,B\rightarrow3,D\rightarrow2,C\rightarrow3\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+También pueden existir 
+\series bold
+\emph on
+relaciones
+\series default
+\emph default
+ como por ejemplo 
+\begin_inset Formula $Encima$
+\end_inset
+
+ que sería la siguiente relación binaria entre dos objetos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Encima:\:\{[A,B],[C,D]\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Otra posible relación unaria sería el conjunto de 1-tuplas que contienen
+ la letra A: 
+\begin_inset Formula 
+\[
+Vocal:\:\{[A]\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Incluso puede haber relaciones sobre ningún objeto como p.e.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Llueve:\:\{\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+que se refiere al estado del tiempo actual y está vacío si no está lloviendo
+ o se puede representar por un 
+\emph on
+singleton 
+\emph default
+-un solo objeto - si llueve
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Llueve:\:\{[]\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y siendo la 
+\emph on
+aridad
+\emph default
+ - el número de argumentos -de 
+\begin_inset Formula $Llueve$
+\end_inset
+
+ 0 habrá cero elementos en la tupla.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+Por tanto, un modelo en lógica de primer orden se compone de los elementos
+ indicados que se muestran en la figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename log_prima.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Cuantificadores.
+\end_layout
+
+\begin_layout Standard
+Supongamos que deseamos expresar que cada objeto de un dominio tiene una
+ cierta propiedad o participa en un tipo de relación, como p.e.
+ en la figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:5"
+
+\end_inset
+
+) en que todos los bloques están libres en su cara superior.
+ En un dominio finito podríamos declarar esto mediante la 
+\emph on
+fbf
+\emph default
+: 
+\begin_inset Formula 
+\[
+Libre(A)\land Libre(B)\land Libre(C)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+pero estas largas expresiones son molestas y si el número de bloques fuera
+ infinito, no podríamos escribirla lo que nos conduce a los 
+\series bold
+cuantificadores y variables.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Variables
+\series default
+: los símbolos de variable son cadenas de caracteres.
+ Un símbolo de variable es también un
+\emph on
+ término
+\emph default
+ que se añade a los ya definidos.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cuantificadores:
+\series default
+ una vez tenemos una lógica que nos permite representar objetos, es muy
+ natural querer 
+\emph on
+expresar las propiedades de colecciones enteras de objetos
+\emph default
+ 
+\emph on
+en vez de enumerar los objetos por su nombre
+\emph default
+.
+ Los cuantificadores nos permiten hacer esto.
+ La lógica de primer orden contiene dos 
+\emph on
+cuantificadores estándar
+\emph default
+, denominados 
+\series bold
+\emph on
+universal
+\emph default
+ 
+\series default
+y 
+\series bold
+\emph on
+existencial
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+\align left
+
+\series bold
+Cuantificador Universal
+\series default
+ 
+\begin_inset Formula $\forall x$
+\end_inset
+
+ 
+\begin_inset Formula $P(x)$
+\end_inset
+
+ se lee 'para todo 
+\begin_inset Formula $x$
+\end_inset
+
+ 
+\begin_inset Formula $P(x)$
+\end_inset
+
+' o '
+\begin_inset Formula $P(x)$
+\end_inset
+
+ para todos los valores de la variable 
+\begin_inset Formula $x$
+\end_inset
+
+ del dominio' '
+\begin_inset Formula $P(x)$
+\end_inset
+
+ es verdad para todo 
+\begin_inset Formula $x$
+\end_inset
+
+': ejemplo: 
+\begin_inset Formula $\forall x\:Gocal(x)\Rightarrow numberOf(x)=1$
+\end_inset
+
+ que se lee: para todo 
+\begin_inset Formula $x$
+\end_inset
+
+, siendo 
+\begin_inset Formula $x$
+\end_inset
+
+ una vocal la función 
+\begin_inset Formula $numberOf$
+\end_inset
+
+ vale 1.
+ 
+\begin_inset Formula $(\forall x)Delfín(x)\Rightarrow Mamífero(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Cuantificador
+\series default
+ 
+\series bold
+Existencia
+\series default
+l: 
+\begin_inset Formula $\exists y$
+\end_inset
+
+ 
+\begin_inset Formula $P(y)$
+\end_inset
+
+ se lee 'hay un 
+\begin_inset Formula $y$
+\end_inset
+
+ para el cual 
+\begin_inset Formula $P(y)$
+\end_inset
+
+ es verdad' : ejemplo 
+\begin_inset Formula $\exists y\;numberOf(y)=2$
+\end_inset
+
+ que se lee: existe un y tal que tomado como argumento de 
+\begin_inset Formula $numberOf$
+\end_inset
+
+ la función devuelve 2.
+ 
+\begin_inset Formula $(\exists x)Mamífero(x)\land PoneHuevos(x)$
+\end_inset
+
+.
+ Permite hacer sentencias sobre un objeto sin nombrarlo.
+\end_layout
+
+\begin_layout Standard
+Es evidente que:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lnot(\forall x$
+\end_inset
+
+ 
+\begin_inset Formula $P(x))\equiv\exists x\:\lnot P(x)$
+\end_inset
+
+ es 'existe algún 
+\begin_inset Formula $x$
+\end_inset
+
+ para el que
+\emph on
+ P(x)
+\emph default
+ es falso'
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lnot(\exists y$
+\end_inset
+
+ 
+\begin_inset Formula $P(y))\equiv\forall y\:\lnot P(y)$
+\end_inset
+
+ es '
+\begin_inset Formula $P(y)$
+\end_inset
+
+ es falso para todo 
+\begin_inset Formula $y$
+\end_inset
+
+'
+\end_layout
+
+\begin_layout Standard
+Normalmente cuando utilizamos el cuantificador universal 
+\begin_inset Formula $\forall$
+\end_inset
+
+ este irá seguido de un condicional tal como 
+\begin_inset Formula $Vocal(x)\Rightarrow NumberOf(x)=1$
+\end_inset
+
+.
+ La razón es que generalmente no queremos decir algo sobre todo objeto en
+ el dominio, sino que deseamos decirlo para cierto tipo de objetos.
+\end_layout
+
+\begin_layout Standard
+En el caso del cuantificador existencial, sin embargo, no se usa el condicional
+ porque estamos hablando de un solo objeto que queremos describir.
+\end_layout
+
+\begin_layout Standard
+Se usan con variables.
+ Dichas variables se dicen que están ligadas al cuantificador.
+\begin_inset Formula 
+\[
+\textrm{(\forall x)\;\{P(x)\Rightarrow(\exists y)[R(x,y)\lor S(f(x))]\}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Semántica de los cuantificadores.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+- Cuantificador 
+\emph on
+universal
+\emph default
+: 
+\begin_inset Formula 
+\[
+\mathbf{(\forall\xi)\omega(\xi)}=\left\{ \begin{array}{c}
+\mathbf{V}\:\textrm{si }\omega(\xi)\textrm{ es cierta para todas las asignaciones de }\xi\textrm{ a objetos del dominio}\\
+\mathbf{F}\:\textrm{en caso contrario (}\omega(\xi))\textrm{ no es cierta para todas las asignaciones }\qquad
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+- Cuantificador 
+\emph on
+existencial:
+\emph default
+ 
+\begin_inset Formula 
+\[
+\mathbf{\mathbf{(\exists\xi)\omega(\xi)}}=\left\{ \begin{array}{c}
+\mathbf{V}\:\textrm{si }\omega(\xi)\textrm{ es cierta para al menos una asignación de }\xi\textrm{ a objetos del dominio}\\
+\mathbf{F}\:\textrm{en caso contrario (}\omega(\xi))\textrm{ no es cierta para ninguna asignación }\qquad\quad\quad
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fórmulas bien formadas.
+\end_layout
+
+\begin_layout Standard
+Las 
+\series bold
+funciones bien formadas
+\series default
+ (
+\series bold
+\emph on
+fbf
+\series default
+s
+\emph default
+) son
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+átomos
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+fbfs proposicionales 
+\emph default
+cualquier expresión formada con fbfs de la LPO del mismo modo que se forman
+ en lógica proposicional usando
+\emph on
+ átomos
+\emph default
+ y 
+\emph on
+conectivas
+\emph default
+..
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $\omega$
+\end_inset
+
+ es una 
+\emph on
+fbf
+\emph default
+ y 
+\begin_inset Formula $\xi$
+\end_inset
+
+ es un símbolo de variable, 
+\series bold
+tanto
+\series default
+ 
+\series bold
+
+\begin_inset Formula $(\mathbf{\exists\xi})\mathbf{\omega}$
+\end_inset
+
+ como 
+\begin_inset Formula $(\mathbf{\forall\xi})\mathbf{\omega}$
+\end_inset
+
+ son 
+\emph on
+fbfs
+\series default
+.
+
+\emph default
+ Normalmente 
+\begin_inset Formula $\xi$
+\end_inset
+
+ estará incluida en 
+\begin_inset Formula $\omega$
+\end_inset
+
+ como un término y entonces escribiremos 
+\begin_inset Formula $\omega(\xi)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si 
+\emph on
+todos los símbolos de variables
+\emph default
+ contenidos en 
+\begin_inset Formula $\omega(\xi_{1},..,\xi_{n})$
+\end_inset
+
+ 
+\emph on
+están cuantificados
+\emph default
+, entonces 
+\begin_inset Formula $(\mathbf{Q\xi})\mathbf{\omega\;Q}\in[\exists,\forall]$
+\end_inset
+
+ se denomina 
+\series bold
+\emph on
+fbf 
+\series default
+\emph default
+(o sentencia)
+\emph on
+ 
+\series bold
+cerrada
+\emph default
+.
+\series default
+Las 
+\emph on
+fbfs cerradas
+\emph default
+ son sentencias que no contienen 
+\series bold
+\emph on
+variables libres
+\series default
+, 
+\emph default
+esto es, todas las variables están 
+\emph on
+referenciadas por un cuantificador existencial.
+ 
+\emph default
+En todas nuestras aplicaciones las fbfs serán cerradas.
+\end_layout
+
+\begin_layout Standard
+P.e.
+ 
+\begin_inset Formula $(\forall x)P(x,y)$
+\end_inset
+
+ no es una
+\emph on
+ fbf 
+\emph default
+cerrada ya que 
+\begin_inset Formula $y$
+\end_inset
+
+ es una variable libre.
+\end_layout
+
+\begin_layout Standard
+Normalmente en la práctica los 
+\emph on
+cuantificadores universales
+\emph default
+ se usan con la implicación 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ para formar reglas tales como 
+\begin_inset Formula $(\forall x)\;Baloncestista(x)\Rightarrow Alto(x)$
+\end_inset
+
+ y solo muy raramente para hacer sentencias genéricas aplicables a todos
+ los individuos: 
+\emph on
+
+\begin_inset Formula $(\forall x)Baloncestista(x)\land Alto(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Los 
+\emph on
+cuantificadores existenciales
+\emph default
+ suelen asociarse con la conjunción para especificar listas de propiedades
+ de un individuo: 
+\begin_inset Formula $(\exists x)Baloncestista(x)\land Alto(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Ámbito y relaciones de los cuantificadores.
+\end_layout
+
+\begin_layout Standard
+El 
+\emph on
+ámbito
+\emph default
+ o radio de acción de un cuantificador es la fórmula a la que ese cuantificador
+ afecta.
+ P.e.
+ 
+\begin_inset Formula $(\forall x)(R(x)\land(\exists y)Q(x,y))$
+\end_inset
+
+ el ámbito de 
+\begin_inset Formula $\forall x\textrm{\textrm{ es }(R(x)\land(\exists y)Q(x,y))}$
+\end_inset
+
+ y el de 
+\begin_inset Formula $\textrm{\exists x\textrm{ es }Q(x,y))}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El 
+\emph on
+cambio de orden de los cuantificadores universales no cambia el significado
+\emph default
+:
+\begin_inset Formula 
+\[
+\mathbf{(\forall x)(\forall y)P(x,y)}\Leftrightarrow\mathbf{(\forall y)(\forall x)P(x,y)}
+\]
+
+\end_inset
+
+Lo 
+\emph on
+mismo ocurre con los existenciales
+\emph default
+:
+\begin_inset Formula 
+\[
+\mathbf{(\exists x)(\exists y)P(x,y)}\Leftrightarrow\mathbf{(\exists y)(\mathbf{\exists}x)P(x,y)}
+\]
+
+\end_inset
+
+Si el cambio de orden es 
+\emph on
+entre universales y existenciales
+\emph default
+, 
+\emph on
+sí cambia el significado
+\emph default
+:
+\begin_inset Formula 
+\[
+\mathbf{(\forall x)(\exists y)Gusta(x,y)}:\textrm{A toda persona le gusta a alguien}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbf{(\forall y)(\exists x)Gusta(x,y)}:\textrm{ Alguien gusta a todo el mundo.}
+\]
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename cuanti.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos relacionar ambos cuantificadores ya que 
+\emph on
+los cuantificadores
+\emph default
+ 
+\emph on
+universal y existencial son duales
+\emph default
+, es decir:
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{c}
+(\forall x)P(x)\Leftrightarrow\lnot(\exists x)\lnot P(x)\\
+(\exists x)P(x)\Leftrightarrow\lnot(\forall x)\lnot P(x)
+\end{array}\label{eq:1}
+\end{equation}
+
+\end_inset
+
+y mediante las leyes de De Morgan se deducen las siguientes equivalencias
+ que son de gran utilidad:
+\begin_inset Formula 
+\[
+(\forall x)\lnot P(x)\Leftrightarrow\lnot(\exists x)P(x)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lnot(\forall x)P(x)\Leftrightarrow(\exists x)\lnot P(x)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+(\forall x)P(x)\Leftrightarrow\lnot(\exists x)\lnot P(x)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+(\exists x)P(x)\Leftrightarrow\lnot(\forall x)\lnot P(x)
+\]
+
+\end_inset
+
+ ya que si el dominio de x es 
+\begin_inset Formula $x\in D=\{a,b\}$
+\end_inset
+
+ tendremos que 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $(\forall x)\lnot P(x)\equiv(\lnot P(a)\land\lnot P(b))=\lnot(P(a)\lor P(b))\equiv\lnot(\exists x)P(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Además, son 
+\series bold
+\emph on
+distributivos
+\series default
+\emph default
+:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+(\forall xA)\land(\forall xB)=\forall x(A\land B)\\
+(\exists xA)\lor(\exists xB)=\exists x(A\lor B)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos preguntarnos si los cuantificadores pueden extenderse más allá de
+ las variables a funciones y relaciones.
+ La respuesta es no para el cálculo de predicados que exponemos en el capítulo
+ por lo que se denomina 
+\emph on
+lógica de
+\emph default
+ 
+\emph on
+primer orden 
+\emph default
+(
+\series bold
+\emph on
+LPO
+\series default
+\emph default
+) donde 
+\emph on
+las relaciones son entre objetos
+\emph default
+ pero
+\series bold
+\emph on
+ no
+\series default
+ entre relaciones
+\emph default
+ y funciones.
+ En lógicas de órdenes superiores podríamos definir p.e.
+ 
+\emph on
+relaciones transitivas
+\emph default
+ del modo siguiente:
+\begin_inset Formula 
+\[
+(\forall R)\;Transitiva(R)\Leftrightarrow(\forall a,b,c\;R(a,b)\land R(b,c)\Rightarrow R(a,c))
+\]
+
+\end_inset
+
+pero esta sentencia sería inválida en primer orden.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejercicios:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Traducir
+\emph default
+ a LPO las oraciones siguientes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A todo jardinero le gusta el sol: 
+\begin_inset Formula $(\forall x)Jardinero(x)\Rightarrow gusta(x,sol)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Puedes engañar a todos todo el tiempo: 
+\begin_inset Formula $(\forall x)(\forall t)Persona(x)\land Tiempo(t)\Rightarrow engañar(x,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Puedes engañar a alguien todo el tiempo: 
+\begin_inset Formula $(\exists x)(\forall t)(Persona(x)\Rightarrow Tiempo(t)\land Engañar(x,t))$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Puedes engañar a todos algún tiempo: 
+\begin_inset Formula $(\forall x)(\exists t)(Persona(x)\Rightarrow Tiempo(t)\land Engañar(x,t))$
+\end_inset
+
+ o 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+(
+\begin_inset Formula $\forall x)(Persona(x)\Rightarrow(\exists t)(Tiempo(t)\land Engañar(x,t)))$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Es necesario tener valor y preparación para escalar montañas.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Usaremos los siguientes predicados con los siguientes significados: V(x)
+ : x tiene valor, P(x) : x tiene preparación, E(x) : x escala montañas.
+ 
+\end_layout
+
+\begin_layout Standard
+Una forma posible sería: 
+\begin_inset Formula $\forall x(E(x)→(V(x)∧P(x)))$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+No es oro todo lo que reluce.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Usaremos O(x) : x esta hecho de oro, R(x) : x reluce.
+ Una posible solución es: 
+\begin_inset Formula $\exists x(R(x)∧¬O(x)),\textrm{o bien }¬(\forall x(R(x)→O(x)))$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Clasificar las siguientes sentencias como válida (V) , satisfacible (S)
+ o insatisfacible (U) en LPO.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\exists x,y\:x=y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(\exists x\;x=x)\Rightarrow(\forall y\;\exists z\:y=z)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\forall x\;P(x)\vee\lnot P(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\exists x\;P(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La primera sentencia es cierta porque todo modelo ha de tener al menos un
+ objeto que, evidentemente, es igual a sí mismo.
+\end_layout
+
+\begin_layout Standard
+La izquierda de la segunda sentencia es cierta y la derecha lo es si elegimos
+ y=z=x.
+\end_layout
+
+\begin_layout Standard
+La tercera es correcta ya que es o no es con total seguridad.
+\end_layout
+
+\begin_layout Standard
+La última, claramente muestra ser satisfacible ya que solo ocurrirá en algunos
+ modelos y no es cierta en general.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Ejemplo: mundo de la aspiradora.
+\end_layout
+
+\begin_layout Standard
+Como ilustración, definamos el 
+\series bold
+mundo de la aspiradora
+\series default
+.
+ Este mundo en particular tiene solamente dos localizaciones: cuadrícula
+ A y B.
+ La aspiradora puede 
+\emph on
+percibir
+\emph default
+ en qué cuadrante se encuentra y si hay suciedad en él.
+ Puede 
+\emph on
+elegir 
+\emph default
+si se mueve hacia la izquierda, derecha, aspirar la suciedad o no hacer
+ nada.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename vacuum.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Veamos cómo representarlo en lógica de primer orden.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename aspir.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En primer lugar definamos las 
+\series bold
+ubicaciones
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+A será el cuadro izquierdo, B el derecho, la aspiradora V, la suciedad D1
+ y D2.
+\end_layout
+
+\begin_layout Standard
+Habrá evidentemente 
+\series bold
+relaciones:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Loc 
+\emph default
+que es cierta en toda ubicación, 
+\emph on
+Vacuum
+\emph default
+ que es verdad en la aspiradora 
+\emph on
+V
+\emph default
+ -
+\begin_inset Formula $Vacuum(V)=1$
+\end_inset
+
+-, 
+\emph on
+Dirt
+\emph default
+ que es verdad en la suciedad, 
+\emph on
+
+\begin_inset Formula $At(o,l)$
+\end_inset
+
+
+\emph default
+ que es verdad de un objeto 
+\begin_inset Formula $o$
+\end_inset
+
+ y una ubicación 
+\begin_inset Formula $l$
+\end_inset
+
+.
+ De este modo para decir que el aspirador está en la ubicación A escribiremos:
+ 
+\begin_inset Formula $At(V,A)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Si queremos decir que 
+\emph on
+no hay suciedad en ninguna ubicación
+\emph default
+ usaremos el cuantificador universal:
+\begin_inset Formula 
+\[
+(\forall d)\:(\forall l)\;Dirt(d)\wedge Loc(l)\Rightarrow\lnot At(d,l)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es decir: para toda suciedad -d- y ubicación -l- ambos objetos no están
+ juntos.
+ En nuestro caso 
+\begin_inset Formula $l\in\{A,B\}$
+\end_inset
+
+ pero si fueran cientos de ubicaciones la sentencia seguiría siendo válida.
+\end_layout
+
+\begin_layout Standard
+Expresemos que la aspiradora está en una ubicación no especificada con suciedad:
+\begin_inset Formula 
+\[
+\exists l\:\exists d\;Dirt(d)\wedge Loc(l)\wedge At(V,l)\wedge At(d,l)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto es: existe una suciedad y una ubicación tal que coexisten la suciedad,
+ la ubicación y el aspirador están en el mismo sitio.
+\end_layout
+
+\begin_layout Section
+Reglas de inferencia.
+\end_layout
+
+\begin_layout Standard
+Las reglas de inferencia de la LP (
+\emph on
+modus ponens
+\emph default
+ y 
+\emph on
+tollens,
+\emph default
+ introducción y eliminación 
+\begin_inset Formula $\land$
+\end_inset
+
+,....) se generalizan a la LPO pero, además, aparecen otras dos adicionales
+ de importancia:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Instanciación Universal
+\emph default
+: de 
+\begin_inset Formula $(\forall x)\:P(x)$
+\end_inset
+
+ se infiere 
+\begin_inset Formula $P(\alpha)$
+\end_inset
+
+ donde 
+\begin_inset Formula $x$
+\end_inset
+
+ es una variables y 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es una constante.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Ejemplo: de 
+\begin_inset Formula $(\forall x)\:P(x,f(x),B)$
+\end_inset
+
+ se infiere 
+\begin_inset Formula $P(A,f(A),B)$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+Generalización Existencial
+\emph default
+: de 
+\begin_inset Formula $P(\alpha)$
+\end_inset
+
+ se infiere que 
+\begin_inset Formula $(\exists x)\:P(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\noindent
+\align left
+Ejemplo:de
+\begin_inset Formula $\;(\forall x)\:Q(A,g(A),x)$
+\end_inset
+
+ se infiere 
+\begin_inset Formula $(\exists y)(\forall x)\:Q(y,g(y),x)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+LPO como lenguaje de representación del conocimiento.
+\end_layout
+
+\begin_layout Subsection
+Conceptualizaciones.
+\end_layout
+
+\begin_layout Standard
+El mayor problema en LPO es 
+\emph on
+qué decir 
+\emph default
+y
+\emph on
+ no cómo decirlo
+\emph default
+.
+ La LPO proporciona un lenguaje en el cual 
+\emph on
+el conocimiento sobre el mundo
+\emph default
+ (¡después de adquirirlo!) puede 
+\emph on
+expresarse
+\emph default
+ y permite 
+\emph on
+razonar
+\emph default
+ sobre él.
+ Las consecuencias de tales conocimientos pueden explorarse mediante los
+\emph on
+ métodos de deducción lógica 
+\emph default
+que se exponen más adelante.
+\end_layout
+
+\begin_layout Standard
+Veamos en algunos casos cómo convertir expresiones en castellano a LPO.
+ Esta lógica solo nos proporciona un lenguaje uniforme en el que puede expresars
+e nuestro conocimiento del mundo y razonar sobre él.
+\end_layout
+
+\begin_layout Enumerate
+El primer paso para la representación del mundo es 
+\emph on
+conceptualizarlo 
+\emph default
+en términos de objetos, relaciones y funciones.
+ Con frecuencia es posible elegir entre diferentes clases de objetos para
+ conceptualizar un mundo.
+\end_layout
+
+\begin_layout Enumerate
+Seguidamente creamos expresiones de cálculo de predicados cuyo pretendido
+ significado involucra a los objetos, las funciones y las relaciones.
+\end_layout
+
+\begin_layout Enumerate
+Finalmente, escribimos
+\emph on
+ fbfs 
+\emph default
+que que son satisfacibles por el mundo conceptualizado.
+ Pueden ser satisfacibles también por otros mundos pero nunca por aquellos
+ que excluyan al nuestro.
+\end_layout
+
+\begin_layout Standard
+En el proceso de conceptualización es importante que la conceptualización
+ esté fundamentada, esto es, que los valores de verdad de algunos de los
+ átomos usados en la 
+\emph on
+KB
+\emph default
+ puedan evaluarse a través de mecanismos perceptuales conectados con el
+ mundo.
+ Esto es fundamental para un robot, pero no es necesario en Matemáticas
+ ya que las sentencias matemáticas no necesitan referirse a un mundo material.
+\end_layout
+
+\begin_layout Standard
+La utilización de LPO para representar el conocimiento arranca en los años
+ 50 del siglo pasado.
+ Un ejemplo actual de utilización podría ser el proyecto CyC que es una
+\emph on
+ base de conocimientos
+\emph default
+ de sentido común acerca del mundo del cual una pequeña versión ha sido
+ liberada bajo una licencia de código abierto y se conoce como OpenCyC
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.opencyc.org/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ CyC contiene una multitud de reglas simples (como "
+\emph on
+el agua causa humedad
+\emph default
+" y "
+\emph on
+la humedad pudre la comida
+\emph default
+").
+ Un ordenador puede concluir a partir del motor de inferencia de CyC que
+ el agua pudre la comida.
+\end_layout
+
+\begin_layout Standard
+La base de datos contiene aproximadamente 100.000 conceptos y 1.000.000 de
+ declaraciones que abarcan aserciones definidas por humanos, reglas o ideas
+ del sentido común.
+ Estas están escritas en lenguaje CyCL que está basado en cálculo de predicados
+ y tiene una sintaxis similar a Lisp.
+ La construcción de CyC es 
+\emph on
+Ingeniería del Conocimiento
+\emph default
+, representando hechos sobre el mundo manualmente e implementado mecanismos
+ de inferencia efectivos sobre dicho conocimiento.
+ Sin embargo, el objetivo del proyecto es dar al sistema CyC la capacidad
+ de comunicarse con los usuarios finales en 
+\emph on
+lenguaje natural
+\emph default
+ para que el sistema pueda continuar por sí solo con el proceso de construcción
+ del conocimiento.
+\end_layout
+
+\begin_layout Subsection
+Ejemplos.
+\end_layout
+
+\begin_layout Enumerate
+Supongamos un agente que entrega 
+\emph on
+paquetes
+\emph default
+ en un edificio.
+ Primero definimos un símbolo de 
+\emph on
+relación
+\emph default
+ que defina la propiedad de algo ser un paquete: 
+\begin_inset Formula $Paquete(x)$
+\end_inset
+
+.
+ Probablementenecesitaemos otro símbolo de relación para denotar que un
+ paquete 
+\begin_inset Formula $x$
+\end_inset
+
+ se encuentra en una 
+\emph on
+sala
+\emph default
+ 
+\begin_inset Formula $y$
+\end_inset
+
+: 
+\begin_inset Formula $EnSala(x,y)$
+\end_inset
+
+ y añadiremos otro para comparar tamaños (
+\begin_inset Formula $y<z)$
+\end_inset
+
+ entre paquetes: 
+\begin_inset Formula $MenorDe(y,z)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Con estas definiciones puedo expresar en cálculo de predicados algunas sentencia
+s sobre este mundo:
+\end_layout
+
+\begin_layout Itemize
+'
+\emph on
+Todos los paquetes de la sala 27 son menores que cualquiera de los paquetes
+ de la sala 28
+\emph default
+'
+\begin_inset Formula 
+\[
+(\forall x)(\forall y)\:[(Paquete(x)\land Paquete(y)\land EnSala(x,27)\land EnSala(y,28))\Rightarrow MenorDe(x,y)]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+'
+\emph on
+Cada paquete de la sala 28 es menor que uno de la sala 29
+\emph default
+'
+\begin_inset Formula 
+\[
+(\forall y)(\exists z)\:[(Paquete(y)\land Paquete(z)\land EnSala(y,28)\land EnSala(z,29))\Rightarrow MenorDe(y,z)]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Otros conocimientos pueden ser necesarios tales como los que implican la
+ noción de 'tiempo'.
+ P.e.
+ podríamos usar la relación 
+\begin_inset Formula $Arribo(x,t)$
+\end_inset
+
+ para denotar que el paquete 
+\begin_inset Formula $x$
+\end_inset
+
+ arribó en el intervalo 
+\begin_inset Formula $t$
+\end_inset
+
+ y 
+\begin_inset Formula $Antes(t_{1},t_{2})$
+\end_inset
+
+ para indicar que 
+\begin_inset Formula $t_{1}<t_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Nemo es un pez.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Objetos: Nemo
+\end_layout
+
+\begin_layout Standard
+Relación: Pez
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Respuesta: 
+\series default
+
+\begin_inset Formula $Pez(Nemo)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Los EEUU compraron la Florida a España.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Objetos: EEUU,Florida, España
+\end_layout
+
+\begin_layout Standard
+Relación: Compraron
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Respuesta: 
+\series default
+
+\begin_inset Formula $Compraron(EEUU,Florida,España)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+José colecciona de todo.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Variables: 
+\emph on
+todo
+\emph default
+ , x
+\end_layout
+
+\begin_layout Standard
+Cuantificación: Universal: 
+\begin_inset Formula $\forall$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Respuesta: 
+\series default
+
+\begin_inset Formula $(\forall x)\:Colecciona(José,x)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+José colecciona algo.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Variables: 
+\emph on
+algo
+\emph default
+: x
+\end_layout
+
+\begin_layout Standard
+Cuantificación: Existencial: 
+\begin_inset Formula $\exists$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Respuesta: 
+\series default
+
+\begin_inset Formula $(\exists x)\:Colecciona(José,x)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Alguien colecciona algo.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Variables: 
+\emph on
+alguien
+\emph default
+: y, 
+\emph on
+algo:
+\emph default
+ x
+\end_layout
+
+\begin_layout Standard
+Cuantificación: Existencial: 
+\begin_inset Formula $\exists$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Respuesta: 
+\series default
+
+\begin_inset Formula $(\exists x)(\exists y)\:Persona(y)\land Colecciona(y,x)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea un piso compartido por cuatro estudiantes de Erasmus.
+ Se han marcado las casillas cuando a la estudiante
+\emph on
+ fila 
+\emph default
+le cae bien 
+\emph on
+columna
+\emph default
+ y está vacía si no le cae bien.
+ Es claro que no es una relación de reciprocidad.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename sorority.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nuestro propósito es representar este mundo en LPO.
+\end_layout
+
+\begin_layout Standard
+Si conocemos la tabla, podemos establecer 16 
+\emph on
+relaciones
+\emph default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Gusta(Abby,Abby)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $\lnot Gusta(Abby,Bess)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Gusta(Abby,Cody)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Gusta(Abby,Dana)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Gusta(Bess,Abby)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Gusta(Bess,Bess)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Gusta(Bess,Cody)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Gusta(Bess,Dana)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Gusta(Cody,Abby)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Gusta(Cody,Bess)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Gusta(Cody,Cody)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Gusta(Cody,Dana)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Gusta(Dana,Abby)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Gusta(Dana,Bess)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Gusta(Dana,Cody)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Gusta(Dana,Dana)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Supongamos que solo conocemos fragmentos de información y veamos cómo codificar
+ dicha información en LPO.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="1">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+a Bess le gusta Cody o Dana
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Gusta(Bess,Cody)\lor Gusta(Bess,Dana)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+a Abby le gustan las mismas que a Bess
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\forall x(gusta(Bess,x)\Rightarrow gusta(Abby,x))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+a Cody le gustan todas a las que ella gusta
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\forall x(Gusta(x,Cody)\Rightarrow Gusta(Cody,x))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sea un típico mundo de bloques como el de la figura: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename Bloques.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para conceptualizar dicho mundo tendremos:
+\end_layout
+
+\begin_layout Itemize
+cinco constantes 
+\series bold
+\emph on
+objeto
+\series default
+\emph default
+ (una por bloque): 
+\begin_inset Formula $\{a,b,c,d,e\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+constantes de 
+\series bold
+\emph on
+relación
+\emph default
+ 
+\series default
+indicativas de posición relativa de bloques:
+\begin_inset Formula ${Sobre,Encima,Pila,Libre,Mesa}$
+\end_inset
+
+ cuyos significados y aridades son:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Sobre: el primer bloque descansa sobre el segundo.
+ aridad=2.
+\end_layout
+
+\begin_layout Enumerate
+Encima: un bloque se encuentra en cualquier posición por encima de otro.
+ aridad=2.
+\end_layout
+
+\begin_layout Enumerate
+Pila: tres bloques están uno encima de otro.
+ aridad=3.
+\end_layout
+
+\begin_layout Enumerate
+Libre: no hay otro bloque sobre él.
+ aridad=1.
+\end_layout
+
+\begin_layout Enumerate
+Mesa: un bloque está sobre la mesa.
+ aridad=1
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Con este vocabulario podemos describir la figura mediante las relaciones
+ que se verifican en ella.
+ Así p.e.
+ para 
+\emph on
+Sobre
+\emph default
+, tendríamos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(a,a)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sobre(a,b)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(a,c)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(a,d)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(a,e)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(b,a)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(b,b)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sobre(b,c)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(b,d)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(b,e)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(c,a)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(c,b)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(c,c)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(c,d)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(c,e)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(d,a)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(d,b)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(d,c)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(d,d)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sobre(d,e)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(e,a)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(e,b)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(e,c)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(e,d)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot$
+\end_inset
+
+Sobre(e,e)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y lo mismo podríamos hacer para otras relaciones (Encima, Pila,...).
+ Sin embargo, estas relaciones restante pueden expresarse en términos de
+ 
+\emph on
+Sobre 
+\emph default
+por lo que no es necesario escribirlas
+\emph on
+.
+\end_layout
+
+\begin_layout Standard
+En efecto, la relación 
+\emph on
+Libre 
+\emph default
+implica que no hay ningún bloque sobre el primer bloque:
+\begin_inset Formula 
+\[
+(\forall x)(Libre(x)\Leftrightarrow\lnot(\exists y)Sobre(x,y))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y la 
+\emph on
+Pila 
+\emph default
+que hay un segundo bloque sobre el primero y un tercero sobre este:
+\begin_inset Formula 
+\[
+(\forall x)(\forall y)(\forall z)(Pila(x,y,z)\Rightarrow Sobre(x,y)\land Sobre(y,z))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La relación 
+\emph on
+Encima 
+\emph default
+es más complicada de definir ya que el tercer bloque está por 
+\emph on
+encima
+\emph default
+ si y solo si el primero está 
+\emph on
+sobre 
+\emph default
+el segundo o
+\emph on
+ sobre
+\emph default
+ otro bloque que está por 
+\emph on
+encima
+\emph default
+ del segundo, pero además ningún bloque puede estar 
+\emph on
+sobre
+\emph default
+ sí mismo.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Sustitución y unificación.
+\end_layout
+
+\begin_layout Standard
+Sea la fbf: 
+\begin_inset Formula 
+\[
+(\forall x_{1},..,x_{n})(\alpha_{1}\lor\alpha_{2}\lor...\lor\alpha_{n})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $\alpha_{1}...\alpha_{n}$
+\end_inset
+
+ son literales que pueden o no expresar ocurrencias de las variables 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ y que, para abreviar, representaremos como 
+\begin_inset Formula 
+\begin{equation}
+(\alpha_{1}\lor\alpha_{2}\lor...\lor\alpha_{n})\label{eq:2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+esto es, eliminando los cuantificadores universales (más adelante veremos
+ cómo eliminarlos).
+ La fbf (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+
+\end_inset
+
+) en esta forma se denomina 
+\emph on
+cláusula 
+\emph default
+y a veces se escribe (como en LP)
+\emph on
+ 
+\begin_inset Formula 
+\[
+\{\alpha_{1},\alpha_{2},...,\alpha_{n}\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde se suponen disyunciones entre los elementos del conjunto.
+\end_layout
+
+\begin_layout Standard
+Si tenemos un literal 
+\begin_inset Formula $\alpha(x)$
+\end_inset
+
+ en una cláusula y 
+\begin_inset Formula $\lnot\alpha(t)$
+\end_inset
+
+ - donde 
+\begin_inset Formula $t$
+\end_inset
+
+ es un término que no contiene a 
+\begin_inset Formula $x$
+\end_inset
+
+ - en otra, podemos sustituir 
+\begin_inset Formula $t$
+\end_inset
+
+ por 
+\begin_inset Formula $x$
+\end_inset
+
+ y, al igual que en LP, aplicar resolución sobre los literales complementarios
+ para producir la resolvente para las dos cláusulas.
+\end_layout
+
+\begin_layout Standard
+Ejemplo: sean las dos cláusulas siguientes:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+P(f(y),A)\lor Q(B,C)\\
+\lnot P(x,A)\lor R(x,C)\lor S(A,B)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+sustituiremos 
+\begin_inset Formula $x$
+\end_inset
+
+ por 
+\begin_inset Formula $f(y)$
+\end_inset
+
+ obteniendo 
+\begin_inset Formula 
+\[
+\lnot P(f(y),A)\lor R(f(y),C)\lor S(A,B)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y, resolviendo, obtenemos la resolvente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Q(B,C)\lor R(f(y),C)\lor S(A,B)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+\emph on
+sustitución
+\series default
+\emph default
+ adecuada se computa por un proceso llamado 
+\series bold
+unificación
+\series default
+, de gran importancia.
+\end_layout
+
+\begin_layout Standard
+Los
+\emph on
+ términos
+\emph default
+ 
+\emph on
+de una expresión 
+\emph default
+pueden ser símbolos de 
+\emph on
+variables
+\emph default
+, constantes de 
+\emph on
+objetos
+\emph default
+ o 
+\emph on
+expresiones funcionales 
+\emph default
+que consisten de constantes de función y términos
+\emph on
+.
+ Una
+\series bold
+ instancia de sustitución
+\series default
+ de una expresión 
+\emph default
+se obtiene por sustitución de 
+\series bold
+\emph on
+variables
+\series default
+\emph default
+ por 
+\series bold
+\emph on
+términos 
+\series default
+\emph default
+en dicha expresión, como p.e.
+ para 
+\begin_inset Formula $P[x,f(y),B]$
+\end_inset
+
+ puedo generar instancias como las siguientes: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+P[z,f(w),B]\\
+P[x,f(A),B]\\
+P[C,f(A),B]
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La primera instancia se llama variante alfabética porque lo único que hemos
+ hecho es renombrar a las variables.
+ La última es una 
+\emph on
+instancia base 
+\emph default
+ya que no contiene variables.
+\end_layout
+
+\begin_layout Standard
+Considérese la expresión 
+\begin_inset Formula $\mathbf{w}$
+\end_inset
+
+ que contiene las 
+\series bold
+\emph on
+variables
+\series default
+\emph default
+
+\begin_inset Formula $v_{1},v_{2},v_{3},…,v_{n}$
+\end_inset
+
+.
+ La 
+\series bold
+sustitución
+\series default
+ 
+\begin_inset Formula $\mathbf{σ}$
+\end_inset
+
+ es un reemplazamiento simultáneo de 
+\emph on
+variables
+\emph default
+ 
+\begin_inset Formula $-v_{i}-$
+\end_inset
+
+en 
+\begin_inset Formula $w$
+\end_inset
+
+ por 
+\emph on
+términos
+\emph default
+ 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\mathbf{w}=w(v_{1},v_{2},v_{3},\ldots,v_{n})\qquad\qquad\qquad\\
+\mathbf{σ}=\left\{ \mathbf{v_{1}:=t_{1},v_{2}:=t_{2},\text{…},v_{n}:=t_{n}}\right\} 
+\end{array}
+\]
+
+\end_inset
+
+obteniéndose 
+\series bold
+
+\begin_inset Formula $\mathbf{wσ=w(t_{1},t_{2},t_{3},\text{…},t_{n})}$
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+El término 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ 
+\emph on
+no puede contener a la variable 
+\begin_inset Formula $v_{i}.$
+\end_inset
+
+
+\emph default
+ El término
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ es una
+\emph on
+ instanciación
+\emph default
+ de la variable 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+.
+ 
+\series bold
+
+\begin_inset Formula $\mathbf{wσ}$
+\end_inset
+
+
+\series default
+ es una instancia de 
+\begin_inset Formula $\mathbf{w}$
+\end_inset
+
+.
+ Una instancia base de una 
+\emph on
+fbf
+\emph default
+ es una fbf obtenida por sustitución de la fbf original que no contiene
+ ninguna variable.
+\end_layout
+
+\begin_layout Standard
+La sustitución se expresa como 
+\begin_inset Formula 
+\[
+\mathbf{\sigma}=\left\{ \mathbf{t_{1}/v_{1}},...,\mathbf{t_{n}/v_{n}}\right\} 
+\]
+
+\end_inset
+
+y p.e.
+ en 
+\begin_inset Formula $P(x)$
+\end_inset
+
+ la sustitución de la variable 
+\begin_inset Formula $x$
+\end_inset
+
+ por t se expresaría como 
+\begin_inset Formula $P[t/x]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Composición de sustituciones
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+Sean
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\mathbf{σ_{1}}=\left\{ \mathbf{x_{1}:=t_{1},x_{2}:=t_{2},\text{…},x_{n}:=t_{n}}\right\} \\
+\mathbf{σ_{2}}=\left\{ \mathbf{y_{1}:=s_{1},y_{2}:=s_{2},\text{…},y_{m}:=s_{m}}\right\} 
+\end{array}
+\]
+
+\end_inset
+
+La composición de estas sustituciones es
+\begin_inset Formula 
+\[
+\mathbf{\sigma_{1}\cdot\sigma_{2}}=x_{1}:=t_{1}\sigma_{2},x_{2}:=t_{2}\sigma_{2},\ldots,x_{n}:=t_{n}\sigma_{2},y_{1}:=s_{1},y_{2}:=s_{2},\ldots,y_{m}:=s_{m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+w(
+\begin_inset Formula $σ_{2}\cdotσ_{1}$
+\end_inset
+
+) = (w
+\begin_inset Formula $σ_{2}$
+\end_inset
+
+)
+\begin_inset Formula $σ_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(
+\begin_inset Formula $σ_{1}\cdotσ_{2}$
+\end_inset
+
+)
+\begin_inset Formula $\cdotσ_{3}$
+\end_inset
+
+ = 
+\begin_inset Formula $σ_{1}\cdot(σ_{2}\cdotσ_{3})$
+\end_inset
+
+: asociativa.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $σ_{1}\cdotσ_{2}≠σ_{2}\cdotσ_{1}:$
+\end_inset
+
+ no conmutativa.
+\end_layout
+
+\begin_layout Standard
+Ejemplos:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $w=P(x,y,f(z))$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $σ_{1}=\left\{ x:=u,y:=v,z:=w\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $P(x,y,f(z))σ_{1}=P(u,v,f(z))$
+\end_inset
+
+: 
+\emph on
+variante alfabética
+\emph default
+ ya que se cambia cada variable por otra.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $σ_{2}=\left\{ x:=A,y:=B,z:=C\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $P(x,y,f(z))σ_{2}=P(A,B,f(C))$
+\end_inset
+
+: término base (no contiene variables)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $σ_{3}=\left\{ x:=g(z),y:=f(A),z:=B\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $P(x,y,f(z))σ_{3}=P(g(z),f(A),f(B))$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $w=P(x,y)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\sigma_{1}=\{x:=f(y)\}$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{2}=\{y:=A\}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\left\{ \begin{array}{c}
+(w\sigma_{1})\cdot\sigma_{2}=[P(f(y),y)]\{y:=A\}=P(f(A),A)\qquad\\
+w(\sigma_{1}\cdot\sigma_{2})=[P(x,y)]\{y:=A,x:=f(y)\}=P(f(A),A)
+\end{array}\right.$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Unificación.
+ 
+\series default
+Se dice que 
+\emph on
+la sustitución 
+\begin_inset Formula $\mathbf{σ}=\left\{ x_{1}:=t_{1},\text{…},x_{n}:=t_{n}\right\} $
+\end_inset
+
+ es el 
+\series bold
+unificador
+\series default
+ de un conjunto de fbfs 
+\emph default
+
+\begin_inset Formula $\mathbf{Γ}=\left\{ \mathbf{w}_{1},\mathbf{w}_{2},…,\mathbf{w}_{m}\right\} $
+\end_inset
+
+cuando se cumple 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\mathbf{w_{1}σ=w_{2}σ=…=w_{m}σ}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Este proceso se llama 
+\series bold
+unificación 
+\series default
+porque reduce
+\series bold
+ 
+\series default
+el conjunto a un singleton
+\series bold
+.
+\end_layout
+
+\begin_layout Itemize
+El resultado de la unificación es único excepto posibles variantes alfabéticas
+\end_layout
+
+\begin_layout Standard
+Ejemplo.
+ 
+\begin_inset Formula $\left\{ P(x,f(y),B),P(z,f(B),B)\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+unificador
+\series default
+: 
+\begin_inset Formula $\mathbf{σ}=\left\{ x:=A,y:=B,z:=A\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Unificación
+\series default
+: {
+\begin_inset Formula $P(A,f(B),B)$
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Unificador más general
+\series default
+ (MGU): La sustitución 
+\begin_inset Formula $μ$
+\end_inset
+
+ es el 
+\series bold
+\emph on
+unificador más general
+\series default
+ de un conjunto de fbfs
+\emph default
+ 
+\begin_inset Formula $\mathbf{\Gamma}=\left\{ \mathbf{w}_{1},\mathbf{w}_{2},\ldots,\mathbf{w}_{m}\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{μ}=mgu(\mathbf{Γ})$
+\end_inset
+
+, si cualquier unificador del mismo conjunto de fbfs 
+\begin_inset Formula $σ$
+\end_inset
+
+ puede ser expresado como 
+\begin_inset Formula $\mathbf{σ}=\mathbf{μ}\cdot\mathbf{σ’}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La instancia producida por un 
+\noun on
+mgu
+\noun default
+ es 
+\emph on
+única
+\emph default
+ salvo por variantes alfabéticas.
+\end_layout
+
+\begin_layout Standard
+Existen muchos algoritmos para encontrar el mgu de un conjunto finito de
+ expresiones unificables y en muchos de ellos es clave el concepto de 
+\emph on
+conjunto de discrepancia
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+El 
+\series bold
+conjunto de discrepancia
+\series default
+ de un conjunto no vacío de fbfs 
+\begin_inset Formula $\mathbf{Γ=\left\{ w_{1},w_{2},…,w_{m}\right\} }$
+\end_inset
+
+ es la primera subexpresión (la que está más a la izquierda) donde las fbfs
+ en Γ no concuerdan
+\end_layout
+
+\begin_layout Standard
+Ej.
+ 
+\begin_inset Formula $Γ=\left\{ P(x,f(A),B),P(x,g(A),B)\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula ${\textstyle D}(Γ)=\left\{ f(A),g(A)\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para hallar el MGU seguiremos el siguiente 
+\emph on
+algoritmo
+\emph default
+ que usa el conjunto de discrepancia 
+\begin_inset Formula $D_{k}=\{e_{1},e_{2}\}$
+\end_inset
+
+ el par de expresiones en que dos cláusulas primero no concuerdan.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula $\quad$
+\end_inset
+
+
+\family typewriter
+\series bold
+REPEAT UNTIL
+\series default
+\emph on
+ no hay discrepancia--> Hallado MGU
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size small
+\begin_inset Formula $\quad$
+\end_inset
+
+
+\series bold
+IF
+\emph on
+ 
+\series default
+
+\begin_inset Formula $e_{1}$
+\end_inset
+
+ o 
+\begin_inset Formula $e_{2}$
+\end_inset
+
+ es una variable V y la otra algún término o variable t, elegir V=t como
+ sustitución.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size small
+\begin_inset Formula $\quad$
+\end_inset
+
+
+\series bold
+THEN
+\series default
+\emph on
+ sustituir para obtener 
+\begin_inset Formula $\varGamma_{k+1}$
+\end_inset
+
+ y encontrar 
+\begin_inset Formula $D_{k+1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\series bold
+\size small
+\begin_inset Formula $\quad$
+\end_inset
+
+ELSE
+\series default
+ 
+\emph on
+unificación no posible.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Como ejercicio, puede seguirse el algoritmo anterior en los ejemplos del
+ cuadro siguiente y comprobar que los resultados son los mostrados.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Graphics
+	filename mgu.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Ejemplo
+\series default
+s:
+\end_layout
+
+\begin_layout Enumerate
+Hallar el MGU of 
+\begin_inset Formula $p(f(a),g(X))$
+\end_inset
+
+ and 
+\emph on
+
+\begin_inset Formula $p(Y,Y)$
+\end_inset
+
+
+\emph default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\varGamma_{0}=\{p(f(a),g(X)),p(Y,Y)\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $D_{0}=\{f(a),Y\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\sigma=\{Y=f(a)\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $\varGamma_{1}=\{p(f(a),g(X)),p(f(a),f(a))\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Formula $D_{1}=\{g(X),f(a)\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+No hay unificación posible ya que ninguna es una variable.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Hallar el MGU de 
+\begin_inset Formula $p(a,x,h(g(z)))$
+\end_inset
+
+ y 
+\begin_inset Formula $p(z,h(y),h(y))$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Solución: 
+\begin_inset Formula $\mathbf{\sigma}=\{\mathbf{z:=a,x:=h(y),y:=g(a)}\}$
+\end_inset
+
+es el 
+\series bold
+MGU
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Resolución en LPO.
+\end_layout
+
+\begin_layout Standard
+Supongamos que 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $w_{2}$
+\end_inset
+
+ son dos cláusulas (representadas como conjuntos de literales), si hay un
+ átomo 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ en 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+ y un literal 
+\begin_inset Formula $\lnot\psi$
+\end_inset
+
+ en 
+\begin_inset Formula $w_{2}$
+\end_inset
+
+ tales que 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ y 
+\begin_inset Formula $\psi$
+\end_inset
+
+ tienen un MGU, 
+\begin_inset Formula $\mu$
+\end_inset
+
+, entonces estas dos cláusulas tienen una resolvente 
+\begin_inset Formula $\varrho$
+\end_inset
+
+ que se obtiene aplicando la sustitución 
+\begin_inset Formula $\mu$
+\end_inset
+
+ a la unión de 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ dejando aparte los literales complementarios 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\varphi$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+y 
+\begin_inset Formula $\lnot\psi$
+\end_inset
+
+.
+ Es decir, 
+\begin_inset Formula 
+\[
+\varrho=[(w_{1}-\{\varphi\})\cup(w_{1}-\{\lnot\psi\})]\mu
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Antes de comenzar con la resolución, renombraremos las variables en las
+ cláusulas como en el ejemplo siguiente en que queremos resolver 
+\begin_inset Formula $P(\mathbf{x})\lor Q(\mathbf{x})$
+\end_inset
+
+ frente a 
+\begin_inset Formula $R(g(\mathbf{x}))\lor\lnot Q(f(A))$
+\end_inset
+
+ renombraríamos la cláusula segunda 
+\begin_inset Formula $R(g(\mathbf{y}))\lor\lnot Q(f(A))$
+\end_inset
+
+ y la resolución resultaría en 
+\begin_inset Formula $P(f(A))\lor R(g(\mathbf{y}))$
+\end_inset
+
+ ya que 
+\begin_inset Formula $\mu$
+\end_inset
+
+ de 
+\begin_inset Formula $Q(x)$
+\end_inset
+
+ y 
+\begin_inset Formula $Q(f(A))$
+\end_inset
+
+ sería 
+\begin_inset Formula $\sigma=\{x:=f(A)\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejemplos:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\{P(x),Q(x,y)\}$
+\end_inset
+
+ y {
+\begin_inset Formula $\lnot P(A),R(B,z)$
+\end_inset
+
+} resolvente:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\rho=Q(A,y)\lor R(B,z)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\{P(x,x),Q(x),R(x)\}$
+\end_inset
+
+ y {
+\begin_inset Formula $\lnot P(A,z),\lnot Q(B)$
+\end_inset
+
+}: da dos resolventes:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\rho_{1}=P(B,B)\lor R(B)\lor\lnot P(A,z)\\
+\rho_{2}=Q(A)\lor R(A)\lor\lnot Q(B)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sea las siguientes cláusulas: 
+\begin_inset Formula $\left\{ P(u),P(v)\right\} $
+\end_inset
+
+ y 
+\begin_inset Formula $\{\lnot P(x),\lnot P(y)\}$
+\end_inset
+
+ que se resuelve en Nil ya que claramente 
+\begin_inset Formula $\Gamma\models P(A)$
+\end_inset
+
+ y 
+\begin_inset Formula $\Gamma\models\lnot P(A)$
+\end_inset
+
+.
+ Sin embargo no ocurre esto con el procedimiento anterior, motivo por el
+ cual precisamos de la siguiente regla más fuerte:
+\end_layout
+
+\begin_layout Standard
+Al igual que en LP, toda fbf puede convertirse a la forma clausal.
+ Para ello se precisan los pasos siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Eliminar signos de implicación (como en LP).
+\end_layout
+
+\begin_layout Enumerate
+Reducir ámbitos de negaciones (Come en LP).
+\end_layout
+
+\begin_layout Enumerate
+Estandarizar variables.
+ Ya que las variables dentro de los cuantizadores son 
+\emph on
+comodines
+\emph default
+, se renombran para que cada variable tenga su propio símbolo:
+\begin_inset Formula 
+\[
+(\forall x)\:[\lnot P(x)\lor(\exists x)\:Q(x)]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+se sutituye por
+\begin_inset Formula 
+\[
+(\forall x)\:[\lnot P(x)\lor(\exists y)\:Q(y)]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Eliminar los 
+\emph on
+cuantificadores existenciales
+\emph default
+ 
+\begin_inset Formula $\exists$
+\end_inset
+
+, mediante la 
+\emph on
+skolemización 
+\emph default
+sustituyéndolos por 
+\emph on
+constantes de Skolem
+\emph default
+ o 
+\emph on
+funciones de Skolem
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+P.e.
+ en 
+\begin_inset Formula $\textrm{(\forall x)\:[(\exists y)\:Altura(x,y)]}$
+\end_inset
+
+ significa que 'cada persona 
+\begin_inset Formula $x$
+\end_inset
+
+ tiene una altura 
+\begin_inset Formula $y$
+\end_inset
+
+' dado que 
+\begin_inset Formula $y$
+\end_inset
+
+ está dentro de un cuantificador universal, el 
+\begin_inset Formula $y$
+\end_inset
+
+ que existe (la altura) depende del valor de 
+\begin_inset Formula $x$
+\end_inset
+
+ (la persona) y esta dependencia podrá definirse explícitamente mediante
+ una función 
+\begin_inset Formula $h(x)$
+\end_inset
+
+ - 
+\emph on
+función de Skolem
+\emph default
+ - que mapea cada valor de 
+\begin_inset Formula $x$
+\end_inset
+
+ en el 
+\begin_inset Formula $y$
+\end_inset
+
+ que existe, de modo que la expresión anterior se sustituirá por
+\begin_inset Formula 
+\[
+\textrm{(\forall x)\:Altura[x,h(x)]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Skolemización.
+\end_layout
+
+\begin_layout Standard
+La eliminación de los cuantificadores en una fbf de LPO la convierte casi
+ a lógica proposicional.
+\end_layout
+
+\begin_layout Subsubsection
+Forma normal prenexa.
+\end_layout
+
+\begin_layout Standard
+Una fórmula de la lógica de predicados tiene forma prenexa si está escrita
+ como una cadena de cuantificadores (
+\emph on
+prefijo
+\emph default
+) seguidos por una parte sin cuantificar (designada como
+\emph on
+ matriz
+\emph default
+).
+\begin_inset Formula 
+\[
+\begin{array}{c}
+Q_{1}x_{1}Q_{2}x_{2}...Q_{n}x_{n}(A)\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde 
+\begin_inset Formula $\mathbf{Q}_{i}=\left\{ \begin{array}{c}
+\exists\textrm{ o}\\
+\forall\;
+\end{array}\right.$
+\end_inset
+
+ y 
+\begin_inset Formula $(\mathbf{A})$
+\end_inset
+
+ está libre de cuantificadores.
+\end_layout
+
+\begin_layout Standard
+Utilizando las equivalencias descritas, 
+\emph on
+toda fórmula puede escribirse como
+\emph default
+ forma normal 
+\emph on
+prenexa
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplos:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lnot(\exists xP(x))\land(\exists yQ(y)\lor\forall zP(z))$
+\end_inset
+
+ donde 
+\begin_inset Formula $\lnot(\exists xP(x))$
+\end_inset
+
+ no está en forma prenexa.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Quitamos 
+\begin_inset Formula $\textrm{\exists x: ya que }$
+\end_inset
+
+ 
+\begin_inset Formula $\lnot(\exists xP(x))\equiv\forall x\lnot P(x)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\forall x\lnot P(x)\land(\exists yQ(y)\lor\forall zP(z))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Movemos 
+\begin_inset Formula $\textrm{\exists y}:$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\forall x\lnot P(x)\land\exists y(Q(y)\lor\forall zP(z))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Movemos de nuevo 
+\begin_inset Formula $\textrm{\exists y}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\exists y(\forall x\lnot P(x)\land(Q(y)\lor\forall zP(z))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Movemos 
+\begin_inset Formula $\textrm{\exists z}:$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\exists y(\forall x\lnot P(x)\land\forall z(Q(y)\lor P(z))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Movemos 
+\begin_inset Formula $\textrm{\exists z}$
+\end_inset
+
+ de nuevo:
+\begin_inset Formula 
+\[
+\exists y\forall z(\forall x\lnot P(x)\land(Q(y)\lor P(z))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Movemos 
+\begin_inset Formula $\forall x$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathbf{\exists y\forall z\forall x}(\mathbf{\lnot P(x)\land(Q(y)\lor P(z)})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\forall xP(x)\Rightarrow\exists y\forall zR(y,z)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Quito implicación: 
+\begin_inset Formula 
+\[
+\lnot(\forall xP(x))\lor\exists y\forall zR(y,z)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Quito 
+\begin_inset Formula $\forall x$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\exists x\lnot P(x)\lor\exists y\forall zR(y,z)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+usar la distributiva de 
+\begin_inset Formula $\exists x$
+\end_inset
+
+ sobre 
+\begin_inset Formula $\lor$
+\end_inset
+
+ y cambia 
+\begin_inset Formula $y$
+\end_inset
+
+ por 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\exists x(\lnot P(x)\lor\forall zR(x,z))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Sacar 
+\emph on
+
+\begin_inset Formula $\forall z$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\exists x\forall z(\lnot P(x)\lor R(x,z))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Eliminación de cuantificadores: forma de Skolem.
+\end_layout
+
+\begin_layout Standard
+Una vez tenemos los cuantificadores en la cabeza de la expresión hemos de
+ eliminar los existenciales.
+ Para ello reemplazaremos cada variable acotada existencialmente por una
+ 
+\emph on
+constante o función de Skolem
+\emph default
+.
+ Esta transformación, sin embargo, no conserva el significado de la fórmula,
+ sino solo la 
+\emph on
+inconsistencia
+\emph default
+ que es la propiedad crítica ya que la demostración funciona a través de
+ la detección de contradicciones.
+\end_layout
+
+\begin_layout Standard
+La regla básica para eliminar un cuantificador existencial (
+\emph on
+skolemizar
+\emph default
+) de una formula en forma prenexa es la siguiente:
+\end_layout
+
+\begin_layout Standard
+llamando 
+\begin_inset Formula $\exists y$
+\end_inset
+
+ al cuantificador existencial más a la izquierda , la forma prenexa será
+ 
+\begin_inset Formula 
+\begin{equation}
+\forall x_{1}...\forall x_{k}\exists y\,A\label{eq:3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Elegimos un símbolo de función k-aria no presente en A - 
+\begin_inset Formula $f$
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Esta función es 
+\series bold
+\size normal
+\emph on
+desconocida
+\series default
+\emph default
+ pero sabemos que existe.
+\end_layout
+
+\end_inset
+
+-, eliminamos 
+\begin_inset Formula $\exists y$
+\end_inset
+
+ y lo sustituimos por la función 
+\begin_inset Formula $f(x_{1},..,x_{k})$
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\forall x_{1}...\forall x_{k}\,A[f(x_{1},..,x_{k})/y]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $k=0$
+\end_inset
+
+, 
+\begin_inset Formula $f$
+\end_inset
+
+ sería una constante 
+\begin_inset Formula $c$
+\end_inset
+
+ ya que (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+
+\end_inset
+
+) sería simplemente 
+\begin_inset Formula 
+\[
+\exists y\,A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y la fórmula resultante sería: 
+\begin_inset Formula 
+\[
+A[c/y]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El resto de los cuantificadores existenciales están en 
+\emph on
+
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\emph default
+por lo que aplicaremos el método anterior reiteradamente hasta eliminarlos
+\emph on
+.
+ 
+\emph default
+Los nuevos símbolos añadidos se llaman
+\emph on
+ constantes o funciones de Skolem.
+\end_layout
+
+\begin_layout Standard
+Después de skolemizar la fórmula (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+
+\end_inset
+
+) queda de la forma:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{\forall x_{1}...\forall x_{k}\,A}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ está libre de cuantificadores y como las variables libres están cuantificadas
+ universalmente, suprimimos los cuantificadores y nos quedamos solo con
+ 
+\series bold
+
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+.
+ 
+\series default
+Nos encontramos con un caso similar al de la lógica proposicional solo que
+ ahora en
+\series bold
+ 
+\emph on
+A 
+\series default
+\emph default
+hay constantes, símbolos de funciones y variables.
+\end_layout
+
+\begin_layout Standard
+reemplazar cada ocurrencia de la variable cuantificada existencialmente
+ por una función de Skolem cuyos argumentos sean las variables cuantificadas
+ universalmente que estén delimitadas por cuantificadores universales cuyos
+ ámbitos incluyan el cuantificador existencial que se elimina.
+ Los símbolos de función en las funciones de Skolem han de ser 
+\emph on
+nuevos
+\emph default
+ 
+\emph on
+, 
+\emph default
+esto es, que no aparezcan en ninguna de las fbfs utilizadas.
+\end_layout
+
+\begin_layout Standard
+Las reglas básicas para realizar la skolemización son:
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\emph on
+un cuantificador existencial no se encuentra dentro del ámbito de ningún
+ cuantificador universal
+\emph default
+, se sustituye la variable cuantificada existencialmente por una constante
+ que aún no haya sido utilizada y el cuantificador existencial es eliminado.
+ La constante utilizada no puede volver a ser reutilizada.
+ Por ejemplo, 
+\begin_inset Formula ${\displaystyle \exists xP(x)}$
+\end_inset
+
+ puede ser cambiado a 
+\begin_inset Formula $P(c)$
+\end_inset
+
+, donde c es una nueva constante.
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\emph on
+un cuantificador existencial se encuentra dentro del ámbito de 
+\series bold
+\emph default
+un solo
+\series default
+\emph on
+ cuantificador universal 
+\emph default
+, se ha de sustituir la variable cuantificada existencialmente por 
+\emph on
+una función de la variable cuantificada universalmente
+\emph default
+ y se elimina el cuantificador existencial.
+ La función no puede haber sido utilizada previamente ni podrá utilizarse
+ posteriormente.
+ Por ejemplo, la fórmula
+\begin_inset Formula ${\displaystyle \forall x\exists y\forall z.P(x,y,z)}$
+\end_inset
+
+ no está en forma normal de Skolem porque ella contiene un cuantificador
+ existencial 
+\begin_inset Formula $\exists y$
+\end_inset
+
+.
+ La skolemización reemplaza 
+\begin_inset Formula ${\displaystyle y}$
+\end_inset
+
+ con 
+\begin_inset Formula ${\displaystyle f(x)}$
+\end_inset
+
+, donde 
+\begin_inset Formula ${\displaystyle f}$
+\end_inset
+
+ es una nuevo símbolo de función, y elimina la cuantificación existencial
+ sobre 
+\begin_inset Formula ${\displaystyle y}$
+\end_inset
+
+.
+ La fórmula resultante es 
+\begin_inset Formula ${\displaystyle \forall x\forall z.P(x,f(x),z)}$
+\end_inset
+
+ .
+ El término Skolem 
+\begin_inset Formula ${\displaystyle f(x)}$
+\end_inset
+
+ contiene 
+\begin_inset Formula ${\displaystyle x}$
+\end_inset
+
+ pero 
+\series bold
+no
+\begin_inset Formula ${\displaystyle z}$
+\end_inset
+
+
+\series default
+ porque el cuantificador a ser eliminado 
+\begin_inset Formula ${\displaystyle \exists y}$
+\end_inset
+
+ está en el ámbito de 
+\begin_inset Formula ${\displaystyle \forall x}$
+\end_inset
+
+ pero no en el ámbito de 
+\begin_inset Formula ${\displaystyle \forall z}$
+\end_inset
+
+; debido a que la fórmula está en forma normal prenexa, esto es equivalente
+ a decir que, en la aparición de los cuantificadores, 
+\begin_inset Formula ${\displaystyle x}$
+\end_inset
+
+ precede 
+\begin_inset Formula ${\displaystyle y}$
+\end_inset
+
+ mientras 
+\begin_inset Formula ${\displaystyle z}$
+\end_inset
+
+ no.
+ La formula obtenida por esta transformación es satisfacible si y solo si
+ la fórmula original lo es.
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\emph on
+un cuantificador existencial se encuentra dentro del ámbito de más de un
+ cuantificador universal
+\emph default
+ se sustituirá la variable cuantificada existencialmente por una función
+ de todas las variables afectadas por estos cuantificadores universales
+ y se elimina el cuantificador existencial.
+ La función no puede haber sido utilizada previamente ni podrá utilizarse
+ posteriormente.
+\end_layout
+
+\begin_layout Standard
+Ejemplos.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $[(\forall w)Qw)]\Rightarrow(\forall x)\{(\forall y)\{(\exists z)[p(x,y,z)\Rightarrow(\forall u)R(x,y,u,z)]\}\}=(\forall x)\{(\forall y)\{(\exists z)[p(x,y,z)\Rightarrow(\forall u)R(x,y,u,z)]\}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Existe un filósofo con discípulos.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\exists x\:\exists y\:[Filo(x)\land DiscipuloDe(y,x)]$
+\end_inset
+
+: skolemización: 
+\begin_inset Formula $Filo(a)\land DiscipuloDe(b,a)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Cada filósofo escribe al menos un libro.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\forall x\:[Filo(x)\Rightarrow\exists y[Libro(y)\land Escribe(x,y)]]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+- Eliminar implicación: 
+\begin_inset Formula $\forall x\:[\lnot Filo(x)\land\exists y[Libro(y)\land Escribe(x,y)]]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+- skolemizar cambiando y por 
+\begin_inset Formula $f(x)$
+\end_inset
+
+: 
+\begin_inset Formula $\forall x\:[\lnot Filo(x)\land\exists y[Libro(f(x))\land Escribe(x,f(x))]]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Metateoremas para formas de Skolem.
+\end_layout
+
+\begin_layout Itemize
+Metateorema SK1: La forma de Skolem de una fbf 
+\series bold
+NO
+\series default
+ es equivalente a la fbf original.
+ Es decir
+\begin_inset Formula 
+\[
+w(Sk)\models(\exists x)\;w(x)\;\textrm{pero }(\exists x)\;w(x)\nvDash w(Sk)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Metateorema SK2 (Loveland): La forma de Skolem de un conjunto de fbfs 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ es 
+\series bold
+equivalente inferencialmente
+\series default
+ al conjunto de fbfs originales.
+ Es decir que la forma de Skolem de 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ es satisfacible exactamente n aquellos casos en que 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ lo es, de modo que:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\triangle$
+\end_inset
+
+ es satisfacible si 
+\begin_inset Formula $\triangle(Sk)$
+\end_inset
+
+ lo es y
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\triangle$
+\end_inset
+
+ es insatisfacible si 
+\begin_inset Formula $\triangle(Sk)$
+\end_inset
+
+ lo es.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Habíamos dejado la expresión skolemizada en el paso 4, ahora continuaremos
+\end_layout
+
+\begin_layout Itemize
+Convirtiendo la expresión a 
+\emph on
+forma prenexa 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Eliminar
+\emph default
+ los 
+\emph on
+cuantificadores universales
+\emph default
+ que ya no son necesarios y
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Transformar
+\emph default
+ la expresión
+\emph on
+ a FNC
+\emph default
+, con las reglas de la LP.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+s: 
+\end_layout
+
+\begin_layout Enumerate
+Convertir a FNC 
+\begin_inset Formula $[(\forall x)\:Q(x)]\Rightarrow(\forall x)(\forall y)[(\exists z)[P(x,y,z)\Rightarrow(\forall u)R(x,y,u,z)]$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eliminar implicaciones
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $\lnot[(\forall x)\:Q(x)]\lor(\forall x)(\forall y)[(\exists z)[\lnot P(x,y,z)\lor(\forall u)R(x,y,u,z)]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reducir ámbitos de negaciones
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $[(\exists x)\:\lnot Q(x)]\lor(\forall x)(\forall y)[(\exists z)[\lnot P(x,y,z)\lor(\forall u)R(x,y,u,z)]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Estandarizar variables
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $[(\exists w)\:\lnot Q(w)]\lor(\forall x)(\forall y)[(\exists z)[\lnot P(x,y,z)\lor(\forall u)R(x,y,u,z)]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Skolemizar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Q(c)\lor(\forall x)(\forall y)[\lnot P(x,y,f(x,y))\lor(\forall u)R(x,y,u,f(x,y)]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Forma prenexa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(\forall xyu)\lnot Q(c)\lor\lnot P(x,y,f(x,y))\lor R(x,y,u,f(x,y)]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eliminar 
+\begin_inset Formula $\forall$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathbf{\lnot Q(c)\lor\lnot P(x,y,f(x,y))\lor R(x,y,u,f(x,y))}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Transformar a FNC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ya está en FNC
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Convertir: '
+\emph on
+Todo el que ama a todos los animales es amado por alguien
+\emph default
+' que en LPO puede expresarse:
+\begin_inset Formula 
+\[
+(\forall x)\:\{(\forall y)\:[Animal(y)\Rightarrow AmaA(x,y)]\Rightarrow(\exists y)\;AmaA(y,x)\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eliminar implicaciones
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\textrm{1.(\forall x)\:\{(\forall y)\:[\lnot Animal(y)\lor AmaA(x,y)]\Rightarrow(\exists y)\:AmaA(y,x)\}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\textrm{2.(\forall x)\:\{\lnot(\forall y)\:[\lnot Animal(y)\lor AmaA(x,y)]\lor(\exists y)\:AmaA(y,x)\}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reducir ámbitos de negaciones
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\textrm{(\forall x)\:\{(\exists y)\:[Animal(y)\land\lnot AmaA(x,y)]\lor(\exists y)\:AmaA(y,x)\}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Estandarizar variables
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\textrm{(\forall x)\:\{(\exists y)\:[Animal(y)\land\lnot AmaA(x,y)]\lor(\exists z)\:AmaA(z,x)\}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Skolemizar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\textrm{(\forall x)\:\{[Animal(f(x))\land\lnot AmaA(x,f(x))]\lor AmaA(h(x),x)\}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Forma prenexa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\textrm{(\forall x)\:\{[Animal(f(x))\land\lnot AmaA(x,f(x))]\lor AmaA(h(x),x)\}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eliminar 
+\begin_inset Formula $\forall$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\textrm{[Animal(f(x))\land\lnot AmaA(x,f(x))]\lor AmaA(h(x),x)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Transformar a FNC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $[\textrm{Animal(f(x))\lor AmaA(h(x),x)]\land[\lnot AmaA(x,f(x))]\lor AmaA(h(x),x)}]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Resolución generalizada en LPO.
+\end_layout
+
+\begin_layout Standard
+Utilizando la 
+\series bold
+unificación
+\series default
+ podemos extender la resolución a la LPO.
+\end_layout
+
+\begin_layout Subsection
+resolución binaria.
+\end_layout
+
+\begin_layout Standard
+Al igual que en LP definimos la regla: 
+\begin_inset Formula 
+\[
+\frac{{\displaystyle \{p_{1},...p_{n},\mathbf{B}\}\;\{q_{1},...,q_{m},\mathbf{\lnot D}}\}}{{\displaystyle \{p_{1}..p_{n},q_{1},...,q_{m}\}}\sigma}\textrm{ si B}\sigma=\textrm{D}\sigma
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como vemos, la sustitución 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ es un unificador (casi siempre el 
+\noun on
+mcgu) 
+\noun default
+de B y D que aplicada a todos los literales produce la conclusión.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo: 
+\begin_inset Formula $\mathbf{\Gamma}=\left\{ \lnot P(x)\lor\lnot P(y),P(z)\lor P(r)\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mu_{1}=\{z:=x\}$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathbf{\Gamma}=\left\{ \lnot P(x)\lor\lnot P(y),P(x)\lor P(r)\right\} $
+\end_inset
+
+ y se infiere 
+\begin_inset Formula $\{\lnot P(y)\lor P(r)\}$
+\end_inset
+
+.
+ Si hubiésemos tomado el unificador:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mu_{2}=\{r:=y\}$
+\end_inset
+
+ 
+\begin_inset Formula $\mathbf{\Gamma}=\left\{ \lnot P(x)\lor\lnot P(y),P(x)\lor P(y)\right\} $
+\end_inset
+
+ se infiere 
+\begin_inset Formula $\{\lnot P(x)\lor\lnot P(y)\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y todas las demás resoluciones binarias dan variantes alfabéticas de estas
+ cláusulas.
+\end_layout
+
+\begin_layout Standard
+Sean, como antes, 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $w_{2}$
+\end_inset
+
+ dos cláusulas.
+ Si existen 
+\begin_inset Formula $w_{1}^{'}$
+\end_inset
+
+ y 
+\begin_inset Formula $w_{2}^{'}$
+\end_inset
+
+ dos subconjuntos de 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $w_{2}$
+\end_inset
+
+ tales que los literales de 
+\begin_inset Formula $w_{1}^{'}$
+\end_inset
+
+ puedan 
+\emph on
+unificarse
+\emph default
+ con las negaciones de los de 
+\begin_inset Formula $w_{2}^{'}$
+\end_inset
+
+ con el MGU 
+\begin_inset Formula $\mu$
+\end_inset
+
+, entonces las dos cláusulas tienen un resolvente: 
+\begin_inset Formula 
+\[
+\varrho=[(w_{1}-w_{1}^{'})\cup(w_{2}-w_{1}^{'})]\mu
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vemos que el conjunto 
+\begin_inset Formula $\left\{ P(u),P(v)\right\} $
+\end_inset
+
+ puede unificarse con 
+\begin_inset Formula $\left\{ P(x),P(y)\right\} $
+\end_inset
+
+ mediante 
+\begin_inset Formula 
+\[
+\sigma=\{x:=t,u:=t,v:=t,y:=t\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y las cláusulas serán 
+\begin_inset Formula $\left\{ P(t),P(t)\right\} $
+\end_inset
+
+ y 
+\begin_inset Formula $\left\{ P(t),P(t)\right\} $
+\end_inset
+
+ que claramente se unifican en 
+\begin_inset Formula $\{P(t)\}$
+\end_inset
+
+ de modo que 
+\begin_inset Formula $w_{i}-w_{i}^{'}={\textstyle \textrm{Nil}}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con esta definición, el problema anterior da la solución correcta.
+ En general, puede demostrarse que la resolución en LPO es correcta y completa
+ aunque, igual que en LP, hay inferencias que no pueden hacerse directamente
+ pero que sí se pueden demostrar por 
+\emph on
+refutación
+\emph default
+ (reducción al absurdo).
+ 
+\end_layout
+
+\begin_layout Section
+Bases de conocimientos.
+ Extracción de respuestas.
+\end_layout
+
+\begin_layout Standard
+Una 
+\series bold
+base de conocimiento
+\series default
+ (KB) es un 
+\emph on
+conjunto de sentencias en un lenguaje formal
+\emph default
+, cada una representando una aserción acerca del mundo.
+ 
+\end_layout
+
+\begin_layout Standard
+El agente puede representar conocimiento acerca del mundo incluyendo átomos
+ en su KB.
+ La ocurrencia explícita de un átomo en la base de conocimiento del agente
+ significa que el agente considera Verdadera en su mundo la proposición
+ asociada.
+ 
+\end_layout
+
+\begin_layout Standard
+Un 
+\emph on
+agente basado en conocimiento
+\emph default
+ debería tener: 
+\end_layout
+
+\begin_layout Itemize
+Mecanismos en los que basar su conocimiento: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Conocimiento
+\emph default
+ ‘
+\emph on
+innato
+\emph default
+’ de partida.
+ 
+\end_layout
+
+\begin_layout Itemize
+Un 
+\emph on
+sistema sensorial
+\emph default
+ para determinar directamente la verdad o falsedad de las proposiciones
+ acerca de su mundo.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Un 
+\emph on
+mecanismo de consulta
+\emph default
+ que permita acceder al conocimiento almacenado en la BC.
+ 
+\end_layout
+
+\begin_layout Itemize
+Un 
+\emph on
+mecanismo de inferencia
+\emph default
+ correcto que permita deducir nuevas sentencias y añadirlas a su base de
+ conocimiento: Si las fbfs de la BC tienen valor de verdad 
+\series bold
+\emph on
+V
+\series default
+\emph default
+ en el mundo real, entonces las fbfs derivadas de la BC mediante reglas
+ de inferencia correctas tienen valor de verdad 
+\series bold
+\emph on
+V
+\series default
+\emph default
+ en el mundo real.
+ 
+\end_layout
+
+\begin_layout Itemize
+Es también deseable la 
+\emph on
+completitud 
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Un sistema lógico es completo cuando toda fórmula que es válida en un sentido
+ lógico es demostrable.
+\end_layout
+
+\end_inset
+
+del mecanismo de inferencia.
+ El teorema de completitud de Gödel dice que esto es posible en LPO pero
+ no en otras teorías.
+\end_layout
+
+\begin_layout Standard
+Enfrentamos el siguiente problema:
+\end_layout
+
+\begin_layout Standard
+Consideremos la Base de Conocimiento 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Asumamos que necesitamos una prueba de
+\begin_inset Formula $w=(\exists x)\;P(x)$
+\end_inset
+
+ y queremos saber 
+\emph on
+qué valores de 
+\begin_inset Formula $x$
+\end_inset
+
+ hacen que esta expresión sea consecuencia lógica
+\emph default
+ de 
+\begin_inset Formula $\triangle$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Para ello existe el llamado Truco de Green (1999) que veremos sobre un ejemplo.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Sabemos
+\series default
+ (BC) que:
+\end_layout
+
+\begin_layout Enumerate
+todos los hombres son mortales.
+\end_layout
+
+\begin_layout Enumerate
+Sócrates es un hombre.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Queremos saber
+\series default
+ - 
+\emph on
+es nuestra pregunta
+\emph default
+ - si existe algún mortal.
+ 
+\begin_inset Formula $w=(\exists x)\;Mortal(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El truco de Green consiste en tomar nuestra deseada conclusión 
+\emph on
+negada - 
+\begin_inset Formula $\lnot Mortal(x)$
+\end_inset
+
+ - 
+\emph default
+y
+\emph on
+ añadir un literal extra - 
+\begin_inset Formula $Answer(x)$
+\end_inset
+
+ - 
+\emph default
+formando 
+\begin_inset Formula $\textrm{\ensuremath{\lnot Mortal(x)\vee Answer(x)}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Man(x)\lor Mortal(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Man(Sócrates)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lnot Mortal(x)\lor Answer(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Mortal(Sócrates)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Answer(Sócrates)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3,5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

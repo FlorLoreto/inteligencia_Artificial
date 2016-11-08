@@ -1,0 +1,1845 @@
+
+Demostraciones (pruebas) proposicionales.
+ 
+\end_layout
+
+\begin_layout Standard
+Comprobar las consecuencias lógicas a partir de tablas de verdad es conceptualme
+nte simple, pero el número de asignaciones de verdad crece exponencialmente
+ con el número de constantes lógicas.
+ Los métodos de demostración constituyen un medio alternativo de comprobar
+ las consecuencias lógicas.
+ En muchos casos es posible crear una demostración de una conclusión de
+ un conjunto de premisas que es mucho menor que la tabla de verdad.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Prueba
+\series default
+: La secuencia de fbfs {
+\begin_inset Formula $w_{1},w_{2},...,w_{n-1},w_{n}$
+\end_inset
+
+} es una prueba (o deducción, o derivación) de
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ a partir de un conjunto de fbfs 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ con el conjunto de reglas de inferencia R si (si y sólo si) cada 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+,i=1,2,...,n está o bien en 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ o puede ser deducido de 
+\begin_inset Formula ${w_{1},w_{2},...,w_{i-1}}$
+\end_inset
+
+ por la aplicación de alguna regla de inferencia de R.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Teorema
+\series default
+: Si existe una prueba de 
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ a partir de 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ con las reglas de inferencia 
+\emph on
+R
+\emph default
+ , entonces 
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ es un teorema de 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ con reglas de inferencia 
+\begin_inset Formula $R$
+\end_inset
+
+: 
+\begin_inset Formula $\triangle\vdash_{R}w_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La esencia del razonamiento lógico es la manipulación de símbolos:
+\end_layout
+
+\begin_layout Itemize
+comenzamos con premisas
+\end_layout
+
+\begin_layout Itemize
+aplicamos reglas de inferencia para obtener conclusiones
+\end_layout
+
+\begin_layout Itemize
+unimos tales conclusiones para formar pruebas lógicas.
+\end_layout
+
+\begin_layout Standard
+Un ejemplo de aplicación sería el proceso de obtención de información a
+ partir de una base de conocimiento (
+\begin_inset Formula $\varDelta=KB$
+\end_inset
+
+) por medio de una consulta (
+\begin_inset Formula $w_{n}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Una Base de conocimiento (KB) para el mundo del wumpus.
+\end_layout
+
+\begin_layout Standard
+Una 
+\emph on
+base de conocimiento
+\emph default
+ (KB) de un agente dotado de sensores que detectan el valor V o F de varias
+ proposiciones sobre el mundo es la representación de dichos valores en
+ sentencias de lógica proposicional.
+\end_layout
+
+\begin_layout Standard
+Ahora que ya hemos definido la semántica de la lógica proposicional, podemos
+ construir una base de conocimiento para el mundo del wumpus que utilizaremos
+ para ilustrar los métodos de inferencia.
+ Para simplificar, sólo trataremos con hechos y reglas acerca de pozos.
+\end_layout
+
+\begin_layout Standard
+Lo primero, es escoger nuestro 
+\emph on
+vocabulario
+\emph default
+ de 
+\emph on
+símbolos proposicionales
+\emph default
+.
+ Para cada posición de la habitación i, j:
+\end_layout
+
+\begin_layout Itemize
+Hacemos que 
+\begin_inset Formula $H_{ij}$
+\end_inset
+
+ sea verdadero si hay un hoyo (o pozo) en la casilla [i, j]
+\end_layout
+
+\begin_layout Itemize
+Hacemos que 
+\begin_inset Formula $K_{ij}$
+\end_inset
+
+ sea verdadero si hay una corriente de aire (una brisa) en la casilla [i,
+ j].
+\end_layout
+
+\begin_layout Standard
+La base de conocimiento
+\emph on
+ KB
+\emph default
+ contiene las siguientes 
+\series bold
+\emph on
+sentencias
+\series default
+\emph default
+ cada una etiquetada con un
+\emph on
+ identificador
+\emph default
+:
+\end_layout
+
+\begin_layout Itemize
+No hay ningún hoyo en la casilla [1, 1].
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $R_{1}:\;\lnot H_{1,1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+En una casilla se siente una brisa si y solo si hay un hoyo en una casilla
+ vecina.
+ Esta regla se ha de especificar para
+\emph on
+ cada casilla
+\emph default
+; por ahora, tan solo incluimos las casillas que son relevantes:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+R_{2}:\;B_{11}\Leftrightarrow(H_{1,2}\lor H_{2,1})\\
+R_{3}:\;B_{21}\Leftrightarrow(H_{1,1}\lor H_{2,2}\lor H_{3,1})
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las sentencias anteriores son verdaderas en todos los mundos de wumpus.
+ 
+\end_layout
+
+\begin_layout Itemize
+Ahora 
+\emph on
+incluimos
+\emph default
+ las 
+\series bold
+\emph on
+percepciones
+\series default
+\emph default
+ de brisa para las dos primeras casillas visitadas en el mundo concreto
+ donde se encuentra el agente, llegando a la situación que se muestra en
+ la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4"
+
+\end_inset
+
+(b)).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\begin{array}{c}
+R_{4}:~\lnot B_{11}\\
+R_{5}:~\lnot B_{21}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces.
+ la base de conocimiento está compuesta por la sentencias 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+, hasta 
+\begin_inset Formula $R_{5}$
+\end_inset
+
+.
+ La 
+\emph on
+KB
+\emph default
+ también se puede representar mediante una única sentencia (la conjunción
+ 
+\begin_inset Formula ${\displaystyle \land_{i=1}^{5}R_{i}}$
+\end_inset
+
+ porque dicha sentencia aserta que todas las sentencias 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ (i=1,..,5) son verdaderas.
+\end_layout
+
+\begin_layout Section
+Esquemas y reglas de inferencia.
+\end_layout
+
+\begin_layout Standard
+Para enfrentar el problema de la demostración, precisamos conocer las
+\emph on
+ reglas de inferencia
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Un 
+\emph on
+esquema
+\emph default
+ es una expresión que satisface la sintaxis del lenguaje excepto por la
+ aparición de 
+\emph on
+metavariables
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Una 
+\emph on
+metavariable
+\emph default
+, como 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, representa cualquier fórmula.
+ Usaremos letras griegas para designar metavariables.
+
+\emph on
+ 
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+en varias subpartes de la expresión.
+\end_layout
+
+\begin_layout Standard
+P.e.
+ la siguiente expresión es un 
+\emph on
+esquema
+\emph default
+ con metavariables 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ y 
+\begin_inset Formula $\psi$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathbf{\varphi\Rightarrow\psi}
+\]
+
+\end_inset
+
+Una 
+\emph on
+regla de inferencia
+\emph default
+ es un patrón de razonamiento consistente en algunos 
+\emph on
+esquemas
+\emph default
+ denominados 
+\series bold
+\emph on
+premisas 
+\series default
+\emph default
+y uno o más esquemas adicionales llamados 
+\series bold
+\emph on
+conclusiones
+\series default
+ derivados de los anteriores
+\series bold
+.
+\end_layout
+
+\begin_layout Standard
+Las reglas de inferencia se escriben con frecuencia de la siguiente manera
+ 
+\emph on
+(modus ponens
+\emph default
+ o
+\emph on
+ 
+\emph default
+eliminación de la implicación)
+\emph on
+:
+\emph default
+
+\begin_inset Formula 
+\[
+\frac{{\displaystyle \mathbf{\varphi\Rightarrow\psi,\;\varphi}}}{{\displaystyle \mathbf{\psi}}}
+\]
+
+\end_inset
+
+donde los esquemas 
+\emph on
+por encima de la línea
+\emph default
+ son las 
+\series bold
+\emph on
+premisas 
+\series default
+\emph default
+y los que están 
+\emph on
+por debajo
+\emph default
+, las 
+\series bold
+\emph on
+conclusiones
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Una 
+\emph on
+instancia 
+\emph default
+de una regla de inferencia se obtiene sustituyendo las metavariables de
+ la regla por sentencias, como p.e.
+ (eliminación de la implicación) 
+\begin_inset Formula 
+\[
+\frac{{\displaystyle \mathbf{p\Rightarrow q,\;p}}}{{\displaystyle \mathbf{q}}}
+\]
+
+\end_inset
+
+Tales sustituciones pueden ser arbitrariamente largas.
+\end_layout
+
+\begin_layout Standard
+Es perfectamente válido tener 
+\emph on
+reglas de inferencia sin premisas
+\emph default
+ que, con frecuencia, se denominan 
+\emph on
+esquemas de axiomas
+\emph default
+ que suelen representarse sin la línea horizontal.
+\end_layout
+
+\begin_layout Standard
+Algunos ejemplos de 
+\emph on
+reglas de inferencia
+\emph default
+ que se pueden aplicar para derivar cadenas de conclusiones que nos llevan
+ al objetivo deseado son los siguientes:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modus ponens
+\series default
+ (o eliminación de la implicación): 
+\begin_inset Formula $\frac{{\displaystyle \alpha\Rightarrow\beta,\;\alpha}}{{\displaystyle \beta}}$
+\end_inset
+
+: cada vez que encontramos dos sentencias en la forma 
+\begin_inset Formula $\alpha\Rightarrow\beta$
+\end_inset
+
+ y 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\beta$
+\end_inset
+
+ puede inferirse.
+ P.e.
+ si en un problema de caza tenemos 
+\begin_inset Formula $(OsoEnfrente\land OsoVivo)\Rightarrow Disparar$
+\end_inset
+
+ y 
+\begin_inset Formula $(OsoEnfrente\land OsoVivo)$
+\end_inset
+
+ puede inferirse 
+\begin_inset Formula $Disparar$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modus tollens
+\series default
+: 
+\begin_inset Formula ${\displaystyle \frac{\lnot\alpha,\;\alpha\Rightarrow\beta}{\lnot\beta}}$
+\end_inset
+
+.
+ De 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\lnot(OsoEnfrente\land OsoVivo)\equiv\lnot OsoEnfrente\lor\lnot OsoVivo$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+ puede inferirse 
+\begin_inset Formula $\lnot Disparar$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Eliminación
+\series default
+_
+\begin_inset Formula $\mathbf{\land}$
+\end_inset
+
+: 
+\begin_inset Formula $\frac{{\displaystyle \alpha\land\beta}}{{\displaystyle \alpha}}$
+\end_inset
+
+, 
+\begin_inset Formula $\frac{{\displaystyle \alpha\land\beta}}{{\displaystyle \beta}}$
+\end_inset
+
+,de una conjunción, se puede inferir cualquiera de sus conjuntores.
+ De 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $(OsoEnfrente\land OsoVivo)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+ puede inferirse 
+\begin_inset Formula $OsoEnfrente$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Eliminación 
+\begin_inset Formula $\lnot\lnot$
+\end_inset
+
+: 
+\begin_inset Formula ${\displaystyle \frac{\lnot\lnot\alpha}{\alpha}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Introducción_
+\begin_inset Formula $\land$
+\end_inset
+
+: 
+\begin_inset Formula ${\displaystyle \frac{\alpha,\beta}{\alpha\land\beta}}$
+\end_inset
+
+.
+ 
+\series default
+De 
+\begin_inset Formula $OsoEnfrente$
+\end_inset
+
+ ,
+\begin_inset Formula $OsoVivo$
+\end_inset
+
+ se infiere que
+\series bold
+ 
+\begin_inset Formula $(OsoEnfrente\land OsoVivo)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Introducción_
+\series default
+ 
+\begin_inset Formula $\lor$
+\end_inset
+
+: 
+\begin_inset Formula ${\displaystyle \frac{\alpha}{\alpha\lor\beta}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si tomamos en cuenta la equivalencia de la eliminación de la bicondicional
+ nos lleva a las dos reglas de inferencia:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\displaystyle \begin{array}{c}
+{\displaystyle \frac{\alpha\Leftrightarrow\beta}{(\alpha\Rightarrow\beta)\land(\beta\Rightarrow\alpha)}}\\
+{\displaystyle \frac{(\alpha\Rightarrow\beta)\land\beta\Rightarrow\alpha)}{(\alpha\Leftrightarrow\beta)}}
+\end{array}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pero
+\emph on
+ no todas las reglas de inferencia
+\emph default
+ se pueden usar, como esta, en ambas direcciones.
+ 
+\end_layout
+
+\begin_layout Standard
+Las reglas de inferencia citadas pueden también escribirse con el símbolo
+ 
+\emph on
+consecuencia lógica
+\emph default
+ -
+\begin_inset Formula $\models$
+\end_inset
+
+- como p.e.
+ el modus ponens 
+\begin_inset Formula $(\alpha\Rightarrow\beta,\;\alpha)\models{\displaystyle \beta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Una 
+\emph on
+prueba lineal 
+\emph default
+de una conclusión derivada de un conjunto de premisas es una 
+\emph on
+secuencia de sentencias
+\emph default
+ que termina en una
+\emph on
+ conclusión 
+\emph default
+en la cual cada elemento es
+\end_layout
+
+\begin_layout Enumerate
+una 
+\emph on
+premisa
+\end_layout
+
+\begin_layout Enumerate
+una 
+\emph on
+instancia de un esquema axiomático
+\emph default
+ o
+\end_layout
+
+\begin_layout Enumerate
+el resultado de 
+\emph on
+aplicar una regla de inferencia a elementos 
+\emph default
+secuencialmente 
+\emph on
+anteriores
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+s:
+\end_layout
+
+\begin_layout Enumerate
+Estas reglas de inferencia pueden usarse en el mundo del wumpus del modo
+ siguiente:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Partimos de las base de conocimientos 
+\begin_inset Formula $\left\{ R_{1},...,R_{5}\right\} $
+\end_inset
+
+ y mostremos p.e.
+ cómo 
+\emph on
+probar
+\emph default
+ que 
+\begin_inset Formula $\lnot H_{1,2}$
+\end_inset
+
+(no hay un pozo en [1,2]):
+\end_layout
+
+\begin_layout Enumerate
+Equivalencia de eliminación de la bicondiciona a 
+\begin_inset Formula $R_{2}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+R_{6}:\;(B_{11}\Rightarrow(H_{13}\lor H_{21}))\land((H_{12}\lor H_{21})\Rightarrow B_{11})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Eliminación 
+\begin_inset Formula $\land$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+R_{7}:\;((H_{12}\lor H_{21})\Rightarrow B_{11})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Equivalencia lógica de contraposición:
+\begin_inset Formula 
+\[
+R_{8}:\;(\lnot B_{11}\Rightarrow\lnot(H_{12}\lor H_{21}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ley de De Morgan:
+\begin_inset Formula 
+\[
+R_{9}:\;(\lnot B_{11}\Rightarrow(\lnot H_{12}\land\lnot H_{21}))\rightarrow\textrm{No hay pozo en [1,2] ni en [2,1]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sean nuestras premisas:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $p$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p\Rightarrow q$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(p\Rightarrow q)\Rightarrow(q\Rightarrow r)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y queremos probar que se verifica la 
+\emph on
+conclusión 
+\series bold
+
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Para probarlo 
+\end_layout
+
+\begin_layout Itemize
+de 1 y 2 por 
+\emph on
+modus ponens
+\emph default
+ inferimos que 
+\begin_inset Formula 
+\[
+\frac{{\displaystyle p\Rightarrow q,\;p}}{{\displaystyle q}}\sim\mathbf{q}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+de  3 por 
+\emph on
+modus ponens
+\emph default
+ inferimos que
+\begin_inset Formula 
+\[
+\frac{{\displaystyle q\Rightarrow(q\Rightarrow r),\;q}}{{\displaystyle (q\Rightarrow r)}}\sim\mathbf{q}\Rightarrow\mathbf{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+por último
+\begin_inset Formula 
+\[
+\frac{{\displaystyle q\Rightarrow r,\;q}}{{\displaystyle r}}\sim\mathbf{r}\:\textrm{c.q.d.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Completitud y corrección del conjunto de reglas de inferencia.
+\end_layout
+
+\begin_layout Standard
+En Lógica tenemos dos conceptos interrelacionados: 
+\emph on
+consecuencia lógica
+\emph default
+ y 
+\emph on
+demostrabilidad
+\emph default
+ que son, sin embargo, muy diferentes: un conjunto de premisas tiene una
+ consecuencia lógica si y solo si toda asignación de valores de verdad que
+ satisfaga las premisas, satisface también la conclusión.
+ Una sentencia es demostrable a partir de un conjunto de premisas si y solo
+ si existe una demostración finita de la conclusión a partir de las premisas.
+\end_layout
+
+\begin_layout Standard
+El primer concepto se basa en tablas de verdad y el segundo en manipulación
+ simbólica de expresiones.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Corrección
+\series default
+: Si para todo conjunto de fbfs 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ y toda fbf 
+\begin_inset Formula $w$
+\end_inset
+
+ 
+\begin_inset Formula $\triangle\vdash_{R}w$
+\end_inset
+
+ implica 
+\begin_inset Formula $\triangle\models$
+\end_inset
+
+
+\begin_inset Formula $w$
+\end_inset
+
+ se dice entonces que el conjunto de reglas R es 
+\emph on
+correcto
+\emph default
+.
+ Es decir, si y solo si 
+\emph on
+toda conclusión demostrable es consecuencia lógica 
+\emph default
+(
+\emph on
+su conclusión es verdad cuando lo son las premisas).
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Completitud
+\series default
+: Si para todo conjunto de fbfs 
+\begin_inset Formula $\triangle$
+\end_inset
+
+ y toda fbf 
+\begin_inset Formula $w$
+\end_inset
+
+ 
+\begin_inset Formula $\triangle\models w$
+\end_inset
+
+ implica 
+\begin_inset Formula $\triangle\vdash_{R}w$
+\end_inset
+
+ se dice entonces que el conjunto de reglas R es 
+\emph on
+completo
+\emph default
+.
+ Esto es, si y solo si 
+\emph on
+toda consecuencia lógica es demostrable
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Nota
+\bar default
+: el operador 
+\begin_inset Formula $\models$
+\end_inset
+
+ se denomina 
+\emph on
+operador de demostrabilidad
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Un algoritmo de inferencia que 
+\emph on
+deriva sólo sentencias implicadas
+\emph default
+ es correcto o mantiene la verdad.
+\end_layout
+
+\begin_layout Standard
+Un algoritmo de inferencia es completo si
+\emph on
+ puede derivar cualquier sentencia que está implicada
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Hemos descrito un proceso de razonamiento en el que se 
+\emph on
+garantiza que las conclusiones sean verdaderas en cualquier mundo en el
+ que las premisas lo sean
+\emph default
+; en concreto, si una KB es verdadera en el mundo real, entonces cualquier
+ sentencia 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ que se derive de dicha KB mediante un procedimiento de inferencia correcto
+ también será verdadera en el mundo real.
+ Así, mientras que un proceso de inferencia opera con la «
+\emph on
+sintaxis
+\emph default
+» - las configuraciones físicas internas, tales corno los bits en los registros
+ o los patrones de impulsos eléctricos en el cerebro - el proceso se corresponde
+ con la relación del mundo real según la cual algún aspecto del mundo real
+ es cierto en virtud de que otros aspectos del mundo real lo son.
+ En la Figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:6"
+
+\end_inset
+
+) se ilustra esta correspondencia entre mundo y representación.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:6"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename repe_mundo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Forma normal conjuntiva (FNC).
+\end_layout
+
+\begin_layout Standard
+En lógica matemática, un 
+\series bold
+literal
+\series default
+ es una fórmula atómica
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La representación de un estado es un estado individual, sin ningún componente
+ o parte en su interior
+\end_layout
+
+\end_inset
+
+ o su negación (precedido por
+\begin_inset Formula $\lnot$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Una 
+\series bold
+cláusula
+\series default
+ 
+\emph on
+K
+\emph default
+ es una disyunción de literales
+\begin_inset Formula 
+\[
+K=\lor_{j=1}^{m}\lambda_{j}
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $\lambda_{j}$
+\end_inset
+
+ son literales 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cláusula unitaria
+\series default
+: Cláusula que contiene un sólo literal, 
+\begin_inset Formula $K=\lambda$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cláusula vacía
+\series default
+ (que se denota con 
+\begin_inset Formula $\oblong$
+\end_inset
+
+): No contiene ningún literal.
+ La cláusula vacía es insatisfacible: 
+\begin_inset Formula $\oblong\equiv F$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En lógica booleana, una fórmula está en 
+\emph on
+forma normal conjuntiva
+\emph default
+ 
+\series bold
+(FNC
+\series default
+) si corresponde a una 
+\series bold
+\emph on
+conjunción de cláusulas
+\series default
+\emph default
+, donde una cláusula es una disyunción de literales, donde un literal y
+ su complemento no pueden aparecer en la misma cláusula.
+ 
+\begin_inset Formula 
+\[
+\mathbf{\alpha}=\land_{i=1}^{n}K_{i}=\land_{i=1}^{n}(\lor_{j=1}^{m}\lambda_{j}^{i})=\left\{ K_{i}\right\} _{i=1}^{n}
+\]
+
+\end_inset
+
+FNC vacío (que se denota por 
+\begin_inset Formula $\left\{ \right\} $
+\end_inset
+
+) no contiene ninguna cláusula y es una tautología: 
+\begin_inset Formula $\left\{ \right\} \equiv F$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Todas las conjunciones de literales y todas las disyunciones de literales
+ están en FNC, pues ellas pueden ser vistas, respectivamente, como conjunciones
+ de cláusulas de un literal, y como conjunciones de una única cláusula.Los
+ únicos conectivos lógicos que pueden aparecer en una fórmula en FNC son
+ la conjunción, disyunción y negación.
+ El operador negación solo puede aplicarse a un literal, y no a una cláusula
+ completa, lo que significa que este sólo puede preceder a una variable
+ proposicional o un símbolo de predicado.
+\end_layout
+
+\begin_layout Standard
+La FNC puede expresarse como un conjunto de 
+\emph on
+n
+\emph default
+ cláusulas (con la conjunción implícita): 
+\begin_inset Formula 
+\[
+\left\{ \textrm{\lor_{j=1}^{m}\lambda_{j}^{1},...,\lor_{j=1}^{m}\lambda_{j}^{n}}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metateorema
+\series default
+: 
+\emph on
+Hay un algoritmo que transforma cualquier fbf de cálculo proposicional en
+ una FNC equivalente
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+En Lógica proposicional esto se consigue mediante
+\end_layout
+
+\begin_layout Standard
+1.
+ Eliminación de las conectivas de implicación usando
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\begin{array}{c}
+\alpha\Rightarrow\beta\equiv\lnot\alpha\lor\beta\\
+\alpha\Leftarrow\beta\equiv\alpha\lor\lnot\beta
+\end{array}\\
+\alpha\Leftrightarrow\beta\equiv(\lnot\alpha\Rightarrow\beta)\land(\alpha\Rightarrow\lnot\beta)
+\end{array}
+\]
+
+\end_inset
+
+2.
+ Reducir el ámbito de 
+\begin_inset Formula $la\lnot$
+\end_inset
+
+negación: 
+\end_layout
+
+\begin_layout Itemize
+Usando las leyes de De Morgan
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\lnot(\alpha\lor\beta)\equiv\lnot\alpha\land\lnot\beta\\
+\lnot(\alpha\land\beta)\equiv\lnot\alpha\lor\lnot\beta
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eliminando símbolos 
+\begin_inset Formula $\lnot$
+\end_inset
+
+ repetidos.
+ Aplicar esta regla repetidamente hasta que todos los símbolos 
+\begin_inset Formula $\lnot$
+\end_inset
+
+ aparezcan sólo inmediatamente antes de un átomo (
+\emph on
+variable proposicional
+\emph default
+)
+\begin_inset Formula 
+\[
+\lnot\lnot\alpha\equiv\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+3.
+ Convertir a FNC usando leyes asociativas/distributivas.
+\begin_inset Formula 
+\[
+\begin{array}{c}
+(\alpha_{1}\lor...\lor\alpha_{n})\lor\beta=\alpha_{1}\lor...\lor\alpha_{n}\lor\beta\\
+(\alpha_{1}\land...\land\alpha_{n})\land\beta=\alpha_{1}\land...\land\alpha_{n}\lor\beta\\
+(\alpha_{1}\land\alpha_{2})\lor\beta=(\alpha_{1}\lor\beta)\land(\alpha_{2}\lor\beta)\\
+(\alpha_{1}\lor\alpha_{2})\land\beta=(\alpha_{1}\land\beta)\lor(\alpha_{2}\land\beta)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+4.
+ Simplificar la expresión usando reglas de equivalencia.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+s: 
+\end_layout
+
+\begin_layout Enumerate
+Expresar 
+\begin_inset Formula $\mathbf{A\Leftrightarrow(B\lor C)}$
+\end_inset
+
+ en FNC.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $(A\text{?}(B\text{?}C))\text{?}((B\text{?}C)\text{?}A)$
+\end_inset
+
+ por eliminación de bicondicional
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\text{¬}A\text{?}B\text{?}C)\text{?}(\text{¬}(B\text{?}C)\text{?}A)$
+\end_inset
+
+ por eliminación de implicación
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\text{¬}A\text{?}B\text{?}C)\text{?}((\text{¬}B\text{?}\text{¬}C)\text{?}A)$
+\end_inset
+
+ mover negaciones
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(\text{¬}A\text{?}B\text{?}C)\text{?}(\text{¬}B\text{?}A)\text{?}(\text{¬}C\text{?}A)$
+\end_inset
+
+ distributiva de 
+\begin_inset Formula $\lor$
+\end_inset
+
+ respecto a 
+\begin_inset Formula $\land$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Considera la proposición (A 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+B) 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+C .
+ Expresarla como FNC.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Transformaciones:
+\begin_inset Formula 
+\[
+\lnot A\lor B\Rightarrow C
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lnot(\lnot A\lor B)\lor C
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+(A\land\lnot B)\lor C
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+(A\lor C)\land(\lnot B\lor C)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Expresar (
+\begin_inset Formula $\lnot$
+\end_inset
+
+P
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ (P 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Q)) como FNC: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Transformaciones:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $\lnot P\Rightarrow(\lnot P\lor Q)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Formula $P\lor(\lnot P\lor Q)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $\mathbf{P\lor\lnot P\lor Q}\rightarrow\mathbf{Verdad}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Resolución en lógica proposicional.
+\end_layout
+
+\begin_layout Standard
+Muchas de las reglas de inferencia mencionadas hasta ahora pueden combinarse
+ en una regla llamada 
+\emph on
+resolución
+\emph default
+.
+ La versión de resolución que expondremos se aplica a un formato especial
+ de fbfs denominado 
+\emph on
+cláusula
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Planteemos la siguiente pregunta:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Si a María le gusta el pato 
+\emph default
+(p)
+\emph on
+ , entonces a María le gusta el conejo 
+\emph default
+(c)
+\emph on
+.
+ Si es lunes 
+\emph default
+(l)
+\emph on
+ y está nevando 
+\emph default
+(n)
+\emph on
+, entonces a María le gusta el pato o el conejo.
+ Si es lunes y está nevando, ¿le gusta a María el pollo?
+\end_layout
+
+\begin_layout Standard
+La primera sentencia (
+\emph on
+Si a María le gusta el pato 
+\emph default
+(p)
+\emph on
+ , entonces a María le gusta el conejo 
+\emph default
+(c)) se expresa como:
+\begin_inset Formula 
+\[
+p\Rightarrow c
+\]
+
+\end_inset
+
+La segunda (
+\emph on
+Si es lunes 
+\emph default
+(l)
+\emph on
+ y está nevando 
+\emph default
+(n)
+\emph on
+, entonces a María le gusta el pato o el conejo
+\emph default
+) :
+\begin_inset Formula 
+\[
+((l\land n)\Rightarrow(p\lor c))
+\]
+
+\end_inset
+
+Y es evidente que si se verifican:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+p_{1}\land...\land p_{k}\Rightarrow q_{1}\lor...\lor q_{l}\\
+r_{1}\land...\land r_{m}\Rightarrow s_{1}\lor...\lor s_{n}
+\end{array}
+\]
+
+\end_inset
+
+también lo hace:
+\begin_inset Formula 
+\[
+\mathbf{p_{1}\land...\land p_{k}\land r_{1}\land...\land r_{m}\Rightarrow q_{1}\lor...\lor q_{l}\lor s_{1}\lor...\lor}\mathbf{s_{n}}
+\]
+
+\end_inset
+
+y por lo tanto, en nuestro ejemplo:
+\begin_inset Formula 
+\[
+p\land l\land n\Rightarrow c\lor p\lor c
+\]
+
+\end_inset
+
+Expresión en la que se pueden hacer dos manipulaciones:
+\end_layout
+
+\begin_layout Enumerate
+si una misma proposición se repite a la izquierda de una sentencia y a la
+ derecha de otra pueden eliminarse los dos símbolos en ambos una sola vez.
+\end_layout
+
+\begin_layout Enumerate
+si una constante se repite al mismo lado de la sentencia pueden eliminarse
+ todas las ocurrencias de la misma menos una.
+\end_layout
+
+\begin_layout Standard
+Entonces, tendremos:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\begin{array}{c}
+\begin{array}{c}
+p\Rightarrow c\textrm{ }\\
+l\land n\Rightarrow p\lor c
+\end{array}\\
+\mathbf{l\land n\Rightarrow c\lor c}\textrm{ por 1 }
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y por 2 
+\begin_inset Formula $\mathbf{l\land n\Rightarrow c}$
+\end_inset
+
+ y la respuesta es cierta.
+\end_layout
+
+\begin_layout Standard
+Este ejemplo introduce uno de los más interesantes problemas de la lógica:
+ la 
+\series bold
+\emph on
+Resolución
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+En lógica la 
+\series bold
+resolución
+\series default
+ es una regla de inferencia utilizada sobre cierto tipo de proposiciones
+ lógicas y es especialmente utilizada para los demostradores automatizados
+ de teoremas.
+ Utilizando resolución se puede construir un demostrador que sea
+\emph on
+ 
+\series bold
+completo
+\series default
+ 
+\emph default
+y 
+\series bold
+\emph on
+correcto
+\series default
+\emph default
+ para la lógica proposicional y de primer orden supuesto que un conjunto
+ de proposiciones son insatisfacibles.
+ Por otro lado si el conjunto de proposiciones de hecho es satisfacible,
+ puede o no terminar en una cantidad finita de pasos una demostración por
+ resolución, generalmente lo que sucede es que se asigna un tiempo límite
+ para hallar si un conjunto es insatisfacible o no.
+\end_layout
+
+\begin_layout Standard
+La resolución solamente funciona cuando se escriben las proposiciones en
+ términos que constan solamente de disyunciones de literales.
+ Puesto que toda proposición lógica se puede escribir en términos de disyuncione
+s, conjunciones y negaciones lo anterior no supone una limitación del método
+ más allá de transformar proposiciones lógicas.
+ Las proposiciones escritas en esta forma se les denomina 
+\emph on
+cláusulas
+\emph default
+, esto es una
+\series bold
+ cláusula
+\series default
+ es un 
+\series bold
+\emph on
+literal 
+\series default
+\emph default
+o una 
+\series bold
+\emph on
+disyunción 
+\series default
+\emph default
+de literales (
+\begin_inset Formula $\vee_{i=1}^{m}l_{i}$
+\end_inset
+
+) y puede ser representada como un conjunto de literales con disyunciones
+ implícitas entre todos los literales del conjunto.
+\end_layout
+
+\begin_layout Standard
+Una 
+\series bold
+\emph on
+cláusula
+\series default
+\emph default
+ se interpreta también como un conjunto de literales 
+\begin_inset Formula $\left\{ l_{i}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+cláusula
+\series default
+: 
+\begin_inset Formula $\mathbf{\lnot p\lor q}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+conjunto de literales
+\series default
+: 
+\begin_inset Formula $\left\{ \lnot p,q\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Un modo de resolución para ciertos problemas 
+\emph
