@@ -219,6 +219,82 @@ Usa dicha heurística en la búsqueda de una solución a este laberinto usando
  laberinto de este tipo? ¿Y para este laberinto en particular?
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+Solución:
+\end_layout
+
+\begin_layout Enumerate
+Heurística: Una posible es la suma de las distancias horizontal y vertical
+ hasta la salida: 
+\begin_inset Formula $h(n)=|x_{n}-\textrm{S}_{x}|+|y_{n}-\textrm{S}_{y}|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+El coste de cualquier movimiento es 1 y como 
+\begin_inset Formula $h$
+\end_inset
+
+ en cualquier movimiento varía en una unidad y solo una : Ej: 
+\begin_inset Formula $(2,1)\rightarrow(2,2)$
+\end_inset
+
+ 
+\begin_inset Formula $h=|2-3|+|2-2|=1.$
+\end_inset
+
+ Esto implica que
+\begin_inset Formula 
+\[
+h(n)\leq C(n\rightarrow n')+h(n')\Rightarrow h\textrm{ es monótona.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sol1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 
 \size footnotesize
@@ -693,7 +769,54 @@ d.
  qué?
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsection
+
+\size footnotesize
+Consideremos un juego en el cual los jugadores forman palabras.
+\end_layout
+
+\begin_layout Standard
+El jugador A consigue puntos por las vocales y el B por las consonantes
+ de la palabra formada en el nodo terminal.
+ Consideremos el árbol de juego para un estado del juego en el que tiene
+ el turno el jugador B.
+\end_layout
+
+\begin_layout Standard
+Diseña una función de evaluación para completar la definición el juego y
+ explica su significado.
+ Utiliza el algoritmo minimax con poda alfa-beta para determinar cuál es
+ el valor minimax en el nodo raíz del ábol de juego y cuál es la jugada
+ óptima en este estado del juego para B.
+\end_layout
+
+\begin_layout Standard
+Indica con una etiqueta numérica el orden de recorrido de los nodos en el
+ árbol.
+ En cada nodo interno visitado, indica los valores [
+\begin_inset Formula $\alpha$
+\end_inset
+
+,
+\begin_inset Formula $\beta$
+\end_inset
+
+].
+ En los nodos finales visitados (y únicamente en ellos) indica el valor
+\end_layout
+
+\begin_layout Standard
+de la función de evaluación.
+ Indica asimismo los nodos en los que hay poda.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename problema7.png
+	scale 60
+
+\end_inset
+
 
 \end_layout
 

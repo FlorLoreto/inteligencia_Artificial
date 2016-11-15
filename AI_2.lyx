@@ -253,27 +253,10 @@ Las consideraremos dentro de un mismo contexto y los compararemos más adelante
 \emph default
 guiados por una 
 \emph on
-heurística.
-\end_layout
-
-\begin_layout Standard
-Por el contrario en una 
-\begin_inset Quotes fld
-\end_inset
-
-
-\emph on
-búsqueda informada
-\emph default
- (o 
-\emph on
 heurística
 \emph default
-)
-\begin_inset Quotes frd
-\end_inset
-
- cuando la búsqueda es capaz de determinar si un estado es más 
+ en los que, por el contrario, la búsqueda es capaz de determinar si un
+ estado es más 
 \emph on
 prometedor
 \emph default
@@ -370,14 +353,13 @@ huye del fantasma
 
 \begin_layout Standard
 Es fácil ver que estos simples códigos conducen a malas decisiones, como
- se ven en el caso de que exista un vacío entre el robot y el manzano.
+ se ve en el caso de que exista un vacío entre el robot y el manzano.
 \end_layout
 
 \begin_layout Standard
 Podríamos escribir un código más complejo, indicando p.e.
  lo que habría que hacer en caso de existir un abismo entre agente y árbol,
- p.e.
- 
+ del tipo 
 \series bold
 \size large
 if 
@@ -441,8 +423,10 @@ percepciones
 acciones
 \emph default
 ), pero la tabla puede llegar a ser extraordinariamente grande.
- Además, los agentes reactivos, como vimos, pueden tener memoria y un modelo
- del estado actual del 
+ Además, 
+\emph on
+los agentes reactivos, como vimos, pueden tener memoria y un modelo del
+ estado actual del 
 \begin_inset Quotes fld
 \end_inset
 
@@ -450,12 +434,23 @@ mundo
 \begin_inset Quotes frd
 \end_inset
 
-.
- Los agentes reactivos 
-\emph on
-no toman en consideración las consecuencias futuras de sus acciones, 
+
 \emph default
-sino solo
+.
+ Los 
+\series bold
+agentes reactivos
+\series default
+ 
+\series bold
+\emph on
+no toman en consideración las consecuencias futuras
+\series default
+ de sus acciones, 
+\emph default
+sino 
+\series bold
+solo
 \emph on
  el estado actual del 
 \begin_inset Quotes fld
@@ -465,6 +460,8 @@ mundo
 \begin_inset Quotes frd
 \end_inset
 
+
+\series default
 .
 \end_layout
 
@@ -486,9 +483,9 @@ then
 \size default
  
 \emph on
-come el punto, 
+cómete el punto, 
 \emph default
-de los dos casos siguientes:
+en los dos casos siguientes:
 \end_layout
 
 \begin_layout Standard
@@ -523,55 +520,28 @@ status open
 \end_layout
 
 \begin_layout Standard
-El de la izquierda podría ser resuelto de una manera racional, pero no así
- el derecho dado que en esta circunstancia al comerse el punto que se encuentra
- en sus fauces, no habría punto a la vista:
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../stoppac.png
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+el de la izquierda podría ser resuelto de una manera racional, pero no así
+ el derecho dado que en esta circunstancia no hay reacción prevista ya que
+ para comerse el punto que se encuentra en sus fauces, precisa de un punto
+ a la vista que no hay:
 \end_layout
 
 \begin_layout Standard
 Pac-Man se detendría, al no tener prevista la situación en que no haya punto
- a la vista aunque sí más allá de su cercanía inmediata.
+ a la vista aunque lo hay más allá de su cercanía inmediata.
 \end_layout
 
 \begin_layout Standard
 Volviendo a la pregunta acerca de la racionalidad de los agentes reactivos,
 \emph on
- la racionalidad 
+ la racionalidad es una
+\series bold
+ función de las acciones
+\series default
+ que el agente emprende
 \emph default
-es una función de las acciones que el agente emprende no de la computación
- que fue necesaria para ello.
- Por tanto, un agente reactivo con una tabla buena de percepciones-acciones
+ no de la computación que fue necesaria para ello.
+ Por tanto, un agente reactivo con una buena tabla de percepciones-acciones
  de tamaño suficiente puede tomar las decisiones adecuadas mientras que
  puede haber agentes planificadores que fracasen en su intento de ser racionales
  dependiendo de su funcionamiento.
@@ -589,8 +559,7 @@ agente planificador
 what if
 \series default
 \emph default
-?.
- Una de las formas de considerar estas consecuencias de las propias acciones
+? Una de las formas de considerar estas consecuencias de las propias acciones
  es ejecutarlas
 \begin_inset Foot
 status collapsed
@@ -1165,6 +1134,19 @@ Los nodos sin hijos se llaman
 hojas
 \series default
 \emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Como veremos en árboles de búsqueda son también los últimos nodos generados
+ que no se ha expandido aún y forman parte de la 
+\emph on
+frontera
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -1263,6 +1245,14 @@ descendiente
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\emph on
+Frontera
+\emph default
+: Conjunto formado por los nodos hoja.
+\end_layout
+
 \begin_layout Standard
 
 \series bold
@@ -1472,7 +1462,7 @@ cuáles son sus costes.
 
 \end_deeper
 \begin_layout Standard
-Por tanto, dato un estado 
+Por tanto, dado un estado 
 \begin_inset Formula $\mathbf{x}$
 \end_inset
 
@@ -1480,8 +1470,8 @@ Por tanto, dato un estado
 \begin_inset Formula $\mathbf{a}$
 \end_inset
 
- 
-\begin_inset Formula $\mathbf{SUCCESSOR-FN(x)}$
+, 
+\begin_inset Formula $\mathbf{FUNCIÓN-SUCESOR(x)}$
 \end_inset
 
  devuelve un 
@@ -1595,7 +1585,11 @@ Formulemos el problema de búsqueda correspondiente:
 \end_layout
 
 \begin_layout Enumerate
-Espacio de estados: Como mínimo, ha de incluir las 
+
+\emph on
+Espacio de estados
+\emph default
+: Como mínimo, ha de incluir las 
 \emph on
 ciudades 
 \emph default
@@ -1604,18 +1598,38 @@ de modo que podamos aplicar el test objetivo (¿estamos en Bucarest?).
 
 \begin_deeper
 \begin_layout Itemize
-ciudades 
+
+\emph on
+estado
+\emph default
+=ciudad 
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Acciones: tomar carreteras en una dirección.
+
+\emph on
+Acciones
+\emph default
+: tomar carreteras en una dirección.
  
 \end_layout
 
 \begin_layout Enumerate
-Función sucesor: lo que podemos hacer es únicamente ir de una ciudad a otra
- por carretera así que la función sucesor es:
+
+\emph on
+Función sucesor(
+\emph default
+
+\begin_inset Formula $estado$
+\end_inset
+
+
+\emph on
+)
+\emph default
+: lo que podemos hacer es únicamente ir de una ciudad a otra por carretera
+ así que la función sucesor es:
 \end_layout
 
 \begin_deeper
@@ -1634,8 +1648,34 @@ carretera par ir a una ciudad adyacente con coste=distancia.
 \noun off
 \color none
 \lang english
- Por tanto, devuelve 
-\begin_inset Formula $<{\textstyle acción}={\textstyle {\textstyle carretera}},coste=distancia,sucesor=ciudad'>$
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+Por tanto, devuelve 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $<{\textstyle acción}={\textstyle {\textstyle carretera}},coste=distancia,sucesor=ciudad>$
 \end_inset
 
 
@@ -1643,27 +1683,50 @@ carretera par ir a una ciudad adyacente con coste=distancia.
 
 \end_deeper
 \begin_layout Enumerate
-Estado inicial: 
+
+\emph on
+Estado inicial
+\emph default
+: 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-ciudad=Arad.
+\begin_inset Formula $estado_{0}$
+\end_inset
+
+=Arad.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Test objetivo:
+
+\emph on
+Test objetivo
+\emph default
+:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-¿estado(ciudad) ==Bucarest?
+¿
+\emph on
+estado
+\emph default
+(ciudad) 
+\emph on
+==Bucarest
+\emph default
+?
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Solución:
+
+\emph on
+Solución
+\emph default
+:
 \end_layout
 
 \begin_deeper
@@ -1731,9 +1794,10 @@ dirección
 \begin_layout Itemize
 Función sucesor: 
 \series bold
-actualizar ubicación
+actualizar ubicaciones posibles
 \series default
 .
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -1745,12 +1809,12 @@ Test objetivo: ¿
 \begin_inset Formula $(\mathbf{x}_{Bucarest},\mathbf{y}_{Bucarest})$
 \end_inset
 
-.
+?.
 \end_layout
 
 \begin_layout Standard
-El motivo por el que no es operativo utilizar el estado del mundo es fácil
- de ver en el siguiente ejemplo de Pac-Man con dos fantasmas:
+El motivo por el que no es operativo utilizar explícitamente el estado del
+ mundo es fácil de ver en el siguiente ejemplo de Pac-Man con dos fantasmas:
 \end_layout
 
 \begin_layout Standard
@@ -1786,10 +1850,6 @@ status open
 
 \begin_layout Standard
 Por tanto el 
-\end_layout
-
-\begin_layout Itemize
-
 \emph on
 número de estados de búsqueda 
 \emph default
@@ -1801,6 +1861,12 @@ es en este caso:
 
 \end_inset
 
+ya que
+\emph on
+ 
+\end_layout
+
+\begin_layout Itemize
 
 \emph on
 número de estados para formar parte de un camino
@@ -1813,6 +1879,10 @@ número de estados para formar parte de un camino
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Itemize
 número de 
 \emph on
 estados de los puntos
@@ -1825,6 +1895,10 @@ estados de los puntos
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Una de las maneras de enfrentar el problema sería mediante la 
 \emph on
 búsqueda por fuerza bruta
@@ -1850,7 +1924,7 @@ F
 \series bold
 B
 \series default
-(ruta) 
+(ruta) e 
 \series bold
 I
 \series default
@@ -1895,7 +1969,11 @@ acciones
 \series default
 \emph default
 .
- la función sucesor está codificada en los arcos.
+ la 
+\emph on
+función sucesor
+\emph default
+ está codificada en los arcos.
 \end_layout
 
 \begin_layout Itemize
@@ -1925,7 +2003,7 @@ P.e.
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 El mapa de carreteras de Rumanía puede interpretarse como un grafo del espacio
  de búsqueda si vemos cada carretera como dos direcciones de viaje.
  Un 
@@ -1937,6 +2015,11 @@ es una serie de estados conectados por una secuencia de acciones
 \emph default
 .
  Lo mismo puede decirse del juego de Pac-Man.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1966,14 +2049,14 @@ status open
 \end_layout
 
 \begin_layout Standard
-Solo en muy raras ocasiones podemos construir el grafo completo en memoria,
- pero es una idea útil.
+Solo en muy raras ocasiones podemos construir el grafo completo en memoria
+ (como hemos visto antes), pero es una idea útil.
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align left
-Ejemplo: sea el siguiente grafo del espacio de estados
+Como ejemplo valga el siguiente grafo del espacio de estados
 \end_layout
 
 \begin_layout Standard
@@ -2021,14 +2104,20 @@ estado inicial
 lo que pueda ocurrir a partir
 \emph default
  de este estado.
- Trabajaremos con un objeto denominado 
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Por ello trabajaremos con un objeto denominado 
 \series bold
 \emph on
 árbol de búsqueda
 \series default
 \emph default
 .
- Para construirlo partimos del 
+ Para cuya construcción partimos del 
 \emph on
 estado actual 
 \emph default
@@ -2040,14 +2129,29 @@ estado actual
 \series bold
  ahora
 \series default
- - que será el nodo superior.
+ - que será el 
+\emph on
+nodo raíz
+\emph default
+.
  Seguidamente, en función de las acciones que se ejecuten, nos situaremos
- en el próximo futuro (
+ en el
+\emph on
+ futuro inmediato
+\emph default
+ (
 \series bold
 2
 \series default
-), estados que se pueden alcanzar en solo un paso y así continuaremos hacia
- abajo (
+), 
+\emph on
+estados
+\emph default
+ que se 
+\emph on
+pueden alcanzar en solo un paso
+\emph default
+ y así continuaremos hacia abajo (
 \series bold
 3
 \series default
@@ -2135,60 +2239,7 @@ Estado objetivo
 \emph on
 Utilidad:
 \emph default
- Coste del camino desde el nodo raíz al nodo actual.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Terminología
-\series default
-: 
-\end_layout
-
-\begin_layout Itemize
-Nodo 
-\emph on
-padre
-\emph default
-: Nodo del árbol desde el cual se ha generado el nodo actual aplicando una
- sola vez la función sucesor.
- 
-\end_layout
-
-\begin_layout Itemize
-Nodo 
-\emph on
-ancestro
-\emph default
-: Un nodo en el árbol desde el cual el nodo actual ha sido generado aplicando
- una o varias veces la función sucesor.
- 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Profundidad:
-\emph default
- Longitud del camino desde la raíz al nodo actual.
- 
-\end_layout
-
-\begin_layout Itemize
-Nodo 
-\emph on
-hoja
-\emph default
-: Nodo generado que no se ha expandido aún 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Frontera
-\emph default
-: Conjunto formado por los nodos hoja.
+ - Coste del camino desde el nodo raíz al nodo actual.
 \end_layout
 
 \begin_layout Standard
@@ -2684,7 +2735,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ALGOSEARCH.png
-	scale 50
+	scale 68
 
 \end_inset
 
@@ -2761,6 +2812,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1-1"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename C:/Users/Administrador/Documents/INFORMATICA/INTELIG/tojunto.png
 	scale 40
@@ -2781,15 +2839,23 @@ status open
 \end_layout
 
 \begin_layout Standard
-La figura 2.5.5.
- resume todo el proceso y en ella pueden seguirse las distintas etapas para
- llegar a la solución 
+La figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1-1"
+
+\end_inset
+
+) resume todo el proceso y en ella pueden seguirse las distintas etapas
+ para llegar a la solución 
 \series bold
 G 
 \series default
 que, como puede verse, 
+\series bold
 \emph on
 no ha requerido la expansión completa de todo el árbol
+\series default
 \emph default
 .
 \end_layout
@@ -2902,7 +2968,7 @@ Dato un estado
 \end_inset
 
  
-\begin_inset Formula $\mathbf{SUCCESSOR-FN(x)}$
+\begin_inset Formula $\mathbf{FUNCIÓN-SUCESOR(x)}$
 \end_inset
 
  devuelve un conjunto de pares ordenados 
@@ -3136,7 +3202,7 @@ grafo de estados
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -3169,6 +3235,11 @@ status open
 \noindent
 \align left
 Lo que deja la función sucesor reducida a :
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -3179,8 +3250,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../suces_redu.png
-	scale 50
+	filename suces_redu.png
 
 \end_inset
 
@@ -3442,6 +3512,17 @@ Donde se pasa del estado inicial en que ambas jarras están vacías al de
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+Como se ve se muestran dos posibles modalidades de búsqueda según la prelación
+ de desarrollo de los nodos: en 
+\emph on
+anchura
+\emph default
+ y en 
+\emph on
+profundidad.
+\end_layout
+
 \end_deeper
 \end_body
 \end_document

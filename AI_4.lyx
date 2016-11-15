@@ -165,11 +165,21 @@ Búsqueda de coste uniforme (UCS).
 \begin_layout Standard
 \noindent
 \align left
-Hasta ahora hemos fijado como objetivo minimizar el número de acciones a
- tomar, y BFS es capaz de hallar esta solución.
+Hasta ahora hemos fijado como objetivo
+\emph on
+ minimizar el número de acciones a tomar
+\emph default
+, y BFS es capaz de hallar esta solución.
  Esto es equivalente a asignar el mismo coste (1) a todas las acciones.
  Pero supongamos que cada arco del grafo (acción) tiene un coste diferente
- (Fig.4.0.2).
+ (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1-2"
+
+\end_inset
+
+).
  Los algoritmos anteriores no son válidos en este caso.
 \end_layout
 
@@ -185,6 +195,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1-2"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename coste.png
 	scale 60
@@ -220,14 +237,22 @@ Búsqueda de coste uniforme.
 
 \begin_layout Standard
 \noindent
+\align left
+Es similar a BFS pero ahora 
+\emph on
+se priorizan las capas de menor coste
+\emph default
+, de manera que ahora se ejecutan primero las acciones más baratas aun cuando
+ haya múltiples pasos en el árbol.
+\end_layout
+
+\begin_layout Standard
+\noindent
 \align center
-Es similar a BFS pero ahora se priorizan las capas de menor coste, de manera
- que ahora se ejecutan primero las acciones más baratas aun cuando haya
- múltiples pasos en el árbol.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -256,22 +281,50 @@ status collapsed
 Puesto que hemos de expandir el nodo más barato como estrategia, elegiremos
  el de menor coste acumulado que, en ese primer paso será 
 \emph on
-p 
+
+\begin_inset Formula $p$
+\end_inset
+
+ 
 \emph default
 (g=1)
 \emph on
 .
  
 \emph default
-Puesto que no es el objetivo, iremos después a d (g=3) y como (estado==objetivo)
-=Falso, seguiremos pero ahora no iremos a e (g=9), sino a b cuyo coste acumulado
- es 7
+Puesto que no es el objetivo, iremos después a 
+\begin_inset Formula $d$
+\end_inset
+
+ (g=3) y como (
+\begin_inset Formula $estado$
+\end_inset
+
+==
+\begin_inset Formula $objetivo$
+\end_inset
+
+)=Falso, seguiremos pero ahora no iremos a
+\begin_inset Formula $e$
+\end_inset
+
+ (g=9), sino a b cuyo coste acumulado es 7
 \begin_inset Formula $<$
 \end_inset
 
 9.
- En el siguiente paso expandiremos el nodo p (el más barato) y así sucesivamente
-, hasta llegar a la solución (Fig.4.1.2.) que conduce a
+ En el siguiente paso expandiremos el nodo 
+\begin_inset Formula $p$
+\end_inset
+
+ (el más barato) y así sucesivamente, hasta llegar a la solución (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4-1"
+
+\end_inset
+
+) que conduce a
 \series bold
  G .
 \end_layout
@@ -293,6 +346,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:4-1"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename unicost.png
 	scale 50
@@ -420,8 +480,11 @@ Completitud
 \emph on
 coste finito
 \emph default
- y los costes de los arcos son positivos, es completo, es decir, garantiza
- encontrar una solución.
+ y los costes de los arcos son positivos, 
+\series bold
+es completo
+\series default
+, es decir, garantiza encontrar una solución.
 \end_layout
 
 \begin_layout Standard
@@ -445,30 +508,58 @@ Podemos resumir las ventajas e inconvenientes de la UCS:
 \end_layout
 
 \begin_layout Enumerate
-Ventajas:
+
+\series bold
+Ventajas
+\series default
+:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Es completa.
+Es 
+\emph on
+completa
+\emph default
+.
 \end_layout
 
 \begin_layout Itemize
-Es óptima.
+Es 
+\emph on
+óptima
+\emph default
+.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Desventajas:
+
+\series bold
+Desventajas
+\series default
+:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Busca en cualquier dirección.
+Busca en 
+\emph on
+cualquier dirección
+\emph default
+.
 \end_layout
 
 \begin_layout Itemize
-No tiene información sobre la ubicación del objetivo.
+
+\emph on
+No
+\emph default
+ tiene 
+\emph on
+información sobre la ubicación del objetivo
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -561,9 +652,9 @@ status open
 \end_layout
 
 \begin_layout Standard
-El siguiente ejemplo servirá de resumen a todo lo visto hasta la fecha y
- dará alguna orientación acerca del manejo de las colas para gestionar la
- frontera de los algoritmos.
+El siguiente ejemplo servirá de resumen a todo lo visto hasta ahora y dará
+ alguna orientación acerca del manejo de las colas para gestionar la frontera
+ de los algoritmos.
 \end_layout
 
 \begin_layout Standard
@@ -573,10 +664,14 @@ Ejemplo
 \series default
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-De un artículo de Bill Gates:
+De un artículo de William Henry Gates (
+\emph on
+Bill Gates
+\emph default
+):
 \end_layout
 
 \begin_layout Plain Layout

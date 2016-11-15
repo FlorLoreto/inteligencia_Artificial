@@ -191,14 +191,37 @@ Considera el problema de buscar la salida en un laberinto:
 \begin_layout Standard
 La casilla de comienzo, marcada como I, es la (1,1).
  El objetivo es llegar a la casilla de salida S, situada en la posición
- (3,3), en el menor número de movimientos.
+ (3,3), en el 
+\emph on
+menor número de movimientos
+\emph default
+.
  Desde cada casilla sólo se podrá acceder a las casillas adyacentes que
  no tengan un muro entre medias (línea gruesa).
  Por ejemplo, desde la casilla (2,1) sólo se puede acceder a la (2,2), y
  a la (1,1).
- El orden de exploración de las acciones será derecha, abajo, izquierda,
- arriba.
- En caso de empate se explora primero el nodo que ha sido generado antes.
+ El orden de exploración de las acciones será 
+\emph on
+derecha,
+\emph default
+ 
+\emph on
+abajo
+\emph default
+, 
+\emph on
+izquierda
+\emph default
+, 
+\emph on
+arriba
+\emph default
+.
+ En caso de empate se explora 
+\emph on
+primero el nodo que ha sido generado antes
+\emph default
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -217,6 +240,82 @@ Usa dicha heurística en la búsqueda de una solución a este laberinto usando
 \begin_layout Enumerate
 ¿Garantiza dicha estrategia encontrar la solución óptima para cualquier
  laberinto de este tipo? ¿Y para este laberinto en particular?
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solución:
+\end_layout
+
+\begin_layout Enumerate
+Heurística: Una posible es la suma de las distancias horizontal y vertical
+ hasta la salida: 
+\begin_inset Formula $h(n)=|x_{n}-\textrm{S}_{x}|+|y_{n}-\textrm{S}_{y}|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+El coste de cualquier movimiento es 1 y como 
+\begin_inset Formula $h$
+\end_inset
+
+ en cualquier movimiento varía en una unidad y solo una : Ej: 
+\begin_inset Formula $(2,1)\rightarrow(2,2)$
+\end_inset
+
+ 
+\begin_inset Formula $h=|2-3|+|2-2|=1.$
+\end_inset
+
+ Esto implica que
+\begin_inset Formula 
+\[
+h(n)\leq C(n\rightarrow n')+h(n')\Rightarrow h\textrm{ es monótona.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sol1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -473,12 +572,23 @@ Utiliza el algoritmo minimax con poda alfa-beta
 \noindent
 para determinar el valor minimax en la raíz del árbol y la jugada óptima
  suponiendo que el oponente es óptimo.
- Para ello, indica el orden de recorrido en el árbol, numerando los nodos
- visitados junto con las actualizaciones de los valores [
+ Para ello, indica el
+\emph on
+ orden de recorrido
+\emph default
+ en el árbol, 
+\emph on
+numerando los nodos visitados
+\emph default
+ junto con las 
+\emph on
+actualizaciones de los valores [
 \begin_inset Formula $\alpha,\beta$
 \end_inset
 
-] en cada paso.
+]
+\emph default
+ en cada paso.
 \end_layout
 
 \begin_layout Standard

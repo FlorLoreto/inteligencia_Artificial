@@ -3202,7 +3202,7 @@ grafo de estados
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -3235,6 +3235,11 @@ status open
 \noindent
 \align left
 Lo que deja la función sucesor reducida a :
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -3245,8 +3250,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../suces_redu.png
-	scale 50
+	filename suces_redu.png
 
 \end_inset
 
@@ -3508,6 +3512,10 @@ Donde se pasa del estado inicial en que ambas jarras están vacías al de
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+Como se ve se muestran dos posibles b
+\end_layout
+
 \end_deeper
 \end_body
 \end_document

@@ -313,7 +313,7 @@ status open
 \begin_layout Standard
 Comenzando por el nodo inicial, expandiremos en una primera etapa hasta
  la frontera 
-\begin_inset Formula $(d,e,p)$
+\begin_inset Formula $(d,p,e)$
 \end_inset
 
 .
@@ -328,9 +328,10 @@ G
 \series default
 .
  La estrategia es clara: hemos ido directamente hacia abajo por la izquierda
- del árbol hasta llegar a un nodo sin hijos.
+ del árbol hasta llegar a un nodo sin hijos y, si no es este el objetivo,
+ volvemos al nivel inicial.
  El algoritmo procesa todos los nodos a la izquierda de la primera solución.
- El gráfico siguiente muestra DFS en un árbol binario.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -409,7 +410,20 @@ Complejidad temporal
 \series bold
 Complejidad espacial
 \series default
-? Se refiere al tamaño máximo de la frontera.
+? Se refiere al tamaño máximo de la frontera
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Como es sabido en Informática suele existir el dipolo tiempo de proceso-
+ espacio de memoria.
+ Suele ser posible cambiar uno por otro: la reducción de una de las variables
+ aumenta la otra (reducir memoria aumenta el tiempo de procesamiento).
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -418,11 +432,11 @@ Trataremos de responder a algunas de estas preguntas a través del siguiente
 \end_layout
 
 \begin_layout Standard
-
+Sea
 \series bold
-b
+ b
 \series default
- es el 
+ el 
 \series bold
 factor de ramificación
 \series default
@@ -432,7 +446,7 @@ número de hijos de cualquier nodo.
 
 \emph default
  Cuando - como es lo habitual - no es el mismo en todos, se toma un valor
- promedio, esto es, en dichos casos definimos el 
+ promedio, esto es, en dichos casos el 
 \series bold
 \emph on
 factor de ramificación
@@ -448,26 +462,26 @@ a una profundidad determinada
 \end_layout
 
 \begin_layout Standard
-Sea 
+- Sea 
 \begin_inset Formula $T$
 \end_inset
 
  el número de nodos del árbol no uniforme, como en un árbol uniforme:
 \begin_inset Formula 
 \[
-T+1=1+b+b^{2}+...+b^{d}
+T=1+b+b^{2}+...+b^{d}
 \]
 
 \end_inset
 
-haremos lo mismo con el árbol no uniforme para un factor promedio 
+- haremos lo mismo con el árbol no uniforme para un factor promedio 
 \begin_inset Formula $b^{*}$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{equation}
-T+1=1+b^{*}+(b^{*})^{2}+...+(b^{*})^{d}
+T=1+b^{*}+(b^{*})^{2}+...+(b^{*})^{d}
 \end{equation}
 
 \end_inset
@@ -516,12 +530,16 @@ status open
 Siendo esto así, el número de nodos en el árbol será:
 \begin_inset Formula 
 \[
-1+b+b^{2}+...+b^{m}=\mathbf{\frac{b^{m+1}-1}{b-1}}=\mathbf{O}\mathbf{(b^{m}})
+1+b+b^{2}+...+b^{m}=\mathbf{\frac{b^{m+1}-1}{b-1}}
 \]
 
 \end_inset
 
-Por tanto, es exponencial.
+Por tanto, es 
+\emph on
+exponencial
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -569,7 +587,11 @@ Como hemos dicho empezaremos por aquellos que tengan un prefijo izquierdo
  en el árbol.
  Esto implica que es posible que tengamos que procesar la totalidad del
  árbol lo que no es nada deseable dado el carácter exponencial del problema
- lo que implica un tiempo de proceso 
+ lo que implica 
+\emph on
+un tiempo de proceso
+\emph default
+ 
 \begin_inset Formula $O(b^{m})$
 \end_inset
 
@@ -641,7 +663,11 @@ Camino donde no se repite ninguna arista ni vértice y coinciden los vértices
  de donde nunca saldríamos.
  No obstante, existen procedimientos generales para evitar la redundancia
  y podemos descartar esta situación.
- En estas circunstancias - hemos eliminado los ciclos- es completo.
+ En estas circunstancias - eliminando los ciclos- 
+\series bold
+es completo
+\series default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -660,14 +686,16 @@ solución más superficial
 \emph default
  (menor profundidad desde el nodo raíz).
  Tal como lo hemos presentado, 
+\series bold
 \emph on
 no
+\series default
 \emph default
  garantiza el coste mínimo, sino que 
 \emph on
-encuentra la solución más a la izquierda 
+encuentra la solución más a la izquierda con independencia de
 \emph default
-con independencia de de su profundidad o coste.
+ su profundidad o coste.
 \end_layout
 
 \begin_layout Section
@@ -695,8 +723,11 @@ Cuando se aplica la función sucesor a un nodo, se generan el conjunto completo
 \begin_layout Standard
 \noindent
 \align left
-Ahora avanzaremos a lo ancho del árbol, bien de derecha a izquierda, bien
- en sentido contrario.
+Ahora 
+\emph on
+avanzaremos a lo ancho
+\emph default
+ del árbol, bien de derecha a izquierda, bien en sentido contrario.
  En este tipo de búsqueda el gráfico que muestra la estrategia de búsqueda
  - consistente en 
 \emph on
@@ -941,7 +972,15 @@ Es claro que si existe alguna solución, esta se ubica en un nivel
 \emph on
 finito
 \emph default
-, por tanto es completo.
+, por tanto 
+\series bold
+es
+\series default
+ 
+\series bold
+completo
+\series default
+.
  Al contrario de los prefijos más a la izquierda que pueden ser infinitos,
  los prefijos en altura son finitos.
 \end_layout
@@ -951,8 +990,19 @@ Optimalidad.
 \end_layout
 
 \begin_layout Standard
-Si los costos son generales, no es óptimo, pero si los costes son todos
- 1, sí es óptimo.
+Si 
+\emph on
+los costos son generales, no es óptimo
+\emph default
+, pero 
+\emph on
+si los costes son todos 1
+\emph default
+, sí 
+\emph on
+es óptimo
+\emph default
+.
 \end_layout
 
 \begin_layout Section

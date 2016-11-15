@@ -2,7 +2,7 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass book
+\textclass extbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
 %
@@ -5449,6 +5449,18 @@ name "fig:3"
 \end_layout
 
 \begin_layout Standard
+Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
 Los siguientes ejemplos muestran otros ejemplos de aplicación de la poda
  alfa-beta (Figs: 
 \begin_inset CommandInset ref
@@ -5497,7 +5509,7 @@ name "fig:5-1"
 
 \begin_inset Graphics
 	filename Berkeley.png
-	scale 75
+	scale 50
 
 \end_inset
 
