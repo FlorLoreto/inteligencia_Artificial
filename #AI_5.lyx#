@@ -1,0 +1,2739 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Búsqueda informada.
+\end_layout
+
+\begin_layout Standard
+Los problemas de 
+\emph on
+búsqueda informada 
+\emph default
+se construyen a partir de los tipos de problemas que hemos visto antes inyectánd
+oles
+\emph on
+ información acerca de la localización de las soluciones
+\emph default
+ de modo que se reduzcan las exploraciones necesarias en el árbol de búsqueda.
+\end_layout
+
+\begin_layout Standard
+La idea básica de la búsqueda informada es la 
+\series bold
+\emph on
+heurística 
+\series default
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Expondremos la búsqueda informada del siguiente modo:
+\end_layout
+
+\begin_layout Enumerate
+Heurística.
+\end_layout
+
+\begin_layout Enumerate
+Búsqueda avariciosa o voraz.
+\end_layout
+
+\begin_layout Enumerate
+Búsqueda 
+\begin_inset Formula ${\textstyle {\textstyle A*}}$
+\end_inset
+
+('A estrella').
+\end_layout
+
+\begin_layout Section
+Heurística de búsqueda.
+\end_layout
+
+\begin_layout Standard
+Como hemos dicho, se trata de añadir algo adicional a los algoritmos de
+ búsqueda anteriores: una función que nos permite examinar un estado y decir
+ hasta qué punto nos estamos acercando al objetivo.
+ Esta es la idea fundamental de la búsqueda informada: algo que 
+\emph on
+no solo nos dice si
+\series bold
+\emph default
+ 
+\emph on
+estado==objetivo
+\series default
+\emph default
+, 
+\emph on
+sino si estamos cerca de este
+\emph default
+.
+ El objeto clave es una
+\series bold
+ 
+\emph on
+heurística de búsqueda
+\series default
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Una 
+\series bold
+heurística de búsqueda
+\series default
+ es
+\end_layout
+
+\begin_layout Itemize
+una función que
+\series bold
+\emph on
+ estima 
+\series default
+\emph default
+cuan próximos estamos al objetivo.
+ Toma como argumento uno de los estados del mundo y nos devuelve un número:
+ 
+\begin_inset Formula $W:\begin{array}{c}
+h\\
+\rightarrow
+\end{array}\mathbb{R}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+La heurística toma un estado del mundo y nos devuelve un número 
+\begin_inset Formula $h=h(e)$
+\end_inset
+
+ que si es grande indica que estamos lejos del objetivo buscado.
+ Es claro que, con esta herramienta, podemos priorizar en la frontera aquellas
+ áreas que la heurística nos señala como más próximos al objetivo.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+y está diseñada 
+\series bold
+\emph on
+para un problema concreto
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Veamos un ejemplo: Pac-man tiene el problema de llegar al punto.
+ Puede emprender una búsqueda de las que hemos visto pero sería de ayuda
+ saber lo lejos que se encuentra del punto en cada posición.
+ Para ello podría utilizar algo como la 
+\emph on
+distancia de Manhattan.
+
+\emph default
+ Es claro que, aunque los muros le pueden hacer ir más lejos, si esta distancia
+ es pequeña estará cerca del punto (Fig.
+ 5.1.1).
+ No es perfecto, pero sí útil.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename heurismia.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podríamos haber utilizado también la distancia euclídea, pero esta distancia
+ no toma en cuenta que la existencia de muros impide caminar en diagonal.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Volviendo a nuestro problema de Rumanía, podemos utilizar como heurística
+ la distancia en línea recta desde nuestra ubicación -ciudad - a Bucarest.
+ (Fig.
+ 5.1.2.).
+ Como puede observarse esta distancia es 0 para Bucarest-Bucarest que es
+ lo esperable de una heurística: el valor numérico es nulo en el objetivo.
+ Asimismo puede verse que cuanto más cerca estamos del objetivo, menor es
+ la distancia en línea recta.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename buca.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Qué heurística podríamos utilizar en el caso de las tortitas? Es claro
+ que ni la distancia euclídea ni la de Manhattan nos sirven.
+ La respuesta es: 
+\emph on
+el número de la tortita más grande que aún está fuera de su posición.
+
+\emph default
+ La idea tras esta heurística es que si la tortita más grande está fuera
+ de orden, la única manera de llevarla a su posición es situarla en la cúspide
+ y voltear toda la pila.
+\end_layout
+
+\begin_layout Paragraph*
+Nota: Distancia de Manhattan (o taxicab).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename taxicab.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Búsqueda avariciosa o voraz.
+\end_layout
+
+\begin_layout Standard
+Es un tipo de búsqueda que utiliza la heurística pero es algo imperfecta.
+ Ilustremos el caso con la Fig.
+ 5.1.2.
+ partiendo de Arad.
+ Utilizaremos la heurística allí expuesta para priorizar los elementos que
+ salen de la frontera.
+\end_layout
+
+\begin_layout Standard
+En la figura hemos representado el camino más corto entre Arad y Bucarest
+ en azul (el inferior), aunque la búsqueda DFS nos daría como solución el
+ camino superior- pasa por Fagaras - que tiene menos tramos (3 frente a
+ 4).
+\end_layout
+
+\begin_layout Standard
+Para la búsqueda avariciosa procederemos así:
+\end_layout
+
+\begin_layout Itemize
+expandir el nodo que parece más próximo 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+inicialmente es Sibiu.
+\end_layout
+
+\begin_layout Itemize
+seguidamente será Fagaras (que sabemos no está en el camino óptimo)
+\end_layout
+
+\begin_layout Itemize
+por último llegamos a Bucarest pero por un camino más largo que la ruta
+ azul.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\align left
+¿Qué ha fallado en esta búsqueda? por lo pronto 
+\emph on
+hemos alcanzado el objetivo
+\emph default
+ pero 
+\emph on
+no hemos minimizado las distancias
+\emph default
+ (costes).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Al contrario que en UCS, aquí 
+\emph on
+las heurísticas no se suman
+\emph default
+ y siempre nos encaminamos al estado que parece estar más próximo al objetivo.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename avaro.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se ve en la figura es similar a una DFS centrada en el estado más próximo
+ al objetivo.
+ Pero la búsqueda avariciosa es tan buena como la heurística que la guía
+ y, en general, las heurísticas no son perfectas.
+ Es incluso imaginable un caso como el (2) de la Fig.
+ 5.1.3.
+ en que se comporta como una DFS pésimamente dirigida.
+ Cuando funciona, lo hace bien, pero en otras ocasiones falla estrepitosamente
+ .
+ Este tipo de búsqueda no selecciona los casos en que es preciso volver
+ hacia atrás.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo: 
+\series default
+¿Qué solución proporciona la búsqueda avariciosa al caso de la Fig 4.4.8?
+\end_layout
+
+\begin_layout Standard
+Si usamos como heurística la 
+\emph on
+mínima distancia e cada nodo al nodo G
+\emph default
+ tendremos que esta viene dada por la tabla siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nodo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Distancia mínima a G
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+E
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La solución será 
+\begin_inset Formula $S\rightarrow D\rightarrow E\rightarrow G$
+\end_inset
+
+ que tiene una distancia real de 9, mientras que la solución UCS es 
+\begin_inset Formula $S\rightarrow D\rightarrow B\rightarrow E\rightarrow G$
+\end_inset
+
+ con distancia 7 (<9).
+\end_layout
+
+\begin_layout Section
+Búsqueda 
+\begin_inset Formula $\mathbf{A^{*}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Todo lo anterior nos servirá para desarrollar el algoritmo fundamental de
+ búsqueda en inteligencia artificial el 
+\begin_inset Formula ${\textstyle \mathbf{A^{*}}}$
+\end_inset
+
+(A estrella).
+\end_layout
+
+\begin_layout Standard
+Hasta ahora hemos estudiado, entre otros, dos casos extremos:
+\end_layout
+
+\begin_layout Enumerate
+UCS que es un proceso parsimonioso y constante que conduce inexorablemente
+ al objetivo y
+\end_layout
+
+\begin_layout Enumerate
+la búsqueda avariciosa que avanza rápido pero a veces acierta y otras no.
+\end_layout
+
+\begin_layout Standard
+Nos proponemos construir un algoritmo que combine la seguridad de UCS con
+ la rapidez de la búsqueda avariciosa.
+\end_layout
+
+\begin_layout Standard
+¿Cómo pueden combinarse ambas búsquedas?
+\end_layout
+
+\begin_layout Standard
+Comparemos el modo de actuar de cada algoritmo:
+\end_layout
+
+\begin_layout Enumerate
+UCS elige los caminos con 
+\emph on
+menor coste acumulado
+\emph default
+ primero medida por 
+\begin_inset Formula $g(n)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+búsqueda avariciosa ordena por 
+\emph on
+proximidad al objetivo
+\emph default
+ medida por 
+\begin_inset Formula $h(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Fijémonos en el caso expuesto en la Fig.5.3.1.
+ resaltando en la parte resaltada de la figura inferior que es el un camino
+ al objetivo.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename aSTAR.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Qué hace 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+?: ordena por la suma 
+\begin_inset Formula $g(n)+h(n)$
+\end_inset
+
+ es decir, el coste acumulado hasta el nodo (coste pasado) , más la heurística
+ (coste estimado futuro), esto es, el 
+\emph on
+coste estimado más barato del camino que pasa por n
+\emph default
+.
+ Por tanto 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ no irá hacia c muy pronto puesto que 
+\begin_inset Formula $h(c)+g(c)=7+3=10$
+\end_inset
+
+ la heurística - coste futuro -es grande y tampoco se precipitará a la rama
+ 
+\begin_inset Formula $a-e$
+\end_inset
+
+ (1) porque su coste es elevado.
+ tenderá a ir por el centro (2).
+ 
+\end_layout
+
+\begin_layout Standard
+Veamos sobre un ejemplo sencillo cómo funciona 
+\series bold
+
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ 
+\series default
+en la figura siguiente:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename dequeue.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hemos ido priorizando en la frontera aquellos nodos con menor coste estimado.
+ Sin embargo aun cuando hemos llegado primero a la solución 
+\begin_inset Formula $S\rightarrow B\rightarrow G$
+\end_inset
+
+ esta no es la que tiene un mínimo de 
+\begin_inset Formula $f(n)$
+\end_inset
+
+ sino la 
+\begin_inset Formula $\mathbf{S\rightarrow A\rightarrow G}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Ejercicio.
+ 
+\series default
+En el árbol de búsqueda
+\series bold
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ 
+\series default
+siguiente, tras expandir S hay dos nodos en la frontera: 
+\emph on
+S
+\begin_inset Formula $\rightarrow D$
+\end_inset
+
+ 
+\emph default
+y
+\emph on
+ 
+\begin_inset Formula $S\rightarrow A$
+\end_inset
+
+.
+ 
+\emph default
+Complete los valores indicados en la figura.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename proble.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Heurísticas admisibles.
+ Optimalidad de A
+\begin_inset Formula $^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nos preguntamos si el algoritmo A estrella es óptimo.
+\end_layout
+
+\begin_layout Standard
+Si nos fijamos en la figura 5.4.1.
+ vemos que 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ da como solución 
+\begin_inset Formula $S\rightarrow G$
+\end_inset
+
+ con coste 5 mientras que 
+\begin_inset Formula $\mathbf{S\rightarrow A\rightarrow G}$
+\end_inset
+
+ tiene un coste de 4.
+ El error se origina en que el coste real del camino malo - 5 - es menor
+ que el coste estimado del camino bueno - 7.
+ En particular el valor 
+\begin_inset Formula $h=6$
+\end_inset
+
+ de la heurística en el nodo A sobreestimó el coste de alcanzar G e hicimos
+ caso a la heurística.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename caminomalo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se necesita que nuestras estimaciones no superen los costes reales.
+ Si el valor 
+\begin_inset Formula $h(A)<3$
+\end_inset
+
+ la solución es la correcta.
+\end_layout
+
+\begin_layout Standard
+Esto nos lleva a la idea de 
+\series bold
+\emph on
+admisibilidad
+\series default
+\emph default
+: 
+\end_layout
+
+\begin_layout Itemize
+una heurística pesimista que sobreestima costes es inadmisible porque es
+ subóptima y deja atrapados a los buenos planes en la frontera.
+ Esta heurística siempre nos dice que estamos más lejos del objetivo de
+ lo verdadero.
+\end_layout
+
+\begin_layout Itemize
+una heurística optimista es admisible porque retarda los planes malos en
+ la frontera pero no sobreestima los costes reales y finalmente, el camino
+ de coste mínimo es el ganador.
+\end_layout
+
+\begin_layout Standard
+Por tanto 
+\emph on
+una heurística es
+\series bold
+ admisible 
+\series default
+si el coste estimado no supera el coste real al objetivo más próximo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{h(n)\leq h^{*}(n)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejemplos de heurísticas admisibles
+\end_layout
+
+\begin_layout Enumerate
+La distancia Manhattan en el problema de la Fig.
+ 5.1.1.
+ 
+\begin_inset Formula $h=\triangle x+\triangle y$
+\end_inset
+
+ es admisible porque moviéndose Pac-man en direcciones perpendiculares,
+ al haber muros, siempre recorrerá más que la distancia Manhattan.
+\end_layout
+
+\begin_layout Enumerate
+En el problema del mapa de carreteras, la distancia en línea recta es una
+ función heurística admisible.
+\end_layout
+
+\begin_layout Standard
+Demostremos que 
+\emph on
+si la heurística es admisible
+\emph default
+ 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ 
+\emph on
+es óptimo
+\emph default
+, esto es que:
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+ es el camino óptimo con coste 
+\begin_inset Formula $C^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $p´$
+\end_inset
+
+ es un camino subóptimo con coste 
+\begin_inset Formula $c(p')>C^{*}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Demostraremos que cualquier subcamino 
+\begin_inset Formula $p''$
+\end_inset
+
+ de 
+\begin_inset Formula $p*$
+\end_inset
+
+ en la frontera será expandido antes que 
+\begin_inset Formula $p'$
+\end_inset
+
+ y por tanto 
+\begin_inset Formula $A*$
+\end_inset
+
+ no tomará 
+\begin_inset Formula $p'$
+\end_inset
+
+ como parte de la solución.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename demos.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Si se usa búsqueda en árbol
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En la búsqueda en grafo, no se verifica.
+ Para este caso se requiere la consistencia o monotonía de 
+\begin_inset Formula $h(n).$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, y h es admisible 
+\begin_inset Formula $A*$
+\end_inset
+
+ es completa y óptima 
+\end_layout
+
+\begin_layout Theorem
+
+\emph on
+Demostración:
+\end_layout
+
+\begin_layout Theorem
+
+\emph on
+Sea 
+\begin_inset Formula $C*$
+\end_inset
+
+ : coste de la solución óptima.
+ 
+\begin_inset Formula $g(n)$
+\end_inset
+
+: coste hasta el nodo n.
+ 
+\begin_inset Formula $h(n)$
+\end_inset
+
+: heurística en nodo n.
+\end_layout
+
+\begin_layout Itemize
+Considérese 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ un nodo objetivo que está en un camino subóptimo (i.e.
+ 
+\begin_inset Formula $g(G_{2})>C*$
+\end_inset
+
+, 
+\begin_inset Formula $h(G_{2})=0$
+\end_inset
+
+ - se cumple para todo nodo objetivo) que está en la frontera del árbol
+ de búsqueda:
+\begin_inset Formula 
+\begin{equation}
+f(G_{2})=g(G_{2})+h(G_{2})=g(G_{2})>C^{*}\Rightarrow f(G_{2})>C*
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Considérese el nodo 
+\begin_inset Formula $n$
+\end_inset
+
+ del conjunto frontera del árbol de búsqueda que está en un camino solución
+ óptimo.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dado que n está en el camino solución óptimo, 
+\begin_inset Formula $g(n)=g*(n)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dado que h es 
+\emph on
+admisible
+\emph default
+: 
+\begin_inset Formula $h(n)\leq h*(n)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+f(n)=g(n)+h(n)\leq g*(n)+h*(n)=C*\Rightarrow f(n)\leq C*
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Sumando (5.4.1) + (5.4.2): tenemos:
+\begin_inset Formula 
+\begin{equation}
+f(n)\leq C*<f(G2)
+\end{equation}
+
+\end_inset
+
+y se explora n antes que 
+\begin_inset Formula $G_{2}$
+\end_inset
+
+ c.q.d.
+\end_layout
+
+\begin_layout Section
+Propiedades de A*.
+\end_layout
+
+\begin_layout Standard
+Si lo comparamos con UCS encontraremos algunas similitudes.
+ UCS comenzará en el nodo raíz y descenderá de un modo un tanto zigzagueante
+ hacia abajo buscando el camino de menor coste.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Por su parte A* profundizará más cerca de los objetivos y buscará más superficia
+lmente lejos de estos.
+ Pero siendo la heurística imperfecta en la cúspide buscará extensivamente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename A-UCS.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejercicio
+\series default
+: En el grafo adjunto responder a las preguntas:
+\end_layout
+
+\begin_layout Enumerate
+¿Es la heurística admisible?.
+ Respuesta: sí porque 
+\begin_inset Formula $h\leq h*$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+¿Cuál es la solución A*? Respuesta: 
+\begin_inset Formula $S\rightarrow D\rightarrow B\rightarrow E\rightarrow G$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+¿Qué nodos se expandirán en la búsqueda? Respuesta: 
+\begin_inset Formula $S\rightarrow D\rightarrow B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename eheastar.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Aplicaciones de A*.
+\end_layout
+
+\begin_layout Enumerate
+Problemas de encaminamiento/ruteo.
+\end_layout
+
+\begin_layout Enumerate
+Video juegos.
+\end_layout
+
+\begin_layout Enumerate
+Planificación de recursos.
+\end_layout
+
+\begin_layout Enumerate
+Análisis del lenguaje.
+\end_layout
+
+\begin_layout Enumerate
+Traducción-máquina.
+\end_layout
+
+\begin_layout Enumerate
+Reconocimiento de voz....
+\end_layout
+
+\begin_layout Section
+Problemas relajados.
+ Construcción de heurísticas admisibles.
+\end_layout
+
+\begin_layout Standard
+Lo más difícil de algoritmo A* es encontrar las heurísticas admisibles.
+ Con frecuencia estas son soluciones de los llamados 
+\emph on
+problemas relajados
+\emph default
+ en los que son posibles nuevas acciones.
+ A los problemas como el analizado con menos restricciones, se les llama
+ 
+\series bold
+problemas relajados
+\series default
+ y con frecuencia el coste de una solución óptima del problema relajado
+ sirve como heurística para el problema real.
+ La idea es que aumentando las posibilidades de actuar, reducimos la cota
+ inferior de los costes del problema más complejo.
+\end_layout
+
+\begin_layout Standard
+P.e.
+ el ejemplo de Pac-man, usar la distancia Manhattan es equivalente a resolver
+ el problema relajado en que no existen paredes.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Ilustremos este problema usando el conocido 8-puzzle
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Aun cuando los 9 cuadrados pueden colocarse en 9! posiciones diferentes,
+ puede demostrarse desde una ordenación dada solo pueden alcanzarse 9!/2
+ posiciones.
+\end_layout
+
+\end_inset
+
+ donde se trata de llegar desde la posición inicial - vacío en el centro
+ - a la final - vacío en la esquina NE.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 8-puzle.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nuestro problema consiste en encontrar la solución que precise el mínimo
+ número de movimientos (coste = 1).
+\end_layout
+
+\begin_layout Standard
+Necesitamos una heurística, para lo cual se nos ocurren algunas ideas:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Número de cuadrados mal colocados
+\emph default
+.
+ Veamos si cumple las condiciones requeridas para ser una heurística
+\emph on
+ para el estado inicial
+\emph default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+¿Proporciona un número? Sí, un número 
+\begin_inset Formula $\leq8$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+¿Es admisible? Para ello h de ser menor que el número que el número de pasos
+ requerido para llevar el número a su posición.
+ Con un solo movimiento puedo llevar un cuadrado y solo uno a suposición
+ o no hacerlo.
+ Por tanto estando los 8 fuera de sitio en el estado inicial, 8 es menor
+ que los movimientos necesarios.
+\end_layout
+
+\begin_layout Standard
+Por tanto 
+\begin_inset Formula $h(inicio)=8$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se trata de un ejemplo de 
+\emph on
+problema relajado
+\emph default
+ que puede resolverse en 8 pasos.
+ Concretamente el problema relajado consiste en partir de un marco vacío
+ y 8 cuadrados y situarlos en la posición del estado objetivo.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename relax.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sin embargo, es una heurística exageradamente relajada.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Podemos imaginar una versión menos relajada en la que cada cuadrado pueda
+ moverse en cualquier dirección ignorando la existencia del resto de los
+ cuadrados P.e.
+ podríamos llevar el cuadrado 1 a la posición final como si el 2, que la
+ ocupa, no existiera.
+ Preciso un paso a la izquierda - 
+\begin_inset Formula $1\leftarrow$
+\end_inset
+
+- y dos arriba -
+\begin_inset Formula $2\uparrow$
+\end_inset
+
+.
+ Podríamos posiblemente, sumar todas las distancias Manhattan de los cuadros.
+ 
+\begin_inset Formula $h(inicio)=3+1+2+...+2=18$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Pero, ¿cómo estar seguro de que es admisible? Hay dos maneras:
+\end_layout
+
+\begin_layout Itemize
+mostrando el caso de relajación, como se ha hecho o
+\end_layout
+
+\begin_layout Itemize
+por demostración directa.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Si comparamos el resultado de ambas heurísticas observamos el cumplimiento
+ de un principio general:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Quotes fld
+\end_inset
+
+cuanto menos relajado sea el problema que sirve de heurística - más cercano
+ está al coste real -, menos trabajo se necesita para llegar a la solución
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+¿Podemos usar el coste real de llegar al objetivo como heurística? Desde
+ luego que sí y, obviamente, será admisible.
+ Como contrapartida, aun cuando se expandan pocos nodos, en cada uno de
+ ellos será preciso lanzar un trabajo para calcular el coste de alcanzar
+ el objetivo.
+ Esto nos lleva a señalar que en A* existe un compromiso entre 
+\end_layout
+
+\begin_layout Itemize
+la calidad de la estimación;
+\end_layout
+
+\begin_layout Itemize
+la rigidez - o su opuesta, la relajación - de la heurística y
+\end_layout
+
+\begin_layout Itemize
+el trabajo por nodo.
+\end_layout
+
+\begin_layout Standard
+A medida que la heurística se aproxima al coste real 
+\end_layout
+
+\begin_layout Enumerate
+se expanden menos nodos pero
+\end_layout
+
+\begin_layout Enumerate
+cada nodo exige más trabajo para calcular su heurística.
+\end_layout
+
+\begin_layout Section
+Comparación de heurísticas.
+\end_layout
+
+\begin_layout Enumerate
+Factor de ramificación efectivo 
+\begin_inset Formula $(b*$
+\end_inset
+
+): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+N = Número de nodos expandidos por A*.
+ 
+\end_layout
+
+\begin_layout Itemize
+d = Profundidad de la solución
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+b*
+\emph default
+ = factor de ramificación de un árbol uniforme de profundidad d, donde N
+ = # nodos que se necesitan expandir para llegar a la solución óptima.
+ Por la ec.
+ (3.1.1.) tendremos que
+\begin_inset Formula 
+\[
+b*+b*^{2}+..+b*^{d}=b*\frac{(b*)^{d}-1}{b*-1}={\textstyle N}
+\]
+
+\end_inset
+
+Ejemplo: d=5, N=52 .
+ 
+\begin_inset Formula $\rightarrow b*=$
+\end_inset
+
+1.92.
+ Promediar
+\emph on
+ b*
+\emph default
+ para diferentes ejemplos del mismo problema.
+ De manera ideal:
+\begin_inset Formula $b*$
+\end_inset
+
+ 
+\emph on
+lo más cercano posible a 1
+\emph default
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Con frecuencia es posible establecer una relación de dominancia entre heurística
+s.
+ Decimos que la heurística 
+\begin_inset Formula $a$
+\end_inset
+
+ domina a 
+\begin_inset Formula $b$
+\end_inset
+
+ cuando
+\begin_inset Formula 
+\begin{equation}
+\forall n,\:h_{a}(n)\geq h_{b}(n)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Si usamos búsqueda
+\begin_inset Formula $A*$
+\end_inset
+
+ y 
+\begin_inset Formula $h_{a}$
+\end_inset
+
+domina a 
+\begin_inset Formula $h_{b}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $h_{a}$
+\end_inset
+
+ nunca expande más nodos que
+\begin_inset Formula $h_{b}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Generalmente,
+\begin_inset Formula $b_{a}*\leq$
+\end_inset
+
+ 
+\begin_inset Formula $b_{b}*$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Usar
+\begin_inset Formula $h_{a}$
+\end_inset
+
+ si 
+\begin_inset Formula $h_{a}$
+\end_inset
+
+ domina a 
+\begin_inset Formula $h_{b}$
+\end_inset
+
+ y los costes computacionales de computar ambas heurísticas son comparables.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Hay casos en que (5.8.1) solo se verifica en algunos nodos del árbol pero
+ podemos construir una heurística válida tomando la que tiene mayor valor
+ en cada nodo.Si hay disponibles varias funciones heurísticas admisibles,
+ entonces 
+\begin_inset Formula $max\left\{ h_{1}(n),h_{2}(n),...h_{k}(n)\right\} $
+\end_inset
+
+es admisible.
+\end_layout
+
+\begin_layout Section
+Estados repetidos: búsqueda en grafos.
+\end_layout
+
+\begin_layout Standard
+Hasta este punto hemos ignorado una de las complicaciones más importantes
+ del proceso de búsqueda: la posibilidad de perder tiempo expandiendo estados
+ que ya han sido visitados y expandidos.
+ Para algunos problemas, esta posibilidad o aparece; el espacio de estados
+ es un árbol y hay sólo un camino a cada estado.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Para algunos problemas la repetición es inevitable como en el siguiente
+ ejemplo:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename repite.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es claro que eliminando estados repetidos reduciríamos el árbol de 
+\begin_inset Formula $2^{d}$
+\end_inset
+
+ a 
+\begin_inset Formula $d+1$
+\end_inset
+
+ hojas.
+ La detección de estados repetidos por lo general significa la comparación
+ del nodo a expandir con aquellos que han sido ya expandidos; si se encuentra
+ un emparejamiento, entonces el algoritmo ha descubierto dos caminos al
+ mismo estado y puede desechar uno de ellos.
+\end_layout
+
+\begin_layout Standard
+Si nos fijamos en la Fig.
+ 4.1.1.
+ vemos que los dos subárboles que arrancan en e se repiten aun cuando el
+ nodo e está a diferente profundidad.
+ El árbol más profundo no nos dirá nada que ya no sepamos.
+\end_layout
+
+\begin_layout Standard
+Para la búsqueda
+\emph on
+ DFS
+\emph default
+ , los únicos nodos en memoria son aquellos del camino desde la raíz hasta
+ el nodo actual.
+ La comparación de estos nodos permite al algoritmo descubrir los caminos
+ que forman ciclos y que pueden eliminarse inmediatamente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ciclos.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto, sin embargo, solo sirve para evitar que los ciclos formen árboles
+ de búsqueda infinitos, pero esto no evita problemas como el de la figura
+ 4.4.1.
+ en que se generan caminos exponencialmente.
+ Para evitar estos casos es guardar más nodos en la memoria: 
+\emph on
+los algoritmos que olvidan su historia, están condenados a repetirla.
+ 
+\emph default
+Podemos crear una
+\emph on
+ 
+\series bold
+lista-cerrada
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+A veces se denomina a la frontera:
+\emph on
+ lista-abierta.
+
+\emph default
+ No obstante, es preferible llamarlo 
+\emph on
+conjunto cerrado
+\emph default
+ ya que si se trata como una lista los resultados son peores.
+\end_layout
+
+\end_inset
+
+
+\emph default
+ que contenga los nodos ya expandidos.
+ Si el nodo actual se encuentra en 
+\emph on
+lista-cerrada
+\emph default
+ se elimina en lugar de expandirlo.
+ Así tendremos un nuevo algoritmo denominado 
+\series bold
+B
+\size small
+\emph on
+\noun on
+ÚSQUEDA
+\size default
+\noun default
+-G
+\size small
+RAFOS
+\series default
+\emph default
+ que es mucho más eficaz que 
+\size default
+B
+\size small
+\noun on
+ÚSQUEDA
+\size default
+\noun default
+-ÁRBOLES.
+\end_layout
+
+\begin_layout Standard
+La idea del algoritmo es fácil: 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+no expandir nunca dos veces el mismo estado
+\begin_inset Quotes frd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+¿Es este algoritmo completo? ¿Es posible que perdamos la solución por no
+ expandir ciertos nodos en el árbol? Esto no puede suceder porque no expandimos
+ lo que ya se expandió en otro nodo.
+\end_layout
+
+\begin_layout Standard
+Si examinamos la optimalidad de este algoritmo, es difícil de dilucidar.
+ Cuando el algoritmo desecha un camino, siempre desecha el recién descubierto
+ que puede ser el de menor coste.
+ Sin embargo, puede demostrarse que esto no puede suceder cuando se utiliza
+ 
+\emph on
+la UCS o la BFS con costes constantes
+\emph default
+ que no solo 
+\emph on
+son estrategias óptimas en árboles,
+\emph default
+ sino 
+\emph on
+también en grafos
+\emph default
+.
+ La búsqueda con profundidad iterativa, por otra parte, utiliza la expansión
+ primero en profundidad y fácilmente puede seguir un camino subóptimo, lo
+ que exige comprobaciones adicionales.
+\end_layout
+
+\begin_layout Standard
+En la figura se muestra el algoritmo general de búsqueda en grafos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename busgraph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Consistencia.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+El gráfico muestra un caso en que la búsqueda en grafos no funciona a pesar
+ de ser la heurística admisible.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename inopor.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto nos indica que para grafos precisamos algo más que la admisibilidad:
+ la 
+\series bold
+consistencia
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Recordemos que la admisibilidad consistía en que 
+\emph on
+el coste estimado no superase el coste real al objetivo más próximo.
+ 
+\series bold
+La consistencia,
+\series default
+\emph default
+ por su parte, requiere que la heurística sea menor o igual que el coste
+ real pero 
+\emph on
+para cada arco
+\emph default
+, no para el camino hasta el objetivo.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Pero la heurística, hasta aquí, no costea arcos, sino caminos.
+ Tomaremos el 
+\emph on
+coste heurístico
+\emph default
+ del arco 
+\begin_inset Formula $A,C$
+\end_inset
+
+ como la diferencia 
+\begin_inset Formula 
+\begin{equation}
+coste(A,C)=h(A)-h(C)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+mientras que 
+\begin_inset Formula $c(A,C)$
+\end_inset
+
+ es el coste real.
+ La condición de 
+\emph on
+consistencia
+\emph default
+ es, por tanto
+\begin_inset Formula 
+\begin{equation}
+coste(A,C)=\mathbf{h(A)-h(C)}\mathbf{\leq c(A,C)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename consis.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Podemos ver que en la Fig.5.9.1.
+ la heurística es inconsistente ya que 
+\begin_inset Formula $h(A)=4$
+\end_inset
+
+ , 
+\begin_inset Formula $h(C)=1\Rightarrow\mathbf{h(A)-h(C)}=3\mathbf{>c(A,C)}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Consecuencias de la consistencia.
+\end_layout
+
+\begin_layout Itemize
+El valor de 
+\begin_inset Formula $f(n)=g(n)+h(n)$
+\end_inset
+
+ a lo largo de un camino 
+\emph on
+no decrece nunca 
+\emph default
+(
+\begin_inset Formula $f(n)$
+\end_inset
+
+ es monótona no decreciente).
+ En efecto de 5.9.2.
+ para un nodo 
+\begin_inset Formula $n$
+\end_inset
+
+ y cualquier sucesor del mismo 
+\begin_inset Formula $n_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+se verifica:
+\begin_inset Formula 
+\begin{equation}
+\left.\begin{array}{c}
+h(n)\leq h(n_{i})+c(n,n_{i})\\
+g(n)\geq g(n_{i})
+\end{array}\right\} \Rightarrow\mathbf{f(n)\geq f(n_{i})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Si una heurística es consistente, es admisible.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Sea 
+\begin_inset Formula $h*(n)$
+\end_inset
+
+ el coste del camino más barato hasta el objetivo.
+ Demostremos por inducción que 
+\begin_inset Formula $h(n)\leq h*(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Caso base: si hay 0 pasos desde n, n es el objetivo y 
+\begin_inset Formula $h(n)=0\leq h*(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sea que 
+\begin_inset Formula $n$
+\end_inset
+
+ está a
+\begin_inset Formula $m+1$
+\end_inset
+
+ pasos del objetivo, por tanto 
+\begin_inset Formula $h(n_{m+1})\leq h(n_{m})+c(n_{m+1},m_{m})\leq h*(n_{m})+c(n_{m+1},m_{m})\leq h*(n_{m+1})$
+\end_inset
+
+ c.q.d.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+La
+\emph on
+ monotonicidad de
+\begin_inset Formula $f(n)$
+\end_inset
+
+ garantiza la optimalidad de A*
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+Esbozaremos su demostración seguidamente.
+\end_layout
+
+\begin_layout Itemize
+Sea que 
+\begin_inset Formula $O$
+\end_inset
+
+ es una solución óptima cuyo coste del camino es 
+\begin_inset Formula $f*(O)=g(O)$
+\end_inset
+
+ y 
+\begin_inset Formula $h(O)=0.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sea 
+\begin_inset Formula $SO$
+\end_inset
+
+ un estado objetivo subóptimo, esto es tal que 
+\begin_inset Formula $g(SO)>f*(O)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A* termina su búsqueda con 
+\begin_inset Formula $SO$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $n$
+\end_inset
+
+ un nodo hoja en el camino óptimo a 
+\begin_inset Formula $O$
+\end_inset
+
+, entonces se verifica que 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f*\geq f(n)$
+\end_inset
+
+ por la admisibilidad de 
+\begin_inset Formula $h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f(n)\geq f(SO)$
+\end_inset
+
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ no fue elegido para expansión.
+\end_layout
+
+\begin_layout Itemize
+Por tanto 
+\begin_inset Formula $f*\geq f(n)\geq f(SO)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Pero 
+\begin_inset Formula $f(SO)=g(SO)$
+\end_inset
+
+ para ser óptimo 
+\begin_inset Formula $h(SO)=0$
+\end_inset
+
+ y se cumpliría 
+\begin_inset Formula $f*\geq g(SO)$
+\end_inset
+
+ lo que es 
+\emph on
+contradictorio con el carácter óptimo de la solución 
+\emph default
+
+\begin_inset Formula $O$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El carácter monótono de 
+\begin_inset Formula $f(n)$
+\end_inset
+
+ significa que el primer nodo objetivo expandido debe ser el correspondiente
+ a la solución óptima.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename newdem.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Si h es una heurística monótona, la exploración se realiza en curvas de
+ nivel con valores crecientes de f
+\begin_inset Formula $(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+En una búsqueda de coste uniforme [
+\begin_inset Formula $h(n)=0$
+\end_inset
+
+], las curvas de nivel son “concéntricas” alrededor del estado de partida.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+En heurísticas mejores estas curvas forman bandas que se extienden hacia
+ el estado objetivo
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename conce.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Resumen de la búsqueda A*.
+\end_layout
+
+\begin_layout Paragraph
+Optimalidad.
+\end_layout
+
+\begin_layout Enumerate
+La
+\emph on
+ busqueda en árbol es óptima 
+\emph default
+si la heurística es 
+\emph on
+admisible 
+\emph default
+(UCS es caso particular con 
+\emph on
+h=0
+\emph default
+).
+\end_layout
+
+\begin_layout Enumerate
+La 
+\emph on
+búsqueda en grafo es óptima
+\emph default
+ si la heurística es 
+\emph on
+consistente 
+\emph default
+(UCS es caso particular con 
+\emph on
+h=0
+\emph default
+).
+\end_layout
+
+\begin_layout Enumerate
+La consistencia 
+\emph on
+implica
+\emph default
+ admisibilidad.
+\end_layout
+
+\begin_layout Enumerate
+En general las heurísticas 
+\begin_inset Quotes fld
+\end_inset
+
+naturales
+\begin_inset Quotes frd
+\end_inset
+
+ admisible procedentes de la relajación de problemas tienden a ser consistentes.
+\end_layout
+
+\begin_layout Section*
+Ejercicios.
+\end_layout
+
+\begin_layout Standard
+1.
+ En el grafo siguiente responder a las preguntas:
+\end_layout
+
+\begin_layout Itemize
+¿Es la heurística consistente?
+\end_layout
+
+\begin_layout Itemize
+¿Qué solución devuelve A*?
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ejecon.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

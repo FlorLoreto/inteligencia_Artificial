@@ -653,7 +653,7 @@ Planeamiento completo y replanificación.
 
 \begin_deeper
 \begin_layout Itemize
-El agente puede tener un plan completo que ejecuta para carranza su objetivo
+El agente puede tener un plan completo que ejecuta para alcarranza su objetivo
  o
 \end_layout
 
@@ -3513,7 +3513,14 @@ Donde se pasa del estado inicial en que ambas jarras están vacías al de
 
 \end_deeper
 \begin_layout Standard
-Como se ve se muestran dos posibles b
+Como se ve se muestran dos posibles modalidades de búsqueda según la prelación
+ de desarrollo de los nodos: en 
+\emph on
+anchura
+\emph default
+ y en 
+\emph on
+profundidad.
 \end_layout
 
 \end_deeper
