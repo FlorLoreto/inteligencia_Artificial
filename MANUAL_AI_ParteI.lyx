@@ -159,7 +159,7 @@ End
 \quotes_language french
 \papercolumns 1
 \papersides 2
-\paperpagestyle plain
+\paperpagestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
