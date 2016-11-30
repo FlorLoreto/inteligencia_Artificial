@@ -1,0 +1,1208 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\setcounter{chapter}{0}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\fontsize{16pt}{18pt}\selectfont\mdseries}
+  {\MakeUppercase{\chaptertitlename}\ \thechapter}{18pt}{\MakeUppercase}
+\titleformat{\section}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\itshape}{\thesubsection}{1em}{}
+\titlespacing*{\section} {0pt}{0pt}{2.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{0pt}{1.5ex plus .2ex}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+ET, un simpático y ahorrativo extraterrestre quiere ir desde su casa en
+ la Tierra hasta su planeta, para lo cual consulta una guía de viajes interestel
+ares que le muestra los diferentes caminos posibles con el coste por trayecto.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ET.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Usando UCS hallar el camino de menor coste para ET.
+ Suponer que se procede alfabéticamente.
+\end_layout
+
+\begin_layout Enumerate
+Por otro lado, ET pregunta a sus amigos más viajeros intergalácticamente,
+ sus estimaciones de las distancias desde cada nudo galáctico hasta su planeta
+ y recibe los valores de h (heurística) de las estimaciones.
+ Usar A* para ayudar a ET.
+\end_layout
+
+\begin_layout Enumerate
+¿Qué condición general han de cumplir las estimaciones para estar seguros
+ de que A* da la solución de menor coste?
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solución:
+\end_layout
+
+\begin_layout Standard
+La búsqueda de coste uniforme (UCS) se basa en buscar en la dirección que
+ en cada nodo presenta un coste mínimo.
+ Por ello, este tipo de búsqueda cambia frecuentemente la dirección de la
+ búsqueda como veremos en el ejemplo ya que, inicialmente, el camino hasta
+ la frontera desarrollada a partir del nodo inicial de menor coste sería
+ el ([S,A],2)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Recordemos que un nodo en un árbol de búsqueda es una camino en el grafo
+ de estados.
+\end_layout
+
+\end_inset
+
+.
+ Pero si desarrollamos este nodo - los nodos accesibles desde él - obtenemos
+ la 
+\noun on
+frontera
+\noun default
+ ([S,B],5), ([S,E],3),([S,A,D],6), ([S,A,C],4) y el nodo ([S,E],3) - ya
+ expandido en la fase inicial - tiene un coste menor que los nuevos nodos
+ desarrollados a partir de A ([S,A,D],6), ([S,A,C],4), con lo cual pudiera
+ ser que los caminos que comienzan por S->E->...
+ tuvieran un coste menor que los que empiezan por S->A->...
+ y cambiamos nuestra dirección de búsqueda de S->A a S->E y así sucesivamente,
+ como puede verse en la figura:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename UCS_DIR.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Además, tomaremos en cuenta el pseudocódigo del algoritmo de búsqueda en
+ gráficos (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Estados-repetidos:-búsqueda-1"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Al usar búsqueda en grafo no hemos de encolar nodos que ya hayan sido expandidos
+ y, por tanto, cuando pongamos nodos en la frontera no comprobamos si existe
+ un camino más barato a dicho estado.
+ Esto creará 
+\begin_inset Quotes fld
+\end_inset
+
+nodos muertos
+\begin_inset Quotes frd
+\end_inset
+
+ en la frontera que nunca se expandirán porque su estado ya ha sido expandido
+ y puesto en la
+\noun on
+ lista-cerrada
+\noun default
+ cuando el camino de menor coste sale de la frontera
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La notación para un nodo N: 
+\begin_inset Formula $([S\rightarrow N],C)$
+\end_inset
+
+ indica en [
+\begin_inset Formula $S\rightarrow N$
+\end_inset
+
+] la lista de nodos que forman el camino que el nodo representa y 
+\begin_inset Formula $C$
+\end_inset
+
+ el coste acumulado del camino.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Si procedemos visualizando la cola priorizada (frontera) teniendo en cuanta
+ que se expanden primero los nodos cuyo coste estimado
+\begin_inset Formula $f(n)$
+\end_inset
+
+ sea menor (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Estados-repetidos:-búsqueda"
+
+\end_inset
+
+)::
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: ([S],0).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale 
+\series default
+a 
+\noun on
+Lista-Cerrada 
+\noun default
+([S],0).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+:- 
+\emph on
+expandir nodo([S],0)
+\emph default
+ - 
+\series bold
+([S,A],2), ([S,E],3), ([S,B],5)
+\series default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale
+\series default
+ a 
+\noun on
+Lista-Cerrada
+\noun default
+ ([S,A],2).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: 
+\emph on
+expandir nodo([S,A],0)
+\emph default
+- ([S,E],3), 
+\series bold
+([S,A,C],4)
+\series default
+, ([S,B],5), 
+\series bold
+([S,A,D],6)
+\series default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale 
+\series default
+a 
+\noun on
+Lista-Cerrada
+\noun default
+ ([S,E],3).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: - 
+\emph on
+expandir nodo([S,E],3)
+\emph default
+ -([S,A,C],4), ([S,B],5),([S,A,D],6), 
+\series bold
+([S,E,B],7)
+\series default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale
+\series default
+ a 
+\noun on
+Lista-Cerrada
+\noun default
+ ([S,A,C],4).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+:- 
+\emph on
+expandir nodo([S,A,C],0)
+\emph default
+ -([S,B],5),([S,A,D],6), ([S,E,B],7),
+\series bold
+([S,A,C,D],7)
+\series default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale 
+\series default
+a 
+\noun on
+Lista-Cerrada 
+\noun default
+([S,B],5).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: - 
+\emph on
+expandir nodo([S,B],5)
+\emph default
+ -  ([S,A,D],6),[S,B,D],6) ([S,E,B],7),([S,A,C,D],7),
+\series bold
+[S,B,G],10)
+\series default
+.
+ Aunque hemos alcanzado el nodo objetivo -[S,B,G],10)-, este no es el de
+ valor mínimo y aun hemos de desarrollar otros nodos.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale
+\series default
+ a 
+\noun on
+Lista-Cerrada
+\noun default
+ ([S,A,D],6).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: 
+\emph on
+- expandir nodo([S,A,D],6)
+\emph default
+ - [S,B,D],6),([S,E,B],7),([S,A,C,D],7),
+\series bold
+([S,A,D,G],8)
+\series default
+,
+\series bold
+([S,A,D,C],9)
+\series default
+,([S,B,G],10).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale
+\series default
+ a 
+\noun on
+Lista-Cerrada
+\noun default
+ ([S,B,D],6): Nodo muerto.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: 
+\emph on
+- expandir nodo([S,B,D],6)
+\emph default
+ - ([S,E,B],7),([S,A,C,D],7),[S,A,D,G],8),([S,A,D,C],9),([S,B,G],10).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale
+\series default
+ a 
+\noun on
+Lista-Cerrada
+\noun default
+ ([S,E,B],7): Nodo muerto.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: 
+\emph on
+- expandir nodo([S,E,B],7)
+\emph default
+ - ([S,A,C,D],7),[S,A,D,G],8),([S,A,D,C],9),([S,B,G],10).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale
+\series default
+ a 
+\noun on
+Lista-Cerrada
+\noun default
+ ([S,A,C,D],7): Nodo muerto.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: [S,A,D,G],8),([S,A,D,C],9),([S,B,G],10).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale
+\series default
+ a 
+\noun on
+Lista-Cerrada
+\emph on
+\noun default
+ ([
+\series bold
+S,A,D,G
+\series default
+],
+\series bold
+8
+\series default
+)
+\emph default
+:
+\noun on
+ solución
+\noun default
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+También podemos buscar en árbol de búsqueda, teniendo en cuanta la existencia
+ de la 
+\noun on
+lista-cerrada 
+\noun default
+que contiene nodos que ya han sido expandidos y no deben expandirse de nuevo:
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Con heurística, sabemos que en cada nodo utilizaremos la función:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(n)=g(n)+h(n)
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $g(n)$
+\end_inset
+
+ es el coste real acumulado (pasado) hasta el nodo n y 
+\begin_inset Formula $h(n)$
+\end_inset
+
+ es el coste estimado (futuro) de alcanzar el nodo objetivo y, por tanto,
+ 
+\begin_inset Formula $f(n)$
+\end_inset
+
+ es
+\emph on
+ el coste estimado de alcanzar el objetivo por un camino que pasa por n
+\emph default
+.
+ En nuestro ejemplo, no existe el valor 
+\begin_inset Formula $h(S)$
+\end_inset
+
+ pero no es necesario que la función heurística tome valores desde el nodo
+ raíz, sino que puede comenzar en otro nodo posterior.
+\end_layout
+
+\begin_layout Standard
+El algoritmo a utilizar es el mismo que antes
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Ahora en 
+\begin_inset Formula $([S\rightarrow N],C)$
+\end_inset
+
+ [
+\begin_inset Formula $S\rightarrow N$
+\end_inset
+
+] es también la lista de nodos que forman el camino que el nodo representa
+ y 
+\begin_inset Formula $C=g(n)+h(n)$
+\end_inset
+
+ el coste 
+\emph on
+estimado
+\emph default
+ del camino.
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: ([S],0).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale 
+\series default
+a 
+\noun on
+Lista-Cerrada 
+\noun default
+([S],0).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+:- 
+\emph on
+expandir nodo([S],0)
+\emph default
+ - 
+\series bold
+([S,A],2+2), ([S,E],3+5), ([S,B],5+5)
+\series default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale
+\series default
+ a 
+\noun on
+Lista-Cerrada
+\noun default
+ ([S,A],2+2).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: 
+\emph on
+expandir nodo([S,A],4)
+\emph default
+- 
+\series bold
+([S,A,C],4+1)
+\series default
+, 
+\series bold
+([S,A,D],6+1)
+\series default
+, ([S,E],3+5),([S,B],5+3).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale 
+\series default
+a 
+\noun on
+Lista-Cerrada
+\series bold
+\noun default
+ 
+\series default
+([S,A,C],4+1).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: 
+\emph on
+expandir nodo
+\emph default
+ 
+\emph on
+([S,A,C],4+1)
+\emph default
+- ([S,A,D],6+1), ([S,E],3+5),([S,B],5+3),
+\series bold
+([S,A,C,D],7+1)
+\series default
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale 
+\series default
+a 
+\noun on
+Lista-Cerrada
+\series bold
+\noun default
+ 
+\series default
+([S,A,D],6+1).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: 
+\emph on
+expandir nodo
+\emph default
+ 
+\emph on
+([S,A,D],6+1)
+\emph default
+- ([S,E],3+5),([S,B],5+3),,
+\series bold
+ ([S,A,D,G],6+2)
+\series default
+,([S,A,C,D],7+1),
+\series bold
+ ([S,A,D,B],7+3)
+\series default
+..
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale 
+\series default
+a 
+\noun on
+Lista-Cerrada
+\series bold
+\noun default
+ 
+\series default
+([S,E],3+5).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: 
+\emph on
+expandir nodo
+\emph default
+ 
+\emph on
+([S,E],3+5)
+\emph default
+- ([S,B],5+3),([S,A,D,G],6+2),([S,A,C,D],7+1), ([S,A,D,B],7+3),([S,E,B],7+3).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale 
+\series default
+a 
+\noun on
+Lista-Cerrada
+\series bold
+\noun default
+ 
+\series default
+([S,B],5+3),
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Frontera
+\series default
+: 
+\emph on
+expandir nodo
+\emph default
+ 
+\emph on
+([S,B],5+3)
+\emph default
+-
+\series bold
+ 
+\series default
+([S,A,D,G],6+2),([S,A,C,D],7+1),, ([S,A,D,B],7+3),([S,B,G],7+3),([S,E,B],7+3).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale 
+\series default
+a 
+\noun on
+Lista-Cerrada
+\series bold
+\emph on
+\noun default
+ ([S,A,D,G],6+2): 
+\series default
+\emph default
+\noun on
+Solución
+\series bold
+\emph on
+\noun default
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Puesto que se trata de una 
+\emph on
+búsqueda en grafo
+\emph default
+ la heurística ha de ser 
+\emph on
+consistente
+\emph default
+, es decir, verificar la desigualdad triangular:
+\begin_inset Formula 
+\[
+h(n)\leq c(n,a,n')+h(n\text{´)}\Rightarrow\textrm{c(n,a,n')\geq h(n)-h(n')}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename triangle.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos comprobar todos los arcos.
+ P.e.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+n
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+n´
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+h(n)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+h(n')
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+c(n,a,n´)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+h(n)-h(n´)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

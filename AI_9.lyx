@@ -164,7 +164,37 @@ Aprendizaje Automático.
 \end_layout
 
 \begin_layout Standard
-El aprendizaje automático o aprendizaje máquina ("
+El 
+\emph on
+aprendizaje automático
+\emph default
+, 
+\emph on
+aprendizaje maquinal,
+\emph default
+ 
+\emph on
+aprendizaje máquina
+\emph default
+ o
+\emph on
+ aprendizaje estadístico
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+De todas estas denominaciones preferimos la de 
+\emph on
+Aprendizaje Maquinal
+\emph default
+ que es la usada en alemán.
+\end_layout
+
+\end_inset
+
+
+\emph default
+ ("
 \emph on
 Machine Learning
 \emph default

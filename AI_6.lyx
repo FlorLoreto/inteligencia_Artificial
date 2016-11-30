@@ -144,7 +144,7 @@ End
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
-\defskip medskip
+\defskip smallskip
 \quotes_language french
 \papercolumns 1
 \papersides 2
@@ -172,9 +172,12 @@ Ahora nos interesamos por una clase de búsqueda que incluye la existencia
 \end_layout
 
 \begin_layout Standard
-Nos centraremos en los entornos mulitiagente, en los cuales cualquier agente
- tendrá que considerar las acciones de otros agentes y cómo afectan a su
- propio bienestar.
+Nos centraremos en los entornos 
+\emph on
+mulitiagente
+\emph default
+, en los cuales cualquier agente tendrá que considerar las acciones de otros
+ agentes y cómo afectan a su propio bienestar.
 \end_layout
 
 \begin_layout Standard
@@ -183,15 +186,26 @@ La imprevisibilidad de estos otros agentes puede introducir muchas posibles
 \series bold
 contingencias
 \series default
- en el proceso de resolución de problemas del agente.
+ en el proceso de resolución de problemas.
  
 \end_layout
 
 \begin_layout Standard
-Hay que distinguir entre entornos multiagente cooperativos y competitivos.
+Hay que distinguir entre entornos 
+\emph on
+cooperativos 
+\emph default
+y 
+\emph on
+competitivos
+\emph default
+.
  Los entornos competitivos, en los cuales los objetivos del agente están
- en conflicto, dan ocasión a problemas de búsqueda entre adversarios, a
- menudo conocidos como
+ en conflicto, dan ocasión a problemas de 
+\emph on
+búsqueda con adversarios
+\emph default
+, a menudo conocidos como
 \series bold
  juegos
 \series default
@@ -229,7 +243,7 @@ El juego del Go es de gran complejidad y su factor de ramificación
 \end_layout
 
 \begin_layout Standard
-Cuando 
+Por tanto, cuando 
 \emph on
 los agentes tienen objetivos diferentes
 \emph default
@@ -237,7 +251,7 @@ los agentes tienen objetivos diferentes
 \series bold
 búsqueda con adversarios
 \series default
-.
+ on las siguientes características:
 \end_layout
 
 \begin_layout Itemize
@@ -279,6 +293,19 @@ utilidad
 \series default
 \emph default
 ).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -315,32 +342,48 @@ Black
 es evitarlo
 \emph on
 .
- White
-\emph default
  
 \end_layout
 
 \begin_layout Enumerate
-hace un movimiento,
+
+\emph on
+White
+\emph default
+ hace un movimiento,
 \end_layout
 
 \begin_layout Enumerate
-observa el movimiento que hace
+
+\emph on
+White
+\emph default
+ observa el movimiento que hace
 \emph on
  Black y
 \end_layout
 
 \begin_layout Enumerate
-repite el proceso de planeación
+
+\emph on
+White
+\emph default
+ repite el proceso de planeación
 \end_layout
 
 \begin_layout Standard
-En un ciclo observa/planea/actúa.
+En un ciclo 
+\emph on
+observa/planea/actúa.
 \end_layout
 
 \begin_layout Standard
-White planea sus acciones construyendo un árbol de movimientos posibles
- como el de la figura (parcial):
+
+\emph on
+White
+\emph default
+ planea sus acciones construyendo un árbol de movimientos posibles como
+ el de la figura (parcial):
 \end_layout
 
 \begin_layout Standard
@@ -403,10 +446,21 @@ o que le permita alcanzar su objetivo con independencia de lo que el otro
  Lo más común, sin embargo, es que ningún agente sea capaz de alcanzar su
  objetivo debido a que sea computacionalmente inviable desarrollar completamente
  los árboles de decisión por lo que lo habitual es utilizar métodos con
- un horizonte (profundidad de búsqueda) limitado.
- Podemos usar métodos BFS, DFS o heurísticos pero hemos de fijar una condición
- de terminación que puede basarse en tiempo de ejecución, capacidad de almacenam
-iento o profundidad del nodo más profundo, p.e.
+ un 
+\emph on
+horizonte
+\emph default
+ (ámbito de búsqueda) 
+\emph on
+limitado
+\emph default
+.
+ Podemos usar métodos BFS, DFS o heurísticos pero hemos de fijar una 
+\emph on
+condición de terminación
+\emph default
+ que puede basarse en tiempo de ejecución, capacidad de almacenamiento o
+ profundidad del nodo más profundo, p.e.
 \end_layout
 
 \begin_layout Standard
@@ -416,6 +470,19 @@ Una vez terminada la búsqueda podemos seleccionar el primer movimiento que
  función de evaluación
 \emph default
  aplicada en los nodos hoja del árbol.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -425,7 +492,7 @@ Tipos de juegos.
 \begin_layout Standard
 Los juegos pueden clasificarse con diferentes
 \series bold
- criterios de clasificación
+ criterios
 \series default
 : 
 \end_layout
@@ -638,6 +705,19 @@ información perfecta
 suma cero
 \emph default
 .
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -777,8 +857,11 @@ Estado-sucesor
 \family sans
 Test terminal
 \family default
-: determina si el estado del juego es un estado terminal (es decir, el juego
- ha concluido): 
+: función booleana que determina si el estado del juego es 
+\emph on
+terminal
+\emph default
+ (es decir, el juego ha concluido): 
 \begin_inset Formula $\mathbf{S\rightarrow\left\{ t,f\right\} }$
 \end_inset
 
@@ -803,8 +886,11 @@ Utilidad
 \family sans
 Árbol del juego
 \family default
-: El estado inicial y los movimientos legales alternados de cada parte definen
- el árbol del juego.
+: El estado inicial y los movimientos 
+\emph on
+legales
+\emph default
+ alternados de cada parte definen el árbol del juego.
  
 \end_layout
 
@@ -916,14 +1002,17 @@ matriz de balance final
 \begin_layout Standard
 Es decir, si MAX juega A y MIN responde con B, MAX pierde 3 que gana MIN
  .
- En este caso, los valores positivos son ganancias para MAX y pérdidas para
- MIN y viceversa.
+ En este caso, siendo de 
+\emph on
+suma cero
+\emph default
+, los valores positivos son ganancias para MAX y pérdidas para MIN y viceversa.
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\size footnotesize
+\size scriptsize
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="4">
 <features rotate="0" tabularvalignment="middle">
@@ -957,7 +1046,7 @@ Es decir, si MAX juega A y MIN responde con B, MAX pierde 3 que gana MIN
 
 \family sans
 \series bold
-\size footnotesize
+\size scriptsize
 MIN
 \end_layout
 
@@ -998,8 +1087,8 @@ MIN
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-A
+\size scriptsize
+D
 \end_layout
 
 \end_inset
@@ -1009,9 +1098,8 @@ A
 
 \begin_layout Plain Layout
 
-\family sans
-\size footnotesize
-B
+\size scriptsize
+E
 \end_layout
 
 \end_inset
@@ -1033,7 +1121,7 @@ B
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
+\size scriptsize
 A
 \end_layout
 
@@ -1045,8 +1133,8 @@ A
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de A=3
+\size scriptsize
+ganancia de MAX=3
 \end_layout
 
 \end_inset
@@ -1057,8 +1145,8 @@ ganancia de A=3
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de A=-3
+\size scriptsize
+ganancia de MAX=-3
 \end_layout
 
 \end_inset
@@ -1072,7 +1160,7 @@ ganancia de A=-3
 
 \family sans
 \series bold
-\size footnotesize
+\size scriptsize
 MAX
 \end_layout
 
@@ -1084,7 +1172,7 @@ MAX
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
+\size scriptsize
 B
 \end_layout
 
@@ -1096,8 +1184,8 @@ B
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de A=0
+\size scriptsize
+ganancia de MAX=0
 \end_layout
 
 \end_inset
@@ -1108,8 +1196,8 @@ ganancia de A=0
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de A=2
+\size scriptsize
+ganancia de MAX=2
 \end_layout
 
 \end_inset
@@ -1131,7 +1219,7 @@ ganancia de A=2
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
+\size scriptsize
 C
 \end_layout
 
@@ -1143,8 +1231,8 @@ C
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de A=-5
+\size scriptsize
+ganancia de MAX=-5
 \end_layout
 
 \end_inset
@@ -1155,8 +1243,8 @@ ganancia de A=-5
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de A=10
+\size scriptsize
+ganancia de MAX=10
 \end_layout
 
 \end_inset
@@ -1204,7 +1292,7 @@ ganancia de A=10
 
 \family sans
 \series bold
-\size footnotesize
+\size scriptsize
 MIN
 \end_layout
 
@@ -1244,9 +1332,8 @@ MIN
 
 \begin_layout Plain Layout
 
-\family sans
-\size footnotesize
-A
+\size scriptsize
+D
 \end_layout
 
 \end_inset
@@ -1257,8 +1344,8 @@ A
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-B
+\size scriptsize
+E
 \end_layout
 
 \end_inset
@@ -1280,7 +1367,7 @@ B
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
+\size scriptsize
 A
 \end_layout
 
@@ -1292,8 +1379,8 @@ A
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de B=-3
+\size scriptsize
+ganancia de MIN=-3
 \end_layout
 
 \end_inset
@@ -1304,8 +1391,8 @@ ganancia de B=-3
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de B=3
+\size scriptsize
+ganancia de MIN=3
 \end_layout
 
 \end_inset
@@ -1319,7 +1406,7 @@ ganancia de B=3
 
 \family sans
 \series bold
-\size footnotesize
+\size scriptsize
 MAX
 \end_layout
 
@@ -1331,7 +1418,7 @@ MAX
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
+\size scriptsize
 B
 \end_layout
 
@@ -1343,8 +1430,8 @@ B
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de B=0
+\size scriptsize
+ganancia de MIN=0
 \end_layout
 
 \end_inset
@@ -1355,8 +1442,8 @@ ganancia de B=0
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de B=-2
+\size scriptsize
+ganancia de MIN=-2
 \end_layout
 
 \end_inset
@@ -1378,7 +1465,7 @@ ganancia de B=-2
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
+\size scriptsize
 C
 \end_layout
 
@@ -1390,8 +1477,8 @@ C
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de B=5
+\size scriptsize
+ganancia de MIN=5
 \end_layout
 
 \end_inset
@@ -1402,8 +1489,8 @@ ganancia de B=5
 \begin_layout Plain Layout
 
 \family sans
-\size footnotesize
-ganancia de B=-10
+\size scriptsize
+ganancia de MIN=-10
 \end_layout
 
 \end_inset
@@ -1444,8 +1531,8 @@ en este caso con
 \end_layout
 
 \begin_layout Standard
-A cada uno de los estados asociamos un valor del estado o máxima utilidad
- terminal obtenible.
+A cada uno de los estados terminales asociamos un valor del estado o máxima
+ utilidad terminal obtenible.
 \end_layout
 
 \end_deeper
@@ -1499,7 +1586,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename noujoc.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -1517,14 +1604,34 @@ status open
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align left
 Para estos estados terminales, el valor del juego es conocido.
  Pero ¿qué sucede con los demás estados? Desde el estado B puedo alcanzar
  tanto el estado F como todo lo que se encuentre en algún camino por debajo
- de E, es decir desde el nodo B puedo alcanzar cualquier valor terminal
- que se encuentre por debajo de E como 6 o -20.
- No obstante, si quiero maximizar mi utilidad entre 6 y 8 elegiré siempre
- 8.
- Ese estado tendrá un valor: será 8 el valor de F.
+ de E, es decir desde el nodo B puedo alcanzar 
+\emph on
+cualquier valor terminal que se encuentre por debajo de E
+\emph default
+ como 6 o -20.
+ No obstante, si quiero maximizar mi utilidad entre 6
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Máximo valor por debajo de E.
+\end_layout
+
+\end_inset
+
+ y 8 elegiré siempre 8.
+ El estado 
+\series bold
+\emph on
+F
+\series default
+\emph default
+ tendrá un valor: será 8 el valor de F.
  
 \end_layout
 
@@ -1546,12 +1653,8 @@ el valor de un estado
 \series default
  (el B, el inicial,...) será 
 \emph on
-el valor máximo que tengan los estados sucesores de s:
+el valor máximo que tengan los estados sucesores de s -{s'}
 \emph default
- 
-\begin_inset Formula $\mathbf{s'}$
-\end_inset
-
 :
 \begin_inset Formula 
 \begin{equation}
@@ -1623,7 +1726,7 @@ name "fig:5"
 
 \begin_inset Graphics
 	filename contro.png
-	scale 70
+	scale 75
 
 \end_inset
 
@@ -1729,9 +1832,9 @@ Pac-Man
 :
 \begin_inset Formula 
 \begin{equation}
-\forall s'\;\textrm{{\textstyle bajo}control adversario}\;V(s')=\begin{array}{c}
+\forall s'\;\textrm{{\textstyle bajo} control  adversario}\;V(s')=\begin{array}{c}
 min\\
-s'\in sucesores(s)
+s\in sucesores(s')
 \end{array}\left\{ \begin{array}{c}
 V_{4}=-8\\
 V_{5}=-5
@@ -1763,7 +1866,7 @@ maximizar
  sus ganancias:
 \begin_inset Formula 
 \begin{equation}
-\forall s\;\textrm{{\textstyle bajo}control del agente}\;V(s)=\begin{array}{c}
+\forall s\;\textrm{{\textstyle bajo} control  del agente}\;V(s)=\begin{array}{c}
 max\\
 s'\in sucesores(s)
 \end{array}\left\{ \begin{array}{c}
@@ -1796,6 +1899,19 @@ mínimos
 \emph default
 , de manera que el valor del nodo raíz será siempre el valor de un (o conjunto)
  nodo terminal del árbol del juego.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1928,6 +2044,8 @@ Utilidades terminales:
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 Utilidad terminal para
 \end_layout
 
@@ -1937,6 +2055,8 @@ Utilidad terminal para
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 MAX
 \end_layout
 
@@ -1946,6 +2066,8 @@ MAX
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 MIN 
 \end_layout
 
@@ -1957,6 +2079,8 @@ MIN
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 Gana MAX
 \end_layout
 
@@ -1966,6 +2090,8 @@ Gana MAX
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 +1
 \end_layout
 
@@ -1975,6 +2101,8 @@ Gana MAX
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 -1
 \end_layout
 
@@ -1986,6 +2114,8 @@ Gana MAX
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 Gana MIN
 \end_layout
 
@@ -1995,6 +2125,8 @@ Gana MIN
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 -1
 \end_layout
 
@@ -2004,6 +2136,8 @@ Gana MIN
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 +1
 \end_layout
 
@@ -2015,6 +2149,8 @@ Gana MIN
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 Empate
 \end_layout
 
@@ -2024,6 +2160,8 @@ Empate
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 0
 \end_layout
 
@@ -2033,6 +2171,8 @@ Empate
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size large
 0
 \end_layout
 
@@ -2620,7 +2760,7 @@ MIN
 \begin_inset Text
 
 \begin_layout Plain Layout
-A
+D
 \end_layout
 
 \end_inset
@@ -2629,7 +2769,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-B
+E
 \end_layout
 
 \end_inset
@@ -2888,7 +3028,7 @@ MIN
 \begin_layout Plain Layout
 
 \series bold
-A
+D
 \end_layout
 
 \end_inset
@@ -2897,7 +3037,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-B
+E
 \end_layout
 
 \end_inset
@@ -3065,7 +3205,7 @@ Mínimos
 \end_layout
 
 \begin_layout Standard
-y si MIN comenzara el juego, optaría por la estrategia A.
+y si MIN comenzara el juego, optaría por la estrategia D.
 \end_layout
 
 \begin_layout Standard
@@ -3126,15 +3266,16 @@ Completo
 \series bold
 Óptimo
 \series default
- sólo si el oponente es óptimo (si el oponente es subóptimo, podemos usar
- sus debilidades para encontrar estrategias mejores 
+ sólo si el oponente es óptimo nos devuelve el mayor valor del juego.
+ Si el oponente es subóptimo, podemos usar sus debilidades para encontrar
+ estrategias mejores 
 \emph on
 distintas de las generadas por el 
 \noun on
 Minimax
 \emph default
 \noun default
-).
+.
 \end_layout
 
 \begin_layout Itemize
@@ -3225,7 +3366,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename maxejemplo.png
-	scale 50
 
 \end_inset
 
@@ -3281,7 +3421,11 @@ Sustituiremos el valor terminal, que no alcanzaremos, por una
 \emph default
  de 
 \emph on
-estados no terminales
+estados 
+\series bold
+no
+\series default
+ terminales
 \emph default
 .
 \end_layout
@@ -3435,16 +3579,16 @@ características
 \emph default
  que puedan ayudarnos a controlar el tablero.
  Estas características son ellas mismas funciones que reciben como argumento
- el estado del juego y devuelven un valor numérico -
+ el estado - 
+\begin_inset Formula $n$
+\end_inset
+
+ - del juego y devuelven un valor numérico -
 \begin_inset Formula $f_{i}(n)$
 \end_inset
 
 -.
- Una forma típica de combinarlas es mediante una combinación lineal de las
- mismas:
-\end_layout
-
-\begin_layout Standard
+ Una forma típica de combinarlas es linealmente:
 \begin_inset Formula 
 \begin{equation}
 Eval(n)=w_{1}f_{1}(n)+w_{2}f_{2}(n)+...+w_{n}f_{n}(n)
@@ -3462,8 +3606,8 @@ Aquellas características consideradas más importantes, reciben un peso mayor
 \begin_inset Formula 
 \[
 \begin{array}{c}
-f_{1}(n)=(\textrm{nº de reinas blancas}-\textrm{nº de reinas negras})\\
-f_{2}(n)=\textrm{(nº de caballos blancos-nº de caballos negros)}
+f_{1}(n)=(\textrm{nº de reinas blancas -}\textrm{ nº de reinas negras})\\
+f_{2}(n)=\textrm{(nº de caballos blancos - nº de caballos negros)}
 \end{array}
 \]
 
@@ -3662,6 +3806,19 @@ c
 \series default
  (izda.
  8+1/4; izda 4+1/3).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -3746,6 +3903,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:poda"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename poda.png
 	scale 70
@@ -3768,11 +3932,12 @@ status open
 \begin_layout Standard
 \noindent
 \align left
-Si observamos en detalle el árbol podemos ver que, a la profundidad 2, 
+Si observamos en detalle el árbol podemos ver que, yendo de abajo arriba,
+ a la profundidad 2, 
 \emph on
 es totalmente imprescindible visitar los nodos 1, 2 y 3
 \emph default
-.
+ ya que aún no he visitado ningún camino previo.
  En efecto siendo 
 \begin_inset Formula $V(1)$
 \end_inset
@@ -3789,10 +3954,10 @@ s\in hijos(10)
  Por tanto ahora sabemos que
 \begin_inset Formula 
 \[
-V(13)=\alpha=\begin{array}{c}
+V(13)=\begin{array}{c}
 max\\
 {\scriptstyle s\in hijos(13)}
-\end{array}V(s)\geq3
+\end{array}V(s)\geq\alpha=3
 \]
 
 \end_inset
@@ -3801,15 +3966,24 @@ max\\
 \end_layout
 
 \begin_layout Standard
+Siendo hasta el momento, 
 \begin_inset Formula $\alpha$
 \end_inset
 
- es la mejor opción ya explorada hasta la raíz para MAX a lo largo del camino
- y 
+ 
+\emph on
+la mejor opción ya explorada
+\emph default
+ hasta la raíz para MAX a lo largo del camino.
+ Para su adversario MIN, 
 \begin_inset Formula $\beta$
 \end_inset
 
- es la mejor opción ya explorada hasta la raíz para MIN a lo largo del camino.
+ es la mejor opción ya explorada a lo largo del camino que es 
+\begin_inset Formula $V(10)=3$
+\end_inset
+
+ hasta ahora.
  
 \end_layout
 
@@ -3824,13 +3998,13 @@ ya que, puesto que
 \begin_inset Formula $V(4)=2$
 \end_inset
 
- y
+ tendremos que 
 \begin_inset Formula 
 \[
 V(11)=\begin{array}{c}
 min\\
 {\scriptstyle s\in hijos(11)}
-\end{array}V(s)=\beta\leq2\textrm{ y }
+\end{array}V(s)\leq\beta=2\textrm{ y }
 \]
 
 \end_inset
@@ -3838,26 +4012,27 @@ min\\
 
 \begin_inset Formula 
 \[
-V(13)=\begin{array}{c}
+V(raíz=13)=\begin{array}{c}
 max\\
-{\scriptstyle s\in hijos(11)}
-\end{array}V(s)=\alpha\geq3
+{\scriptstyle s\in hijos(13)}
+\end{array}V(s)\geq\alpha=3
 \]
 
 \end_inset
 
-y, de antes, el nodo padre de 10 y 11 ha de tener un valor mayor o igual
- que el de estos por lo cual, siendo 
+y, de la exploración anterior, el nodo padre de 10 y 11 ha de tener un valor
+ mayor o igual que el de estos por lo cual, siendo 
 \begin_inset Formula $\alpha=V(raíz)=3>V(11)=\beta=2$
 \end_inset
 
  es claro que desde el nodo inicial siempre se elegirá el nodo 10 antes
- que el 11 donde 
+ que el 11 ya que 
 \begin_inset Formula $V(10)>V(11)$
 \end_inset
 
- cualesquiera que sean los valores de los nodos 5 y 6 y, por tanto, estas
- ramas pueden 
+ cualesquiera que sean los valores de los nodos 5 y 6 y, por tanto, 
+\emph on
+estas ramas pueden 
 \begin_inset Quotes fld
 \end_inset
 
@@ -3865,6 +4040,8 @@ podarse
 \begin_inset Quotes frd
 \end_inset
 
+
+\emph default
 .
  Pero aún nos queda analizar la rama que comienza en 12 para la cual los
  nodos 7, 8 y 9 sí han de ser analizados en su totalidad ya que
@@ -3875,10 +4052,10 @@ V(12)=\begin{array}{c}
 min\\
 {\scriptstyle s\in hijos(12)}
 \end{array}V(s)=min(14,4,2)=\beta\\
-V(padre)=\begin{array}{c}
+V(raíz=13)=\begin{array}{c}
 max\\
 {\scriptstyle s\in hijos(13)}
-\end{array}V(s)=\alpha\geq3
+\end{array}V(s)\geq\alpha=3
 \end{array}
 \]
 
@@ -3896,8 +4073,12 @@ en 7 solo sabemos que
 \begin_inset Formula $V(12)\leq14$
 \end_inset
 
- y , si este fuera el menor valor de los nodos hijos de 12, 
-\begin_inset Formula $V(padre)=\alpha\geq14$
+ y , si este fuera 
+\emph on
+el menor valor
+\emph default
+ de los nodos hijos de 12, 
+\begin_inset Formula $V(13)=\alpha\textrm{ debería ser }\geq14$
 \end_inset
 
 .
@@ -3953,7 +4134,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename poda2.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -4351,9 +4532,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:7-1"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename podapaso.png
-	scale 40
+	scale 65
 
 \end_inset
 
@@ -4462,7 +4650,7 @@ Desarrollar la búsqueda hacia atrás del MINIMAX con una excepción: si en
 \begin_layout Standard
 \noindent
 \align left
-El algoritmo puede expresarse en pseudocódigo:
+El algoritmo - recursivo - puede expresarse en pseudocódigo:
 \end_layout
 
 \begin_layout Standard
@@ -4488,7 +4676,23 @@ hspace{1 cm}
 \begin_inset Formula $\mathbf{V}(n;\alpha,\beta)$
 \end_inset
 
+: recibe dos parámetros 
+\begin_inset Formula $\alpha$
+\end_inset
 
+ y 
+\begin_inset Formula $\beta$
+\end_inset
+
+ y evalúa 
+\begin_inset Formula $V(n)$
+\end_inset
+
+ valor
+\noun on
+ minimax
+\noun default
+ del nodo n, si 
 \end_layout
 
 \begin_layout Standard
@@ -4510,16 +4714,12 @@ hspace{1 cm}
 
 \family default
 \series default
-sean 
-\begin_inset Formula $n_{1},..,n_{k},..,n_{b}$
+
+\begin_inset Formula $\alpha\leq V(n)\leq\beta$
 \end_inset
 
- los sucesores de n ordenados.
- Hagamos 
-\begin_inset Formula $k\leftarrow1$
-\end_inset
-
- y si n es un nodo MAX 
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4541,14 +4741,52 @@ hspace{1 cm}
 
 \family default
 \series default
-ir al paso 
+Si no devuelve bien 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ (
+\begin_inset Formula $V(n)\leq\alpha)$
+\end_inset
+
+, bien 
+\begin_inset Formula $\beta\;(V(n)\geq\beta)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
 \series bold
-2.1
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1 cm}
+\end_layout
+
+\end_inset
+
+
+\family default
 \series default
-; si no ir a 
-\series bold
-2.2
-\series default
+Claramente, si 
+\begin_inset Formula $n=nodo\:raíz$
+\end_inset
+
+, su valor
+\noun on
+ minimax 
+\noun default
+se obtendrá mediante 
+\begin_inset Formula $\mathbf{V}(n;-\infty,+\infty)$
+\end_inset
+
 .
 \end_layout
 
@@ -4878,69 +5116,6 @@ es decir
 \end_layout
 
 \begin_layout Standard
-Es claro que si 
-\begin_inset Formula $n=raíz$
-\end_inset
-
-, su valor minimax se obtendrá mediante 
-\begin_inset Formula $\mathbf{V}(n;-\infty,+\infty)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Ejemplo
-\series default
-:
-\end_layout
-
-\begin_layout Standard
-La Fig.1.6.3.
- muestra el desarrollo del algoritmo para un ejemplo:
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:7"
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename podalfa.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 A medida que realizamos la búsqueda en el nodo n (MIN) como empezamos con
  
 \begin_inset Formula $\infty$
@@ -5013,7 +5188,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename SIESTRA.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -5496,8 +5671,258 @@ name "fig:5-1"
 
 
 \begin_inset Graphics
-	filename Berkeley.png
-	scale 75
+	filename new_berkeley.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El desarrollo de Fig (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:5-1"
+
+\end_inset
+
+) es el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Dado que inicialmente no hemos explorado ningún nodo terminal partimos del
+ nodo raíz con 
+\begin_inset Formula $V(A)=-\infty$
+\end_inset
+
+(peor caso para MAX).
+ Este nodo explorará sus hijos por lo que expandirá B bajando los valores
+ de 
+\begin_inset Formula $\alpha=-\infty$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta=+\infty$
+\end_inset
+
+ya que no se ha explorado ningún nodo terminal.
+ e inicializamos el nomo B - MIN - con el valor para el peor caso: 
+\begin_inset Formula $V(B)=+\infty.$
+\end_inset
+
+ Seguimos explorando los hijos de B, pasando hacia abajo de nuevo 
+\begin_inset Formula $\alpha=-\infty\textrm{ y }\beta=+\infty$
+\end_inset
+
+ e inicializo E (MAX) con 
+\begin_inset Formula $V(E)=-\infty$
+\end_inset
+
+.
+ Desde E exploramos nodos que ahora son terminales pasando hacia E 
+\begin_inset Formula $\alpha=-\infty\textrm{ y }\beta=+\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $V(E)=4$
+\end_inset
+
+ ya que es un nodo hoja y se pasa hacia arriba hasta el nodo E.
+ Como 
+\begin_inset Formula $4>-\infty$
+\end_inset
+
+, actualizamos el valor de E a 
+\begin_inset Formula $V(E)=4.$
+\end_inset
+
+ Ahora 
+\emph on
+el nodo E decide si continúa explorando
+\emph default
+ nodos hijos.
+ Para ello hace la siguiente comprobación:
+\begin_inset Formula 
+\[
+\text{¿V(E)=4>\ensuremath{\beta?\textrm{ }}}\begin{array}{c}
+Sí\Rightarrow\textrm{No expandir}\\
+No\Rightarrow\textrm{Expandir }
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+No siendo así, precisamos expandir el nodo terminal siguiente y subirlo
+ hacia arriba.
+ Antes bajamos 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ que ahora es 
+\color green
+4
+\color inherit
+ y .
+ El nuevo valor 6 es mejor para MAX que 4 por lo que se actualiza 
+\begin_inset Formula $V(E)=6$
+\end_inset
+
+ que será el valor definitivo del nodo E.
+ Ahora, por tanto, se pasa 6 hacia el nodo padre y en B - MIN - es mejor
+ 6 que infinito y se actualiza 
+\begin_inset Formula $V(B)=6$
+\end_inset
+
+0.
+ Ahora B decide si continúa explorando.
+ Para ello compara su valor actual con el mejor valor de MAX que en B es
+ 
+\begin_inset Formula $-\infty$
+\end_inset
+
+ y, siendo, 
+\begin_inset Formula $\text{¿}V(B)=6>\ensuremath{\alpha=-\infty?=True\textrm{ }}$
+\end_inset
+
+continuamos expandiendo.
+ Bajamos hacia F 
+\begin_inset Formula $\alpha=-\infty\textrm{ y }\beta=6$
+\end_inset
+
+.
+ ¡OJO! aunque V(B)=6 
+\begin_inset Formula $\ensuremath{\alpha=-\infty\textrm{ }}$
+\end_inset
+
+ya que 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta$
+\end_inset
+
+ se refieren a 
+\emph on
+las mejores opciones encontradas en el camino desde la raíz a B 
+\emph default
+y no a las opciones que se hayan encontrado antes.
+ Aunque MIN ha encontrado un 6 pero no está para MAX en el camino desde
+ el nodo B al raíz.
+ Sin embargo para MIN sí.
+ Por tanto,
+\begin_inset Formula $V(F)=-\infty$
+\end_inset
+
+ y bajamos 
+\begin_inset Formula $\alpha=-\infty$
+\end_inset
+
+ y 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\textrm{ }\beta=6$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+.
+ Subimos el valor 7 que es mejor que 
+\begin_inset Formula $-\infty$
+\end_inset
+
+ para MAX y actualizo 
+\begin_inset Formula $V(F)=7$
+\end_inset
+
+.
+ Ahora decide B si expandir más.
+ Siendo V(E)=6<V(F)=7>
+\begin_inset Formula $\beta$
+\end_inset
+
+ para el nodo B -MIN - no tiene sentido seguir buscando ya que V(F)
+\begin_inset Formula $\geq$
+\end_inset
+
+7 en cualquier caso y B nunca lo elegiría.Por tanto, podemos podar el nodo
+ 9.
+ Subimos el valor y MIN - nodo B- compara 7 con 6 y elige 6 que será el
+ valor del nodo B.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Seguidamente el nodo raíz (A) debe decidir si sigue explorando.
+ La respuesta es sí, puesto que MIN no tiene ninguna alternativa desde A.
+ Descendemos hacia el nodo C desde el raíz ahora con 
+\begin_inset Formula $\alpha=6\textrm{ y }\beta=+\infty$
+\end_inset
+
+.
+ Continuamos del mismo modo hasta llegar a la solución final:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename podita_berkeley.png
+	scale 70
 
 \end_inset
 
@@ -5539,7 +5964,7 @@ name "fig:1"
 
 \begin_inset Graphics
 	filename paso.png
-	scale 50
+	scale 70
 
 \end_inset
 

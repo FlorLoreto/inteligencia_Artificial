@@ -245,5 +245,15 @@ filename "AI_6.lyx"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "AI_problemas.lyx"
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document

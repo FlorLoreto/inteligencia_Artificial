@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -74,16 +76,16 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -167,9 +169,12 @@ Los problemas de
 \emph on
 búsqueda informada 
 \emph default
-se construyen a partir de los tipos de problemas que hemos visto antes e
- inyectándoles información acerca de la localización de las soluciones de
- modo que se reduzcan las exploraciones necesarias en el árbol de búsqueda.
+se construyen a partir de los tipos de problemas que hemos visto antes inyectánd
+oles
+\emph on
+ información acerca de la localización de las soluciones
+\emph default
+ de modo que se reduzcan las exploraciones necesarias en el árbol de búsqueda.
 \end_layout
 
 \begin_layout Standard
@@ -180,7 +185,11 @@ heurística
 \series default
 \emph default
 .
- Expondremos este tipo de búsqueda del siguiente modo:
+ 
+\end_layout
+
+\begin_layout Standard
+Expondremos la búsqueda informada del siguiente modo:
 \end_layout
 
 \begin_layout Enumerate
@@ -207,15 +216,27 @@ Heurística de búsqueda.
 Como hemos dicho, se trata de añadir algo adicional a los algoritmos de
  búsqueda anteriores: una función que nos permite examinar un estado y decir
  hasta qué punto nos estamos acercando al objetivo.
- Esta es la idea fundamental de la búsqueda informada: algo que no solo
- nos dice si 
+ Esta es la idea fundamental de la búsqueda informada: algo que 
+\emph on
+no solo nos dice si
+\series bold
+\emph default
+ 
 \emph on
 estado==objetivo
+\series default
 \emph default
-, sino si estamos cerca de este.
- El objeto clave es una 
+, 
+\emph on
+sino si estamos cerca de este
+\emph default
+.
+ El objeto clave es una
+\series bold
+ 
 \emph on
 heurística de búsqueda
+\series default
 \emph default
 .
  
@@ -230,27 +251,54 @@ heurística de búsqueda
 \end_layout
 
 \begin_layout Itemize
-una función que
+una función 
+\series bold
+
+\begin_inset Formula $\mathbf{h}$
+\end_inset
+
+
+\series default
+ que
 \series bold
 \emph on
  estima 
 \series default
 \emph default
 cuan próximos estamos al objetivo.
- Toma como argumento uno de los estados del mundo y nos devuelve un número:
- 
-\begin_inset Formula $W:\begin{array}{c}
+ Toma como argumento uno de los estados del mundo (
+\begin_inset Formula $e\in W$
+\end_inset
+
+) y nos devuelve un número 
+\emph on
+
+\begin_inset Formula $(h\in\mathbb{R})$
+\end_inset
+
+
+\emph default
+: 
+\begin_inset Formula $W\begin{array}{c}
 h\\
 \rightarrow
 \end{array}\mathbb{R}$
 \end_inset
 
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-La heurística toma un estado del mundo y nos devuelve un número 
+Es decir, la heurística a partir de un estado del mundo- 
+\begin_inset Formula $e$
+\end_inset
+
+ - nos devuelve una cantidad 
 \begin_inset Formula $h=h(e)$
 \end_inset
 
@@ -271,18 +319,22 @@ para un problema concreto
 \end_layout
 
 \begin_layout Standard
-Veamos un ejemplo: Pac-man tiene el problema de llegar al punto.
+Veamos un ejemplo (Fig.
+ 5.1.1): Pac-man tiene el problema de llegar al punto.
  Puede emprender una búsqueda de las que hemos visto pero sería de ayuda
  saber lo lejos que se encuentra del punto en cada posición.
  Para ello podría utilizar algo como la 
 \emph on
-distancia de Manhattan.
+distancia Manhattan.
 
 \emph default
  Es claro que, aunque los muros le pueden hacer ir más lejos, si esta distancia
- es pequeña estará cerca del punto (Fig.
- 5.1.1).
+ es pequeña estará cerca del punto .
  No es perfecto, pero sí útil.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -298,8 +350,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../heurismia.png
-	scale 60
+	filename heurismia.png
 
 \end_inset
 
@@ -319,17 +370,28 @@ status open
 \begin_layout Standard
 Podríamos haber utilizado también la distancia euclídea, pero esta distancia
  no toma en cuenta que la existencia de muros impide caminar en diagonal.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align left
-Volviendo a nuestro problema de Rumanía, podemos utilizar como heurística
+Volviendo a nuestro problema de Rumanía, podemos 
+\emph on
+utilizar como heurística
+\emph default
  la distancia en línea recta desde nuestra ubicación -ciudad - a Bucarest.
  (Fig.
  5.1.2.).
  Como puede observarse esta distancia es 0 para Bucarest-Bucarest que es
- lo esperable de una heurística: el valor numérico es nulo en el objetivo.
+ lo esperable de una heurística: 
+\emph on
+el valor numérico es nulo en el objetivo
+\emph default
+.
  Asimismo puede verse que cuanto más cerca estamos del objetivo, menor es
  la distancia en línea recta.
 \end_layout
@@ -346,8 +408,15 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:5-2"
+
+\end_inset
+
+
 \begin_inset Graphics
-	filename ../buca.png
+	filename buca.png
 	scale 90
 
 \end_inset
@@ -379,15 +448,15 @@ el número de la tortita más grande que aún está fuera de su posición.
 \end_layout
 
 \begin_layout Paragraph*
-Nota: Distancia de Manhattan (o taxicab).
+Nota: Distancia de Manhattan (o taxi).
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../taxicab.png
-	scale 50
+	filename taxicab.png
+	scale 60
 
 \end_inset
 
@@ -401,17 +470,26 @@ Búsqueda avariciosa o voraz.
 \begin_layout Standard
 Es un tipo de búsqueda que utiliza la heurística pero es algo imperfecta.
  Ilustremos el caso con la Fig.
- 5.1.2.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:5-2"
+
+\end_inset
+
  partiendo de Arad.
  Utilizaremos la heurística allí expuesta para priorizar los elementos que
  salen de la frontera.
 \end_layout
 
 \begin_layout Standard
-En la figura hemos representado el camino más corto entre Arad y Bucarest
- en azul (el inferior), aunque la búsqueda DFS nos daría como solución el
- camino superior- pasa por Fagaras - que tiene menos tramos (3 frente a
- 4).
+En la figura está representado el camino más corto entre Arad y Bucarest
+ (el inferior en los tramos finales), aunque la búsqueda 
+\emph on
+DFS
+\emph default
+ nos daría como solución el camino superior- pasa por Fagaras - que tiene
+ menos tramos (3 frente a 4).
 \end_layout
 
 \begin_layout Standard
@@ -419,7 +497,23 @@ Para la búsqueda avariciosa procederemos así:
 \end_layout
 
 \begin_layout Itemize
-expandir el nodo que parece más próximo 
+expandir el nodo que parece más próximo al objetivo (nos 
+\begin_inset Quotes fld
+\end_inset
+
+
+\emph on
+comemos
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+ la mayor distancia posible al objetivo en cada expansión): 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -428,12 +522,20 @@ inicialmente es Sibiu.
 \end_layout
 
 \begin_layout Itemize
-seguidamente será Fagaras (que sabemos no está en el camino óptimo)
+seguidamente será Fagaras que es el menos distante de Bucarest entre los
+ accesibles desde Sibiu -{
+\emph on
+Fagaras, Rimnicu Vilcea
+\emph default
+} - (que sabemos no está en el camino óptimo)
 \end_layout
 
 \begin_layout Itemize
-por último llegamos a Bucarest pero por un camino más largo que la ruta
- azul.
+por último llegamos a Bucarest pero por un 
+\emph on
+camino más largo
+\emph default
+ que la ruta azul.
 \end_layout
 
 \end_deeper
@@ -458,7 +560,16 @@ Al contrario que en UCS, aquí
 \emph on
 las heurísticas no se suman
 \emph default
- y siempre nos encaminamos al estado que parece estar más próximo al objetivo.
+ y siempre 
+\emph on
+nos encaminamos al estado que parece estar más próximo al objetivo
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -468,9 +579,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:6"
+
+\end_inset
+
+
 \begin_inset Graphics
-	filename ../avaro.png
-	scale 50
+	filename avaro.png
+	scale 70
 
 \end_inset
 
@@ -490,10 +608,16 @@ status open
 \begin_layout Standard
 Como se ve en la figura es similar a una DFS centrada en el estado más próximo
  al objetivo.
- Pero la búsqueda avariciosa es tan buena como la heurística que la guía
- y, en general, las heurísticas no son perfectas.
+ La búsqueda avariciosa es tan buena como la heurística que la guía y, en
+ general, las heurísticas no son perfectas.
  Es incluso imaginable un caso como el (2) de la Fig.
- 5.1.3.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:6"
+
+\end_inset
+
  en que se comporta como una DFS pésimamente dirigida.
  Cuando funciona, lo hace bien, pero en otras ocasiones falla estrepitosamente
  .
@@ -506,13 +630,20 @@ Como se ve en la figura es similar a una DFS centrada en el estado más próximo
 \series bold
 Ejemplo: 
 \series default
-¿Qué solución proporciona la búsqueda avariciosa al caso de la Fig 4.4.8?
+¿Qué solución proporciona la búsqueda avariciosa al caso de la Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4-2"
+
+\end_inset
+
+?
 \end_layout
 
 \begin_layout Standard
 Si usamos como heurística la 
 \emph on
-mínima distancia e cada nodo al nodo G
+mínima distancia de cada nodo al nodo G
 \emph default
  tendremos que esta viene dada por la tabla siguiente:
 \end_layout
@@ -520,7 +651,7 @@ mínima distancia e cada nodo al nodo G
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -680,6 +811,19 @@ La solución será
 \end_inset
 
  con distancia 7 (<9).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -696,7 +840,16 @@ Todo lo anterior nos servirá para desarrollar el algoritmo fundamental de
 \begin_inset Formula ${\textstyle \mathbf{A^{*}}}$
 \end_inset
 
-(A estrella).
+(
+\series bold
+\emph on
+A 
+\noun on
+estrella
+\series default
+\emph default
+\noun default
+).
 \end_layout
 
 \begin_layout Standard
@@ -704,12 +857,35 @@ Hasta ahora hemos estudiado, entre otros, dos casos extremos:
 \end_layout
 
 \begin_layout Enumerate
-UCS que es un proceso parsimonioso y constante que conduce inexorablemente
- al objetivo y
+
+\series bold
+UCS
+\series default
+ que es un proceso 
+\emph on
+parsimonioso
+\emph default
+ y constante que 
+\emph on
+conduce inexorablemente al objetivo 
+\emph default
+y
 \end_layout
 
 \begin_layout Enumerate
-la búsqueda avariciosa que avanza rápido pero a veces acierta y otras no.
+la 
+\series bold
+búsqueda avariciosa
+\series default
+ que avanza 
+\emph on
+rápido 
+\emph default
+pero 
+\emph on
+a veces acierta y otras no
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -730,8 +906,8 @@ UCS elige los caminos con
 \emph on
 menor coste acumulado
 \emph default
- primero medida por 
-\begin_inset Formula $g(n)$
+ primero medido por 
+\begin_inset Formula $\mathbf{g(n)}$
 \end_inset
 
 .
@@ -741,10 +917,10 @@ menor coste acumulado
 \begin_layout Enumerate
 búsqueda avariciosa ordena por 
 \emph on
-proximidad al objetivo
+distancia al objetivo
 \emph default
  medida por 
-\begin_inset Formula $h(n)$
+\begin_inset Formula $\mathbf{h(n)}$
 \end_inset
 
 .
@@ -753,14 +929,49 @@ proximidad al objetivo
 \begin_layout Standard
 \noindent
 \align left
-Fijémonos en el caso expuesto en la Fig.5.3.1.
- resaltando en la parte resaltada de la figura inferior que es el un camino
- al objetivo.
+Fijémonos en el caso expuesto en la Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:8-1"
+
+\end_inset
+
+ resaltando en la figura inferior 
+\emph on
+(1)
+\emph default
+ un camino al objetivo obtenido mediante 
+\emph on
+búsqueda avariciosa
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Por UCS el camino sería
+\emph on
+ 
+\series bold
+S->a->d->G
+\end_layout
+
+\end_inset
+
+
+\emph default
+ frente al caso
+\emph on
+ (2)
+\emph default
+ obtenido 
+\emph on
+mediante búsqueda A*
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -770,8 +981,15 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:8-1"
+
+\end_inset
+
+
 \begin_inset Graphics
-	filename ../aSTAR.png
+	filename aSTAR.png
 	scale 60
 
 \end_inset
@@ -794,12 +1012,43 @@ status open
 \begin_inset Formula $A^{*}$
 \end_inset
 
-?: ordena por la suma 
-\begin_inset Formula $g(n)+h(n)$
+?: ordena por la suma
+\begin_inset Formula 
+\[
+\mathbf{f(n)}=\mathbf{g(n)+h(n)}
+\]
+
 \end_inset
 
- es decir, el coste acumulado hasta el nodo (coste pasado) , más la heurística
- (coste estimado futuro), esto es, el 
+es decir, el 
+\emph on
+coste acumulado hasta el nodo
+\emph default
+ (coste 
+\emph on
+pasado
+\emph default
+) 
+\begin_inset Formula $\mathbf{g(n)}$
+\end_inset
+
+, 
+\series bold
+más
+\series default
+ la 
+\emph on
+heurística
+\emph default
+ (coste estimado 
+\emph on
+futuro
+\emph default
+) 
+\begin_inset Formula $\mathbf{h(n)}$
+\end_inset
+
+, esto es, el 
 \emph on
 coste estimado más barato del camino que pasa por n
 \emph default
@@ -812,13 +1061,16 @@ coste estimado más barato del camino que pasa por n
 \begin_inset Formula $h(c)+g(c)=7+3=10$
 \end_inset
 
- la heurística - coste futuro -es grande y tampoco se precipitará a la rama
- 
+; la
+\emph on
+ heurística
+\emph default
+ - coste futuro -es grande y tampoco se precipitará a la rama 
 \begin_inset Formula $a-e$
 \end_inset
 
  (1) porque su coste es elevado.
- tenderá a ir por el centro (2).
+ Tenderá a ir por el centro (2).
  
 \end_layout
 
@@ -832,9 +1084,15 @@ Veamos sobre un ejemplo sencillo cómo funciona
  
 \series default
 en la figura siguiente:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -845,8 +1103,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../dequeue.png
-	scale 50
+	filename dequeue.png
+	scale 70
 
 \end_inset
 
@@ -865,19 +1123,19 @@ status open
 
 \begin_layout Standard
 Hemos ido priorizando en la frontera aquellos nodos con menor coste estimado.
- Sin embargo aun cuando hemos llegado primero a la solución 
-\begin_inset Formula $S\rightarrow B\rightarrow G$
+ La solución que tiene un mínimo de 
+\begin_inset Formula $\mathbf{f(n)}$
 \end_inset
 
- esta no es la que tiene un mínimo de 
-\begin_inset Formula $f(n)$
-\end_inset
-
- sino la 
+ es la 
 \begin_inset Formula $\mathbf{S\rightarrow A\rightarrow G}$
 \end_inset
 
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -914,206 +1172,6 @@ y
  
 \emph default
 Complete los valores indicados en la figura.
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../proble.png
-	scale 45
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Si nos fijamos en los árboles de búsqueda, veremos que, en su mayor parte,
- la función 
-\begin_inset Formula $f(n)=g(n)+h(n)$
-\end_inset
-
- no disminuye, esto es, 
-\begin_inset Formula $f(n)$
-\end_inset
-
- es monótona no decreciente.
- Si la heurística pertenece a las pocas que no son monótonas, es fácil volverlas
- monótonas.
- Sean p, e dos nodos 
-\begin_inset Formula $n$
-\end_inset
-
- - padre- y 
-\begin_inset Formula $n'$
-\end_inset
-
- -hijo.
- Sea que 
-\begin_inset Formula $g(n)=3$
-\end_inset
-
- y 
-\begin_inset Formula $h(n)=4$
-\end_inset
-
-, de donde, 
-\begin_inset Formula $f(n)=7$
-\end_inset
-
- y 
-\begin_inset Formula $g(n')=4$
-\end_inset
-
-, 
-\begin_inset Formula $h(n\text{´)=2}\rightarrow f(n\text{´)=6 }.$
-\end_inset
-
- Pero como todo camino a través de n' es también un camino que pasa por
- n, es claro que el valor 7 es despreciable porque sabemos que el coste
- real es al menos 7.
- Por tanto, cada vez que generamos un nodo podemos comprobar si su coste
- 
-\begin_inset Formula $f(n')$
-\end_inset
-
- es es menor que el de su padre 
-\begin_inset Formula $f(n)$
-\end_inset
-
- y si esto es así usamos el coste del padre:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-f(n')=max(f(n),g(n')+h(n\text{´))}\label{eq:4}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-La ec.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:4"
-
-\end_inset
-
- se llama ecuación 
-\series bold
-pathmax.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename pathmax.png
-	scale 45
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-De este modo podemos dibujar en contornos en el espacio de estados en que
- 
-\begin_inset Formula $f$
-\end_inset
-
- es creciente (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:7"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Section
-Heurísticas admisibles.
- Optimalidad de A
-\begin_inset Formula $^{*}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Nos preguntamos si el algoritmo A estrella es óptimo.
-\end_layout
-
-\begin_layout Standard
-Si nos fijamos en la figura 5.4.1.
- vemos que 
-\begin_inset Formula $A^{*}$
-\end_inset
-
- da como solución 
-\begin_inset Formula $S\rightarrow G$
-\end_inset
-
- con coste 5 mientras que 
-\begin_inset Formula $\mathbf{S\rightarrow A\rightarrow G}$
-\end_inset
-
- tiene un coste de 4.
- El error se origina en que el coste real del camino malo - 5 - es menor
- que el coste estimado del camino bueno - 7.
- En particular el valor 
-\begin_inset Formula $h=6$
-\end_inset
-
- de la heurística en el nodo A sobreestimó el coste de alcanzar G e hicimos
- caso a la heurística.
 \end_layout
 
 \begin_layout Standard
@@ -1129,7 +1187,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../caminomalo.png
+	filename proble.png
 	scale 50
 
 \end_inset
@@ -1147,8 +1205,102 @@ status open
 
 \end_layout
 
+\begin_layout Section
+Heurísticas admisibles.
+ Optimalidad de A
+\begin_inset Formula $^{*}$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Standard
-Se necesita que nuestras estimaciones no superen los costes reales.
+Nos preguntamos 
+\emph on
+si el algoritmo A* es óptimo
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Si nos fijamos en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:11"
+
+\end_inset
+
+ vemos que 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ da como solución 
+\begin_inset Formula $S\rightarrow G$
+\end_inset
+
+ con coste 5 mientras que 
+\begin_inset Formula $\mathbf{S\rightarrow A\rightarrow G}$
+\end_inset
+
+ tiene un coste de 4.
+ El error se origina en que el coste real del camino malo - 5 - es menor
+ que el coste estimado del camino bueno - 8.
+ En particular el valor 
+\begin_inset Formula $h=6$
+\end_inset
+
+ de la heurística en el nodo A sobreestimó el coste de alcanzar G e hicimos
+ caso a la heurística.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:11"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename caminomalo.png
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se necesita que 
+\emph on
+nuestras estimaciones no superen los costes reales
+\emph default
+.
  Si el valor 
 \begin_inset Formula $h(A)<3$
 \end_inset
@@ -1167,16 +1319,34 @@ admisibilidad
 \end_layout
 
 \begin_layout Itemize
-una heurística pesimista que sobreestima costes es inadmisible porque es
- subóptima y deja atrapados a los buenos planes en la frontera.
+una
+\emph on
+ heurística pesimista
+\emph default
+ que 
+\emph on
+sobreestima costes
+\emph default
+ es inadmisible porque 
+\emph on
+es subóptima
+\emph default
+ y deja atrapados a los buenos planes en la frontera.
  Esta heurística siempre nos dice que estamos más lejos del objetivo de
  lo verdadero.
 \end_layout
 
 \begin_layout Itemize
-una heurística optimista es admisible porque retarda los planes malos en
- la frontera pero no sobreestima los costes reales y finalmente, el camino
- de coste mínimo es el ganador.
+una 
+\emph on
+heurística optimista
+\emph default
+ es admisible porque 
+\emph on
+retarda los planes malos en la frontera
+\emph default
+ pero no sobreestima los costes reales y finalmente, el camino de coste
+ mínimo es el ganador.
 \end_layout
 
 \begin_layout Standard
@@ -1186,10 +1356,21 @@ una heurística es
 \series bold
  admisible 
 \series default
-si el coste estimado no supera el coste real al objetivo más próximo:
-\end_layout
+si el coste 
+\series bold
+estimado 
+\series default
+no supera el coste
+\series bold
+ real
+\series default
+ 
+\series bold
+hasta el objetivo
+\series default
+ más próximo:
+\emph default
 
-\begin_layout Standard
 \begin_inset Formula 
 \[
 \mathbf{h(n)\leq h^{*}(n)}
@@ -1197,10 +1378,6 @@ si el coste estimado no supera el coste real al objetivo más próximo:
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Ejemplos de heurísticas admisibles
 \end_layout
 
@@ -1223,7 +1400,7 @@ En el problema del mapa de carreteras, la distancia en línea recta es una
 \begin_layout Standard
 Demostremos que 
 \emph on
-si la heurística es admisible
+si la heurística es admisible, entonces
 \emph default
  
 \begin_inset Formula $A^{*}$
@@ -1274,7 +1451,7 @@ Demostraremos que cualquier subcamino
 \end_inset
 
  y por tanto 
-\begin_inset Formula $A*$
+\begin_inset Formula $A^{*}$
 \end_inset
 
  no tomará 
@@ -1282,9 +1459,15 @@ Demostraremos que cualquier subcamino
 \end_inset
 
  como parte de la solución.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1295,7 +1478,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../demos.png
+	filename demos.png
 	scale 50
 
 \end_inset
@@ -1314,13 +1497,21 @@ status open
 \end_layout
 
 \begin_layout Theorem
-Si se usa búsqueda en árbol
+Si se usa
+\series bold
+ búsqueda en árbol
+\series default
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 En la búsqueda en grafo, no se verifica.
- Para este caso se requiere la consistencia o monotonía de 
+ Para este caso se requiere la 
+\series bold
+consistencia
+\series default
+ o monotonía de 
 \begin_inset Formula $h(n).$
 \end_inset
 
@@ -1380,7 +1571,7 @@ Considérese
  de búsqueda:
 \begin_inset Formula 
 \begin{equation}
-f(G_{2})=g(G_{2})+h(G_{2})=g(G_{2})>C^{*}\Rightarrow f(G_{2})>C*
+f(G_{2})=g(G_{2})+h(G_{2})=g(G_{2})>C^{*}\Rightarrow f(G_{2})>C^{*}
 \end{equation}
 
 \end_inset
@@ -1395,12 +1586,16 @@ Considérese el nodo
 
  del conjunto frontera del árbol de búsqueda que está en un camino solución
  óptimo.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Dado que n está en el camino solución óptimo, 
-\begin_inset Formula $g(n)=g*(n)$
+\begin_inset Formula $g(n)=g^{*}(n)$
 \end_inset
 
 
@@ -1412,17 +1607,13 @@ Dado que h es
 admisible
 \emph default
 : 
-\begin_inset Formula $h(n)\leq h*(n)$
+\begin_inset Formula $h(n)\leq h^{*}(n)$
 \end_inset
 
  
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-f(n)=g(n)+h(n)\leq g*(n)+h*(n)=C*\Rightarrow f(n)\leq C*
+f(n)=g(n)+h(n)\leq g^{*}(n)+h^{*}(n)=C^{*}\Rightarrow f(n)\leq C^{*}
 \end{equation}
 
 \end_inset
@@ -1430,29 +1621,34 @@ f(n)=g(n)+h(n)\leq g*(n)+h*(n)=C*\Rightarrow f(n)\leq C*
 
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout Standard
 Sumando (5.4.1) + (5.4.2): tenemos:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-f(n)\leq C*<f(G2)
+f(n)\leq C^{*}<f(G2)
 \end{equation}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 y se explora n antes que 
 \begin_inset Formula $G_{2}$
 \end_inset
 
  c.q.d.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1460,9 +1656,21 @@ Propiedades de A*.
 \end_layout
 
 \begin_layout Standard
-Si lo comparamos con UCS encontraremos algunas similitudes.
- UCS comenzará en el nodo raíz y descenderá de un modo un tanto zigzagueante
+Si lo comparamos con 
+\emph on
+UCS
+\emph default
+ encontraremos algunas similitudes.
+ 
+\emph on
+UCS
+\emph default
+ comenzará en el nodo raíz y descenderá de un modo un tanto zigzagueante
  hacia abajo buscando el camino de menor coste.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1471,6 +1679,11 @@ Si lo comparamos con UCS encontraremos algunas similitudes.
 Por su parte A* profundizará más cerca de los objetivos y buscará más superficia
 lmente lejos de estos.
  Pero siendo la heurística imperfecta en la cúspide buscará extensivamente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1481,7 +1694,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../A-UCS.png
+	filename A-UCS.png
 	scale 50
 
 \end_inset
@@ -1510,7 +1723,7 @@ Ejercicio
 \begin_layout Enumerate
 ¿Es la heurística admisible?.
  Respuesta: sí porque 
-\begin_inset Formula $h\leq h*$
+\begin_inset Formula $h\leq h^{*}$
 \end_inset
 
 
@@ -1526,13 +1739,15 @@ Ejercicio
 
 \begin_layout Enumerate
 ¿Qué nodos se expandirán en la búsqueda? Respuesta: 
-\begin_inset Formula $S\rightarrow D\rightarrow B$
+\begin_inset Formula $S\rightarrow D\rightarrow B\rightarrow E$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1543,7 +1758,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../eheastar.png
+	filename eheastar.png
 	scale 50
 
 \end_inset
@@ -1587,6 +1802,19 @@ Traducción-máquina.
 
 \begin_layout Enumerate
 Reconocimiento de voz....
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1600,14 +1828,29 @@ Lo más difícil de algoritmo A* es encontrar las heurísticas admisibles.
 \emph on
 problemas relajados
 \emph default
- en los que son posibles nuevas acciones.
- A los problemas como el analizado con menos restricciones, se les llama
+ en los que son posibles acciones adicionales a las
+\emph on
+ legales
+\emph default
+ en el problema original.
  
+\end_layout
+
+\begin_layout Standard
+Cuando al problema que se está analizando se le aplican menos restricciones,
+ al nuevo problema se le llama 
 \series bold
-problemas relajados
+problema relajado 
 \series default
- y con frecuencia el coste de una solución óptima del problema relajado
- sirve como heurística para el problema real.
+y con frecuencia 
+\emph on
+el coste de una solución óptima de este nuevo problema relajado
+\emph default
+ 
+\emph on
+sirve como heurística para el problema real
+\emph default
+.
  La idea es que aumentando las posibilidades de actuar, reducimos la cota
  inferior de los costes del problema más complejo.
 \end_layout
@@ -1616,12 +1859,16 @@ problemas relajados
 P.e.
  el ejemplo de Pac-man, usar la distancia Manhattan es equivalente a resolver
  el problema relajado en que no existen paredes.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align left
-Ilustremos este problema usando el conocido 8-puzzle
+Ilustremos la relajación de problemas usando el conocido 8-puzzle
 \begin_inset Foot
 status collapsed
 
@@ -1634,7 +1881,12 @@ Aun cuando los 9 cuadrados pueden colocarse en 9! posiciones diferentes,
 \end_inset
 
  donde se trata de llegar desde la posición inicial - vacío en el centro
- - a la final - vacío en la esquina NE.
+ - a la final - vacío en la esquina NO.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1645,7 +1897,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../8-puzle.png
+	filename 8-puzle.png
 	scale 50
 
 \end_inset
@@ -1683,11 +1935,19 @@ Número de cuadrados mal colocados
  para el estado inicial
 \emph default
 :
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-¿Proporciona un número? Sí, un número 
+¿
+\emph on
+Proporciona un número
+\emph default
+? Sí, un número 
 \begin_inset Formula $\leq8$
 \end_inset
 
@@ -1695,9 +1955,13 @@ Número de cuadrados mal colocados
 \end_layout
 
 \begin_layout Itemize
-¿Es admisible? Para ello h de ser menor que el número que el número de pasos
- requerido para llevar el número a su posición.
- Con un solo movimiento puedo llevar un cuadrado y solo uno a suposición
+¿
+\emph on
+Es admisible
+\emph default
+? Para ello h de ser menor que el número que el número de pasos requerido
+ para llevar el número a su posición.
+ Con un solo movimiento puedo llevar un cuadrado y solo uno a su posición
  o no hacerlo.
  Por tanto estando los 8 fuera de sitio en el estado inicial, 8 es menor
  que los movimientos necesarios.
@@ -1719,6 +1983,15 @@ problema relajado
  que puede resolverse en 8 pasos.
  Concretamente el problema relajado consiste en partir de un marco vacío
  y 8 cuadrados y situarlos en la posición del estado objetivo.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1729,7 +2002,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../relax.png
+	filename relax.png
 	scale 50
 
 \end_inset
@@ -1773,6 +2046,10 @@ Podemos imaginar una versión menos relajada en la que cada cuadrado pueda
 \end_inset
 
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1809,8 +2086,15 @@ cuanto menos relajado sea el problema que sirve de heurística - más cercano
 \end_layout
 
 \begin_layout Standard
-¿Podemos usar el coste real de llegar al objetivo como heurística? Desde
- luego que sí y, obviamente, será admisible.
+¿
+\series bold
+Podemos usar el
+\emph on
+ coste real 
+\emph default
+de llegar al objetivo como heurística
+\series default
+? Desde luego que sí y, obviamente, será admisible.
  Como contrapartida, aun cuando se expandan pocos nodos, en cada uno de
  ellos será preciso lanzar un trabajo para calcular el coste de alcanzar
  el objetivo.
@@ -1839,6 +2123,19 @@ se expanden menos nodos pero
 
 \begin_layout Enumerate
 cada nodo exige más trabajo para calcular su heurística.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1847,10 +2144,14 @@ Comparación de heurísticas.
 
 \begin_layout Enumerate
 Factor de ramificación efectivo 
-\begin_inset Formula $(b*$
+\begin_inset Formula $(b^{*}$
 \end_inset
 
 ): 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1871,21 +2172,17 @@ b*
  = factor de ramificación de un árbol uniforme de profundidad d, donde N
  = # nodos que se necesitan expandir para llegar a la solución óptima.
  Por la ec.
- (3.1.1.) tendremos que 
+ (3.1.1.) tendremos que
 \begin_inset Formula 
 \[
-b*+b*^{2}+..+b*^{d}=b*\frac{(b*)^{d}-1}{b*-1}={\textstyle N}
+b^{*}+b{}^{*2}+..+b{}^{*d}=b^{*}\frac{(b^{*})^{d}-1}{b^{*}-1}={\textstyle N}
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Ejemplo: d=5, N=52 .
  
-\begin_inset Formula $\rightarrow b*=$
+\begin_inset Formula $\rightarrow b^{*}=$
 \end_inset
 
 1.92.
@@ -1894,8 +2191,8 @@ Ejemplo: d=5, N=52 .
  b*
 \emph default
  para diferentes ejemplos del mismo problema.
- De manera ideal:
-\begin_inset Formula $b*$
+ De manera ideal: 
+\begin_inset Formula $b^{*}$
 \end_inset
 
  
@@ -1919,12 +2216,6 @@ s.
 \end_inset
 
  cuando
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Formula 
 \begin{equation}
 \forall n,\:h_{a}(n)\geq h_{b}(n)
@@ -1935,18 +2226,21 @@ s.
 
 \end_layout
 
-\end_deeper
 \begin_layout Enumerate
 Si usamos búsqueda
-\begin_inset Formula $A*$
+\begin_inset Formula $A^{*}$
 \end_inset
 
  y 
 \begin_inset Formula $h_{a}$
 \end_inset
 
-domina a 
+ domina a 
 \begin_inset Formula $h_{b}$
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1957,7 +2251,7 @@ domina a
 \begin_inset Formula $h_{a}$
 \end_inset
 
- nunca expande más nodos que
+ nunca expande más nodos que 
 \begin_inset Formula $h_{b}$
 \end_inset
 
@@ -1966,11 +2260,11 @@ domina a
 
 \begin_layout Itemize
 Generalmente,
-\begin_inset Formula $b_{a}*\leq$
+\begin_inset Formula $b_{a}^{*}\leq$
 \end_inset
 
  
-\begin_inset Formula $b_{b}*$
+\begin_inset Formula $b_{b}^{*}$
 \end_inset
 
  
@@ -1978,7 +2272,7 @@ Generalmente,
 
 \end_deeper
 \begin_layout Enumerate
-Usar
+Usar 
 \begin_inset Formula $h_{a}$
 \end_inset
 
@@ -1997,269 +2291,21 @@ Usar
 \begin_layout Enumerate
 Hay casos en que (5.8.1) solo se verifica en algunos nodos del árbol pero
  podemos construir una heurística válida tomando la que tiene mayor valor
- en cada nodo.Si hay disponibles varias funciones heurísticas admisibles,
- entonces 
+ en cada nodo.
+ Si hay disponibles varias funciones heurísticas admisibles, entonces para
+ un nodo n : 
 \begin_inset Formula $max\left\{ h_{1}(n),h_{2}(n),...h_{k}(n)\right\} $
 \end_inset
 
 es admisible.
-\end_layout
-
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Estados-repetidos:-búsqueda-1"
-
-\end_inset
-
-Estados repetidos: búsqueda en grafos.
-\end_layout
-
-\begin_layout Standard
-Hasta este punto hemos ignorado una de las complicaciones más importantes
- del proceso de búsqueda: la posibilidad de perder tiempo expandiendo estados
- que ya han sido visitados y expandidos.
- Para algunos problemas, esta posibilidad o aparece; el espacio de estados
- es un árbol y hay sólo un camino a cada estado.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-Para algunos problemas la repetición es inevitable como en el siguiente
- ejemplo:
-\begin_inset Float figure
-wide false
-sideways false
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../repite.png
-	scale 50
-
-\end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Es claro que eliminando estados repetidos reduciríamos el árbol de 
-\begin_inset Formula $2^{d}$
-\end_inset
-
- a 
-\begin_inset Formula $d+1$
-\end_inset
-
- hojas.
- La detección de estados repetidos por lo general significa la comparación
- del nodo a expandir con aquellos que han sido ya expandidos; si se encuentra
- un emparejamiento, entonces el algoritmo ha descubierto dos caminos al
- mismo estado y puede desechar uno de ellos.
-\end_layout
-
-\begin_layout Standard
-Si nos fijamos en la Fig.
- 4.1.1.
- vemos que los dos subárboles que arrancan en e se repiten aun cuando el
- nodo e está a diferente profundidad.
- El árbol más profundo no nos dirá nada que ya no sepamos.
-\end_layout
-
-\begin_layout Standard
-Para la búsqueda
-\emph on
- DFS
-\emph default
- , los únicos nodos en memoria son aquellos del camino desde la raíz hasta
- el nodo actual.
- La comparación de estos nodos permite al algoritmo descubrir los caminos
- que forman ciclos y que pueden eliminarse inmediatamente.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../ciclos.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Esto, sin embargo, solo sirve para evitar que los ciclos formen árboles
- de búsqueda infinitos, pero esto no evita problemas como el de la figura
- 4.4.1.
- en que se generan caminos exponencialmente.
- Para evitar estos casos es guardar más nodos en la memoria: 
-\emph on
-los algoritmos que olvidan su historia, están condenados a repetirla.
- 
-\emph default
-Podemos crear una
-\emph on
- 
-\series bold
-lista-cerrada
-\series default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-A veces se denomina a la frontera:
-\emph on
- lista-abierta.
-
-\emph default
- No obstante, es preferible llamarlo 
-\emph on
-conjunto cerrado
-\emph default
- ya que si se trata como una lista los resultados son peores.
-\end_layout
-
-\end_inset
-
-
-\emph default
- que contenga los nodos ya expandidos.
- Si el nodo actual se encuentra en 
-\emph on
-lista-cerrada
-\emph default
- se elimina en lugar de expandirlo.
- Así tendremos un nuevo algoritmo denominado 
-\series bold
-B
-\size small
-\emph on
-\noun on
-ÚSQUEDA
-\size default
-\noun default
--G
-\size small
-RAFOS
-\series default
-\emph default
- que es mucho más eficaz que 
-\size default
-B
-\size small
-\noun on
-ÚSQUEDA
-\size default
-\noun default
--ÁRBOLES.
-\end_layout
-
-\begin_layout Standard
-La idea del algoritmo es fácil: 
-\emph on
-
-\begin_inset Quotes fld
-\end_inset
-
-no expandir nunca dos veces el mismo estado
-\begin_inset Quotes frd
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-¿Es este algoritmo completo? ¿Es posible que perdamos la solución por no
- expandir ciertos nodos en el árbol? Esto no puede suceder porque no expandimos
- lo que ya se expandió en otro nodo.
-\end_layout
-
-\begin_layout Standard
-Si examinamos la optimalidad de este algoritmo, es difícil de dilucidar.
- Cuando el algoritmo desecha un camino, siempre desecha el recién descubierto
- que puede ser el de menor coste.
- Sin embargo, puede demostrarse que esto no puede suceder cuando se utiliza
- 
-\emph on
-la UCS o la BFS con costes constantes
-\emph default
- que no solo 
-\emph on
-son estrategias óptimas en árboles,
-\emph default
- sino 
-\emph on
-también en grafos
-\emph default
-.
- La búsqueda con profundidad iterativa, por otra parte, utiliza la expansión
- primero en profundidad y fácilmente puede seguir un camino subóptimo, lo
- que exige comprobaciones adicionales.
-\end_layout
-
-\begin_layout Standard
-En la figura se muestra el algoritmo general de búsqueda en grafos:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../busgraph.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
+\backslash
+newline
 \end_layout
 
 \end_inset
@@ -2269,18 +2315,33 @@ status open
 
 \begin_layout Section
 Consistencia.
+ Búsqueda en grafos.
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align left
-El gráfico muestra un caso en que la búsqueda en grafos no funciona a pesar
- de ser la heurística admisible.
+El gráfico muestra un caso en que 
+\emph on
+el algoritmo de búsqueda 
+\series bold
+en grafos
+\series default
+ 
+\emph default
+(ver capítulo 4, sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Estados-repetidos:-búsqueda"
+
+\end_inset
+
+) no funciona a pesar de ser la heurística admisible.
 \end_layout
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2290,9 +2351,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:9.1"
+
+\end_inset
+
+
 \begin_inset Graphics
-	filename ../inopor.png
-	scale 50
+	filename inopor.png
+	scale 80
 
 \end_inset
 
@@ -2310,8 +2378,11 @@ status open
 \end_layout
 
 \begin_layout Standard
-Esto nos indica que para grafos precisamos algo más que la admisibilidad:
- la 
+Esto nos indica que 
+\series bold
+para grafos
+\series default
+ precisamos algo más que la admisibilidad: la 
 \series bold
 consistencia
 \series default
@@ -2327,18 +2398,32 @@ el coste estimado no superase el coste real al objetivo más próximo.
 La consistencia,
 \series default
 \emph default
- por su parte, requiere que la heurística sea menor o igual que el coste
- real pero 
+ por su parte, requiere que 
+\emph on
+la heurística sea menor o igual que el coste real 
+\emph default
+pero
+\series bold
+ 
 \emph on
 para cada arco
+\series default
 \emph default
 , no para el camino hasta el objetivo.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align left
-Pero la heurística, hasta aquí, no costea arcos, sino caminos.
+Pero la heurística, hasta aquí, no costea arcos, sino
+\emph on
+ caminos
+\emph default
+.
  Tomaremos el 
 \emph on
 coste heurístico
@@ -2373,7 +2458,7 @@ consistencia
  es, por tanto
 \begin_inset Formula 
 \begin{equation}
-coste(A,C)=\mathbf{h(A)-h(C)}\mathbf{\leq c(A,C)}
+coste(A,C)=\mathbf{h(A)-h(C)}\mathbf{\leq c(A,C)}\label{eq:9.2}
 \end{equation}
 
 \end_inset
@@ -2394,8 +2479,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../consis.png
-	scale 40
+	filename consis.png
+	scale 50
 
 \end_inset
 
@@ -2415,7 +2500,14 @@ status open
 \begin_layout Standard
 \noindent
 \align left
-Podemos ver que en la Fig.5.9.1.
+Podemos ver que en la Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9.1"
+
+\end_inset
+
  la heurística es inconsistente ya que 
 \begin_inset Formula $h(A)=4$
 \end_inset
@@ -2427,49 +2519,16 @@ Podemos ver que en la Fig.5.9.1.
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Consistency.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Consecuencias de la consistencia.
 \end_layout
 
 \begin_layout Itemize
-El valor de 
+
+\emph on
+Monotonía
+\emph default
+: el valor de 
 \begin_inset Formula $f(n)=g(n)+h(n)$
 \end_inset
 
@@ -2478,17 +2537,36 @@ El valor de
 no decrece nunca 
 \emph default
 (
+\emph on
+
 \begin_inset Formula $f(n)$
 \end_inset
 
- es monótona no decreciente).
- En efecto de 5.9.2.
+ es 
+\series bold
+monótona
+\series default
+ no decreciente
+\emph default
+).
+ En efecto de la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:9.2"
+
+\end_inset
+
  para un nodo 
 \begin_inset Formula $n$
 \end_inset
 
  y cualquier sucesor del mismo 
 \begin_inset Formula $n_{i}$
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2512,18 +2590,26 @@ g(n)\geq g(n_{i})
 
 \end_deeper
 \begin_layout Itemize
-Si una heurística es consistente, es admisible.
+
+\emph on
+Si una heurística es consistente, es admisible
+\emph default
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 Sea 
-\begin_inset Formula $h*(n)$
+\begin_inset Formula $h^{*}(n)$
 \end_inset
 
  el coste del camino más barato hasta el objetivo.
  Demostremos por inducción que 
-\begin_inset Formula $h(n)\leq h*(n)$
+\begin_inset Formula $h(n)\leq h^{*}(n)$
 \end_inset
 
 .
@@ -2531,7 +2617,7 @@ Sea
 
 \begin_layout Standard
 Caso base: si hay 0 pasos desde n, n es el objetivo y 
-\begin_inset Formula $h(n)=0\leq h*(n)$
+\begin_inset Formula $h(n)=0\leq h^{*}(n)$
 \end_inset
 
 .
@@ -2547,7 +2633,7 @@ Sea que
 \end_inset
 
  pasos del objetivo, por tanto 
-\begin_inset Formula $h(n_{m+1})\leq h(n_{m})+c(n_{m+1},m_{m})\leq h*(n_{m})+c(n_{m+1},m_{m})\leq h*(n_{m+1})$
+\begin_inset Formula $h(n_{m+1})\leq h(n_{m})+c(n_{m+1},m_{m})\leq h^{*}(n_{m})+c(n_{m+1},m_{m})\leq h^{*}(n_{m+1})$
 \end_inset
 
  c.q.d.
@@ -2557,13 +2643,17 @@ Sea que
 \begin_layout Itemize
 La
 \emph on
- monotonicidad de
+ monotonía de
 \begin_inset Formula $f(n)$
 \end_inset
 
  garantiza la optimalidad de A*
 \emph default
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2579,7 +2669,7 @@ Sea que
 \end_inset
 
  es una solución óptima cuyo coste del camino es 
-\begin_inset Formula $f*(O)=g(O)$
+\begin_inset Formula $f^{*}(O)=g(O)$
 \end_inset
 
  y 
@@ -2595,7 +2685,7 @@ Sea
 \end_inset
 
  un estado objetivo subóptimo, esto es tal que 
-\begin_inset Formula $g(SO)>f*(O)$
+\begin_inset Formula $g(SO)>f^{*}(O)$
 \end_inset
 
 
@@ -2622,7 +2712,7 @@ Sea
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $f*\geq f(n)$
+\begin_inset Formula $f^{*}\geq f(n)$
 \end_inset
 
  por la admisibilidad de 
@@ -2645,7 +2735,7 @@ Sea
 
 \begin_layout Itemize
 Por tanto 
-\begin_inset Formula $f*\geq f(n)\geq f(SO)$
+\begin_inset Formula $f^{*}\geq f(n)\geq f(SO)$
 \end_inset
 
 
@@ -2661,7 +2751,7 @@ Pero
 \end_inset
 
  y se cumpliría 
-\begin_inset Formula $f*\geq g(SO)$
+\begin_inset Formula $f^{*}\geq g(SO)$
 \end_inset
 
  lo que es 
@@ -2680,13 +2770,21 @@ El carácter monótono de
 \begin_inset Formula $f(n)$
 \end_inset
 
- significa que el primer nodo objetivo expandido debe ser el correspondiente
- a la solución óptima.
+ significa que 
+\emph on
+el primer nodo objetivo expandido debe ser el correspondiente a la solución
+ óptima
+\emph default
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2697,7 +2795,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../newdem.png
+	filename newdem.png
 	scale 50
 
 \end_inset
@@ -2723,6 +2821,10 @@ Si h es una heurística monótona, la exploración se realiza en curvas de
 \end_inset
 
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2733,6 +2835,10 @@ En una búsqueda de coste uniforme [
 
 ], las curvas de nivel son “concéntricas” alrededor del estado de partida.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2744,7 +2850,7 @@ En heurísticas mejores estas curvas forman bandas que se extienden hacia
 
 \begin_layout Standard
 \noindent
-\align left
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -2754,16 +2860,9 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:7"
-
-\end_inset
-
-
 \begin_inset Graphics
-	filename ../conce.png
-	scale 50
+	filename conce.png
+	scale 70
 
 \end_inset
 
@@ -2841,695 +2940,15 @@ naturales
  admisible procedentes de la relajación de problemas tienden a ser consistentes.
 \end_layout
 
-\begin_layout Section
-Búsqueda A* paso a paso.
-\end_layout
-
-\begin_layout Subsection
-Búsqueda en árbol.
-\end_layout
-
-\begin_layout Standard
-Sea el ejemplo de 
-\emph on
-búsqueda en árbol 
-\emph default
-siguiente (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:busqi"
-
-\end_inset
-
- ):
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:busqi"
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename busquengraf.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Visualización en árbol de búsqueda.
-\end_layout
-
-\begin_layout Standard
-Si visualizamos la búsqueda en el árbol iremos pasando por las siguientes
- etapas (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:grafibu"
-
-\end_inset
-
-):
-\end_layout
-
-\begin_layout Enumerate
-El estado inicial 
-\begin_inset Formula $S$
-\end_inset
-
- tiene un coste estimado 
-\begin_inset Formula $f(S)=g(S)+h(S)=0+7=7$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-A* considerará todos los estados del árbol aún no expandidos - 
-\begin_inset Formula $S$
-\end_inset
-
- - únicamente en esta fase y se expande a los nodos A y B y dado que 
-\begin_inset Formula $f(A)=7$
-\end_inset
-
->
-\begin_inset Formula $f(B)=6$
-\end_inset
-
- y, por tanto, A* considerará B para expansión.
-\end_layout
-
-\begin_layout Enumerate
-B tiene como sucesor a C con 
-\begin_inset Formula $f(C)=7$
-\end_inset
-
-.
- Ahora tenemos dos candidatos a expandir A y C con el mismo valor f - 7
- - , de modo que expandiremos A por el criterio de ordenación alfabética.
-\end_layout
-
-\begin_layout Enumerate
-A tiene tres sucesores B, C y G y, siendo el menor valor f(B)=5 es este
- el que consideraremos en la siguiente etapa.
- Es importante destacar que el hecho de haber alcanzado G no basta para
- terminar la búsqueda, para ello 
-\emph on
-hemos de expandir el nodo objetivo.
-\end_layout
-
-\begin_layout Enumerate
-Ahora expandiremos 
-\begin_inset Formula $[S,A,B,C]$
-\end_inset
-
- que solo tiene un sucesor G.
- Nos encontramos con un empate entre ([S,A,C],7) y ([S,B,C],7) que se rompe
- alfabéticamente en favor del primero que tiene un sucesor G.
-\end_layout
-
-\begin_layout Enumerate
-Todavía no alcanzamos el objetivo y ahora expandimos ([S,B,C],7) obteniendo
- ([S,B,C,G],9).
-\end_layout
-
-\begin_layout Enumerate
-Finalmente nos quedan tres nodos que acaban en G y puesto que hemos de expandir
- ([S,A,B,C,G],8) - el de menor coste - es este el camino solución.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:grafibu"
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename grafibu.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Por tanto la solución que nos devuelve el problema es ([S,A,B,C,G],8) pero
- ¿es óptima?
-\end_layout
-
-\begin_layout Standard
-Lo será si la heurística 
-\emph on
-h
-\emph default
- es admisible (árbol).
-\end_layout
-
-\begin_layout Standard
-Admisible es ya que 
-\begin_inset Formula $h(n)$
-\end_inset
-
- es, para todo nodo n, inferior al coste real de alcanzar el estado objetivo
- como puede comprobarse.
-\end_layout
-
-\begin_layout Subsubsection
-Visualización de la frontera (cola con prioridades).
-\end_layout
-
-\begin_layout Standard
-Podemos visualizar el proceso de búsqueda siguiendo la evolución de la frontera
- que es una cola de prioridades, lo que se traduce en lo siguiente:
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-Frontera:
-\series default
- ([S],0+7)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\series bold
-Sale: 
-\series default
-([S],0+7) el nodo con 
-\emph on
-mayor prioridad.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\series bold
-Frontera:
-\series default
-([S,A],(0+1)+6), ([S,B],(0+4)+2)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\series bold
-Sale:
-\series default
- ([S,B],4+2)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\series bold
-Frontera: 
-\series default
-([S,A],(0+1)+6),([S,B,C],(4+2)+1)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\series bold
-Sale:
-\series default
-([S,A],1+6)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\series bold
-Frontera:
-\series default
-([S,A,B],(1+2)+2),([S,A,C],(1+5)+1),([S,B,C,],(4+2)+1),([S,A,G],(1+12)+0)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\series bold
-Sale:
-\series default
-([S,A,B],3+2)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\series bold
-Frontera: 
-\series default
-([S,A,C],(1+5)+1), ([S,B,C,],(4+2)+1), ([S,A,B,C],(3+2)+1), ([S,A,G],(1+12)+0)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\series bold
-Sale: 
-\series default
-([S,A,C],6+1)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\series bold
-Frontera: 
-\series default
-([S,B,C,],(4+2)+1), ([S,A,B,C],(3+2)+1), ([S,A,C,G],6+3,0), ([S,A,G],(1+12)+0)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\series bold
-Sale: 
-\series default
-([S,B,C],6+1)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\series bold
-Frontera: 
-\series default
-([S,A,B,C],(3+2)+1), ([S,A,C,G],6+3,0), ([S,B,C,G],6+3,0),([S,A,G],(1+12)+0)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\series bold
-Sale:
-\series default
-([S,A,B,C],5+1)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\series bold
-Frontera:
-\series default
- ([S,B,C,],(4+2)+1), ([S,A,B,C,G],(5+3)+0), ([S,A,G],(1+12)+0),([S,A,C,,G],(6+3)
-+0)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\series bold
-Sale: 
-\series default
-([S,B,C],6+1)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\series bold
-Frontera:
-\series default
-([S,B,C,G],(6+3)+0), ([S,A,B,C,G],(5+3)+0), ([S,A,C,G],(6+3),0),([S,A,G],(1+12)+
-0)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\series bold
-Sale: 
-\series default
-([S,B,C],1+6)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\series bold
-Frontera:
-\series default
- ([S,A,B,C,G],(5+3)+0), ([S,A,C,G],(6+3),0),([S,B,C,G],(6+3)+0),([S,A,G],(1+12)+
-0)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\series bold
-Sale: 
-\series default
-([
-\begin_inset Formula $S,A,B,C,G$
-\end_inset
-
-],8)
-\end_layout
-
-\end_deeper
-\begin_layout Subsection
-Búsqueda en grafo.
-\end_layout
-
-\begin_layout Standard
-La diferencia con la búsqueda en árbol es que cuando vamos a expandir un
- nodo 
-\emph on
-comprobamos si ya hemos expandido un nodo que termine en el mismo estado
- del nodo que estamos a punto de expandir 
-\emph default
-y, si es así, no expandimos dicho nodo sino que simplemente lo sacamos de
- la cola con prioridades.
-\end_layout
-
-\begin_layout Standard
-Visualizaremos esto en el árbol de búsqueda (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:lost"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
-Comenzaremos igual que en la búsqueda en árbol.
-\end_layout
-
-\begin_layout Enumerate
-El estado inicial 
-\begin_inset Formula $S$
-\end_inset
-
- tiene un coste estimado 
-\begin_inset Formula $f(S)=g(S)+h(S)=0+7=7$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-A* considera el estados del árbol aún no expandidos - 
-\begin_inset Formula $S$
-\end_inset
-
- - y lo expande los nodos A y B, Ahora, disponemos de una 
-\noun on
-lista-cerrada 
-\noun default
-que lleva la cuenta de los estados que se han expandido en el pasado, de
- modo que 
-\noun on
-lista-cerrada=
-\begin_inset Formula ${S}$
-\end_inset
-
-.
- 
-\noun default
-Dado que 
-\begin_inset Formula $f(A)=7$
-\end_inset
-
->
-\begin_inset Formula $f(B)=6$
-\end_inset
-
- A* considerará B para expansión.
-\end_layout
-
-\begin_layout Enumerate
-B tiene como sucesor a C con 
-\begin_inset Formula $f(C)=7$
-\end_inset
-
-.
- 
-\noun on
-lista-cerrada=
-\begin_inset Formula ${S,B}.$
-\end_inset
-
- 
-\noun default
-Ahora tenemos dos candidatos a expandir A y C con el mismo valor f - 7 -
- , de modo que expandiremos A por el criterio de ordenación alfabética.
-\end_layout
-
-\begin_layout Enumerate
-A tiene tres sucesores B, C y G y, siendo el menor valor f(B)=5 es este
- el que consideraremos en la siguiente etapa.
- Hemos expandido A y 
-\noun on
-lista-cerrada=
-\begin_inset Formula ${S,B,A}.$
-\end_inset
-
-
-\noun default
- 
-\end_layout
-
-\begin_layout Enumerate
-Ahora expandiríamos 
-\begin_inset Formula $[S,A,B]$
-\end_inset
-
- pero 
-\begin_inset Formula $B\in$
-\end_inset
-
-
-\noun on
-lista-cerrada
-\noun default
- y no lo expandimos.
- Nos encontramos con un empate entre ([S,A,C],7) y ([S,B,C],7) que se rompe
- alfabéticamente en favor del primero que tiene un sucesor G
-\begin_inset Formula $\rightarrow([S,A,C,G],9)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Hemos pues expandido ([S,A,C],7) y 
-\noun on
-lista-cerrada=
-\begin_inset Formula ${S,B,A,C}.$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Finalmente nos quedan tres nodos ([S,B,C],(4+2)+1), ([S,A,G],(1+12)+0) y
- ([S,A,C,G],(6+3)+0) y habríamos de expandir el de menor coste ([S,B,C],(4+2)+1)
- pero 
-\begin_inset Formula $C\in$
-\end_inset
-
-
-\noun on
-lista-cerrada
-\noun default
- y nos movemos al más cercano ([
-\emph on
-
-\begin_inset Formula $S,A,C,G$
-\end_inset
-
-
-\emph default
-],9+0) que, al expandirlo, nos indica que es la solución.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:lost"
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../figulost.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-¿Es óptima esta solución? Recordemos que la búsqueda en árbol anterior daba
- como solución ([
-\emph on
-
-\begin_inset Formula $S,A,B,C,G$
-\end_inset
-
-
-\emph default
-],8), cuyo coste estimado es inferior al de 
-\begin_inset Formula $([S,A,C,G],9)$
-\end_inset
-
-.
- La explicación de esta diferenecia es que 
-\emph on
-la heurística no es consistente 
-\emph default
-motivo por el cual no se exploró la solución óptima
-\emph on
- 
-\emph default
-([
-\emph on
-
-\begin_inset Formula $S,A,B,C,G$
-\end_inset
-
-
-\emph default
-],8).
-\end_layout
-
-\begin_layout Standard
-La condición de consistencia es 
-\begin_inset Formula 
-\[
-\forall s,s\text{'}\;h(s)-h(s')\leq c(s,s')
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Pero para s=A y s'=B tenemos que:
-\begin_inset Formula 
-\[
-\begin{array}{c}
-h(A)-h(B)=6-2=4\\
-c(A,B)=2
-\end{array}
-\]
-
-\end_inset
-
-y, por tanto, no es consistente.
-\end_layout
-
 \begin_layout Section*
 Ejercicios.
 \end_layout
 
-\begin_layout Standard
-1.
- En el grafo siguiente responder a las preguntas:
+\begin_layout Enumerate
+En el grafo siguiente responder a las preguntas:
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 ¿Es la heurística consistente?
 \end_layout
@@ -3539,6 +2958,8 @@ Ejercicios.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -3549,8 +2970,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../ejecon.png
-	scale 50
+	filename ejecon.png
+	scale 70
 
 \end_inset
 
@@ -3567,5 +2988,6 @@ status open
 
 \end_layout
 
+\end_deeper
 \end_body
 \end_document

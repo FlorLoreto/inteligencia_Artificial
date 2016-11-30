@@ -577,7 +577,7 @@ Todos los perros son mortales.
 \emph on
 Rin-Tin-Tin
 \emph default
-es un perro.
+ es un perro.
 \end_layout
 
 \begin_layout Itemize
@@ -1573,7 +1573,7 @@ name "fig:1"
 
 
 \begin_inset Graphics
-	filename bloques.png
+	filename Bloques.png
 
 \end_inset
 
@@ -2670,12 +2670,12 @@ existencial
 
 \begin_layout Enumerate
 \noindent
-\align left
+\align block
 
 \series bold
-Cuantificador Universal
+Cuantificador Universal:
 \series default
- 
+
 \begin_inset Formula $\forall x$
 \end_inset
 
@@ -2708,10 +2708,14 @@ Cuantificador Universal
 \end_inset
 
 ': ejemplo: 
-\begin_inset Formula $\forall x\:Gocal(x)\Rightarrow numberOf(x)=1$
+\begin_inset Formula 
+\[
+\forall x\:Gocal(x)\Rightarrow numberOf(x)=1
+\]
+
 \end_inset
 
- que se lee: para todo 
+que se lee: para todo 
 \begin_inset Formula $x$
 \end_inset
 
