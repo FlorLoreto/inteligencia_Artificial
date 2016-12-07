@@ -262,7 +262,7 @@ Racionalidad Computacional
 \end_layout
 
 \begin_layout Standard
-Una frase que resume el significado de la AI es esta:
+Una frase que resume el significado de la AI es la que muestra el robot:
 \end_layout
 
 \begin_layout Standard
@@ -313,6 +313,19 @@ esperado
 real 
 \emph default
 es necesaria la omnisciencia.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -716,8 +729,15 @@ agente racional.
 \begin_layout Standard
 Un agente es cualquier cosa capaz de percibir su medio ambiente con la ayuda
  de sensores y actuar sobre ese medio utilizando actuadores.
- La figura 1.4.1 muestra el esquema de un agente donde el recuadro con el
- signo de interrogación es la 
+ La figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1.4.1"
+
+\end_inset
+
+ muestra el esquema de un agente donde el recuadro con el signo de interrogación
+ es la 
 \series bold
 \emph on
 función del agente
@@ -784,6 +804,11 @@ función del agente
 \align left
 En la figura podemos ver un ejemplo físico y su relación con el modelo de
  agente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -793,10 +818,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1.4.1"
+
+\end_inset
+
+
 \begin_inset Graphics
-	filename ../pegado1.png
-	scale 40
-	rotateOrigin leftTop
+	filename pegado1.png
+	scale 60
 
 \end_inset
 
@@ -818,6 +849,8 @@ Pac-Man puede utilizarse como un ejemplo de agente.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -829,7 +862,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../pacman.png
-	scale 45
+	scale 48
 
 \end_inset
 
@@ -933,6 +966,11 @@ agente reactivo simple
  que selecciona las acciones sobre la base de las percepciones actuales,
  ignorando el resto de las percepciones históricas cuyo esquema de funcionamient
 o es el siguiente:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -944,7 +982,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../pegado2.png
-	scale 50
+	scale 55
 
 \end_inset
 
@@ -962,6 +1000,8 @@ status open
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -972,8 +1012,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename K:/functpng.png
-	scale 50
+	filename functpng.png
+	scale 65
 
 \end_inset
 
@@ -1110,7 +1150,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../reactivo3.png
-	scale 40
+	scale 70
 
 \end_inset
 
@@ -1128,6 +1168,8 @@ status open
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1139,7 +1181,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../pegado3.png
-	scale 40
+	scale 67
 
 \end_inset
 

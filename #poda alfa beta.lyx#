@@ -1,0 +1,1177 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\setcounter{chapter}{0}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\fontsize{16pt}{18pt}\selectfont\mdseries}
+  {\MakeUppercase{\chaptertitlename}\ \thechapter}{18pt}{\MakeUppercase}
+\titleformat{\section}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\itshape}{\thesubsection}{1em}{}
+\titlespacing*{\section} {0pt}{0pt}{2.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{0pt}{1.5ex plus .2ex}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+\noindent
+La poda 
+\begin_inset Formula $\alpha-\beta$
+\end_inset
+
+ paso a paso.
+\end_layout
+
+\begin_layout Standard
+La figura siguiente muestra paso a paso la aplicación de la poda alfa-beta
+ según el algoritmo expuesto.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:5-1"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recita1.png
+	scale 67
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El desarrollo de Fig (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:5-1"
+
+\end_inset
+
+) es el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Como sabemos, en cada nodo 
+\begin_inset Formula $N$
+\end_inset
+
+ el valor estimado se encuentra acotado entre dos valores 
+\begin_inset Formula $\alpha\leq V(N)\leq\beta$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+Inicialmente no hemos explorado ningún nodo terminal, por lo que partimos
+ del nodo raíz con 
+\begin_inset Formula $-\infty\leq V(A)\leq\infty$
+\end_inset
+
+.
+ Como contiene un rango válido de valores, este nodo pasará hacia abajo
+ los valores de 
+\begin_inset Formula $\alpha=-\infty$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta=+\infty$
+\end_inset
+
+y así sucesivamente de padre a hijo hasta llegar al nodo terminal 
+\begin_inset Formula $3$
+\end_inset
+
+ (Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recita1"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recita1"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation2.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Evaluamos el nodo terminal -MAX - 3 ya que es un nodo hoja y se pasa hacia
+ el nodo anterior que es MIN, por lo que su valor 
+\noun on
+minimax 
+\noun default
+debe ser 
+\begin_inset Formula $V(H)\leq3$
+\end_inset
+
+, por lo que hacemos 
+\begin_inset Formula $\beta=3$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Seguidamente generamos el siguiente nodo hijo que devuelve al nodo padre
+ el valor 17.
+ Como el padre es MIN, este valor que es mayor que 
+\begin_inset Formula $\beta$
+\end_inset
+
+ se ignora y por tanto 
+\begin_inset Formula $V(H)=3$
+\end_inset
+
+ (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recita2"
+
+\end_inset
+
+) que se pasa para cambiar 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ al nodo 
+\emph on
+D
+\emph default
+ - padre de H.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recita2"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation3.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nótese 
+\end_layout
+
+\begin_layout Itemize
+que 
+\begin_inset Formula $\beta$
+\end_inset
+
+ no ha cambiado porque los nodos MAX solo aplican restricciones al límite
+ inferior; 
+\end_layout
+
+\begin_layout Itemize
+que los valores 
+\begin_inset Formula $\alpha,\beta$
+\end_inset
+
+ pasados hacia abajo en el árbol no se modifican, pero sí los que pasan
+ hacia arriba:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+el valor final de 
+\begin_inset Formula $\beta$
+\end_inset
+
+ en un nodo 
+\noun on
+min
+\noun default
+ se pasa hacia el padre para un posible cambio en su 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ y, del mismo modo, 
+\end_layout
+
+\begin_layout Itemize
+el valor final de 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ en un nodo 
+\noun on
+max
+\noun default
+ se pasa hacia el padre para un posible cambio en su 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Ahora el nodo 
+\emph on
+D 
+\emph default
+tiene una cota inferior y expandimos su hijo 
+\emph on
+I 
+\emph default
+(Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recita4"
+
+\end_inset
+
+) y, como no es terminal, generaremos primero 2 y correremos la función
+ de evaluación que nos devuelve V=2.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recita4"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation4.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Como 
+\emph on
+I
+\emph default
+ es 
+\noun on
+min
+\noun default
+ sabemos que 
+\begin_inset Formula $V(I)\leq2$
+\end_inset
+
+ de modo que cambiaremos 
+\begin_inset Formula $\beta=2.$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Obsérvese que ahora en I 
+\begin_inset Formula $3\leq V(I)\leq2$
+\end_inset
+
+ lo cual no es posible y, por tanto, dejamos de evaluar hijos de este nodo
+ y devolvemos el valor 2 (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recita5"
+
+\end_inset
+
+).
+ En realidad, desconocemos el verdadero valor de V(I).
+ El valor del otro hijo de I puede ser 1, 0 o -100 , pero incluso en dichos
+ casos, la búsqueda no nos ayudaría en nada a encontrar la solución óptima.
+ El valor 2 ya convierte al subárbol en improductivo y podamos a los restantes
+ hijos.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recitation5.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recita5"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hemos hecho una 
+\emph on
+poda-
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Hacia arriba, el valor 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ del nodo padre 
+\emph on
+D
+\emph default
+ ya tiene el valor 3 y no se modifica por lo que podemos fijar 
+\begin_inset Formula $V(D)=\alpha=3$
+\end_inset
+
+ (Figs: Obsérvese que ahora en I 
+\begin_inset Formula $3\leq V(I)\leq2$
+\end_inset
+
+ lo cual no es posible y, por tanto, dejamos de evaluar hijos de este nodo
+ y devolvemos el valor 2 (Fig.).
+ En realidad, desconocemos el verdadero valor de V(I).
+ El valor del otro hijo de I puede ser 1, 0 o -100 , pero incluso en dichos
+ casos, la búsqueda no nos ayudaría en nada a encontrar la solución óptima.
+ El valor 2 ya convierte al subárbol en improductivo y podamos a los restantes
+ hijos.(Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recita5"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Ahora que hemos dado un valor al nodo 
+\emph on
+D, 
+\emph default
+nos movemos hacia arriba
+\emph on
+ 
+\emph default
+(nodo
+\emph on
+ B
+\emph default
+)
+\noun on
+ 
+\noun default
+que, siendo
+\noun on
+ min
+\noun default
+, nos lleva a que 
+\begin_inset Formula $V(B)\leq3\rightarrow\beta=3$
+\end_inset
+
+ y siendo válida la desigualdad , continuamos expandiendo el nodo 
+\emph on
+B 
+\emph default
+(Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recita6"
+
+\end_inset
+
+) generando el nodo 
+\noun on
+max
+\noun default
+ 
+\emph on
+E, 
+\emph default
+después su hijo 
+\emph on
+J 
+\emph default
+y, finalmente el nodo terminal 15.
+ A lo largo de este camino descendente nos hemos limitado a pasar los límites
+ 
+\emph on
+
+\begin_inset Formula $\alpha$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recita6"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation6.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Este es el único nodo hijo de 
+\emph on
+J 
+\emph default
+y no hemos cambiado el límite 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ Como no hemos excedido el límite, devolveremos el valor actual 
+\noun on
+min 
+\noun default
+para el nodo.
+ esto es distinto del caso en que se podaba en que devolvíamos el valor
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+ por las razones que se explican más adelante.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recitation7.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se cruzan los valores (es imposible que 
+\begin_inset Formula $15\leq V\leq3$
+\end_inset
+
+) se podan el resto de los nodos y se devuelve el valor que excede el límite.
+ Si hubiéramos devuelto el valor 
+\begin_inset Formula $\beta$
+\end_inset
+
+ del nodo 
+\noun on
+min
+\noun default
+ hijo (3) en lugar del valor actual (15), no habríamos podido podar aquí.
+ Ahora el nodo 
+\emph on
+B
+\emph default
+ 
+\noun on
+min
+\noun default
+ conoce a todos sus hijos y puede tomar el valor mínimo: 
+\begin_inset Formula $V(B)=3$
+\end_inset
+
+.
+ Además, hemos terminado con el hijo 
+\emph on
+B
+\emph default
+ del nodo raíz 
+\emph on
+A 
+\emph default
+e iremos a por el segundo.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Pasamos los valores 
+\begin_inset Formula $\alpha=3$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta=\infty$
+\end_inset
+
+ hacia abajo y generamos el segundo hijo 
+\emph on
+C, 
+\emph default
+el primer hijo de este (
+\emph on
+F
+\emph default
+)
+\emph on
+ 
+\emph default
+, el primer hijo de este último
+\emph on
+ 
+\emph default
+(
+\emph on
+L
+\emph default
+) y así hasta llegar a la profundidad 4 cuya función de evaluación nos devuelve
+ 2.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recitation8.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Este valor es subido hasta el padre 
+\emph on
+L
+\emph default
+ para cambiar su 
+\begin_inset Formula $\beta=2$
+\end_inset
+
+ y siendo 
+\begin_inset Formula $\alpha>\beta$
+\end_inset
+
+ podamos los demás hijos de 
+\emph on
+L.
+ 
+\emph default
+Como 
+\begin_inset Formula $\beta=2$
+\end_inset
+
+ es menor que el 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ del padre (
+\emph on
+F
+\emph default
+), no modificamos este valor.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recitation9.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ahora generamos el siguuiente hijo de 
+\emph on
+F 
+\emph default
+(nodo 
+\emph on
+M
+\emph default
+)
+\emph on
+ 
+\emph default
+y su hijo en profundidad 4 (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recitation10"
+
+\end_inset
+
+) cuya función de evaluación nos devuelve V=3.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recitation10"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation10.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+El nodo padre 
+\noun on
+min 
+\noun default
+(
+\emph on
+M
+\emph default
+) usa este valor para su límite superior 
+\begin_inset Formula $\beta$
+\end_inset
+
+ (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recitation11"
+
+\end_inset
+
+ ).
+ Ahora, en el nodo 
+\emph on
+M
+\emph default
+ 
+\begin_inset Formula $\alpha=\beta=3$
+\end_inset
+
+.
+ ¿Debemos podar? La respuesta es 
+\emph on
+sí 
+\emph default
+porque aunque no hemos excedido los límites, la igualdad de 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta$
+\end_inset
+
+ nos dice que no podemos hacer nada mejor en este subárbol, pero sí lo podemos
+ hacer peor.
+ Por ello acabamos con este nodo y devolvemos el valor 3 para 
+\noun on
+min
+\noun default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recitation11"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation11.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+El valor se devuelve a su nodo padre (
+\emph on
+F
+\emph default
+) y su 
+\begin_inset Formula $\beta=3$
+\end_inset
+
+ y, puesto que de nuevo 
+\begin_inset Formula $\alpha=\beta$
+\end_inset
+
+, podamos.
+ El valor final de 
+\emph on
+A
+\emph default
+ será 3.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recitation12.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

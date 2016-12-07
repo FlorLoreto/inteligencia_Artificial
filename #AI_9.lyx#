@@ -1,0 +1,7858 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\setcounter{chapter}{10}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Aprendizaje Automático.
+\end_layout
+
+\begin_layout Standard
+El aprendizaje automático o aprendizaje máquina ("
+\emph on
+Machine Learning
+\emph default
+") es una rama de la Inteligencia Artificial que persigue conseguir que
+ las computadoras actúen sin haber sido explícitamente programadas.
+ En la última década, el aprendizaje automático nos ha proporcionado vehículos
+ que funcionan sin conductor, reconocimiento práctico de voz, búsqueda efectiva
+ en la web, y un conocimiento infinitamente mejorado del genoma humano.
+ Hoy en día, el uso del aprendizaje automático está tan generalizado que
+ probablemente lo usamos docenas de veces sin darnos cuenta.
+ Muchos investigadores consideran que es la mejor manera de progresar hacia
+ una inteligencia artificial a nivel humano.
+\end_layout
+
+\begin_layout Standard
+Es común distinguir entre dos (o más) tipos de aprendizaje automático:
+\end_layout
+
+\begin_layout Itemize
+Aprendizaje 
+\emph on
+supervisado
+\emph default
+: se genera una función que establece una correspondencia entre las entradas
+ y las salidas deseadas del sistema, donde la base de conocimientos del
+ sistema está formada por ejemplos etiquetados a priori (es decir, ejemplos
+ de los que 
+\emph on
+sabemos su clasificación correcta
+\emph default
+).
+ 
+\end_layout
+
+\begin_layout Itemize
+Aprendizaje 
+\emph on
+no supervisado
+\emph default
+: donde el proceso de modelado se lleva a cabo sobre un conjunto de ejemplos
+ formados únicamente por entradas al sistema, 
+\emph on
+sin conocer su clasificación correcta
+\emph default
+.
+ Por lo que se busca que el sistema sea capaz de reconocer patrones para
+ poder etiquetar las nuevas entradas.
+\end_layout
+
+\begin_layout Standard
+Estas técnicas son probablemente las más utilizadas en el ámbito empresarial
+ por compañías como Google para clasificar búsquedas en la web, Amazon para
+ posicionar y sugerir productos, por Netflix...Pero también se usan extensivamente
+ en robótica y otros campos.
+\end_layout
+
+\begin_layout Section
+Aprendizaje automático.
+\end_layout
+
+\begin_layout Enumerate
+¿
+\series bold
+Qué 
+\series default
+se aprende con esta técnica?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+La respuesta es múltiple:
+\end_layout
+
+\begin_layout Itemize
+Parámetros como las probabilidades de una red de Bayes,
+\end_layout
+
+\begin_layout Itemize
+Estructuras, como los arcos de una red bayesiana,
+\end_layout
+
+\begin_layout Itemize
+Información oculta.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+¿
+\series bold
+De qué 
+\series default
+se aprende?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Cada método de aprendizaje máquina se guía por algún tipo de información
+ objetivo que nos interesa.
+ En aprendizaje supervisado hay etiquetas objetivo específicas, mientras
+ que estas no existen en aprendizaje no supervisado.
+ En aprendizaje con refuerzo, el agente aprende de lo que le retorna el
+ medio ambiente (retroalimentación de las acciones iniciadas por el agente).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+¿
+\series bold
+Para qué 
+\series default
+se usa?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Podemos usarla para hacer predicciones (anticipar el futuro), diagnósticos
+ (explicar datos capturados), resumen de informaciones, ..
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+¿
+\series bold
+Cómo
+\series default
+ se aprende?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Puede aprenderse de un modo pasivo, cuando el agente es un mero observador,
+ o activamente.
+ On line cuando se genera el dato u offline cuando el aprendizaje se realiza
+ después de que el dato haya sido generado.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+¿
+\series bold
+Qué salidas
+\series default
+ proporciona el aprendizaje automático?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Clasificaciones,
+\end_layout
+
+\begin_layout Itemize
+Regresiones
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Un agente que aprende puede considerarse que incluye dos elementos:
+\end_layout
+
+\begin_layout Itemize
+un elemento de 
+\emph on
+actuación
+\emph default
+ que decide la acción a tomar y
+\end_layout
+
+\begin_layout Itemize
+un elemento de 
+\emph on
+aprendizaje
+\emph default
+ que modifica el elemento de acción para mejorar su rendimiento.
+\end_layout
+
+\begin_layout Standard
+El diseño de un elemento de aprendizaje está influido por tres factores:
+\end_layout
+
+\begin_layout Enumerate
+componentes del elemento de acción a aprender,
+\end_layout
+
+\begin_layout Enumerate
+retroalimentación disponible para este aprendizaje y
+\end_layout
+
+\begin_layout Enumerate
+la representación a usar para los componentes.
+\end_layout
+
+\begin_layout Standard
+Por lo que se refiere a los componentes de acción, los agentes pueden diseñarse
+ de múltiples formas y pueden incluir lo siguiente:
+\end_layout
+
+\begin_layout Itemize
+un mapeado directo de las condiciones del estado actual en las acciones;
+\end_layout
+
+\begin_layout Itemize
+un medio de inferir informaciones relevantes del mundo a través de la secuencia
+ de percepciones;
+\end_layout
+
+\begin_layout Itemize
+información sobre la evolución del mundo y los resultados de las acciones
+ que el agente puede tomar;
+\end_layout
+
+\begin_layout Itemize
+información sobre la utilidad proporcionada por diferentes estados del mundo;
+\end_layout
+
+\begin_layout Itemize
+información sobre el valor de las acciones indicando su deseabilidad;
+\end_layout
+
+\begin_layout Itemize
+objetivos que maximizan la utilidad del sujeto.
+\end_layout
+
+\begin_layout Standard
+Cada uno de estos componentes puede aprenderse con la retroalimentación
+ apropiada.
+ P.e.
+ cada vez que el instructor grita ¡
+\emph on
+frena
+\emph default
+! el taxi sin conductor puede aprender en qué estado del mundo frenar.
+\end_layout
+
+\begin_layout Standard
+El tipo de retroalimentación es el factor más determinante del tipo de problema
+ de aprendizaje que el agente enfrenta.
+ 
+\end_layout
+
+\begin_layout Standard
+Generalmente se definen tres casos:
+\end_layout
+
+\begin_layout Itemize
+aprendizaje supervisado
+\end_layout
+
+\begin_layout Itemize
+aprendizaje no supervisado y
+\end_layout
+
+\begin_layout Itemize
+aprendizaje por refuerzo.
+\end_layout
+
+\begin_layout Subsection
+Aprendizaje supervisado.
+\end_layout
+
+\begin_layout Standard
+En aprendizaje supervisado tenemos un vector de características 
+\begin_inset Formula $({\normalcolor X_{1}},...,X_{n})$
+\end_inset
+
+ y una etiqueta objetivo 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ Como ejemplo, una agencia de calificación de créditos las características
+ 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ podrían ser tales como ¿tiene la persona empleo?, ¿cuál es su salario?,
+ ¿ha sido moroso previamente?,...
+ y la etiqueta 
+\begin_inset Formula $Y$
+\end_inset
+
+ es un predictor acerca de si la persona dejará de pagar el crédito o no.
+ 
+\end_layout
+
+\begin_layout Standard
+En este caso, el aprendizaje máquina se basa en datos pasados, tanto acerca
+ de 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ como de 
+\begin_inset Formula $Y=f(X)$
+\end_inset
+
+ y debe producir una función 
+\begin_inset Formula $\mathbf{h}$
+\end_inset
+
+ -denominada 
+\emph on
+hipótesis
+\emph default
+ -que se aproxime a 
+\begin_inset Formula $\mathbf{f}$
+\end_inset
+
+ que nos permita predecir si un nuevo cliente con un nuevo vector de característ
+icas,será o no moroso.
+\begin_inset Formula 
+\[
+(X_{1},...,X_{n})\begin{array}{c}
+h\\
+\rightarrow
+\end{array}Y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo mismo se aplica a reconocimiento de imágenes donde X pueden ser píxeles
+ de imágenes o características de imágenes e Y es una 
+\emph on
+etiqueta
+\emph default
+ que nos dice si un objeto está contenido en una imagen o no.
+ 
+\end_layout
+
+\begin_layout Standard
+En aprendizaje supervisado, se nos dan muchos de estos ejemplos (datos)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{cccccc}
+X_{11} & X_{12} & . & . & X_{1n} & Y_{1}\\
+X_{21} & X_{22} & . & . & X_{2n} & Y_{2}\\
+. & . & . & . & . & .\\
+X_{m1} & X_{m2} & . & . & X_{mn} & Y_{m}
+\end{array}\right]=[\mathbf{X}_{1},...,\mathbf{X}_{m},Y_{m}]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y tratamos de obtener una función 
+\begin_inset Formula $Y_{m}=h(\mathbf{X}_{m})$
+\end_inset
+
+.
+ Este es el objetivo del aprendizaje máquina supervisado: obtener la función
+ 
+\begin_inset Formula $\mathbf{h(\mathbf{X}_{m})}$
+\end_inset
+
+ que, una vez identificada, se podrá usar en casos futuros para etiquetarlos.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Si p.e.
+ queremos ajustar un polinomio a un conjunto de datos, vemos en la figura
+ que existen muchas alternativas posibles que sean 
+\emph on
+consistentes, 
+\emph default
+es decir, que satisfaga todos los datos.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename consist.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Cuál elegir? Una respuesta nos la proporciona la llamada 
+\emph on
+navaja de Ockham: preferiremos la hipótesis más simple consistente con los
+ mismos datos
+\emph default
+.
+ Aunque es difícil definir el concepto de simplicidad, pare que en el caso
+ actual la hipótesis lineal es más simple que las demás.
+ Sin embargo para (c) no existe consistencia entre la recta y el polinomio
+ de grado 6 (con 7 parámetros) que es consistente con los 7 puntos de datos
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La interpolación de Lagrange permite ajustar a un conjunto de N datos (
+\begin_inset Formula $x_{i},y_{i}$
+\end_inset
+
+) i=1,..,N un polinomio de grado N-1 que pase por todos ellos mediante la
+ combinación lineal :
+\begin_inset Formula 
+\[
+L(x)={\displaystyle \sum_{i=o}^{N}y_{i}l_{i}}
+\]
+
+\end_inset
+
+siendo
+\begin_inset Formula 
+\[
+l_{i}={\displaystyle \prod_{j=0,\,j\neq i}\frac{x-x_{j}}{x_{i}-x_{j}}}=\frac{x-x_{0}}{x_{i}-x_{0}}\frac{x-x_{1}}{x_{i}-x_{1}}...\frac{x-x_{N-1}}{x_{i}-x_{N-1}}\frac{x-x_{N}}{x_{i}-x_{N}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Pero como este polinomio tiene tantos parámetros como puntos de datos,
+ no parece que hayamos encontrado ningún patrón que generalice bien para
+ otros datos.
+ En este caso también sería mejor seleccionar el modelo lineal que no produce
+ un ajuste perfecto pero permite hacer predicciones razonables.
+ Esto equivale a aceptar que la función 
+\emph on
+no sea determinista.
+\end_layout
+
+\begin_layout Standard
+Para estudiar un clasificador diseñado se utiliza el método de validación
+ cruzada (cross-validation).
+ Dicho método consiste en dividir los datos muestrales en dos partes; una
+ parte se utiliza como conjunto de
+\series bold
+\emph on
+ entrenamiento
+\series default
+\emph default
+ para determinar los parámetros del clasificador neuronal y la otra parte,
+ llamada conjunto de
+\series bold
+\emph on
+ validación
+\series default
+\emph default
+, se utiliza para estimar el 
+\emph on
+error de generalización
+\emph default
+, es decir, la tasa de clasificación incorrecta del clasificador con datos
+ diferentes a los utilizados en el proceso de entrenamiento.
+ 
+\end_layout
+
+\begin_layout Standard
+Reducir a cero el error de entrenamiento no es lo mismo que reducir a cero
+ el error de generalización sobre datos desconocidos.
+ Se produce 
+\series bold
+\emph on
+sobreajuste
+\series default
+\emph default
+ cuando el predictor se ajusta tanto a los datos de entrenamiento disponibles
+ que pierde de vista lo que se desea realmente predecir.
+ esto ocurre porque:
+\end_layout
+
+\begin_layout Itemize
+Los datos de entrenamiento pueden incluir “excepciones”, “casos raros” o
+ “ruido”.
+ 
+\end_layout
+
+\begin_layout Itemize
+Ajustamos el modelo para seguir la pista a valores irrelevantes.
+ 
+\end_layout
+
+\begin_layout Itemize
+Cuanto más “flexible” es el modelo, mejor se puede ajustar a los datos .
+ 
+\end_layout
+
+\begin_layout Standard
+Existe por esto el llamado error de 
+\emph on
+sobreajuste.
+ 
+\end_layout
+
+\begin_layout Standard
+La mejor complejidad se obtiene cuando el error de validación es mínimo.
+\end_layout
+
+\begin_layout Standard
+En aprendizaje supervisado puede encontrarse que los métodos más complejos
+ proporcionan errores de entrenamiento menores que otros más simples, pero
+ el de generalización suele ser mayor.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename occam.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto nos lleva a aceptar en aprendizaje máquina el principio denominado
+ 
+\emph on
+navaja de Occam
+\emph default
+: si se trabaja con datos y existen métodos alternativos para ajustarlos,
+ el sobreajuste es uno de los principales problemas en aprendizaje máquina
+ y, por ello, debe tenderse a la simplicidad.
+\end_layout
+
+\begin_layout Subsection
+Aprendizaje no supervisado.
+\end_layout
+
+\begin_layout Standard
+Al contrario que el anterior, este tipo de aprendizaje implica patrones
+ de aprendizaje en la entrada pero sin especificar valores concretos en
+ la salida: los datos de entrada no están etiquetados.
+ En principio un agente puramente no supervisado no podría aprender nada
+ puesto que no dispone de medios para aprender las acciones correctas y
+ los estados deseables.
+\end_layout
+
+\begin_layout Subsection
+Aprendizaje por refuerzo.
+\end_layout
+
+\begin_layout Standard
+Es un área del aprendizaje automático inspirada en la psicología conductista,
+ y es el problema que enfrenta un agente que aprende su conducta mediante
+ interacciones por
+\emph on
+ ensayo y error
+\emph default
+ con un entorno dinámico con el fin de maximizar alguna noción de "
+\emph on
+recompensa
+\emph default
+" o premio acumulado.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename aprende.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por último, no podemos olvidar la 
+\emph on
+representación de la información aprendida
+\emph default
+ que tiene un papel crucial en en determinar cómo debe funcionar el algoritmo
+ de aprendizaje.
+ Como ejemplos, pueden utilizarse polinomios ponderados para la utilidad
+ del agente, sentencias de lógica proposicional y de primer orden y descripcione
+s probabilísticas tales como las de las redes bayesianas.
+ 
+\end_layout
+
+\begin_layout Section
+Naïve Bayes como aprendizaje supervisado.
+\end_layout
+
+\begin_layout Subsection
+Clasificación de correos-e.
+\end_layout
+
+\begin_layout Standard
+Un clásico ejemplo lo constituye la clasificación de los correos electrónicos
+ en basura ('spam') o válidos ('ham').
+\end_layout
+
+\begin_layout Standard
+El vector de características de un correo-e está formado por las palabras
+ que contiene, por lo cual tendremos como material de entrenamiento una
+ serie de correos con una etiqueta 'spam' o vacía ('ham'):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+spam
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+offer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+is
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+secret
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+True
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+click
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+secret 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+link
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+True
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+secret
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+link
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+True
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+W3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+spam
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+play 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+today
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+False
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+went
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+play
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+False
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+secret
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+event
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+False
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+is
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+today
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+	False
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sport 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+costs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+money
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+False
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se puede utilizar una representación llamada
+\emph on
+ saco de palabras
+\emph default
+ ('bag of words') en el cual representamos un documento mediante la cuenta
+ del número de veces que aparecen las palabras presentes en un diccionario.
+\end_layout
+
+\begin_layout Standard
+El diccionario es el siguiente (sport=sports) :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename bagofw.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Puede construirse una red de Bayes para estudiar este problema de clasificación
+ supervisado comenzando con la variable binaria 
+\series bold
+spam 
+\series default
+y que tiene tantos hijos como palabras tiene 
+\emph on
+un mensaje
+\emph default
+.
+ Cada palabra tiene su distribución condicional dada la clase spam o no
+ spam.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename redspam.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para especificar la red necesitamos 23 parámetros.
+\end_layout
+
+\begin_layout Itemize
+P(spam)
+\end_layout
+
+\begin_layout Itemize
+P(
+\begin_inset Formula $w_{i}|spam)$
+\end_inset
+
+ 
+\begin_inset Formula $i=1,..12$
+\end_inset
+
+.
+ Como 
+\begin_inset Formula ${\displaystyle {\displaystyle \sum_{i=1}^{12}}p(w_{i}}|spam)=1\Rightarrow11$
+\end_inset
+
+parámetros
+\end_layout
+
+\begin_layout Itemize
+P(
+\begin_inset Formula $w_{i}|ham)$
+\end_inset
+
+ 
+\begin_inset Formula $i=1,..12$
+\end_inset
+
+.
+ Como 
+\begin_inset Formula ${\displaystyle {\displaystyle \sum_{i=1}^{12}}p(w_{i}}|ham)=1\Rightarrow11$
+\end_inset
+
+parámetros
+\end_layout
+
+\begin_layout Standard
+Es claro que por la regla de Bayes podemos obtener las probabilidades inversas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{P(spam|w_{i})}=\frac{\textrm{P(w_{i}|spam)P(spam)}}{\textrm{P(w_{i}|spam)P(spam)+P(w_{i}|\lnot spam)P(\lnot spam)}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+P.e.
+ si 
+\begin_inset Formula $w_{i}=\textrm{link}$
+\end_inset
+
+ tendremos que
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{P(spam|link)}=\frac{\textrm{P('link'|spam)P(spam)}}{\textrm{P('link'|spam)P(spam)+P('link'|\lnot spam)P(\lnot spam)}}=\frac{\frac{2}{9}\frac{3}{8}}{\frac{2}{9}\frac{3}{8}+\frac{1}{12}\frac{5}{8}}=\frac{8}{13}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y ¿si se trata del siguiente mensaje: M='
+\emph on
+secret is secret
+\emph default
+'?.
+\end_layout
+
+\begin_layout Standard
+Sabemos que 
+\begin_inset Formula 
+\[
+P(spam,secret,is,secret)=P(spam)P(M|spam)=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(spam)P^{2}(secret|spam)P(is|spam)=\frac{3}{8}(\frac{1}{3})^{2}\frac{1}{9}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(M)P(spam|M)=P(span,M)\Rightarrow P(spam|M)=\frac{P(span,M)}{P(span,M)+P(\lnot spam,M)}=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\frac{3}{8}(\frac{1}{3})^{2}\frac{1}{9}}{\frac{3}{8}(\frac{1}{3})^{2}\frac{1}{9}+\frac{5}{8}\left(\frac{1}{15}\right)^{3}}=0,9615
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y ¿si cambia el mensaje a M='
+\emph on
+today is secret
+\emph default
+'?
+\begin_inset Formula 
+\[
+\mathbf{P(spam,today,is,secret)}=P(spam)P(M|spam)=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(spam)P('today'|spam)P('is'|spam)P('secret'|spam)=\mathbf{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ya que 
+\begin_inset Formula $P('today'|spam)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Este caso sirve de ejemplo de sobreajuste y aplicaremos lo visto en el capítulo
+ anterior sobre estimadores de Laplace.
+ Recordemos que en el ajuste estimamos - Máxima Verosimilitud - las probabilidad
+es como cociente de las veces que aparece el valor en los datos de entrenamiento
+: 
+\begin_inset Formula $\hat{P}(x)={\displaystyle \frac{\nu(x)}{N}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Calculemos con el estimador de Laplace los siguientes estimadores suponiendo
+ que en Laplace 
+\begin_inset Formula $\hat{P}(x)={\displaystyle \frac{\nu(x)+{\displaystyle \frac{\mu}{k}}}{n_{Total}+\mu}}$
+\end_inset
+
+ con k=1 y sabiendo que hay 12 palabras en el diccionario
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P(spam)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P(ham)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P('today'|spam)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P('today'|ham)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{4}{10}=\frac{3+1}{8+2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{6}{10}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{0+1}{9+12}=\frac{1}{21}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{2+1}{15+12}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El truco está en las probabilidades condicionadas.
+ Si ahora calculamos la probabilidad P(spam|'today is secret') esta será
+ ahora:
+\begin_inset Formula 
+\[
+P(spam|M)=\frac{P(span,M)}{P(span,M)+P(\lnot spam,M)}=\frac{\frac{4}{10}\frac{1}{21}\frac{2}{21}\frac{4}{21}}{\frac{4}{10}\frac{1}{21}\frac{2}{21}\frac{4}{21}+\frac{6}{10}\frac{3}{27}\frac{2}{27}\frac{2}{27}}=0,4858
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo anterior nos muestra que el 
+\emph on
+Naïve Bayes pertenece al grupo de aprendizaje máquina supervisado.
+\end_layout
+
+\begin_layout Standard
+Es claro que pueden desarrollarse clasificadores de correo-e más avanzados
+ basados en naïve Bayes considerando otras variables tales como:
+\end_layout
+
+\begin_layout Itemize
+¿Conocemos la IP de la fuente de correo basura?
+\end_layout
+
+\begin_layout Itemize
+¿Hemos enviado algún correo-e al remitente?
+\end_layout
+
+\begin_layout Itemize
+¿Han recibido el mismo mensaje otras personas?
+\end_layout
+
+\begin_layout Itemize
+¿es consistente la cabecera del correo?
+\end_layout
+
+\begin_layout Itemize
+¿Está todo en mayúsculas?
+\end_layout
+
+\begin_layout Itemize
+¿las URLs apuntan a las webs que el correo dice?
+\end_layout
+
+\begin_layout Itemize
+¿utilizan nuestro nombre correctamente?
+\end_layout
+
+\begin_layout Standard
+Volviendo al tema de los estimadores de Laplace, ¿cómo elegir el valor k?
+ Un posible método es la 
+\emph on
+validación cruzada 
+\emph default
+que consiste en dividir los datos de entrenamiento en tres partes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename tres.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Usaremos la parte de entrenamiento para estimar los parámetros, la parte
+ de validación cruzada para hallar el k óptimo del siguiente modo: entrenamos
+ para diferentes valores de k y observamos cómo se comporta el modelo sobre
+ los datos de validación y maximizamos el rendimiento sobre los valores
+ de k.
+ Obtenido el 
+\begin_inset Formula $k*$
+\end_inset
+
+ aplicamos el modelo sobre el conjunto de prueba y e este el rendimiento
+ que informamos.
+ Es muy importante mantener los datos de prueba separados de los de entrenamient
+o y validación cruzada ya que si no, los datos de prueba formarían parte
+ del conjunto de entrenamiento y los datos de prueba podrían sufrir de sobreajus
+te sin que lo supiéramos.
+\end_layout
+
+\begin_layout Subsection
+Reconocimiento de dígitos.
+\end_layout
+
+\begin_layout Standard
+Se trata de identificar dígitos escritos a mano que figuran en las direcciones
+ de las cartas enviadas por correo ordinario algunos de los cuales se muestran
+ en la figura.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recodigit.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+El vector de características de entrada será el constituido por los valores
+ de cada píxel y supondremos una resolución de 16
+\begin_inset Formula $\times$
+\end_inset
+
+16.
+ Un método de identificación puede ser la comparación entre el brillo de
+ cada pixel en la imagen manuscrita y la del dígito tipo.
+ Sin embargo este método presenta dificultades ya que atribuye grandes diferenci
+as a dos figuras tales como las mostradas seguidamente cuya diferencia es
+ un simple desplazamiento 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename digit.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+para paliar esta dificultad existen varios métodos uno de los cuales podría
+ ser que en lugar de contar un solo pixel se mezclara con la cuenta de los
+ píxeles adyacentes ('alisado de entrada') mediante la técnica llamada convoluci
+ón del vector de píxeles y proporciona mejores resultados que la aplicación
+ de naïve Bayes directamente a los píxeles.
+ De todos modos para este tipo de problema, naïve Bayes non parece adecuado
+ ya que la suposición de independencia condicional entre píxeles dada la
+ clase (dígito) es una hipótesis demasiado fuerte.
+\end_layout
+
+\begin_layout Section
+Vecinos más próximos (kNNs).
+\end_layout
+
+\begin_layout Standard
+Una vez disponemos de un conjunto de entrenamiento y hemos asignado cada
+ dato a una de dos clases (p.e.), un método de clasificar una instancia que
+ se nos viene a la cabeza de inmediato es clasificar la nueva observación
+ en la clase a la que pertenezca su vecino más próximo, esto es, asignarle
+ la 
+\emph on
+misma etiqueta
+\emph default
+ que su vecino más cercano.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 1-nn.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la figura puede verse que la instancia I tiene su 
+\emph on
+vecino más próximo
+\emph default
+ en la clase A y, por tanto, será asignado a dicha clase.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejercicio
+\series default
+: clasificar adecuadamente los puntos de la figura.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ejeclas.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+No obstante, en los conjuntos de entrenamiento y validación puede existir
+ 
+\emph on
+ruido
+\emph default
+, esto es, registros erróneos que, si utilizamos un único vecino como comparació
+n, pueden afectar al rendimiento del método por lo que elegiremos un paradigma
+ clasificatorio conocido como k-NN 
+\emph on
+(kNearest Neighbour
+\emph default
+).
+ La idea básica sobre la que se fundamenta este paradigma es que un nuevo
+ caso se va a clasificar en la clase más frecuente a la que 
+\emph on
+pertenecen sus k vecinos más cercanos
+\emph default
+ ya clasificados.
+ El paradigma se fundamenta por tanto en una idea muy simple e intuitiva,
+ lo que unido a su fácil implementación hace que sea un paradigma clasificatorio
+ muy extendido.
+\end_layout
+
+\begin_layout Standard
+Mencionaremos que se trata de un
+\emph on
+ método no paramétrico.
+ 
+\emph default
+Al contrario que el naïve Bayes, donde si aumentamos el tamaño del conjunto
+ de entrenamiento, el número de probabilidades condicionales permanece constante
+ (
+\emph on
+método paramétrico
+\emph default
+) y, además, aumenta la confianza en los estimadores a medida que crece
+ el tamaño de los datos de entrenamiento.
+ Lo mismo ocurriría para el caso de clasificación de correos-e si el tamaño
+ del diccionario es constante.
+ En los 
+\emph on
+métodos no paramétricos
+\emph default
+, el número de parámetros puede crecer con el tiempo.
+\end_layout
+
+\begin_layout Standard
+La descripción del algoritmo es la siguiente:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Datos de entrada
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Datos de entrenamiento : 
+\begin_inset Formula $D$
+\end_inset
+
+={(
+\begin_inset Formula $\mathbf{x}_{i},c_{i})\};i=1,2,K,...,N\}$
+\end_inset
+
+ donde 
+\begin_inset Formula $\mathbf{x}_{i}=(x_{i1},...,x_{in})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejemplo de prueba : 
+\begin_inset Formula $\mathbf{x}_{test}=(x_{1test},.....,x_{ntest})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nº.
+ de vecinos : 
+\begin_inset Formula $K$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Métrica para calcular distancias :
+\begin_inset Formula $d(\mathbf{x}_{i},\mathbf{x}_{j})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename knn data.png
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Datos de salida
+\series default
+: Clase predicha por k-NN para el ejemplo de test.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Código:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pseuco.png
+	scale 72
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los 
+\emph on
+empates
+\emph default
+ se pueden resolver de diferentes formas.
+ Por ejemplo, 
+\end_layout
+
+\begin_layout Itemize
+elegir la clase mayoritaria entre todos los datos de entrenamiento.
+ 
+\end_layout
+
+\begin_layout Itemize
+Si persiste el empate, asignar una clase al azar, de acuerdo a las frecuencias
+ de las clases en el conjunto de entrenamiento.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Ejemplo:
+\series default
+ clasificar el punto indicado dado el conjunto 
+\emph on
+D
+\emph default
+ de manera que la etiqueta ('clase') se sitúa en forma espiral de radio
+ creciente.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename espira.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El procedimiento K-NN tiene varias dificultades:
+\end_layout
+
+\begin_layout Enumerate
+Grandes conjuntos de datos y
+\end_layout
+
+\begin_layout Enumerate
+Gran número de atributos o características.
+ A medida que el número de estos atributos aumenta, lo hace también K, ya
+ que si K-NN se comporta muy bien para un número pequeño de dimensiones
+ pero mal cuando estas son elevadas.
+\end_layout
+
+\begin_layout Enumerate
+Presencia de atributos irrelevantes.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Selección de la función de distancia, es decir, definir la 
+\emph on
+semejanza
+\emph default
+ entre puntos de datos.
+\end_layout
+
+\begin_layout Enumerate
+Importancia ('
+\emph on
+peso
+\emph default
+') de cada uno de los K vecinos.
+\end_layout
+
+\begin_layout Standard
+Si planteamos el problema de reconocimiento de dígitos desde el enfoque
+ 1-NN lo que haríamos para el ejemplo de la figura sería:
+\end_layout
+
+\begin_layout Enumerate
+capturar una imagen del dígito a identificar,
+\end_layout
+
+\begin_layout Enumerate
+comparar con las imágenes de entrenamiento y
+\end_layout
+
+\begin_layout Enumerate
+asignar etiqueta basada en la imagen más próxima.
+\end_layout
+
+\begin_layout Standard
+¿Cómo representar la imagen?
+\end_layout
+
+\begin_layout Standard
+Un procedimiento consiste en representar las intensidades de cada uno de
+ los 256 píxeles de cada imagen en un vector.
+\begin_inset Formula $\mathbf{x}=(0.2,0.1,..,0)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Cómo medir las semejanzas entre imágenes?
+\end_layout
+
+\begin_layout Standard
+Una forma sería mediante el producto interno de los vectores:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula 
+\begin{equation}
+sim(\mathbf{x},\mathbf{x'})=d(\mathbf{x},\mathbf{x')=(x\cdot x'})={\displaystyle \sum_{i=1}^{n}x_{i}\cdot x_{i}^{'}}\label{eq:1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es claro que si los dos vectores son muy parecidos los vectores 
+\begin_inset Formula $\mathbf{x}\textrm{ y }\mathbf{x'}$
+\end_inset
+
+ serán paralelos y si son diferentes apuntarán en direcciones distintas
+ y, en el caso de ser perpendiculares, 
+\begin_inset Formula $d(\mathbf{x},\mathbf{x')=0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si normalizamos los vectores de modo que su módulo sea 1, tendremos dos
+ casos extremos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+0\leq(\mathbf{\frac{x}{\left\Vert x\right\Vert }}\cdot\frac{\mathbf{x}'}{\left\Vert \mathbf{x'}\right\Vert })\leq1\left\{ \begin{array}{c}
+1\textrm{ si son iguales}\\
+0\textrm{ si son ortogonales}
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+No obstante, no siempre la 
+\emph on
+función de similaridad 
+\emph default
+es la distancia.
+ En muchas ocasiones se definirá como producto interno de funciones de atributos
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+sim(\mathbf{x},\mathbf{x}')=\mathbf{(f(x)\cdot f'(x`))={\displaystyle \sum_{i}}}f_{i}(\mathbf{x})f_{i}'(\mathbf{x}')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si estos atributos son justamente los píxeles obtenemos la ecuación (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Una de las propiedades que podemos desear en una medida de similaridad es
+ que tengan 
+\emph on
+invariancia métrica
+\emph default
+, es decir que la similaridad (distancia) sea invariante ante diferentes
+ transformaciones (traslación, rotación
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En el caso de los dígitos en pequeña escala para no confundir el 6 y el
+ 9.
+\end_layout
+
+\end_inset
+
+, grosor del trazo, ...) ya que si p.e.
+ trasladamos el trazo de una línea vertical dos píxeles a la derecha su
+ producto escalar por la imagen del 1 será cero.El problema es cómo incorporar
+ estas invariancias.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+P.e.
+ veamos un método de incorporar invariancia rotacional al reconocimiento
+ de dígitos en que permitimos cuatro rotaciones de ángulo pequeño (
+\begin_inset Formula $\leq15\text{º}$
+\end_inset
+
+).
+ Para ello mediremos la similaridad con respecto al ejemplo de entrenamiento
+ comparando con las cinco imágenes de la figura, incluyendo las ligeramente
+ giradas y la similaridad será el valor máximo.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rotapng.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Otra posibilidad se encuentra en la deformación de la plantilla del dígito
+ de modo que partiendo de una plantilla fija para el número compuesta de
+ varios píxeles de la matriz y varias de sus deformaciones se comparan con
+ la matriz del dígito manuscrito y el mejor ajuste será el de menor varianza.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename matriz.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Veamos algunas características interesantes de este método.
+\end_layout
+
+\begin_layout Subsection
+K-NN y el teorema de Bayes.
+\end_layout
+
+\begin_layout Standard
+Consideremos en el conjunto 
+\emph on
+D
+\emph default
+ el círculo de menor radio que contiene exactamente K vecinos de 
+\begin_inset Formula $\mathbf{x}_{test}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Llamemos 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R(\mathbf{x}_{test})$
+\end_inset
+
+ al área alrededor de 
+\begin_inset Formula $\mathbf{x}_{test}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N[R(\mathbf{x}_{test})]$
+\end_inset
+
+: ejemplos contenidos en 
+\begin_inset Formula $R(\mathbf{x}_{test})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N_{c}[R(\mathbf{x}_{test})]$
+\end_inset
+
+ ejemplos de la clase 
+\series bold
+
+\begin_inset Formula $\mathbf{c}$
+\end_inset
+
+
+\series default
+ contenidos en 
+\begin_inset Formula $R(\mathbf{x}_{test})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figuk.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces:
+\begin_inset Formula 
+\[
+P(c|\mathbf{x}_{test})\simeq\frac{N_{c}[R(\mathbf{x}_{test})]}{N[R(\mathbf{x}_{test})]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y si recordamos las características del predictor MAP que maximiza la probabilid
+ad a posteriori, tendremos que la clase 
+\begin_inset Formula $c*$
+\end_inset
+
+ a la que asignamos la instancia (la que contiene a más vecinos) será 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $\mathbf{c}*(\mathbf{x}_{test})=\begin{array}{c}
+\textrm{arg\:max}\\
+\textrm{c}
+\end{array}P(c|\mathbf{x}_{test})\simeq\begin{array}{c}
+\textrm{arg\:max}\\
+c
+\end{array}\mathbf{N_{c}[R(\mathbf{x}_{test})]}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por tanto: 
+\emph on
+K-NN
+\emph default
+ puede ser visto como un predictor MAP que utiliza 
+\emph on
+estimaciones
+\emph default
+ locales de las densidades de probabilidad relevantes.
+\end_layout
+
+\begin_layout Subsection
+K como parámetro de alisado.
+\end_layout
+
+\begin_layout Standard
+Si comparamos las fronteras entre clases que produce el algoritmo con diferentes
+ valores de K (diagramas de Voronoi
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Los diagramas de Voronoi son unas estructuras de la Geometría Computacional
+ que almacenan toda la información referente a la proximidad entre puntos.
+ 
+\end_layout
+
+\end_inset
+
+) vemos que a medida que K aumenta, la frontera entre clases es menos abrupta
+ 
+\end_layout
+
+\begin_layout Itemize
+K pequeño: muchas regiones y más pequeñas
+\end_layout
+
+\begin_layout Itemize
+K grande: menos regiones y más grandes
+\end_layout
+
+\begin_layout Standard
+pero también aumenta el número de casos mal clasificados.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename kalisa.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los errores para conjuntos infinitos pueden evaluarse por medio de:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\begin{array}{c}
+lim\\
+N\rightarrow\infty
+\end{array}error_{1-NN}<2\cdot error_{Bayes}\\
+\begin{array}{c}
+lim\\
+N\rightarrow\infty
+\end{array}error_{3-NN}\simeq3\cdot\left(error_{Bayes}\right)^{2}
+\end{array}
+\]
+
+\end_inset
+
+Se constata empíricamente que el porcentaje de casos bien clasificados es
+\emph on
+ no monótono
+\emph default
+ con respecto de K, siendo una buena elección valores de K comprendidos
+ entre 3 y 7.
+\end_layout
+
+\begin_layout Standard
+La determinación del mejor valor de K puede hacerse mediante 
+\emph on
+validación cruzada dejando uno fuera 
+\emph default
+('leave-one-out cross validation').
+\end_layout
+
+\begin_layout Section
+Árboles de decisión.
+ 
+\end_layout
+
+\begin_layout Standard
+Los árboles de decisión proporcionan uno de los más simples y fructíferos
+ algoritmos de aprendizaje.
+\end_layout
+
+\begin_layout Standard
+Sea el problema de encontrar un fantasma oculto en un tablero mediante la
+ utilización de un sensor que nos indica para cada casilla un valor -indicado
+ por un color - de la distancia medida en casillas (similar a la 
+\emph on
+distancia Manhattan
+\emph default
+) a la que se encuentra el fantasma.
+ No obstante, existe 
+\emph on
+ruido
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Es decir, señales no deseadas que se mezclan con la señal útil que se quiere
+ detectar.
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+en el proceso de medida lo que provoca que la información de los sensores
+ no sea fiable al 100%.
+ Por lo tanto, como se indica en la figura, el sensor puede indicar que
+ el fantasma se encuentra en la casilla explorada, pero existe una probabilidad
+ de error ya que 
+\begin_inset Formula 
+\[
+P({\color{red}Rojo}|0)<1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ghost_sensor.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inicialmente, sin utilizar sensores, las probabilidades de que el fantasma
+ ocupe un cuadro determinado son uniformes: 
+\begin_inset Formula $\nicefrac{1}{24}=0,0416$
+\end_inset
+
+.
+ En cambio, si hemos detectado un color rojo sabemos que el fantasma puede
+ no encontrarse en el cuadro - 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\textrm{P({\color{red}Rojo}|0)}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+<1 -y por probabilidad total: 
+\begin_inset Formula 
+\[
+P({\color{red}Rojo})={\displaystyle \sum_{Distancia}P({\color{red}Rojo}|Distancia)}P(Distancia)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde conocemos las probabilidades 
+\begin_inset Formula 
+\[
+P({\color{red}Rojo}|Distancia)\;\textrm{Distancia\in\{0,1/2,3/4,5+\}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por Bayes podemos conocer las probabilidades inversas: 
+\begin_inset Formula $P(Distancia|Color)$
+\end_inset
+
+ : 
+\begin_inset Formula 
+\[
+\textrm{P(Distancia|Color)}=\frac{\textrm{P(Color|Distancia)}}{\textrm{{\displaystyle \sum_{Distancia}P(Color|Distancia)}P(Distancia)}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+que nos servirán para seleccionar el cuadrado con más probabilidad de acierto
+ una vez conocidas las medidas de los sensores en una o carias casillas.
+\end_layout
+
+\begin_layout Standard
+Supongamos que cada utilización del sensor tiene un coste o penalidad de
+ 1 punto y si acertamos con la ubicación ganamos 2,5 puntos.
+ Es claro que usar el sensor más de dos veces nos produce una pérdida neta
+ de puntos.
+ Solo podemos elegir casilla una vez.
+ Si elegimos una casilla y fallamos obtenemos 0 puntos y el juego se acaba.
+\end_layout
+
+\begin_layout Standard
+Una metodología interesante sería disponer de algún procedimiento que nos
+ guiara en cada etapa del proceso: los 
+\emph on
+árboles de decisión.
+
+\emph default
+ Son sistemas de decisión multietápicos en los cuales las decisiones se
+ toman secuencialmente hasta que se alcanza un objetivo final.
+\end_layout
+
+\begin_layout Standard
+Es también utilizable para problemas de clasificación en clases.
+ Para este fin el espacio de atributos se divide en regiones únicas correspondie
+ntes a las clases de modo secuencial.
+\end_layout
+
+\begin_layout Standard
+Veamos un ejemplo de red de decisión en el que tenemos
+\end_layout
+
+\begin_layout Itemize
+dos variables en una red bayesian: 
+\begin_inset Formula $Tiempo$
+\end_inset
+
+ y 
+\begin_inset Formula $Previsión$
+\end_inset
+
+ cuyos valores son lluvioso o soleado.
+\end_layout
+
+\begin_layout Itemize
+una variable de acción 
+\begin_inset Formula $Paraguas$
+\end_inset
+
+ que podemos decidir llevar o no llevar y
+\end_layout
+
+\begin_layout Itemize
+una función de 
+\emph on
+utilidad 
+\emph default
+
+\begin_inset Formula $\mathbf{U}(Paraguas,Tiempo)$
+\end_inset
+
+ cuyos argumentos son las variables Paraguas y Tiempo y cuyo dominio está
+ en el conjunto de los números reales.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+En el caso que nos ocupa, podemos considerar que no llevar paraguas y que
+ llueva es una situación menos deseable que llevar paraguas y haga sol.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Nuestro objetivo es 
+\emph on
+maximizar la utilidad esperada
+\emph default
+ dada la 
+\emph on
+evidencia observada
+\emph default
+ actuando sobre la 
+\emph on
+variable de acción
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename deciTree.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto se puede operacionalizar mediante redes bayesianas que nos permiten
+ calcular las probabilidades cuyos nodos llamaremos nodos de azar, añadiendo
+ nodos de 
+\series bold
+\emph on
+acciones
+\series default
+\emph default
+ que 
+\emph on
+no pueden tener padres
+\emph default
+ y nodo de utilidad que depende tanto de los nodos de acción como de los
+ de azar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename decide.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Veamos el ejemplo del paraguas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename expU.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Calculemos E(U) para todas las posibles acciones:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+EU(\mathbf{A}cción)=\sum_{Tiempo}P(Tiempo)U(\mathbf{A}cción,\mathbf{T}iempo)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El sumatorio se extiende a 
+\emph on
+todos los posibles resultados de los nodos padre del nodo utilidad
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dejar Paraguas
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Llevar Paraguas
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $U_{1}=P(sol)U(d,s)=70$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $U_{2}=P(sol)U(l,s)=14$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $U_{3}=P(lluvia)U(d,ll)=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $U_{4}=P(lluvia)P(l,ll)=21$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $EU(d)=\textrm{U_{1}+U_{2}=70}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $EU(l)$
+\end_inset
+
+=
+\begin_inset Formula $\textrm{U_{2}+U_{4}=35}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por tanto, la acción óptima es dejar el paraguas en casa, caso en que 
+\series bold
+MEU
+\series default
+(
+\begin_inset Formula $\textrm{Ø}$
+\end_inset
+
+)=
+\begin_inset Formula $\begin{array}{c}
+Max\\
+A
+\end{array}EU(A)=70$
+\end_inset
+
+.
+ Hemos utilizado el símbolo de vacío para indicar que se desprecia información
+ relevante como es la previsión del tiempo.
+\end_layout
+
+\begin_layout Standard
+El problema anterior puede plantearse como un 
+\emph on
+árbol de decisión
+\emph default
+ de la siguiente manera:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename trees.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si volvemos al problema completo donde tomamos en cuenta la previsión del
+ tiempo, que representa una evidencia adicional.
+ En la figura siguiente se observa cómo incorporar la evidencia adicional
+ donde hay que hacer notar que la evidencia viene en la forma de 
+\begin_inset Formula $P(previsión|Tiempo)$
+\end_inset
+
+.
+ Conocido esto aplicaremos la inferencia en redes bayesianas para obtener
+ las probabilidades 
+\emph on
+a posteriori
+\emph default
+ que se muestra en la figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:5"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:5"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename robot_para.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora las utilidades esperadas serán:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Acción: dejar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Acción: llevar
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $EU(d|p=ll)=,34*100+,66*0=34$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $EU(l|p=ll)=,34*20+,66*70=53$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo que, 
+\emph on
+conocida la evidencia de las previsiones
+\emph default
+, nos conduce a un cambio de estrategia.
+\begin_inset Formula 
+\[
+MEU(p=ll)=\begin{array}{c}
+max\\
+A
+\end{array}U(A,ll)=53
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En relación con el árbol anterior, la diferencia está en el nodo raíz que
+ ahora 
+\emph on
+conoce las previsiones 
+\emph default
+y, por tanto son diferentes las probabilidades de transición
+\emph on
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename newtree.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Volvamos a nuestro problema de cazafantasmas y enfoquémoslo desde el punto
+ de vista de los árboles de decisión.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Utilidad
+\emph default
+: se calcula a partir de +2,5 puntos si acertamos la ubicación del fantasma
+ restándole 1 punto por cada cuadro sensado.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Acciones
+\emph default
+: consisten en aventurar la ubicación del fantasma (+2,5 puntos si acertamos)
+ (4x6).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Variables aleatorias:
+\emph default
+ posición del fantasma y resultado de la exploración de cada casilla de
+ (1,1) a (4,6).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ghosf_busto.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la red bayesiana recuadrada podemos hacer inferencia.
+ 
+\end_layout
+
+\begin_layout Standard
+Los árboles de decisión son muy utilizados en Administración de Empresas
+ como ayuda a la toma de decisiones.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+:
+\end_layout
+
+\begin_layout Enumerate
+Una empresa compra la materia prima a dos proveedores A y B, cuya calidad
+ se muestra en la tabla siguiente: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename Teor_deci.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La probabilidad de recibir un lote del proveedor A en el que haya un 1%
+ de piezas defectuosas es del 80%.
+ Los pedidos que realiza la empresa ascienden a 1.000 piezas.
+ Una pieza defectuosa puede ser reparada por 1 euro.
+ Si bien tal y como indica la tabla la calidad del proveedor B es menor,
+ éste está dispuesto a vender las 1.000 piezas por 10 euros menos que el
+ proveedor A.
+ Indique el proveedor que debe utilizar.
+ 
+\end_layout
+
+\begin_layout Standard
+Solución:
+\end_layout
+
+\begin_layout Standard
+Paso 1 - Enumerar las diferentes Acciones posibles:
+\end_layout
+
+\begin_layout Itemize
+proveedor A o B.
+\end_layout
+
+\begin_layout Standard
+Paso 2 - Enumere para cada una de las alternativas de acción, los 
+\emph on
+padres del nodo de utilidad
+\emph default
+ asociados a la misma:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename tablilla.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Paso 3 - Explicitar el árbol de decisión y asignar las probabilidades a
+ priori de cada uno de los estados de la naturaleza
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename arbolillo.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Paso5 - Determinar el coste esperado de cada alternativa de decisión.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename decisido.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde el coste de cada decisión se calcula del modo siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{array}{c}
+\textrm{A:}\;10\times0,8\times1+20\times0,1\times1+30\times0,1\times1=13\\
+\textrm{B:}\;10\times0,4\times1+20\times0,3\times1+30\times0,3\times1-10=19-10=9
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo por tanto, B la mejor opción.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Una empresa de aviónica está investigando la posibilidad de fabricar y comercial
+izar un nuevo microprocesador para los aviones del futuro.
+ El proyecto requiere la compra de un sofisticado supercomputador, o bien
+ la contratación de más ingenieros, obviamente la empresa se reserva la
+ opción de no desarrollar el producto.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+El nuevo producto puede tener una acogida favorable o desfavorable en el
+ mercado, con una acogida favorable en el mercado las ventas estimadas alcanzarí
+an los 50.000 microprocesadores, por el contrario, si la acogida del mercado
+ no fuese favorable las ventas estimadas serían de 20.000 microprocesadores.
+ El precio de venta de los microprocesadores es de 200 euros cada unidad.
+ El coste del centro de supercomputación es de 2.000.000 de euros, mientras
+ que el de contratar y formar a los nuevos ingenieros asciende a 1.000.000
+ de euros.
+ El coste de fabricación previsto es de 40 euros cada unidad si se fabrica
+ sin la ayuda del centro de supercomputación, y de 10 euros si se fabrica
+ con dicha ayuda.
+ La probabilidad de que el nuevo microprocesador reciba una acogida favorable
+ por parte del mercado es del 50%.
+\end_layout
+
+\begin_layout Standard
+1.
+ Sugiera la decisión que debe tomar la dirección de la empresa en base a
+ la aplicación del criterio de la utilidad esperada.
+\end_layout
+
+\begin_layout Standard
+2.
+ Determine para qué rango de probabilidades de mercado favorable debe comprar
+ el supercomputacdor.
+\end_layout
+
+\begin_layout Standard
+3.
+ Se han definido las ventas favorables como las que alcancen las 50.000 unidades.
+ Es probable que dicha cifra sea demasiado optimista, halle el valor por
+ el que cambiaría su decisión y contrataría más ingenieros.
+\end_layout
+
+\begin_layout Standard
+Las acciones que se plantean son: 
+\end_layout
+
+\begin_layout Itemize
+adquirir supercomputador o
+\end_layout
+
+\begin_layout Itemize
+contratar ingenieros.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+A partir de los datos del problema, el árbol de decisión resuelto es el
+ siguiente:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Graphics
+	filename problemilla.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1.
+ La opción de la supercomputadora tiene una utilidad esperada ligeramente
+ superior a la de contratar ingenieros.
+\end_layout
+
+\begin_layout Standard
+2.
+ El rango de probabilidades para supercomputador se obtiene de:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\begin{array}{c}
+EU(SC)=P_{F}\cdot(50,000\cdot190)+P_{N}\cdot(20,000\cdot190)-2,000,000>\\
+EU(Ing)=P_{F}\cdot(50,000\cdot160)+P_{N}\cdot(20,000\cdot160)-1,000,000
+\end{array}\\
+P_{F}+P_{N}=1
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+que proporciona una probabilidad favorable entre 100% y 44,5%.
+\end_layout
+
+\begin_layout Standard
+3.
+ Las ventas han de verificar 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+EU(SC)=0.5\cdot(V\cdot190)+0.5\cdot(20,000\cdot190)-2,000,000>\\
+EU(Ing)=0.5\cdot(V\cdot160)+0.5\cdot(20,000\cdot160)-1,000,000
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De donde se obtiene que las ventas en el caso más favorable no deben bajar
+ de 46,677.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Árboles de decisión como clasificadores.
+\end_layout
+
+\begin_layout Standard
+Un clasificador no lineal muy utilizado es el basado en árboles de decisión
+ en el cual, cuando llega un vector de características, la búsqueda de la
+ región en que debe clasificarse se efectúa por medio de una 
+\emph on
+secuencia de decisiones a través de un camino en un árbol de decisión
+\emph default
+ apropiadamente construido.
+\end_layout
+
+\begin_layout Standard
+Los vectores de características pueden pueden tener componentes discretas
+ y/o continuas.
+\end_layout
+
+\begin_layout Standard
+Los árboles de decisión más populares, para características cuantitativas,
+ son aquellos que clasifican los vectores de características en hiperrectángulos
+ cuyos lados son paralelos a los ejes en los cuales la secuencia de decisión
+ se aplica a características individuales y las preguntas que se hacen son
+ del tipo: 
+\series bold
+
+\begin_inset Quotes fld
+\end_inset
+
+¿es 
+\begin_inset Formula $x_{i}\leq\alpha?$
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+
+\series default
+ siendo
+\series bold
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ 
+\series default
+el valor 
+\emph on
+umbral
+\emph default
+.
+ Se trata de árboles conocidos como de ordenación binaria ordinaria (OBCT).
+ También son posibles otros árboles que dividen el espacio en poliedros
+ convexos o partes de esferas.
+ 
+\end_layout
+
+\begin_layout Standard
+La idea básica tras OBCT se muestra en la figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4"
+
+\end_inset
+
+) en un espacio bidimensional 
+\begin_inset Formula $\vec{c}=$
+\end_inset
+
+(
+\begin_inset Formula $x_{1},x_{2}$
+\end_inset
+
+) con el árbol de decisión asociado
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:4"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename decision_tree.png
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este caso, la simple geometría nos permite definir los 
+\emph on
+umbrales
+\emph default
+ en cada nodo, pero en espacios de mayor dimensión esto no es posible.
+ Además, hemos comenzado probando la desigualdad 
+\begin_inset Formula 
+\[
+\text{¿t}_{0}>\frac{1}{4}?
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y surge inmediatamente la cuestión de ¿porqué elegir primero esta condición
+ y no otra?
+\end_layout
+
+\begin_layout Standard
+Nosotros comenzaremos por atributos discretos que devuelven un valor de
+ la función también discreto, correspondiendo sus valores a las clases de
+ clasificación.
+ Nos concentraremos especialmente en 
+\emph on
+clasificación booleana 
+\emph default
+en que cada ejemplo se clasifica - etiqueta - como verdadero o falso
+\emph on
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo: 
+\series default
+Sea que debemos decidir si hemos de esperar a que se libere una mesa en
+ un restaurante o no (
+\emph on
+clasificación booleana
+\emph default
+) , basándonos en los siguientes atributos:
+\end_layout
+
+\begin_layout Itemize
+Hay otro restaurante en los alrededores o no.
+ 
+\emph on
+(
+\emph default
+variable
+\emph on
+ Alternate
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Tiene o no el restaurante un bar agradable para esperar.
+ (
+\emph on
+Bar
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Es o no viernes o sábado.
+ (
+\emph on
+Fri/Sat
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Estamos o no hambrientos.(
+\emph on
+Hungry
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Número de clientes en el restaurante (none, some, full).
+ (
+\emph on
+Patrons
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Rango de precios ($, $$,$$$).(
+\emph on
+Price
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Está o no lloviendo.(
+\emph on
+Raining
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Tenemos o no reserva.
+ (
+\emph on
+Reservation
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Tipo de restaurante (francés, italiano, thai, burger).
+ (
+\emph on
+Type
+\emph default
+).
+\end_layout
+
+\begin_layout Itemize
+Tiempo de espera estimado (0-10, 10-30, 30-60, >60).(
+\emph on
+WaitEstimate
+\emph default
+)
+\end_layout
+
+\begin_layout Standard
+La variable y (esperar o no esperar) será 
+\emph on
+WillWait.
+\end_layout
+
+\begin_layout Standard
+Para ello partimos del siguiente conjunto de entrenamiento:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename restau.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y desarrollemos
+\emph on
+ un 
+\emph default
+árbol de búsqueda en el que prescindimos del tipo de restaurante -
+\emph on
+Type
+\emph default
+ - y del precio -
+\emph on
+Price
+\emph default
+ - por considerarlos irrelevantes.
+\end_layout
+
+\begin_layout Standard
+En el árbol 
+\end_layout
+
+\begin_layout Itemize
+los 
+\emph on
+nodos
+\emph default
+ son nombres de atributos;
+\end_layout
+
+\begin_layout Itemize
+las
+\emph on
+ ramas
+\emph default
+ son valores de los atributos 
+\emph on
+y
+\end_layout
+
+\begin_layout Itemize
+los 
+\emph on
+nodos hojas 
+\emph default
+son las etiquetas de clase.
+\end_layout
+
+\begin_layout Standard
+Se ve que las decisiones intermedias hasta llegar a la final se desarrollan
+ en las ramas
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Nodo que tiene hijos.
+\end_layout
+
+\end_inset
+
+.
+ Cada hoja
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Nodo sin hijos.
+ 
+\end_layout
+
+\end_inset
+
+ especifica el valor alcanzado si se llega a esa hoja.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename treeresta.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si seguimos un camino cualquiera en el árbol como p.e.
+ un restaurante com
+\begin_inset Formula $Patrons=$
+\end_inset
+
+ 
+\begin_inset Formula $Full$
+\end_inset
+
+ con un 
+\begin_inset Formula $WaitEstimate$
+\end_inset
+
+= 0-10 con agente 
+\begin_inset Formula $Hungry=No$
+\end_inset
+
+ puede expresarse como una conjunción de implicaciones lógicas:
+\begin_inset Formula 
+\[
+Patrons(r,Full)\land WaitEstimate(r,0-10)\land Hungry(r,N)\Rightarrow WillWait(r)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Expresividad de los árboles de decisión.
+\end_layout
+
+\begin_layout Standard
+Lógicamente, cualquier hipótesis particular del árbol de decisión puede
+ expresarse como: 
+\begin_inset Formula 
+\[
+(\forall s)\;WillWait(s)\Leftrightarrow(P_{1}(s)\lor P_{2}(s)\lor...\lor P_{n}(s))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde cada 
+\begin_inset Formula $P_{i}(s)$
+\end_inset
+
+ es una 
+\emph on
+conjunción
+\emph default
+ de pruebas correspondientes a un camino desde el nodo raíz hasta una hoja
+ con resultado positivo.
+ El árbol de decisión está describiendo una relación entre 
+\emph on
+WillWait 
+\emph default
+y alguna combinación lógica de valores de atributos.
+\end_layout
+
+\begin_layout Standard
+Si los árboles de decisión corresponden a conjuntos de sentencias de implicación
+, podemos preguntarnos si si pueden representar cualquier conjunto.
+ La respuesta es NO porque los árboles de decisión están implícitamente
+ definidos para hablar de un solo objeto.
+ Es decir, el lenguaje de los árboles de decisión es esencialmente proposicional
+, siendo cada prueba de atributo una proposición.
+ No se pueden usar árboles de decisión para representar pruebas referidas
+ o 
+\emph on
+dos o más objetos
+\emph default
+ diferentes, tales como dos restaurantes 
+\begin_inset Formula $r'$
+\end_inset
+
+ y 
+\begin_inset Formula $r$
+\end_inset
+
+ (
+\begin_inset Quotes fld
+\end_inset
+
+¿hay algún restaurante más barato cerca?
+\begin_inset Quotes frd
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+(\exists r')\:Cerca(r',r)\land Price(r,p)\land Price(r',p')\land MásBarato(p',p)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si bien es cierto que, en este caso, podríamos añadir un nuevo atributo
+ booleano: 
+\emph on
+Restaurante
+\emph default
+ esto nos llevaría a una serie de adiciones de atributos inmanejable.
+\end_layout
+
+\begin_layout Standard
+No obstante, en ciertos problemas con funciones tales como 
+\series bold
+función de paridad
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Función booleana cuyo valor es 1 si el vector de entrada tiene un número
+ impar de unos.
+\end_layout
+
+\end_inset
+
+
+\series default
+ o la 
+\series bold
+función mayorante
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La función 
+\emph on
+mayorante
+\emph default
+ es una función booleana que con n entradas y una salida.
+ El valor de la operación es falso cuando
+\begin_inset Formula $n/2$
+\end_inset
+
+ o más argumentos son falsos, y verdadera en otro caso
+\end_layout
+
+\end_inset
+
+ en que los árboles de decisión crecen exponencialmente, este método es
+ inapropiado.
+ Pero esto es aplicable a todos los procedimientos de clasificación: 
+\emph on
+no existe ningún método
+\emph default
+ apto para todo tipo de funciones.
+\end_layout
+
+\begin_layout Standard
+En el caso que deseemos desarrollar un árbol de búsqueda 
+\emph on
+binario
+\emph default
+ en el que los atributos son booleanos, deben considerarse los siguientes
+ elementos en la fase de entrenamiento:
+\end_layout
+
+\begin_layout Itemize
+En cada nodo, ha de decidirse el conjunto de candidatas a preguntas que
+ hacer.
+ Cada pregunta corresponde a una bifurcación binaria en dos nodos descendentes.
+ Cada nodo, 
+\begin_inset Formula $t$
+\end_inset
+
+, se asocia a un subconjunto 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ del conjunto de entrenamiento 
+\begin_inset Formula $X$
+\end_inset
+
+ .
+ la bifurcación en un nodo es equivalente a dividir el subconjunto 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ en dos subconjuntos descendentes 
+\emph on
+disjuntos 
+\begin_inset Formula $X_{tS}$
+\end_inset
+
+ 
+\emph default
+
+\begin_inset Formula $X_{tN}$
+\end_inset
+
+ donde el primero corresponde al subconjunto de 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ que responde a la pregunta con un 
+\series bold
+\emph on
+Sí
+\series default
+\emph default
+ y el segundo a su complementario (
+\series bold
+\emph on
+No
+\series default
+\emph default
+).
+ 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+X_{tS}\cap X_{tN}=\textrm{Ø}\\
+X_{tS}\cup X_{tN}=X_{t}
+\end{array}
+\]
+
+\end_inset
+
+El primer nodo del árbol (raíz) corresponde al conjunto de entrenamiento
+ 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Debe adoptarse un 
+\emph on
+criterio de bifurcación 
+\emph default
+para elegir el mejor de los candidatos y
+\end_layout
+
+\begin_layout Itemize
+Un criterio de finalización.
+\end_layout
+
+\begin_layout Standard
+Es de esperar que exista más de un método para enfocar cada uno de los elementos
+ anteriores.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Conjunto de preguntas
+\series default
+.
+
+\series bold
+ 
+\series default
+Para OBCTs, las preguntas son del tipo 
+\series bold
+
+\begin_inset Quotes fld
+\end_inset
+
+¿es 
+\begin_inset Formula $x_{i}\lessgtr V\;o\;F?$
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+ .
+ 
+\series default
+Para 
+\emph on
+todas y cada una de las características
+\emph default
+, el valor de 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ define la división del conjunto 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+.
+ Cualquiera de las características 
+\begin_inset Formula $x_{i}\;(i=1,..,M)$
+\end_inset
+
+ puede tomar como mucho dos valores diferentes.
+ En este caso, el número total de preguntas candidatas será 
+\emph on
+M
+\emph default
+ de las cuales solo una se elegirá en cada nodo.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Criterio de bifurcación
+\series default
+.
+ Cada división binaria de un nodo 
+\begin_inset Formula $t$
+\end_inset
+
+ -padre -, genera dos nodos descendientes 
+\begin_inset Formula $t_{S}$
+\end_inset
+
+ y 
+\begin_inset Formula $t_{N}$
+\end_inset
+
+ cada uno de ellos asociado a un conjunto 
+\emph on
+
+\begin_inset Formula $X_{tS}$
+\end_inset
+
+ y 
+\begin_inset Formula $X_{tN}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename bifurca.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para que esta metodología tenga sentido, cada bifurcación debe producir
+ subconjuntos que sean más homogéneos en clase en comparación con el conjunto
+ ancestro 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+.
+ esto significa que los vectores de características en cada uno de los subconjun
+tos están sesgados en favor de algunas clases mientras que en 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+se distribuyen entre las clases con igual probabilidad.
+ Si en la fig (4) bifurcamos un nodo de modo que los puntos correspondientes
+ a las clases 
+\begin_inset Formula $\omega_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $\omega_{2}$
+\end_inset
+
+ formen el subconjunto 
+\begin_inset Formula $X_{tS}$
+\end_inset
+
+ y los de 
+\begin_inset Formula $\omega_{3}$
+\end_inset
+
+ y 
+\begin_inset Formula $\omega_{4}$
+\end_inset
+
+ formen el 
+\begin_inset Formula $X_{tN},$
+\end_inset
+
+entonces los nuevos subconjuntos son más homogéneos (
+\emph on
+puros
+\emph default
+) que 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ que será más homogéneo.
+ Nuestro objetivo es definir una medida que cuantifique la 
+\emph on
+impureza 
+\emph default
+de un nodo y que divida el nodo de modo que se reduzca de manera óptima
+ la impureza global de los nodos descendientes.
+\end_layout
+
+\begin_layout Standard
+Si llamamos 
+\begin_inset Formula $P(\omega_{i}|t)$
+\end_inset
+
+ a la probabilidad de que un vector del conjunto 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ asociado al nodo 
+\begin_inset Formula $t$
+\end_inset
+
+ pertenezca a la clase 
+\begin_inset Formula $\omega_{i}$
+\end_inset
+
+ 
+\begin_inset Formula $(i=1,...,M)$
+\end_inset
+
+ una medida de la
+\emph on
+ impureza del nodo 
+\emph default
+
+\begin_inset Formula $i$
+\end_inset
+
+ - 
+\begin_inset Formula $I(t)$
+\end_inset
+
+ - muy usada es
+\begin_inset Formula 
+\[
+I(t)=-{\displaystyle \sum_{i=1}^{M}}P(\omega_{i}|t)\cdot log_{2}P(\omega_{i}|t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Que es la 
+\series bold
+\emph on
+entropía
+\series default
+\emph default
+ que se define en teoría de la información asociada con el conjunto 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+, normalmente denotada por 
+\begin_inset Formula $H$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+En el caso de 
+\emph on
+M atributos booleanos
+\emph default
+ con -
+\begin_inset Formula $\mathbf{\vec{x}=}(x_{1},...,x_{M})\:x_{i}\in\{0,1\}$
+\end_inset
+
+-, donde cada fila de la tabla de verdad es un camino.
+ El número de árboles de decisión que podremos formar será el número de
+ funciones con M símbolos proposicionales cada una de las cuales puede tomar
+ dos valores, esto es:
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+nº 
+\noun default
+de árboles de decisión=
+\noun on
+nº 
+\noun default
+de funciones booleanas=
+\noun on
+nº
+\noun default
+ de tablas de verdad diferentes con 
+\begin_inset Formula $2^{M}$
+\end_inset
+
+ filas =
+\begin_inset Formula $2^{2^{M}}$
+\end_inset
+
+ funciones diferentes de 
+\begin_inset Formula $M$
+\end_inset
+
+ atributos.
+ 
+\end_layout
+
+\begin_layout Standard
+P.e.
+ con solo 6 atributos: 
+\begin_inset Formula 
+\[
+2^{2^{6}}=2^{64}=1,8446\cdot10^{19}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+..
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+..
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+..
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+..
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+..
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+..
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="1">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+salida
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0/1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+La tabla tiene 
+\begin_inset Formula $2^{6}$
+\end_inset
+
+ entradas y su salida puede ser 0 o 1
+\begin_inset Formula $\rightarrow2^{2^{6}}$
+\end_inset
+
+funciones.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+: En el caso de dos atributos tendremos los siguientes -16 - árboles, cada
+ uno de los cuales expresa una función:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename arboles_2.png
+	scale 66
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es claro de la figura que algunos de estos árboles pueden podarse tras de
+ lo cual quedarían así:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 2atriarbo.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por tanto, precisaremos de algún método ingenioso para encontrar hipótesis
+ consistentes en un espacio de tal dimensión.
+\end_layout
+
+\begin_layout Standard
+En el caso de árbol de búsqueda 
+\emph on
+binario
+\emph default
+ en que cada atributo toma uno de dos valores (está lleno o no, hemos reservado
+ o no ...) es fácil encontrar un árbol de búsqueda que sea consistente con
+ el conjunto de entrenamiento: simplemente construiremos un árbol que tiene
+ un camino hasta cada hoja correspondiente aun ejemplo, donde en cada camino
+ se prueba cada atributo y sigue el valor del ejemplo y la hoja tiene la
+ clasificación del ejemplo.
+ El problema surge con los casos 
+\emph on
+no comprendidos en el conjunto de entrenamiento
+\emph default
+.
+ El problema es que el árbol memoriza las observaciones pero no extrae ningún
+ patrón de ellas y no podemos esperar que extrapole resultados que no conoce.
+ Si aplicásemos la navaja de Ockham deberíamos encontrar el árbol más pequeño
+ consistente con las observaciones de ejemplo.
+ Infortunadamente, para cualquier definición razonable de '
+\emph on
+más pequeño
+\emph default
+' el problema es inabordable.
+ Sin embargo, mediante una sencilla heurística podemos hacer un buen trabajo
+ encontrando un árbol 
+\emph on
+bastante pequeño.
+\end_layout
+
+\begin_layout Standard
+La idea básica del 
+\noun on
+algoritmo de árbol de decisión
+\noun default
+ es probar primero el atributo 
+\emph on
+'más importante
+\emph default
+', es decir el que provoca las mayores diferencias en la clasificación de
+ un ejemplo.
+ De este modo esperamos llegar a una clasificación completa con un 
+\emph on
+reducido número de comprobaciones 
+\emph default
+lo que supone que los caminos en el árbol serán cortos y aquel será pequeño.
+\end_layout
+
+\begin_layout Standard
+En el ejemplo de los restaurantes, 
+\begin_inset Formula $Type$
+\end_inset
+
+ es un atributo insignificante ya que proporciona tantos casos positivos
+ como negativos.
+ En cambio 
+\emph on
+Patrons
+\emph default
+ es importante porque permite una separación en subconjuntos más homogéneos.
+ Después de la división que hace la prueba del primer atributo, cada salida
+ es un nuevo problema de aprendizaje con árboles de decisión con 
+\end_layout
+
+\begin_layout Itemize
+un atributo menos y
+\end_layout
+
+\begin_layout Itemize
+menos ejemplos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:8"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename forza.png
+	scale 67
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es, por tanto, un
+\emph on
+ problema recursivo
+\emph default
+ en el que podemos distinguir los cuatro casos siguientes:
+\end_layout
+
+\begin_layout Enumerate
+Si hay ejemplos positivos y negativos, usar el mejor atributo para dividir
+ el conjunto de entrenamiento.
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:8"
+
+\end_inset
+
+(b) 
+\emph on
+Hungry
+\emph default
+ se usa en esta segunda etapa.
+\end_layout
+
+\begin_layout Enumerate
+Si todos los ejemplos restantes son positivos o negativos, hemos acabado:
+ la respuesta es sí o no.
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:8"
+
+\end_inset
+
+(b) esto ocurre para 
+\emph on
+None 
+\emph default
+y 
+\emph on
+Some
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Si no quedan ejemplos, esto significa que no se ha observado ningún caso
+ y retornamos un valor por defecto calculado de la clasificación mayorante
+ del nodo padre.
+\end_layout
+
+\begin_layout Enumerate
+Si no quedan atributos y hay observaciones positivas y negativas, tenemos
+ un problema.
+ Esto significa que estos ejemplos tienen 
+\emph on
+la misma descripción
+\emph default
+ pero una clasificación distinta.
+ Esto se produce cuando existen errores en los datos ('ruido') o el dominio
+ no es determinístico.
+ Una manera de resolver este problema es mediante el voto mayoritario.
+\end_layout
+
+\begin_layout Section
+Algoritmos de clasificación con árboles de decisión.
+\end_layout
+
+\begin_layout Standard
+Expondremos el algoritmo ID3, simplificado.
+\end_layout
+
+\begin_layout Standard
+Hasta ahora hemos visto que
+\end_layout
+
+\begin_layout Itemize
+los árboles de decisión expresan cualquier función booleana;
+\end_layout
+
+\begin_layout Itemize
+nuestro objetivo es encontrar un 
+\emph on
+árbol de decisión que concuerde con el conjunto de entrenamiento
+\emph default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Para ello podríamos construir un árbol con un camino a una hoja para cada
+ ejemplo del conjunto de entrenamiento donde las pruebas del camino igualan
+ el valor de cualquier atributo a los valores del ejemplo.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Esto, desde un punto de vista de aprendizaje, solo 
+\emph on
+memoriza 
+\emph default
+los ejemplos, pero 
+\emph on
+no generaliza
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Por tanto, nos proponemos encontrar una buena clasificación con menor número
+ de pruebas.
+\end_layout
+
+\begin_layout Subsection
+Algoritmo de generación de árboles de decisión.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+function
+\series default
+ Id3(
+\emph on
+ejemplos
+\emph default
+, 
+\emph on
+atributos, defecto
+\emph default
+) 
+\series bold
+returns
+\series default
+ un árbol de decisión
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1cm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+inputs: 
+\series default
+\emph on
+ejemplos
+\emph default
+: conjunto de entrenamiento
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.5 cm}
+\end_layout
+
+\end_inset
+
+
+\emph on
+atributos: 
+\emph default
+conjunto de atributos 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.5 cm}
+\end_layout
+
+\end_inset
+
+
+\emph on
+defecto:
+\emph default
+valor por defecto del predicado objetivo 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1cm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+if
+\series default
+ 
+\emph on
+ejemplos 
+\emph default
+está vacío
+\emph on
+ 
+\series bold
+\emph default
+then return
+\series default
+\emph on
+ defecto
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1cm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+else if 
+\series default
+todos los 
+\emph on
+ejemplos
+\emph default
+ tienen la misma clasificación 
+\series bold
+then return 
+\series default
+la clase
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1cm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+else if 
+\series default
+\emph on
+atributos 
+\emph default
+está vacío 
+\series bold
+then
+\series default
+ 
+\series bold
+return 
+\series default
+\noun on
+valor-mayorante
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1cm}
+\end_layout
+
+\end_inset
+
+(
+\emph on
+ejemplos
+\emph default
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1cm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+else 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2cm}
+\end_layout
+
+\end_inset
+
+ 
+\emph on
+best 
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+
+\emph default
+\noun on
+elegir-atributo
+\noun default
+(
+\emph on
+atributos,ejemplos
+\emph default
+): elige el mejor atributo.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2cm}
+\end_layout
+
+\end_inset
+
+ 
+\emph on
+tree 
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+
+\emph default
+un nuevo árbol de decisión con prueba en la raíz de
+\emph on
+ best
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2cm}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+for each
+\series default
+\emph on
+ 
+\emph default
+
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ valor de 
+\emph on
+best
+\emph default
+ 
+\series bold
+do
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.5 cm}
+\end_layout
+
+\end_inset
+
+ 
+\emph on
+ejemplos
+\begin_inset Formula $_{i}$
+\end_inset
+
+ 
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+
+\emph default
+{elementos de
+\emph on
+ ejemplos 
+\emph default
+con 
+\emph on
+best
+\emph default
+=
+\begin_inset Formula $v_{i}$
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.5 cm}
+\end_layout
+
+\end_inset
+
+ 
+\emph on
+subtree
+\emph default
+ 
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+
+\noun on
+aprendizaje-en-árbol -de-decisión (
+\emph on
+\noun default
+ejemplos,atributos-best,
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.5 cm}
+\end_layout
+
+\end_inset
+
+ 
+\noun on
+valor-mayorante
+\noun default
+(
+\emph on
+ejemplos
+\emph default
+))
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.5 cm}
+\end_layout
+
+\end_inset
+
+añade una rama a 
+\emph on
+tree 
+\emph default
+con etiqueta 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ y subárbol 
+\emph on
+subtree
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.5 cm}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+end
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.5 cm}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+return 
+\series default
+\emph on
+tree
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+La figura (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9"
+
+\end_inset
+
+) muestra el árbol de decisión que devuelve el algoritmo anterior para el
+ caso de los restaurantes.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:9"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename algoreturn.png
+	scale 67
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Método 
+\noun on
+elegir-atributo
+\noun default
+.
+\end_layout
+
+\begin_layout Standard
+Buscamos la primera pregunta que mejor determine la clasificación lo mejor
+ posible.
+ La mejor pregunta es la que permite obtener más información sobre la clase.
+ Pero, ¿podemos cuantificar la ganancia de información? Sí, con una medida
+ que tomará su valor máximo cuando el atributo sea perfecto y el mínimo
+ cuando el atributo no tenga utilidad ninguna.
+\end_layout
+
+\begin_layout Standard
+Una medida adecuada es la cantidad de 
+\series bold
+información 
+\series default
+que proporciona el atributo, en el sentido de Shannon, padre de la teoría
+ de la información.
+\end_layout
+
+\begin_layout Subsubsection
+El concepto de entropía en teoría de la información.
+\end_layout
+
+\begin_layout Standard
+Planteémonos cómo responderíamos a la pregunta de si una moneda lanzada
+ al aire caerá de cara o de cruz.
+ Nuestra respuesta 
+\emph on
+contendrá
+\emph default
+ de la información a priori que tengamos.
+ 
+\emph on
+Cuantas menos pistas tengamos sobre el suceso, más información aportará
+ la respuesta
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+La 
+\emph on
+Teoría de la Información
+\emph default
+, 
+\series bold
+mide
+\series default
+ la información en bits.
+ Un bit de información es la respuesta a la pregunta booleana de si saldrá
+ cara o cruz, pero en general, cuando las respuestas posibles 
+\begin_inset Formula $\omega_{i}$
+\end_inset
+
+ tengan probabilidades distintas, 
+\emph on
+la información contenida en la respuesta será 
+\emph default
+(nuestro 
+\emph on
+grado de desconocimiento
+\emph default
+ a priori
+\emph on
+):
+\emph default
+ 
+\begin_inset Formula 
+\[
+I(t)=-{\displaystyle \sum_{i=1}^{M}}P(\omega_{i})\cdot log_{2}P(\omega_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eta información es la 
+\emph on
+entropía de Shannon
+\emph default
+ que se define para el caso de que el resultado de un suceso aleatorio sea
+ binario, esto es, que una v.a.
+ solo pueda tomar dos valores 0 o 1 con probabilidades 
+\begin_inset Formula $p$
+\end_inset
+
+ y 
+\begin_inset Formula $q=1-p$
+\end_inset
+
+ como:
+\begin_inset Formula 
+\[
+\textrm{H(p,q)=-p\cdot log_{2}p-q\cdot log_{2}q=-p\cdot log_{2}p-(1-p)\cdot log_{2}(1-p)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el caso en que o p o q sean 1, el valor de H se define como 0.
+\end_layout
+
+\begin_layout Standard
+Aclaremos un poco el concepto con una moneda.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+moneda 
+\series bold
+equilibrada
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+moneda 
+\series bold
+sesgada
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+moneda con 
+\series bold
+dos caras
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $p=0,5\:,1-p=0,5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $p=0,99\:,1-p=0,01$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $p=1\:,1-p=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Entropía
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 bit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,08 bits
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 bits
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es claro que cuando no sabemos nada a priori, obtenemos mucha información
+ de la repuesta -nuestro desconocimiento era muy grande - pero a mediada
+ que existe menos desconocimiento, la información aportada es menos hasta
+ llegar a ser nula en el caso de una moneda de dos caras ya que conocíamos
+ el resultado a priori y saber que ha salido cara no nos aporta información.
+\end_layout
+
+\begin_layout Standard
+La entropía es siempre positiva ya que equivale a la expresión
+\begin_inset Formula 
+\[
+\textrm{H(p,q)=p\cdot log_{2}\frac{1}{p}+q\cdot log_{2}}\frac{\textrm{1}}{\textrm{q}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La entropía mide el grado de desconocimiento que tenemos del valor de una
+ variable aleatoria.
+\end_layout
+
+\begin_layout Standard
+H es 
+\end_layout
+
+\begin_layout Itemize
+mínima si p o q son 1 (H=0 bits), y 
+\end_layout
+
+\begin_layout Itemize
+máxima si p=q=1/2 (H=1 bits)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Entropia.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consideremos una variable aleatoria g binaria con dos valores 
+\begin_inset Formula $g_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $g_{2}$
+\end_inset
+
+ cuyas probabilidades p y q = 1- p.
+\end_layout
+
+\begin_layout Standard
+¿Qué/cuánta información tenemos sobre el próximo valor que tomará g ?
+\end_layout
+
+\begin_layout Standard
+Ejemplo: una moneda no trucada; cada tirada es independiente de la anterior,
+ y
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(cara)=P(cruz)=1/2:{C,X,C,X,X,X,C,C,X,C,X,C,X,X,C,C,...}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este caso, nuestro desconocimiento sobre el resultado del lanzamiento
+ de la moneda es 
+\begin_inset Formula $H(p,q)=H(1/2,1/2)=1\:bit$
+\end_inset
+
+, que es el valor máximo de la entropía binaria.
+\end_layout
+
+\begin_layout Standard
+Supongamos que ahora la moneda está trucada.
+ p(cara) = 1/3, p(cruz) = 2/3
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $H(1/3,2/3)=0.92\:bits$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este caso tenemos a priori menos desconocimiento (más información) sobre
+ el resultado de la próxima tirada.
+\end_layout
+
+\begin_layout Standard
+Podemos 
+\emph on
+interpretar intuitivamente
+\emph default
+ la entropía de Shannon como es el número de preguntas sí/no que se necesitan
+ para llegar a la respuesta correcta.
+ Es decir, imaginamos que hay un oráculo que siempre acierta y tenemos que
+ hacerle preguntas hasta que lleguemos al valor de la variable comprendida
+ en 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+.
+ Esto lo podemos hacer de varias maneras: 
+\end_layout
+
+\begin_layout Itemize
+podemos ir dándole opciones una a una empezando en un valor y subiendo,
+ dándole números al azar… 
+\end_layout
+
+\begin_layout Itemize
+o podemos hacer una 
+\emph on
+búsqueda binaria.
+
+\emph default
+ Si los valores límite de la variable son 
+\begin_inset Formula $a$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+ y el punto medio entre ellos es 
+\begin_inset Formula $c$
+\end_inset
+
+, hacemos lo siguiente:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Preguntamos si el valor está entre 
+\begin_inset Formula $a$
+\end_inset
+
+ y 
+\begin_inset Formula $c$
+\end_inset
+
+ Si nos dice que sí descartamos el trozo entre 
+\begin_inset Formula $c$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ En caso contrario el 
+\begin_inset Formula $a$
+\end_inset
+
+ - 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ Calculamos el punto medio del trozo y repetimos la operación hasta llegar
+ al valor.
+ El 
+\emph on
+coste
+\emph default
+ - complejidad - de este algoritmo es de O(
+\begin_inset Formula $log_{2}$
+\end_inset
+
+(N)), donde N es el número de puntos entre a y b.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Ganancia de información
+\series default
+.
+ La ganancia de información aportada por la variable aleatoria X sobre la
+ variable G se define como:
+\begin_inset Formula 
+\begin{equation}
+GI(X,G)\equiv H(G)-H(G|X)\label{eq:9}
+\end{equation}
+
+\end_inset
+
+Donde: - 
+\begin_inset Formula $H(G)$
+\end_inset
+
+ mide el desconocimiento que tenemos de la variable G antes de saber X -
+ 
+\begin_inset Formula $H(G|X)$
+\end_inset
+
+ mide el desconocimiento sobre G después de saber el valor de X.
+\end_layout
+
+\begin_layout Standard
+La 
+\emph on
+entropía condicional 
+\emph default
+
+\begin_inset Formula $H(G|X)$
+\end_inset
+
+ se define como:
+\begin_inset Formula 
+\[
+H(G|X)\equiv P(X=x_{i})\cdot H(G|X=x_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por su parte, 
+\begin_inset Formula 
+\[
+H(G|X=x_{i})\equiv H\left(P(G=g_{1}|X=x_{i}),P(G=g_{2}|X=x_{i})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si X es estadísticamente independiente de G, 
+\begin_inset Formula $H(G|X)=H(G)$
+\end_inset
+
+y por tanto 
+\begin_inset Formula $GI(X,G)=0$
+\end_inset
+
+ bits.
+\end_layout
+
+\begin_layout Standard
+Para un mismo G, 
+\begin_inset Formula $GI(X,G)$
+\end_inset
+
+ es máxima si 
+\begin_inset Formula $H(G|X)=0$
+\end_inset
+
+ bits.
+\end_layout
+
+\begin_layout Standard
+Una 
+\emph on
+respuesta - R -
+\emph default
+ 
+\emph on
+correcta
+\emph default
+ contendrá la siguiente información: 
+\begin_inset Formula 
+\[
+I(\frac{p}{p+n},\frac{n}{p+n})=-\frac{p}{p+n}log_{2}(\frac{p}{p+n})-\frac{n}{p+n}log_{2}(\frac{n}{p+n})
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $p$
+\end_inset
+
+ son los casos positivos y 
+\begin_inset Formula $n$
+\end_inset
+
+ los negativos.
+\end_layout
+
+\begin_layout Standard
+Todo atributo 
+\emph on
+A 
+\emph default
+(como
+\emph on
+ Patrons 
+\emph default
+p.e.) divide al conjunto de entrenamiento 
+\begin_inset Formula $E$
+\end_inset
+
+ en subconjuntos 
+\begin_inset Formula $E_{1},..,E_{\nu}$
+\end_inset
+
+, siendo 
+\begin_inset Formula $\nu$
+\end_inset
+
+ el número de valores -
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+- de 
+\emph on
+A.
+ 
+\emph default
+Cada subconjunto contiene 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ observaciones positivas y 
+\begin_inset Formula $n_{i}$
+\end_inset
+
+ negativas, luego 
+\begin_inset Formula 
+\[
+\textrm{H(R|A=\alpha_{i})}=I(\frac{p_{i}}{p_{i}+n_{i}},\frac{n_{i}}{p_{i}+n_{i}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Un ejemplo elegido al azar del conjunto de entrenamiento contiene 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ con una probabilidad 
+\begin_inset Formula ${\displaystyle \frac{p_{i}+n_{i}}{p_{i}+n_{i}}}$
+\end_inset
+
+ de modo que la información será
+\begin_inset space \space{}
+\end_inset
+
+el promedio:
+\begin_inset Formula 
+\[
+{\displaystyle H(R|A)=\sum_{i=1}^{\nu}}{\displaystyle \left(\frac{p_{i}+n_{i}}{p_{i}+n_{i}}\right)}\cdot I(\frac{p_{i}}{p_{i}+n_{i}},\frac{n_{i}}{p_{i}+n_{i}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y la 
+\emph on
+ganancia de información
+\emph default
+ será:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textrm{GI(R,A)=I(\frac{p_{i}}{p_{i}+n_{i}},\frac{n_{i}}{p_{i}+n_{i}})-{\displaystyle \sum_{i=1}^{\nu}}{\displaystyle \left(\frac{p_{i}+n_{i}}{p_{i}+n_{i}}\right)}\cdot I(\frac{p_{i}}{p_{i}+n_{i}},\frac{n_{i}}{p_{i}+n_{i}})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+: en el caso del restaurante, la entropía de 
+\emph on
+WillWait
+\emph default
+ (booleana) será:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula $H(\frac{6}{12},\frac{6}{12})=1$
+\end_inset
+
+bit
+\end_layout
+
+\begin_layout Standard
+Si, además, sabemos que el restaurante se encuentra en los siguientes estados
+ (atributo 
+\emph on
+Patrons
+\emph default
+):
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Patrons
+\emph default
+=
+\emph on
+None
+\emph default
+ (vacío): 
+\begin_inset Formula $H(WillWait|Patrons=None)=H(\frac{2}{2},\frac{0}{4})=0\:\textrm{bit}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Patrons
+\emph default
+=
+\emph on
+Some
+\emph default
+ (semilleno): 
+\begin_inset Formula $H(WillWait|Patrons=None)=H(\frac{4}{4},\frac{0}{4})=0\:\textrm{bit}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Patrons
+\emph default
+=
+\emph on
+Full
+\emph default
+ (lleno): 
+\begin_inset Formula $H(WillWait|Patrons=None)=H(\frac{2}{6},\frac{4}{6})=0\:\textrm{bit}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y teniendo en cuenta las probabilidades (frecuencias) condicionadas, 
+\begin_inset Formula $\mathbf{H(WillWait|Patrons)}={\displaystyle \frac{6}{12}.}H(WillWait|Patrons=Full)=0,5*0,92=0,46$
+\end_inset
+
+ bits
+\end_layout
+
+\begin_layout Standard
+de modo que la '
+\emph on
+ganancia
+\emph default
+' de información obtenida al preguntar por 
+\emph on
+Patrons
+\emph default
+ es - ec.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:9"
+
+\end_inset
+
+): 
+\begin_inset Formula 
+\[
+\mathbf{GI}(WillWait,Patrons)\equiv H(WillWait|)-H(WillWait|Patrons)=1-0,46=0,54\:\textrm{bits}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Puede también verse que el atributo 
+\emph on
+Type
+\emph default
+ no aporta información alguna ya que 
+\begin_inset Formula $H(WillWait|Type)=0$
+\end_inset
+
+ bits para todos los valores de
+\emph on
+ Type
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Esta es la función heurística que guiará al algoritmo: se calcula la 
+\emph on
+ganancia de información de todos los atributos
+\emph default
+, y 
+\emph on
+se elige el de mayor valor
+\emph default
+ para colocarlo definitivamente como nodo raíz
+\emph on
+.
+\end_layout
+
+\begin_layout Standard
+Una vez realizada la elección, se particiona la tabla de datos por la pregunta
+ elegida y se resuelve el mismo problema desde cero para cada rama con su
+ nueva tabla.
+\end_layout
+
+\begin_layout Standard
+El proceso recursivo termina cuando:
+\end_layout
+
+\begin_layout Enumerate
+la entropía es cero (todos los ejemplos son de la misma clase);
+\end_layout
+
+\begin_layout Enumerate
+no hay ejemplos: se asigna el valor por 
+\emph on
+defecto
+\emph default
+;
+\end_layout
+
+\begin_layout Enumerate
+no hay más atributos, pero sí observaciones.
+\end_layout
+
+\begin_layout Section
+Ejemplo de aplicación del algoritmo.
+\end_layout
+
+\begin_layout Standard
+Sea el conjunto de entrenamiento siguiente que nos debe servir para clasificar
+ los días para jugar al tenis:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename tenis1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comenzaremos por seleccionar el atributo por el que preguntar primero.
+ Para ello calcularemos las ganancias de información obtenidas con cada
+ a tributo ya que 
+\begin_inset Formula $I(JugarTenis)=H({\displaystyle \frac{9}{14},\frac{5}{14}})=0,94$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+y calcularemos las ganancias de información que proporciona cada atributo:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Tabla_ganancia.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es claro que el atributo 
+\emph on
+Previsión
+\emph default
+ proporciona mayor ganancia y empezaremos por él y construiremos un árbol
+ de decisión parcial resultante de esta elección (Fig.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:11"
+
+\end_inset
+
+)):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:11"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename arbolinicio.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora examinaremos los restantes atributos, para los casos no clasificados
+ correspondientes a cada nodo (D1, D2,D8,D9,D11 para 
+\emph on
+soleado
+\emph default
+ y D4, D5,D6,D10,D14 para 
+\emph on
+lluvioso
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+El atributo 
+\emph on
+Humedad 
+\emph default
+esa ahora el que aporta más ganancia de información para el nodo 
+\emph on
+Soleado
+\emph default
+ y 
+\emph on
+Humedad
+\emph default
+ o 
+\emph on
+Temperatura
+\emph default
+ para 
+\emph on
+Lluvioso
+\emph default
+ como se muestra en las tablas siguientes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename secondtree.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename tertree.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la ejecución del algoritmo nos quedan dos casos [D5,D6] sin clasificar
+ por 
+\emph on
+falta de atributos
+\emph default
+, en cuyo caso se aplica la función mayorante y así llegamos al árbol de
+ clasificación final:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename final_tree.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De manera que se han clasificado finalmente los días como se muestra en
+ la tabla:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename tabla-clas.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problemas en árboles de decisión.
+\end_layout
+
+\begin_layout Subsection
+Generalización de los árboles de decisión.
+\end_layout
+
+\begin_layout Standard
+Fácilmente se puede generalizar lo anteriormente expuesto clasificaciones
+ no binarias como grande, mediano, pequeño.
+ Para ello utilizaremos la generalización de la entropía binaria a variables
+ que pueden tomar 
+\begin_inset Formula $n>2$
+\end_inset
+
+ valores del modo siguiente:
+\begin_inset Formula 
+\[
+H(p_{1},..,p_{n})=-{\displaystyle \sum_{i=1}^{n}}p(v_{1})log_{2}(p(v_{1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Complejidad.
+\end_layout
+
+\begin_layout Standard
+La búsqueda exhaustiva de un árbol de decisión es un problema cuya solución
+ óptima no puede garantizarse para la mayoría de los casos, dado que su
+ complejidad es NP .
+ Por ejemplo, para un problema en el que los ejemplos estén descritos por
+ n atributos booleanos existirían 
+\begin_inset Formula $2^{2^{n}}$
+\end_inset
+
+ funciones posibles , como hemos visto antes.
+ 
+\end_layout
+
+\begin_layout Standard
+Frente a este problema, resulta no ya conveniente, sino necesario introducir
+ alguna preferencia (
+\emph on
+sesgo
+\emph default
+) sobre las funciones.
+\end_layout
+
+\begin_layout Standard
+Esta preferencia puede ser de dos tipos:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+preferencia algorítmica
+\emph default
+: ordena heurísticamente las hipótesis, para recorrer el espacio llegando
+ antes a las que se espera que sean mejores (p.ej.: en 
+\noun on
+ID3
+\noun default
+, el atributo con más ganancia de información a la raíz)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+preferencia de representación
+\emph default
+: modelos simples, lineales, nodos con un solo atributo, nodos con combinaciones
+ de varios atributos, ..
+\end_layout
+
+\begin_layout Standard
+El 
+\emph on
+sesgo 
+\emph default
+no es malo.
+ Es imprescindible.
+ ¿Cuál es mejor, en cada caso?ç
+\end_layout
+
+\begin_layout Subsection
+Desconocimiento de la solución óptima.
+\end_layout
+
+\begin_layout Standard
+Además de la complejidad, desconocemos la solución correcta.
+ Solo conocemos parte de ella, los datos de entrenamiento, y tenemos que
+ “inventar” el resto ...
+\end_layout
+
+\begin_layout Standard
+Hemos de suponer que el sesgo guía la búsqueda hacia el objetivo ...
+ pero al final, ¿cómo podemos evaluar la calidad del árbol generado?
+\end_layout
+
+\begin_layout Standard
+Debemos usar datos independientes de los de entrenamiento para evaluar la
+ hipótesis:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename entrena.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Sobreajuste.
+\end_layout
+
+\begin_layout Standard
+Un comportamiento típico en aprendizaje automático que ya hemos examinado
+ brevemente (no solo en árboles de decisión) es el siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sobrajus.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+se observa que a medida que se reduce el 
+\emph on
+error de entrenamiento -- 
+\emph default
+sobre datos de entrenamiento
+\emph on
+- , aumenta el error
+\emph default
+ de generalización sobre datos desconocidos.
+ Se produce un 
+\series bold
+\emph on
+sobreajuste
+\series default
+\emph default
+ por causas diversas que ya hemos mencionado de las cuales quizá la más
+ importante sea el “ruido” de los datos de entrenamiento que, como se ve
+ en la figura, puede provocar mayores errores al hacer más complejo el árbol:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ruido.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Existe por esto el llamado error de 
+\emph on
+sobreajuste.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+ID3
+\noun default
+ 
+\emph on
+prefiere
+\emph default
+ árboles pequeños, aunque fallen en algún caso de entrenamiento (como en
+ el ejemplo que hemos desarrollado).
+\end_layout
+
+\begin_layout Standard
+Una forma obvia de reducir el tamaño del árbol es evitar que crezca:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+IF (null examples) THEN Hoja  IF (POCOS examples) THEN Hoja
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ID3 hace eso y además:
+\end_layout
+
+\begin_layout Itemize
+Estima (estadísticamente, chi-cuadrado) la ganancia de información de un
+ atributo aleatorio
+\end_layout
+
+\begin_layout Itemize
+La ganancia de información del atributo que se elige como mejor debe ser
+ la de mayor de todas las obtenidas con los atributos presentes en los datos,
+ y además debe ser superior a la ganancia estimada para el atributo aleatorio
+\end_layout
+
+\begin_layout Itemize
+En caso contrario, ID3 para el crecimiento recursivo y forma una hoja.
+\end_layout
+
+\begin_layout Itemize
+Con muestras pequeñas es más probable que el “mejor” no mejore al aleatorio.
+\end_layout
+
+\begin_layout Subsection
+Poda de error reducido.
+\end_layout
+
+\begin_layout Standard
+ID3 utiliza la 
+\emph on
+poda
+\emph default
+ para reducir el error de sobreajuste.
+ Para ello considera que cada nodo en el árbol de decisión es un candidato
+ para ser podado.
+ 
+\end_layout
+
+\end_body
+\end_document

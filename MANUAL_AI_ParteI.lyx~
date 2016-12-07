@@ -159,7 +159,7 @@ End
 \quotes_language french
 \papercolumns 1
 \papersides 2
-\paperpagestyle plain
+\paperpagestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -239,6 +239,16 @@ filename "AI_5.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "AI_6.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "AI_problemas.lyx"
 
 \end_inset
 

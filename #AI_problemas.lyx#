@@ -1,0 +1,1847 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+\addto\captionsspanish{%
+\renewcommand\chaptername{Tema}}
+\setcounter{chapter}{0}
+\pagestyle{plain} 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\fontsize{16pt}{18pt}\selectfont\mdseries}
+  {\MakeUppercase{\chaptertitlename}\ \thechapter}{18pt}{\MakeUppercase}
+\titleformat{\section}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\itshape}{\thesubsection}{1em}{}
+\titlespacing*{\section} {0pt}{0pt}{2.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{0pt}{1.5ex plus .2ex}
+
+% used for multi-column text
+\usepackage{multicol}
+\usepackage{inputenc}
+\end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-starred
+endnotes
+hanging
+minimalistic
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #ffffff
+\end_branch
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Problemas de búsqueda.
+\end_layout
+
+\begin_layout Section
+
+\size footnotesize
+Considera el problema de buscar la salida en un laberinto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename problema1.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La casilla de comienzo, marcada como I, es la (1,1).
+ El objetivo es llegar a la casilla de salida S, situada en la posición
+ (3,3), en el 
+\emph on
+menor número de movimientos
+\emph default
+.
+ Desde cada casilla sólo se podrá acceder a las casillas adyacentes que
+ no tengan un muro entre medias (línea gruesa).
+ Por ejemplo, desde la casilla (2,1) sólo se puede acceder a la (2,2), y
+ a la (1,1).
+ El orden de exploración de las acciones será 
+\emph on
+derecha,
+\emph default
+ 
+\emph on
+abajo
+\emph default
+, 
+\emph on
+izquierda
+\emph default
+, 
+\emph on
+arriba
+\emph default
+.
+ En caso de empate se explora 
+\emph on
+primero el nodo que ha sido generado antes
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Define una heurística admisible para este problema
+\end_layout
+
+\begin_layout Enumerate
+¿Es monótona?
+\end_layout
+
+\begin_layout Enumerate
+Usa dicha heurística en la búsqueda de una solución a este laberinto usando
+ A* y búsqueda-en-grafo.
+\end_layout
+
+\begin_layout Enumerate
+¿Garantiza dicha estrategia encontrar la solución óptima para cualquier
+ laberinto de este tipo? ¿Y para este laberinto en particular?
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solución:
+\end_layout
+
+\begin_layout Enumerate
+Heurística: Una posible es la suma de las distancias horizontal y vertical
+ hasta la salida: 
+\begin_inset Formula $h(n)=|x_{n}-\textrm{S}_{x}|+|y_{n}-\textrm{S}_{y}|$
+\end_inset
+
+ que es evidentemente admisible ya que
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En los caminos sin muro el número de movimientos será g(n)=
+\begin_inset Formula $|x_{n}-\textrm{S}_{x}|+|y_{n}-\textrm{S}_{y}|=h(n)$
+\end_inset
+
+ y .
+ P.e.
+ en (2,1) se requieren 3 movimientos=|2-3|+|1-3|
+\end_layout
+
+\begin_layout Itemize
+En los caminos con muro 
+\begin_inset Formula $h(n)=|x_{n}-\textrm{S}_{x}|+|y_{n}-\textrm{S}_{y}|\leq g(n)$
+\end_inset
+
+ .
+ P.e.
+ en (1,3) se requieren 4 movimientos y h(1,3)=|1-3|+|3-3|=0
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+El coste de cualquier movimiento legal es 1 y como 
+\begin_inset Formula $h$
+\end_inset
+
+ en cualquier movimiento varía en una unidad y solo una : Ej: 
+\begin_inset Formula $(2,1)\rightarrow(2,2)$
+\end_inset
+
+ 
+\begin_inset Formula $h=|2-3|+|2-2|=1.$
+\end_inset
+
+ Esto implica que
+\begin_inset Formula 
+\[
+h(n)\leq C(n\rightarrow n')+h(n')\Rightarrow h\textrm{ es monótona.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Usaremos el algoritmo de búsqueda en grafos (ver figura).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sol1.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Si ya que es una búsqueda completa porque:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+es
+\emph on
+ monótona
+\end_layout
+
+\begin_layout Itemize
+usa búsqueda en 
+\emph on
+grafo
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+
+\size small
+Realizar una búsqueda A* en el siguiente caso:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ejeA.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Recordemos que la búsqueda A* es como la voraz, pero utilizando la función
+ 
+\begin_inset Formula $f(n)=g(n)+h(n)$
+\end_inset
+
+ donde 
+\begin_inset Formula $g(n)$
+\end_inset
+
+: coste hasta el nodo n desde S y
+\begin_inset Formula $h(n)$
+\end_inset
+
+: coste (heurístico) desde el nodo n hasta el G.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+En cada etapa elige el camino con menor valor de 
+\begin_inset Formula $f(n)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+El espacio de estados es diferente del espacio de búsqueda.
+\end_layout
+
+\begin_layout Section
+
+\size small
+Considera el problema de las Torres de Hanoi.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+En él se parte del estado en el que N discos están apilados en orden de
+ tamaño en la varilla 1.
+ Por ejemplo, para N=3
+\size footnotesize
+.
+\end_layout
+
+\begin_layout Standard
+El objetivo es, alcanzar el estado final en el que los N discos están apilados
+ en orden en la varilla 3.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename problem2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las acciones permitidas son: 
+\end_layout
+
+\begin_layout Itemize
+Mover disco superior (si lo hubiera) de varilla 1 a varilla 2 
+\end_layout
+
+\begin_layout Itemize
+Mover disco superior (si lo hubiera) de varilla 1 a varilla 3 
+\end_layout
+
+\begin_layout Itemize
+Mover disco superior (si lo hubiera) de varilla 2 a varilla 1 
+\end_layout
+
+\begin_layout Itemize
+Mover disco superior (si lo hubiera) de varilla 2 a varilla 3 
+\end_layout
+
+\begin_layout Itemize
+Mover disco superior (si lo hubiera) de varilla 3 a varilla 1 
+\end_layout
+
+\begin_layout Itemize
+Mover disco superior (si lo hubiera) de varilla 3 a varilla 2 
+\end_layout
+
+\begin_layout Standard
+Se permite la mover un disco de varilla solo si la varilla destino se encuentra
+ vacía o el disco superior de dicha varilla es mayor que el que queremos
+ mover.
+ Por tanto el número de acciones posibles desde cada estado puede variar.
+ El orden de exploración de las acciones será el orden en el que están enumerada
+s en la lista de arriba.
+ 
+\series bold
+En caso de empate se explora primero el nodo que ha sido generado antes
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Define una heurística admisible para el problema general de N discos y tres
+ varillas, en la que el objetivo es llevar todos los discos a la varilla
+ 3.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solución.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Representación de estados
+\series default
+ : Un estado puede representarse como una lista con los discos que hay en
+ cada uno de los postes.
+ En caso de tres postes, tenemos una lista con tres sublistas.
+ Cada disco viene representado con un identificador que indica además su
+ diámetro.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Estado: 
+\begin_inset Formula $(P_{1},P_{2},P_{3})$
+\end_inset
+
+, donde 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+(i = 1, 2, 3) es una lista de valores entre 1 y N ordenados por diámetro
+ creciente.
+ 
+\begin_inset Formula $P_{i}=[\xi|L_{i}]$
+\end_inset
+
+ donde separamos el disco superior de la pila 
+\begin_inset Formula $\xi$
+\end_inset
+
+ del resto 
+\begin_inset Formula $L_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Estado inicial: ((N, N-1, .
+ .
+ .
+ , 5,4,3,2,1) ()()) ya que siempre estarán más próximos a la base los de
+ mayor diámetro.
+ 
+\end_layout
+
+\begin_layout Itemize
+Estado final: (()()(N, N-1,, ..., 5,4,3,2,1)) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Existe un único operador, 
+\begin_inset Formula $Mover(P_{i}\rightarrow P_{j})$
+\end_inset
+
+ que mueve un disco del poste
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ al poste 
+\begin_inset Formula $P_{j}$
+\end_inset
+
+ , por lo que i,j ∈ [1, 2, 3], i 
+\begin_inset Formula $\neq j$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Las restricciones del operador son: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+1.
+\begin_inset Formula $Pi\neq[]$
+\end_inset
+
+: el palo i - origen del movimiento - no puede estar vacío
+\end_layout
+
+\begin_layout Standard
+2.
+ 
+\begin_inset Formula $(P_{j}=[]$
+\end_inset
+
+)
+\begin_inset Formula $\lor$
+\end_inset
+
+ ( para 
+\begin_inset Formula $P_{i}=[x|L_{i}],\;P_{j}=[y|L_{j}],\:y\leq x$
+\end_inset
+
+): el palo de destino bien está vacío o bien el disco superior de la lista
+ de discos en el palo - 
+\begin_inset Formula $L_{j}$
+\end_inset
+
+ - de destino tiene un diámetro 
+\begin_inset Formula $y>x$
+\end_inset
+
+ el superior de la lista del palo origen, donde 
+\begin_inset Formula $L_{i}$
+\end_inset
+
+ y 
+\emph on
+
+\begin_inset Formula $L_{j}$
+\end_inset
+
+
+\emph default
+ contienen la lista de discos que hay en 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ y 
+\begin_inset Formula $P_{j}$
+\end_inset
+
+ respectivamente, pero 
+\emph on
+eliminando el primer disco
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Los efectos del operador 
+\begin_inset Formula $Mover(P_{i}\rightarrow P)$
+\end_inset
+
+, donde 
+\begin_inset Formula $P_{i}=[x|L_{i}],\;P_{j}=[y|L_{j}]$
+\end_inset
+
+ son:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{i}=[L_{i}]$
+\end_inset
+
+: elimina el disco superior 
+\begin_inset Formula $x$
+\end_inset
+
+ y pasa de 
+\begin_inset Formula $[x|L_{i}]\rightarrow[L_{i}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{j}=[x|y|L_{j}]$
+\end_inset
+
+.
+ Añade el disco 
+\begin_inset Formula $x$
+\end_inset
+
+ superior y pasa de 
+\begin_inset Formula $[y|L_{i}]\rightarrow[x|y|L_{i}]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Para el caso de tres discos, podemos representar lo anterior del siguiente
+ modo:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename mover.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename estamover.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename finalstate.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Heurística:
+\series default
+ hay muchas respuestas correctas.
+ Una posibilidad es N - número de discos - menos los del la tercera varilla.
+ Como el objetivo requiere que todos los discos estén en la tercera varilla,
+ se requieren al menos tantos movimientos para alcanzar el objetivo.
+ Para generar la heurísıstica, hemos
+\emph on
+ relajando 
+\emph default
+el problema (eliminando alguna restricción del operador 
+\emph on
+Mover
+\emph default
+), en este caso, la relajación del problema consiste en que los discos se
+ puedan colocar en cualquier posición de la varilla, no únicamente en lo
+ alto.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+La hurística en el problema relajado es 
+\emph on
+el número de discos que no están en la varilla 3
+\emph default
+.
+ Es una heurística admisible para el problema original.
+ En el casode N=2:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename hurihanoi.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+El 
+\series bold
+árbol de estados 
+\series default
+es el siguiente , cada estado se representará por una terna 
+\begin_inset Formula $(l_{1},l_{2},l_{3})$
+\end_inset
+
+ donde cada 
+\begin_inset Formula $l_{i}$
+\end_inset
+
+ es una 
+\begin_inset Formula $lista$
+\end_inset
+
+ entera que contienen la identidad y el orden de los discos.
+ P.e.
+ en el estado incial A tendremos que 
+\begin_inset Formula $([1,2],[],[])$
+\end_inset
+
+y el 
+\noun on
+test-objetivo
+\noun default
+ es ¿Es el estado 
+\begin_inset Formula $([],[],[1,2])$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename hanoistate.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+
+\size footnotesize
+Hemos heredado un reloj de nuestro antepasado, que había trabajado en Londres
+ con Charles Babbage y Ada Lovelace en el problema de cómo programar la
+ máquina analítica diseñada por el primero.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename problemo3.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las etiquetas en esta esfera de reloj están descolocadas.
+ Para colocarlas de nuevo, es necesario intercambiarlas dos a dos hasta
+ formar el orden correcto.
+ El coste de intercambiar dos etiquetas es la suma de los valores numéricos
+ de dichas etiquetas.
+\end_layout
+
+\begin_layout Description
+a.
+ Formaliza los estados de búsqueda.
+\end_layout
+
+\begin_layout Standard
+Utilizando la formalización propuesta:
+\end_layout
+
+\begin_layout Description
+b.
+ Especifica las acciones para generar sucesores y su coste.
+\end_layout
+
+\begin_layout Description
+c.
+ Especifica el estado inicial.
+\end_layout
+
+\begin_layout Description
+d.
+ Especifica el test objetivo.
+\end_layout
+
+\begin_layout Description
+e.
+ Define una heurística admisible no trivial para resolver el problema y
+ demuestra su admisibilidad.
+\end_layout
+
+\begin_layout Description
+f.
+ ¿Garantiza A* con esta heurística y sin eliminación de estados repetidos
+ encontrar la solución óptima? Explica la razón.
+\end_layout
+
+\begin_layout Description
+g.
+ Detalla el árbol generado por A* sin eliminación de estados repetidos.
+ Indica para cada nodo los valores g + h = f y el orden en el que el intento
+ de exploración se realiza (es decir, los nodos repetidos y la meta también
+ reciben numeración).
+ En caso de que haya empates, se elegirá primero en la exploración el nodo
+ que haya sido generado antes.
+\end_layout
+
+\begin_layout Description
+h.
+ ¿Encuentra A* la solución óptima en este ejemplo? Justifica tu respuesta,
+ poniéndola en relación con tu respuesta al apartado (f).
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Solución:
+\end_layout
+
+\begin_layout Description
+a.
+ Los estados posibles se representan por la 4-tupla (
+\begin_inset Formula $H_{1},H_{2},H_{3},H_{4})$
+\end_inset
+
+ son por tanto 
+\begin_inset Formula 
+\[
+N\text{º de estados posibles=}4!=24
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+b.
+ Siendo el estado inicial (3,12,6,9) y
+\end_layout
+
+\begin_layout Description
+c.
+ El operador se llamará 
+\begin_inset Formula $Intercambiar(H_{i}\leftrightarrow H_{j}):$
+\end_inset
+
+ 
+\begin_inset Formula $(H_{i},H_{j})\leftrightarrow(H_{j},H_{i})\longleftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $(i\neq j)\:i,j=1,2,3,4$
+\end_inset
+
+ y su coste será: 
+\begin_inset Formula $c(H_{i},H_{j})=H_{i}+H_{j}.$
+\end_inset
+
+
+\series bold
+ 
+\series default
+El número de operadores posibles es 
+\begin_inset Formula $\left(\begin{array}{c}
+4\\
+2
+\end{array}\right)=6$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(H_{1},H_{2})\leftrightarrow(H_{2},H_{1})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(H_{1},H_{3})\leftrightarrow(H_{3},H_{1})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(H_{1},H_{4})\leftrightarrow(H_{4},H_{1})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(H_{2},H_{3})\leftrightarrow(H_{3},H_{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(H_{2},H_{4})\leftrightarrow(H_{4},H_{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(H_{3},H_{4})\leftrightarrow(H_{4},H_{3})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\series bold
+d.
+ 
+\series default
+Test objetivo
+\series bold
+ 
+\begin_inset Formula $(H_{1},H_{2},H_{3},H_{4})==(9,12,3,6)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+e.
+ Una heurística posible sería la que mide la suma de horas que están fuera
+ de su posición correcta.
+ Esta heurística procede de relajar el problema eliminando la restricción
+ de que solo puedan intercambiarse dos etiquetas en cada acción.
+ Es claramente 
+\emph on
+admisible
+\emph default
+ ya que, siempre que haya algúna etiqueta fuera de su posición, habrá al
+ menos otra que también lo esté y, por tanto, el valor de h será menor o
+ igual que la suma de los valores de las etiquetas a intercambiar.
+ 
+\end_layout
+
+\begin_layout Description
+
+\series bold
+f.
+ 
+\series default
+Sí ya que si no eliminamos estados repetidos se trata de una búsqueda en
+ árbol para la cual solo se pide la condiciónn de admisibilidad.
+\end_layout
+
+\begin_layout Description
+\noindent
+\align left
+
+\series bold
+g.
+ 
+\series default
+Ver figura.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figurini.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\size footnotesize
+Tenemos dos cántaros vacíos.
+\end_layout
+
+\begin_layout Standard
+El primero tiene una capacidad de 4 litros.
+ El segundo, de 3 litros.
+ También disponemos de un grifo para llenar los cántaros de agua.
+ Los cántaros se pueden llenar completamente, o vaciar completamente.
+ También se puede verter el contenido de un cántaro en el otro hasta que
+ o bien el primero se vacíe o que el segundo se llene (lo que ocurra antes).
+ El coste de cada operación es el número de litros que se toman del grifo.
+ Inicialmente ambos cántaros están vacíos.
+ El objetivo es llegar a la siguiente situación: que el cántaro de 4 litros
+ de capacidad contenga 1 litro y que el cántaro de 3 litros quede vacío.
+\end_layout
+
+\begin_layout Standard
+Responde las siguientes cuestiones:
+\end_layout
+
+\begin_layout Description
+a.
+ Formaliza los estados de búsqueda.
+\end_layout
+
+\begin_layout Standard
+Utilizando la formalización propuesta:
+\end_layout
+
+\begin_layout Description
+b.
+ Especifica las acciones para generar sucesores: Condiciones que debe cumplir
+ el estado inicial, estado que resulta de aplicar la acción y coste.
+\end_layout
+
+\begin_layout Description
+c.
+ Especifica estado inicial.
+\end_layout
+
+\begin_layout Description
+d.
+ Especifica el test objetivo.
+\end_layout
+
+\begin_layout Description
+e.
+ Detalla el grafo de estados..
+\end_layout
+
+\begin_layout Description
+h.
+ Encuentra la solución óptima UCS.
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Solución:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Representación de estados
+\emph default
+: 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ con 
+\begin_inset Formula $x\in\left\{ 0,1,2,3,4\right\} $
+\end_inset
+
+ e 
+\begin_inset Formula $y\in\left\{ 0,1,2,3\right\} \Rightarrow$
+\end_inset
+
+Nº de estados distintos= 20.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Estado inicial:
+\emph default
+ 
+\begin_inset Formula $(0,0)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Estado final
+\emph default
+ 
+\begin_inset Formula $(1,0)$
+\end_inset
+
+: .
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Acciones
+\emph default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Llenar la jarra de 4 litros con el grifo.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: x<4 (precondición o restricción) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(x,y)\rightarrow(4,y)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Llenar la jarra de 3 litros con el grifo.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: y<3 (precondición) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(x,y)\rightarrow(x,3)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vaciar la jarra de 4 litros.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: x>0(precondición) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(x,y)\rightarrow(0,y)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vaciar la jarra de 3 litros.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: y>0(precondición) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(x,y)\rightarrow(x,0)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Llenar la jarra de 4 litros con la jarra de 3 litros.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: 
+\emph on
+
+\begin_inset Formula $y>0$
+\end_inset
+
+
+\emph default
+ (precondición) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(x,y)\rightarrow(min(x+y,4),max(0,x+y\text{–}4))$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Llenar la jarra de 3 litros con la jarra de 4 litros.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: 
+\emph on
+
+\begin_inset Formula $x>0$
+\end_inset
+
+
+\emph default
+ (precondición) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(x,y)\rightarrow(max(0,x+y-3),min(x+y,3))$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vaciar la jarra de 3 litros en la jarra de 4 litros.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: 
+\emph on
+
+\begin_inset Formula $y>0\land x+y<=4$
+\end_inset
+
+
+\emph default
+ (precondición) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(x,y)\rightarrow(min(4,x+y),0)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vaciar la jarra de 4 litros en la jarra de 3 litros.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicabilidad: 
+\emph on
+
+\begin_inset Formula $x>0\land x+y<=3$
+\end_inset
+
+
+\emph default
+ (precondición) 
+\end_layout
+
+\begin_layout Itemize
+Estado resultante:
+\begin_inset Formula $(0,max(3,x+y))$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+Test objetivo
+\emph default
+: 
+\begin_inset Formula $(x==1)\land(y==0)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Espacio de estados
+\emph default
+ y resultado de la búsqueda:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename jarritas.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\size footnotesize
+Utiliza el algoritmo minimax con poda alfa-beta
+\end_layout
+
+\begin_layout Standard
+\noindent
+para determinar el valor minimax en la raíz del árbol y la jugada óptima
+ suponiendo que el oponente es óptimo.
+ Para ello, indica el
+\emph on
+ orden de recorrido
+\emph default
+ en el árbol, 
+\emph on
+numerando los nodos visitados
+\emph default
+ junto con las 
+\emph on
+actualizaciones de los valores [
+\begin_inset Formula $\alpha,\beta$
+\end_inset
+
+]
+\emph default
+ en cada paso.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename problem5.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solución:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename podasol.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\size footnotesize
+Consideremos el juego de las tres en raya con gravedad.
+\end_layout
+
+\begin_layout Standard
+Se juega en un tablero vertical de dimensiones 3 x 3 celdas.
+ En él dos jugadores, a los que denominaremos X y O, por los símbolos que
+ aparecen en las fichas que colocan en el tablero, alternan sus movimientos.
+ Inicialmente el tablero está vacío.
+ El primer movimiento en una partida corresponde a X.
+ En cada turno, el jugador que realiza el movimiento deja caer una de sus
+ fichas en una de las columnas libres del tablero.
+ Por efecto de la gravedad las fichas caen hasta la celda desocupada más
+ baja.
+ Los movimientos se exploran comenzando por la columna libre que se encuentre
+ más a la izquierda.
+ El objetivo es colocar tres fichas alineadas (horizontal, verticalmente
+ o en diagonal) antes de que lo haga el oponente.
+\end_layout
+
+\begin_layout Standard
+Partimos de la posición intermedia del juego:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename problem6.png
+	scale 140
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+(i) ¿Quién es MAX y quién es MIN en este estado de la partida?
+\end_layout
+
+\begin_layout Description
+(ii) Realiza paso a paso el despliegue del árbol de juego para encontrar
+ la estrategia óptima de MAX mediante el algoritmo minimax con poda alfa-beta.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Para ello:
+\end_layout
+
+\begin_layout Description
+a.
+ En el árbol de juego, dibuja únicamente los nodos explorados, indicando
+ dónde se realiza poda.
+\end_layout
+
+\begin_layout Description
+b.
+ Indica, para cada nodo, el estado del tablero y si el nodo es MAX o MIN.
+\end_layout
+
+\begin_layout Description
+c.
+ Indica en los nodos terminales el valor de la función de utilidad.
+\end_layout
+
+\begin_layout Description
+d.
+ Para los nodos internos, indica en cada paso los valores del intervalo
+ [
+\begin_inset Formula $\alpha$
+\end_inset
+
+,
+\begin_inset Formula $\beta$
+\end_inset
+
+], etiquetándolo con un entero que se incremente cada vez que este intervalo
+ se propague hacia algún nodo hijo o se actualice con la información que
+ proviene de algún nodo hijo.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+(iii) ¿Cuál es la estrategia minimax para el jugador que tiene el turno?
+ ¿Cuál es el resultado del juego, de acuerdo con esta estrategia?
+\end_layout
+
+\begin_layout Description
+(iv) ¿Se puede formalizar este juego como un juego de suma 0? ¿Por qué?
+\end_layout
+
+\begin_layout Description
+(v) ¿Garantiza mimimax encontrar la estrategia óptima en este juego? ¿Por
+ qué?
+\end_layout
+
+\begin_layout Description
+Solución:
+\end_layout
+
+\begin_layout Description
+
+\series bold
+(i) 
+\series default
+MAX es O porque es el primero en jugar ya que en la posición inicial hay
+ 3 X's y 2 0's.
+\end_layout
+
+\begin_layout Description
+\noindent
+\align left
+(ii) Partimos de la posición de la figura y exploraremos en sentido 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+comenzando por (1,2).
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 3x1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+(iii) En este caso, 0 no puede ganar.
+ La estrategia óptima para 0 - resaltada - es contingente y depende de las
+ jugadas de X.
+ Si X es un jugador infalible, cualquier estrategia conduce a la derrota
+ de 0.
+\end_layout
+
+\begin_layout Description
+(iv) Se trata de un juego de suma 0 ya que:
+\end_layout
+
+\begin_layout Itemize
+Si gana 0 para este el juego vale +1 y -1 para X.
+\end_layout
+
+\begin_layout Itemize
+Si no gana ninguno de los dos, el valor del juego es 0 para ambos.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(V) 
+\series default
+Minimax garantiza encontrar una estrategia óptima siempre que los jugadores
+ sean infalibles.
+ En este caso, 0 no lo ha sido y si X lo es, la única alternativa para 0
+ es perder.
+\end_layout
+
+\begin_layout Section
+
+\size footnotesize
+Consideremos un juego en el cual los jugadores forman palabras.
+\end_layout
+
+\begin_layout Standard
+El jugador A consigue puntos por las vocales y el 
+\emph on
+B
+\emph default
+ por las 
+\emph on
+consonantes
+\emph default
+ de la palabra formada en el nodo terminal.
+ Consideremos el árbol de juego para un estado del juego en el que tiene
+ el turno el jugador B.
+\end_layout
+
+\begin_layout Standard
+a) Diseña una función de evaluación para completar la definición el juego
+ y explica su significado.
+ 
+\end_layout
+
+\begin_layout Standard
+b) Utiliza el algoritmo minimax con poda alfa-beta para determinar cuál
+ es el valor minimax en el nodo raíz del ábol de juego y cuál es la jugada
+ óptima en este estado del juego para B.
+\end_layout
+
+\begin_layout Standard
+C) Indica con una etiqueta numérica el orden de recorrido de los nodos en
+ el árbol.
+ En cada nodo interno visitado, indica los valores [
+\begin_inset Formula $\alpha$
+\end_inset
+
+,
+\begin_inset Formula $\beta$
+\end_inset
+
+].
+ En los nodos finales visitados (y únicamente en ellos) indica el valor
+\end_layout
+
+\begin_layout Standard
+de la función de evaluación.
+ Indica asimismo los nodos en los que hay poda.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename problema7.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solución:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(a) 
+\series default
+la función de evaluación para 
+\emph on
+B
+\emph default
+ será 
+\begin_inset Formula $n\text{º}\:de\:consonantes-n\text{º}\:de\:vocales$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(a) 
+\series default
+El valor en el nodo es 0, como se ve en el árbol siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename problema7.1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -187,16 +187,6 @@ Además, hemos elegido nuestro desplazamiento por los nodos sin una estrategia
  nuestra búsqueda con una estrategia definida.
 \end_layout
 
-\begin_layout Section
-Búsqueda primero en profundidad (DFS).
-\end_layout
-
-\begin_layout Standard
-Este tipo de búsqueda genera los sucesores de un nodo uno por uno aplicando
- operadores individuales y se deja una marca en el nodo indicando que es
- posible que puedan aplicarse otros operadores al mismo nodo.
-\end_layout
-
 \begin_layout Standard
 Imaginemos la búsqueda en un árbol como un proceso minero en que deben encontrar
 se ciertos minerales que están en el interior de una montaña en posiciones
@@ -265,6 +255,10 @@ status open
 
 \end_layout
 
+\begin_layout Section
+Búsqueda primero en profundidad (DFS).
+\end_layout
+
 \begin_layout Standard
 Centrémonos en el primer tipo de búsqueda: la 
 \emph on
@@ -277,6 +271,12 @@ búsqueda primero en profundidad
 completo
 \emph default
  de búsqueda.
+\end_layout
+
+\begin_layout Standard
+Este tipo de búsqueda genera los sucesores de un nodo uno por uno aplicando
+ operadores individuales y se deja una marca en el nodo indicando que es
+ posible que puedan aplicarse otros operadores al mismo nodo.
 \end_layout
 
 \begin_layout Standard
@@ -293,7 +293,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename LIFO.png
-	scale 50
+	scale 40
 
 \end_inset
 
@@ -311,16 +311,24 @@ status open
 \end_layout
 
 \begin_layout Standard
-Comenzando por el nodo inicial, expandiremos en una primera etapa hasta
- la frontera 
+Comenzando por el nodo inicial - 
+\series bold
+\emph on
+S
+\series default
+\emph default
+ -, expandiremos en una primera etapa hasta la frontera 
 \begin_inset Formula $(d,p,e)$
 \end_inset
 
 .
  Hemos de profundizar inicialmente sobre uno solo de ellos, sin embargo
  los tres nodos son igualmente válidos para seguir profundizando.
- Supongamos que, como regla general, elegimos el situado más a la izquierda
- en el árbol - d - y sobre este expandiremos en cualquier profundidad.
+ Supongamos que, 
+\emph on
+como regla general, elegimos el situado más a la izquierda en el árbol
+\emph default
+ - d - y sobre este expandiremos en cualquier profundidad.
  En la figura se dibujan los diferentes caminos explorados hasta encontrar
  el objetivo 
 \series bold
@@ -358,7 +366,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ejr1.png
-	scale 50
+	scale 40
 
 \end_inset
 
@@ -445,8 +453,8 @@ factor de ramificación
 número de hijos de cualquier nodo.
 
 \emph default
- Cuando - como es lo habitual - no es el mismo en todos, se toma un valor
- promedio, esto es, en dichos casos el 
+ Cuando - como es lo habitual en árboles no uniformes - no es el mismo en
+ todos, se toma un valor promedio, esto es, en dichos casos el 
 \series bold
 \emph on
 factor de ramificación
@@ -462,11 +470,23 @@ a una profundidad determinada
 \end_layout
 
 \begin_layout Standard
-- Sea 
+Sea 
 \begin_inset Formula $T$
 \end_inset
 
- el número de nodos del árbol no uniforme, como en un árbol uniforme:
+ el número de nodos del árbol no uniforme, 
+\end_layout
+
+\begin_layout Standard
+- En un árbol uniforme el número de nodos y la profundidad del árbol - Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9"
+
+\end_inset
+
+ - se relacionan por:
 \begin_inset Formula 
 \[
 T=1+b+b^{2}+...+b^{d}
@@ -474,21 +494,33 @@ T=1+b+b^{2}+...+b^{d}
 
 \end_inset
 
-- haremos lo mismo con el árbol no uniforme para un factor promedio 
-\begin_inset Formula $b^{*}$
+- Haremos lo mismo con el árbol no uniforme - Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:10"
+
+\end_inset
+
+ - para 
+\emph on
+un factor promedio
+\emph default
+ 
+\begin_inset Formula $\bar{b}$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{equation}
-T=1+b^{*}+(b^{*})^{2}+...+(b^{*})^{d}
+T=1+\bar{b}+(\bar{b})^{2}+...+(\bar{b})^{d}
 \end{equation}
 
 \end_inset
 
-
+Siendo
 \series bold
-m
+ d
 \series default
  es el número máximo de niveles del árbol y el problema puede tener soluciones
  a varias profundidades.
@@ -507,6 +539,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:9"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename complex.png
 	scale 50
@@ -530,7 +569,7 @@ status open
 Siendo esto así, el número de nodos en el árbol será:
 \begin_inset Formula 
 \[
-1+b+b^{2}+...+b^{m}=\mathbf{\frac{b^{m+1}-1}{b-1}}
+1+b+b^{2}+...+b^{d}=\mathbf{\frac{b^{d+1}-1}{b-1}}
 \]
 
 \end_inset
@@ -559,6 +598,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:10"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename calcul.png
 	scale 50
@@ -592,7 +638,7 @@ Como hemos dicho empezaremos por aquellos que tengan un prefijo izquierdo
 un tiempo de proceso
 \emph default
  
-\begin_inset Formula $O(b^{m})$
+\begin_inset Formula $\mathbf{O(b^{d})}$
 \end_inset
 
 .
@@ -614,16 +660,23 @@ en el nivel en que estamos.
 
 \begin_layout Standard
 Puede haber
-\begin_inset Formula $b$
+\begin_inset Formula $\mathbf{b}$
 \end_inset
 
- sucesores en cada nivel y como mucho 
-\begin_inset Formula $m$
-\end_inset
-
- niveles y como solo hay hermanos en el camino hacia el nodo raíz, será
  
-\begin_inset Formula $O(b\cdot m)$
+\emph on
+sucesores en cada nivel 
+\emph default
+y como mucho 
+\begin_inset Formula $\mathbf{d}$
+\end_inset
+
+ 
+\emph on
+niveles
+\emph default
+ y como solo hay hermanos en el camino hacia el nodo raíz, será 
+\begin_inset Formula $\mathbf{O(b\cdot d)}$
 \end_inset
 
 .
@@ -636,14 +689,18 @@ Completitud.
 
 \begin_layout Standard
 La dificultad aquí estriba en el valor de 
-\begin_inset Formula $m$
+\begin_inset Formula $\mathbf{d}$
 \end_inset
 
 .
  Si 
-\begin_inset Formula $m$
+\series bold
+
+\begin_inset Formula $d$
 \end_inset
 
+
+\series default
  es infinito, el algoritmo no es completo, por tanto debemos evitar la existenci
 a de 
 \emph on
@@ -677,12 +734,20 @@ Optimalidad.
 \begin_layout Standard
 Supongamos que el coste de cada acción es 1.
  El 
+\series bold
 \emph on
 coste mínimo
+\series default
 \emph default
- equivale al de la 
+ 
+\emph on
+equivale al de la
+\emph default
+ 
+\series bold
 \emph on
 solución más superficial
+\series default
 \emph default
  (menor profundidad desde el nodo raíz).
  Tal como lo hemos presentado, 
@@ -692,10 +757,31 @@ no
 \series default
 \emph default
  garantiza el coste mínimo, sino que 
+\series bold
 \emph on
 encuentra la solución más a la izquierda con independencia de
 \emph default
- su profundidad o coste.
+ su profundidad
+\series default
+ o coste.
+
+\series bold
+ No
+\series default
+ es por tanto óptima.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -711,7 +797,13 @@ En el capítulo anterior hemos realizado una estrategia de búsqueda que generab
 \emph on
 Búsqueda Primero en Profundidad
 \emph default
- (BFS).
+ (
+\series bold
+\emph on
+DFS
+\series default
+\emph default
+).
 \end_layout
 
 \begin_layout Standard
@@ -880,7 +972,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename complex2.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -924,7 +1016,11 @@ Por tanto ahora la complejidad temporal será
 \begin_inset Formula $s$
 \end_inset
 
-- a que se encuentre la solución más superficial.
+- a la que se encuentre 
+\emph on
+la solución más superficial
+\emph default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -934,14 +1030,6 @@ Complejidad espacial.
 \end_layout
 
 \begin_layout Standard
-En este caso puede haber
-\begin_inset Formula 
-\[
-1+b+b^{2}+...++b^{s}=\mathbf{\frac{b^{s+1}-1}{b-1}}=O(b^{s})
-\]
-
-\end_inset
-
 Para analizar el tamaño de la frontera, preguntémonos ¿qué había en la frontera
  cuando alcanzamos la solución?.
  Es claro que si el nivel en que hallamos la solución es 
@@ -956,7 +1044,23 @@ Para analizar el tamaño de la frontera, preguntémonos ¿qué había en la fron
  tiene hijos en los niveles inferiores.
  Por tanto la frontera se parece al último nivel que expandimos, quizá un
  nivel por debajo de este.
- Será exponencial, aproximadamente como el último nivel : 
+ En este caso 
+\emph on
+el número de nodos en la frontera
+\emph default
+ puede ser:
+\begin_inset Formula 
+\[
+\mathbf{b^{s}}=\mathbf{O(b^{s})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Será exponencial, aproximadamente como el último nivel : 
 \begin_inset Formula $\mathbf{O}(\mathbf{b^{s})}$
 \end_inset
 
@@ -972,7 +1076,15 @@ Es claro que si existe alguna solución, esta se ubica en un nivel
 \emph on
 finito
 \emph default
-, por tanto es completo.
+, por tanto 
+\series bold
+es
+\series default
+ 
+\series bold
+completo
+\series default
+.
  Al contrario de los prefijos más a la izquierda que pueden ser infinitos,
  los prefijos en altura son finitos.
 \end_layout
@@ -982,8 +1094,38 @@ Optimalidad.
 \end_layout
 
 \begin_layout Standard
-Si los costos son generales, no es óptimo, pero si los costes son todos
- 1, sí es óptimo.
+Si 
+\emph on
+los costos son generales, no es óptimo
+\emph default
+, pero 
+\emph on
+si los costes son todos 1
+\emph default
+, 
+\series bold
+sí 
+\series default
+\emph on
+es
+\series bold
+ óptimo
+\series default
+\emph default
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -991,7 +1133,15 @@ Búsqueda en profundidad iterativa.
 \end_layout
 
 \begin_layout Standard
-Se trata de tener lo mejor de los dos tipos de búsqueda: DFS y BFS.
+Se trata de tener lo mejor de los dos tipos de búsqueda:
+\emph on
+ DFS
+\emph default
+ y 
+\emph on
+BFS
+\emph default
+.
  La idea que guía a los algoritmos de profundidad iterativa es conseguir
  las ventajas espaciales de DFS con las temporales de BFS y las garantías
  de esta respecto a completitud y optimalidad.
@@ -1058,7 +1208,15 @@ Justificación.
 \end_layout
 
 \begin_layout Standard
-Como hemos visto, el número de nodos expandidos en BFS es:
+Como hemos visto, el número de nodos expandidos hasta el nivel 
+\begin_inset Formula $s$
+\end_inset
+
+ en 
+\emph on
+BFS
+\emph default
+ es:
 \begin_inset Formula 
 \[
 N_{BF}=1+b+b^{2}+...++b^{s}=\mathbf{\frac{b^{s+1}-1}{b-1}}
@@ -1070,9 +1228,19 @@ N_{BF}=1+b+b^{2}+...++b^{s}=\mathbf{\frac{b^{s+1}-1}{b-1}}
 \end_layout
 
 \begin_layout Standard
-Para el cálculo de los nodos expandidos en búsqueda en profundidad iterativa,
- notemos que los nodos expandidos por una búsqueda DFS completa hasta el
- nivel 
+Para el cálculo de los nodos expandidos en búsqueda en 
+\emph on
+profundidad iterativa
+\emph default
+ (
+\emph on
+IDS
+\emph default
+), notemos que los nodos expandidos por una búsqueda 
+\emph on
+DFS
+\emph default
+ completa hasta el nivel 
 \begin_inset Formula $j$
 \end_inset
 
@@ -1093,7 +1261,11 @@ En el peor de los casos, la búsqueda en profundidad iterativa cuando hay
 \begin_inset Formula $d$
 \end_inset
 
- debe ejecutar búsquedas DFS completas para profundidades hasta 
+ debe ejecutar búsquedas 
+\emph on
+DFS
+\emph default
+ completas para profundidades hasta 
 \begin_inset Formula $d$
 \end_inset
 
@@ -1136,7 +1308,11 @@ que para
 \begin_inset Formula $b=10$
 \end_inset
 
-, significa que expandimos un 11% más nodos que en BFS.
+, significa que expandimos un 11% más nodos que en 
+\emph on
+BFS
+\emph default
+.
 \end_layout
 
 \begin_layout Standard

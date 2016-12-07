@@ -1,0 +1,307 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{a4wide}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Simple example of using BibTeX
+\end_layout
+
+\begin_layout Author
+Christian Ridderström
+\end_layout
+
+\begin_layout Abstract
+This document illustrates a small example of using BibTeX.
+ It is basically intended for a novice to download and see that BibTeX works
+ on his machine.
+ 
+\series bold
+Note
+\series default
+: Both this file (
+\emph on
+simple_example.lyx
+\emph default
+) and the file with BibTeX references (
+\emph on
+references.bib
+\emph default
+) are needed, so download both and put them in the same directory.
+\end_layout
+
+\begin_layout Section
+Instructions
+\end_layout
+
+\begin_layout Standard
+In order to use BibTeX, you need to have a database with references (a 
+\emph on
+BibTeX-file
+\emph default
+, typically with the extension 
+\emph on
+.bib
+\emph default
+).
+ This example comes with such a file already, 
+\emph on
+references.bib
+\emph default
+, that you should have put in the same directory as this file (
+\emph on
+simple_example.lyx
+\emph default
+).
+ If you did the above, you should be able to view this example by using
+ the menu: 
+\bar under
+V
+\bar default
+iew
+\family sans
+\SpecialChar \menuseparator
+
+\bar under
+D
+\bar default
+VI.
+\end_layout
+
+\begin_layout Section
+Creating this example
+\end_layout
+
+\begin_layout Standard
+Here are the instructions that were followed in order to create the citations
+ in this file:
+\end_layout
+
+\begin_layout Enumerate
+To insert a 
+\series bold
+BibTeX-inset
+\series default
+, i.e.
+ the thing that will appear as your list of references in the end, first
+ move the cursor to where you want the bibliography and then use the menu:
+ 
+\bar under
+I
+\bar default
+nsert
+\family sans
+\SpecialChar \menuseparator
+
+\family default
+Lists
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+T
+\bar under
+O
+\bar default
+C
+\family sans
+\SpecialChar \menuseparator
+
+\family default
+\bar under
+B
+\bar default
+ibTeX
+\begin_inset space ~
+\end_inset
+
+Reference.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+A dialog should immediately pop up with the title 
+\emph on
+BibTeX
+\emph default
+.
+ Now you press the button 
+\series bold
+Browse
+\series default
+ and select the file 
+\emph on
+references.bib
+\emph default
+.
+ Then press 
+\series bold
+Add
+\series default
+ and the file should appear in the list of databases.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+style
+\emph default
+ used in this document is 
+\emph on
+plain
+\emph default
+, which is the default so you can just press 
+\series bold
+OK
+\series default
+ to close the dialog.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+To insert an actual citation, i.e.
+ the thing that often appear as [1], move the cursor to where you want it
+ and then use the menu: 
+\bar under
+I
+\bar default
+nsert
+\family sans
+\SpecialChar \menuseparator
+
+\bar under
+C
+\bar default
+itation
+\begin_inset space ~
+\end_inset
+
+Reference.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+or simply press 
+\series bold
+M-i c
+\series default
+.
+ This should pop up another dialog called 
+\emph on
+Citation
+\emph default
+ that contains a list of available references.
+ In particular, you should see an entry with the 
+\emph on
+BibTeX citation key
+\emph default
+ Ridderstrom:2003:LLC.
+ Double-click on that entry to add it to the list of selected references,
+ and then close the dialog.
+ This should insert a 
+\emph on
+citation-inset
+\emph default
+, like this one: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ridderstrom:2003:LLC"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+That was really it and if your system is properly configured, just run 
+\bar under
+V
+\bar default
+iew
+\family sans
+\SpecialChar \menuseparator
+
+\bar under
+D
+\bar default
+VI
+\family default
+ to see the result.
+\end_layout
+
+\end_body
+\end_document

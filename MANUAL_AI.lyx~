@@ -39,16 +39,6 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX}}
 \usepackage{titlesec}
-\titleformat{\chapter}[display]
-  {\normalfont\fontsize{16pt}{18pt}\selectfont\mdseries}
-  {\MakeUppercase{\chaptertitlename}\ \thechapter}{18pt}{\MakeUppercase}
-\titleformat{\section}
-  {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}
-  {\normalfont\fontsize{12pt}{14pt}\selectfont\itshape}{\thesubsection}{1em}{}
-\titlespacing*{\section} {0pt}{0pt}{2.3ex plus .2ex}
-\titlespacing*{\subsection}{0pt}{0pt}{1.5ex plus .2ex}
-
 % used for multi-column text
 \usepackage{multicol}
 \usepackage{inputenc}
@@ -155,11 +145,11 @@ End
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
-\defskip medskip
+\defskip smallskip
 \quotes_language french
 \papercolumns 1
-\papersides 1
-\paperpagestyle plain
+\papersides 2
+\paperpagestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -170,11 +160,12 @@ End
 \begin_body
 
 \begin_layout Title
+\noindent
 Introducción a la Inteligencia Artificial
 \end_layout
 
 \begin_layout Date
-Agosto, 2016
+Diciembre, 2016
 \end_layout
 
 \begin_layout Standard
@@ -186,94 +177,122 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Part
+Búsqueda
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset include
-LatexCommand input
+LatexCommand include
 filename "AI_1.lyx"
 
 \end_inset
 
 
 \begin_inset CommandInset include
-LatexCommand input
+LatexCommand include
 filename "AI_2.lyx"
 
 \end_inset
 
 
 \begin_inset CommandInset include
-LatexCommand input
+LatexCommand include
 filename "AI_3.lyx"
 
 \end_inset
 
 
 \begin_inset CommandInset include
-LatexCommand input
+LatexCommand include
 filename "AI_4.lyx"
 
 \end_inset
 
 
 \begin_inset CommandInset include
-LatexCommand input
+LatexCommand include
 filename "AI_5.lyx"
 
 \end_inset
 
 
 \begin_inset CommandInset include
-LatexCommand input
+LatexCommand include
 filename "AI_6.lyx"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Part
+Lógica
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
-LatexCommand input
+LatexCommand include
 filename "AI_7_1.lyx"
 
 \end_inset
 
 
 \begin_inset CommandInset include
-LatexCommand input
+LatexCommand include
 filename "AI_7_2.lyx"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Part
+Métodos bayesianos
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
-LatexCommand input
-filename "AI_7-3.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand input
-filename "AI_Apendice.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand input
+LatexCommand include
 filename "AI_8.lyx"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Part
+Aprendizaje automático
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
-LatexCommand input
+LatexCommand include
 filename "AI_9.lyx"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
-LatexCommand input
+LatexCommand include
 filename "AI_10.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Ejercicios y problemas
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "AI_problemas.lyx"
 
 \end_inset
 

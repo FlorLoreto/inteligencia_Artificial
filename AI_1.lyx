@@ -153,8 +153,8 @@ End
 \bottommargin 2cm
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \quotes_language french
 \papercolumns 1
 \papersides 1

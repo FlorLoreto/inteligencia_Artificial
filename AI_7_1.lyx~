@@ -2,7 +2,7 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass book
+\textclass extbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
 %
@@ -144,7 +144,7 @@ End
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
-\defskip medskip
+\defskip smallskip
 \quotes_language french
 \papercolumns 1
 \papersides 1
@@ -165,13 +165,19 @@ Representación.
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align left
 Un aspecto importante del la IA es la representación del mundo (modelo)
  del agente.
  Uno de los métodos posibles de representación es el basado en 
 \emph on
 vectores de características
 \emph default
-, cuyo funcionamiento se comprende fácilmente si suponemos que disponemos
+ (o 
+\emph on
+atributos
+\emph default
+), cuyo funcionamiento se comprende fácilmente si suponemos que disponemos
  de un robot capaz de desplazarse sobre una rejilla entre celdas contiguas
  libres.
  En dicha rejilla algunas celdas están ocupadas por bloques y otras vacías.
@@ -261,7 +267,7 @@ directamente por el agente.
 \end_layout
 
 \begin_layout Standard
-como ejemplo, sea que el robot es capaz de levantar bloques que se encuentren
+Como ejemplo, sea que el robot es capaz de levantar bloques que se encuentren
  en una celda adyacente siempre que el robot tenga batería con carga suficiente
  
 \begin_inset Formula $s_{1}$
@@ -305,13 +311,19 @@ inferencia
 \end_layout
 
 \begin_layout Standard
-La Lógica Proposicional (LP) nos proporciona estas herramientas y, usándola,
- podemos escribir los razonamientos anteriores como:
+La 
+\series bold
+\emph on
+Lógica Proposicional 
+\series default
+\emph default
+(LP) nos proporciona estas herramientas y, usándola, podemos escribir los
+ razonamientos anteriores como:
 \begin_inset Formula 
 \[
 \begin{array}{c}
 BAT\_OK\land ELEVABLE\Rightarrow MUEVE\\
-\lnot MUEVE\Rightarrow\lnot BAT\_OK\lor ELEVABLE
+\lnot MUEVE\Rightarrow\lnot BAT\_OK\lor\lnot ELEVABLE
 \end{array}
 \]
 
@@ -354,57 +366,11 @@ y estas características parecen deseables para un agente artificial.
 \end_layout
 
 \begin_layout Standard
-El conocimiento y el razonamiento juegan también un papel importante en
- entornos 
-\emph on
-parcialmente observables
-\emph default
- situación en la que un agente basado en conocimiento puede combinar sus
- conocimientos actuales con sus percepciones para inferir aspectos ocultos
- del estado del mundo antes de seleccionar acciones.P.e.
- un médico debe diagnosticar - es decir, inferir una enfermedad que no es
- directamente observable - la enfermedad de un paciente antes de aplicar
- un tratamiento.
-\end_layout
-
-\begin_layout Standard
-Para ello aplica reglas aprendidas en libros de texto y profesores y otras
- basadas en patrones de asociación que no pueden describirse fácilmente.
-\end_layout
-
-\begin_layout Standard
 La búsqueda, examinada hasta aquí, es capaz de proporcionar secuencias de
  acciones que constituyen planes.
  Más adelante veremos que las probabilidades permiten representar y razonar
  en condiciones de incertidumbre y que el aprendizaje máquina puede usarse
  para aprender y mejorar.
-\end_layout
-
-\begin_layout Standard
-Lo mismo ocurre con la comprensión del lenguaje natural donde también hay
- que inferir aspectos ocultos.
-\end_layout
-
-\begin_layout Standard
-Si oímos, '
-\emph on
-Juan vio el coche a través de la ventana y le gustó
-\emph default
- '.
- Del contexto, inferimos que '
-\emph on
-le
-\emph default
-' se refiere al coche y no a la ventana.
- Mientras que en '
-\emph on
-Juan tiró un ladrillo por la ventana a la acera y la rompió
-\emph default
-' lo roto - 
-\emph on
-'la'
-\emph default
- - fue la ventana y no la acera.
 \end_layout
 
 \begin_layout Standard
@@ -436,8 +402,8 @@ y, finalmente, en términos de
  
 \series default
 El modelo del mundo del agente se torna cada vez más complejo y es en este
- aspecto de la representación mostrando cómo las herramientas de la lógica
- pueden usarse para modelar el mundo.
+ aspecto de la representación donde las herramientas de la lógica pueden
+ usarse para modelar el mundo.
 \end_layout
 
 \begin_layout Standard
@@ -478,7 +444,7 @@ parcialmente observables
  un médico debe diagnosticar - es decir, inferir una enfermedad que no es
  directamente observable - la enfermedad de un paciente antes de aplicar
  un tratamiento.
- Para ello aplica reglas aprendidas en libros de texto y profesores y otras
+ Para ello aplica reglas aprendidas de libros de texto y profesores y otras
  basadas en patrones de asociación que no pueden describirse fácilmente.
 \end_layout
 
@@ -527,8 +493,11 @@ Agentes basados en el conocimiento.
 \end_layout
 
 \begin_layout Standard
-El componente central de los Agentes Basados en el Conocimiento es su Base
- de Conocimiento (
+El componente central de los Agentes Basados en el Conocimiento es su 
+\series bold
+Base de Conocimiento
+\series default
+ (
 \series bold
 K
 \series default
@@ -537,11 +506,19 @@ nowldge
 B
 \series default
 ase).
- Informalmente una 
+ 
+\end_layout
+
+\begin_layout Standard
+Informalmente una 
 \emph on
 KB 
 \emph default
-se compone de un conjunto de 
+se compone de 
+\end_layout
+
+\begin_layout Itemize
+un conjunto de 
 \emph on
 sentencias
 \emph default
@@ -556,15 +533,23 @@ lenguaje de representación del conocimiento
  y que constituye alguna afirmación acerca del mundo.
 \end_layout
 
-\begin_layout Standard
-Debe existir algún modo de añadir nuevas sentencias a la 
+\begin_layout Itemize
+Debe existir algún modo de interactuar con la
+\emph on
+ KB
+\emph default
+ para añadir nuevas sentencias a la 
 \emph on
 KB 
 \emph default
-y, también, procedimientos para consultar lo que se sabe.
- Ambas tareas pueden implicar 
+y, también, 
+\end_layout
+
+\begin_layout Itemize
+procedimientos para consultar lo que se sabe así como mecanismos para.
+ extraer 
 \series bold
-inferencia
+inferencias
 \series default
 , esto es, derivar nuevas sentencias de las ya existentes.
 \end_layout
@@ -615,7 +600,7 @@ El mundo de wumpus es una cueva que está compuesta por habitaciones conectadas
 En la Figura (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:2"
+reference "fig1"
 
 \end_inset
 
@@ -639,7 +624,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:2"
+name "fig1"
 
 \end_inset
 
@@ -742,7 +727,7 @@ Disparar
  y sentido en que se encuentra situado el agente.
  La flecha avanza hasta que se choca contra un muro o alcanza al wumpus
  (y entonces lo mata).
- El agente sólo dispone de una flecha, así que, solo tiene efecto cl primer
+ El agente sólo dispone de una flecha, así que, solo tiene efecto el primer
  
 \emph on
 Disparo
@@ -829,7 +814,7 @@ Vamos a ver un agente basado en conocimiento en el mundo de wumpus, explorando
  el entorno que se muestra en la Figura (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:2"
+reference "fig1"
 
 \end_inset
 
@@ -858,7 +843,7 @@ La primera percepción es
  La Figura (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:3"
+reference "fig2"
 
 \end_inset
 
@@ -870,12 +855,20 @@ En esta figura mostramos (algunas de) las sentencias de la
 \emph on
 base de conocimiento
 \emph default
- utilizando letras como la B (de brisa) y OK (de casilla segura, no hay
- hoyo ni está el wumpus) situadas en las casillas adecuadas.
+ utilizando letras como la 
+\series bold
+B
+\series default
+ (de brisa) y
+\series bold
+ OK
+\series default
+ (de casilla segura, no hay hoyo ni está el wumpus) situadas en las casillas
+ adecuadas.
  En cambio,la Figura (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:2"
+reference "fig2"
 
 \end_inset
 
@@ -898,7 +891,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:3"
+name "fig2"
 
 \end_inset
 
@@ -932,7 +925,7 @@ De los hechos, que no hay hedor ni brisa en la casilla [1,1], el agente
  alcanzando la situación de la Figura (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:3"
+reference "fig2"
 
 \end_inset
 
@@ -953,7 +946,7 @@ El agente detecta una brisa en la casilla [2, 1], por lo tanto, debe haber
  de la Figura (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:3"
+reference "fig2"
 
 \end_inset
 
@@ -1019,7 +1012,7 @@ Volviendo al wumpus, que se desplaza a [1,2], la nueva percepción en la
 , obteniendo el estado de conocimiento que se muestra en la Figura (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:4"
+reference "fig3"
 
 \end_inset
 
@@ -1043,7 +1036,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:4"
+name "fig3"
 
 \end_inset
 
@@ -1098,7 +1091,7 @@ El agente ha demostrado en este momento que no hay ni un pozo ni un wumpus
  (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:4"
+reference "fig3"
 
 \end_inset
 
@@ -4695,7 +4688,7 @@ Todo lo anterior es aplicable al mundo del wumpus que hemos descrito al
  Si tomamos la situación de la Figura (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:3"
+reference "fig2"
 
 \end_inset
 
@@ -5024,6 +5017,12 @@ base de conocimiento
 \end_layout
 
 \begin_layout Standard
+El papel de la representación del conocimiento en Inteligencia Artificial
+ es reducir los problemas de construcción de sistemas inteligentes a problemas
+ de búsqueda
+\end_layout
+
+\begin_layout Standard
 En nuestro caso una base de conocimiento (KB) de un agente dotado de sensores
  que detectan el valor V o F de varias proposiciones sobre el mundo es la
  representación de dichos valores en sentencias de lógica proposicional.
@@ -5031,11 +5030,12 @@ En nuestro caso una base de conocimiento (KB) de un agente dotado de sensores
 
 \begin_layout Standard
 Ahora que ya hemos definido la semántica de la lógica proposicional, podemos
- construir una base de conocimiento para el mundo del wumpus que utilizaremos
-\end_layout
-
-\begin_layout Standard
-para ilustrar los métodos de inferencia.
+ construir una
+\emph on
+ base de conocimiento
+\emph default
+ para el mundo del wumpus que utilizaremos para ilustrar los métodos de
+ inferencia.
  Para simplificar, sólo trataremos con hechos y reglas acerca de pozos.
 \end_layout
 
@@ -5126,7 +5126,7 @@ Ahora incluimos las de brisa para las dos primeras casillas visitadas en
 la Figura (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:4"
+reference "fig3"
 
 \end_inset
 
@@ -8067,7 +8067,7 @@ La resolución en lógica proposicional es completa si se utiliza refutación
 
 \end_deeper
 \begin_layout Itemize
- El cálculo proposicional es
+El cálculo proposicional es
 \series bold
  decidible
 \series default
@@ -8099,6 +8099,252 @@ fbf
 .
  Entonces el procedimiento de refutación por resolución termina sin producir
  la cláusula vacía.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Algunos métodos para construir bases de conocimiento.
+\end_layout
+
+\begin_layout Standard
+Los agentes basados en el conocimiento utilizan una representación del mundo
+ junto con los datos obtenidos de sus sensores para planificar sus acciones.
+ Para ello precisan de una Base de Conocimientos.
+\end_layout
+
+\begin_layout Standard
+Un método que ayuda a construir una 
+\emph on
+KB
+\emph default
+ es el 
+\series bold
+\emph on
+encadenamiento hacia delante
+\series default
+.
+ 
+\emph default
+Este puede servir para determinar si un símbolo proposicional 
+\begin_inset Formula $Q$
+\end_inset
+
+ se deduce de una 
+\emph on
+KB
+\emph default
+ o para deducir los hechos que se derivan de una 
+\emph on
+KB
+\emph default
+ 
+\end_layout
+
+\begin_layout Itemize
+Pasos: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+El algoritmo comienza con los hechos conocidos de la 
+\emph on
+KB
+\emph default
+ 
+\end_layout
+
+\begin_layout Enumerate
+Para todas aquellas implicaciones cuyas premisas son conocidas, se añaden
+ sus respectivas la conclusiones al conjunto de hechos conocidos 
+\end_layout
+
+\begin_layout Enumerate
+El paso 2 se repite hasta que se deduce el hecho Q que se busca o hasta
+ que no se pueden realizar más inferencias .
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename chainforth.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Es un algoritmo que se ejecuta en tiempo lineal.
+ 
+\end_layout
+
+\begin_layout Itemize
+Es un proceso sólido, cada inferencia es una aplicación del Modus Ponens
+ 
+\end_layout
+
+\begin_layout Itemize
+Es completo, cada sentencia atómica implicada será derivada 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No puede ocurrir que la
+\emph on
+ KB
+\emph default
+ contenga una cláusula 
+\begin_inset Formula $\alpha_{1}\land…\land\alpha_{k}$
+\end_inset
+
+ ⇒ 
+\begin_inset Formula $\beta$
+\end_inset
+
+ falsa en el modelo, es decir, que 
+\begin_inset Formula $\alpha_{1}\land…\land\alpha_{k}$
+\end_inset
+
+ sea cierto y 
+\begin_inset Formula $\beta$
+\end_inset
+
+ falsa, ya que en eso caso se habría inferido 
+\begin_inset Formula $\beta$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+El encadenamiento hacia delante está dirigido por los datos (parte de los
+ datos conocidos) 
+\end_layout
+
+\begin_layout Standard
+El 
+\emph on
+encadenamiento hacia atrás
+\emph default
+, por su parte, sirve para determinar si un símbolo proposicional Q se deduce
+ de una 
+\emph on
+KB
+\emph default
+ 
+\end_layout
+
+\begin_layout Itemize
+Trabaja a partir de una petición concreta 
+\end_layout
+
+\begin_layout Itemize
+Pasos: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Si Q es un hecho, entonces no hace falta realizar ningún trabajo: Q es verdadero
+ 
+\end_layout
+
+\begin_layout Enumerate
+Se buscan todas aquellas implicaciones que concluyen Q 
+\end_layout
+
+\begin_layout Enumerate
+Si se pueden probar todas las premisas de una de esas implicaciones (mediante
+ encadenamiento hacia atrás) entonces Q es verdadero.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename chainback.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Una implementación eficiente se ejecuta en tiempo lineal 
+\end_layout
+
+\begin_layout Itemize
+A menudo su coste es mucho menor que el orden lineal respecto al tamaño
+ de la 
+\emph on
+KB 
+\emph default
+ya que sólo trabaja con los hechos relevantes 
+\end_layout
+
+\begin_layout Itemize
+El encadenamiento hacia atrás está dirigido por los objetivos.
+ Es útil para responder a preguntas 
+\end_layout
+
+\begin_layout Itemize
+Consideraciones: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se deben evitar bucles infinitos: a 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ b y b 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ a 
+\end_layout
+
+\begin_layout Itemize
+Complicaciones con el uso de variables 
 \end_layout
 
 \end_deeper

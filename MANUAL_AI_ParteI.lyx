@@ -172,23 +172,10 @@ End
 \begin_layout Title
 \noindent
 Introducción a la Inteligencia Artificial
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-newline
-\end_layout
-
-\end_inset
-
- Parte I: Búsqueda.
 \end_layout
 
 \begin_layout Date
-Noviembre, 2016
+Diciembre, 2016
 \end_layout
 
 \begin_layout Standard
@@ -198,6 +185,10 @@ LatexCommand tableofcontents
 \end_inset
 
 
+\end_layout
+
+\begin_layout Part
+Búsqueda
 \end_layout
 
 \begin_layout Standard

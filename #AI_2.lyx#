@@ -262,6 +262,19 @@ prometedor
 \emph default
  que otro.
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -352,8 +365,8 @@ huye del fantasma
 \end_layout
 
 \begin_layout Standard
-Es fácil ver que estos simples códigos conducen a malas decisiones, como
- se ve en el caso de que exista un vacío entre el robot y el manzano.
+Es fácil comprobar que estos simples códigos conducen a malas decisiones,
+ como se ve en el caso de que exista un vacío entre el robot y el manzano.
 \end_layout
 
 \begin_layout Standard
@@ -382,8 +395,7 @@ salta hacia el árbol.
 
 \begin_layout Standard
 Mejor sería que el agente supiera que es un mal plan y considerase otras
- alternativas para alcanzar su objetivo en uno o varios pasos, p.e.
- con la ayuda de una pinza.
+ alternativas para alcanzar su objetivo en uno o varios pasos.
 \end_layout
 
 \begin_layout Standard
@@ -391,7 +403,7 @@ Nuestro objetivo es codificar el comportamiento de estos agentes que
 \emph on
 planifican por adelantado
 \emph default
- y son capaces de tomar las acciones 
+ y son capaces de emprender las acciones 
 \emph on
 contextualmente adecuadas
 \emph default
@@ -404,7 +416,7 @@ es necesario escribir las complicada relaciones contexto-acción, sino que
 \end_layout
 
 \begin_layout Standard
-Vemos que las acciones del agente reactivo se describen básicamente mediante
+Las acciones del agente reactivo, por tanto, se describen básicamente mediante
  sentencias 
 \series bold
 \emph on
@@ -423,21 +435,7 @@ percepciones
 acciones
 \emph default
 ), pero la tabla puede llegar a ser extraordinariamente grande.
- Además, 
-\emph on
-los agentes reactivos, como vimos, pueden tener memoria y un modelo del
- estado actual del 
-\begin_inset Quotes fld
-\end_inset
-
-mundo
-\begin_inset Quotes frd
-\end_inset
-
-
-\emph default
-.
- Los 
+ Pero, además, los 
 \series bold
 agentes reactivos
 \series default
@@ -523,7 +521,8 @@ status open
 el de la izquierda podría ser resuelto de una manera racional, pero no así
  el derecho dado que en esta circunstancia no hay reacción prevista ya que
  para comerse el punto que se encuentra en sus fauces, precisa de un punto
- a la vista que no hay:
+ a la vista que no existe.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -548,7 +547,7 @@ Volviendo a la pregunta acerca de la racionalidad de los agentes reactivos,
 \end_layout
 
 \begin_layout Standard
-Sin embargo, un 
+Un 
 \emph on
 agente planificador
 \emph default
@@ -601,7 +600,7 @@ un
 \emph on
 objetivo a alcanzar 
 \emph default
-en dicho modelo o en general un 
+- manzana - en dicho modelo o más generalmente  un 
 \series bold
 \emph on
 test objetivo
@@ -653,14 +652,33 @@ Planeamiento completo y replanificación.
 
 \begin_deeper
 \begin_layout Itemize
-El agente puede tener un plan completo que ejecuta para alcarranza su objetivo
- o
+El agente puede tener un 
+\emph on
+plan completo
+\emph default
+ que ejecuta para alcanzar su objetivo o
 \end_layout
 
 \begin_layout Itemize
-tener una serie de planes que ejecuta en secuencia uno tras otro, replanificando.
+tener una 
+\emph on
+serie de planes
+\emph default
+ que ejecuta en secuencia uno tras otro, 
+\emph on
+replanificando
+\emph default
+.
  Un ejemplo de este sería el caso 2 de Pac-Man si este dispusiera de un
- plan a realizar cuando no encuentra ningún punto a su vista.
+ plan a realizar cuando no encuentra ningún punto a su vista (
+\begin_inset Quotes fld
+\end_inset
+
+Plan B
+\begin_inset Quotes frd
+\end_inset
+
+).
 \end_layout
 
 \end_deeper
@@ -679,10 +697,10 @@ acciones
 las modelamos mediante el 
 \emph on
 esquema 
-\begin_inset Formula $move(x,y)$
+\begin_inset Formula $\mathbf{move}(x,y)$
 \end_inset
 
- -x
+ - x
 \begin_inset Formula $\rightarrow y$
 \end_inset
 
@@ -706,7 +724,7 @@ e
  
 \emph default
 Las instancias del esquema como 
-\begin_inset Formula $move(A,Floor)$
+\begin_inset Formula $\mathbf{move}(A,Floor)$
 \end_inset
 
  se llaman 
@@ -722,7 +740,11 @@ operadores
 .
  Sabemos que algunos operadores son inviables
 \emph on
- (move(A,A)).
+ (
+\series bold
+move
+\series default
+(A,A)).
 \end_layout
 
 \begin_layout Standard
@@ -832,7 +854,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename blocks.png
-	scale 40
+	scale 50
 
 \end_inset
 
@@ -885,6 +907,8 @@ predicción
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align left
 En casos como este en que los grafos son explícitos, los métodos de búsqueda
  implican la propagación de 
 \begin_inset Quotes fld
@@ -928,7 +952,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename sequen.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -1301,10 +1325,6 @@ status open
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1809,7 +1829,7 @@ Test objetivo: ¿
 \begin_inset Formula $(\mathbf{x}_{Bucarest},\mathbf{y}_{Bucarest})$
 \end_inset
 
-?.
+?
 \end_layout
 
 \begin_layout Standard
@@ -1831,7 +1851,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename PacmAN_real.png
-	scale 50
+	scale 70
 
 \end_inset
 
@@ -1915,7 +1935,11 @@ algoritmos
 status collapsed
 
 \begin_layout Plain Layout
-La enumeración exhaustiva es también un algoritmo pero de 
+La enumeración exhaustiva es también un algoritmo pero 
+\series bold
+FBI
+\series default
+ - de 
 \series bold
 \emph on
 F
@@ -1937,6 +1961,19 @@ I
 \emph default
  que eviten la necesidad de enumerar todos los estados.
  y que reduzcan las enumeraciones de estado al mínimo posible.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1997,8 +2034,15 @@ solo una vez
  
 \emph default
 P.e.
- el rodeado por el óvalo puede alcanzarse por multitud de caminos, pero
- solo aparece una vez en el grafo de búsqueda.
+ el rodeado por el óvalo en la Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:8"
+
+\end_inset
+
+ puede alcanzarse por multitud de caminos, pero solo aparece una vez en
+ el grafo de búsqueda.
 \end_layout
 
 \begin_layout Standard
@@ -2029,9 +2073,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:8"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename grafo_arbol.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -2056,13 +2107,12 @@ Solo en muy raras ocasiones podemos construir el grafo completo en memoria
 \begin_layout Standard
 \noindent
 \align left
-Como ejemplo valga el siguiente grafo del espacio de estados
+Como ejemplo valga el siguiente grafo del espacio de estados:
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-:
 \begin_inset Float figure
 wide false
 sideways false
@@ -2074,7 +2124,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename graph_ejemplo.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -2103,8 +2153,42 @@ estado inicial
 \emph on
 lo que pueda ocurrir a partir
 \emph default
- de este estado.
- 
+ de este estado, lo que nos conduce al 
+\emph on
+problema general de búsqueda en árbol
+\emph default
+ que se se plantea del modo siguiente:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename buscatree.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2172,7 +2256,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename arbolote.png
-	scale 50
 
 \end_inset
 
@@ -2337,7 +2420,7 @@ Hay muchas formas de representar los nodos, pero vamos a suponer que
 \noun on
 ESTADO
 \noun default
-: el estado, del espacio de estados, que corresponde con el nodo;
+: el estado, del espacio de estados, que se corresponde con el nodo;
 \end_layout
 
 \begin_layout Enumerate
@@ -2353,12 +2436,15 @@ ACCIÓN: la acción que se aplicará al padre para generar el nodo;
 \noun on
 COSTE
 \noun default
- DEL CAMINO: el costo, tradicionalmente denotado por 
+ DEL CAMINO: el costo - habitualmente denotado por 
 \begin_inset Formula $g(n)$
 \end_inset
 
- , de un camino desde el estado inicial al nodo, indicado por los punteros
- a los padres; y
+ - de un camino desde el estado inicial al nodo 
+\emph on
+n
+\emph default
+ y
 \end_layout
 
 \begin_layout Enumerate
@@ -2410,73 +2496,6 @@ estados
  (Fig.
  2.4.4.).
  Un estado corresponde a una configuración del mundo.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Ejemplo
-\series default
-: El grafo de estados siguiente presenta un bucle entre (a) y (b) y el árbol
- de búsqueda asociado:
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename bucle.png
-	scale 50
-	rotateOrigin leftTop
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Puede verse que su árbol de búsqueda será de tamaño infinito.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Nota
-\series default
-: puesto que 
-\emph on
-cada nodo representa un plan 
-\emph default
-sería más informativo representar los nodos en el árbol como el plan que
- nos conduce a ellos p.e.
- 
-\begin_inset Formula $(\textrm{S,a\textbf{,b}})$
-\end_inset
-
- en lugar de solo 
-\series bold
-b
-\series default
-.
 \end_layout
 
 \begin_layout Section
@@ -2711,7 +2730,11 @@ Ahora la frontera está constituida por 4 nodos de profundidad 2 y 2 nodos
 
 \begin_layout Standard
 Si en este momento descubrimos que algún 
-\begin_inset Formula $estado==objetivo$
+\begin_inset Formula $(estado$
+\end_inset
+
+==
+\begin_inset Formula $objetivo)=True$
 \end_inset
 
 , hemos encontrado la solución al problema de búsqueda.
@@ -2852,9 +2875,10 @@ reference "fig:1-1"
 G 
 \series default
 que, como puede verse, 
-\series bold
 \emph on
-no ha requerido la expansión completa de todo el árbol
+con la estrategia de expansión seguida,
+\series bold
+ no se ha requerido la expansión completa de todo el árbol
 \series default
 \emph default
 .
@@ -2915,43 +2939,104 @@ Proporcionar una cota superior para el número de pasos de la solución del
 \series bold
 Solución
 \series default
-.Denominaremos al Lobo con una L (booleanas) , a la cabra con una C y a la
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+a.
+ Estados.
+ 
+\series default
+Denominaremos al Lobo con una L (booleanas) , a la cabra con una C y a la
  col con una X.
- Debemos de fijar también un estado inicial que en nuestro problema será
- el listado de los elementos que tengamos en la margen derecha del río 
-\begin_inset Formula $(0,0,0)$
+ Los estados se representarán por dos ternas de valores que indican los
+ elementos que se encuentran en la orilla izquierda (0) y derecha (1) respectiva
+mente.
+ 
+\begin_inset Formula $(S_{0},S_{1})=([L_{0},C_{0},X_{0}],[L_{1},C_{1},X_{1}]$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+b.
+ Estado inicial.
+ 
+\series default
+Debemos de fijar también un estado inicial que en nuestro problema será
+ el listado de los elementos que tengamos en las márgenes del río 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $[(1,1,1],[0,0,0])$
 \end_inset
 
 .
- Y el estado final al que queremos llegar que será 
-\begin_inset Formula $(1,1,1)$
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+d.
+ test objetivo: 
+\series default
+El estado final al que queremos llegar que será 
+\begin_inset Formula $([0,0,0].[1,1,1])$
 \end_inset
 
 .
- Supondremos que el coste de cada acción es 1, de modo que el menor coste
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+c.
+ Coste: 
+\series default
+Supondremos que el coste de cada acción es 1, de modo que el menor coste
  se obtendrá con el menor número de acciones.
 \end_layout
 
 \begin_layout Standard
-Fijaremos primeramente un 
+
+\series bold
+d.
+ operadores: f
+\series default
+ijaremos primeramente un 
 \emph on
 operador de transición de estado
 \emph default
 .
- Representaremos con un tupla los elementos que se transportan en el bote
- en cada viaje de ida y vuelta 
-\begin_inset Formula $(ida,vuelta).$
+ Representaremos con un par de listas los elementos que se transportan en
+ el bote en cada viaje de ida y vuelta 
+\begin_inset Formula $(Ida,Vuelta).$
 \end_inset
 
  A través de ella podemos definir la 
 \emph on
 función sucesor
 \emph default
- que para cada estado (L,C,X) devuelve 
-\begin_inset Formula $sucesor(L,C,X)$
+ que para cada estado (
+\begin_inset Formula $S_{0},S_{1})$
 \end_inset
 
-, el conjunto de estados alcanzable desde (L,C,X) con una 
+ devuelve 
+\begin_inset Formula $sucesor(S_{0},S_{1})$
+\end_inset
+
+, el conjunto de estados alcanzable desde (
+\begin_inset Formula $S_{0},S_{1})$
+\end_inset
+
+ con una 
 \emph on
 acción
 \emph default
@@ -2981,24 +3066,10 @@ Dato un estado
 \begin_layout Standard
 \noindent
 \align left
-Resumiendo: Operador: (ida, vuelta) elementos que se transportan en el bote
- Estado inicial: 
-\begin_inset Formula $(L=0,C=0,X=0)$
-\end_inset
-
- -vacío- Estado final 
-\begin_inset Formula $(L=1,C=1,X=1)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
 
 \series bold
-- Grafo de estados
+e.
+ Grafo de estados
 \series default
 : El número máximo de estados es 
 \begin_inset Formula $2^{3}=8$
@@ -3041,11 +3112,16 @@ status open
 \begin_layout Standard
 
 \series bold
-- Función sucesor:
+f.
+
+\series default
+ 
+\series bold
+Restriciones:
 \series default
  tendremos en cuenta que las acciones posibles - 16 ida y vuelta del pastor
  en la barca transportando
-\begin_inset Formula $(ida,vuelta)$
+\begin_inset Formula $Remar(ida,vuelta)$
 \end_inset
 
  - solo tienen sentido si el par transportado es tal que es distinto de
@@ -3062,9 +3138,8 @@ status open
 .
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
-\begin_inset Formula $(ida=a,vuelta=a)$
+\begin_inset Formula $(Ida=a,Vuelta=a)$
 \end_inset
 
 : 3.
@@ -3077,12 +3152,18 @@ status open
 : 3
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \noindent
 \align left
 Es decir, solo se consideran 9 de las posibles acciones que se indican a
  continuación que definen la función sucesor para los estados que tienen
  un sucesor:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -3122,12 +3203,33 @@ como p.e.
 \end_layout
 
 \begin_layout Itemize
+Regla 0: cada elemento está en una de las orillas del río.
+ 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+L_{0}+L_{1}=1\\
+C_{0}+C_{1}=1\\
+X_{0}+X_{1}=1
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 Regla 1: “Si el lobo y la col están en el mismo lado del río 
-\begin_inset Formula $(L=0,C=1,X=0)$
+\begin_inset Formula $([1,1,0)],[0,0,1)]$
 \end_inset
 
 , y la cabra está en el otro lado del río, el pastor puede cruzar el río
- solo”.
+ solo: 
+\begin_inset Formula $Remar(-,vuelta)$
+\end_inset
+
+”.
  
 \end_layout
 
@@ -3215,42 +3317,6 @@ status open
 \begin_inset Graphics
 	filename ../lobo.png
 	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-Lo que deja la función sucesor reducida a :
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename suces_redu.png
 
 \end_inset
 

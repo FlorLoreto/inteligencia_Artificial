@@ -348,7 +348,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../buca.png
-	scale 60
+	scale 90
 
 \end_inset
 
@@ -459,11 +459,6 @@ Al contrario que en UCS, aquí
 las heurísticas no se suman
 \emph default
  y siempre nos encaminamos al estado que parece estar más próximo al objetivo.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -765,7 +760,7 @@ Fijémonos en el caso expuesto en la Fig.5.3.1.
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -840,8 +835,6 @@ en la figura siguiente:
 \end_layout
 
 \begin_layout Standard
-\noindent
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -921,11 +914,6 @@ y
  
 \emph default
 Complete los valores indicados en la figura.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -937,7 +925,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../proble.png
-	scale 50
+	scale 45
 
 \end_inset
 
@@ -952,6 +940,142 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Si nos fijamos en los árboles de búsqueda, veremos que, en su mayor parte,
+ la función 
+\begin_inset Formula $f(n)=g(n)+h(n)$
+\end_inset
+
+ no disminuye, esto es, 
+\begin_inset Formula $f(n)$
+\end_inset
+
+ es monótona no decreciente.
+ Si la heurística pertenece a las pocas que no son monótonas, es fácil volverlas
+ monótonas.
+ Sean p, e dos nodos 
+\begin_inset Formula $n$
+\end_inset
+
+ - padre- y 
+\begin_inset Formula $n'$
+\end_inset
+
+ -hijo.
+ Sea que 
+\begin_inset Formula $g(n)=3$
+\end_inset
+
+ y 
+\begin_inset Formula $h(n)=4$
+\end_inset
+
+, de donde, 
+\begin_inset Formula $f(n)=7$
+\end_inset
+
+ y 
+\begin_inset Formula $g(n')=4$
+\end_inset
+
+, 
+\begin_inset Formula $h(n\text{´)=2}\rightarrow f(n\text{´)=6 }.$
+\end_inset
+
+ Pero como todo camino a través de n' es también un camino que pasa por
+ n, es claro que el valor 7 es despreciable porque sabemos que el coste
+ real es al menos 7.
+ Por tanto, cada vez que generamos un nodo podemos comprobar si su coste
+ 
+\begin_inset Formula $f(n')$
+\end_inset
+
+ es es menor que el de su padre 
+\begin_inset Formula $f(n)$
+\end_inset
+
+ y si esto es así usamos el coste del padre:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f(n')=max(f(n),g(n')+h(n\text{´))}\label{eq:4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:4"
+
+\end_inset
+
+ se llama ecuación 
+\series bold
+pathmax.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pathmax.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De este modo podemos dibujar en contornos en el espacio de estados en que
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ es creciente (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:7"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Section
@@ -1161,8 +1285,6 @@ Demostraremos que cualquier subcamino
 \end_layout
 
 \begin_layout Standard
-\noindent
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1294,6 +1416,10 @@ admisible
 \end_inset
 
  
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 f(n)=g(n)+h(n)\leq g*(n)+h*(n)=C*\Rightarrow f(n)\leq C*
@@ -1305,8 +1431,12 @@ f(n)=g(n)+h(n)\leq g*(n)+h*(n)=C*\Rightarrow f(n)\leq C*
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Standard
 Sumando (5.4.1) + (5.4.2): tenemos:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 f(n)\leq C*<f(G2)
@@ -1314,6 +1444,10 @@ f(n)\leq C*<f(G2)
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 y se explora n antes que 
 \begin_inset Formula $G_{2}$
 \end_inset
@@ -1337,11 +1471,6 @@ Si lo comparamos con UCS encontraremos algunas similitudes.
 Por su parte A* profundizará más cerca de los objetivos y buscará más superficia
 lmente lejos de estos.
  Pero siendo la heurística imperfecta en la cúspide buscará extensivamente.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1404,8 +1533,6 @@ Ejercicio
 \end_layout
 
 \begin_layout Standard
-\noindent
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1508,11 +1635,6 @@ Aun cuando los 9 cuadrados pueden colocarse en 9! posiciones diferentes,
 
  donde se trata de llegar desde la posición inicial - vacío en el centro
  - a la final - vacío en la esquina NE.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1597,11 +1719,6 @@ problema relajado
  que puede resolverse en 8 pasos.
  Concretamente el problema relajado consiste en partir de un marco vacío
  y 8 cuadrados y situarlos en la posición del estado objetivo.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1754,7 +1871,7 @@ b*
  = factor de ramificación de un árbol uniforme de profundidad d, donde N
  = # nodos que se necesitan expandir para llegar a la solución óptima.
  Por la ec.
- (3.1.1.) tendremos que
+ (3.1.1.) tendremos que 
 \begin_inset Formula 
 \[
 b*+b*^{2}+..+b*^{d}=b*\frac{(b*)^{d}-1}{b*-1}={\textstyle N}
@@ -1762,6 +1879,10 @@ b*+b*^{2}+..+b*^{d}=b*\frac{(b*)^{d}-1}{b*-1}={\textstyle N}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Ejemplo: d=5, N=52 .
  
 \begin_inset Formula $\rightarrow b*=$
@@ -1798,6 +1919,12 @@ s.
 \end_inset
 
  cuando
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Formula 
 \begin{equation}
 \forall n,\:h_{a}(n)\geq h_{b}(n)
@@ -1808,6 +1935,7 @@ s.
 
 \end_layout
 
+\end_deeper
 \begin_layout Enumerate
 Si usamos búsqueda
 \begin_inset Formula $A*$
@@ -1878,6 +2006,12 @@ es admisible.
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Estados-repetidos:-búsqueda-1"
+
+\end_inset
+
 Estados repetidos: búsqueda en grafos.
 \end_layout
 
@@ -1894,11 +2028,6 @@ Hasta este punto hemos ignorado una de las complicaciones más importantes
 \align left
 Para algunos problemas la repetición es inevitable como en el siguiente
  ejemplo:
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1964,7 +2093,7 @@ Para la búsqueda
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -2151,7 +2280,7 @@ El gráfico muestra un caso en que la búsqueda en grafos no funciona a pesar
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -2266,7 +2395,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../consis.png
-	scale 50
+	scale 40
 
 \end_inset
 
@@ -2293,6 +2422,43 @@ Podemos ver que en la Fig.5.9.1.
 
  , 
 \begin_inset Formula $h(C)=1\Rightarrow\mathbf{h(A)-h(C)}=3\mathbf{>c(A,C)}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Consistency.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -2520,7 +2686,7 @@ El carácter monótono de
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -2578,7 +2744,7 @@ En heurísticas mejores estas curvas forman bandas que se extienden hacia
 
 \begin_layout Standard
 \noindent
-\align center
+\align left
 \begin_inset Float figure
 wide false
 sideways false
@@ -2588,6 +2754,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:7"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename ../conce.png
 	scale 50
@@ -2619,7 +2792,7 @@ Optimalidad.
 \begin_layout Enumerate
 La
 \emph on
- busqueda en árbol es óptima 
+ búsqueda en árbol es óptima 
 \emph default
 si la heurística es 
 \emph on
@@ -2668,6 +2841,686 @@ naturales
  admisible procedentes de la relajación de problemas tienden a ser consistentes.
 \end_layout
 
+\begin_layout Section
+Búsqueda A* paso a paso.
+\end_layout
+
+\begin_layout Subsection
+Búsqueda en árbol.
+\end_layout
+
+\begin_layout Standard
+Sea el ejemplo de 
+\emph on
+búsqueda en árbol 
+\emph default
+siguiente (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:busqi"
+
+\end_inset
+
+ ):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:busqi"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename busquengraf.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Visualización en árbol de búsqueda.
+\end_layout
+
+\begin_layout Standard
+Si visualizamos la búsqueda en el árbol iremos pasando por las siguientes
+ etapas (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:grafibu"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Enumerate
+El estado inicial 
+\begin_inset Formula $S$
+\end_inset
+
+ tiene un coste estimado 
+\begin_inset Formula $f(S)=g(S)+h(S)=0+7=7$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+A* considerará todos los estados del árbol aún no expandidos - 
+\begin_inset Formula $S$
+\end_inset
+
+ - únicamente en esta fase y se expande a los nodos A y B y dado que 
+\begin_inset Formula $f(A)=7$
+\end_inset
+
+>
+\begin_inset Formula $f(B)=6$
+\end_inset
+
+ y, por tanto, A* considerará B para expansión.
+\end_layout
+
+\begin_layout Enumerate
+B tiene como sucesor a C con 
+\begin_inset Formula $f(C)=7$
+\end_inset
+
+.
+ Ahora tenemos dos candidatos a expandir A y C con el mismo valor f - 7
+ - , de modo que expandiremos A por el criterio de ordenación alfabética.
+\end_layout
+
+\begin_layout Enumerate
+A tiene tres sucesores B, C y G y, siendo el menor valor f(B)=5 es este
+ el que consideraremos en la siguiente etapa.
+ Es importante destacar que el hecho de haber alcanzado G no basta para
+ terminar la búsqueda, para ello 
+\emph on
+hemos de expandir el nodo objetivo.
+\end_layout
+
+\begin_layout Enumerate
+Ahora expandiremos 
+\begin_inset Formula $[S,A,B,C]$
+\end_inset
+
+ que solo tiene un sucesor G.
+ Nos encontramos con un empate entre ([S,A,C],7) y ([S,B,C],7) que se rompe
+ alfabéticamente en favor del primero que tiene un sucesor G.
+\end_layout
+
+\begin_layout Enumerate
+Todavía no alcanzamos el objetivo y ahora expandimos ([S,B,C],7) obteniendo
+ ([S,B,C,G],9).
+\end_layout
+
+\begin_layout Enumerate
+Finalmente nos quedan tres nodos que acaban en G y puesto que hemos de expandir
+ ([S,A,B,C,G],8) - el de menor coste - es este el camino solución.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:grafibu"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename grafibu.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por tanto la solución que nos devuelve el problema es ([S,A,B,C,G],8) pero
+ ¿es óptima?
+\end_layout
+
+\begin_layout Standard
+Lo será si la heurística 
+\emph on
+h
+\emph default
+ es admisible (árbol).
+\end_layout
+
+\begin_layout Standard
+Admisible es ya que 
+\begin_inset Formula $h(n)$
+\end_inset
+
+ es, para todo nodo n, inferior al coste real de alcanzar el estado objetivo
+ como puede comprobarse.
+\end_layout
+
+\begin_layout Subsubsection
+Visualización de la frontera (cola con prioridades).
+\end_layout
+
+\begin_layout Standard
+Podemos visualizar el proceso de búsqueda siguiendo la evolución de la frontera
+ que es una cola de prioridades, lo que se traduce en lo siguiente:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Frontera:
+\series default
+ ([S],0+7)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale: 
+\series default
+([S],0+7) el nodo con 
+\emph on
+mayor prioridad.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Frontera:
+\series default
+([S,A],(0+1)+6), ([S,B],(0+4)+2)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale:
+\series default
+ ([S,B],4+2)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Frontera: 
+\series default
+([S,A],(0+1)+6),([S,B,C],(4+2)+1)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale:
+\series default
+([S,A],1+6)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Frontera:
+\series default
+([S,A,B],(1+2)+2),([S,A,C],(1+5)+1),([S,B,C,],(4+2)+1),([S,A,G],(1+12)+0)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale:
+\series default
+([S,A,B],3+2)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Frontera: 
+\series default
+([S,A,C],(1+5)+1), ([S,B,C,],(4+2)+1), ([S,A,B,C],(3+2)+1), ([S,A,G],(1+12)+0)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale: 
+\series default
+([S,A,C],6+1)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Frontera: 
+\series default
+([S,B,C,],(4+2)+1), ([S,A,B,C],(3+2)+1), ([S,A,C,G],6+3,0), ([S,A,G],(1+12)+0)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale: 
+\series default
+([S,B,C],6+1)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Frontera: 
+\series default
+([S,A,B,C],(3+2)+1), ([S,A,C,G],6+3,0), ([S,B,C,G],6+3,0),([S,A,G],(1+12)+0)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale:
+\series default
+([S,A,B,C],5+1)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Frontera:
+\series default
+ ([S,B,C,],(4+2)+1), ([S,A,B,C,G],(5+3)+0), ([S,A,G],(1+12)+0),([S,A,C,,G],(6+3)
++0)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale: 
+\series default
+([S,B,C],6+1)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Frontera:
+\series default
+([S,B,C,G],(6+3)+0), ([S,A,B,C,G],(5+3)+0), ([S,A,C,G],(6+3),0),([S,A,G],(1+12)+
+0)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale: 
+\series default
+([S,B,C],1+6)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Frontera:
+\series default
+ ([S,A,B,C,G],(5+3)+0), ([S,A,C,G],(6+3),0),([S,B,C,G],(6+3)+0),([S,A,G],(1+12)+
+0)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Sale: 
+\series default
+([
+\begin_inset Formula $S,A,B,C,G$
+\end_inset
+
+],8)
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Búsqueda en grafo.
+\end_layout
+
+\begin_layout Standard
+La diferencia con la búsqueda en árbol es que cuando vamos a expandir un
+ nodo 
+\emph on
+comprobamos si ya hemos expandido un nodo que termine en el mismo estado
+ del nodo que estamos a punto de expandir 
+\emph default
+y, si es así, no expandimos dicho nodo sino que simplemente lo sacamos de
+ la cola con prioridades.
+\end_layout
+
+\begin_layout Standard
+Visualizaremos esto en el árbol de búsqueda (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lost"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Comenzaremos igual que en la búsqueda en árbol.
+\end_layout
+
+\begin_layout Enumerate
+El estado inicial 
+\begin_inset Formula $S$
+\end_inset
+
+ tiene un coste estimado 
+\begin_inset Formula $f(S)=g(S)+h(S)=0+7=7$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+A* considera el estados del árbol aún no expandidos - 
+\begin_inset Formula $S$
+\end_inset
+
+ - y lo expande los nodos A y B, Ahora, disponemos de una 
+\noun on
+lista-cerrada 
+\noun default
+que lleva la cuenta de los estados que se han expandido en el pasado, de
+ modo que 
+\noun on
+lista-cerrada=
+\begin_inset Formula ${S}$
+\end_inset
+
+.
+ 
+\noun default
+Dado que 
+\begin_inset Formula $f(A)=7$
+\end_inset
+
+>
+\begin_inset Formula $f(B)=6$
+\end_inset
+
+ A* considerará B para expansión.
+\end_layout
+
+\begin_layout Enumerate
+B tiene como sucesor a C con 
+\begin_inset Formula $f(C)=7$
+\end_inset
+
+.
+ 
+\noun on
+lista-cerrada=
+\begin_inset Formula ${S,B}.$
+\end_inset
+
+ 
+\noun default
+Ahora tenemos dos candidatos a expandir A y C con el mismo valor f - 7 -
+ , de modo que expandiremos A por el criterio de ordenación alfabética.
+\end_layout
+
+\begin_layout Enumerate
+A tiene tres sucesores B, C y G y, siendo el menor valor f(B)=5 es este
+ el que consideraremos en la siguiente etapa.
+ Hemos expandido A y 
+\noun on
+lista-cerrada=
+\begin_inset Formula ${S,B,A}.$
+\end_inset
+
+
+\noun default
+ 
+\end_layout
+
+\begin_layout Enumerate
+Ahora expandiríamos 
+\begin_inset Formula $[S,A,B]$
+\end_inset
+
+ pero 
+\begin_inset Formula $B\in$
+\end_inset
+
+
+\noun on
+lista-cerrada
+\noun default
+ y no lo expandimos.
+ Nos encontramos con un empate entre ([S,A,C],7) y ([S,B,C],7) que se rompe
+ alfabéticamente en favor del primero que tiene un sucesor G
+\begin_inset Formula $\rightarrow([S,A,C,G],9)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Hemos pues expandido ([S,A,C],7) y 
+\noun on
+lista-cerrada=
+\begin_inset Formula ${S,B,A,C}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Finalmente nos quedan tres nodos ([S,B,C],(4+2)+1), ([S,A,G],(1+12)+0) y
+ ([S,A,C,G],(6+3)+0) y habríamos de expandir el de menor coste ([S,B,C],(4+2)+1)
+ pero 
+\begin_inset Formula $C\in$
+\end_inset
+
+
+\noun on
+lista-cerrada
+\noun default
+ y nos movemos al más cercano ([
+\emph on
+
+\begin_inset Formula $S,A,C,G$
+\end_inset
+
+
+\emph default
+],9+0) que, al expandirlo, nos indica que es la solución.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:lost"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../figulost.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Es óptima esta solución? Recordemos que la búsqueda en árbol anterior daba
+ como solución ([
+\emph on
+
+\begin_inset Formula $S,A,B,C,G$
+\end_inset
+
+
+\emph default
+],8), cuyo coste estimado es inferior al de 
+\begin_inset Formula $([S,A,C,G],9)$
+\end_inset
+
+.
+ La explicación de esta diferenecia es que 
+\emph on
+la heurística no es consistente 
+\emph default
+motivo por el cual no se exploró la solución óptima
+\emph on
+ 
+\emph default
+([
+\emph on
+
+\begin_inset Formula $S,A,B,C,G$
+\end_inset
+
+
+\emph default
+],8).
+\end_layout
+
+\begin_layout Standard
+La condición de consistencia es 
+\begin_inset Formula 
+\[
+\forall s,s\text{'}\;h(s)-h(s')\leq c(s,s')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pero para s=A y s'=B tenemos que:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+h(A)-h(B)=6-2=4\\
+c(A,B)=2
+\end{array}
+\]
+
+\end_inset
+
+y, por tanto, no es consistente.
+\end_layout
+
 \begin_layout Section*
 Ejercicios.
 \end_layout
@@ -2686,8 +3539,6 @@ Ejercicios.
 \end_layout
 
 \begin_layout Standard
-\noindent
-\align center
 \begin_inset Float figure
 wide false
 sideways false

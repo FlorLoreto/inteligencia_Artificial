@@ -149,6 +149,7 @@ End
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\bullet 2 0 10 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -222,9 +223,14 @@ name "fig:1-2"
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align left
 Como ilustración pensemos en el mapa de Rumanía, en que la función a minimizar
- sería el número de trayectos entre ciudades efectuados, cuando, en realidad,
- parece mejor criterio el de 
+ con los métodos de búsqueda antes expuestos sería el 
+\emph on
+número de trayectos entre ciudades
+\emph default
+ efectuados, cuando, en realidad, parece mejor criterio el de 
 \emph on
 minimizar la distancia recorrida
 \emph default
@@ -258,9 +264,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:4.1"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename ../costcumul.png
-	scale 50
+	scale 70
 
 \end_inset
 
@@ -279,7 +292,13 @@ status open
 
 \begin_layout Standard
 Puesto que hemos de expandir el nodo más barato como estrategia, elegiremos
- el de menor coste acumulado que, en ese primer paso será 
+ el de 
+\series bold
+\emph on
+menor coste acumulado
+\series default
+\emph default
+ que, en ese primer paso será 
 \emph on
 
 \begin_inset Formula $p$
@@ -314,7 +333,7 @@ Puesto que no es el objetivo, iremos después a
 
 9.
  En el siguiente paso expandiremos el nodo 
-\begin_inset Formula $p$
+\begin_inset Formula $e$
 \end_inset
 
  (el más barato) y así sucesivamente, hasta llegar a la solución (Fig.
@@ -355,7 +374,7 @@ name "fig:4-1"
 
 \begin_inset Graphics
 	filename unicost.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -431,12 +450,16 @@ Si la solución tiene un coste
 \begin_inset Formula $\varepsilon$
 \end_inset
 
- - es decir, el coste mínimo de cada acción - la profundidad efectiva será
+ - es decir, el coste mínimo de cada acción - 
+\emph on
+la profundidad efectiva 
+\emph default
+será
 \series bold
 
 \begin_inset Formula 
 \[
-\frac{\mathbf{g*}}{{\displaystyle \mathbf{\mathbf{\epsilon}}}}
+\frac{\textrm{coste}\textrm{\textrm{ mínimo} solución}}{\textrm{coste}\textrm{\textrm{ mínimo} acción}}=\frac{\mathbf{g*}}{{\displaystyle \mathbf{\mathbf{\epsilon}}}}
 \]
 
 \end_inset
@@ -494,13 +517,23 @@ Optimalidad.
  
 \series default
 Puede demostrarse que es óptima y se demostrará en próximos capítulos ya
- que se trata de un 
+ que 
 \emph on
-caso particular de la búsqueda A* 
+se trata de un
+\emph default
+ 
+\series bold
+\emph on
+caso particular de la búsqueda A*
+\series default
+ 
 \emph default
 ('A estrella').
- Por tanto, no devuelve la solución más superficial - lo que hacia BFS -,
- sino la de menor coste.
+ Por tanto, no devuelve la solución más superficial - lo que hacia 
+\emph on
+BFS
+\emph default
+ -, sino la de menor coste.
 \end_layout
 
 \begin_layout Standard
@@ -612,7 +645,7 @@ status open
 \end_layout
 
 \begin_layout Section
-Resumen de algoritmos de búsqueda desinformada.
+Resumen de algoritmos de búsqueda no informada.
 \end_layout
 
 \begin_layout Standard
@@ -667,7 +700,11 @@ Ejemplo
 status collapsed
 
 \begin_layout Plain Layout
-De un artículo de Bill Gates:
+De un artículo de William Henry Gates (
+\emph on
+Bill Gates
+\emph default
+):
 \end_layout
 
 \begin_layout Plain Layout
@@ -893,10 +930,575 @@ Todos estos algoritmos sin información son básicamente iguales excepto por
 \emph default
 Desde el punto de vista de su implementación, podemos pasar la estrategia
  de búsqueda como un parámetro.
- Sin embargo, en BFS y DFS no se necesita mantener una cola con prioridad,
- que añade una carga al programa, sino que basta con gestionar una pila.
+ Sin embargo, en 
+\emph on
+BFS
+\emph default
+ y DFS no se necesita mantener una cola con prioridad, que añade una carga
+ al programa, sino que basta con gestionar una pila.
  La gestión de una cola con prioridades introduce una penalización en el
  tiempo de ejecución de log(n) .
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Estados-repetidos:-búsqueda"
+
+\end_inset
+
+Estados repetidos: búsqueda en grafos.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Hasta este punto hemos ignorado una de las complicaciones más importantes
+ del proceso de búsqueda: la posibilidad de perder tiempo expandiendo estados
+ que ya han sido visitados y expandidos.
+ Para algunos problemas, esta posibilidad o aparece; el espacio de estados
+ es un árbol y hay sólo un camino a cada estado.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+Para algunos problemas la repetición es inevitable como en el siguiente
+ ejemplo:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1.3"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename bucle.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es claro que eliminando estados repetidos reduciríamos el árbol de 
+\begin_inset Formula $2^{d}$
+\end_inset
+
+ a 
+\begin_inset Formula $d+1$
+\end_inset
+
+ hojas.
+ La detección de estados repetidos por lo general significa la comparación
+ del nodo a expandir con aquellos que han sido ya expandidos; si se encuentra
+ un emparejamiento, entonces el algoritmo ha descubierto dos caminos al
+ mismo estado y puede desechar uno de ellos.
+\end_layout
+
+\begin_layout Standard
+Si nos fijamos en la Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4-1"
+
+\end_inset
+
+ vemos que los dos subárboles que arrancan en e se repiten aun cuando el
+ nodo e está a diferente profundidad.
+ El árbol más profundo no nos dirá nada que ya no sepamos.
+\end_layout
+
+\begin_layout Standard
+Hay tres maneras de evitar estados repetidos:
+\end_layout
+
+\begin_layout Enumerate
+No volver nunca al estado del que se proviene.
+ La función sucesor no generará ningún sucesor que sea el mismo estado que
+ el padre.
+\end_layout
+
+\begin_layout Enumerate
+No crear caminos cíclicos.
+ La función sucesor no generará ningún sucesor de un nodo que sea el mismo
+ estado que alguno de sus ancestros.
+\end_layout
+
+\begin_layout Enumerate
+No generar ningún estado que ya ha sido generado antes.
+ Esto requiere conservar en memoria todos los estados generados.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Para implementar esto último, el algoritmo usa con frecuencia una tabla
+ 
+\emph on
+hash 
+\emph default
+(lista-cerrada) que almacena todos los nodos que se generan lo que proporciona
+ una eficiencia razonable a la comprobación de estados repetidos.
+ No obstante, con esto 
+\end_layout
+
+\begin_layout Enumerate
+hay requerimientos adicionales de memoria,
+\end_layout
+
+\begin_layout Enumerate
+es 
+\emph on
+óptimo
+\emph default
+ únicamente en 
+\emph on
+UCS
+\emph default
+ y en 
+\emph on
+BFS 
+\emph default
+con coste de paso constante y
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+no es óptimo
+\emph default
+ con
+\emph on
+ otras estrategias
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Para la búsqueda
+\emph on
+ DFS
+\emph default
+ , los únicos nodos en memoria son aquellos del camino desde la raíz hasta
+ el nodo actual.
+ La comparación de estos nodos permite al algoritmo descubrir los caminos
+ que forman ciclos y que pueden eliminarse inmediatamente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ciclos.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto, sin embargo, solo sirve para evitar que los ciclos formen árboles
+ de búsqueda infinitos, pero esto no evita problemas como el de la figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1.3"
+
+\end_inset
+
+ en que se generan caminos exponencialmente.
+ Para evitar estos casos se guardan los nodos ya expandidos en la memoria:
+ 
+\emph on
+los algoritmos que olvidan su historia, están condenados a repetirla.
+ 
+\emph default
+Podemos crear una
+\emph on
+ 
+\series bold
+lista-cerrada
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+A veces se denomina a la frontera:
+\emph on
+ lista-abierta.
+
+\emph default
+ No obstante, es preferible llamarlo 
+\emph on
+conjunto cerrado
+\emph default
+ ya que si se trata como una lista los resultados son peores.
+\end_layout
+
+\end_inset
+
+
+\emph default
+ que contenga los 
+\emph on
+nodos ya expandidos
+\emph default
+.
+ Si el nodo actual se encuentra en 
+\emph on
+lista-cerrada
+\emph default
+ se elimina en lugar de expandirlo.
+ Así tendremos un nuevo algoritmo denominado 
+\series bold
+B
+\size small
+\emph on
+\noun on
+ÚSQUEDA
+\size default
+\noun default
+-G
+\size small
+RAFOS
+\series default
+\emph default
+ que es mucho más eficaz que 
+\size default
+\noun on
+B
+\size small
+ÚSQUEDA
+\size default
+-ÁRBOLES
+\noun default
+.
+\end_layout
+
+\begin_layout Standard
+La idea del algoritmo es fácil: 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+no expandir nunca dos veces el mismo estado
+\begin_inset Quotes frd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+¿Es este algoritmo completo? ¿Es posible que perdamos la solución por no
+ expandir ciertos nodos en el árbol? Esto no puede suceder porque no expandimos
+ lo que ya se expandió en otro nodo.
+\end_layout
+
+\begin_layout Standard
+Si examinamos la optimalidad de este algoritmo, es difícil de dilucidar.
+ Cuando el algoritmo desecha un camino, siempre desecha el recién descubierto
+ que puede ser el de menor coste.
+ Sin embargo, puede demostrarse que esto no puede suceder cuando se utiliza
+ 
+\emph on
+la UCS o la BFS con costes constantes
+\emph default
+ que no solo 
+\emph on
+son estrategias óptimas en árboles,
+\emph default
+ sino 
+\emph on
+también en grafos
+\emph default
+.
+ 
+\emph on
+La búsqueda con profundidad iterativa
+\emph default
+, por otra parte, utiliza la expansión primero en profundidad y fácilmente
+ 
+\emph on
+puede seguir un camino subóptimo
+\emph default
+, lo que exige comprobaciones adicionales.
+\end_layout
+
+\begin_layout Standard
+En la figura se muestra el algoritmo general de búsqueda en grafos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename busgraph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En otras palabras el algoritmo consiste en:
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+\size small
+Crear un árbol de búsqueda que consiste solo en el nodo de inicio S y poner
+ S en un una lista llamada LISTA-ABIERTA.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+\size small
+Crear una lista LISTA-CERRADA inicialmente vacía.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+\size small
+if LISTA-ABIERTA=vacía then return FALLO.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+\size small
+Elegir primer nodo n de LISTA-ABIERTA y moverlo a LISTA-CERRADA.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+\size small
+if n satisface TEST-OBJETIVO then return SOLUCIÓN (camino desde S a n).
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+\size small
+Expandir n generando un conjunto M de sucesores y añadirlos al árbol creando
+ arcos desde n a cada miembro de M y añadir a LISTA-ABIERTA.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+\size small
+Reordenar la LISTA-ABIERTA de acuerdo con algún esquema (Heurística p.e.
+ u otro criterio).
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+\size small
+Volver al paso 3.
+\end_layout
+
+\begin_layout Standard
+El algoritmo vale tanto para BFS como para DFS.
+ En BFS los nodos nuevos se ponen al final de la 
+\noun on
+lista-abierta (FIFO) y en DFS 
+\noun default
+al comienzo.
+ En A* se ordenan según el mérito heurístico.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplos:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+El siguiente mapa es una muestra reducida del metro de Madrid en el que
+ en las estaciones marcadas puede hacerse transbordo de una línea a otra
+ de las que en ella confluyen.
+ Encontrar el camino con menos transbordos para llegar desde AEROPUERTO-T4
+ a CANAL (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:99"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:99"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename T4.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si lo planteamos como búsqueda en árbol, muchos de los nodos están repetidos
+ (Plaza Castilla, Nuevos Ministerios,...).
+ Operando como grafo, evitando repeticiones, llegamos a la solución mostrada
+ en el gráfico, junto con la evolución de la 
+\noun on
+lista-cerrada
+\noun default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename buscametro.png
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Chapter*
@@ -1095,6 +1697,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:4-2"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename tutobusco.png
 	scale 50
@@ -1108,64 +1717,6 @@ status open
 
 
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-5.
- El siguiente mapa es una muestra reducida del metro de Madrid en el que
- en las estaciones marcadas puede hacerse transbordo de una línea a otra
- de las que en ella confluyen en el sentido marcado por las flechas.
- Encontrar una ruta Aeropuerto T4-Pitis con el menor número de transbordos.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename metro.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-El árbol será el siguiente y se seleccionará en primer lugar la ruta señalada,
- aun cuando hay más trayectos con el mismo número de transbordos.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Graphics
-	filename metrillo.png
-	scale 50
 
 \end_inset
 

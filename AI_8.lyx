@@ -17,7 +17,7 @@
 \ifpdf % if pdflatex is used
 \addto\captionsspanish{%
 \renewcommand\chaptername{Tema}}
-\setcounter{chapter}{10}
+\setcounter{chapter}{8}
 \pagestyle{plain} 
  % set fonts for nicer pdf view
  \IfFileExists{lmodern.sty}

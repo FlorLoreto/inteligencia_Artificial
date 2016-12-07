@@ -143,8 +143,8 @@ End
 \bottommargin 2cm
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip smallskip
+\paragraph_separation indent
+\paragraph_indentation default
 \quotes_language french
 \papercolumns 1
 \papersides 2
@@ -1832,7 +1832,7 @@ Pac-Man
 :
 \begin_inset Formula 
 \begin{equation}
-\forall s'\;\textrm{{\textstyle bajo} control  adversario}\;V(s')=\begin{array}{c}
+\forall s'\;\textrm{{\textstyle bajo} control adversario}\;V(s')=\begin{array}{c}
 min\\
 s\in sucesores(s')
 \end{array}\left\{ \begin{array}{c}
@@ -1866,7 +1866,7 @@ maximizar
  sus ganancias:
 \begin_inset Formula 
 \begin{equation}
-\forall s\;\textrm{{\textstyle bajo} control  del agente}\;V(s)=\begin{array}{c}
+\forall s\;\textrm{{\textstyle bajo} control del agente}\;V(s)=\begin{array}{c}
 max\\
 s'\in sucesores(s)
 \end{array}\left\{ \begin{array}{c}
@@ -4462,23 +4462,15 @@ uar la búsqueda:
 \end_layout
 
 \begin_layout Enumerate
-La búsqueda puede descontinuarse por debajo de un nodo 
+Se puede podar por debajo de un nodo 
 \emph on
 MIN
 \emph default
- que tiene un valor 
-\emph on
-beta menor o igual que
-\emph default
- el valor 
-\emph on
-alfa
-\emph default
- de cualquiera de sus nodos 
-\emph on
-MAX
-\emph default
- ancestros.
+ si su valor beta es menor o igual que al menos un alfa antecesor 
+\begin_inset Formula $\beta_{p}\leq\alpha_{p-1}$
+\end_inset
+
+.
  El valor final 
 \emph on
 hacia atrás
@@ -4489,35 +4481,61 @@ hacia atrás
 \end_layout
 
 \begin_layout Enumerate
-La búsqueda puede descontinuarse por debajo de un nodo 
+Se puede podar por debajo de un nodo 
 \emph on
-MAX 
+MAX
 \emph default
-que tiene un valor
-\emph on
- alfa
-\emph default
- 
-\emph on
-mayor o igual que
-\emph default
- el valor 
-\emph on
-beta
-\emph default
- de cualquiera de sus nodos 
-\emph on
-MIN
-\emph default
- ancestros.
+ si su valor alfa es mayor o igual que al menos un beta antecesor 
+\begin_inset Formula $\alpha_{p}\geq\beta_{p-1}$
+\end_inset
+
+.
  El valor final 
 \emph on
 hacia atrás
 \emph default
  de este nodo MAX puede por tanto fijarse en su valor alfa.
+ 
 \end_layout
 
-\begin_deeper
+\begin_layout Standard
+Por tanto, iremos de nodo en nodo y en cada uno de ellos calcularemos las
+ tres variables: 
+\begin_inset Formula $\mathbf{V},\mathbf{\alpha}$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathbf{\beta}$
+\end_inset
+
+ y donde se verifique que 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\textrm{Nodos MAX }V\geq\beta\rightarrow\textrm{poda}\:\beta\\
+\textrm{Nodos MIN }V\leq\alpha\rightarrow\textrm{poda}\:\alpha
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y no podaremos en el resto.
+ Cuando empecemos asignaremos al nodo raíz los valores iniciales 
+\begin_inset Formula $\mathbf{V=\mp\infty},\mathbf{\alpha=\mp\infty}y\mathbf{\beta=\pm\infty}$
+\end_inset
+
+ según sea MAX (-
+\begin_inset Formula $\infty)$
+\end_inset
+
+ o MIN.
+ estos valores se actualizarán a medida que alcancemos nodos terminales.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 wide false
@@ -4562,7 +4580,6 @@ name "fig:7-1"
 
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 Durante la búsqueda, los valores de 
 \emph on
@@ -4811,7 +4828,7 @@ hspace{1 cm}
 \series default
 
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="1">
+<lyxtabular version="3" rows="4" columns="1">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <row>
@@ -4824,7 +4841,21 @@ hspace{1 cm}
 1
 \series default
 .
- Si n es terminal, devolver 
+
+\noun on
+ 
+\series bold
+if
+\noun default
+ 
+\series default
+n es terminal 
+\series bold
+\noun on
+then
+\series default
+\noun default
+ devolver 
 \begin_inset Formula $V(n)$
 \end_inset
 
@@ -4833,7 +4864,6 @@ hspace{1 cm}
 estática
 \emph default
  de n.
- En caso contrario,
 \end_layout
 
 \end_inset
@@ -4844,7 +4874,13 @@ estática
 \begin_inset Text
 
 \begin_layout Plain Layout
-sean 
+
+\series bold
+\noun on
+Else
+\series default
+\noun default
+ sean 
 \begin_inset Formula $n_{1},..,n_{k},..,n_{b}$
 \end_inset
 
@@ -4853,22 +4889,50 @@ sean
 \begin_inset Formula $k\leftarrow1$
 \end_inset
 
- y si n es un nodo MAX 
+ 
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-ir al paso 
+
+\series bold
+\noun on
+if
+\series default
+\noun default
+ n es un nodo MAX 
+\series bold
+\noun on
+then
+\series default
+\noun default
+ ir al paso 
 \series bold
 2.1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\noun on
+else
 \series default
-; si no - es MIN - ir a 
+ 
+\noun default
+- es MIN - ir a 
 \series bold
 2.2
 \end_layout
@@ -5252,7 +5316,7 @@ El uso de heurísticas sencillas lleva a menudo a b* cercano al óptimo (ej.
 \end_layout
 
 \end_deeper
-\begin_layout Subsection*
+\begin_layout Section
 \noindent
 La poda 
 \begin_inset Formula $\alpha-\beta$
@@ -5262,327 +5326,8 @@ La poda
 \end_layout
 
 \begin_layout Standard
-La figura siguiente muestra paso a paso la aplicación de la poda alfa-beta.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-Puesto que partimos sin haber explorado nada y la raíz 
-\series bold
-A
-\series default
- es MAX, 
-\series bold
-\emph on
-inicializamos
-\series default
-\emph default
- 
-\series bold
-\emph on
-A
-\series default
-\emph default
- con la mejor opción para MAX es (
-\color red
-1
-\color inherit
-) 
-\emph on
-
-\begin_inset Formula $V(A)=-\infty$
-\end_inset
-
-
-\emph default
- y la mejor opción para inicializar 
-\series bold
-\emph on
-B
-\series default
-\emph default
- - MIN - es 
-\begin_inset Formula $V(8)=\infty$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-De modo que pasaremos en profundidad hasta el nodo 
-\series bold
-\emph on
-B:
-\series default
-\emph default
- (
-\color red
-2
-\color inherit
-) 
-\begin_inset Formula $\alpha=-\infty$
-\end_inset
-
-y 
-\begin_inset Formula $\beta=+\infty$
-\end_inset
-
-.
- Por tanto, el valor de B - MIN- será (
-\color red
-3
-\color inherit
-) 
-\begin_inset Formula $V(B)=+\infty$
-\end_inset
-
- pero este tiene sucesores con 
-\emph on
-valores terminales
-\emph default
-.
- 
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-
-\series bold
-\emph on
-B
-\series default
- 
-\emph default
-pasa hacia 
-\emph on
-el primer valor terminal
-\emph default
- 
-\series bold
-\emph on
-D
-\series default
-\emph default
- (
-\color red
-4
-\color inherit
-) los valores 
-\begin_inset Formula $\alpha=-\infty$
-\end_inset
-
-y 
-\begin_inset Formula $\beta=+\infty$
-\end_inset
-
-
-\emph on
-ya que no se ha explorado ningún nodo aún
-\emph default
-.
- 
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-
-\series bold
-\emph on
-D
-\series default
-\emph default
- es un nodo hoja y (
-\color red
-5
-\color inherit
-) retorna el valor 10.
- Dado que 
-\series bold
-\emph on
-B
-\series default
-\emph default
- es MIN, 
-\begin_inset Formula $V(8)$
-\end_inset
-
- pasa de 
-\begin_inset Formula $-\infty$
-\end_inset
-
- a 
-\begin_inset Formula $10$
-\end_inset
-
- que es mejor que 
-\begin_inset Formula $\beta$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-Antes de seguir , el nodo MIN decide si explora más sucesores.
- Para ello comprueba si el valor del padre - MAX - 
-\emph on
-V(A)=
-\begin_inset Formula $\alpha$
-\end_inset
-
-,
-\emph default
- es 
-\emph on
-mayor que V(B)
-\emph default
-, esto es, la siguiente condición:
-\begin_inset Formula 
-\[
-\textrm{¿Es}(V(B)=10<\alpha=-\infty)?\Rightarrow\begin{array}{c}
-Sí\Rightarrow podar\\
-No\Rightarrow Continuar
-\end{array}
-\]
-
-\end_inset
-
-pero como no se cumple que 
-\begin_inset Formula $V(B)$
-\end_inset
-
- sea menor que la mejor opción para MAX , hemos de mirar más sucesores de
- 
-\series bold
-\emph on
-B
-\series default
-\emph default
-.
- Bajamos hacia 
-\series bold
-\emph on
-E
-\series default
-\emph default
- (
-\color red
-6
-\color inherit
-)
-\begin_inset Formula $\alpha=-\infty$
-\end_inset
-
-y ahora el mínimo valor de MIN 
-\begin_inset Formula $\beta=+10.$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-MIN tiene una nueva opción de 
-\begin_inset Formula $8<10$
-\end_inset
-
- por lo cual 
-\begin_inset Formula $V(B)=8$
-\end_inset
-
- que, por ser el último estado terminal hijo de B, propagamos hacia arriba
- (
-\color red
-7
-\color inherit
-) hasta el nodo 
-\emph on
-abuelo
-\emph default
- ( raíz MAX) quien debe considerar la oportunidad de continuar la búsqueda.
- Para ello MAX compara su valor actual con la mejor opción disponible a
- lo largo del árbol desde la raíz, esto es:
-\begin_inset Formula 
-\[
-\textrm{¿Es}(V(A)=8>\beta=\infty)?\Rightarrow\begin{array}{c}
-Sí\Rightarrow podar\\
-No\Rightarrow Continuar
-\end{array}
-\]
-
-\end_inset
-
-Por tanto, continuamos hasta 
-\series bold
-\emph on
-C
-\series default
-\emph default
- (
-\color red
-7
-\color inherit
-) y
-\series bold
-\emph on
- F
-\series default
-\emph default
- (
-\color red
-8
-\color inherit
-) con 
-\begin_inset Formula $\alpha=8$
-\end_inset
-
- y 
-\begin_inset Formula $\beta=+\infty.$
-\end_inset
-
- Pasamos 4 hacia arriba (
-\color red
-10
-\color inherit
-) y como en 
-\series bold
-\emph on
-C
-\series default
- 
-\emph default
-4 es mejor para MIN que 
-\begin_inset Formula $8$
-\end_inset
-
-, lo sustituye.
- Ahora 
-\series bold
-C
-\series default
- - MIN ha de decidir si sigue.
- Para ello vemos que MAX tiene un 
-\begin_inset Formula $V(B)=8$
-\end_inset
-
- y 
-\begin_inset Formula $V(C)\leq4$
-\end_inset
-
- por lo que no es necesario explorar más y podamos 
-\begin_inset Formula $f$
-\end_inset
-
-
+La figura siguiente muestra paso a paso la aplicación de la poda alfa-beta
+ según el algoritmo expuesto.
 \end_layout
 
 \begin_layout Standard
@@ -5599,80 +5344,14 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:3"
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename pruntot.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Los siguientes ejemplos muestran otros ejemplos de aplicación de la poda
- alfa-beta (Figs: 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:5-1"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:1"
-
-\end_inset
-
- y 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:2"
-
-\end_inset
-
-):
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
 name "fig:5-1"
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename new_berkeley.png
-	scale 50
+	filename recita1.png
+	scale 67
 
 \end_inset
 
@@ -5701,14 +5380,29 @@ reference "fig:5-1"
 \end_layout
 
 \begin_layout Enumerate
-Dado que inicialmente no hemos explorado ningún nodo terminal partimos del
- nodo raíz con 
-\begin_inset Formula $V(A)=-\infty$
+Como sabemos, en cada nodo 
+\begin_inset Formula $N$
 \end_inset
 
-(peor caso para MAX).
- Este nodo explorará sus hijos por lo que expandirá B bajando los valores
- de 
+ el valor estimado se encuentra acotado entre dos valores 
+\begin_inset Formula $\alpha\leq V(N)\leq\beta$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+Inicialmente no hemos explorado ningún nodo terminal, por lo que partimos
+ del nodo raíz con 
+\begin_inset Formula $-\infty\leq V(A)\leq\infty$
+\end_inset
+
+.
+ Como contiene un rango válido de valores, este nodo pasará hacia abajo
+ los valores de 
 \begin_inset Formula $\alpha=-\infty$
 \end_inset
 
@@ -5716,53 +5410,245 @@ Dado que inicialmente no hemos explorado ningún nodo terminal partimos del
 \begin_inset Formula $\beta=+\infty$
 \end_inset
 
-ya que no se ha explorado ningún nodo terminal.
- e inicializamos el nomo B - MIN - con el valor para el peor caso: 
-\begin_inset Formula $V(B)=+\infty.$
+y así sucesivamente de padre a hijo hasta llegar al nodo terminal 
+\begin_inset Formula $3$
 \end_inset
 
- Seguimos explorando los hijos de B, pasando hacia abajo de nuevo 
-\begin_inset Formula $\alpha=-\infty\textrm{ y }\beta=+\infty$
+ (Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recita1"
+
 \end_inset
 
- e inicializo E (MAX) con 
-\begin_inset Formula $V(E)=-\infty$
+).
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recita1"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation2.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Evaluamos el nodo terminal -MAX - 3 ya que es un nodo hoja y se pasa hacia
+ el nodo anterior que es MIN, por lo que su valor 
+\noun on
+minimax 
+\noun default
+debe ser 
+\begin_inset Formula $V(H)\leq3$
+\end_inset
+
+, por lo que hacemos 
+\begin_inset Formula $\beta=3$
 \end_inset
 
 .
- Desde E exploramos nodos que ahora son terminales pasando hacia E 
-\begin_inset Formula $\alpha=-\infty\textrm{ y }\beta=+\infty$
+ 
+\end_layout
+
+\begin_layout Enumerate
+Seguidamente generamos el siguiente nodo hijo que devuelve al nodo padre
+ el valor 17.
+ Como el padre es MIN, este valor que es mayor que 
+\begin_inset Formula $\beta$
+\end_inset
+
+ se ignora y por tanto 
+\begin_inset Formula $V(H)=3$
+\end_inset
+
+ (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recita2"
+
+\end_inset
+
+) que se pasa para cambiar 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ al nodo 
+\emph on
+D
+\emph default
+ - padre de H.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recita2"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation3.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nótese 
+\end_layout
+
+\begin_layout Itemize
+que 
+\begin_inset Formula $\beta$
+\end_inset
+
+ no ha cambiado porque los nodos MAX solo aplican restricciones al límite
+ inferior; 
+\end_layout
+
+\begin_layout Itemize
+que los valores 
+\begin_inset Formula $\alpha,\beta$
+\end_inset
+
+ pasados hacia abajo en el árbol no se modifican, pero sí los que pasan
+ hacia arriba:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+el valor final de 
+\begin_inset Formula $\beta$
+\end_inset
+
+ en un nodo 
+\noun on
+min
+\noun default
+ se pasa hacia el padre para un posible cambio en su 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ y, del mismo modo, 
+\end_layout
+
+\begin_layout Itemize
+el valor final de 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ en un nodo 
+\noun on
+max
+\noun default
+ se pasa hacia el padre para un posible cambio en su 
+\begin_inset Formula $\beta$
 \end_inset
 
 .
 \end_layout
 
+\end_deeper
+\end_deeper
 \begin_layout Enumerate
-\begin_inset Formula $V(E)=4$
-\end_inset
-
- ya que es un nodo hoja y se pasa hacia arriba hasta el nodo E.
- Como 
-\begin_inset Formula $4>-\infty$
-\end_inset
-
-, actualizamos el valor de E a 
-\begin_inset Formula $V(E)=4.$
-\end_inset
-
- Ahora 
+Ahora el nodo 
 \emph on
-el nodo E decide si continúa explorando
+D 
 \emph default
- nodos hijos.
- Para ello hace la siguiente comprobación:
-\begin_inset Formula 
-\[
-\text{¿V(E)=4>\ensuremath{\beta?\textrm{ }}}\begin{array}{c}
-Sí\Rightarrow\textrm{No expandir}\\
-No\Rightarrow\textrm{Expandir }
-\end{array}
-\]
+tiene una cota inferior y expandimos su hijo 
+\emph on
+I 
+\emph default
+(Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recita4"
+
+\end_inset
+
+) y, como no es terminal, generaremos primero 2 y correremos la función
+ de evaluación que nos devuelve V=2.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recita4"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation4.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -5771,137 +5657,646 @@ No\Rightarrow\textrm{Expandir }
 
 \begin_deeper
 \begin_layout Standard
-No siendo así, precisamos expandir el nodo terminal siguiente y subirlo
- hacia arriba.
- Antes bajamos 
-\begin_inset Formula $\alpha$
-\end_inset
-
- que ahora es 
-\color green
-4
-\color inherit
- y .
- El nuevo valor 6 es mejor para MAX que 4 por lo que se actualiza 
-\begin_inset Formula $V(E)=6$
-\end_inset
-
- que será el valor definitivo del nodo E.
- Ahora, por tanto, se pasa 6 hacia el nodo padre y en B - MIN - es mejor
- 6 que infinito y se actualiza 
-\begin_inset Formula $V(B)=6$
-\end_inset
-
-0.
- Ahora B decide si continúa explorando.
- Para ello compara su valor actual con el mejor valor de MAX que en B es
- 
-\begin_inset Formula $-\infty$
-\end_inset
-
- y, siendo, 
-\begin_inset Formula $\text{¿}V(B)=6>\ensuremath{\alpha=-\infty?=True\textrm{ }}$
-\end_inset
-
-continuamos expandiendo.
- Bajamos hacia F 
-\begin_inset Formula $\alpha=-\infty\textrm{ y }\beta=6$
-\end_inset
-
-.
- ¡OJO! aunque V(B)=6 
-\begin_inset Formula $\ensuremath{\alpha=-\infty\textrm{ }}$
-\end_inset
-
-ya que 
-\begin_inset Formula $\alpha$
-\end_inset
-
- y 
-\begin_inset Formula $\beta$
-\end_inset
-
- se refieren a 
+Como 
 \emph on
-las mejores opciones encontradas en el camino desde la raíz a B 
+I
 \emph default
-y no a las opciones que se hayan encontrado antes.
- Aunque MIN ha encontrado un 6 pero no está para MAX en el camino desde
- el nodo B al raíz.
- Sin embargo para MIN sí.
- Por tanto,
-\begin_inset Formula $V(F)=-\infty$
-\end_inset
-
- y bajamos 
-\begin_inset Formula $\alpha=-\infty$
-\end_inset
-
- y 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\lang english
-
-\begin_inset Formula $\textrm{ }\beta=6$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
+ es 
+\noun on
+min
 \noun default
-\color inherit
-\lang spanish
-.
- Subimos el valor 7 que es mejor que 
-\begin_inset Formula $-\infty$
+ sabemos que 
+\begin_inset Formula $V(I)\leq2$
 \end_inset
 
- para MAX y actualizo 
-\begin_inset Formula $V(F)=7$
+ de modo que cambiaremos 
+\begin_inset Formula $\beta=2.$
 \end_inset
 
-.
- Ahora decide B si expandir más.
- Siendo V(E)=6<V(F)=7>
-\begin_inset Formula $\beta$
-\end_inset
 
- para el nodo B -MIN - no tiene sentido seguir buscando ya que V(F)
-\begin_inset Formula $\geq$
-\end_inset
-
-7 en cualquier caso y B nunca lo elegiría.Por tanto, podemos podar el nodo
- 9.
- Subimos el valor y MIN - nodo B- compara 7 con 6 y elige 6 que será el
- valor del nodo B.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Seguidamente el nodo raíz (A) debe decidir si sigue explorando.
- La respuesta es sí, puesto que MIN no tiene ninguna alternativa desde A.
- Descendemos hacia el nodo C desde el raíz ahora con 
-\begin_inset Formula $\alpha=6\textrm{ y }\beta=+\infty$
+Obsérvese que ahora en I: 
+\begin_inset Formula $3\leq V(I)\leq2$
+\end_inset
+
+ lo cual no es posible y, por tanto, dejamos de evaluar hijos de este nodo
+ y devolvemos el valor 2 (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recita5"
+
+\end_inset
+
+).
+ En realidad, desconocemos el verdadero valor de V(I).
+ El valor del otro hijo de I puede ser 1, 0 o -100 , pero incluso en dichos
+ casos, la búsqueda no nos ayudaría en nada a encontrar la solución óptima.
+ El valor 2 ya convierte al subárbol en improductivo y podamos a los restantes
+ hijos.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recitation5.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recita5"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hemos hecho una 
+\emph on
+poda-
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Hacia arriba, el valor 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ del nodo padre 
+\emph on
+D
+\emph default
+ ya tiene el valor 3 y no se modifica por lo que podemos fijar 
+\begin_inset Formula $V(D)=\alpha=3$
 \end_inset
 
 .
- Continuamos del mismo modo hasta llegar a la solución final:
+\end_layout
+
+\begin_layout Enumerate
+Ahora que hemos dado un valor al nodo 
+\emph on
+D, 
+\emph default
+nos movemos hacia arriba
+\emph on
+ 
+\emph default
+(nodo
+\emph on
+ B
+\emph default
+)
+\noun on
+ 
+\noun default
+que, siendo
+\noun on
+ min
+\noun default
+, nos lleva a que 
+\begin_inset Formula $V(B)\leq3\rightarrow\beta=3$
+\end_inset
+
+ y siendo válida la desigualdad , continuamos expandiendo el nodo 
+\emph on
+B 
+\emph default
+(Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recita6"
+
+\end_inset
+
+) generando el nodo 
+\noun on
+max
+\noun default
+ 
+\emph on
+E, 
+\emph default
+después su hijo 
+\emph on
+J 
+\emph default
+y, finalmente el nodo terminal 15.
+ A lo largo de este camino descendente nos hemos limitado a pasar los límites
+ 
+\emph on
+
+\begin_inset Formula $\alpha$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recita6"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation6.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Este es el único nodo hijo de 
+\emph on
+J 
+\emph default
+y no hemos cambiado el límite 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ Como no hemos excedido el límite, devolveremos el valor actual 
+\noun on
+min 
+\noun default
+para el nodo.
+ esto es distinto del caso en que se podaba en que devolvíamos el valor
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+ por las razones que se explican más adelante.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recitation7.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se cruzan los valores (es imposible que 
+\begin_inset Formula $15\leq V\leq3$
+\end_inset
+
+) se podan el resto de los nodos y se devuelve el valor que excede el límite.
+ Si hubiéramos devuelto el valor 
+\begin_inset Formula $\beta$
+\end_inset
+
+ del nodo 
+\noun on
+min
+\noun default
+ hijo (3) en lugar del valor actual (15), no habríamos podido podar aquí.
+ Ahora el nodo 
+\emph on
+B
+\emph default
+ 
+\noun on
+min
+\noun default
+ conoce a todos sus hijos y puede tomar el valor mínimo: 
+\begin_inset Formula $V(B)=3$
+\end_inset
+
+.
+ Además, hemos terminado con el hijo 
+\emph on
+B
+\emph default
+ del nodo raíz 
+\emph on
+A 
+\emph default
+e iremos a por el segundo.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Pasamos los valores 
+\begin_inset Formula $\alpha=3$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta=\infty$
+\end_inset
+
+ hacia abajo y generamos el segundo hijo 
+\emph on
+C, 
+\emph default
+el primer hijo de este (
+\emph on
+F
+\emph default
+)
+\emph on
+ 
+\emph default
+, el primer hijo de este último
+\emph on
+ 
+\emph default
+(
+\emph on
+L
+\emph default
+) y así hasta llegar a la profundidad 4 cuya función de evaluación nos devuelve
+ 2.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recitation8.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Este valor es subido hasta el padre 
+\emph on
+L
+\emph default
+ para cambiar su 
+\begin_inset Formula $\beta=2$
+\end_inset
+
+ y siendo 
+\begin_inset Formula $\alpha>\beta$
+\end_inset
+
+ podamos los demás hijos de 
+\emph on
+L.
+ 
+\emph default
+Como 
+\begin_inset Formula $\beta=2$
+\end_inset
+
+ es menor que el 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ del padre (
+\emph on
+F
+\emph default
+), no modificamos este valor.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recitation9.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ahora generamos el siguuiente hijo de 
+\emph on
+F 
+\emph default
+(nodo 
+\emph on
+M
+\emph default
+)
+\emph on
+ 
+\emph default
+y su hijo en profundidad 4 (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recitation10"
+
+\end_inset
+
+) cuya función de evaluación nos devuelve V=3.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recitation10"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation10.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+El nodo padre 
+\noun on
+min 
+\noun default
+(
+\emph on
+M
+\emph default
+) usa este valor para su límite superior 
+\begin_inset Formula $\beta$
+\end_inset
+
+ (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recitation11"
+
+\end_inset
+
+ ).
+ Ahora, en el nodo 
+\emph on
+M
+\emph default
+ 
+\begin_inset Formula $\alpha=\beta=3$
+\end_inset
+
+.
+ ¿Debemos podar? La respuesta es 
+\emph on
+sí 
+\emph default
+porque aunque no hemos excedido los límites, la igualdad de 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta$
+\end_inset
+
+ nos dice que no podemos hacer nada mejor en este subárbol, pero sí lo podemos
+ hacer peor.
+ Por ello acabamos con este nodo y devolvemos el valor 3 para 
+\noun on
+min
+\noun default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recitation11"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename recitation11.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+El valor se devuelve a su nodo padre (
+\emph on
+F
+\emph default
+) y su 
+\begin_inset Formula $\beta=3$
+\end_inset
+
+ y, puesto que de nuevo 
+\begin_inset Formula $\alpha=\beta$
+\end_inset
+
+, podamos.
+ El valor final de 
+\emph on
+A
+\emph default
+ será 3.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename recitation12.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Ejercicios.
 \end_layout
 
 \begin_layout Standard
@@ -5922,7 +6317,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename podita_berkeley.png
-	scale 70
+	scale 50
 
 \end_inset
 
@@ -5964,6 +6359,39 @@ name "fig:1"
 
 \begin_inset Graphics
 	filename paso.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename new_prune.png
 	scale 70
 
 \end_inset
@@ -5973,6 +6401,10 @@ name "fig:1"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 

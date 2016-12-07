@@ -2,7 +2,7 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass book
+\textclass extbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
 %
@@ -155,7 +155,7 @@ End
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
-\defskip medskip
+\defskip smallskip
 \quotes_language french
 \papercolumns 1
 \papersides 1
@@ -2541,7 +2541,7 @@ Por tanto, un modelo en lógica de primer orden se compone de los elementos
  indicados que se muestran en la figura (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:3"
+reference "fig2"
 
 \end_inset
 

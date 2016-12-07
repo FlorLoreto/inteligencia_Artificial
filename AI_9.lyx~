@@ -1,9 +1,7 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -77,16 +75,16 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100 100
-\font_tt_scale 100 100
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -233,10 +231,6 @@ Aprendizaje automático.
 Qué 
 \series default
 se aprende con esta técnica?
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -263,10 +257,6 @@ Información oculta.
 De qué 
 \series default
 se aprende?
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -286,10 +276,6 @@ Cada método de aprendizaje máquina se guía por algún tipo de información
 Para qué 
 \series default
 se usa?
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -305,10 +291,6 @@ Podemos usarla para hacer predicciones (anticipar el futuro), diagnósticos
 Cómo
 \series default
  se aprende?
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -326,10 +308,6 @@ Puede aprenderse de un modo pasivo, cuando el agente es un mero observador,
 Qué salidas
 \series default
  proporciona el aprendizaje automático?
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -550,10 +528,6 @@ y tratamos de obtener una función
 \end_inset
 
  que, una vez identificada, se podrá usar en casos futuros para etiquetarlos.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -606,14 +580,14 @@ status open
 \begin_layout Standard
 ¿Cuál elegir? Una respuesta nos la proporciona la llamada 
 \emph on
-navaja de Occam: preferiremos la hipótesis más simple consistente con los
+navaja de Ockham: preferiremos la hipótesis más simple consistente con los
  mismos datos
 \emph default
 .
  Aunque es difícil definir el concepto de simplicidad, pare que en el caso
  actual la hipótesis lineal es más simple que las demás.
- Sin embargo para (c) es consistente el polinomio de grado 4 (con 5 parámetros)
- con los 5 puntos de datos
+ Sin embargo para (c) no existe consistencia entre la recta y el polinomio
+ de grado 6 (con 7 parámetros) que es consistente con los 7 puntos de datos
 \begin_inset Foot
 status collapsed
 
@@ -647,10 +621,9 @@ l_{i}={\displaystyle \prod_{j=0,\,j\neq i}\frac{x-x_{j}}{x_{i}-x_{j}}}=\frac{x-x
 .
  Pero como este polinomio tiene tantos parámetros como puntos de datos,
  no parece que hayamos encontrado ningún patrón que generalice bien para
- otro conjunto de datos de la misma población.
- En este caso sería mejor seleccionar el modelo lineal (a) o el polinómico
- (b) que no producen un ajuste perfecto pero permite hacer predicciones
- razonables.
+ otros datos.
+ En este caso también sería mejor seleccionar el modelo lineal que no produce
+ un ajuste perfecto pero permite hacer predicciones razonables.
  Esto equivale a aceptar que la función 
 \emph on
 no sea determinista.
@@ -880,7 +853,7 @@ El vector de características de un correo-e está formado por las palabras
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1199,7 +1172,7 @@ True
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1956,7 +1929,7 @@ Calculemos con el estimador de Laplace los siguientes estimadores suponiendo
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2217,10 +2190,6 @@ status open
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2446,10 +2415,6 @@ La descripción del algoritmo es la siguiente:
 Datos de entrada
 \series default
 :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2516,12 +2481,6 @@ Datos de salida
 
 \series bold
 Código:
-\series default
-
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2676,10 +2635,6 @@ Un procedimiento consiste en representar las intensidades de cada uno de
 
 \begin_layout Standard
 Una forma sería mediante el producto interno de los vectores:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2781,10 +2736,6 @@ En el caso de los dígitos en pequeña escala para no confundir el 6 y el
  trasladamos el trazo de una línea vertical dos píxeles a la derecha su
  producto escalar por la imagen del 1 será cero.El problema es cómo incorporar
  estas invariancias.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3001,10 +2952,6 @@ ad a posteriori, tendremos que la clase
 \end_inset
 
  a la que asignamos la instancia (la que contiene a más vecinos) será 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3367,10 +3314,6 @@ utilidad
 
  cuyos argumentos son las variables Paraguas y Tiempo y cuyo dominio está
  en el conjunto de los números reales.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3550,7 +3493,7 @@ todos los posibles resultados de los nodos padre del nodo utilidad
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -3803,7 +3746,7 @@ Ahora las utilidades esperadas serán:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -4029,10 +3972,6 @@ Ejemplo
 \begin_layout Enumerate
 Una empresa compra la materia prima a dos proveedores A y B, cuya calidad
  se muestra en la tabla siguiente: 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -4139,10 +4078,6 @@ izar un nuevo microprocesador para los aviones del futuro.
  la contratación de más ingenieros, obviamente la empresa se reserva la
  opción de no desarrollar el producto.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5010,10 +4945,6 @@ Criterio de bifurcación
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5205,7 +5136,7 @@ P.e.
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="6">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -5517,7 +5448,7 @@ P.e.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="1">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -5880,10 +5811,6 @@ nuestro objetivo es encontrar un
 árbol de decisión que concuerde con el conjunto de entrenamiento
 \emph default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6375,10 +6302,6 @@ return
 \series default
 \emph on
 tree
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -6557,7 +6480,7 @@ Aclaremos un poco el concepto con una moneda.
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -6830,10 +6753,6 @@ En este caso, nuestro desconocimiento sobre el resultado del lanzamiento
 \begin_layout Standard
 Supongamos que ahora la moneda está trucada.
  p(cara) = 1/3, p(cruz) = 2/3
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -6891,10 +6810,6 @@ búsqueda binaria.
 \end_inset
 
 , hacemos lo siguiente:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7152,10 +7067,6 @@ Ejemplo
 WillWait
 \emph default
  (booleana) será:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -7219,43 +7130,6 @@ Full
 \emph default
  (lleno): 
 \begin_inset Formula $H(WillWait|Patrons=None)=H(\frac{2}{6},\frac{4}{6})=0\:\textrm{bit}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename entropo.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -7376,10 +7250,6 @@ Comenzaremos por seleccionar el atributo por el que preguntar primero.
  Para ello calcularemos las ganancias de información obtenidas con cada
  a tributo ya que 
 \begin_inset Formula $I(JugarTenis)=H({\displaystyle \frac{9}{14},\frac{5}{14}})=0,94$
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7848,7 +7718,7 @@ status open
 \begin_layout Standard
 se observa que a medida que se reduce el 
 \emph on
-error de entrenamiento – 
+error de entrenamiento -- 
 \emph default
 sobre datos de entrenamiento
 \emph on

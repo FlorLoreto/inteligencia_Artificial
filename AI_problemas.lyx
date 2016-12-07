@@ -154,8 +154,8 @@ End
 \bottommargin 2cm
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \quotes_language french
 \papercolumns 1
 \papersides 1
@@ -700,7 +700,7 @@ Para el caso de tres discos, podemos representar lo anterior del siguiente
 
 \begin_inset Graphics
 	filename estamover.png
-	scale 60
+	scale 50
 
 \end_inset
 
@@ -744,19 +744,19 @@ Mover
 
 \begin_deeper
 \begin_layout Standard
-La hurística en el problema relajado es 
+La heurística en el problema relajado es 
 \emph on
 el número de discos que no están en la varilla 3
 \emph default
 .
  Es una heurística admisible para el problema original.
- En el casode N=2:
+ En el caso de N=2:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
 	filename hurihanoi.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -783,7 +783,7 @@ es el siguiente , cada estado se representará por una terna
 
  entera que contienen la identidad y el orden de los discos.
  P.e.
- en el estado incial A tendremos que 
+ en el estado inicial A tendremos que 
 \begin_inset Formula $([1,2],[],[])$
 \end_inset
 
@@ -802,7 +802,7 @@ test-objetivo
 \begin_layout Standard
 \begin_inset Graphics
 	filename hanoistate.png
-	scale 50
+	scale 60
 
 \end_inset
 
@@ -821,6 +821,7 @@ Hemos heredado un reloj de nuestro antepasado, que había trabajado en Londres
 \begin_layout Standard
 \begin_inset Graphics
 	filename problemo3.png
+	scale 50
 
 \end_inset
 
@@ -1091,7 +1092,7 @@ e.
 \emph on
 admisible
 \emph default
- ya que, siempre que haya algúna etiqueta fuera de su posición, habrá al
+ ya que, siempre que haya alguna etiqueta fuera de su posición, habrá al
  menos otra que también lo esté y, por tanto, el valor de h será menor o
  igual que la suma de los valores de las etiquetas a intercambiar.
  
@@ -1104,10 +1105,10 @@ f.
  
 \series default
 Sí ya que si no eliminamos estados repetidos se trata de una búsqueda en
- árbol para la cual solo se pide la condiciónn de admisibilidad.
+ árbol para la cual solo se pide la condición de admisibilidad.
 \end_layout
 
-\begin_layout Description
+\begin_layout Standard
 \noindent
 \align left
 
@@ -1122,16 +1123,12 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename figurini.png
-	scale 50
+	scale 65
 
 \end_inset
 
@@ -1479,7 +1476,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename jarritas.png
-	scale 50
+	scale 45
 
 \end_inset
 
@@ -1533,6 +1530,22 @@ actualizaciones de los valores [
 \begin_layout Standard
 \begin_inset Graphics
 	filename problem5.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solución:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename podasol.png
 	scale 50
 
 \end_inset
@@ -1624,122 +1637,105 @@ d.
 
 \end_deeper
 \begin_layout Description
-(ii) ¿Cuál es la estrategia minimax para el jugador que tiene el turno?
+(iii) ¿Cuál es la estrategia minimax para el jugador que tiene el turno?
  ¿Cuál es el resultado del juego, de acuerdo con esta estrategia?
 \end_layout
 
 \begin_layout Description
-(iii) ¿Se puede formalizar este juego como un juego de suma 0? ¿Por qué?
-\end_layout
-
-\begin_layout Description
-(iv) ¿Garantiza mimimax encontrar la estrategia óptima en este juego? ¿Por
- qué?
-\end_layout
-
-\begin_layout Section
-
-\size footnotesize
-Tenemos dos jugadores que se alternan poniendo fichas en un tablero de dimension
-es 3x3.
-\end_layout
-
-\begin_layout Standard
-Uno de los jugadores coloca fichas etiquetadas con ‘1’.
- El otro jugador coloca fichas etiquetadas con ‘0’.
- Inicialmente el tablero está vacío.
- El primer movimiento en una partida corresponde a ‘1’.
- Los jugadores alternan sus movimientos.
- En cada turno, el jugador que realiza el movimiento coloca una de sus fichas
- en una de las celdas libres del tablero.
- Los movimientos se exploran comenzando por la columna libre que se encuentre
- más a la izquierda y por la fila inferior.
- 
-\end_layout
-
-\begin_layout Standard
-La partida termina cuando el tablero está completo.
- Los puntos para el jugador ‘1’ son el número de ternas de bits capicúas
- (es decir: 000, 010, 101, 111) que se pueden leer en horizontal, en vertical
- o en diagonal.
- Los puntos para el jugador ‘0’ son el número de ternas de bits no capicúas
- (es decir: 001, 100, 110, 011).
-\end_layout
-
-\begin_layout Standard
-Partimos de la posición intermedia del juego:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename problema6.png
-	scale 140
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-(i) ¿Quién es MAX y quién es MIN en este estado de la partida? 
-\end_layout
-
-\begin_layout Description
-(ii) Realiza paso a paso el despliegue del árbol de juego para encontrar
- la estrategia óptima de MAX mediante el algoritmo minimax con poda alfa-beta.
- Para ello
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-a.
- En el árbol de juego, dibuja únicamente los nodos explorados, indicando
- dónde se realiza poda.
-\end_layout
-
-\begin_layout Standard
-b.
- Indica, para cada nodo, el estado del tablero y si el nodo es MAX o MIN.
- 
-\end_layout
-
-\begin_layout Standard
-c.
- Indica en los nodos terminales el valor de la función de utilidad.
- 
-\end_layout
-
-\begin_layout Standard
-d.
- Para los nodos internos, indica en cada paso los valores del intervalo
- [
-\begin_inset Formula $\alpha$
-\end_inset
-
-,
-\begin_inset Formula $\beta$
-\end_inset
-
-], etiquetándolo con un entero que se incremente cada vez que este intervalo
- se propague hacia algún nodo hijo o se actualice con la información que
- proviene de algún nodo hijo.
- 
-\end_layout
-
-\end_deeper
-\begin_layout Description
-(iii) ¿Cuál es la estrategia minimax para el jugador que tiene el turno?
- ¿Cuál es el resultado del juego, de acuerdo con esta estrategia? 
-\end_layout
-
-\begin_layout Description
 (iv) ¿Se puede formalizar este juego como un juego de suma 0? ¿Por qué?
- 
 \end_layout
 
 \begin_layout Description
 (v) ¿Garantiza mimimax encontrar la estrategia óptima en este juego? ¿Por
  qué?
+\end_layout
+
+\begin_layout Description
+Solución:
+\end_layout
+
+\begin_layout Description
+
+\series bold
+(i) 
+\series default
+MAX es O porque es el primero en jugar ya que en la posición inicial hay
+ 3 X's y 2 0's.
+\end_layout
+
+\begin_layout Description
+\noindent
+\align left
+(ii) Partimos de la posición de la figura y exploraremos en sentido 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+comenzando por (1,2).
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 3x1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+(iii) En este caso, 0 no puede ganar.
+ La estrategia óptima para 0 - resaltada - es contingente y depende de las
+ jugadas de X.
+ Si X es un jugador infalible, cualquier estrategia conduce a la derrota
+ de 0.
+\end_layout
+
+\begin_layout Description
+(iv) Se trata de un juego de suma 0 ya que:
+\end_layout
+
+\begin_layout Itemize
+Si gana 0 para este el juego vale +1 y -1 para X.
+\end_layout
+
+\begin_layout Itemize
+Si no gana ninguno de los dos, el valor del juego es 0 para ambos.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(v) 
+\series default
+Minimax garantiza encontrar una estrategia óptima siempre que los jugadores
+ sean infalibles.
+ En este caso, 0 no lo ha sido y si X lo es, la única alternativa para 0
+ es perder.
 \end_layout
 
 \begin_layout Section
@@ -1749,23 +1745,34 @@ Consideremos un juego en el cual los jugadores forman palabras.
 \end_layout
 
 \begin_layout Standard
-El jugador A consigue puntos por las vocales y el B por las consonantes
+El jugador A consigue puntos por las vocales y el 
+\emph on
+B
+\emph default
+ por las 
+\emph on
+consonantes
+\emph default
  de la palabra formada en el nodo terminal.
  Consideremos el árbol de juego para un estado del juego en el que tiene
  el turno el jugador B.
 \end_layout
 
 \begin_layout Standard
-Diseña una función de evaluación para completar la definición el juego y
- explica su significado.
- Utiliza el algoritmo minimax con poda alfa-beta para determinar cuál es
- el valor minimax en el nodo raíz del ábol de juego y cuál es la jugada
+a) Diseña una función de evaluación para completar la definición el juego
+ y explica su significado.
+ 
+\end_layout
+
+\begin_layout Standard
+b) Utiliza el algoritmo minimax con poda alfa-beta para determinar cuál
+ es el valor minimax en el nodo raíz del árbol de juego y cuál es la jugada
  óptima en este estado del juego para B.
 \end_layout
 
 \begin_layout Standard
-Indica con una etiqueta numérica el orden de recorrido de los nodos en el
- árbol.
+c) Indica con una etiqueta numérica el orden de recorrido de los nodos en
+ el árbol.
  En cada nodo interno visitado, indica los valores [
 \begin_inset Formula $\alpha$
 \end_inset
@@ -1776,10 +1783,7 @@ Indica con una etiqueta numérica el orden de recorrido de los nodos en el
 
 ].
  En los nodos finales visitados (y únicamente en ellos) indica el valor
-\end_layout
-
-\begin_layout Standard
-de la función de evaluación.
+ de la función de evaluación.
  Indica asimismo los nodos en los que hay poda.
 \end_layout
 
@@ -1787,6 +1791,54 @@ de la función de evaluación.
 \begin_inset Graphics
 	filename problema7.png
 	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solución:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(a) 
+\series default
+la función de evaluación para 
+\emph on
+B
+\emph default
+ será 
+\begin_inset Formula $n\text{º}\:de\:consonantes-n\text{º}\:de\:vocales$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(b) 
+\series default
+El valor en el nodo es 0, como se ve en el árbol siguiente
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(c)
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename problema7.1.png
+	scale 50
 
 \end_inset
 
